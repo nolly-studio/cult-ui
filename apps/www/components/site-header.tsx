@@ -32,7 +32,9 @@ export function SiteHeader() {
           <MobileNav />
           <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
             {!pathname?.includes("/docs") ? (
-              <DistortedGlass></DistortedGlass>
+              <div className="hidden lg:block">
+                <DistortedGlass></DistortedGlass>
+              </div>
             ) : null}
 
             <div className="w-full flex-1 md:w-auto md:flex-none">
