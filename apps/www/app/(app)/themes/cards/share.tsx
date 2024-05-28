@@ -24,7 +24,7 @@ import {
 export function CardsShare() {
   return (
     <TextureCard>
-      <TextureCardHeader className="pb-3 px-2">
+      <TextureCardHeader className="px-2 pb-3">
         <TextureCardTitle>Share this document</TextureCardTitle>
         <TextureCardDescription>
           Anyone with the link can view this document.

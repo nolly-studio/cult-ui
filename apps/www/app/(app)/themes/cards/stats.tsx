@@ -54,7 +54,7 @@ export function CardsStats() {
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
       <TextureCard>
-        <TextureCardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-2">
+        <TextureCardHeader className="flex flex-row items-center justify-between space-y-0 px-2 pb-2">
           <TextureCardTitle className="text-base font-normal">
             Total Revenue
           </TextureCardTitle>

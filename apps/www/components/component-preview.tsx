@@ -75,13 +75,13 @@ export function ComponentPreview({
           <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
             <TabsTrigger
               value="preview"
-              className="relative h-9 rounded-none rounded-tl-lg border-b-2 border-b-transparent border border-r-transparent border-l-black/10 border-t-black/10 dark:border-l-white/10 dark:border-t-white/10 bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
+              className="relative h-9 rounded-none rounded-tl-lg border border-b-2 border-b-transparent border-l-black/10 border-r-transparent border-t-black/10 bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none dark:border-l-white/10 dark:border-t-white/10"
             >
               Preview
             </TabsTrigger>
             <TabsTrigger
               value="code"
-              className="relative h-9 rounded-none rounded-tr-lg border-b-2 border-b-transparent bg-transparent border-l-transparent border border-r-black/10 border-t-black/10 dark:border-r-white/10 dark:border-t-white/10 px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
+              className="relative h-9 rounded-none rounded-tr-lg border border-b-2 border-b-transparent border-l-transparent border-r-black/10 border-t-black/10 bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none dark:border-r-white/10 dark:border-t-white/10"
             >
               Code
             </TabsTrigger>
@@ -89,7 +89,7 @@ export function ComponentPreview({
         </div>
         <TabsContent
           value="preview"
-          className="relative rounded-md border dark:border-white/10 border-black/10"
+          className="relative rounded-md border border-black/10 dark:border-white/10"
         >
           <div className="flex items-center justify-between p-4">
             {/* <StyleSwitcher /> */}
@@ -104,7 +104,7 @@ export function ComponentPreview({
           <ThemeWrapper defaultTheme="zinc">
             <div
               className={cn(
-                "preview flex min-h-[350px] w-full justify-center p-10 bg-background",
+                "preview flex min-h-[350px] w-full justify-center bg-background p-10",
                 {
                   "items-center": align === "center",
                   "items-start": align === "start",

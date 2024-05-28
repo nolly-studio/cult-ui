@@ -21,7 +21,7 @@ export default function IndexPage() {
   return (
     // <div className="container relative">
     <>
-      <div className="isolate overflow-hidden bg-white min-h-screen md:pb-0 pb-8 sm:pb-12 bg-gradientTopRightLightSm md:bg-gradientTopRightLight">
+      <div className="bg-gradientTopRightLightSm isolate min-h-screen overflow-hidden bg-white pb-8 sm:pb-12 md:bg-gradientTopRightLight md:pb-0">
         {/* <BgNoiseWrapper url="/cult-canvas-noise.png"> */}
         <BgNoiseWrapper url="/egg-shell-noise.png">
           <div className="container relative pt-12">
@@ -55,8 +55,8 @@ export default function IndexPage() {
               </PageActions>
             </PageHeader>
 
-            <section className="hidden md:block  w-full left-0 right-0">
-              <div className="overflow-hidden rounded-lg  flex flex-col items-center justify-center ">
+            <section className="inset-x-0 hidden  w-full md:block">
+              <div className="flex flex-col  items-center justify-center overflow-hidden rounded-lg ">
                 <TweetGrid tweets={tweets} />
               </div>
             </section>

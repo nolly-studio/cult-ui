@@ -72,13 +72,13 @@ export function CardsActivityGoal() {
 
   return (
     <TextureCard>
-      <TextureCardHeader className="pb-4 px-2">
+      <TextureCardHeader className="px-2 pb-4">
         <TextureCardTitle className="text-base">Move Goal</TextureCardTitle>
         <TextureCardDescription>
           Set your daily activity goal.
         </TextureCardDescription>
       </TextureCardHeader>
-      <TextureCardContent className="pb-2 px-2">
+      <TextureCardContent className="px-2 pb-2">
         <div className="flex items-center justify-center space-x-2">
           <TextureButton
             variant="minimal"

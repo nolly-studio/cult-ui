@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { useLiftMode } from "@/hooks/use-lift-mode"
 import { BlockCopyButton } from "@/components/block-copy-button"
-import { V0Button } from "@/components/v0-button"
 import { Block, type BlockChunk } from "@/registry/schema"
 
 export function BlockChunk({
@@ -45,15 +44,6 @@ export function BlockChunk({
                   event="copy_chunk_code"
                   name={chunk.name}
                   code={chunk.code}
-                />
-                <V0Button
-                  size="icon"
-                  block={{
-                    name: chunk.name,
-                    description: chunk.description || "",
-                    code: chunk.code,
-                    style: block.style,
-                  }}
                 />
               </div>
             </div>

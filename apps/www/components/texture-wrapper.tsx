@@ -12,7 +12,7 @@ const BgNoiseWrapper: React.FC<BackgroundWrapperProps> = ({
   return (
     <div className="relative">
       <div
-        className="fixed inset-0 mix-blend-hard-light pointer-events-none"
+        className="pointer-events-none fixed inset-0 mix-blend-hard-light"
         style={{ backgroundImage: `url('${url}')` }}
       ></div>
       <div className="relative">{children}</div>

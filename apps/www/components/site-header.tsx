@@ -22,7 +22,7 @@ export function SiteHeader() {
         className={cn(
           "sticky top-0 z-50 w-full    ",
           pathname?.includes("/docs")
-            ? "lg:backdrop-blur-xl backdrop-filter   backdrop-blur supports-[backdrop-filter]:bg-background/60 -mb-12 bg-[#FAFAFA] dark:bg-[#171517]"
+            ? "-mb-12 bg-[#FAFAFA]   backdrop-blur supports-[backdrop-filter]:bg-background/60 lg:backdrop-blur-xl dark:bg-[#171517]"
             : "-mb-14"
         )}
       >
@@ -78,8 +78,8 @@ export function SiteHeader() {
           </div>
         </div>
       </header>
-      <div className="fixed md:absolute animate-slide-up top-0 left-1/2 right-1/2 z-50">
-        <div className=" flex flex-col items-center justify-center w-full">
+      <div className="animate-slide-up fixed inset-x-1/2 top-0 z-50 md:absolute">
+        <div className=" flex w-full flex-col items-center justify-center">
           {/* <DistortedGlass></DistortedGlass> */}
         </div>
       </div>

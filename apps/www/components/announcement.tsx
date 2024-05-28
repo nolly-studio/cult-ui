@@ -22,7 +22,7 @@ export function Announcement() {
       // style={{ backgroundImage: "url('/cult-noise.png')" }}
     >
       <div
-        className="fixed inset-0 mix-blend-hard-light pointer-events-none"
+        className="pointer-events-none fixed inset-0 mix-blend-hard-light"
         style={{ backgroundImage: "url('/cult-noise.png')" }}
       ></div>
       <Blocks className="h-4 w-4" />{" "}

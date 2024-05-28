@@ -96,7 +96,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             disableTransitionOnChange
           >
             <div vaul-drawer-wrapper="">
-              <div className="relative flex min-h-screen flex-col bg-background z-10">
+              <div className="relative z-10 flex min-h-screen flex-col bg-background">
                 {children}
                 {/* <div className="bg-noise" /> */}
               </div>

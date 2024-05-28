@@ -24,7 +24,7 @@ export function MainNav() {
         <Link
           href="/docs/components"
           className={cn(
-            "transition-colors hover:text-foreground/80 text-base font-semibold",
+            "text-base font-semibold transition-colors hover:text-foreground/80",
             pathname?.startsWith("/docs/components")
               ? "text-foreground"
               : "text-foreground/60"
@@ -35,7 +35,7 @@ export function MainNav() {
         <Link
           href="/themes"
           className={cn(
-            "transition-colors hover:text-foreground/80 text-base font-semibold",
+            "text-base font-semibold transition-colors hover:text-foreground/80",
             pathname?.startsWith("/themes")
               ? "text-foreground"
               : "text-foreground/60"
@@ -46,7 +46,7 @@ export function MainNav() {
         <a
           href="https://newcult.co"
           className={cn(
-            "transition-colors hover:text-foreground/80 text-base font-semibold",
+            "text-base font-semibold transition-colors hover:text-foreground/80",
             pathname?.startsWith("/examples")
               ? "text-foreground"
               : "text-foreground/60"

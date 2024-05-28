@@ -266,8 +266,8 @@ const components = {
     <TabsTrigger
       className={cn(
         "relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none",
-        "first:rounded-tl-lg first:border first:border-r-transparent first:border-l-black/10 first:border-t-black/10 first:dark:border-l-white/10 first:dark:border-t-white/10 ",
-        "last:rounded-tr-lg bg-transparent last:border-l-transparent last:border last:border-r-black/10 last:border-t-black/10 last:dark:border-r-white/10 last:dark:border-t-white/10 ",
+        "first:rounded-tl-lg first:border first:border-l-black/10 first:border-r-transparent first:border-t-black/10 first:dark:border-l-white/10 first:dark:border-t-white/10 ",
+        " last:rounded-tr-lg last:border last:border-l-transparent last:border-r-black/10 last:border-t-black/10 last:dark:border-r-white/10 last:dark:border-t-white/10 ",
         className
       )}
       {...props}
