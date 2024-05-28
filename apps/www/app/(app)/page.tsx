@@ -21,7 +21,7 @@ export default function IndexPage() {
   return (
     // <div className="container relative">
     <>
-      <div className=" isolate min-h-screen overflow-hidden bg-white pb-8 sm:pb-12 bg-gradientTopRightLight md:pb-0">
+      <div className=" isolate min-h-screen overflow-hidden bg-white bg-gradientTopRightLight pb-8 sm:pb-12 md:pb-0">
         {/* <BgNoiseWrapper url="/cult-canvas-noise.png"> */}
         <BgNoiseWrapper url="/egg-shell-noise.png">
           <div className="container relative pt-12">
@@ -55,7 +55,7 @@ export default function IndexPage() {
               </PageActions>
             </PageHeader>
 
-            <section className="hidden  md:block w-full">
+            <section className="hidden  w-full md:block">
               <div className="flex flex-col  items-center justify-center overflow-hidden  ">
                 <Suspense>
                   <TweetGrid tweets={tweets} />
@@ -63,7 +63,7 @@ export default function IndexPage() {
               </div>
             </section>
           </div>
-          <section className=" hidden mt-12 md:block w-full rounded-tr-[364px] bg-neutral-900">
+          <section className=" mt-12 hidden w-full rounded-tr-[364px] bg-neutral-900 md:block">
             <FeaturesSection />
           </section>
         </BgNoiseWrapper>
