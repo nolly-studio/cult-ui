@@ -1,0 +1,120 @@
+---
+title: BgAnimateButton
+description: A button with gradient and animation defaults
+component: true
+links:
+---
+
+<ComponentPreview
+  name="bg-animate-button-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+<Steps>
+
+<Step>Run the following command:</Step>
+
+```bash
+npx cult-ui@latest add bg-animate-button
+```
+
+</Steps>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="bg-animate-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { BgAnimateButton } from "./BgAnimateButton"
+```
+
+```tsx
+const roundings = ["full", "xl", "2xl", "3xl", "sm"]
+const gradients = [
+  "sunrise",
+  "ocean",
+  "candy",
+  "default",
+  "forest",
+  "sunset",
+  "nebula",
+]
+const animations = ["spin", "pulse", "spin-slow", "spin-fast"]
+
+export const BgAnimateDemo = () => {
+  return (
+    <div className="w-full max-w-4xl">
+      <div className="min-h-[500px] px-12 md:px-24 flex flex-col justify-center border border-dashed rounded-lg space-y-4">
+        {/* Roundings Grid */}
+
+        <div className="grid grid-cols-3 gap-4">
+          {roundings.slice(0, 2).map((rounding, i) => (
+            <BgAnimateButton
+              gradient={gradients[i + 1]}
+              key={rounding}
+              rounded={rounding}
+            >
+              {rounding}
+            </BgAnimateButton>
+          ))}
+        </div>
+        <div className="grid grid-cols-3 gap-4">
+          {roundings.slice(2, 5).map((rounding, i) => (
+            <BgAnimateButton
+              gradient={gradients[i + 1]}
+              key={rounding}
+              rounded={rounding}
+            >
+              {rounding}
+            </BgAnimateButton>
+          ))}
+        </div>
+
+        {/* animations Grid */}
+        <div className="grid grid-cols-4 gap-4">
+          {animations.map((animations, i) => (
+            <BgAnimateButton
+              key={animations}
+              gradient={gradients[i + 2]}
+              variant="ghost"
+              animation={animations}
+            >
+              {animations}
+            </BgAnimateButton>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default BgAnimateDemo
+```

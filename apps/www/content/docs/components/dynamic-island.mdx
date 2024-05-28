@@ -1,0 +1,280 @@
+---
+title: DynamicIsland
+description: A do anything be anything component inspired by apples dynamic island
+component: true
+links:
+---
+
+<ComponentPreview
+  name="dynamic-island-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+<Steps>
+
+<Step>Run the following command:</Step>
+
+```bash
+npx cult-ui@latest add dynamic-island
+```
+
+</Steps>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="dynamic-island" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  DynamicBlob,
+  DynamicBlobProvider,
+  DynamicContainer,
+  DynamicDescription,
+  DynamicDiv,
+  DynamicTitle,
+  useDynamicBlobSize,
+} from "@/components/cult/special/DynamicBlob/DynamicBlob"
+```
+
+```tsx
+const blobStates = ["compact", "large", "tall", "long", "medium", "ultra"]
+
+const DynamicAction = () => {
+  const { state: blobState, scheduleAnimation, setSize } = useDynamicBlobSize()
+
+  // Function to cycle through the states
+  const cycleBlobStates = () => {
+    const currentIndex = blobStates.indexOf(blobState.size)
+    const nextIndex = (currentIndex + 1) % blobStates.length
+    // @ts-ignore
+    setSize(blobStates[nextIndex])
+  }
+
+  // Provide dynamic detail in such a beautiful small place :)
+  const renderCompactState = () => (
+    <DynamicContainer className="flex items-center justify-center h-full w-full">
+      <div className="relative w-full flex items-center">
+        <DynamicDescription className="absolute left-4  my-auto text-lg font-medium tracking-tighter text-white ">
+          <div className="bg-cyan-400 h-5 w-5 rounded-full" />
+        </DynamicDescription>
+
+        <DynamicDescription className="absolute text-white right-4  my-auto text-lg font-bold tracking-tighter ">
+          compact
+        </DynamicDescription>
+      </div>
+    </DynamicContainer>
+  )
+
+  // Great for call to action, popping up in users face :)
+  const renderLargeState = () => (
+    <DynamicContainer className="flex items-center justify-center h-full w-full">
+      <div className="relative  flex w-full items-center justify-between gap-6 px-4">
+        <Loader className="animate-spin h-12 w-12  text-yellow-300" />
+        <div className="animate-spin h-12 w-12  text-yellow-300 rounded-md" />
+
+        <DynamicTitle className="my-auto text-2xl font-black tracking-tighter text-white ">
+          large
+        </DynamicTitle>
+      </div>
+    </DynamicContainer>
+  )
+
+  // Great for user onboarding, forms, etc
+  const renderTallState = () => (
+    <DynamicContainer className="  flex flex-col mt-6 w-full items-start  gap-1 px-8 font-semibold">
+      <DynamicDescription className="bg-cyan-300 rounded-2xl tracking-tight leading-5  p-2">
+        The Cult of Pythagoras
+      </DynamicDescription>
+      <DynamicDescription className="bg-cyan-300 rounded-2xl tracking-tight leading-5  p-2 text-left">
+        Music of the Spheres, an idea that celestial bodies produce a form of
+        music through their movements
+      </DynamicDescription>
+
+      <DynamicTitle className=" text-4xl font-black tracking-tighter text-cyan-100 ">
+        any cool cults?
+      </DynamicTitle>
+    </DynamicContainer>
+  )
+
+  // Render function for other states
+  const renderOtherStates = () => (
+    <div className="flex items-center justify-center h-full w-full">
+      <p className="text-white">cycle states</p>
+    </div>
+  )
+
+  // Main render logic based on size
+  function renderState() {
+    switch (blobState.size) {
+      case "compact":
+        return renderCompactState()
+      case "large":
+        return renderLargeState()
+      case "tall":
+        return renderTallState()
+      // Optionally add cases for other states as necessary
+      default:
+        return renderOtherStates()
+    }
+  }
+
+  return (
+    <div className=" h-full">
+      <div className="flex flex-col gap-4  h-full">
+        <div className="absolute bottom-1 left-2">
+          <Button
+            onClick={cycleBlobStates}
+            variant="secondary"
+            className="mt-4 p-2 border rounded-lg max-w-[200px] "
+          >
+            Click
+            <MousePointerClickIcon className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+        <div className="absolute top-1 right-2">
+          <div>
+            <Badge variant="outline">prev - {blobState.previousSize}</Badge>
+            <Badge variant="outline">cur -{blobState.size}</Badge>
+          </div>
+        </div>
+
+        <DynamicBlob id="dynamic-blob">{renderState()}</DynamicBlob>
+      </div>
+    </div>
+  )
+}
+
+export default function DynamicBlobDemo() {
+  const { state: blobState, scheduleAnimation, setSize } = useDynamicBlobSize()
+
+  // Function to cycle through the states
+  const cycleBlobStates = () => {
+    const currentIndex = blobStates.indexOf(blobState.size)
+    const nextIndex = (currentIndex + 1) % blobStates.length
+    // @ts-ignore
+    setSize(blobStates[nextIndex])
+  }
+
+  // Provide dynamic detail in such a beautiful small place :)
+  const renderCompactState = () => (
+    <DynamicContainer className="flex items-center justify-center h-full w-full">
+      <div className="relative w-full flex items-center">
+        <DynamicDescription className="absolute left-4  my-auto text-lg font-medium tracking-tighter text-white ">
+          <div className="bg-cyan-400 h-5 w-5 rounded-full" />
+        </DynamicDescription>
+
+        <DynamicDescription className="absolute text-white right-4  my-auto text-lg font-bold tracking-tighter ">
+          compact
+        </DynamicDescription>
+      </div>
+    </DynamicContainer>
+  )
+
+  // Great for call to action, popping up in users face :)
+  const renderLargeState = () => (
+    <DynamicContainer className="flex items-center justify-center h-full w-full">
+      <div className="relative  flex w-full items-center justify-between gap-6 px-4">
+        <Loader className="animate-spin h-12 w-12  text-yellow-300" />
+        <div className="animate-spin h-12 w-12  text-yellow-300 rounded-md" />
+
+        <DynamicTitle className="my-auto text-2xl font-black tracking-tighter text-white ">
+          large
+        </DynamicTitle>
+      </div>
+    </DynamicContainer>
+  )
+
+  // Great for user onboarding, forms, etc
+  const renderTallState = () => (
+    <DynamicContainer className="  flex flex-col mt-6 w-full items-start  gap-1 px-8 font-semibold">
+      <DynamicDescription className="bg-cyan-300 rounded-2xl tracking-tight leading-5  p-2">
+        The Cult of Pythagoras
+      </DynamicDescription>
+      <DynamicDescription className="bg-cyan-300 rounded-2xl tracking-tight leading-5  p-2 text-left">
+        Music of the Spheres, an idea that celestial bodies produce a form of
+        music through their movements
+      </DynamicDescription>
+
+      <DynamicTitle className=" text-4xl font-black tracking-tighter text-cyan-100 ">
+        any cool cults?
+      </DynamicTitle>
+    </DynamicContainer>
+  )
+
+  // Render function for other states
+  const renderOtherStates = () => (
+    <div className="flex items-center justify-center h-full w-full">
+      <p className="text-white">cycle states</p>
+    </div>
+  )
+
+  // Main render logic based on size
+  function renderState() {
+    switch (blobState.size) {
+      case "compact":
+        return renderCompactState()
+      case "large":
+        return renderLargeState()
+      case "tall":
+        return renderTallState()
+      // Optionally add cases for other states as necessary
+      default:
+        return renderOtherStates()
+    }
+  }
+  return (
+    <DynamicBlobProvider initialSize="default">
+      <div className=" h-full">
+        <div className="flex flex-col gap-4  h-full">
+          <div className="absolute bottom-1 left-2">
+            <Button
+              onClick={cycleBlobStates}
+              variant="secondary"
+              className="mt-4 p-2 border rounded-lg max-w-[200px] "
+            >
+              Click
+              <MousePointerClickIcon className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+          <div className="absolute top-1 right-2">
+            <div>
+              <Badge variant="outline">prev - {blobState.previousSize}</Badge>
+              <Badge variant="outline">cur -{blobState.size}</Badge>
+            </div>
+          </div>
+
+          <DynamicBlob id="dynamic-blob">{renderState()}</DynamicBlob>
+        </div>
+      </div>
+    </DynamicBlobProvider>
+  )
+}
+```

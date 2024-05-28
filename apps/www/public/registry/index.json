@@ -1,0 +1,143 @@
+[
+  {
+    "name": "text-animate",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      "ui/text-animate.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "texture-button",
+    "dependencies": [
+      "@radix-ui/react-slot"
+    ],
+    "files": [
+      "ui/texture-button.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "texture-card",
+    "dependencies": [
+      ""
+    ],
+    "files": [
+      "ui/texture-card.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "shift-card",
+    "dependencies": [
+      ""
+    ],
+    "files": [
+      "ui/shift-card.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "minimal-card",
+    "dependencies": [
+      ""
+    ],
+    "files": [
+      "ui/minimal-card.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "dynamic-island",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      "ui/dynamic-island.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "direction-aware-tabs",
+    "dependencies": [
+      "framer-motion",
+      "react-use-measure"
+    ],
+    "files": [
+      "ui/direction-aware-tabs.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "bg-animate-button",
+    "dependencies": [
+      ""
+    ],
+    "files": [
+      "ui/bg-animate-button.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "family-button",
+    "dependencies": [
+      ""
+    ],
+    "files": [
+      "ui/family-button.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "side-panel",
+    "dependencies": [
+      ""
+    ],
+    "files": [
+      "ui/side-panel.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "bg-media",
+    "dependencies": [
+      ""
+    ],
+    "files": [
+      "ui/bg-media.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "three-d-carousel",
+    "dependencies": [
+      ""
+    ],
+    "files": [
+      "ui/three-d-carousel.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "tweet-grid",
+    "dependencies": [
+      ""
+    ],
+    "files": [
+      "ui/tweet-grid.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "gradient-heading",
+    "dependencies": [
+      "@radix-ui/react-slot"
+    ],
+    "files": [
+      "ui/gradient-heading.tsx"
+    ],
+    "type": "components:ui"
+  }
+]

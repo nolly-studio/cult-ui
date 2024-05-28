@@ -1,0 +1,39 @@
+---
+title: Installation
+description: Install and configure Cult Components
+published: true
+---
+
+<Steps>
+
+### Overview
+
+Cult Components are designed specifically for **React** and developed using **TypeScript**. They utilize **tailwindcss** for styling and **framer-motion** along with CSS for animations. While Cult Components seamlessly integrate with the shadcn ecosystem, shadcn is not mandatory for their use, though some examples may include shadcn components.
+
+### Prerequisites
+
+To get started, ensure you have the following dependencies installed:
+
+```bash
+npm install -D tailwindcss@latest clsx tailwind-merge framer-motion
+```
+
+Next, integrate our utility function by adding the following code to your project:
+
+```typescript
+// lib/utils.ts
+import clsx, { ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
+
+### Component Installation
+
+You're ready to go! Visit any [component](/components) page and follow the provided instructions.
+
+Just copy and paste the components you need—no unnecessary bloat or third-party dependencies.
+
+</Steps>
