@@ -14,8 +14,8 @@ interface OGAttr {
 
 export function FacebookOGCard({ img, title, desc, url }: OGAttr) {
   return (
-    <div className="cursor-pointer font-[Helvetica] rounded-md overflow-hidden shadow-lg max-w-full bg-white">
-      <div className="relative w-full h-56 md:h-72">
+    <div className="max-w-full cursor-pointer overflow-hidden rounded-md bg-white font-[Helvetica] shadow-lg">
+      <div className="relative h-56 w-full md:h-72">
         <Image
           src={img}
           layout="fill"
@@ -25,11 +25,11 @@ export function FacebookOGCard({ img, title, desc, url }: OGAttr) {
         />
       </div>
       <div className="p-4">
-        <p className="text-xs md:text-sm text-gray-500 truncate">{url}</p>
-        <h4 className="text-lg md:text-xl font-semibold text-gray-900 mt-1 truncate">
+        <p className="truncate text-xs text-gray-500 md:text-sm">{url}</p>
+        <h4 className="mt-1 truncate text-lg font-semibold text-gray-900 md:text-xl">
           {title}
         </h4>
-        <p className="text-sm md:text-neutral-500 text-gray-700 mt-1 line-clamp-2">
+        <p className="mt-1 line-clamp-2 text-sm text-gray-700 md:text-neutral-500">
           {desc}
         </p>
       </div>
@@ -39,11 +39,11 @@ export function FacebookOGCard({ img, title, desc, url }: OGAttr) {
 
 export function TwitterOGCard({ img, title, url }: OGAttr) {
   return (
-    <div className="relative rounded-lg overflow-hidden shadow-lg max-w-full bg-black">
-      <div className="relative w-full h-56 md:h-72">
+    <div className="relative max-w-full overflow-hidden rounded-lg bg-black shadow-lg">
+      <div className="relative h-56 w-full md:h-72">
         <Image src={img} layout="fill" objectFit="cover" alt={title || ""} />
       </div>
-      <div className="absolute bottom-2 left-2 text-xs md:text-sm text-white px-1 py-0.5 rounded">
+      <div className="absolute bottom-2 left-2 rounded px-1 py-0.5 text-xs text-white md:text-sm">
         {url}
       </div>
     </div>
@@ -52,15 +52,15 @@ export function TwitterOGCard({ img, title, url }: OGAttr) {
 
 export function LinkedInOGCard({ img, title, url }: OGAttr) {
   return (
-    <div className="rounded-sm overflow-hidden shadow-lg max-w-full bg-white">
-      <div className="relative w-full h-56 md:h-72">
+    <div className="max-w-full overflow-hidden rounded-sm bg-white shadow-lg">
+      <div className="relative h-56 w-full md:h-72">
         <Image src={img} layout="fill" objectFit="cover" alt={title || ""} />
       </div>
       <div className="p-4">
-        <h4 className="text-lg md:text-xl font-semibold text-gray-900 truncate">
+        <h4 className="truncate text-lg font-semibold text-gray-900 md:text-xl">
           {title}
         </h4>
-        <p className="text-xs md:text-sm text-gray-500 truncate">{url}</p>
+        <p className="truncate text-xs text-gray-500 md:text-sm">{url}</p>
       </div>
     </div>
   )
@@ -68,8 +68,8 @@ export function LinkedInOGCard({ img, title, url }: OGAttr) {
 
 export function SMSOgCard({ title, url, img }: OGAttr) {
   return (
-    <div className="flex flex-col border  rounded-3xl overflow-hidden shadow-lg max-w-full">
-      <div className="relative w-full h-56 md:h-56">
+    <div className="flex max-w-full flex-col  overflow-hidden rounded-3xl border shadow-lg">
+      <div className="relative h-56 w-full md:h-56">
         <Image
           src={img}
           layout="fill"
@@ -78,12 +78,12 @@ export function SMSOgCard({ title, url, img }: OGAttr) {
           className="rounded-t-3xl"
         />
       </div>
-      <div className="flex p-4 items-center space-x-4 bg-white">
-        <div className="flex flex-col flex-1 min-w-0">
-          <p className="text-sm md:text-neutral-500 font-semibold text-neutral-500-900 truncate">
+      <div className="flex items-center space-x-4 bg-white p-4">
+        <div className="flex min-w-0 flex-1 flex-col">
+          <p className="text-neutral-500-900 truncate text-sm font-semibold md:text-neutral-500">
             {title}
           </p>
-          <p className="text-xs md:text-sm text-neutral-500 truncate">{url}</p>
+          <p className="truncate text-xs text-neutral-500 md:text-sm">{url}</p>
         </div>
       </div>
     </div>
@@ -92,19 +92,19 @@ export function SMSOgCard({ title, url, img }: OGAttr) {
 
 export function IosOgShellCard({ children }: { children: ReactNode }) {
   return (
-    <div className="max-w-xs md:max-w-md mx-auto flex flex-col rounded-lg bg-neutral-900 px-px pb-px shadow-inner-shadow">
-      <div className="p-4 flex flex-col md:px-5">
-        <div className="mb-2 text-sm md:text-neutral-500 text-neutral-500">
+    <div className="shadow-inner-shadow mx-auto flex max-w-xs flex-col rounded-lg bg-neutral-900 px-px pb-px md:max-w-md">
+      <div className="flex flex-col p-4 md:px-5">
+        <div className="mb-2 text-sm text-neutral-500 md:text-neutral-500">
           iMessage
         </div>
-        <div className="mb-3 text-xs md:text-sm text-neutral-500">
+        <div className="mb-3 text-xs text-neutral-500 md:text-sm">
           Today 11:29
         </div>
-        <div className="ml-auto px-4 py-2 mb-3 text-white bg-blue-500 rounded-2xl">
+        <div className="mb-3 ml-auto rounded-2xl bg-blue-500 px-4 py-2 text-white">
           <span>Check out this new product!</span>
         </div>
         {children}
-        <div className="mt-3 text-xs md:text-sm text-neutral-500">
+        <div className="mt-3 text-xs text-neutral-500 md:text-sm">
           Delivered
         </div>
       </div>

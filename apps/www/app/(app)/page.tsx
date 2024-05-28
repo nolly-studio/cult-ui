@@ -55,7 +55,7 @@ export default function IndexPage() {
               </PageActions>
             </PageHeader>
 
-            <section className="  w-full block">
+            <section className="  block w-full">
               <div className="flex flex-col  items-center justify-center overflow-hidden rounded-lg ">
                 <Suspense>
                   <TweetGrid tweets={tweets} />
@@ -63,7 +63,7 @@ export default function IndexPage() {
               </div>
             </section>
           </div>
-          <section className="  w-full block bg-neutral-900 mt-12 rounded-tr-[364px]">
+          <section className="  mt-12 block w-full rounded-tr-[364px] bg-neutral-900">
             <FeaturesSection />
           </section>
         </BgNoiseWrapper>

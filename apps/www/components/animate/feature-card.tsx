@@ -76,12 +76,12 @@ function FeatureCard({
           bgClass
         )}
       >
-        <div className="mx-10 my-10 min-h-[450px] w-full">
+        <div className="m-10 min-h-[450px] w-full">
           <div className="flex w-4/6 flex-col gap-3">
-            <h2 className="text-xl font-bold tracking-tight md:text-2xl text-white">
+            <h2 className="text-xl font-bold tracking-tight text-white md:text-2xl">
               {title}
             </h2>
-            <p className="text-sm leading-5 text-neutral-300 dark:text-zinc-400 sm:text-base sm:leading-5">
+            <p className="text-sm leading-5 text-neutral-300 sm:text-base sm:leading-5 dark:text-zinc-400">
               <Balancer>{description}</Balancer>
             </p>
           </div>
@@ -140,7 +140,7 @@ export function ChallengeCreationCard({
       >
         <Image
           alt={image.alt}
-          className="pointer-events-none rounded-2xl top-[50%] w-[90%] overflow-hidden rounded-t-2xl border border-neutral-100/10 transition-all duration-500 dark:border-zinc-700 md:left-[35px] md:top-[30%] md:w-full"
+          className="pointer-events-none top-[50%] w-[90%] overflow-hidden rounded-2xl border border-neutral-100/10 transition-all duration-500 md:left-[35px] md:top-[30%] md:w-full dark:border-zinc-700"
           src={cult}
           width={800}
           height={300}
@@ -274,7 +274,7 @@ export function Steps({ steps, current, onChange }) {
             // z-50 makes it sit above navbar.tsx for pointer-events to work since the <nav> container is -mt-[56px]
             <li
               className={cn(
-                "relative z-50 rounded-full py-1 pl-3  pr-3 transition-all duration-300 ease-in-out md:flex",
+                "relative z-50 rounded-full px-3 py-1  transition-all duration-300 ease-in-out md:flex",
                 isCompleted ? "bg-neutral-500/20" : "bg-neutral-500/10"
               )}
               key={`${step.name}-${stepIdx}`}
@@ -289,13 +289,13 @@ export function Steps({ steps, current, onChange }) {
                 <span className="flex items-center gap-2 text-sm font-medium">
                   <span
                     className={cn(
-                      "flex flex-shrink-0 items-center justify-center rounded-full duration-300",
+                      "flex shrink-0 items-center justify-center rounded-full duration-300",
                       isCompleted &&
-                        "h-4 w-4 bg-brand-400 text-white  dark:bg-brand-400",
+                        "bg-brand-400 dark:bg-brand-400 h-4 w-4  text-white",
                       isCurrent &&
-                        "h-4 w-4 bg-brand-300/80 p-2 text-neutral-400 dark:bg-neutral-500/50",
+                        "bg-brand-300/80 h-4 w-4 p-2 text-neutral-400 dark:bg-neutral-500/50",
                       isFuture &&
-                        "h-4 w-4 bg-brand-300/10 p-2 dark:bg-neutral-500/20"
+                        "bg-brand-300/10 h-4 w-4 p-2 dark:bg-neutral-500/20"
                     )}
                   >
                     {isCompleted ? (
@@ -332,26 +332,26 @@ export function Steps({ steps, current, onChange }) {
 
 export function FeaturesSection() {
   return (
-    <section className="relative overflow-hidden w-full " id="features">
+    <section className="relative w-full overflow-hidden " id="features">
       <div className=" p-2">
-        <div className="md:container mb-[7rem] pt-[5rem] pb-[5rem] ">
+        <div className="mb-[7rem] py-[5rem] md:container">
           <div className=" mx-auto">
-            <div className="mt-1 pb-12 gap-3 w-full text-center pt-8 sm:px-0">
-              <h3 className="mt-2 text-6xl px-4 font-bold tracking-tight text-white dark:text-neutral-100/90 ">
+            <div className="mt-1 w-full gap-3 pb-12 pt-8 text-center sm:px-0">
+              <h3 className="mt-2 px-4 text-6xl font-bold tracking-tight text-white dark:text-neutral-100/90 ">
                 <GradientHeading variant="light" size="xl">
                   Tailwind + Framer + React
                 </GradientHeading>
               </h3>
 
-              <p className="text-xl md:text-3xl leading-5 mt-2 font-bold md:leading-7 text-neutral-500 ">
+              <p className="mt-2 text-xl font-bold leading-5 text-neutral-500 md:text-3xl md:leading-7 ">
                 <Balancer>Everything you need to ship</Balancer>
               </p>
             </div>
 
             <div className="relative z-10 grid w-full gap-8 "></div>
 
-            <div className="py-2 px-2 bg-neutral-700 rounded-[34px]">
-              <div className="relative z-10 grid w-full gap-8 py-2 px-2 bg-neutral-950 rounded-[28px]">
+            <div className="rounded-[34px] bg-neutral-700 p-2">
+              <div className="relative z-10 grid w-full gap-8 rounded-[28px] bg-neutral-950 p-2">
                 <ChallengeCreationCard
                   step1img1Class={clsx(
                     "pointer-events-none w-[50%] border border-stone-100/10 transition-all duration-500 dark:border-stone-700/50",

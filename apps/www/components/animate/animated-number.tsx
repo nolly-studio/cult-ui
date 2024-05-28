@@ -62,7 +62,7 @@ export function BasicExample() {
       <Button
         size="sm"
         variant="ghost"
-        className="border border-primary/10 rounded-full "
+        className="rounded-full border border-primary/10 "
         onClick={() => setValue(value + 1000)}
       >
         <Plus className="h-4 w-4" />
@@ -87,7 +87,7 @@ export function PrecisionExample() {
           <Button
             size="sm"
             variant="ghost"
-            className="border border-primary/10 rounded-full ml-auto py-5"
+            className="ml-auto rounded-full border border-primary/10 py-5"
             onClick={() => setValue(value + 123.456)}
           >
             <Plus className="h-4 w-4" />
@@ -116,7 +116,7 @@ export function FormatExample() {
           <Button
             size="sm"
             variant="ghost"
-            className="border border-primary/10 rounded-full ml-auto py-5"
+            className="ml-auto rounded-full border border-primary/10 py-5"
             onClick={() => setValue(value + 250)}
           >
             <Plus className="h-4 w-4" />
@@ -155,7 +155,7 @@ export function HooksExample() {
           <Button
             size="sm"
             variant="ghost"
-            className="border border-primary/10 rounded-full ml-auto py-5"
+            className="ml-auto rounded-full border border-primary/10 py-5"
             onClick={() => setValue(value + 500)}
           >
             <Plus className="h-4 w-4" />
@@ -184,9 +184,9 @@ export function CustomSpringExample() {
       <TextureCardHeader className="px-3">
         <GradientHeading size="sm">Custom Spring Properties</GradientHeading>
       </TextureCardHeader>
-      <TextureCardContent className="flex flex-col sm:flex-row justify-between items-center gap-8">
+      <TextureCardContent className="flex flex-col items-center justify-between gap-8 sm:flex-row">
         <div
-          className="text-6xl font-bold mr-auto flex"
+          className="mr-auto flex text-6xl font-bold"
           style={{ minWidth: "150px", textAlign: "right" }}
         >
           <AnimatedNumber
@@ -199,18 +199,18 @@ export function CustomSpringExample() {
 
         <div className="flex flex-col gap-3 px-2">
           <Button
-            className="border border-primary/10 rounded-full py-5"
+            className="rounded-full border border-primary/10 py-5"
             onClick={() => setValue(value + 500)}
           >
-            <Plus className="h-4 w-4 mr-2" />
+            <Plus className="mr-2 h-4 w-4" />
             Increase
           </Button>
           <Button
-            className="border border-primary/10 rounded-full py-5"
+            className="rounded-full border border-primary/10 py-5"
             disabled={value <= 500}
             onClick={() => setValue(value - 300)}
           >
-            <Minus className="h-4 w-4 mr-2" />
+            <Minus className="mr-2 h-4 w-4" />
             Decrease
           </Button>
         </div>
@@ -252,8 +252,8 @@ export function CustomSpringExample() {
 
 export function AnimatedNumberExamples() {
   return (
-    <div className="  max-w-xl gap-4 py-6 mx-auto ">
-      <div className="w-full flex flex-col justify-between">
+    <div className="  mx-auto max-w-xl gap-4 py-6 ">
+      <div className="flex w-full flex-col justify-between">
         <CustomSpringExample />
         <div className="flex   flex-col sm:flex-row">
           <PrecisionExample />
