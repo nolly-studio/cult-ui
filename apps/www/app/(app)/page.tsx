@@ -21,7 +21,7 @@ export default function IndexPage() {
   return (
     // <div className="container relative">
     <>
-      <div className="bg-gradientTopRightLightSm isolate min-h-screen overflow-hidden bg-white pb-8 sm:pb-12 md:bg-gradientTopRightLight md:pb-0">
+      <div className=" isolate min-h-screen overflow-hidden bg-white pb-8 sm:pb-12 bg-gradientTopRightLight md:pb-0">
         {/* <BgNoiseWrapper url="/cult-canvas-noise.png"> */}
         <BgNoiseWrapper url="/egg-shell-noise.png">
           <div className="container relative pt-12">
