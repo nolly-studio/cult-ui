@@ -159,6 +159,28 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "typewriter": {
+      name: "typewriter",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/typewriter")),
+      source: "",
+      files: ["registry/default/ui/typewriter.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "animated-number": {
+      name: "animated-number",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/animated-number")),
+      source: "",
+      files: ["registry/default/ui/animated-number.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "text-animate-demo": {
       name: "text-animate-demo",
       type: "components:example",
@@ -309,6 +331,28 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/gradient-heading-demo")),
       source: "",
       files: ["registry/default/example/gradient-heading-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "typewriter-demo": {
+      name: "typewriter-demo",
+      type: "components:example",
+      registryDependencies: ["typewriter"],
+      component: React.lazy(() => import("@/registry/default/example/typewriter-demo")),
+      source: "",
+      files: ["registry/default/example/typewriter-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "animated-number-demo": {
+      name: "animated-number-demo",
+      type: "components:example",
+      registryDependencies: ["animated-number"],
+      component: React.lazy(() => import("@/registry/default/example/animated-number-demo")),
+      source: "",
+      files: ["registry/default/example/animated-number-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []

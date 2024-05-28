@@ -20,7 +20,7 @@ const TextureCardStyled = React.forwardRef<
       <div className="rounded-[22px] border  dark:border-neutral-950 border-white/50">
         <div className="rounded-[21px] border  dark:border-neutral-900/70  border-neutral-950/20">
           {/* Inner content wrapper */}
-          <div className="max-w-[440px] w-full border border-white/50 dark:border-neutral-700/50 rounded-[20px] text-neutral-500 ">
+          <div className=" w-full border border-white/50 dark:border-neutral-700/50 rounded-[20px] text-neutral-500 ">
             {children}
           </div>
         </div>

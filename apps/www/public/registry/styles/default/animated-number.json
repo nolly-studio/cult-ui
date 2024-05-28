@@ -1,0 +1,13 @@
+{
+  "name": "animated-number",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "name": "animated-number.tsx",
+      "content": "\"use client\"\n\nimport { useEffect } from \"react\"\nimport { MotionValue, motion, useSpring, useTransform } from \"framer-motion\"\n\ninterface AnimatedNumberProps {\n  value: number\n  mass?: number\n  stiffness?: number\n  damping?: number\n  precision?: number\n  format?: (value: number) => string\n  onAnimationStart?: () => void\n  onAnimationComplete?: () => void\n}\n\nexport function AnimatedNumber({\n  value,\n  mass = 0.8,\n  stiffness = 75,\n  damping = 15,\n  precision = 0,\n  format = (num) => num.toLocaleString(),\n  onAnimationStart,\n  onAnimationComplete,\n}: AnimatedNumberProps) {\n  const spring = useSpring(value, { mass, stiffness, damping })\n  const display: MotionValue<string> = useTransform(spring, (current) =>\n    format(parseFloat(current.toFixed(precision)))\n  )\n\n  useEffect(() => {\n    spring.set(value)\n    if (onAnimationStart) onAnimationStart()\n    const unsubscribe = spring.onChange(() => {\n      if (spring.get() === value && onAnimationComplete) onAnimationComplete()\n    })\n    return () => unsubscribe()\n  }, [spring, value, onAnimationStart, onAnimationComplete])\n\n  return <motion.span>{display}</motion.span>\n}\n"
+    }
+  ],
+  "type": "components:ui"
+}

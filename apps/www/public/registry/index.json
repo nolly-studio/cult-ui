@@ -139,5 +139,25 @@
       "ui/gradient-heading.tsx"
     ],
     "type": "components:ui"
+  },
+  {
+    "name": "typewriter",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      "ui/typewriter.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "animated-number",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      "ui/animated-number.tsx"
+    ],
+    "type": "components:ui"
   }
 ]

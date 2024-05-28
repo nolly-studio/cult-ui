@@ -1,0 +1,63 @@
+---
+title: Typewriter
+description: A repeating typewriter effect
+component: true
+links:
+---
+
+<ComponentPreview
+  name="typewriter-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## Installation
+
+<Tabs defaultValue="manual">
+
+<TabsList>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="typewriter" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { TypewriterDemo } from "@/components/ui/typewriter"
+```
+
+```tsx
+const texts = [
+  "Testing 124",
+  "Look at newcult.co",
+  "and check gnow.io",
+  "Sick af",
+]
+
+export default function TypewriterDemo() {
+  return (
+    <IosOgShellCard>
+      <div className="ml-auto px-4 py-2 mb-3 text-white bg-blue-500 rounded-2xl">
+        <p className="text-sm md:text-base font-semibold text-base-900 truncate">
+          <Typewriter texts={texts} delay={1} baseText="Yo " />
+        </p>
+      </div>
+    </IosOgShellCard>
+  )
+}
+```

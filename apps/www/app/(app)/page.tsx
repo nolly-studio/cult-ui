@@ -1,11 +1,11 @@
-import Image from "next/image"
+import { Suspense } from "react"
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+import { FeaturesSection } from "@/components/animate/feature-card"
 import { Announcement } from "@/components/announcement"
-import { ExamplesNav } from "@/components/examples-nav"
 import { Icons } from "@/components/icons"
 import {
   PageActions,
@@ -55,12 +55,17 @@ export default function IndexPage() {
               </PageActions>
             </PageHeader>
 
-            <section className="inset-x-0 hidden  w-full md:block">
+            <section className="  w-full block">
               <div className="flex flex-col  items-center justify-center overflow-hidden rounded-lg ">
-                <TweetGrid tweets={tweets} />
+                <Suspense>
+                  <TweetGrid tweets={tweets} />
+                </Suspense>
               </div>
             </section>
           </div>
+          <section className="  w-full block bg-neutral-900 mt-12 rounded-tr-[364px]">
+            <FeaturesSection />
+          </section>
         </BgNoiseWrapper>
         {/* <div className="bg-noise" /> */}
       </div>

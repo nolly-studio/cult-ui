@@ -85,4 +85,16 @@ export const ui: Registry = [
     dependencies: ["@radix-ui/react-slot"],
     files: ["ui/gradient-heading.tsx"],
   },
+  {
+    name: "typewriter",
+    type: "components:ui",
+    dependencies: ["framer-motion"],
+    files: ["ui/typewriter.tsx"],
+  },
+  {
+    name: "animated-number",
+    type: "components:ui",
+    dependencies: ["framer-motion"],
+    files: ["ui/animated-number.tsx"],
+  },
 ]

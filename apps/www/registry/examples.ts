@@ -85,4 +85,16 @@ export const examples: Registry = [
     registryDependencies: ["gradient-heading"],
     files: ["example/gradient-heading-demo.tsx"],
   },
+  {
+    name: "typewriter-demo",
+    type: "components:example",
+    registryDependencies: ["typewriter"],
+    files: ["example/typewriter-demo.tsx"],
+  },
+  {
+    name: "animated-number-demo",
+    type: "components:example",
+    registryDependencies: ["animated-number"],
+    files: ["example/animated-number-demo.tsx"],
+  },
 ]
