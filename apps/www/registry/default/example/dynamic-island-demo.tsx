@@ -3,9 +3,7 @@
 import { createContext, useContext } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 import {
-  ArrowLeft,
   ArrowUpLeftSquareIcon,
-  ChevronDownIcon,
   Loader,
   Mail,
   MessageCircle,
@@ -14,15 +12,8 @@ import {
   Waves,
 } from "lucide-react"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
 import {
   DynamicContainer,
   DynamicDescription,
@@ -36,7 +27,6 @@ import {
 } from "@/registry/default/ui/dynamic-island"
 
 const DynamicAction = () => {
-  // const { size, before, setSize } = useDynamicIslandSize();
   const { state: blobState, setSize } = useDynamicIslandSize()
 
   const blobStates: SizePresets[] = [
