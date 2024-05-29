@@ -64,13 +64,13 @@
   }
 }
 
-.bg-noise {
+/* .bg-noise {
   background-image: url(/cult-noise.png);
   position: fixed;
   inset: 0px;
   mix-blend-mode: hard-light;
   pointer-events: none;
-}
+} */
 
 @layer utilities {
   .step {
@@ -103,10 +103,10 @@
   @apply pointer-events-none absolute select-none rounded-3xl opacity-0 transition-opacity duration-300 hover:opacity-100;
   background: radial-gradient(
     1000px circle at var(--x) var(--y),
-    #70daff 0,
-    #fee4bd 10%,
-    #fbadd6 25%,
-    #70daff 35%,
+    #c9ee80 0,
+    #eebbe2 10%,
+    #adc0ec 25%,
+    #c9ee80 35%,
     rgba(255, 255, 255, 0) 50%,
     transparent 80%
   );

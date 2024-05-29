@@ -1,12 +1,12 @@
 export const siteConfig = {
   name: "cult/ui",
   url: "https://cult-ui.com",
-  ogImage: "https://cult-ui.com/og.jpg",
+  ogImage: "https://cult-ui.com/og.png",
   description:
-    "Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.",
+    "Components components that you can copy and paste into react apps. Customizable. Open Source. Typed.",
   links: {
     twitter: "https://x.com/nolansym",
-    github: "https://github.com/cult-ui/ui",
+    github: "https://github.com/nolly-studio/cult-ui",
   },
 }
 

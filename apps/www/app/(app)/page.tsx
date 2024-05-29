@@ -6,27 +6,28 @@ import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { FeaturesSection } from "@/components/animate/feature-card"
 import { Announcement } from "@/components/announcement"
-import { Icons } from "@/components/icons"
+import { FadeIn } from "@/components/fade-in"
 import {
-  PageActions,
-  PageHeader,
-  PageHeaderDescription,
-  PageHeaderHeading,
-} from "@/components/page-header"
+  FramerIcon,
+  Icons,
+  TailwindCSSIcon,
+  TypeScriptIcon,
+} from "@/components/icons"
+import { PageActions, PageHeader } from "@/components/page-header"
 import BgNoiseWrapper from "@/components/texture-wrapper"
 import { GradientHeading } from "@/registry/default/ui/gradient-heading"
 import { TweetGrid } from "@/registry/default/ui/tweet-grid"
 
 export default function IndexPage() {
   return (
-    // <div className="container relative">
-    <>
-      <div className=" isolate min-h-screen overflow-hidden bg-white bg-gradientTopRightLight pb-8 sm:pb-12 md:pb-0">
-        {/* <BgNoiseWrapper url="/cult-canvas-noise.png"> */}
-        <BgNoiseWrapper url="/egg-shell-noise.png">
-          <div className="container relative pt-12">
-            <PageHeader>
+    <div className=" isolate min-h-screen overflow-hidden bg-white bg-gradientTopRightLight pb-8 sm:pb-12 md:pb-0">
+      <BgNoiseWrapper url="/egg-shell-noise.png">
+        <div className="container relative pt-12">
+          <PageHeader>
+            <FadeIn>
               <Announcement />
+            </FadeIn>
+            <FadeIn>
               <GradientHeading
                 size="xxl"
                 weight="bold"
@@ -34,11 +35,27 @@ export default function IndexPage() {
               >
                 Components crafted for Design Engineers
               </GradientHeading>
+            </FadeIn>
 
-              <PageHeaderDescription className="md:text-2xl md:font-normal">
-                Beautifully designed components that you can copy and paste into
-                your apps. Accessible. Customizable. Open Source.
-              </PageHeaderDescription>
+            <FadeIn>
+              <div className="flex flex-wrap items-center justify-center gap-1 text-center text-lg font-light text-foreground  md:text-2xl md:font-normal">
+                <TailwindCSSIcon
+                  className="h-8 w-8 rounded-full border border-black/10 bg-white p-1"
+                  aria-hidden="true"
+                />
+                <span>Components that you can </span>
+
+                <FramerIcon
+                  className="h-6 w-6"
+                  aria-hidden="true"
+                  title="Next.js"
+                />
+                <span>copy and paste into react apps.</span>
+                <span>Customizable. Open Source. Typed. </span>
+                <TypeScriptIcon className="h-6 w-6 " aria-hidden="true" />
+              </div>
+            </FadeIn>
+            <FadeIn>
               <PageActions>
                 <Link href="/docs" className={cn(buttonVariants())}>
                   Get Started
@@ -53,23 +70,22 @@ export default function IndexPage() {
                   GitHub
                 </Link>
               </PageActions>
-            </PageHeader>
+            </FadeIn>
+          </PageHeader>
 
-            <section className="hidden  w-full md:block">
-              <div className="flex flex-col  items-center justify-center overflow-hidden  ">
-                <Suspense>
-                  <TweetGrid tweets={tweets} />
-                </Suspense>
-              </div>
-            </section>
-          </div>
-          <section className=" mt-12 hidden w-full rounded-tr-[364px] bg-neutral-900 md:block">
-            <FeaturesSection />
+          <section className="hidden  w-full md:block">
+            <div className="flex flex-col  items-center justify-center overflow-hidden  ">
+              <Suspense>
+                <TweetGrid tweets={tweets} />
+              </Suspense>
+            </div>
           </section>
-        </BgNoiseWrapper>
-        {/* <div className="bg-noise" /> */}
-      </div>
-    </>
+        </div>
+        <section className=" mt-12 hidden w-full rounded-tr-[364px] bg-neutral-900 md:block">
+          <FeaturesSection />
+        </section>
+      </BgNoiseWrapper>
+    </div>
   )
 }
 IndexPage.theme = "light"

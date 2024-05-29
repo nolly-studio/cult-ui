@@ -17,17 +17,15 @@ import BgNoiseWrapper from "./texture-wrapper"
 export function Announcement() {
   return (
     <Link
-      href="/docs/changelog"
+      href="https://www.newcult.co"
       className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
       // style={{ backgroundImage: "url('/cult-noise.png')" }}
+      target="_blank"
+      rel="noreferrer"
     >
-      <div
-        className="pointer-events-none fixed inset-0 mix-blend-hard-light"
-        style={{ backgroundImage: "url('/cult-noise.png')" }}
-      ></div>
       <Blocks className="h-4 w-4" />{" "}
       <Separator className="mx-2 h-4" orientation="vertical" />{" "}
-      <span>Introducing Cult Components</span>
+      <span>Introducing Cult Templates</span>
       <ArrowRightIcon className="ml-1 h-4 w-4" />
       {/* <BgNoiseWrapper> */}
       {/* </BgNoiseWrapper> */}
