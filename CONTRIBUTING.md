@@ -1,10 +1,10 @@
 # Contributing
 
-Thanks for your interest in contributing to ui.Jordan-Gilliam.com. We're happy to have you here.
+Thanks for your interest in contributing to cult/ui. Glad you're here ;)
 
 Please take a moment to review this document before submitting your first pull request. We also strongly recommend that you check for open issues and pull requests to see if someone else is working on something similar.
 
-If you need any help, feel free to reach out to [@Jordan-Gilliam](https://twitter.com/Jordan-Gilliam).
+If you need any help, feel free to reach out to [@Jordan](https://twitter.com/nolansym).
 
 ## About this repository
 
@@ -28,11 +28,6 @@ apps
         ├── default
         │   ├── example
         │   └── ui
-        └── new-york
-            ├── example
-            └── ui
-packages
-└── cli
 ```
 
 | Path                  | Description                              |
@@ -41,7 +36,6 @@ packages
 | `apps/www/components` | The React components for the website.    |
 | `apps/www/content`    | The content for the website.             |
 | `apps/www/registry`   | The registry for the components.         |
-| `packages/cli`        | The `cult-ui` package.                   |
 
 ## Development
 
@@ -112,9 +106,6 @@ apps
         ├── default
         │   ├── example
         │   └── ui
-        └── new-york
-            ├── example
-            └── ui
 ```
 
 When adding or modifying components, please ensure that:
@@ -157,19 +148,3 @@ https://www.conventionalcommits.org/ or check out the
 ## Requests for new components
 
 If you have a request for a new component, please open a discussion on GitHub. We'll be happy to help you out.
-
-## CLI
-
-The `cult-ui` package is a CLI for adding components to your project. You can find the documentation for the CLI [here](https://ui.Jordan-Gilliam.com/docs/cli).
-
-Any changes to the CLI should be made in the `packages/cli` directory. If you can, it would be great if you could add tests for your changes.
-
-## Testing
-
-Tests are written using [Vitest](https://vitest.dev). You can run all the tests from the root of the repository.
-
-```bash
-pnpm test
-```
-
-Please ensure that the tests are passing when submitting a pull request. If you're adding new features, please include tests.
