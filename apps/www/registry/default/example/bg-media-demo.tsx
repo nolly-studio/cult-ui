@@ -3,7 +3,7 @@ import BackgroundMedia from "../ui/bg-media"
 export default function BgMediaDemo() {
   return (
     <div className="w-full ">
-      <div className="min-w-[20rem] ">
+      <div className="md:min-w-[20rem] ">
         <BackgroundMedia
           type="video"
           variant="light"

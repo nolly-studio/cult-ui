@@ -27,7 +27,7 @@ const animations: Animations[] = ["spin", "pulse", "spin-slow", "spin-fast"]
 export const BgAnimateButtonsDemo = () => {
   return (
     <div className="w-full max-w-4xl">
-      <div className=" px-12 md:px-24 flex flex-col justify-center  rounded-lg space-y-4">
+      <div className=" sm:px-12 md:px-24 flex flex-col justify-center  rounded-lg space-y-4">
         {/* Roundings Grid */}
 
         <div className="grid grid-cols-3 gap-4">

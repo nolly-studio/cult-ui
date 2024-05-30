@@ -21,14 +21,19 @@ const exampleTweets = [
 
 export default function TweetGridDemo({}) {
   return (
-    <div className="pb-12 max-w-4xl">
+    <div className="pb-12 md:max-w-4xl max-w-md">
       <div className="flex w-full justify-center pb-12">
         <GradientHeading size="xl" weight="black">
           Join the club
         </GradientHeading>
       </div>
       <div className="flex items-center justify-center w-full">
-        <TweetGrid tweets={exampleTweets} columns={2} spacing="lg" />
+        <TweetGrid
+          className="w-80 md:w-full "
+          tweets={exampleTweets}
+          columns={2}
+          spacing="lg"
+        />
       </div>
     </div>
   )

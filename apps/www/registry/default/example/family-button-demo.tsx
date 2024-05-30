@@ -159,7 +159,7 @@ export function OgImageSection() {
           initial={false}
           animate={{ height: bounds.height }}
         >
-          <div className="p-6" ref={ref}>
+          <div className="md:p-6 p-2" ref={ref}>
             <AnimatePresence
               custom={direction}
               mode="popLayout"

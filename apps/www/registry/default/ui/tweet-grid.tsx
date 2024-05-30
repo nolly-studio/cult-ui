@@ -38,15 +38,17 @@ export interface TweetGridProps
   extends VariantProps<typeof tweetGridVariants>,
     VariantProps<typeof tweetItemVariants> {
   tweets: string[]
+  className?: string
 }
 
 export const TweetGrid: React.FC<TweetGridProps> = ({
   tweets,
   columns,
   spacing,
+  className,
 }) => {
   return (
-    <div className={cn(tweetGridVariants({ columns }))}>
+    <div className={cn(tweetGridVariants({ columns }), className)}>
       {tweets.map((tweetId, i) => (
         <div
           key={`${tweetId}-${i}`}

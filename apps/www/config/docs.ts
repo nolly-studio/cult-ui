@@ -7,25 +7,17 @@ interface DocsConfig {
 
 export const docsConfig: DocsConfig = {
   mainNav: [
-    {
-      title: "Documentation",
-      href: "/docs",
-    },
+    // {
+    //   title: "Documentation",
+    //   href: "/docs",
+    // },
     {
       title: "Components",
-      href: "/docs/components/accordion",
+      href: "/docs/components/dynamic-island",
     },
     {
       title: "Themes",
       href: "/themes",
-    },
-    {
-      title: "Examples",
-      href: "/examples",
-    },
-    {
-      title: "Blocks",
-      href: "/blocks",
     },
   ],
   sidebarNav: [

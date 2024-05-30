@@ -243,7 +243,7 @@ const List: React.FC<ListProps> = ({
   renderItem,
 }) => {
   return (
-    <div className="mb-9 rounded-2xl  border border-black/5 p-6 shadow-sm ">
+    <div className="mb-9 rounded-2xl  border border-black/5 p-2 md:p-6 shadow-sm ">
       <div className=" overflow-auto  p-4">
         <div className="flex flex-col space-y-2">
           <div className="">

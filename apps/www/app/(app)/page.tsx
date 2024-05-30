@@ -32,33 +32,32 @@ export default function IndexPage() {
             </FadeIn>
             <FadeIn>
               <GradientHeading
-                size="xxl"
+                size="xl"
                 weight="bold"
-                className="text-center text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]"
+                className="text-center text-xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]"
               >
                 Components crafted for Design Engineers
               </GradientHeading>
             </FadeIn>
 
             <FadeIn>
-              <div className="flex flex-wrap items-center justify-center gap-1 text-center text-lg font-light text-foreground  md:text-2xl md:font-normal">
+              <div className="flex flex-wrap items-center justify-center gap-1 text-center text-base  text-foreground  md:text-2xl md:font-normal leading-3 md:leading-6">
                 <span>Ready-to-use</span>
-                <div className="-rotate-45 rounded-full border border-black/10 p-1 shadow-lg">
-                  <ReactIcon className="h-6 w-6   " aria-hidden="true" />
+                <div className="-rotate-45 rounded-full border border-black/10 p-1 shadow-lg hidden md:block">
+                  <ReactIcon className=" h-6 w-6   " aria-hidden="true" />
                 </div>
                 <span> components for your React apps.</span>
 
+                <span>Shadcn compatible.</span>
                 <div className="rounded-full border border-black/10 p-1 shadow-lg">
                   <Icons.logo className="h-5 w-5" />
                 </div>
-
-                <span>Shadcn compatible.</span>
                 <span>Styled with tailwindcss.</span>
-                <div className="-rotate-45 rounded-full border border-black/10 p-1 shadow-lg">
+                <div className="-rotate-45 rounded-full border border-black/10 p-1 shadow-lg hidden md:block ">
                   <TailwindCSSIcon className="h-6 w-6  " aria-hidden="true" />
                 </div>
-                <span>Copy and paste. Open Source. Typed. </span>
-                <div className="rounded-xs border border-black/10 p-1 shadow-lg ">
+                <span className="">Copy and paste. Open Source. Typed. </span>
+                <div className="rounded-xs border border-black/10 p-1 shadow-lg hidden md:block">
                   <TypeScriptIcon className="h-6 w-6 " aria-hidden="true" />
                 </div>
               </div>
