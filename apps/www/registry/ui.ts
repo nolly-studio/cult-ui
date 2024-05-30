@@ -97,4 +97,10 @@ export const ui: Registry = [
     dependencies: ["framer-motion"],
     files: ["ui/animated-number.tsx"],
   },
+  {
+    name: "sortable-list",
+    type: "components:ui",
+    dependencies: ["framer-motion, react-use-measure"],
+    files: ["ui/sortable-list.tsx"],
+  },
 ]

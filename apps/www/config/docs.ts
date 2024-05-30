@@ -46,6 +46,12 @@ export const docsConfig: DocsConfig = {
           label: "new",
         },
         {
+          title: "Sortable List",
+          href: "/docs/components/sortable-list",
+          items: [],
+          label: "new new",
+        },
+        {
           title: "Shift Card",
           href: "/docs/components/shift-card",
           items: [],

@@ -159,5 +159,15 @@
       "ui/animated-number.tsx"
     ],
     "type": "components:ui"
+  },
+  {
+    "name": "sortable-list",
+    "dependencies": [
+      "framer-motion, react-use-measure"
+    ],
+    "files": [
+      "ui/sortable-list.tsx"
+    ],
+    "type": "components:ui"
   }
 ]

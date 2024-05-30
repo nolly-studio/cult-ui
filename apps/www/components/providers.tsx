@@ -13,7 +13,11 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   const forcedThemeFromPathname = pathname === "/" ? "light" : undefined
   return (
     <JotaiProvider>
-      <NextThemesProvider {...props} forcedTheme={forcedThemeFromPathname}>
+      <NextThemesProvider
+        {...props}
+        forcedTheme={forcedThemeFromPathname}
+        defaultTheme="light"
+      >
         <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
       </NextThemesProvider>
     </JotaiProvider>

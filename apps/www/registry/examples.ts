@@ -97,4 +97,10 @@ export const examples: Registry = [
     registryDependencies: ["animated-number"],
     files: ["example/animated-number-demo.tsx"],
   },
+  {
+    name: "sortable-list-demo",
+    type: "components:example",
+    registryDependencies: ["sortable-list"],
+    files: ["example/sortable-list-demo.tsx"],
+  },
 ]
