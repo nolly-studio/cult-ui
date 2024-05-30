@@ -334,14 +334,14 @@ export function FeaturesSection() {
   return (
     <section className="relative w-full overflow-hidden " id="features">
       <div className=" p-2">
-        <div className="mb-[7rem] py-[5rem] md:container">
+        <div className="mb-[1rem] pt-[5rem] md:container">
           <div className=" mx-auto">
             <div className="mt-1 w-full gap-3 pb-12 pt-8 text-center sm:px-0">
-              <h3 className="mt-2 px-4 text-6xl font-bold tracking-tight text-white dark:text-neutral-100/90 ">
+              <div className="mt-2 px-4 text-6xl font-bold tracking-tight text-white dark:text-neutral-100/90 ">
                 <GradientHeading variant="light" size="xl">
                   Tailwind + Framer + React
                 </GradientHeading>
-              </h3>
+              </div>
 
               <p className="mt-2 text-xl font-bold leading-5 text-neutral-500 md:text-3xl md:leading-7 ">
                 <Balancer>Everything you need to ship</Balancer>

@@ -154,8 +154,9 @@ const Carousel = memo(
                 src={imgUrl}
                 alt={`keyword_${i} ${imgUrl}`}
                 layoutId={`img-${imgUrl}`}
-                className="pointer-events-none h-12 w-full rounded-xl object-cover"
+                className="pointer-events-none  w-full rounded-xl object-cover aspect-square"
                 initial={{ filter: "blur(4px)" }}
+                layout="position"
                 animate={{ filter: "blur(0px)" }}
                 transition={transition}
               />
@@ -167,27 +168,8 @@ const Carousel = memo(
   }
 )
 
-const ExpandedImage = memo(
-  ({ imgUrl, handleClose }: { imgUrl: string; handleClose: () => void }) => (
-    <motion.div
-      initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0 }}
-      // layoutId={`img-${imgUrl}`}
-      onClick={handleClose}
-      className="fixed inset-0 bg-black bg-opacity-0 flex items-center justify-center z-50 m-5 rounded-3xl"
-      style={{ willChange: "opacity" }}
-      transition={transitionOverlay}
-    >
-      <motion.img
-        layoutId={`img-${imgUrl}`}
-        src={imgUrl}
-        className="max-w-full max-h-full rounded-lg shadow-lg"
-      />
-    </motion.div>
-  )
-)
-
+const hiddenMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 30px, rgba(0,0,0,1) 30px, rgba(0,0,0,1) 30px)`
+const visibleMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 0px, rgba(0,0,0,1) 0px, rgba(0,0,0,1) 30px)`
 function ThreeDPhotoCarousel() {
   const [activeImg, setActiveImg] = useState<string | null>(null)
   const [isCarouselActive, setIsCarouselActive] = useState(true)
@@ -213,10 +195,36 @@ function ThreeDPhotoCarousel() {
   }
 
   return (
-    <div>
+    <motion.div layout className="relative">
       <AnimatePresence mode="sync">
         {activeImg && (
-          <ExpandedImage imgUrl={activeImg} handleClose={handleClose} />
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            layoutId={`img-container-${activeImg}`}
+            layout="position"
+            onClick={handleClose}
+            className="fixed inset-0 bg-black bg-opacity-10 flex items-center justify-center z-50 m-5 md:m-36 lg:mx-[19rem] rounded-3xl"
+            style={{ willChange: "opacity" }}
+            transition={transitionOverlay}
+          >
+            <motion.img
+              layoutId={`img-${activeImg}`}
+              src={activeImg}
+              className="max-w-full max-h-full rounded-lg shadow-lg"
+              initial={{ scale: 0.5 }} // Start with a smaller scale
+              animate={{ scale: 1 }} // Animate to full scale
+              transition={{
+                delay: 0.5,
+                duration: 0.5,
+                ease: [0.25, 0.1, 0.25, 1],
+              }} // Clean ease-out curve
+              style={{
+                willChange: "transform",
+              }}
+            />
+          </motion.div>
         )}
       </AnimatePresence>
       <div className="relative h-[500px] w-full overflow-hidden">
@@ -227,7 +235,7 @@ function ThreeDPhotoCarousel() {
           isCarouselActive={isCarouselActive}
         />
       </div>
-    </div>
+    </motion.div>
   )
 }
 

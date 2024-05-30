@@ -32,7 +32,7 @@ export function SiteHeader() {
           <MobileNav />
           <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
             {!pathname?.includes("/docs") ? (
-              <div className="hidden lg:block">
+              <div className="hidden lg:block lg:w-full">
                 <DistortedGlass></DistortedGlass>
               </div>
             ) : null}
@@ -80,11 +80,11 @@ export function SiteHeader() {
           </div>
         </div>
       </header>
-      <div className="animate-slide-up fixed inset-x-1/2 top-0 z-50 md:absolute">
+      {/* <div className="animate-slide-up fixed inset-x-1/2 top-0 z-50 md:absolute">
         <div className=" flex w-full flex-col items-center justify-center">
-          {/* <DistortedGlass></DistortedGlass> */}
+          <DistortedGlass></DistortedGlass>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }

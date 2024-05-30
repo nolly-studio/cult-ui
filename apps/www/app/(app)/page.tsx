@@ -5,11 +5,14 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { FeaturesSection } from "@/components/animate/feature-card"
+import AdvanceReorderExample from "@/components/animate/list"
 import { Announcement } from "@/components/announcement"
 import { FadeIn } from "@/components/fade-in"
 import {
   FramerIcon,
   Icons,
+  ReactIcon,
+  ShadCnIcon,
   TailwindCSSIcon,
   TypeScriptIcon,
 } from "@/components/icons"
@@ -39,20 +42,25 @@ export default function IndexPage() {
 
             <FadeIn>
               <div className="flex flex-wrap items-center justify-center gap-1 text-center text-lg font-light text-foreground  md:text-2xl md:font-normal">
-                <TailwindCSSIcon
-                  className="h-8 w-8 rounded-full border border-black/10 bg-white p-1"
-                  aria-hidden="true"
-                />
-                <span>Components that you can </span>
+                <span>Ready-to-use</span>
+                <div className="-rotate-45 rounded-full border border-black/10 p-1 shadow-lg">
+                  <ReactIcon className="h-6 w-6   " aria-hidden="true" />
+                </div>
+                <span> components for your React apps.</span>
 
-                <FramerIcon
-                  className="h-6 w-6"
-                  aria-hidden="true"
-                  title="Next.js"
-                />
-                <span>copy and paste into react apps.</span>
-                <span>Customizable. Open Source. Typed. </span>
-                <TypeScriptIcon className="h-6 w-6 " aria-hidden="true" />
+                <div className="rounded-full border border-black/10 p-1 shadow-lg">
+                  <Icons.logo className="h-5 w-5" />
+                </div>
+
+                <span>Shadcn compatible.</span>
+                <span>Styled with tailwindcss.</span>
+                <div className="-rotate-45 rounded-full border border-black/10 p-1 shadow-lg">
+                  <TailwindCSSIcon className="h-6 w-6  " aria-hidden="true" />
+                </div>
+                <span>Copy and paste. Open Source. Typed. </span>
+                <div className="rounded-xs border border-black/10 p-1 shadow-lg ">
+                  <TypeScriptIcon className="h-6 w-6 " aria-hidden="true" />
+                </div>
               </div>
             </FadeIn>
             <FadeIn>
@@ -73,16 +81,27 @@ export default function IndexPage() {
             </FadeIn>
           </PageHeader>
 
-          <section className="hidden  w-full md:block">
+          <div className="mx-auto w-full  max-w-lg">
+            <FadeIn>
+              <AdvanceReorderExample />
+            </FadeIn>
+          </div>
+        </div>
+        <section className=" mt-12 hidden w-full md:block">
+          <FadeIn>
+            <div className=" mx-auto max-w-7xl rounded-[44px] bg-neutral-900">
+              <FeaturesSection />
+            </div>
+          </FadeIn>
+        </section>
+        <section className="hidden  w-full pt-14 md:block">
+          <FadeIn>
             <div className="flex flex-col  items-center justify-center overflow-hidden  ">
               <Suspense>
                 <TweetGrid tweets={tweets} />
               </Suspense>
             </div>
-          </section>
-        </div>
-        <section className=" mt-12 hidden w-full rounded-tr-[364px] bg-neutral-900 md:block">
-          <FeaturesSection />
+          </FadeIn>
         </section>
       </BgNoiseWrapper>
     </div>

@@ -18,12 +18,12 @@ export function Announcement() {
   return (
     <Link
       href="https://www.newcult.co"
-      className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
+      className="group inline-flex items-center rounded-lg border border-black/10 bg-transparent px-3 py-1 text-sm font-medium text-neutral-800 shadow-sm"
       // style={{ backgroundImage: "url('/cult-noise.png')" }}
       target="_blank"
       rel="noreferrer"
     >
-      <Blocks className="h-4 w-4" />{" "}
+      <Blocks className="h-4 w-4 group-hover:rotate-6 group-hover:fill-cyan-300" />{" "}
       <Separator className="mx-2 h-4" orientation="vertical" />{" "}
       <span>Introducing Cult Templates</span>
       <ArrowRightIcon className="ml-1 h-4 w-4" />
