@@ -41,9 +41,9 @@ export default function IndexPage() {
             </FadeIn>
 
             <FadeIn>
-              <div className="flex flex-wrap items-center justify-center gap-1 text-center text-base  text-foreground  md:text-2xl md:font-normal leading-3 md:leading-6">
+              <div className="flex flex-wrap items-center justify-center gap-1 text-center text-base  leading-3  text-foreground md:text-2xl md:font-normal md:leading-6">
                 <span>Ready-to-use</span>
-                <div className="-rotate-45 rounded-full border border-black/10 p-1 shadow-lg hidden md:block">
+                <div className="hidden -rotate-45 rounded-full border border-black/10 p-1 shadow-lg md:block">
                   <ReactIcon className=" h-6 w-6   " aria-hidden="true" />
                 </div>
                 <span> components for your React apps.</span>
@@ -53,11 +53,11 @@ export default function IndexPage() {
                   <Icons.logo className="h-5 w-5" />
                 </div>
                 <span>Styled with tailwindcss.</span>
-                <div className="-rotate-45 rounded-full border border-black/10 p-1 shadow-lg hidden md:block ">
+                <div className="hidden -rotate-45 rounded-full border border-black/10 p-1 shadow-lg md:block ">
                   <TailwindCSSIcon className="h-6 w-6  " aria-hidden="true" />
                 </div>
                 <span className="">Copy and paste. Open Source. Typed. </span>
-                <div className="rounded-xs border border-black/10 p-1 shadow-lg hidden md:block">
+                <div className="rounded-xs hidden border border-black/10 p-1 shadow-lg md:block">
                   <TypeScriptIcon className="h-6 w-6 " aria-hidden="true" />
                 </div>
               </div>
