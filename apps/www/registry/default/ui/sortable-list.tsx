@@ -58,21 +58,15 @@ function SortableListItem({
   }
 
   return (
-    <motion.div
-      className={cn(
-        "flex w-full items-center justify-between gap-2",
-        className
-      )}
-      key={item.id}
-    >
-      <div className="flex w-full items-center justify-between gap-0">
+    <motion.div className={cn("", className)} key={item.id}>
+      <div className="flex w-full items-center">
         <Reorder.Item
           value={item}
           className={cn(
             "relative z-auto grow",
             "shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(0,0,0,0.1),0_2px_2px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.1),0_8px_8px_0_rgba(0,0,0,0.1)]",
             item.checked ? "cursor-not-allowed" : "cursor-grab",
-            "h-full rounded-2xl border border-white/10 bg-[#141712]",
+            "h-full rounded-2xl border border-white/10 bg-[#161716]",
             item.checked && !isDragging ? "w-7/10" : "w-full"
           )}
           key={item.id}
@@ -80,15 +74,18 @@ function SortableListItem({
           animate={{
             opacity: 1,
             height: bounds.height > 0 ? bounds.height : undefined,
-            transition: { type: "spring", bounce: 0, duration: 0.3 },
+            transition: {
+              type: "spring",
+              bounce: 0,
+              duration: 0.4,
+            },
           }}
           exit={{
             opacity: 0,
             transition: {
-              delay: 0,
               duration: 0.05,
               type: "spring",
-              bounce: 0,
+              bounce: 0.1,
             },
           }}
           layout
@@ -112,8 +109,11 @@ function SortableListItem({
           }
           whileDrag={{ zIndex: 9999 }}
         >
-          <div ref={ref} className="z-20">
-            <motion.div layout="position" className="flex items-center gap-4 ">
+          <div ref={ref} className={cn(isExpanded ? "" : "", "z-20")}>
+            <motion.div
+              layout="position"
+              className="flex items-center gap-4 py-1"
+            >
               <AnimatePresence>
                 {!isExpanded ? (
                   <motion.div
@@ -121,21 +121,39 @@ function SortableListItem({
                     animate={{ opacity: 1, filter: "blur(0px)" }}
                     exit={{ opacity: 0, filter: "blur(4px)" }}
                     transition={{ duration: 0.001 }}
-                    className="flex w-full items-center gap-4 p-1"
+                    className="flex w-full items-center gap-1 p-1"
                   >
                     <Checkbox
                       checked={item.checked}
                       id={`checkbox-${item.id}`}
                       aria-label="Mark as done"
                       onCheckedChange={() => onCompleteItem(item.id)}
-                      className="ml-3 h-5 w-5 rounded-md border-neutral-400/80 bg-black data-[state=checked]:bg-black"
+                      className="ml-3 h-5 w-5 rounded-md border-neutral-600/80 bg-black data-[state=checked]:bg-black data-[state=checked]:text-red-200"
                     />
-                    <motion.span className="w-full px-1 text-lg tracking-tight text-neutral-300/90">
-                      {item.text}
-                    </motion.span>
+
+                    <motion.div
+                      key={`${item.checked}`}
+                      initial={{
+                        opacity: 0,
+                        filter: "blur(4px)",
+                      }}
+                      animate={{ opacity: 1, filter: "blur(0px)" }}
+                      transition={{
+                        bounce: 0.2,
+                        delay: item.checked ? 0.2 : 0,
+                        type: "spring",
+                      }}
+                      className={cn(
+                        "w-full px-1 text-lg tracking-tight ",
+                        item.checked ? "text-red-400" : "text-neutral-400/90"
+                      )}
+                    >
+                      {item.checked ? "Delete" : item.text}
+                    </motion.div>
                   </motion.div>
                 ) : null}
               </AnimatePresence>
+
               {renderExtra && renderExtra(item)}
             </motion.div>
           </div>
@@ -148,15 +166,15 @@ function SortableListItem({
           {item.checked ? (
             <motion.div
               layout
-              initial={{ opacity: 0, x: -1 }}
+              initial={{ opacity: 0, x: -10 }}
               animate={{
                 opacity: 1,
                 x: 0,
                 transition: {
                   delay: 0.17,
-                  duration: 0.2,
+                  duration: 0.17,
                   type: "spring",
-                  bounce: 0.3,
+                  bounce: 0.6,
                 },
                 zIndex: 5,
               }}
@@ -165,12 +183,12 @@ function SortableListItem({
                 x: -5,
                 transition: {
                   delay: 0,
-                  duration: 0.05,
+                  duration: 0.0,
                   type: "spring",
                   bounce: 0,
                 },
               }}
-              className="-ml-2 h-[3.1rem] w-4 rounded-l-sm  rounded-r-md border-y border-r border-y-white/10 border-r-white/10 bg-[#141712]   shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(0,0,0,0.1),0_2px_2px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.1),0_8px_8px_0_rgba(0,0,0,0.1)]"
+              className="-ml-[1px] h-[1.5rem] w-3 rounded-l-none  rounded-r-none border-y  border-y-white/10 border-r-white/10 bg-[#161716]   shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(0,0,0,0.1),0_2px_2px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.1),0_8px_8px_0_rgba(0,0,0,0.1)]"
             />
           ) : null}
         </AnimatePresence>
@@ -196,13 +214,13 @@ function SortableListItem({
                 x: -10,
                 transition: { delay: 0, duration: 0.12 },
               }}
-              className="inset-0 z-0 border-spacing-1  rounded-r-xl border-y border-r-2 border-y-white/10 border-r-red-300 bg-[#141712]/80 shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(0,0,0,0.1),0_2px_2px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.1),0_8px_8px_0_rgba(0,0,0,0.1)] dark:bg-[#141712]/50"
+              className="inset-0 z-0 border-spacing-1  rounded-r-xl rounded-l-md border-y border-r-2 border-y-white/10 border-r-red-400/80 bg-[#161716]/80 shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(0,0,0,0.1),0_2px_2px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.1),0_8px_8px_0_rgba(0,0,0,0.1)] dark:bg-[#161716]/50"
             >
               <button
-                className=" group inline-flex  h-9 items-center justify-center whitespace-nowrap rounded-md px-3 text-sm font-medium ring-offset-background transition-colors duration-150 hover:bg-[#141712] hover:text-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                className=" group/trash inline-flex  h-10 items-center justify-center whitespace-nowrap rounded-md px-3 text-sm font-medium  transition-colors duration-150   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
                 onClick={() => onRemoveItem(item.id)}
               >
-                <Trash className="h-4 w-4 text-red-400 transition-colors duration-150 group-hover:fill-red-400/60" />
+                <Trash className="h-4 w-4 text-red-400 transition-colors duration-150 fill-red-400/60 " />
               </button>
             </motion.div>
           ) : null}
