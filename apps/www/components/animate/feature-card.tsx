@@ -257,10 +257,7 @@ function IconCheck({ className, ...props }: React.ComponentProps<"svg">) {
 //   @ts-ignore
 export function Steps({ steps, current, onChange }) {
   return (
-    <nav
-      aria-label="Progress"
-      className="flex justify-center px-4 lg:-mt-[56px]"
-    >
+    <nav aria-label="Progress" className="flex justify-center px-4 ">
       <ol
         className="flex w-full flex-wrap items-start justify-start gap-2  sm:justify-center md:w-10/12 md:divide-y-0"
         role="list"
@@ -299,12 +296,12 @@ export function Steps({ steps, current, onChange }) {
                     )}
                   >
                     {isCompleted ? (
-                      <IconCheck className="h-3 w-3 stroke-white stroke-[3] dark:stroke-black" />
+                      <IconCheck className="h-3 w-3 stroke-white stroke-[3] text-white dark:stroke-black" />
                     ) : (
                       <span
                         className={cn(
                           "text-xs",
-                          !isCurrent && "text-neutral-500"
+                          !isCurrent && "text-[#C6EA7E]"
                         )}
                       >
                         {stepIdx + 1}
