@@ -2,7 +2,14 @@
 
 import { useCallback, useState } from "react"
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion"
-import { CogIcon, Plus, RepeatIcon, XIcon } from "lucide-react"
+import {
+  CogIcon,
+  Plus,
+  RepeatIcon,
+  Settings,
+  Settings2Icon,
+  XIcon,
+} from "lucide-react"
 import { toast } from "sonner"
 
 import { cn } from "@/lib/utils"
@@ -14,29 +21,32 @@ import SortableList, { Item, SortableListItem } from "../ui/sortable-list"
 
 const initialState = [
   {
-    text: "Scrape",
+    text: "Gather Data",
     checked: false,
     id: 1,
-    description: "Collecting and preparing data for training.",
+    description:
+      "Collect relevant marketing copy from the user's website and competitor sites to understand the current market positioning and identify potential areas for improvement.",
   },
   {
-    text: "Process",
+    text: "Analyze Copy",
     checked: false,
     id: 2,
-    description: "Cleaning and transforming data for the model.",
+    description:
+      "As an AI language model, analyze the collected marketing copy for clarity, persuasiveness, and alignment with the user's brand voice and target audience. Identify strengths, weaknesses, and opportunities for optimization.",
   },
   {
-    text: "Refine",
+    text: "Create Suggestions",
     checked: false,
     id: 3,
-    description: "Training the AI model with the prepared data.",
+    description:
+      "Using natural language generation techniques, create alternative versions of the marketing copy that address the identified weaknesses and leverage the opportunities for improvement. Ensure the generated copy is compelling, on-brand, and optimized for the target audience.",
   },
-
   {
-    text: "Send to user",
+    text: "Recommendations",
     checked: false,
     id: 5,
-    description: "Deploying the trained model for real-world use.",
+    description:
+      "Present the AI-generated marketing copy suggestions to the user, along with insights on why these changes were recommended. Provide a user-friendly interface for the user to review, edit, and implement the optimized copy on their website.",
   },
 ]
 
@@ -85,10 +95,9 @@ function SortableListDemo() {
     })
   }, [])
 
-  console.log("items", items)
-
   const renderListItem = (
     item: Item,
+    order: number,
     onCompleteItem: (id: number) => void,
     onRemoveItem: (id: number) => void
   ) => {
@@ -97,7 +106,7 @@ function SortableListDemo() {
     const tabs = [
       {
         id: 0,
-        label: "title",
+        label: "Title",
         content: (
           <div className="flex w-full flex-col pr-2 py-2">
             <motion.div
@@ -111,12 +120,12 @@ function SortableListDemo() {
               }}
             >
               <label className="text-xs text-neutral-400">
-                The Task your agent be doing
+                Short title for your agent task
               </label>
               <motion.input
                 type="text"
                 value={item.text}
-                className="h-16 w-full rounded-lg border border-black/10 bg-neutral-800 px-1 py-[6px] text-2xl text-white placeholder:text-white/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 dark:border-white/10"
+                className=" w-full rounded-lg border font-semibold border-black/10 bg-neutral-800 px-1 py-[6px] text-xl md:text-3xl text-white placeholder:text-white/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#13EEE3]/80 dark:border-white/10"
                 onChange={(e) => {
                   const text = e.target.value
                   setItems((prevItems) =>
@@ -132,7 +141,7 @@ function SortableListDemo() {
       },
       {
         id: 1,
-        label: "prompt",
+        label: "Prompt",
         content: (
           <div className="flex flex-col  pr-2 ">
             <motion.div
@@ -145,9 +154,15 @@ function SortableListDemo() {
                 delay: 0.15,
               }}
             >
-              <label className="text-xs text-neutral-400">Prompt</label>
+              <label className="text-xs text-neutral-400" htmlFor="prompt">
+                Prompt{" "}
+                <span className="lowercase">
+                  instructing your agent how to {item.text.slice(0, 20)}
+                </span>
+              </label>
               <textarea
-                className="h-[100px] w-full resize-none rounded-[6px]  bg-neutral-800 px-2 py-[2px] text-sm text-white placeholder:text-white/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+                id="prompt"
+                className="h-[100px] w-full resize-none rounded-[6px]  bg-neutral-800 px-2 py-[2px] text-sm text-white placeholder:text-white/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#13EEE3]/80"
                 value={item.description}
                 placeholder="update agent prompt"
                 onChange={(e) => {
@@ -165,9 +180,9 @@ function SortableListDemo() {
       },
       {
         id: 2,
-        label: "settings",
+        label: "Settings",
         content: (
-          <div className="flex flex-col py-2 pr-2 ">
+          <div className="flex flex-col py-2 px-1 ">
             <motion.div
               initial={{ opacity: 0, filter: "blur(4px)" }}
               animate={{ opacity: 1, filter: "blur(0px)" }}
@@ -179,13 +194,19 @@ function SortableListDemo() {
               }}
               className="space-y-3"
             >
+              <p className="text-xs text-neutral-400">
+                AI settings for the{" "}
+                <span className="lowercase">
+                  {item.text.slice(0, 20)} stage
+                </span>
+              </p>
               <div className="grid gap-4">
                 <div className="flex items-center justify-between">
                   <label className="text-xs text-neutral-400" htmlFor="top-p">
                     Top P
                   </label>
                   <div className="flex w-1/2 items-center gap-3">
-                    <span className="w-12 rounded-md border border-white/10 bg-black px-2 py-0.5 text-right text-sm text-muted-foreground">
+                    <span className="w-12 rounded-md  bg-black/20 px-2 py-0.5 text-right text-sm text-muted-foreground">
                       {topP}
                     </span>
                     <Slider
@@ -194,7 +215,7 @@ function SortableListDemo() {
                       defaultValue={topP}
                       step={0.1}
                       onValueChange={setTopP}
-                      className="[&_[role=slider]]:h-8 [&_[role=slider]]:w-5 [&_[role=slider]]:rounded-md [&_[role=slider]]:border-neutral-100/10 [&_[role=slider]]:bg-neutral-900 [&_[role=slider]]:hover:border-cyan-300/70 "
+                      className="[&_[role=slider]]:h-8 [&_[role=slider]]:w-5 [&_[role=slider]]:rounded-md [&_[role=slider]]:border-neutral-100/10 [&_[role=slider]]:bg-neutral-900 [&_[role=slider]]:hover:border-[#13EEE3]/70 "
                       aria-label="Top P"
                     />
                   </div>
@@ -206,7 +227,7 @@ function SortableListDemo() {
                     Temperature
                   </label>
                   <div className="flex w-1/2 items-center gap-3">
-                    <span className="w-12 rounded-md border border-white/10 bg-black px-2 py-0.5 text-right text-sm text-muted-foreground">
+                    <span className="w-12 rounded-md  bg-black/20 px-2 py-0.5 text-right text-sm text-muted-foreground">
                       {temp}
                     </span>
                     <Slider
@@ -215,7 +236,7 @@ function SortableListDemo() {
                       defaultValue={temp}
                       step={0.1}
                       onValueChange={setTemp}
-                      className="[&_[role=slider]]:h-8 [&_[role=slider]]:w-5 [&_[role=slider]]:rounded-md [&_[role=slider]]:border-neutral-100/10 [&_[role=slider]]:bg-neutral-900 [&_[role=slider]]:hover:border-cyan-300/70"
+                      className="[&_[role=slider]]:h-8 [&_[role=slider]]:w-5 [&_[role=slider]]:rounded-md [&_[role=slider]]:border-neutral-100/10 [&_[role=slider]]:bg-neutral-900 [&_[role=slider]]:hover:border-[#13EEE3]/70"
                       aria-label="Temperature"
                     />
                   </div>
@@ -227,7 +248,7 @@ function SortableListDemo() {
                     Max Tokens
                   </label>
                   <div className="flex w-1/2 items-center gap-3">
-                    <span className="w-12 rounded-md border border-white/10 bg-black px-2 py-0.5 text-right text-sm text-muted-foreground">
+                    <span className="w-12 rounded-md  bg-black/20 px-2 py-0.5 text-right text-sm text-muted-foreground">
                       {tokens}
                     </span>
                     <Slider
@@ -236,7 +257,7 @@ function SortableListDemo() {
                       defaultValue={tokens}
                       step={0.1}
                       onValueChange={setTokens}
-                      className="[&_[role=slider]]:h-8 [&_[role=slider]]:w-5 [&_[role=slider]]:rounded-md [&_[role=slider]]:border-neutral-100/10 [&_[role=slider]]:bg-neutral-900 [&_[role=slider]]:hover:border-cyan-300/70"
+                      className="[&_[role=slider]]:h-8 [&_[role=slider]]:w-5 [&_[role=slider]]:rounded-md [&_[role=slider]]:border-neutral-100/10 [&_[role=slider]]:bg-neutral-900 [&_[role=slider]]:hover:border-[#13EEE3]/70"
                       aria-label="Tokens"
                     />
                   </div>
@@ -251,6 +272,7 @@ function SortableListDemo() {
     return (
       <SortableListItem
         item={item}
+        order={order}
         key={item.id}
         isExpanded={isOpen}
         onCompleteItem={onCompleteItem}
@@ -261,8 +283,8 @@ function SortableListDemo() {
           <div
             key={`${isOpen}`}
             className={cn(
-              "flex h-full w-full flex-col items-center justify-center gap-2 px-1",
-              isOpen ? "py-1" : "py-3"
+              "flex h-full w-full flex-col items-center justify-center gap-2 ",
+              isOpen ? "py-1 px-1" : "py-3 "
             )}
           >
             <motion.button
@@ -272,7 +294,7 @@ function SortableListDemo() {
               className={cn(
                 isOpen
                   ? "absolute right-3 top-3 z-10 "
-                  : "relative z-10 ml-auto mr-3"
+                  : "relative z-10 ml-auto mr-3 "
               )}
             >
               {isOpen ? (
@@ -297,7 +319,7 @@ function SortableListDemo() {
                     duration: 0.95,
                   }}
                 >
-                  <CogIcon className=" h-6 w-6 text-neutral-500 hover:rotate-12" />
+                  <Settings2Icon className="stroke-1 h-5 w-5 text-neutral-300/80  hover:stroke-[#13EEE3]/70 " />
                 </motion.span>
               )}
             </motion.button>
@@ -327,7 +349,7 @@ function SortableListDemo() {
                       >
                         <DirectionAwareTabs
                           className="mr-auto bg-transparent pr-2"
-                          rounded="rounded-xl "
+                          rounded="rounded "
                           tabs={tabs}
                           onChange={() =>
                             setTabChangeRerender(tabChangeRerender + 1)
@@ -339,21 +361,21 @@ function SortableListDemo() {
                     <motion.div
                       key={`re-render-${tabChangeRerender}`} //  re-animates the button section on tab change
                       className="mb-2 flex w-full items-center justify-between pl-2"
-                      initial={{ opacity: 0, y: 100 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0, filter: "blur(4px)" }}
+                      animate={{ opacity: 1, filter: "blur(0px)" }}
                       transition={{
                         type: "spring",
                         bounce: 0,
                         duration: 0.55,
                       }}
                     >
-                      <div className="flex items-center gap-2 pt-3">
-                        <motion.div className="h-1.5 w-1.5 rounded-full bg-[#D2F583]" />
+                      <motion.div className="flex items-center gap-2 pt-3">
+                        <div className="h-1.5 w-1.5 rounded-full bg-[#13EEE3]" />
                         <span className="text-xs text-neutral-300/80">
                           Changes
                         </span>
-                      </div>
-                      <div className="ml-auto mr-2 pt-2 ">
+                      </motion.div>
+                      <motion.div layout className="ml-auto mr-1  pt-2">
                         <Button
                           size="sm"
                           variant="ghost"
@@ -361,11 +383,11 @@ function SortableListDemo() {
                             setOpenItemId(null)
                             toast.info("Changes saved")
                           }}
-                          className="h-7 rounded-lg bg-[#D2F583] text-black"
+                          className="h-7 rounded-lg bg-[#13EEE3]/80 hover:bg-[#13EEE3] hover:text-black text-black"
                         >
                           Apply Changes
                         </Button>
-                      </div>
+                      </motion.div>
                     </motion.div>
                   </motion.div>
                 ) : null}
@@ -378,9 +400,9 @@ function SortableListDemo() {
   }
 
   return (
-    <div className="px-4 w-full max-w-xl ">
-      <div className="mb-9 rounded-2xl  border border-black/5 dark:border-white/10 p-2 shadow-sm md:p-6 bg-[#151515]">
-        <div className=" overflow-auto  p-4">
+    <div className="md:px-4 w-full max-w-xl ">
+      <div className="mb-9 rounded-2xl  p-2 shadow-sm md:p-6 bg-[#151515]">
+        <div className=" overflow-auto p-1  md:p-4">
           <div className="flex flex-col space-y-2">
             <div className="">
               <svg
@@ -395,26 +417,21 @@ function SortableListDemo() {
               </svg>
               <h3 className="text-neutral-200">Agent workflow</h3>
               <a
-                className="text-xs text-neutral-600"
+                className="text-xs text-neutral-400/80"
                 href="https://www.uilabs.dev/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Inspired by <span className="text-[#D2F583]"> @mrncst</span>
+                Inspired by <span className="text-[#13EEE3]"> @mrncst</span>
               </a>
             </div>
-            <div className="flex items-center justify-between gap-4">
-              <button
-                className="flex items-center  gap-1 rounded-md border border-black/10 dark:border-white/10 p-2 disabled:opacity-50"
-                disabled={items?.length > 5}
-                onClick={handleAddItem}
-              >
-                <Plus className="dark:text-netural-100 h-4 w-4 text-neutral-200" />
-                New stage
+            <div className="flex items-center justify-between gap-4 py-2">
+              <button disabled={items?.length > 5} onClick={handleAddItem}>
+                <Plus className="dark:text-netural-100 h-5 w-5 text-neutral-500/80" />
               </button>
               <div data-tip="Reset task list">
                 <button onClick={handleResetItems}>
-                  <RepeatIcon className="dark:text-netural-100 h-4 w-4 text-neutral-200" />
+                  <RepeatIcon className="dark:text-netural-100 h-4 w-4 text-neutral-500/80" />
                 </button>
               </div>
             </div>

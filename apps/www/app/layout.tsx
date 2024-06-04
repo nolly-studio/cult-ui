@@ -90,7 +90,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <ThemeProvider
             attribute="class"
-            // forcedTheme={children.theme || undefined}
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
@@ -98,7 +97,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <div vaul-drawer-wrapper="">
               <div className="relative z-10 flex min-h-screen flex-col bg-background">
                 {children}
-                {/* <div className="bg-noise" /> */}
               </div>
             </div>
             <TailwindIndicator />

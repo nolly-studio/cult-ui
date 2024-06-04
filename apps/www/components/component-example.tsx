@@ -75,7 +75,7 @@ export function ComponentExample({
         </div>
         <TabsContent value="preview" className="rounded-md border">
           <div
-            className={cn("flex min-h-[350px] justify-center p-10", {
+            className={cn("flex min-h-[350px] justify-center p-2 md:p-10", {
               "items-center": align === "center",
               "items-start": align === "start",
               "items-end": align === "end",

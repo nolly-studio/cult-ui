@@ -10,10 +10,8 @@ import AdvanceReorderExample from "@/components/animate/list"
 import { Announcement } from "@/components/announcement"
 import { FadeIn } from "@/components/fade-in"
 import {
-  FramerIcon,
   Icons,
   ReactIcon,
-  ShadCnIcon,
   TailwindCSSIcon,
   TypeScriptIcon,
 } from "@/components/icons"
