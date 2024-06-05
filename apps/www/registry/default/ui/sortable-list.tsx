@@ -131,7 +131,7 @@ function SortableListItem({
                       id={`checkbox-${item.id}`}
                       aria-label="Mark to delete"
                       onCheckedChange={() => onCompleteItem(item.id)}
-                      className=" ml-3 h-5 w-5 rounded-md border-white/10 bg-black/30 data-[state=checked]:bg-black data-[state=checked]:text-red-200"
+                      className=" ml-3 h-5 w-5 rounded-md border-white/20 bg-black/30 data-[state=checked]:bg-black data-[state=checked]:text-red-200"
                     />
                     {/* List Order */}
                     <p className="font-mono text-xs pl-1 text-white/50">
@@ -156,7 +156,7 @@ function SortableListItem({
                       <h4
                         className={cn(
                           "tracking-tighter text-base md:text-lg ",
-                          item.checked ? "text-red-400" : "text-white/50"
+                          item.checked ? "text-red-400" : "text-white/70"
                         )}
                       >
                         {item.checked ? "Delete" : ` ${item.text}`}

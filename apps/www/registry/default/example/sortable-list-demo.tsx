@@ -2,14 +2,7 @@
 
 import { useCallback, useState } from "react"
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion"
-import {
-  CogIcon,
-  Plus,
-  RepeatIcon,
-  Settings,
-  Settings2Icon,
-  XIcon,
-} from "lucide-react"
+import { Plus, RepeatIcon, Settings2Icon, XIcon } from "lucide-react"
 import { toast } from "sonner"
 
 import { cn } from "@/lib/utils"
@@ -319,7 +312,7 @@ function SortableListDemo() {
                     duration: 0.95,
                   }}
                 >
-                  <Settings2Icon className="stroke-1 h-5 w-5 text-neutral-300/80  hover:stroke-[#13EEE3]/70 " />
+                  <Settings2Icon className="stroke-1 h-5 w-5 text-white/80  hover:stroke-[#13EEE3]/70 " />
                 </motion.span>
               )}
             </motion.button>
@@ -401,7 +394,7 @@ function SortableListDemo() {
 
   return (
     <div className="md:px-4 w-full max-w-xl ">
-      <div className="mb-9 rounded-2xl  p-2 shadow-sm md:p-6 bg-[#151515]">
+      <div className="mb-9 rounded-2xl  p-2 shadow-sm md:p-6 dark:bg-[#151515]/50 bg-black">
         <div className=" overflow-auto p-1  md:p-4">
           <div className="flex flex-col space-y-2">
             <div className="">
@@ -417,7 +410,7 @@ function SortableListDemo() {
               </svg>
               <h3 className="text-neutral-200">Agent workflow</h3>
               <a
-                className="text-xs text-neutral-400/80"
+                className="text-xs text-white/80"
                 href="https://www.uilabs.dev/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -427,11 +420,11 @@ function SortableListDemo() {
             </div>
             <div className="flex items-center justify-between gap-4 py-2">
               <button disabled={items?.length > 5} onClick={handleAddItem}>
-                <Plus className="dark:text-netural-100 h-5 w-5 text-neutral-500/80" />
+                <Plus className="dark:text-netural-100 h-5 w-5 text-neutral-500/80 hover:text-white/80" />
               </button>
               <div data-tip="Reset task list">
                 <button onClick={handleResetItems}>
-                  <RepeatIcon className="dark:text-netural-100 h-4 w-4 text-neutral-500/80" />
+                  <RepeatIcon className="dark:text-netural-100 h-4 w-4 text-neutral-500/80 hover:text-white/80" />
                 </button>
               </div>
             </div>
