@@ -17,7 +17,7 @@ import BgNoiseWrapper from "./texture-wrapper"
 export function Announcement() {
   return (
     <Link
-      href="https://www.newcult.co"
+      href="https://www.newcult.co/templates"
       className="group inline-flex items-center rounded-lg border border-black/10 bg-transparent px-3 py-1 text-sm font-medium text-neutral-800 shadow-sm"
       // style={{ backgroundImage: "url('/cult-noise.png')" }}
       target="_blank"
