@@ -25,7 +25,7 @@ export function Announcement() {
     >
       <Blocks className="h-4 w-4 group-hover:rotate-6 group-hover:fill-cyan-300" />{" "}
       <Separator className="mx-2 h-4 bg-neutral-900" orientation="vertical" />{" "}
-      <span>Introducing Cult Templates</span>
+      <span>New! Cult Directory Template</span>
       <ArrowRightIcon className="ml-1 h-4 w-4" />
       {/* <BgNoiseWrapper> */}
       {/* </BgNoiseWrapper> */}

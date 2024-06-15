@@ -103,4 +103,10 @@ export const examples: Registry = [
     registryDependencies: ["sortable-list"],
     files: ["example/sortable-list-demo.tsx"],
   },
+  {
+    name: "dock-demo",
+    type: "components:example",
+    registryDependencies: ["dock"],
+    files: ["example/dock-demo.tsx"],
+  },
 ]

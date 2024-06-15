@@ -232,7 +232,7 @@ const components = {
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn(
-        "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight ",
         className
       )}
       {...props}
@@ -240,7 +240,37 @@ const components = {
   ),
   Steps: ({ ...props }) => (
     <div
-      className="[&>h3]:step steps mb-12 ml-4 border-l pl-8 [counter-reset:step]"
+      className="[&>h3]:step steps mb-12 ml-4 border-l pl-8 [counter-reset:step] "
+      {...props}
+    />
+  ),
+  CitationTitle: ({ className, ...props }) => (
+    <h3
+      className={cn(
+        "text-xl font-semibold mb-2 text-primary/90 border-b bg-transparent",
+        className
+      )}
+      {...props}
+    />
+  ),
+  CitationList: ({ className, ...props }) => (
+    <ul className={cn("list-none pl-0", className)} {...props} />
+  ),
+  CitationItem: ({ className, ...props }) => (
+    <li
+      className={cn(" text-muted-foreground flex items-start", className)}
+      {...props}
+    />
+  ),
+  CitationLink: ({ className, ...props }) => (
+    <a className={cn(" hover:underline ml-1", className)} {...props} />
+  ),
+  Citations: ({ className, ...props }) => (
+    <div
+      className={cn(
+        "bg-transparent border-l-4 border-border p-4 my-6 rounded-md ",
+        className
+      )}
       {...props}
     />
   ),
@@ -266,8 +296,9 @@ const components = {
     <TabsTrigger
       className={cn(
         "relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none",
-        "first:rounded-tl-lg first:border first:border-l-black/10 first:border-r-transparent first:border-t-black/10 first:dark:border-l-white/10 first:dark:border-t-white/10 ",
-        " last:rounded-tr-lg last:border last:border-l-transparent last:border-r-black/10 last:border-t-black/10 last:dark:border-r-white/10 last:dark:border-t-white/10 ",
+        // "first:rounded-tl-lg first:border first:border-l-black/10 first:border-r-transparent first:border-t-black/10 first:dark:border-l-white/10 first:dark:border-t-white/10 ",
+        // " last:rounded-tr-lg last:border last:border-l-transparent last:border-r-black/10 last:border-t-black/10 last:dark:border-r-white/10 last:dark:border-t-white/10 ",
+        " last:rounded-tr-lg rounded-tl-lg last:border  last:border-l-black/10  dark:last:border-l-white/10 last:border-t-black/10 last:dark:border-r-white/10 last:dark:border-t-white/10 ",
         className
       )}
       {...props}

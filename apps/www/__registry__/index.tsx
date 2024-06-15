@@ -192,6 +192,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "dock": {
+      name: "dock",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/dock")),
+      source: "",
+      files: ["registry/default/ui/dock.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "text-animate-demo": {
       name: "text-animate-demo",
       type: "components:example",
@@ -375,6 +386,17 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/sortable-list-demo")),
       source: "",
       files: ["registry/default/example/sortable-list-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "dock-demo": {
+      name: "dock-demo",
+      type: "components:example",
+      registryDependencies: ["dock"],
+      component: React.lazy(() => import("@/registry/default/example/dock-demo")),
+      source: "",
+      files: ["registry/default/example/dock-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []

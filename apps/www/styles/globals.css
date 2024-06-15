@@ -78,7 +78,7 @@
   }
 
   .step:before {
-    @apply absolute w-9 h-9 bg-muted rounded-full font-mono font-medium text-center text-base inline-flex items-center justify-center -indent-px border-4 border-background;
+    @apply absolute w-9 h-9 bg-lime-400 rounded-full font-mono font-medium text-center text-base inline-flex items-center justify-center -indent-px border-4 border-background text-black;
     @apply ml-[-50px] mt-[-4px];
     content: counter(step);
   }

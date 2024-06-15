@@ -103,4 +103,10 @@ export const ui: Registry = [
     dependencies: ["framer-motion, react-use-measure"],
     files: ["ui/sortable-list.tsx"],
   },
+  {
+    name: "dock",
+    type: "components:ui",
+    dependencies: ["framer-motion"],
+    files: ["ui/dock.tsx"],
+  },
 ]

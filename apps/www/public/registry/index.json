@@ -169,5 +169,15 @@
       "ui/sortable-list.tsx"
     ],
     "type": "components:ui"
+  },
+  {
+    "name": "dock",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      "ui/dock.tsx"
+    ],
+    "type": "components:ui"
   }
 ]

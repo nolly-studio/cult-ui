@@ -1,0 +1,251 @@
+---
+title: Dock
+description: An interactive dock component inspired by macOS dock with animation capabilities.
+component: true
+links:
+---
+
+<ComponentPreview
+  name="dock-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## References
+
+<Citations>
+
+    <p className="font-medium text-primary"> Inspiration</p>
+    <CitationList>
+      <CitationItem>
+
+        <CitationLink
+          href="https://codesandbox.io/p/sandbox/macos-dock-6zchkl?file=%2Fsrc%2FApp.tsx%3A38%2C1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+         React spring animation example
+        </CitationLink>
+      </CitationItem>
+      <CitationItem>
+
+        <CitationLink
+          href="https://buildui.com/recipes/magnified-dock"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+        Awesome Build UI magnified dock example
+        </CitationLink>
+      </CitationItem>
+    </CitationList>
+
+    <p className="font-medium text-primary">Framer Motion Courses <span className="text-xs text-muted-foreground">(not affiliated)</span></p>
+    <CitationList>
+      <CitationItem>
+        <CitationLink
+          href="https://animations.dev/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Animations on the web
+        </CitationLink>
+      </CitationItem>
+      <CitationItem>
+        <CitationLink
+          href="https://buildui.com/courses/framer-motion-recipes"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Framer motion recipes
+        </CitationLink>
+      </CitationItem>
+    </CitationList>
+
+    <p className="font-medium text-primary">Animation Teachers <span className="text-xs text-muted-foreground">(also not affiliated)</span></p>
+    <CitationList>
+      <CitationItem>
+        <CitationLink
+          href="https://x.com/emilkowalski_"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Emil Kowalski
+        </CitationLink>
+      </CitationItem>
+      <CitationItem>
+        <CitationLink
+          href="https://x.com/samselikoff"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Sam Selikoff
+        </CitationLink>
+      </CitationItem>
+      <CitationItem>
+        <CitationLink
+          href="https://x.com/MaximeHeckel"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Maxime Heckel
+        </CitationLink>
+      </CitationItem>
+    </CitationList>
+
+</Citations>
+
+## Installation
+
+<Tabs defaultValue="manual">
+
+<TabsList>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="manual">
+  <Steps>
+    <Step>Copy and paste the following code into your project.</Step>
+    <ComponentSource name="dock" />
+    <Step>Update the import paths to match your project setup.</Step>
+  </Steps>
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  Card,
+  Dock,
+  DockCard,
+  DockDivider,
+  useDock,
+} from "@/components/Dock/Dock"
+```
+
+```tsx
+// Example usage of the Dock component with animated cards and dividers
+
+const DockDemo = () => {
+  const gradients = [
+    "https://products.ls.graphics/mesh-gradients/images/03.-Snowy-Mint_1-p-130x130q80.jpeg",
+    "https://products.ls.graphics/mesh-gradients/images/04.-Hopbush_1-p-130x130q80.jpeg",
+    "https://products.ls.graphics/mesh-gradients/images/06.-Wisteria-p-130x130q80.jpeg",
+    "https://products.ls.graphics/mesh-gradients/images/09.-Light-Sky-Blue-p-130x130q80.jpeg",
+    "https://products.ls.graphics/mesh-gradients/images/12.-Tumbleweed-p-130x130q80.jpeg",
+    "https://products.ls.graphics/mesh-gradients/images/15.-Perfume_1-p-130x130q80.jpeg",
+    null,
+    "https://products.ls.graphics/mesh-gradients/images/36.-Pale-Chestnut-p-130x130q80.jpeg",
+  ]
+
+  const openIcons = [
+    <CircleIcon className="h-8 w-8 fill-black stroke-black rounded-full" />,
+    <TriangleIcon className="h-8 w-8 fill-black stroke-black rounded-full" />,
+    <SquareIcon className="h-8 w-8 fill-black stroke-black rounded-full" />,
+    <PentagonIcon className="h-8 w-8 fill-black stroke-black rounded-full" />,
+    <HexagonIcon className="h-8 w-8 fill-black stroke-black rounded-full" />,
+    <OctagonIcon className="h-8 w-8 fill-black stroke-black rounded-full" />,
+    <OctagonIcon className="h-8 w-8 fill-black stroke-black rounded-full" />, // skip
+    <BlocksIcon className="h-8 w-8 fill-black stroke-black rounded-full" />,
+  ]
+
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <Dock>
+        {gradients.map((src, index) =>
+          src ? (
+            <DockCard key={src} id={`${index}`}>
+              <Card src={src} id={`${index}`}>
+                {openIcons[index]}
+              </Card>
+            </DockCard>
+          ) : (
+            <DockDivider key={index} />
+          )
+        )}
+      </Dock>
+    </div>
+  )
+}
+
+export default DockDemo
+```
+
+## Dock Component
+
+```tsx
+// Main Dock component: orchestrating the dock's animation behavior
+const Dock = ({ children }: DockProps) => {
+  // State to track if the dock is hovered. When the mouse hovers over the dock, this state changes to true.
+  const [hovered, setHovered] = useState(false)
+
+  // State to track the width of the dock. This dynamically updates based on the dock's current width.
+  const [width, setWidth] = useState(0)
+
+  // Reference to the dock element in the DOM. This allows direct manipulation and measurement of the dock.
+  const dockRef = useRef<HTMLDivElement>(null)
+
+  // Reference to track if the zooming animation is active. This prevents conflicting animations.
+  const isZooming = useRef(false)
+
+  // State to track which dock items are currently animating. This array holds the indices of animating items.
+  const [animatingIndexes, setAnimatingIndexes] = useState<number[]>([])
+
+  // Callback to toggle the zooming state. This ensures that we don't trigger hover animations while zooming.
+  const setIsZooming = useCallback((value: boolean) => {
+    isZooming.current = value // Update the zooming reference
+    setHovered(!value) // Update the hover state based on zooming
+  }, [])
+
+  // Motion value for the zoom level of the dock. This provides a smooth zooming animation.
+  const zoomLevel = useMotionValue(1)
+
+  // Hook to handle window resize events and update the dock's width accordingly.
+  useWindowResize(() => {
+    setWidth(dockRef.current?.clientWidth || 0) // Set width to the dock's current width or 0 if undefined
+  })
+
+  // Motion value to track the mouse's X position relative to the viewport. Initialized to Infinity to denote no tracking initially.
+  const mouseX = useMotionValue(Infinity)
+
+  return (
+    // Provide the dock's state and control methods to the rest of the application through context.
+    <DockContext.Provider
+      value={{
+        hovered, // Current hover state of the dock
+        setIsZooming, // Method to set the zooming state
+        width, // Current width of the dock
+        zoomLevel, // Current zoom level motion value
+        mouseX, // Current mouse X position motion value
+        animatingIndexes, // Current animating indexes
+        setAnimatingIndexes, // Method to set animating indexes
+      }}
+    >
+      <motion.div
+        ref={dockRef} // Reference to the dock element
+        className="fixed bottom-3 left-1/2 transform -translate-x-1/2 flex items-end h-14 p-2 gap-3 bg-black bg-opacity-90 rounded-xl"
+        // Event handler for mouse movement within the dock
+        onMouseMove={(e) => {
+          mouseX.set(e.pageX) // Update the mouseX motion value to the current mouse position
+          if (!isZooming.current) {
+            // Only set hovered if not zooming
+            setHovered(true) // Set hovered state to true
+          }
+        }}
+        // Event handler for when the mouse leaves the dock
+        onMouseLeave={() => {
+          mouseX.set(Infinity) // Reset mouseX motion value
+          setHovered(false) // Set hovered state to false
+        }}
+        style={{
+          x: "-50%", // Center the dock horizontally
+          scale: zoomLevel, // Bind the zoom level to the scale style property
+        }}
+      >
+        {children} {/* Render the dock's children within the motion div */}
+      </motion.div>
+    </DockContext.Provider>
+  )
+}
+```
