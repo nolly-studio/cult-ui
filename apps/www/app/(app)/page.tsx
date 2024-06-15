@@ -124,7 +124,7 @@ export default function IndexPage() {
                 </div>
               </div>
 
-              <div className=" mx-auto max-w-7xl rounded-[44px] border border-black/5 p-2 shadow-sm mt-4">
+              <div className=" mx-auto mt-4 max-w-7xl rounded-[44px] border border-black/5 p-2 shadow-sm">
                 <PlugCardGrid />
               </div>
             </FadeIn>
@@ -137,7 +137,7 @@ export default function IndexPage() {
                 variant="outline"
                 className="absolute left-4 top-6 rounded-[14px] border border-black/10 text-base md:left-6"
               >
-                <IceCream className=" stroke-1  fill-[#A3C0E0] text-neutral-800" />{" "}
+                <IceCream className=" fill-[#A3C0E0]  stroke-1 text-neutral-800" />{" "}
                 Component Preview
               </Badge>
               <FeaturesSection />
