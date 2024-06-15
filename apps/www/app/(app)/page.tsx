@@ -84,7 +84,7 @@ export default function IndexPage() {
           <section className="w-full md:block">
             <FadeIn>
               <div className=" mx-auto  w-full  max-w-7xl ">
-                <div className="relative flex w-full flex-col rounded-[44px] border border-black/5 p-2 shadow-sm md:flex-row md:items-center md:gap-24 md:p-6">
+                <div className="relative flex w-full flex-col rounded-[24px] border border-black/5 p-2 shadow-sm md:flex-row md:items-center md:gap-24 md:rounded-[44px] md:p-6">
                   <Badge
                     variant="outline"
                     className="absolute left-4 top-6 rounded-[14px] border border-black/10 text-base md:left-6"
@@ -118,13 +118,13 @@ export default function IndexPage() {
                     </div>
                   </div>
 
-                  <div className="grow ">
+                  <div className="mt-24 grow md:mt-0">
                     <DockAnimation />
                   </div>
                 </div>
               </div>
 
-              <div className=" mx-auto mt-4 max-w-7xl rounded-[44px] border border-black/5 p-2 shadow-sm">
+              <div className=" mx-auto  mt-4 max-w-7xl rounded-[24px] border border-black/5 p-2 shadow-sm md:rounded-[44px]">
                 <PlugCardGrid />
               </div>
             </FadeIn>
@@ -132,7 +132,7 @@ export default function IndexPage() {
         </div>
         <section className=" mt-12 hidden w-full md:block">
           <FadeIn>
-            <div className=" relative mx-auto max-w-7xl rounded-[44px] border border-black/5 p-2 shadow-sm">
+            <div className=" relative mx-auto max-w-7xl rounded-[24px] border border-black/5 p-2 shadow-sm md:rounded-[44px]">
               <Badge
                 variant="outline"
                 className="absolute left-4 top-6 rounded-[14px] border border-black/10 text-base md:left-6"
