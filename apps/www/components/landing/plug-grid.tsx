@@ -12,18 +12,18 @@ import { Badge } from "../ui/badge"
 export function PlugCardGrid() {
   const cards = [
     {
-      title: "Free SEO Improvement Tool",
-      description:
-        "Quickly evaluate your website's SEO performance for free. AI improvements + Open graph preview.",
-      href: "https://www.newcult.co/templates/cult-seo",
-      img: "/seo.webp",
-    },
-    {
       title: "Full Stack Shadcn Templates",
       description:
         "Comprehensive Next.js + Supabase templates built with Tailwind CSS, Cult components, and shadcn.",
       href: "https://www.newcult.co/templates/cult-offline-travel-stash",
       img: "/newcult-landing.png",
+    },
+    {
+      title: "Free SEO Improvement Tool",
+      description:
+        "Quickly evaluate your website's SEO performance for free. AI improvements + Open graph preview.",
+      href: "https://www.newcult.co/templates/cult-seo",
+      img: "/seo.webp",
     },
     {
       title: "Design Engineering Directory",
@@ -40,8 +40,8 @@ export function PlugCardGrid() {
         variant="outline"
         className="absolute left-4 top-4 rounded-[14px] border border-black/10 text-base md:left-6"
       >
-        <StickerIcon className="mr-1 fill-[#EEBDE0] stroke-1 text-neutral-800" />{" "}
-        Additional design engineering tools
+        <StickerIcon className="mr-1  fill-[#D2F583] stroke-1 text-neutral-800" />{" "}
+        Additional tools
       </Badge>
       <div className="   flex flex-col justify-center  space-y-4 rounded-[34px]   p-3 pt-12">
         <div className="relative grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
@@ -52,12 +52,12 @@ export function PlugCardGrid() {
               rel="noopener noreferrer"
               href={card.href}
             >
-              <MinimalCard>
+              <MinimalCard className="bg-transparent">
                 <MinimalCardImage src={card.img} alt={card.title} />
                 <MinimalCardTitle className="text-neutral-800">
                   {card.title}
                 </MinimalCardTitle>
-                <MinimalCardDescription className="text-neutral-600">
+                <MinimalCardDescription className="text-neutral-900">
                   {card.description}
                 </MinimalCardDescription>
               </MinimalCard>
