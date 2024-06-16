@@ -37,7 +37,8 @@ export default function IndexPage() {
                 weight="bold"
                 className="text-center text-xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]"
               >
-                Components crafted for <br /> Design Engineers
+                Components crafted for <br className="hidden md:block" /> Design
+                Engineers
               </GradientHeading>
             </FadeIn>
 
@@ -81,15 +82,18 @@ export default function IndexPage() {
             </FadeIn>
           </PageHeader>
 
-          <section className="w-full md:block">
-            <FadeIn>
-              <div className=" mx-auto  w-full  max-w-7xl ">
+          <FadeIn>
+            <section className="w-full md:block">
+              <div className=" mx-auto   max-w-7xl rounded-[24px] border border-black/5 p-2 shadow-sm md:rounded-[44px]">
+                <PlugCardGrid />
+              </div>
+              <div className=" mx-auto  mt-4 w-full max-w-7xl ">
                 <div className="relative flex w-full flex-col rounded-[24px] border border-black/5 p-2 shadow-sm md:flex-row md:items-center md:gap-24 md:rounded-[44px] md:p-6">
                   <Badge
                     variant="outline"
                     className="absolute left-4 top-6 rounded-[14px] border border-black/10 text-base md:left-6"
                   >
-                    <SparklesIcon className="  fill-[#D2F583] stroke-1 text-neutral-800" />{" "}
+                    <SparklesIcon className="  fill-[#EEBDE0] stroke-1 text-neutral-800" />{" "}
                     Latest component
                   </Badge>
                   <div className="flex flex-col justify-center pb-2 pl-2 pt-16 md:items-center">
@@ -124,11 +128,11 @@ export default function IndexPage() {
                 </div>
               </div>
 
-              <div className=" mx-auto  mt-4 max-w-7xl rounded-[24px] border border-black/5 p-2 shadow-sm md:rounded-[44px]">
+              {/* <div className=" mx-auto  mt-4 max-w-7xl rounded-[24px] border border-black/5 p-2 shadow-sm md:rounded-[44px]">
                 <PlugCardGrid />
-              </div>
-            </FadeIn>
-          </section>
+              </div> */}
+            </section>
+          </FadeIn>
         </div>
         <section className=" mt-12 hidden w-full md:block">
           <FadeIn>
