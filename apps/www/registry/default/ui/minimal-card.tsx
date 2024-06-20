@@ -37,7 +37,7 @@ const MinimalCardImage = React.forwardRef<
     )}
     {...props}
   >
-    <Image
+    <img
       src={src}
       alt={alt}
       width={200}
