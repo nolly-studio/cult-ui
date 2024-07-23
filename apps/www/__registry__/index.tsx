@@ -203,6 +203,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "lightboard": {
+      name: "lightboard",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/lightboard")),
+      source: "",
+      files: ["registry/default/ui/lightboard.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "text-animate-demo": {
       name: "text-animate-demo",
       type: "components:example",
@@ -397,6 +408,17 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/dock-demo")),
       source: "",
       files: ["registry/default/example/dock-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "lightboard-demo": {
+      name: "lightboard-demo",
+      type: "components:example",
+      registryDependencies: ["lightboard"],
+      component: React.lazy(() => import("@/registry/default/example/lightboard-demo")),
+      source: "",
+      files: ["registry/default/example/lightboard-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []

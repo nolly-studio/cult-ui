@@ -109,4 +109,10 @@ export const examples: Registry = [
     registryDependencies: ["dock"],
     files: ["example/dock-demo.tsx"],
   },
+  {
+    name: "lightboard-demo",
+    type: "components:example",
+    registryDependencies: ["lightboard"],
+    files: ["example/lightboard-demo.tsx"],
+  },
 ]

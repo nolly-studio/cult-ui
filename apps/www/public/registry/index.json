@@ -179,5 +179,15 @@
       "ui/dock.tsx"
     ],
     "type": "components:ui"
+  },
+  {
+    "name": "lightboard",
+    "dependencies": [
+      ""
+    ],
+    "files": [
+      "ui/lightboard.tsx"
+    ],
+    "type": "components:ui"
   }
 ]

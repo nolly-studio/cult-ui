@@ -1,0 +1,76 @@
+---
+title: LightBoard
+description: A fun lightboard component used to display moving text and draw in a visually appealing way.
+component: true
+links:
+---
+
+<ComponentPreview
+  name="lightboard-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## References
+
+<Citations>
+
+    <p className="font-medium text-primary"> Inspiration</p>
+    <CitationList>
+      <CitationItem>
+
+        <CitationLink
+          href="https://rauno.me/craft/nextjs"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+         Rauno Nextjs Blog
+        </CitationLink>
+      </CitationItem>
+
+    </CitationList>
+
+</Citations>
+
+## Installation
+
+<Tabs defaultValue="manual">
+
+<TabsList>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="manual">
+  <Steps>
+    <Step>Copy and paste the following code into your project.</Step>
+    <ComponentSource name="lightboard" />
+    <Step>Update the import paths to match your project setup.</Step>
+  </Steps>
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { LightBoard } from "@/components/lightboard"
+```
+
+```tsx
+// Example usage of the Dock component with animated cards and dividers
+
+const LightBoardDemo = () => {
+  return (
+    <LightBoard
+      size={LightBoardSize.Large}
+      lightSize={4}
+      gap={1}
+      text="Hello World"
+      font="default"
+      updateInterval={100}
+    />
+  )
+}
+
+export default LightBoardDemo
+```

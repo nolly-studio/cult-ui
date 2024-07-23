@@ -109,4 +109,10 @@ export const ui: Registry = [
     dependencies: ["framer-motion"],
     files: ["ui/dock.tsx"],
   },
+  {
+    name: "lightboard",
+    type: "components:ui",
+    dependencies: [""],
+    files: ["ui/lightboard.tsx"],
+  },
 ]

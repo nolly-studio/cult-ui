@@ -40,10 +40,16 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
+          title: "LightBoard",
+          href: "/docs/components/lightboard",
+          items: [],
+          label: "latest",
+        },
+        {
           title: "MacOS Dock",
           href: "/docs/components/dock",
           items: [],
-          label: "latest",
+          label: "new",
         },
         {
           title: "Sortable List",
