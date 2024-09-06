@@ -1,0 +1,13 @@
+{
+  "name": "bg-animated-gradient",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "name": "bg-animated-gradient.tsx",
+      "content": "\"use client\"\n\nimport React, { useEffect } from \"react\"\nimport { motion, useAnimation } from \"framer-motion\"\n\ninterface GradientStop {\n  color: string\n  position: number\n}\n\ninterface GradientType {\n  stops: GradientStop[]\n  centerX: number\n  centerY: number\n}\n\ninterface GradientAnimationProps {\n  gradients: GradientType[]\n  animationDuration: number\n  className?: string\n}\n\nexport const GradientAnimation: React.FC<GradientAnimationProps> = ({\n  gradients,\n  animationDuration,\n  className = \"\",\n}) => {\n  const controls = useAnimation()\n\n  useEffect(() => {\n    controls.start({\n      background: gradients.map(\n        (g) =>\n          `radial-gradient(circle at ${g.centerX}% ${g.centerY}%, ${g.stops\n            .map((s) => `${s.color} ${s.position}%`)\n            .join(\", \")})`\n      ),\n      transition: {\n        duration: animationDuration,\n        repeat: Infinity,\n        repeatType: \"reverse\",\n        ease: \"linear\",\n      },\n    })\n  }, [controls, gradients, animationDuration])\n\n  return (\n    <motion.div\n      className={`absolute inset-0 h-full w-full ${className}`}\n      animate={controls}\n    />\n  )\n}\n\nexport default React.memo(GradientAnimation)\n"
+    }
+  ],
+  "type": "components:ui"
+}

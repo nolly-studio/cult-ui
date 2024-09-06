@@ -214,6 +214,83 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "canvas-fractal-grid": {
+      name: "canvas-fractal-grid",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/canvas-fractal-grid")),
+      source: "",
+      files: ["registry/default/ui/canvas-fractal-grid.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "bg-animated-fractal-dot-grid": {
+      name: "bg-animated-fractal-dot-grid",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/bg-animated-fractal-dot-grid")),
+      source: "",
+      files: ["registry/default/ui/bg-animated-fractal-dot-grid.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "bg-animated-gradient": {
+      name: "bg-animated-gradient",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/bg-animated-gradient")),
+      source: "",
+      files: ["registry/default/ui/bg-animated-gradient.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "popover": {
+      name: "popover",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/popover")),
+      source: "",
+      files: ["registry/default/ui/popover.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "floating-panel": {
+      name: "floating-panel",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/floating-panel")),
+      source: "",
+      files: ["registry/default/ui/floating-panel.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "color-picker": {
+      name: "color-picker",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/color-picker")),
+      source: "",
+      files: ["registry/default/ui/color-picker.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "shader-lens-blur": {
+      name: "shader-lens-blur",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/shader-lens-blur")),
+      source: "",
+      files: ["registry/default/ui/shader-lens-blur.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "text-animate-demo": {
       name: "text-animate-demo",
       type: "components:example",
@@ -419,6 +496,83 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/lightboard-demo")),
       source: "",
       files: ["registry/default/example/lightboard-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "canvas-fractal-grid-demo": {
+      name: "canvas-fractal-grid-demo",
+      type: "components:example",
+      registryDependencies: ["canvas-fractal-grid"],
+      component: React.lazy(() => import("@/registry/default/example/canvas-fractal-grid-demo")),
+      source: "",
+      files: ["registry/default/example/canvas-fractal-grid-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "bg-animated-fractal-dot-grid-demo": {
+      name: "bg-animated-fractal-dot-grid-demo",
+      type: "components:example",
+      registryDependencies: ["bg-animated-fractal-dot-grid"],
+      component: React.lazy(() => import("@/registry/default/example/bg-animated-fractal-dot-grid-demo")),
+      source: "",
+      files: ["registry/default/example/bg-animated-fractal-dot-grid-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "bg-animated-gradient-demo": {
+      name: "bg-animated-gradient-demo",
+      type: "components:example",
+      registryDependencies: ["bg-animated-gradient"],
+      component: React.lazy(() => import("@/registry/default/example/bg-animated-gradient-demo")),
+      source: "",
+      files: ["registry/default/example/bg-animated-gradient-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "popover-demo": {
+      name: "popover-demo",
+      type: "components:example",
+      registryDependencies: ["popover"],
+      component: React.lazy(() => import("@/registry/default/example/popover-demo")),
+      source: "",
+      files: ["registry/default/example/popover-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "floating-panel-demo": {
+      name: "floating-panel-demo",
+      type: "components:example",
+      registryDependencies: ["floating-panel"],
+      component: React.lazy(() => import("@/registry/default/example/floating-panel-demo")),
+      source: "",
+      files: ["registry/default/example/floating-panel-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "color-picker-demo": {
+      name: "color-picker-demo",
+      type: "components:example",
+      registryDependencies: ["color-picker"],
+      component: React.lazy(() => import("@/registry/default/example/color-picker-demo")),
+      source: "",
+      files: ["registry/default/example/color-picker-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "shader-lens-blur-demo": {
+      name: "shader-lens-blur-demo",
+      type: "components:example",
+      registryDependencies: ["shader-lens-blur","color-picker"],
+      component: React.lazy(() => import("@/registry/default/example/shader-lens-blur-demo")),
+      source: "",
+      files: ["registry/default/example/shader-lens-blur-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []

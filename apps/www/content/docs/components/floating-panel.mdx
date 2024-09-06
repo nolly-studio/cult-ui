@@ -1,0 +1,169 @@
+---
+title: FloatingPanel
+description: A headless, composable floating panel component
+component: true
+links:
+---
+
+<ComponentPreview
+  name="floating-panel-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## Installation
+
+<Tabs defaultValue="manual">
+  <TabsList>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="floating-panel" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  FloatingPanelCloseButton,
+  FloatingPanelContent,
+  FloatingPanelFooter,
+  FloatingPanelForm,
+  FloatingPanelLabel,
+  FloatingPanelRoot,
+  FloatingPanelSubmitButton,
+  FloatingPanelTextarea,
+  FloatingPanelTrigger,
+} from "@/components/FloatingPanel"
+```
+
+```typescriptreact
+export default function FloatingPanelDemo() {
+  const handleSubmit = (note: string) => {
+    console.log('Submitted note:', note)
+  }
+
+  return (
+    <div className="p-8">
+      <h1 className="mb-4 text-2xl font-bold">Headless Composable FloatingPanel Demo</h1>
+      <FloatingPanelRoot>
+        <FloatingPanelTrigger>Add Note</FloatingPanelTrigger>
+        <FloatingPanelContent>
+          <FloatingPanelForm onSubmit={handleSubmit}>
+            <FloatingPanelLabel htmlFor="note-input">Add Note</FloatingPanelLabel>
+            <FloatingPanelTextarea id="note-input" />
+            <FloatingPanelFooter>
+              <FloatingPanelCloseButton />
+              <FloatingPanelSubmitButton />
+            </FloatingPanelFooter>
+          </FloatingPanelForm>
+        </FloatingPanelContent>
+      </FloatingPanelRoot>
+    </div>
+  )
+}
+```
+
+## FloatingPanel Component
+
+The FloatingPanel component is a headless, composable component that provides a flexible and customizable floating panel functionality. It uses Framer Motion for smooth animations and React context for state management.
+
+### FloatingPanelRoot
+
+The `FloatingPanelRoot` component is the main wrapper for the FloatingPanel. It provides the context and configuration for all child components.
+
+```typescriptreact
+<FloatingPanelRoot>
+  {/* Other FloatingPanel components */}
+</FloatingPanelRoot>
+```
+
+### FloatingPanelTrigger
+
+The `FloatingPanelTrigger` component is used to trigger the opening of the floating panel. It can wrap any clickable element.
+
+```typescriptreact
+<FloatingPanelTrigger>Add Note</FloatingPanelTrigger>
+```
+
+### FloatingPanelContent
+
+The `FloatingPanelContent` component contains the main content of the floating panel. It handles the animation and positioning of the panel.
+
+```typescriptreact
+<FloatingPanelContent>
+  {/* FloatingPanel content */}
+</FloatingPanelContent>
+```
+
+### FloatingPanelForm
+
+The `FloatingPanelForm` component is used to create a form within the floating panel. It handles form submission and provides an `onSubmit` prop for custom submission logic.
+
+```typescriptreact
+<FloatingPanelForm onSubmit={handleSubmit}>
+  {/* Form fields */}
+</FloatingPanelForm>
+```
+
+### FloatingPanelLabel
+
+The `FloatingPanelLabel` component is used to add a label to the floating panel content. It animates with the panel opening and closing.
+
+```typescriptreact
+<FloatingPanelLabel htmlFor="input-id">Add Note</FloatingPanelLabel>
+```
+
+### FloatingPanelTextarea
+
+The `FloatingPanelTextarea` component provides a textarea input for the floating panel form.
+
+```typescriptreact
+<FloatingPanelTextarea id="input-id" />
+```
+
+### FloatingPanelFooter
+
+The `FloatingPanelFooter` component is used to create a footer section in the floating panel, typically containing action buttons.
+
+```typescriptreact
+<FloatingPanelFooter>
+  {/* Footer content */}
+</FloatingPanelFooter>
+```
+
+### FloatingPanelCloseButton
+
+The `FloatingPanelCloseButton` component provides a button to close the floating panel.
+
+```typescriptreact
+<FloatingPanelCloseButton />
+```
+
+### FloatingPanelSubmitButton
+
+The `FloatingPanelSubmitButton` component provides a submit button for the floating panel form.
+
+```typescriptreact
+<FloatingPanelSubmitButton />
+```
+
+## Customization
+
+The FloatingPanel component is highly customizable. You can modify the styles of each sub-component by passing className props or by wrapping them in your own styled components. The animation behavior can be adjusted by modifying the `TRANSITION` object in the component's source code.
+
+## Accessibility
+
+The FloatingPanel component includes basic accessibility features such as:
+
+- Keyboard navigation support (Escape key to close)
+- Proper ARIA attributes
+- Focus management
+- Label association with form elements
+
+However, depending on your specific use case, you may need to add additional accessibility features to ensure full compliance with WCAG guidelines.

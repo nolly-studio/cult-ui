@@ -1,0 +1,58 @@
+---
+title: CanvasFractalGrid
+description: An interactive canvas fractal grid component to spice up your Hero.
+component: true
+links:
+---
+
+<ComponentPreview
+  name="canvas-fractal-grid-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## Installation
+
+<Tabs defaultValue="manual">
+
+<TabsList>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="manual">
+  <Steps>
+    <Step>Copy and paste the following code into your project.</Step>
+    <ComponentSource name="canvas-fractal-grid" />
+    <Step>Update the import paths to match your project setup.</Step>
+  </Steps>
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { CanvasFractalGrid } from "../ui/canvas-fractal-grid"
+```
+
+```tsx
+function CanvasFractalGridExample() {
+  return (
+    <div className="grid h-screen w-full pl-[56px] relative">
+      <CanvasFractalGrid
+        dotSize={3}
+        dotSpacing={20}
+        dotOpacity={0.4}
+        animationDuration={6}
+        mouseTrackingStiffness={500}
+        mouseTrackingDamping={120}
+        waveIntensity={60}
+        waveRadius={250}
+        // rippleSpeed={0.0001}
+      />
+    </div>
+  )
+}
+
+export default CanvasFractalGridExample
+```

@@ -11,7 +11,7 @@ export default function FamilyButtonDemo() {
     <div className=" w-full h-full min-h-[240px]">
       <div className="absolute bottom-4 right-4 ">
         <FamilyButton>
-          <OgImageSection />
+          <MusicPlayerExample />
         </FamilyButton>
       </div>
     </div>
@@ -23,7 +23,7 @@ let tabs = [
   { id: 1, label: "Spotify" },
 ]
 
-export function OgImageSection() {
+export function MusicPlayerExample() {
   const [activeTab, setActiveTab] = useState(0)
   const [direction, setDirection] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)

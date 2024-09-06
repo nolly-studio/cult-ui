@@ -165,13 +165,12 @@ const DynamicAction = () => {
   return (
     <div className=" h-full">
       <div className="flex flex-col gap-4  h-full">
-        <div className="absolute top-4 right-2">
+        <div className="absolute top-12 left-1">
           {/* {!blobState.isAnimating ? ( */}
           <Button
             onClick={cycleBlobStates}
-            variant="secondary"
             disabled={blobState.isAnimating}
-            className="mt-4 p-2 border rounded-lg max-w-[200px] "
+            className="mt-4 p-2 border rounded-md max-w-[200px] "
           >
             Click
             <MousePointerClickIcon className="ml-2 h-4 w-4" />

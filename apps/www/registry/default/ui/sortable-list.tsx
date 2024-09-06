@@ -10,7 +10,7 @@ import {
   motion,
   useDragControls,
 } from "framer-motion"
-import { Plus, RepeatIcon, Trash } from "lucide-react"
+import { Trash } from "lucide-react"
 import useMeasure from "react-use-measure"
 
 import { cn } from "@/lib/utils"

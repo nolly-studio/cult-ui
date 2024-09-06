@@ -115,4 +115,51 @@ export const examples: Registry = [
     registryDependencies: ["lightboard"],
     files: ["example/lightboard-demo.tsx"],
   },
+  {
+    name: "canvas-fractal-grid-demo",
+    type: "components:example",
+    registryDependencies: ["canvas-fractal-grid"],
+    files: ["example/canvas-fractal-grid-demo.tsx"],
+  },
+
+  {
+    name: "bg-animated-fractal-dot-grid-demo",
+    type: "components:example",
+    registryDependencies: ["bg-animated-fractal-dot-grid"],
+    files: ["example/bg-animated-fractal-dot-grid-demo.tsx"],
+  },
+
+  {
+    name: "bg-animated-gradient-demo",
+    type: "components:example",
+    registryDependencies: ["bg-animated-gradient"],
+    files: ["example/bg-animated-gradient-demo.tsx"],
+  },
+
+  {
+    name: "popover-demo",
+    type: "components:example",
+    registryDependencies: ["popover"],
+    files: ["example/popover-demo.tsx"],
+  },
+  {
+    name: "floating-panel-demo",
+    type: "components:example",
+    registryDependencies: ["floating-panel"],
+    files: ["example/floating-panel-demo.tsx"],
+  },
+
+  {
+    name: "color-picker-demo",
+    type: "components:example",
+    registryDependencies: ["color-picker"],
+    files: ["example/color-picker-demo.tsx"],
+  },
+
+  {
+    name: "shader-lens-blur-demo",
+    type: "components:example",
+    registryDependencies: ["shader-lens-blur", "color-picker"],
+    files: ["example/shader-lens-blur-demo.tsx"],
+  },
 ]

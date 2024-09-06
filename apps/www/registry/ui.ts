@@ -115,4 +115,48 @@ export const ui: Registry = [
     dependencies: [""],
     files: ["ui/lightboard.tsx"],
   },
+  {
+    name: "canvas-fractal-grid",
+    type: "components:ui",
+    dependencies: ["framer-motion"],
+    files: ["ui/canvas-fractal-grid.tsx"],
+  },
+  {
+    name: "bg-animated-fractal-dot-grid",
+    type: "components:ui",
+    dependencies: ["framer-motion"],
+    files: ["ui/bg-animated-fractal-dot-grid.tsx"],
+  },
+  {
+    name: "bg-animated-gradient",
+    type: "components:ui",
+    dependencies: ["framer-motion"],
+    files: ["ui/bg-animated-gradient.tsx"],
+  },
+
+  {
+    name: "popover",
+    type: "components:ui",
+    dependencies: ["framer-motion"],
+    files: ["ui/popover.tsx"],
+  },
+  {
+    name: "floating-panel",
+    type: "components:ui",
+    dependencies: ["framer-motion"],
+    files: ["ui/floating-panel.tsx"],
+  },
+  {
+    name: "color-picker",
+    type: "components:ui",
+    dependencies: ["framer-motion"],
+    files: ["ui/color-picker.tsx"],
+  },
+
+  {
+    name: "shader-lens-blur",
+    type: "components:ui",
+    dependencies: ["framer-motion", "three", "jotai"],
+    files: ["ui/shader-lens-blur.tsx"],
+  },
 ]

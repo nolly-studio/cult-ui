@@ -7,10 +7,6 @@ interface DocsConfig {
 
 export const docsConfig: DocsConfig = {
   mainNav: [
-    // {
-    //   title: "Documentation",
-    //   href: "/docs",
-    // },
     {
       title: "Components",
       href: "/docs/components/dynamic-island",
@@ -40,121 +36,140 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
-          title: "LightBoard",
-          href: "/docs/components/lightboard",
-          items: [],
-          label: "latest",
+          title: "App UI",
+          items: [
+            {
+              title: "Animated Number",
+              href: "/docs/components/animated-number",
+              items: [],
+            },
+            {
+              title: "Bg Animate Button",
+              href: "/docs/components/bg-animate-button",
+              items: [],
+            },
+            {
+              title: "Bg Media Hero",
+              href: "/docs/components/bg-media",
+              items: [],
+            },
+            {
+              title: "Color Picker",
+              href: "/docs/components/color-picker",
+              items: [],
+              label: "new",
+            },
+            {
+              title: "Direction Aware Tabs",
+              href: "/docs/components/direction-aware-tabs",
+              items: [],
+            },
+            {
+              title: "Dynamic Island",
+              href: "/docs/components/dynamic-island",
+              items: [],
+            },
+            {
+              title: "Family Button",
+              href: "/docs/components/family-button",
+              items: [],
+            },
+            {
+              title: "Floating Panel",
+              href: "/docs/components/floating-panel",
+              items: [],
+              label: "new",
+            },
+            {
+              title: "Gradient Heading",
+              href: "/docs/components/gradient-heading",
+              items: [],
+            },
+            {
+              title: "Minimal Card",
+              href: "/docs/components/minimal-card",
+              items: [],
+            },
+            {
+              title: "Popover",
+              href: "/docs/components/popover",
+              items: [],
+              label: "new",
+            },
+            {
+              title: "Shift Card",
+              href: "/docs/components/shift-card",
+              items: [],
+            },
+            {
+              title: "Side Panel",
+              href: "/docs/components/side-panel",
+              items: [],
+            },
+            {
+              title: "Sortable List",
+              href: "/docs/components/sortable-list",
+              items: [],
+              label: "new",
+            },
+            {
+              title: "Text Animate",
+              href: "/docs/components/text-animate",
+              items: [],
+            },
+            {
+              title: "Texture Button",
+              href: "/docs/components/texture-button",
+              items: [],
+            },
+            {
+              title: "Texture Card",
+              href: "/docs/components/texture-card",
+              items: [],
+            },
+          ],
         },
         {
-          title: "MacOS Dock",
-          href: "/docs/components/dock",
-          items: [],
-          label: "new",
-        },
-        {
-          title: "Sortable List",
-          href: "/docs/components/sortable-list",
-          items: [],
-          label: "new",
-        },
-        {
-          title: "Dynamic Island",
-          href: "/docs/components/dynamic-island",
-          items: [],
-          // label: "new",
-        },
-        {
-          title: "Shift Card",
-          href: "/docs/components/shift-card",
-          items: [],
-          // label: "new",
-        },
-        {
-          title: "Family Button",
-          href: "/docs/components/family-button",
-          items: [],
-          // label: "new",
-        },
-        {
-          title: "Direction Aware Tabs",
-          href: "/docs/components/direction-aware-tabs",
-          items: [],
-          // label: "new",
-        },
-        {
-          title: "Side Panel",
-          href: "/docs/components/side-panel",
-          items: [],
-          // label: "new",
-        },
-        {
-          title: "Bg Media",
-          href: "/docs/components/bg-media",
-          items: [],
-          // label: "new",
-        },
-
-        {
-          title: "Text Animate",
-          href: "/docs/components/text-animate",
-          items: [],
-          // label: "new",
-        },
-        {
-          title: "Typewriter",
-          href: "/docs/components/typewriter",
-          items: [],
-          // label: "new",
-        },
-        {
-          title: "Animated Number",
-          href: "/docs/components/animated-number",
-          items: [],
-          // label: "new",
-        },
-        {
-          title: "3D Carousel",
-          href: "/docs/components/three-d-carousel",
-          items: [],
-          // label: "new",
-        },
-
-        {
-          title: "Tweet Grid",
-          href: "/docs/components/tweet-grid",
-          items: [],
-          // label: "new",
-        },
-
-        {
-          title: "Texture Button",
-          href: "/docs/components/texture-button",
-          items: [],
-          // label: "new",
-        },
-        {
-          title: "Texture Card",
-          href: "/docs/components/texture-card",
-          items: [],
-          // label: "new",
-        },
-        {
-          title: "Minimal Card",
-          href: "/docs/components/minimal-card",
-          items: [],
-          // label: "new",
-        },
-        {
-          title: "Gradient Heading",
-          href: "/docs/components/gradient-heading",
-          items: [],
-          // label: "new",
-        },
-        {
-          title: "Bg Animate Button",
-          href: "/docs/components/bg-animate-button",
-          items: [],
-          // label: "new",
+          title: "Bespoke UI",
+          items: [
+            {
+              title: "3D Carousel",
+              href: "/docs/components/three-d-carousel",
+              items: [],
+            },
+            {
+              title: "LightBoard",
+              href: "/docs/components/lightboard",
+              items: [],
+            },
+            {
+              title: "MacOS Dock",
+              href: "/docs/components/dock",
+              items: [],
+            },
+            {
+              title: "Fractal Grid",
+              href: "/docs/components/bg-animated-fractal-grid",
+              items: [],
+              label: "new",
+            },
+            {
+              title: "Shader Lens Blur",
+              href: "/docs/components/shader-lens-blur",
+              items: [],
+              label: "new",
+            },
+            {
+              title: "Tweet Grid",
+              href: "/docs/components/tweet-grid",
+              items: [],
+            },
+            {
+              title: "Typewriter",
+              href: "/docs/components/typewriter",
+              items: [],
+            },
+          ],
         },
       ],
     },

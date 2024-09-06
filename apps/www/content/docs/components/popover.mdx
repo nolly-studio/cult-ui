@@ -1,0 +1,185 @@
+---
+title: Popover
+description: A headless popover animation component with customizable options.
+component: true
+links:
+---
+
+<ComponentPreview
+  name="popover-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## References
+
+<Citations>
+  <p className="font-medium text-primary">Inspiration</p>
+  <CitationList>
+    <CitationItem>
+      <CitationLink
+        href="https://motion-primitives.com/docs/popover"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        motion primitives
+      </CitationLink>
+    </CitationItem>
+  </CitationList>
+</Citations>
+
+## Installation
+
+<Tabs defaultValue="manual">
+  <TabsList>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="popover" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverFooter,
+  PopoverForm,
+  PopoverLabel,
+  PopoverRoot,
+  PopoverSubmitButton,
+  PopoverTextarea,
+  PopoverTrigger,
+} from "@/components/Popover"
+```
+
+```typescriptreact
+export default function PopoverDemo() {
+  const handleSubmit = (note: string) => {
+    console.log('Submitted note:', note)
+  }
+
+  return (
+    <div className="p-8">
+      <h1 className="mb-4 text-2xl font-bold">Headless Composable Popover Demo</h1>
+      <PopoverRoot>
+        <PopoverTrigger>Add Note</PopoverTrigger>
+        <PopoverContent>
+          <PopoverForm onSubmit={handleSubmit}>
+            <PopoverLabel>Add Note</PopoverLabel>
+            <PopoverTextarea />
+            <PopoverFooter>
+              <PopoverCloseButton />
+              <PopoverSubmitButton />
+            </PopoverFooter>
+          </PopoverForm>
+        </PopoverContent>
+      </PopoverRoot>
+    </div>
+  )
+}
+```
+
+## Popover Component
+
+The Popover component is a headless, composable component that provides a flexible and customizable popover functionality. It uses Framer Motion for smooth animations and React context for state management.
+
+### PopoverRoot
+
+The `PopoverRoot` component is the main wrapper for the Popover. It provides the context and configuration for all child components.
+
+```typescriptreact
+<PopoverRoot>
+  {/* Other Popover components */}
+</PopoverRoot>
+```
+
+### PopoverTrigger
+
+The `PopoverTrigger` component is used to trigger the opening of the popover. It can wrap any clickable element.
+
+```typescriptreact
+<PopoverTrigger>Add Note</PopoverTrigger>
+```
+
+### PopoverContent
+
+The `PopoverContent` component contains the main content of the popover. It handles the animation and positioning of the popover.
+
+```typescriptreact
+<PopoverContent>
+  {/* Popover content */}
+</PopoverContent>
+```
+
+### PopoverForm
+
+The `PopoverForm` component is used to create a form within the popover. It handles form submission and provides an `onSubmit` prop for custom submission logic.
+
+```typescriptreact
+<PopoverForm onSubmit={handleSubmit}>
+  {/* Form fields */}
+</PopoverForm>
+```
+
+### PopoverLabel
+
+The `PopoverLabel` component is used to add a label to the popover content. It animates with the popover opening and closing.
+
+```typescriptreact
+<PopoverLabel>Add Note</PopoverLabel>
+```
+
+### PopoverTextarea
+
+The `PopoverTextarea` component provides a textarea input for the popover form.
+
+```typescriptreact
+<PopoverTextarea />
+```
+
+### PopoverFooter
+
+The `PopoverFooter` component is used to create a footer section in the popover, typically containing action buttons.
+
+```typescriptreact
+<PopoverFooter>
+  {/* Footer content */}
+</PopoverFooter>
+```
+
+### PopoverCloseButton
+
+The `PopoverCloseButton` component provides a button to close the popover.
+
+```typescriptreact
+<PopoverCloseButton />
+```
+
+### PopoverSubmitButton
+
+The `PopoverSubmitButton` component provides a submit button for the popover form.
+
+```typescriptreact
+<PopoverSubmitButton />
+```
+
+## Customization
+
+The Popover component is highly customizable. You can modify the styles of each sub-component by passing className props or by wrapping them in your own styled components. The animation behavior can be adjusted by modifying the `TRANSITION` object in the component's source code.
+
+## Accessibility
+
+The Popover component includes basic accessibility features such as:
+
+- Keyboard navigation support (Escape key to close)
+- Proper ARIA attributes
+- Focus management
+
+However, depending on your specific use case, you may need to add additional accessibility features to ensure full compliance with WCAG guidelines.

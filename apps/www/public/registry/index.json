@@ -189,5 +189,77 @@
       "ui/lightboard.tsx"
     ],
     "type": "components:ui"
+  },
+  {
+    "name": "canvas-fractal-grid",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      "ui/canvas-fractal-grid.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "bg-animated-fractal-dot-grid",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      "ui/bg-animated-fractal-dot-grid.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "bg-animated-gradient",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      "ui/bg-animated-gradient.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "popover",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      "ui/popover.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "floating-panel",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      "ui/floating-panel.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "color-picker",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      "ui/color-picker.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "shader-lens-blur",
+    "dependencies": [
+      "framer-motion",
+      "three",
+      "jotai"
+    ],
+    "files": [
+      "ui/shader-lens-blur.tsx"
+    ],
+    "type": "components:ui"
   }
 ]
