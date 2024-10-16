@@ -261,5 +261,25 @@
       "ui/shader-lens-blur.tsx"
     ],
     "type": "components:ui"
+  },
+  {
+    "name": "popover-form",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      "ui/popover-form.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "expandable",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      "ui/expandable.tsx"
+    ],
+    "type": "components:ui"
   }
 ]

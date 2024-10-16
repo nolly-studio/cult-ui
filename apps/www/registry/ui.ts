@@ -159,4 +159,17 @@ export const ui: Registry = [
     dependencies: ["framer-motion", "three", "jotai"],
     files: ["ui/shader-lens-blur.tsx"],
   },
+
+  {
+    name: "popover-form",
+    type: "components:ui",
+    dependencies: ["framer-motion"],
+    files: ["ui/popover-form.tsx"],
+  },
+  {
+    name: "expandable",
+    type: "components:ui",
+    dependencies: ["framer-motion"],
+    files: ["ui/expandable.tsx"],
+  },
 ]

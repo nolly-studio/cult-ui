@@ -162,4 +162,16 @@ export const examples: Registry = [
     registryDependencies: ["shader-lens-blur", "color-picker"],
     files: ["example/shader-lens-blur-demo.tsx"],
   },
+  {
+    name: "popover-form-demo",
+    type: "components:example",
+    registryDependencies: ["popover-form"],
+    files: ["example/popover-form-demo.tsx"],
+  },
+  {
+    name: "expandable-demo",
+    type: "components:example",
+    registryDependencies: ["expandable"],
+    files: ["example/expandable-demo.tsx"],
+  },
 ]

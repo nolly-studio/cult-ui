@@ -291,6 +291,28 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "popover-form": {
+      name: "popover-form",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/popover-form")),
+      source: "",
+      files: ["registry/default/ui/popover-form.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "expandable": {
+      name: "expandable",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/expandable")),
+      source: "",
+      files: ["registry/default/ui/expandable.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "text-animate-demo": {
       name: "text-animate-demo",
       type: "components:example",
@@ -573,6 +595,28 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/shader-lens-blur-demo")),
       source: "",
       files: ["registry/default/example/shader-lens-blur-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "popover-form-demo": {
+      name: "popover-form-demo",
+      type: "components:example",
+      registryDependencies: ["popover-form"],
+      component: React.lazy(() => import("@/registry/default/example/popover-form-demo")),
+      source: "",
+      files: ["registry/default/example/popover-form-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "expandable-demo": {
+      name: "expandable-demo",
+      type: "components:example",
+      registryDependencies: ["expandable"],
+      component: React.lazy(() => import("@/registry/default/example/expandable-demo")),
+      source: "",
+      files: ["registry/default/example/expandable-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []

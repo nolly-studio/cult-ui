@@ -3,7 +3,7 @@
 export const DistortedGlass = () => {
   return (
     <>
-      <div className="relative h-[50px] w-[360px] overflow-hidden rounded-b-2xl lg:w-[600px] xl:w-full">
+      <div className="relative hidden h-[50px] w-[360px] overflow-hidden rounded-b-2xl lg:w-[600px]  xl:block xl:w-full">
         <div className="pointer-events-none absolute bottom-0  z-10 h-full w-full overflow-hidden  rounded-b-2xl border border-[#f5f5f51a]">
           <div className="glass-effect h-full w-full"></div>
         </div>

@@ -54,7 +54,7 @@ export function PlugCardGrid() {
             >
               <MinimalCard className="bg-transparent">
                 {/* <MinimalCardImage src={card.img} alt={card.title} /> */}
-                <MinimalCardTitle className="text-neutral-800">
+                <MinimalCardTitle className="text-base text-neutral-800">
                   {card.title}
                 </MinimalCardTitle>
                 <MinimalCardDescription className="text-neutral-900">

@@ -10,6 +10,7 @@ import {
   Toaster as NewYorkToaster,
 } from "@/components/ui/toaster"
 import { Analytics } from "@/components/analytics"
+import { AnimatedBackgroundGuides } from "@/components/background-guides"
 import { ThemeProvider } from "@/components/providers"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeSwitcher } from "@/components/theme-switcher"
@@ -84,10 +85,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <head />
         <body
           className={cn(
-            "min-h-screen bg-background font-sans antialiased",
+            "relative min-h-screen bg-background font-sans antialiased",
             fontSans.variable
           )}
         >
+          <AnimatedBackgroundGuides />
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -95,7 +97,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             disableTransitionOnChange
           >
             <div vaul-drawer-wrapper="">
-              <div className="relative z-10 flex min-h-screen flex-col bg-background">
+              <div className="relative z-10 flex min-h-screen flex-col ">
                 {children}
               </div>
             </div>

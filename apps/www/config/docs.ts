@@ -57,7 +57,6 @@ export const docsConfig: DocsConfig = {
               title: "Color Picker",
               href: "/docs/components/color-picker",
               items: [],
-              label: "new",
             },
             {
               title: "Direction Aware Tabs",
@@ -68,6 +67,13 @@ export const docsConfig: DocsConfig = {
               title: "Dynamic Island",
               href: "/docs/components/dynamic-island",
               items: [],
+            },
+
+            {
+              title: "Expandable",
+              href: "/docs/components/expandable",
+              items: [],
+              label: "new",
             },
             {
               title: "Family Button",
@@ -93,6 +99,12 @@ export const docsConfig: DocsConfig = {
             {
               title: "Popover",
               href: "/docs/components/popover",
+              items: [],
+              label: "",
+            },
+            {
+              title: "Popover Form",
+              href: "/docs/components/popover-form",
               items: [],
               label: "new",
             },
