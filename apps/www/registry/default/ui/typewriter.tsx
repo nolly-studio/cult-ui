@@ -92,7 +92,11 @@ function RepeatedTextAnimation({
     }
   }, [count, delay, textIndex, texts, updatedThisRound])
 
-  return <motion.span className="inline">{displayText}</motion.span>
+  return (
+    <motion.span className="inline whitespace-pre-wrap hyphens-auto">
+      {displayText}
+    </motion.span>
+  )
 }
 
 const cursorVariants = {
