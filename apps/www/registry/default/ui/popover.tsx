@@ -8,8 +8,8 @@ import React, {
   useRef,
   useState,
 } from "react"
-import { AnimatePresence, MotionConfig, motion } from "framer-motion"
 import { X } from "lucide-react"
+import { AnimatePresence, MotionConfig, motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 

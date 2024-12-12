@@ -8,7 +8,7 @@ import { Style, styles } from "@/registry/styles"
 
 import "@/styles/mdx.css"
 import "public/registry/themes.css"
-import { AnimatePresence } from "framer-motion"
+import { AnimatePresence } from "motion/react"
 
 import { BlockChunk } from "@/components/block-chunk"
 import { BlockWrapper } from "@/components/block-wrapper"

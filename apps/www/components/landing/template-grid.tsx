@@ -70,10 +70,10 @@ export function TemplateGrid() {
                     </Badge>
                   ) : null}
                 </div>
-                <MinimalCardTitle className="text-neutral-200">
+                <MinimalCardTitle className="text-neutral-200 w-full">
                   {card.name}
                 </MinimalCardTitle>
-                <MinimalCardDescription className="text-neutral-400">
+                <MinimalCardDescription className=" text-neutral-400">
                   {card.description}
                 </MinimalCardDescription>
               </MinimalCard>
@@ -94,7 +94,7 @@ export const TEMPLATES_GRID = [
     liveUrl: "https://cult-logo.vercel.app", // replace with the actual live URL
     meta: "fullstack",
     description:
-      "Dalle Logo Generator. Managing authentication and storage with supabase, and implementing a token-based currency system.",
+      "AI-powered logo generation platform with Dalle integration, token-based currency system, and secure image storage using Supabase.",
     features: [
       {
         name: "Dalle 2 + 3 Image Generation",
@@ -130,7 +130,7 @@ export const TEMPLATES_GRID = [
     liveUrl: "https://nextjs.design", // replace with the actual live URL
     meta: "fullstack",
     description:
-      "Ship your own directory startup in 5 minutes with a 3 stage scraping and ai enrichment pipeline. Great for building SEO backlinks and selling ad space. ",
+      "Automated directory platform with AI enrichment, web scraping pipeline, and built-in authentication for rapid deployment of SEO-optimized listings.",
     features: [
       {
         name: "Scraping",
@@ -171,7 +171,7 @@ export const TEMPLATES_GRID = [
     liveUrl: "https://dub.sh/travl", // replace with the actual live URL
     meta: "fullstack",
     description:
-      "Offline First Travel App - A pwa designed to manage and plan travel goals using claude haiku ai and the rxdb to store data locally in the browser, regardless of connectivity.",
+      "Progressive web app for travel planning with offline capabilities, Claude AI integration, and real-time data synchronization across devices.",
     features: [
       {
         name: "Offline Capabilities",
@@ -209,7 +209,7 @@ export const TEMPLATES_GRID = [
     gradient: "bg-gradient-to-b from-white/10 to-[#FF9150] via-[#FFD0B7]/30",
     slug: "https://www.newcult.co/templates/cult-landing-page",
     description:
-      "Fully designed landing page template. Framer motion animations, unique navigation, and more.",
+      "Modern landing page template featuring Framer Motion animations, custom navigation components, and responsive design optimized for conversions.",
     features: [
       {
         name: "Animation",
@@ -236,7 +236,7 @@ export const TEMPLATES_GRID = [
     liveUrl: "https://cleanmyseo.com",
     meta: "fullstack",
     description:
-      "Crawl websites, SEO grading algorithm, test site performance, check OG images, and get AI improvements.",
+      "Comprehensive SEO analysis tool with web crawling, performance testing, and AI-powered optimization recommendations for website improvement.",
     features: [
       {
         name: "RSC Web Scraping",
@@ -273,7 +273,7 @@ export const TEMPLATES_GRID = [
     gradient: "bg-gradient-to-b from-white/10 to-green-400 via-green-50",
     new: false,
     description:
-      "Vector Embedding Template - Full stack template for shipping perplexity style AI apps.",
+      "Vector embedding solution for building Perplexity-style AI applications with RAG retrieval, real-time source citations, and pgvector search functionality.",
     features: [
       {
         name: "Vector embeddings",

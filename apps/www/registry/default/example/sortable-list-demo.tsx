@@ -1,8 +1,8 @@
 "use client"
 
 import { useCallback, useState } from "react"
-import { AnimatePresence, LayoutGroup, motion } from "framer-motion"
 import { Plus, RepeatIcon, Settings2Icon, XIcon } from "lucide-react"
+import { AnimatePresence, LayoutGroup, motion } from "motion/react"
 import { toast } from "sonner"
 
 import { cn } from "@/lib/utils"

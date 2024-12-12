@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { animate, motion, useMotionValue, useTransform } from "framer-motion"
+import { animate, motion, useMotionValue, useTransform } from "motion/react"
 
 export interface ITextAnimationProps {
   delay: number

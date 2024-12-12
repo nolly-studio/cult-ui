@@ -1,8 +1,8 @@
 "use client"
 
 import React, { useCallback, useState } from "react"
-import { motion } from "framer-motion"
 import { Check, Copy, Lock, LockOpen, Palette, RefreshCw } from "lucide-react"
+import { motion } from "motion/react"
 import { Poline, positionFunctions } from "poline"
 
 import { Button } from "@/components/ui/button"

@@ -1,7 +1,6 @@
 "use client"
 
 import { createContext, useContext } from "react"
-import { motion, useReducedMotion } from "framer-motion"
 import {
   ArrowUpLeftSquareIcon,
   Loader,
@@ -11,6 +10,7 @@ import {
   User,
   Waves,
 } from "lucide-react"
+import { motion, useReducedMotion } from "motion/react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"

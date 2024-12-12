@@ -18,6 +18,22 @@ const nextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com/random/*",
       },
+      {
+        protocol: "https",
+        hostname: "player.vimeo.com",
+        port: "",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "openaicomproductionae4b.blob.core.windows.net",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+        port: "",
+        pathname: "**",
+      },
     ],
   },
   redirects() {

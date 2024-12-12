@@ -1,9 +1,9 @@
 "use client"
 
 import React, { useCallback } from "react"
-import { motion } from "framer-motion"
 import { useAtom } from "jotai"
 import { Circle, CircleOff, Sliders, Square, Triangle } from "lucide-react"
+import { motion } from "motion/react"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"

@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { MotionValue, motion, useSpring, useTransform } from "framer-motion"
 import { Minus, Plus } from "lucide-react"
+import { MotionValue, motion, useSpring, useTransform } from "motion/react"
 import { toast } from "sonner"
 
 import { GradientHeading } from "@/registry/default/ui/gradient-heading"

@@ -1,8 +1,8 @@
 "use client"
 
 import React, { useCallback, useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
 import { atom, useAtom } from "jotai"
+import { motion } from "motion/react"
 import { useTheme } from "next-themes"
 import * as THREE from "three"
 
@@ -365,7 +365,7 @@ export default ShaderLensBlur
 
 // // npm install jotai three
 // import React, { useCallback, useEffect, useRef, useState } from "react"
-// import { motion } from "framer-motion"
+// import { motion } from "motion/react"
 // import { atom, useAtom } from "jotai"
 // import * as THREE from "three"
 

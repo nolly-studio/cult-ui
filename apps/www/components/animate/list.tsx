@@ -2,14 +2,14 @@
 
 // https://blog.maximeheckel.com/posts/framer-motion-layout-animations/
 import React, { useCallback, useState } from "react"
+import { CogIcon, Plus, RepeatIcon, Trash, XIcon } from "lucide-react"
 import {
   AnimatePresence,
   LayoutGroup,
   Reorder,
   motion,
   useDragControls,
-} from "framer-motion"
-import { CogIcon, Plus, RepeatIcon, Trash, XIcon } from "lucide-react"
+} from "motion/react"
 import useMeasure from "react-use-measure"
 import { toast } from "sonner"
 

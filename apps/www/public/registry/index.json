@@ -281,5 +281,35 @@
       "ui/expandable.tsx"
     ],
     "type": "components:ui"
+  },
+  {
+    "name": "logo-carousel",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      "ui/logo-carousel.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "loading-carousel",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      "ui/loading-carousel.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "hover-video-player",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      "ui/hover-video-player.tsx"
+    ],
+    "type": "components:ui"
   }
 ]

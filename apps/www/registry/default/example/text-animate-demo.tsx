@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useState } from "react"
-import { motion, useInView } from "framer-motion"
+import { motion, useInView } from "motion/react"
 
 import { FadeIn } from "@/components/fade-in"
 

@@ -1,8 +1,8 @@
 "use client"
 
 import { FC, ReactNode, useState } from "react"
-import { motion } from "framer-motion"
 import { PlusIcon, XIcon } from "lucide-react"
+import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 

@@ -10,7 +10,7 @@ import {
   useMotionValue,
   type MotionStyle,
   type MotionValue,
-} from "framer-motion"
+} from "motion/react"
 import Balancer from "react-wrap-balancer"
 
 import { cn } from "@/lib/utils"

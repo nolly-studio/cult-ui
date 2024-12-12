@@ -313,6 +313,39 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "logo-carousel": {
+      name: "logo-carousel",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/logo-carousel")),
+      source: "",
+      files: ["registry/default/ui/logo-carousel.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "loading-carousel": {
+      name: "loading-carousel",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/loading-carousel")),
+      source: "",
+      files: ["registry/default/ui/loading-carousel.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "hover-video-player": {
+      name: "hover-video-player",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/hover-video-player")),
+      source: "",
+      files: ["registry/default/ui/hover-video-player.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "text-animate-demo": {
       name: "text-animate-demo",
       type: "components:example",
@@ -617,6 +650,39 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/expandable-demo")),
       source: "",
       files: ["registry/default/example/expandable-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "logo-carousel-demo": {
+      name: "logo-carousel-demo",
+      type: "components:example",
+      registryDependencies: ["logo-carousel","gradient-heading"],
+      component: React.lazy(() => import("@/registry/default/example/logo-carousel-demo")),
+      source: "",
+      files: ["registry/default/example/logo-carousel-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "loading-carousel-demo": {
+      name: "loading-carousel-demo",
+      type: "components:example",
+      registryDependencies: ["loading-carousel"],
+      component: React.lazy(() => import("@/registry/default/example/loading-carousel-demo")),
+      source: "",
+      files: ["registry/default/example/loading-carousel-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "hover-video-player-demo": {
+      name: "hover-video-player-demo",
+      type: "components:example",
+      registryDependencies: ["hover-video-player"],
+      component: React.lazy(() => import("@/registry/default/example/hover-video-player-demo")),
+      source: "",
+      files: ["registry/default/example/hover-video-player-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []

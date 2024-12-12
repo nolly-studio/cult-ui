@@ -1,7 +1,7 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import { AnimatePresence, MotionConfig, motion } from "framer-motion"
+import { AnimatePresence, MotionConfig, motion } from "motion/react"
 import useMeasure from "react-use-measure"
 
 import FamilyButton from "../ui/family-button"

@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { AnimatePresence, motion, useAnimation } from "framer-motion"
+import { AnimatePresence, motion, useAnimation } from "motion/react"
 
 interface GradientStop {
   color: string
@@ -715,7 +715,7 @@ export default React.memo(CanvasFractalGrid)
 // "use client"
 
 // import React, { useCallback, useEffect, useMemo, useRef } from "react"
-// import { AnimatePresence, motion, useAnimation, useSpring } from "framer-motion"
+// import { AnimatePresence, motion, useAnimation, useSpring } from "motion/react"
 
 // const NoiseSVG = React.memo(() => (
 //   <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -1077,7 +1077,7 @@ export default React.memo(CanvasFractalGrid)
 // "use client"
 
 // import React, { useCallback, useEffect, useMemo, useRef } from "react"
-// import { AnimatePresence, motion, useAnimation, useSpring } from "framer-motion"
+// import { AnimatePresence, motion, useAnimation, useSpring } from "motion/react"
 
 // const NoiseSVG = React.memo(() => (
 //   <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">

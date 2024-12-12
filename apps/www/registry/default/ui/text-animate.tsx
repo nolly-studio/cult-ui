@@ -1,7 +1,7 @@
 "use client"
 
 import { FC, useEffect, useRef } from "react"
-import { HTMLMotionProps, motion, useAnimation, useInView } from "framer-motion"
+import { HTMLMotionProps, motion, useAnimation, useInView } from "motion/react"
 
 type AnimationType =
   | "fadeIn"

@@ -14,7 +14,7 @@ const headingVariants = cva(
         pink: "bg-gradient-to-t from-accent to-accent/90 dark:from-stone-200 dark:to-neutral-200",
         light: "bg-gradient-to-t from-neutral-200 to-neutral-300",
         secondary:
-          "bg-gradient-to-t from-primary-foreground to-muted-foreground",
+          "bg-gradient-to-t from-neutral-500 to-neutral-600 dark:from-stone-200 dark:to-neutral-200",
       },
       size: {
         default: "text-2xl sm:text-3xl lg:text-4xl",
@@ -24,6 +24,7 @@ const headingVariants = cva(
         md: "text-2xl sm:text-3xl lg:text-4xl",
         lg: "text-3xl sm:text-4xl lg:text-5xl",
         xl: "text-4xl sm:text-5xl lg:text-6xl",
+        xll: "text-5xl sm:text-6xl lg:text-[5.4rem] leading-[0.5rem] lg:leading-[0.5rem] ",
         xxl: "text-5xl sm:text-6xl lg:text-[6rem]",
         xxxl: "text-5xl sm:text-6xl lg:text-[8rem]",
       },

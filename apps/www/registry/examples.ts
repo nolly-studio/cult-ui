@@ -174,4 +174,22 @@ export const examples: Registry = [
     registryDependencies: ["expandable"],
     files: ["example/expandable-demo.tsx"],
   },
+  {
+    name: "logo-carousel-demo",
+    type: "components:example",
+    registryDependencies: ["logo-carousel", "gradient-heading"],
+    files: ["example/logo-carousel-demo.tsx"],
+  },
+  {
+    name: "loading-carousel-demo",
+    type: "components:example",
+    registryDependencies: ["loading-carousel"],
+    files: ["example/loading-carousel-demo.tsx"],
+  },
+  {
+    name: "hover-video-player-demo",
+    type: "components:example",
+    registryDependencies: ["hover-video-player"],
+    files: ["example/hover-video-player-demo.tsx"],
+  },
 ]

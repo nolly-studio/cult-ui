@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useCallback, useEffect, useMemo, useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion } from "motion/react"
 
 type AnimationDirection = "top-to-bottom" | "bottom-to-top" | "both" | "random"
 type AnimationEasing = "linear" | "easeIn" | "easeOut" | "easeInOut" | "spring"

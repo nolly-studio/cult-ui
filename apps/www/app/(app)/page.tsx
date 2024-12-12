@@ -5,7 +5,6 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
 import { Announcement } from "@/components/announcement"
 import { FadeIn } from "@/components/fade-in"
 import {
@@ -15,63 +14,48 @@ import {
   TypeScriptIcon,
 } from "@/components/icons"
 import { FeaturesSection } from "@/components/landing/feature-section"
-import {
-  FeaturedComponent,
-  LatestComponent,
-} from "@/components/landing/featured-component"
+import { LatestComponentVertical } from "@/components/landing/featured-component"
 import { PlugCardGrid } from "@/components/landing/plug-grid"
 import { TemplateGrid } from "@/components/landing/template-grid"
 import { PageActions, PageHeader } from "@/components/page-header"
-import BgNoiseWrapper from "@/components/texture-wrapper"
-import DockAnimation from "@/registry/default/example/dock-demo"
-import ShaderBlurDemo from "@/registry/default/example/shader-lens-blur-demo"
-import CanvasFractalGrid from "@/registry/default/ui/canvas-fractal-grid"
 import { GradientHeading } from "@/registry/default/ui/gradient-heading"
 
 export default function IndexPage() {
   return (
     <div className=" isolate min-h-screen overflow-hidden  pb-8 sm:pb-12 md:pb-0">
-      <div className="container relative pt-12">
-        {/* <ShaderAnimation /> */}
-
-        {/* <ShaderBlurDemo /> */}
-        {/* <Card className="mt-12 max-w-2xl">
-          <CardContent className="flex flex-col gap-4 items-center justify-center p-12">
-            <ImprovedShaderAnimation
-              initialVariation={2}
-              color1="#ff0000"
-              color2="#00ff00"
-              className="my-custom-class"
-              enableHover={true}
-            />
-          </CardContent>
-        </Card> */}
-      </div>
+      {/* <div className="container relative pt-12"></div> */}
 
       {/* <BgNoiseWrapper url="/egg-shell-noise.png"> */}
-      <div className="container relative pt-12">
+      <div className="container relative pt-8">
         <PageHeader>
           <FadeIn>
             <Announcement />
           </FadeIn>
           <FadeIn>
-            <GradientHeading
-              size="xl"
-              weight="bold"
-              className="text-center text-xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]"
-            >
-              Components crafted for <br className="hidden md:block" /> Design
-              Engineers
-            </GradientHeading>
+            <div>
+              <GradientHeading
+                weight="bold"
+                className="text-center text-xl font-bold leading-tight tracking-tighter md:text-5xl "
+              >
+                Components crafted for
+              </GradientHeading>
+              <GradientHeading
+                size="xll"
+                weight="bold"
+                className="text-center text-xl font-bold  tracking-tighter  leading-[0.5rem] lg:leading-[0.5rem] "
+              >
+                <br className="hidden md:block" /> Design Engineers
+              </GradientHeading>
+            </div>
           </FadeIn>
 
           <FadeIn>
-            <div className="flex flex-wrap items-center justify-center gap-1 text-center text-base  leading-3  text-foreground md:text-2xl md:font-normal md:leading-6">
+            <div className=" max-w-2xl flex flex-wrap items-center justify-center gap-1 text-left text-base  leading-3  text-foreground md:text-xl md:font-normal md:leading-6 pt-8">
               <span>Ready-to-use</span>
               <div className="hidden -rotate-45 rounded-full border border-black/10 p-1 shadow-lg md:block">
                 <ReactIcon className=" h-6 w-6   " aria-hidden="true" />
               </div>
-              <span> components for your React apps.</span>
+              <span> components for your react apps.</span>
 
               <span>Shadcn compatible.</span>
               <div className="rounded-full border border-black/10 p-1 shadow-lg">
@@ -81,7 +65,7 @@ export default function IndexPage() {
               <div className="hidden -rotate-45 rounded-full border border-black/10 p-1 shadow-lg md:block ">
                 <TailwindCSSIcon className="h-6 w-6  " aria-hidden="true" />
               </div>
-              <span className="">Copy and paste. Open Source. Typed. </span>
+              <span className="">Copy and paste, open source, typed. </span>
               <div className="rounded-xs hidden border border-black/10 p-1 shadow-lg md:block">
                 <TypeScriptIcon className="h-6 w-6 " aria-hidden="true" />
               </div>
@@ -109,7 +93,7 @@ export default function IndexPage() {
           <section className="w-full space-y-4 md:block">
             {/* <div className=" mx-auto   max-w-7xl rounded-[24px] border border-black/5 p-2 shadow-sm md:rounded-[44px] bg-black"> */}
             <div className=" mx-auto   w-full max-w-4xl rounded-[24px] border border-black/5 p-2 shadow-sm md:rounded-t-[44px]">
-              <LatestComponent />
+              <LatestComponentVertical />
               {/* <FeaturedComponent /> */}
             </div>
 

@@ -172,4 +172,22 @@ export const ui: Registry = [
     dependencies: ["framer-motion"],
     files: ["ui/expandable.tsx"],
   },
+  {
+    name: "logo-carousel",
+    type: "components:ui",
+    dependencies: ["framer-motion"],
+    files: ["ui/logo-carousel.tsx"],
+  },
+  {
+    name: "loading-carousel",
+    type: "components:ui",
+    dependencies: ["framer-motion"],
+    files: ["ui/loading-carousel.tsx"],
+  },
+  {
+    name: "hover-video-player",
+    type: "components:ui",
+    dependencies: ["framer-motion"],
+    files: ["ui/hover-video-player.tsx"],
+  },
 ]

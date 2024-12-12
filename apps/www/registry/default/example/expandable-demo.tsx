@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
 import {
   Battery,
   Bluetooth,
@@ -20,6 +19,7 @@ import {
   Video,
   Wind,
 } from "lucide-react"
+import { AnimatePresence, motion } from "motion/react"
 import { toast } from "sonner"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"

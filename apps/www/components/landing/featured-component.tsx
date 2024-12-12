@@ -1,10 +1,12 @@
 import Link from "next/link"
 import { ArrowRight, SparklesIcon } from "lucide-react"
 
+import LogoCarouselDemo from "@/registry/default/example/logo-carousel-demo"
 import { ContactFormExample } from "@/registry/default/example/popover-form-demo"
 import ShaderLensBlurDemo from "@/registry/default/example/shader-lens-blur-demo"
 import { GradientHeading } from "@/registry/default/ui/gradient-heading"
 import { LightBoard } from "@/registry/default/ui/lightboard"
+import LogoCarousel from "@/registry/default/ui/logo-carousel"
 import ShaderLensBlur from "@/registry/default/ui/shader-lens-blur"
 
 import { Badge } from "../ui/badge"
@@ -124,6 +126,43 @@ export function LatestComponent() {
       <div className="ml-auto mt-4 flex max-w-xl grow flex-col items-center justify-center space-y-0 rounded-[14px] border border-dashed border-black/10  bg-neutral-300/20 p-4 md:mt-0 md:rounded-md md:rounded-br-[20px] md:rounded-tr-[35px]">
         <ContactFormExample />
       </div>
+    </div>
+  )
+}
+
+export function LatestComponentVertical() {
+  return (
+    // <div className=" relative flex w-full flex-col rounded-[24px] border border-black/5 bg-neutral-800/10 p-2 shadow-sm md:flex-row md:items-center md:gap-24 md:rounded-t-[40px] md:p-2 mx-auto">
+    <div className=" relative mx-auto flex w-full flex-col rounded-[24px] border border-black/5 bg-neutral-800/5 p-2 shadow-sm  md:items-start md:gap-8 md:rounded-b-[20px] md:rounded-t-[40px] md:p-2">
+      <Badge
+        variant="outline"
+        className="absolute left-4 top-6 rounded-[14px] border border-black/10 text-base md:left-6"
+      >
+        <SparklesIcon className="  fill-[#EEBDE0] stroke-1 text-neutral-800" />{" "}
+        Latest component
+      </Badge>
+      <div className="flex flex-col justify-center pb-2 pl-4 pt-14 md:items-center">
+        <div className="flex  gap-2">
+          <div>
+            <GradientHeading>Logo Carousel</GradientHeading>
+            <Link
+              href="/docs/components/popover-form"
+              className="flex items-center gap-1 "
+            >
+              Headless logo carousel animation.
+              {/* <ArrowRight className="hidden h-4 w-4 md:block" /> */}
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* <div className=" mt-4 flex max-w-xl grow flex-col items-center justify-center space-y-0 rounded-[14px] border border-dashed border-black/10  bg-neutral-300/20 p-4 md:mt-0 md:rounded-md md:rounded-br-[20px] md:rounded-tr-[35px]"> */}
+      <div className="mx-auto w-full ">
+        <div className="w-full py-8 lg:pb-8 lg:pt-3 max-w-screen-lg mx-auto flex flex-col items-center space-y-8">
+          <LogoCarousel columnCount={3} />
+        </div>
+      </div>
+      {/* </div> */}
     </div>
   )
 }

@@ -7,7 +7,7 @@ import {
   useAnimation,
   useMotionValue,
   useTransform,
-} from "framer-motion"
+} from "motion/react"
 
 export const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect

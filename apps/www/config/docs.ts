@@ -73,7 +73,6 @@ export const docsConfig: DocsConfig = {
               title: "Expandable",
               href: "/docs/components/expandable",
               items: [],
-              label: "new",
             },
             {
               title: "Family Button",
@@ -84,7 +83,6 @@ export const docsConfig: DocsConfig = {
               title: "Floating Panel",
               href: "/docs/components/floating-panel",
               items: [],
-              label: "new",
             },
             {
               title: "Gradient Heading",
@@ -92,21 +90,37 @@ export const docsConfig: DocsConfig = {
               items: [],
             },
             {
+              title: "Hover Video Player",
+              href: "/docs/components/hover-video-player",
+              items: [],
+              label: "new",
+            },
+            {
               title: "Minimal Card",
               href: "/docs/components/minimal-card",
               items: [],
             },
             {
+              title: "Loading Carousel",
+              href: "/docs/components/loading-carousel",
+              items: [],
+              label: "new",
+            },
+            {
+              title: "Logo Carousel",
+              href: "/docs/components/logo-carousel",
+              items: [],
+              label: "new",
+            },
+            {
               title: "Popover",
               href: "/docs/components/popover",
               items: [],
-              label: "",
             },
             {
               title: "Popover Form",
               href: "/docs/components/popover-form",
               items: [],
-              label: "new",
             },
             {
               title: "Shift Card",
@@ -122,7 +136,6 @@ export const docsConfig: DocsConfig = {
               title: "Sortable List",
               href: "/docs/components/sortable-list",
               items: [],
-              label: "new",
             },
             {
               title: "Text Animate",

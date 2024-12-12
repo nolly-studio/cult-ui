@@ -8,8 +8,8 @@ import React, {
   useRef,
   useState,
 } from "react"
-import { AnimatePresence, MotionConfig, Variants, motion } from "framer-motion"
 import { ArrowLeftIcon } from "lucide-react"
+import { AnimatePresence, MotionConfig, Variants, motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -490,7 +490,7 @@ export default {
 //   useRef,
 //   useState,
 // } from "react"
-// import { AnimatePresence, MotionConfig, motion } from "framer-motion"
+// import { AnimatePresence, MotionConfig, motion } from "motion/react"
 // import { ArrowLeftIcon } from "lucide-react"
 
 // import { cn } from "@/lib/utils"

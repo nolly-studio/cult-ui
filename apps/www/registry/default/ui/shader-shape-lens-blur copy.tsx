@@ -7,7 +7,7 @@ import React, {
   useRef,
   useState,
 } from "react"
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 import * as THREE from "three"
 
 import { Button } from "@/components/ui/button"
@@ -534,7 +534,7 @@ export default ImprovedShaderAnimation
 // "use client"
 
 // import React, { useCallback, useEffect, useRef, useState } from "react"
-// import { motion } from "framer-motion"
+// import { motion } from "motion/react"
 // import * as THREE from "three"
 
 // import { Button } from "@/components/ui/button"

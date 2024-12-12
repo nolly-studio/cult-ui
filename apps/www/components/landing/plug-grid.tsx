@@ -3,7 +3,6 @@ import { StickerIcon } from "lucide-react"
 import {
   MinimalCard,
   MinimalCardDescription,
-  MinimalCardImage,
   MinimalCardTitle,
 } from "@/registry/default/ui/minimal-card"
 
@@ -11,6 +10,13 @@ import { Badge } from "../ui/badge"
 
 export function PlugCardGrid() {
   const cards = [
+    {
+      title: "Free AI Marketing ",
+      description:
+        "An AI Cofounder that knows your brand. Start creating marketing copy that converts.",
+      href: "https://www.newcopy.ai",
+      img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXFpaG1vaG83YTgxdTdxc2ZreHNtaGphYjF4aXd6c3JvbXNodW9ubSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7bzrBMHEsgPb20T3C5/giphy.gif",
+    },
     {
       title: "Free SEO Improvement Tool",
       description:
@@ -24,13 +30,6 @@ export function PlugCardGrid() {
         "Comprehensive Next.js + Supabase templates built with Tailwind CSS, Cult components, and shadcn.",
       href: "https://www.newcult.co",
       img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3p0Nm1xcnE2eDNkOTJ6NndxaTJlejFodGozZ3RpcXc4MW80OHkwYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AdRaGoL5xT1SdI6J5v/giphy.gif",
-    },
-    {
-      title: "Open Source Directory Template",
-      description:
-        "Curated bookmarks for design engineers: design tools, JavaScript resources, React.js libraries, and more.",
-      href: "https://github.com/nolly-studio/cult-directory-template",
-      img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXFpaG1vaG83YTgxdTdxc2ZreHNtaGphYjF4aXd6c3JvbXNodW9ubSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7bzrBMHEsgPb20T3C5/giphy.gif",
     },
   ]
 
@@ -53,7 +52,6 @@ export function PlugCardGrid() {
               href={card.href}
             >
               <MinimalCard className="bg-transparent">
-                {/* <MinimalCardImage src={card.img} alt={card.title} /> */}
                 <MinimalCardTitle className="text-base text-neutral-800">
                   {card.title}
                 </MinimalCardTitle>
