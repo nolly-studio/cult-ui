@@ -10,6 +10,7 @@ import React, {
 import {
   AnimatePresence,
   HTMLMotionProps,
+  TargetAndTransition,
   motion,
   useMotionValue,
   useSpring,
@@ -136,76 +137,101 @@ const Expandable = React.forwardRef<HTMLDivElement, ExpandableProps>(
   }
 )
 
-// Predefined animation presets
-const ANIMATION_PRESETS = {
+// Simplify animation types
+type AnimationPreset = {
+  initial: { [key: string]: any }
+  animate: { [key: string]: any }
+  exit: { [key: string]: any }
+}
+
+// Update ANIMATION_PRESETS type
+const ANIMATION_PRESETS: Record<string, AnimationPreset> = {
   fade: {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     exit: { opacity: 0 },
-    transition: { duration: 0.3 },
   },
   "slide-up": {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: 20 },
-    transition: { duration: 0.3 },
   },
   "slide-down": {
     initial: { opacity: 0, y: -20 },
     animate: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: -20 },
-    transition: { duration: 0.3 },
   },
   "slide-left": {
     initial: { opacity: 0, x: 20 },
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: 20 },
-    transition: { duration: 0.3 },
   },
   "slide-right": {
     initial: { opacity: 0, x: -20 },
     animate: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: -20 },
-    transition: { duration: 0.3 },
   },
   scale: {
     initial: { opacity: 0, scale: 0.8 },
     animate: { opacity: 1, scale: 1 },
     exit: { opacity: 0, scale: 0.8 },
-    transition: { duration: 0.3 },
   },
   rotate: {
     initial: { opacity: 0, rotate: -10 },
     animate: { opacity: 1, rotate: 0 },
     exit: { opacity: 0, rotate: -10 },
-    transition: { duration: 0.3 },
   },
   "blur-sm": {
     initial: { opacity: 0, filter: "blur(4px)" },
     animate: { opacity: 1, filter: "blur(0px)" },
     exit: { opacity: 0, filter: "blur(4px)" },
-    transition: { duration: 0.3 },
   },
   "blur-md": {
     initial: { opacity: 0, filter: "blur(8px)" },
     animate: { opacity: 1, filter: "blur(0px)" },
     exit: { opacity: 0, filter: "blur(8px)" },
-    transition: { duration: 0.3 },
   },
   "blur-lg": {
     initial: { opacity: 0, filter: "blur(16px)" },
     animate: { opacity: 1, filter: "blur(0px)" },
     exit: { opacity: 0, filter: "blur(16px)" },
-    transition: { duration: 0.3 },
   },
+}
+
+// Update type definitions
+type AnimationConfig = {
+  initial: { [key: string]: number | string }
+  animate: { [key: string]: number | string }
+  exit: { [key: string]: number | string }
 }
 
 // Props for defining custom animations
 interface AnimationProps {
-  initial?: object // Initial state of the animation
-  animate?: object // Final state of the animation
-  exit?: object // State when component is removed
-  transition?: object // Transition properties
+  initial?: TargetAndTransition
+  animate?: TargetAndTransition
+  exit?: TargetAndTransition
+  transition?: any
+}
+
+// Inside ExpandableContent component
+const getAnimationProps = (
+  preset: keyof typeof ANIMATION_PRESETS | undefined,
+  animateIn?: AnimationProps,
+  animateOut?: AnimationProps
+) => {
+  const defaultAnimation = {
+    initial: {},
+    animate: {},
+    exit: {},
+  }
+
+  const presetAnimation = preset ? ANIMATION_PRESETS[preset] : defaultAnimation
+
+  return {
+    initial: presetAnimation.initial,
+    animate: presetAnimation.animate,
+    exit: animateOut?.exit || presetAnimation.exit,
+  }
 }
 
 // Wrap this around items in the card that you want to be hidden then animated in on expansion
@@ -250,12 +276,7 @@ const ExpandableContent = React.forwardRef<
       }
     }, [isExpanded, measuredHeight, animatedHeight])
 
-    const presetAnimation = preset ? ANIMATION_PRESETS[preset] : {}
-    const combinedAnimateIn = {
-      ...presetAnimation,
-      ...animateIn,
-    }
-    const combinedAnimateOut = animateOut || combinedAnimateIn
+    const animationProps = getAnimationProps(preset, animateIn, animateOut)
 
     return (
       // This motion.div animates the height of the content
@@ -274,9 +295,9 @@ const ExpandableContent = React.forwardRef<
             // This motion.div handles the animation of the content itself
             <motion.div
               ref={measureRef}
-              initial={combinedAnimateIn.initial}
-              animate={combinedAnimateIn.animate}
-              exit={combinedAnimateOut.exit}
+              initial={animationProps.initial}
+              animate={animationProps.animate}
+              exit={animationProps.exit}
               transition={{ duration: transitionDuration, ease: easeType }}
             >
               {stagger ? (
