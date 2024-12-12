@@ -42,7 +42,7 @@ export default function IndexPage() {
               <GradientHeading
                 size="xll"
                 weight="bold"
-                className="text-center text-xl font-bold  tracking-tighter  leading-[0.5rem] lg:leading-[0.5rem] "
+                className="text-center text-xl font-bold  leading-[0.5rem]  tracking-tighter lg:leading-[0.5rem] "
               >
                 <br className="hidden md:block" /> Design Engineers
               </GradientHeading>
@@ -50,7 +50,7 @@ export default function IndexPage() {
           </FadeIn>
 
           <FadeIn>
-            <div className=" max-w-2xl flex flex-wrap items-center justify-center gap-1 text-left text-base  leading-3  text-foreground md:text-xl md:font-normal md:leading-6 pt-8">
+            <div className=" flex max-w-2xl flex-wrap items-center justify-center gap-1 pt-8 text-left  text-base  leading-3 text-foreground md:text-xl md:font-normal md:leading-6">
               <span>Ready-to-use</span>
               <div className="hidden -rotate-45 rounded-full border border-black/10 p-1 shadow-lg md:block">
                 <ReactIcon className=" h-6 w-6   " aria-hidden="true" />

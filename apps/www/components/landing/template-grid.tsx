@@ -70,7 +70,7 @@ export function TemplateGrid() {
                     </Badge>
                   ) : null}
                 </div>
-                <MinimalCardTitle className="text-neutral-200 w-full">
+                <MinimalCardTitle className="w-full text-neutral-200">
                   {card.name}
                 </MinimalCardTitle>
                 <MinimalCardDescription className=" text-neutral-400">

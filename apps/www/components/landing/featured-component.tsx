@@ -158,7 +158,7 @@ export function LatestComponentVertical() {
 
       {/* <div className=" mt-4 flex max-w-xl grow flex-col items-center justify-center space-y-0 rounded-[14px] border border-dashed border-black/10  bg-neutral-300/20 p-4 md:mt-0 md:rounded-md md:rounded-br-[20px] md:rounded-tr-[35px]"> */}
       <div className="mx-auto w-full ">
-        <div className="w-full py-8 lg:pb-8 lg:pt-3 max-w-screen-lg mx-auto flex flex-col items-center space-y-8">
+        <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center space-y-8 py-8 lg:pb-8 lg:pt-3">
           <LogoCarousel columnCount={3} />
         </div>
       </div>
