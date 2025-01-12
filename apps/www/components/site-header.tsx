@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+// import { AlertBanner } from "@/components/alert-banner"
 import { CommandMenu } from "@/components/command-menu"
 import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
@@ -18,6 +19,7 @@ export function SiteHeader() {
   let pathname = usePathname()
   return (
     <>
+      {/* <AlertBanner /> */}
       <header
         className={cn(
           "sticky top-0 z-50 w-full    ",
@@ -26,7 +28,6 @@ export function SiteHeader() {
             : "-mb-14"
         )}
       >
-        {/* <header className="sticky top-0 z-50 w-full -mb-12  lg:backdrop-blur-xl backdrop-filter bg-gradientTopRightLightHeaderSm/70  md:bg-gradientTopRightLightHeader  backdrop-blur supports-[backdrop-filter]:bg-background/60 "> */}
         <div className="container flex h-14 max-w-screen-2xl items-center ">
           <MainNav />
           <MobileNav />
@@ -80,11 +81,6 @@ export function SiteHeader() {
           </div>
         </div>
       </header>
-      {/* <div className="animate-slide-up fixed inset-x-1/2 top-0 z-50 md:absolute">
-        <div className=" flex w-full flex-col items-center justify-center">
-          <DistortedGlass></DistortedGlass>
-        </div>
-      </div> */}
     </>
   )
 }

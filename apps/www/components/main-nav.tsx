@@ -32,7 +32,7 @@ export function MainNav() {
         >
           Components
         </Link>
-        <Link
+        {/* <Link
           href="/themes"
           className={cn(
             "text-base font-semibold transition-colors hover:text-foreground/80",
@@ -42,7 +42,18 @@ export function MainNav() {
           )}
         >
           Themes
-        </Link>
+        </Link> */}
+        <a
+          href="https://www.newcult.co/blocks"
+          className={cn(
+            "text-base font-semibold transition-colors hover:text-foreground/80",
+            pathname?.startsWith("/examples")
+              ? "text-foreground"
+              : "text-foreground/60"
+          )}
+        >
+          Blocks <span className="text-xs text-cyan-500">(new)</span>
+        </a>
         <a
           href="https://newcult.co"
           className={cn(
@@ -52,8 +63,9 @@ export function MainNav() {
               : "text-foreground/60"
           )}
         >
-          Templates
+          Templates <span className="text-xs text-cyan-500">(1 new)</span>
         </a>
+
         {/* <Link
           href="/blocks"
           className={cn(
