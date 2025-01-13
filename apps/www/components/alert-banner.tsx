@@ -1,8 +1,6 @@
-import { AlertCircle, Shapes } from "lucide-react"
+import { Shapes } from "lucide-react"
 
 import { Alert, AlertDescription } from "@/components/ui/alert"
-
-import { Separator } from "./ui/separator"
 
 export function AlertBanner() {
   return (
@@ -22,11 +20,12 @@ export function AlertBanner() {
             <p>
               Introducing <span className="font-black">cult ui pro</span>
             </p>
-            {/* <Separator orientation="vertical" className="bg-black w-2" /> */}
+
             <div className="h-1 w-1 rounded-full bg-black"></div>
-            {/* <span className="font-semibold"> cult ui pro </span> */}
-            {/* <div className="h-1 w-1 bg-black rounded-full"></div> */}
-            full stack blocks, ai agents and more .
+
+            <span className="hidden md:block">
+              full stack blocks, ai agents and more .
+            </span>
           </AlertDescription>
         </div>
       </a>
