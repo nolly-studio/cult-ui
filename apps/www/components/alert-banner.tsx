@@ -16,14 +16,14 @@ export function AlertBanner() {
         rel="noreferrer"
         className="font-medium "
       >
-        <div className="mx-auto flex max-w-screen-lg items-center space-x-1 justify-center text-white">
+        <div className="mx-auto flex max-w-screen-lg items-center justify-center space-x-1 text-white">
           <Shapes className="size-4 fill-black stroke-black" />
-          <AlertDescription className="flex items-center gap-1 ml-2">
+          <AlertDescription className="ml-2 flex items-center gap-1">
             <p>
               Introducing <span className="font-black">cult ui pro</span>
             </p>
             {/* <Separator orientation="vertical" className="bg-black w-2" /> */}
-            <div className="h-1 w-1 bg-black rounded-full"></div>
+            <div className="h-1 w-1 rounded-full bg-black"></div>
             {/* <span className="font-semibold"> cult ui pro </span> */}
             {/* <div className="h-1 w-1 bg-black rounded-full"></div> */}
             full stack blocks, ai agents and more .
