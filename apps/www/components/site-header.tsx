@@ -7,7 +7,7 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 // import { AlertBanner } from "@/components/alert-banner"
-import { CommandMenu } from "@/components/command-menu"
+// import { CommandMenu } from "@/components/command-menu"
 import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
@@ -38,9 +38,9 @@ export function SiteHeader() {
               </div>
             ) : null}
 
-            <div className="w-full flex-1 md:w-auto md:flex-none">
+            {/* <div className="w-full flex-1 md:w-auto md:flex-none">
               <CommandMenu />
-            </div>
+            </div> */}
             <nav className="flex items-center ">
               <Link
                 href={siteConfig.links.github}

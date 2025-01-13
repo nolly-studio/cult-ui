@@ -44,7 +44,7 @@ export function MainNav() {
           Themes
         </Link> */}
         <a
-          href="https://www.newcult.co/blocks"
+          href="https://www.pro.cult-ui.com"
           className={cn(
             "text-base font-semibold transition-colors hover:text-foreground/80",
             pathname?.startsWith("/examples")

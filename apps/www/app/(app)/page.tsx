@@ -23,9 +23,6 @@ import { GradientHeading } from "@/registry/default/ui/gradient-heading"
 export default function IndexPage() {
   return (
     <div className=" isolate min-h-screen overflow-hidden  pb-8 sm:pb-12 md:pb-0">
-      {/* <div className="container relative pt-12"></div> */}
-
-      {/* <BgNoiseWrapper url="/egg-shell-noise.png"> */}
       <div className="container relative pt-12 md:pt-8">
         <PageHeader>
           <FadeIn>
