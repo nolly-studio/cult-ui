@@ -23,6 +23,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   description: siteConfig.description,
   keywords: [
+    "Shadcn",
+    "Shadcn Templates",
+    "Shadcn Components",
+    "Shadcn Blocks",
+    "Shadcn Sections",
     "Next.js",
     "React",
     "Tailwind CSS",
