@@ -44,7 +44,7 @@ export function MainNav() {
           Themes
         </Link> */}
         <a
-          href="https://www.pro.cult-ui.com"
+          href="https://www.pro.cult-ui.com/blocks"
           className={cn(
             "text-base font-semibold transition-colors hover:text-foreground/80",
             pathname?.startsWith("/examples")
@@ -53,6 +53,17 @@ export function MainNav() {
           )}
         >
           Blocks <span className="text-xs text-cyan-500">(new)</span>
+        </a>
+        <a
+          href="https://www.pro.cult-ui.com/sections"
+          className={cn(
+            "text-base font-semibold transition-colors hover:text-foreground/80",
+            pathname?.startsWith("/examples")
+              ? "text-foreground"
+              : "text-foreground/60"
+          )}
+        >
+          Sections <span className="text-xs text-cyan-500">(new)</span>
         </a>
         <a
           href="https://newcult.co"
