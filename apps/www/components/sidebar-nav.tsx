@@ -82,8 +82,18 @@ function NavItem({ item, pathname }: NavItemProps) {
         rel={item.external ? "noreferrer" : ""}
       >
         {item.title}
-        {item.label && (
-          <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+        {item.label === "new" && (
+          <span className="ml-2 rounded-sm border border-black bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+            {item.label}
+          </span>
+        )}
+        {item.label === "recent" && (
+          <span className="ml-2 rounded-sm border border-black  px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+            {item.label}
+          </span>
+        )}
+        {item.label === "updated" && (
+          <span className="ml-2 rounded-sm border border-black bg-pink-400 px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
             {item.label}
           </span>
         )}

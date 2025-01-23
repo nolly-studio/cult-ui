@@ -311,5 +311,48 @@
       "ui/hover-video-player.tsx"
     ],
     "type": "components:ui"
+  },
+  {
+    "name": "neumorph-eyebrow",
+    "dependencies": [
+      ""
+    ],
+    "files": [
+      "ui/neumorph-eyebrow.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "neumorph-button",
+    "dependencies": [
+      ""
+    ],
+    "files": [
+      "ui/neumorph-button.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "feature-carousel",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      "ui/feature-carousel.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "intro-disclosure",
+    "dependencies": [
+      "framer-motion",
+      "react-use-measure",
+      "button",
+      "aspect-ratio"
+    ],
+    "files": [
+      "ui/intro-disclosure.tsx"
+    ],
+    "type": "components:ui"
   }
 ]

@@ -17,8 +17,9 @@ export function MainNav() {
       <Link href="/" className="mr-6 flex items-center space-x-2">
         <Icons.cultLogoBasic className="h-6 w-6 fill-black  " />
         <span className="hidden text-lg font-bold sm:inline-block">
-          {siteConfig.name}
+          cult ui
         </span>
+        <span className="sr-only">{siteConfig.name}</span>
       </Link>
       <nav className="flex items-center gap-4 text-sm lg:gap-6">
         <Link
@@ -32,17 +33,7 @@ export function MainNav() {
         >
           Components
         </Link>
-        {/* <Link
-          href="/themes"
-          className={cn(
-            "text-base font-semibold transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/themes")
-              ? "text-foreground"
-              : "text-foreground/60"
-          )}
-        >
-          Themes
-        </Link> */}
+
         <a
           href="https://pro.cult-ui.com/blocks"
           target="_blank"
@@ -54,7 +45,7 @@ export function MainNav() {
               : "text-foreground/60"
           )}
         >
-          Blocks <span className="text-xs text-cyan-500">(new)</span>
+          Blocks <span className="text-xs text-cyan-500">(8 new)</span>
         </a>
         <a
           href="https://pro.cult-ui.com/sections"
@@ -67,7 +58,7 @@ export function MainNav() {
               : "text-foreground/60"
           )}
         >
-          Sections <span className="text-xs text-cyan-500">(new)</span>
+          Sections <span className="text-xs text-cyan-500">(10 new)</span>
         </a>
         <a
           href="https://newcult.co"

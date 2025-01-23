@@ -1,0 +1,138 @@
+---
+title: Intro Disclosure
+description: A multi-step onboarding and feature introduction component with responsive design.
+component: true
+links:
+---
+
+<ComponentPreview
+  name="intro-disclosure-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
+
+## Features
+
+- Responsive design: Dialog on desktop, Drawer on mobile
+- Progress tracking with step indicators
+- Rich media support (images and videos)
+- Keyboard navigation support
+- Swipe gestures on mobile
+- "Don't show again" functionality
+- Customizable actions per step
+- Animated transitions between steps
+
+## Installation
+
+<Steps>
+
+### Add the component to your project
+
+```bash
+npx shadcn-ui@latest add dialog drawer progress scroll-area
+```
+
+### Add the IntroDisclosure component
+
+Copy the following code to your project:
+
+<ComponentSource name="intro-disclosure" />
+
+</Steps>
+
+## Usage
+
+```tsx
+import { IntroDisclosure } from "@/components/ui/intro-disclosure"
+
+const steps = [
+  {
+    title: "Welcome",
+    short_description: "Quick overview",
+    full_description: "Welcome to our platform!",
+    media: {
+      type: "image",
+      src: "/feature-1.png",
+      alt: "Welcome screen",
+    },
+  },
+  {
+    title: "Features",
+    short_description: "Key capabilities",
+    full_description: "Discover our main features",
+    media: {
+      type: "image",
+      src: "/feature-2.png",
+      alt: "Features overview",
+    },
+    action: {
+      label: "Try Now",
+      onClick: () => console.log("Action clicked"),
+    },
+  },
+]
+
+export function MyComponent() {
+  return (
+    <IntroDisclosure
+      steps={steps}
+      featureId="my-feature"
+      onComplete={() => console.log("Completed")}
+      onSkip={() => console.log("Skipped")}
+    />
+  )
+}
+```
+
+## Examples
+
+### Basic Usage
+
+<ComponentPreview name="intro-disclosure-demo" />
+
+### With Video Content
+
+```tsx
+const videoSteps = [
+  {
+    title: "Video Tutorial",
+    short_description: "Watch how it works",
+    full_description: "A detailed video walkthrough of our features",
+    media: {
+      type: "video",
+      src: "/tutorial.mp4",
+    },
+  },
+]
+```
+
+### With Custom Actions
+
+```tsx
+const actionSteps = [
+  {
+    title: "Get Started",
+    short_description: "Begin your journey",
+    full_description: "Ready to start? Click the button below!",
+    action: {
+      label: "Start Now",
+      onClick: () => startOnboarding(),
+    },
+  },
+]
+```
+
+### External Links
+
+```tsx
+const linkSteps = [
+  {
+    title: "Learn More",
+    short_description: "Documentation",
+    full_description: "Visit our documentation for detailed guides",
+    action: {
+      label: "View Docs",
+      href: "https://docs.example.com",
+    },
+  },
+]
+```

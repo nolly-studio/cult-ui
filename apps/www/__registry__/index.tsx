@@ -346,6 +346,50 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "neumorph-eyebrow": {
+      name: "neumorph-eyebrow",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/neumorph-eyebrow")),
+      source: "",
+      files: ["registry/default/ui/neumorph-eyebrow.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "neumorph-button": {
+      name: "neumorph-button",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/neumorph-button")),
+      source: "",
+      files: ["registry/default/ui/neumorph-button.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "feature-carousel": {
+      name: "feature-carousel",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/feature-carousel")),
+      source: "",
+      files: ["registry/default/ui/feature-carousel.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "intro-disclosure": {
+      name: "intro-disclosure",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/intro-disclosure")),
+      source: "",
+      files: ["registry/default/ui/intro-disclosure.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "text-animate-demo": {
       name: "text-animate-demo",
       type: "components:example",
@@ -683,6 +727,50 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/hover-video-player-demo")),
       source: "",
       files: ["registry/default/example/hover-video-player-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "neumorph-eyebrow-demo": {
+      name: "neumorph-eyebrow-demo",
+      type: "components:example",
+      registryDependencies: ["neumorph-eyebrow"],
+      component: React.lazy(() => import("@/registry/default/example/neumorph-eyebrow-demo")),
+      source: "",
+      files: ["registry/default/example/neumorph-eyebrow-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "neumorph-button-demo": {
+      name: "neumorph-button-demo",
+      type: "components:example",
+      registryDependencies: ["neumorph-button"],
+      component: React.lazy(() => import("@/registry/default/example/neumorph-button-demo")),
+      source: "",
+      files: ["registry/default/example/neumorph-button-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "feature-carousel-demo": {
+      name: "feature-carousel-demo",
+      type: "components:example",
+      registryDependencies: ["feature-carousel"],
+      component: React.lazy(() => import("@/registry/default/example/feature-carousel-demo")),
+      source: "",
+      files: ["registry/default/example/feature-carousel-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "intro-disclosure-demo": {
+      name: "intro-disclosure-demo",
+      type: "components:example",
+      registryDependencies: ["intro-disclosure"],
+      component: React.lazy(() => import("@/registry/default/example/intro-disclosure-demo")),
+      source: "",
+      files: ["registry/default/example/intro-disclosure-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []

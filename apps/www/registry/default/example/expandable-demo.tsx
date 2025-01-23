@@ -148,12 +148,14 @@ function DesignSyncExample() {
                 </div>
               </ExpandableContent>
             </ExpandableCardContent>
-            <ExpandableCardFooter>
-              <div className="flex items-center justify-between w-full text-sm text-gray-600 dark:text-gray-300">
-                <span>Weekly</span>
-                <span>Next: Mon, 10:00 AM</span>
-              </div>
-            </ExpandableCardFooter>
+            <ExpandableContent preset="slide-up">
+              <ExpandableCardFooter>
+                <div className="flex items-center justify-between w-full text-sm text-gray-600 dark:text-gray-300">
+                  <span>Weekly</span>
+                  <span>Next: Mon, 10:00 AM</span>
+                </div>
+              </ExpandableCardFooter>
+            </ExpandableContent>
           </ExpandableCard>
         </ExpandableTrigger>
       )}
@@ -320,11 +322,14 @@ export function WeatherForecastCard() {
                 <Sun className="w-8 h-8 text-yellow-400 mr-2" />
                 <ExpandableContent preset="blur-sm" keepMounted={true}>
                   <h3 className="font-medium text-lg">Today's Weather</h3>
+                  <Badge
+                    variant="secondary"
+                    className="bg-blue-100 text-blue-800"
+                  >
+                    72°F
+                  </Badge>
                 </ExpandableContent>
               </div>
-              <Badge variant="secondary" className="bg-blue-100 text-blue-800">
-                72°F
-              </Badge>
             </div>
           </ExpandableCardHeader>
 

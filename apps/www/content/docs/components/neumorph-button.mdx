@@ -1,0 +1,55 @@
+---
+title: Neumorph Button
+description: A neumorphic button component with customizable hover and press effects.
+component: true
+links:
+---
+
+<ComponentPreview
+  name="neumorph-button-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
+
+## References
+
+<Citations>
+  <p className="font-medium text-primary">Inspiration</p>
+  <CitationList>
+    <CitationItem>
+      <CitationLink
+        href="https://animations.dev/learn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Animations dot dev
+      </CitationLink>
+    </CitationItem>
+  </CitationList>
+</Citations>
+
+## Installation
+
+<Tabs defaultValue="manual">
+  <TabsList>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="neumorph-button" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { NeumorphButton } from "@/components/ui/neumorph-button"
+```
+
+```tsx
+export default function Example() {
+  return <NeumorphButton>Click me</NeumorphButton>
+}
+```

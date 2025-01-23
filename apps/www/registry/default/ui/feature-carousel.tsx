@@ -56,17 +56,17 @@ interface CardProps {
 }
 
 interface ImageSet {
-  step1dark1?: StaticImageData
-  step1dark2?: StaticImageData
-  step1light1: StaticImageData
-  step1light2: StaticImageData
-  step2dark1?: StaticImageData
-  step2dark2?: StaticImageData
-  step2light1: StaticImageData
-  step2light2: StaticImageData
-  step3dark?: StaticImageData
-  step3light: StaticImageData
-  step4light: StaticImageData
+  step1dark1?: StaticImageData | string
+  step1dark2?: StaticImageData | string
+  step1light1: StaticImageData | string
+  step1light2: StaticImageData | string
+  step2dark1?: StaticImageData | string
+  step2dark2?: StaticImageData | string
+  step2light1: StaticImageData | string
+  step2light2: StaticImageData | string
+  step3dark?: StaticImageData | string
+  step3light: StaticImageData | string
+  step4light: StaticImageData | string
   alt: string
 }
 
@@ -81,10 +81,12 @@ interface FeatureCarouselProps extends CardProps {
 }
 
 interface StepImageProps {
-  src: StaticImageData
+  src: StaticImageData | string
   alt: string
   className?: string
   style?: React.CSSProperties
+  width?: number
+  height?: number
 }
 
 interface Step {
@@ -291,23 +293,30 @@ const stepVariants: Variants = {
 const StepImage = forwardRef<
   HTMLImageElement,
   StepImageProps & { [key: string]: any }
->(({ src, alt, className, style, ...props }, ref) => {
-  return (
-    <Image
-      ref={ref}
-      alt={alt}
-      className={className}
-      src={src}
-      style={{
-        position: "absolute",
-        userSelect: "none",
-        maxWidth: "unset",
-        ...style,
-      }}
-      {...props}
-    />
-  )
-})
+>(
+  (
+    { src, alt, className, style, width = 1200, height = 630, ...props },
+    ref
+  ) => {
+    return (
+      <Image
+        ref={ref}
+        alt={alt}
+        className={className}
+        src={src}
+        width={width}
+        height={height}
+        style={{
+          position: "absolute",
+          userSelect: "none",
+          maxWidth: "unset",
+          ...style,
+        }}
+        {...props}
+      />
+    )
+  }
+)
 StepImage.displayName = "StepImage"
 
 const MotionStepImage = motion(StepImage)
@@ -482,7 +491,7 @@ function Steps({
                     className={cn(
                       "flex h-4 w-4 shrink-0 items-center justify-center rounded-full duration-300",
                       isCompleted &&
-                        "bg-brand-400 dark:bg-brand-400 text-white",
+                        "bg-brand-400 text-white dark:bg-brand-400",
                       isCurrent &&
                         "bg-brand-300/80 text-neutral-400 dark:bg-neutral-500/50",
                       isFuture && "bg-brand-300/10 dark:bg-neutral-500/20"
@@ -591,7 +600,7 @@ export function FeatureCarousel({
            */
           return (
             <motion.div
-              className="relative h-full w-full"
+              className="relative w-full h-full"
               onAnimationComplete={handleAnimationComplete}
             >
               <AnimatedStepImage
@@ -621,7 +630,7 @@ export function FeatureCarousel({
            */
           return (
             <motion.div
-              className="relative h-full w-full"
+              className="relative w-full h-full"
               onAnimationComplete={handleAnimationComplete}
             >
               <AnimatedStepImage
@@ -694,7 +703,7 @@ export function FeatureCarousel({
         <motion.div
           key={step}
           {...ANIMATION_PRESETS.fadeInScale}
-          className="absolute h-full w-full"
+          className="w-full h-full absolute"
         >
           {content()}
         </motion.div>
@@ -722,3 +731,5 @@ export function FeatureCarousel({
     </FeatureCard>
   )
 }
+
+export default FeatureCarousel

@@ -7,6 +7,7 @@ export const ui: Registry = [
     dependencies: ["framer-motion"],
     files: ["ui/text-animate.tsx"],
   },
+
   {
     name: "texture-button",
     type: "components:ui",
@@ -189,5 +190,34 @@ export const ui: Registry = [
     type: "components:ui",
     dependencies: ["framer-motion"],
     files: ["ui/hover-video-player.tsx"],
+  },
+  {
+    name: "neumorph-eyebrow",
+    type: "components:ui",
+    dependencies: [""],
+    files: ["ui/neumorph-eyebrow.tsx"],
+  },
+  {
+    name: "neumorph-button",
+    type: "components:ui",
+    dependencies: [""],
+    files: ["ui/neumorph-button.tsx"],
+  },
+  {
+    name: "feature-carousel",
+    type: "components:ui",
+    dependencies: ["framer-motion"],
+    files: ["ui/feature-carousel.tsx"],
+  },
+  {
+    name: "intro-disclosure",
+    type: "components:ui",
+    dependencies: [
+      "framer-motion",
+      "react-use-measure",
+      "button",
+      "aspect-ratio",
+    ],
+    files: ["ui/intro-disclosure.tsx"],
   },
 ]

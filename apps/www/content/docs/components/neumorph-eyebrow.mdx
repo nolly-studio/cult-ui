@@ -1,0 +1,101 @@
+---
+title: Neumorph Eyebrow
+description: A neumorphic eyebrow text component with subtle animation effects.
+component: true
+links:
+---
+
+<ComponentPreview
+  name="neumorph-eyebrow-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
+
+## References
+
+<Citations>
+  <p className="font-medium text-primary">Inspiration</p>
+  <CitationList>
+    <CitationItem>
+      <CitationLink
+        href="https://animations.dev/learn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Animations dot dev
+      </CitationLink>
+    </CitationItem>
+  </CitationList>
+</Citations>
+
+## Installation
+
+<Tabs defaultValue="manual">
+  <TabsList>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="neumorph-eyebrow" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { NeumorphEyebrow } from "@/components/ui/neumorph-eyebrow"
+```
+
+```tsx
+export default function Example() {
+  return <NeumorphEyebrow>Featured Content</NeumorphEyebrow>
+}
+```
+
+## Features
+
+- Three variants: default, primary, and secondary
+- Neumorphic design with subtle shadow effects
+- Rounded pill shape
+- Compact and lightweight
+
+## Examples
+
+### All Variants
+
+```tsx
+<div className="space-y-4">
+  <NeumorphEyebrow>Default Eyebrow</NeumorphEyebrow>
+  <NeumorphEyebrow intent="primary">Primary Eyebrow</NeumorphEyebrow>
+  <NeumorphEyebrow intent="secondary">Secondary Eyebrow</NeumorphEyebrow>
+</div>
+```
+
+### With Custom Styling
+
+```tsx
+<NeumorphEyebrow className="font-bold">Custom Styled Eyebrow</NeumorphEyebrow>
+```
+
+### Common Use Cases
+
+```tsx
+<div className="space-y-4">
+  <div>
+    <NeumorphEyebrow>NEW</NeumorphEyebrow>
+    <h2>Feature Announcement</h2>
+  </div>
+
+  <div>
+    <NeumorphEyebrow intent="primary">BETA</NeumorphEyebrow>
+    <h2>Upcoming Feature</h2>
+  </div>
+
+  <div>
+    <NeumorphEyebrow intent="secondary">UPDATED</NeumorphEyebrow>
+    <h2>Recent Changes</h2>
+  </div>
+</div>
+```

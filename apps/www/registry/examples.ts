@@ -192,4 +192,28 @@ export const examples: Registry = [
     registryDependencies: ["hover-video-player"],
     files: ["example/hover-video-player-demo.tsx"],
   },
+  {
+    name: "neumorph-eyebrow-demo",
+    type: "components:example",
+    registryDependencies: ["neumorph-eyebrow"],
+    files: ["example/neumorph-eyebrow-demo.tsx"],
+  },
+  {
+    name: "neumorph-button-demo",
+    type: "components:example",
+    registryDependencies: ["neumorph-button"],
+    files: ["example/neumorph-button-demo.tsx"],
+  },
+  {
+    name: "feature-carousel-demo",
+    type: "components:example",
+    registryDependencies: ["feature-carousel"],
+    files: ["example/feature-carousel-demo.tsx"],
+  },
+  {
+    name: "intro-disclosure-demo",
+    type: "components:example",
+    registryDependencies: ["intro-disclosure"],
+    files: ["example/intro-disclosure-demo.tsx"],
+  },
 ]

@@ -1,0 +1,138 @@
+---
+title: Feature Carousel
+description: An animated carousel component for showcasing features with smooth transitions and interactive elements.
+component: true
+links:
+---
+
+<ComponentPreview
+  name="feature-carousel-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
+
+## Installation
+
+<Tabs defaultValue="manual">
+  <TabsList>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="feature-carousel" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { FeatureCarousel } from "@/components/animate/feature-card"
+```
+
+```tsx
+export default function Example() {
+  return (
+    <FeatureCarousel
+      title="Your Feature Title"
+      description="Your feature description"
+      image={{
+        step1light1: Image1,
+        step1light2: Image2,
+        step2light1: Image3,
+        step2light2: Image4,
+        step3light: Image5,
+        step4light: Image6,
+        alt: "Feature showcase",
+      }}
+    />
+  )
+}
+```
+
+## Features
+
+- Smooth transitions between steps with spring animations
+- Interactive hover effects with gradient overlay
+- Responsive design with mobile-first approach
+- Customizable image positions and styles
+- Auto-play with manual control
+- Progress indicators with step tracking
+
+## Examples
+
+### Basic Usage
+
+```tsx
+import { FeatureCarousel } from "@/components/animate/feature-card"
+
+export default function BasicExample() {
+  return (
+    <FeatureCarousel
+      title="Feature Showcase"
+      description="Explore our amazing features"
+      image={{
+        step1light1: "/images/feature1.png",
+        step1light2: "/images/feature2.png",
+        step2light1: "/images/feature3.png",
+        step2light2: "/images/feature4.png",
+        step3light: "/images/feature5.png",
+        step4light: "/images/feature6.png",
+        alt: "Feature showcase",
+      }}
+    />
+  )
+}
+```
+
+### Custom Styling
+
+```tsx
+import { cn } from "@/lib/utils"
+import { FeatureCarousel } from "@/components/animate/feature-card"
+
+export default function StyledExample() {
+  return (
+    <FeatureCarousel
+      title="Custom Styled Features"
+      description="With custom positioning and effects"
+      step1img1Class={cn(
+        "pointer-events-none w-[50%] border border-stone-100/10",
+        "rounded-2xl left-[25%] top-[50%]",
+        "hover:scale-105 transition-transform"
+      )}
+      image={{
+        step1light1: "/images/feature1.png",
+        step1light2: "/images/feature2.png",
+        step2light1: "/images/feature3.png",
+        step2light2: "/images/feature4.png",
+        step3light: "/images/feature5.png",
+        step4light: "/images/feature6.png",
+        alt: "Feature showcase",
+      }}
+      bgClass="bg-gradient-to-tr from-blue-900/90 to-purple-800/90"
+    />
+  )
+}
+```
+
+## Style Guide
+
+The component uses Tailwind CSS for styling. Key style considerations:
+
+- Use `pointer-events-none` for images to prevent interaction issues
+- Include `overflow-hidden` when using rounded corners
+- Add `transition-all` for smooth hover effects
+- Use responsive classes (`md:`, `lg:`) for different layouts
+- Include dark mode variants for borders and backgrounds
+
+## Accessibility
+
+The carousel includes:
+
+- ARIA labels for navigation
+- Keyboard navigation support
+- Focus management
+- Screen reader announcements for step changes
+- Proper contrast ratios for text

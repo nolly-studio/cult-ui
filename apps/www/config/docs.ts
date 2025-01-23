@@ -36,43 +36,13 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
-          title: "App UI",
+          title: "Buttons & Controls",
           items: [
             {
-              title: "Animated Number",
-              href: "/docs/components/animated-number",
+              title: "Neumorph Button",
+              href: "/docs/components/neumorph-button",
               items: [],
-            },
-            {
-              title: "Bg Animate Button",
-              href: "/docs/components/bg-animate-button",
-              items: [],
-            },
-            {
-              title: "Bg Media Hero",
-              href: "/docs/components/bg-media",
-              items: [],
-            },
-            {
-              title: "Color Picker",
-              href: "/docs/components/color-picker",
-              items: [],
-            },
-            {
-              title: "Direction Aware Tabs",
-              href: "/docs/components/direction-aware-tabs",
-              items: [],
-            },
-            {
-              title: "Dynamic Island",
-              href: "/docs/components/dynamic-island",
-              items: [],
-            },
-
-            {
-              title: "Expandable",
-              href: "/docs/components/expandable",
-              items: [],
+              label: "new",
             },
             {
               title: "Family Button",
@@ -80,20 +50,25 @@ export const docsConfig: DocsConfig = {
               items: [],
             },
             {
-              title: "Floating Panel",
-              href: "/docs/components/floating-panel",
+              title: "Texture Button",
+              href: "/docs/components/texture-button",
               items: [],
             },
             {
-              title: "Gradient Heading",
-              href: "/docs/components/gradient-heading",
+              title: "Bg Animate Button",
+              href: "/docs/components/bg-animate-button",
               items: [],
             },
+          ],
+        },
+        {
+          title: "Cards & Containers",
+          items: [
             {
-              title: "Hover Video Player",
-              href: "/docs/components/hover-video-player",
+              title: "Expandable Card",
+              href: "/docs/components/expandable",
               items: [],
-              label: "new",
+              label: "updated",
             },
             {
               title: "Minimal Card",
@@ -101,16 +76,64 @@ export const docsConfig: DocsConfig = {
               items: [],
             },
             {
-              title: "Loading Carousel",
-              href: "/docs/components/loading-carousel",
+              title: "Neumorph Eyebrow",
+              href: "/docs/components/neumorph-eyebrow",
               items: [],
               label: "new",
             },
             {
-              title: "Logo Carousel",
-              href: "/docs/components/logo-carousel",
+              title: "Texture Card",
+              href: "/docs/components/texture-card",
+              items: [],
+            },
+            {
+              title: "Shift Card",
+              href: "/docs/components/shift-card",
+              items: [],
+            },
+          ],
+        },
+        {
+          title: "Onboarding & Tours",
+          items: [
+            {
+              title: "Feature Carousel",
+              href: "/docs/components/feature-carousel",
               items: [],
               label: "new",
+            },
+            {
+              title: "Intro Disclosure",
+              href: "/docs/components/intro-disclosure",
+              items: [],
+              label: "new",
+            },
+            {
+              title: "Loading Carousel",
+              href: "/docs/components/loading-carousel",
+              items: [],
+              label: "recent",
+            },
+          ],
+        },
+
+        {
+          title: "Layout & Forms",
+          items: [
+            {
+              title: "Direction Aware Tabs",
+              href: "/docs/components/direction-aware-tabs",
+              items: [],
+            },
+            {
+              title: "Side Panel",
+              href: "/docs/components/side-panel",
+              items: [],
+            },
+            {
+              title: "Floating Panel",
+              href: "/docs/components/floating-panel",
+              items: [],
             },
             {
               title: "Popover",
@@ -123,18 +146,71 @@ export const docsConfig: DocsConfig = {
               items: [],
             },
             {
-              title: "Shift Card",
-              href: "/docs/components/shift-card",
-              items: [],
-            },
-            {
-              title: "Side Panel",
-              href: "/docs/components/side-panel",
-              items: [],
-            },
-            {
               title: "Sortable List",
               href: "/docs/components/sortable-list",
+              items: [],
+            },
+          ],
+        },
+        {
+          title: "Interactive Elements",
+          items: [
+            {
+              title: "Dynamic Island",
+              href: "/docs/components/dynamic-island",
+              items: [],
+            },
+            {
+              title: "Color Picker",
+              href: "/docs/components/color-picker",
+              items: [],
+            },
+
+            {
+              title: "MacOS Dock",
+              href: "/docs/components/dock",
+              items: [],
+            },
+          ],
+        },
+        {
+          title: "Media",
+          items: [
+            {
+              title: "Logo Carousel",
+              href: "/docs/components/logo-carousel",
+              items: [],
+              label: "recent",
+            },
+            {
+              title: "3D Carousel",
+              href: "/docs/components/three-d-carousel",
+              items: [],
+            },
+            {
+              title: "Hover Video Player",
+              href: "/docs/components/hover-video-player",
+              items: [],
+              label: "recent",
+            },
+            {
+              title: "Bg Media Hero",
+              href: "/docs/components/bg-media",
+              items: [],
+            },
+            {
+              title: "Tweet Grid",
+              href: "/docs/components/tweet-grid",
+              items: [],
+            },
+          ],
+        },
+        {
+          title: "Typography & Text",
+          items: [
+            {
+              title: "Gradient Heading",
+              href: "/docs/components/gradient-heading",
               items: [],
             },
             {
@@ -143,55 +219,34 @@ export const docsConfig: DocsConfig = {
               items: [],
             },
             {
-              title: "Texture Button",
-              href: "/docs/components/texture-button",
+              title: "Typewriter",
+              href: "/docs/components/typewriter",
               items: [],
             },
             {
-              title: "Texture Card",
-              href: "/docs/components/texture-card",
+              title: "Animated Number",
+              href: "/docs/components/animated-number",
               items: [],
             },
           ],
         },
+
         {
-          title: "Bespoke UI",
+          title: "Visual Effects",
           items: [
-            {
-              title: "3D Carousel",
-              href: "/docs/components/three-d-carousel",
-              items: [],
-            },
             {
               title: "LightBoard",
               href: "/docs/components/lightboard",
               items: [],
             },
             {
-              title: "MacOS Dock",
-              href: "/docs/components/dock",
-              items: [],
-            },
-            {
               title: "Fractal Grid",
               href: "/docs/components/bg-animated-fractal-grid",
               items: [],
-              label: "new",
             },
             {
               title: "Shader Lens Blur",
               href: "/docs/components/shader-lens-blur",
-              items: [],
-              label: "new",
-            },
-            {
-              title: "Tweet Grid",
-              href: "/docs/components/tweet-grid",
-              items: [],
-            },
-            {
-              title: "Typewriter",
-              href: "/docs/components/typewriter",
               items: [],
             },
           ],

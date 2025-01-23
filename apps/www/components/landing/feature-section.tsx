@@ -9,7 +9,7 @@ import Balancer from "react-wrap-balancer"
 
 import { GradientHeading } from "@/registry/default/ui/gradient-heading"
 
-import { ChallengeCreationCard } from "../animate/feature-card"
+import { FeatureCarousel } from "../animate/feature-card"
 
 export function FeaturesSection() {
   return (
@@ -33,7 +33,7 @@ export function FeaturesSection() {
 
             <div className="rounded-[34px] bg-neutral-700 p-2">
               <div className="relative z-10 grid w-full gap-8 rounded-[28px] bg-neutral-950 p-2">
-                <ChallengeCreationCard
+                <FeatureCarousel
                   step1img1Class={clsx(
                     "pointer-events-none w-[50%] border border-stone-100/10 transition-all duration-500 dark:border-stone-700/50",
                     "max-md:scale-[160%] max-md:rounded-[24px] rounded-[24px] left-[25%] top-[57%] md:left-[35px] md:top-[29%]",
@@ -64,7 +64,6 @@ export function FeaturesSection() {
                   )}
                   description="Make your app 🤌"
                   bgClass="lg:bg-gradient-to-tr"
-                  //   @ts-ignore
                   image={{
                     step1light1: family,
                     step1light2: shiftCard,

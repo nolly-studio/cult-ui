@@ -12,6 +12,8 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Icons } from "@/components/icons"
 
+import { Separator } from "./ui/separator"
+
 export function MobileNav() {
   const [open, setOpen] = React.useState(false)
 
@@ -60,24 +62,43 @@ export function MobileNav() {
           className="flex items-center"
           onOpenChange={setOpen}
         >
-          <Icons.logo className="mr-2 h-4 w-4" />
-          <span className="font-bold">{siteConfig.name}</span>
+          <Icons.cultLogoBasic className="h-6 w-6 fill-black  " />
+          <span className=" text-lg font-bold sm:inline-block">cult ui</span>
+          <span className="sr-only">{siteConfig.name}</span>
         </MobileLink>
-        <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
-          <div className="flex flex-col space-y-3">
-            {docsConfig.mainNav?.map(
-              (item) =>
-                item.href && (
-                  <MobileLink
-                    key={item.href}
-                    href={item.href}
-                    onOpenChange={setOpen}
-                  >
-                    {item.title}
-                  </MobileLink>
-                )
+
+        <div className="flex flex-col space-y-3 bg-background pt-4">
+          <a
+            href="https://pro.cult-ui.com/blocks"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(
+              "text-base font-semibold transition-colors hover:text-foreground/80"
             )}
-          </div>
+          >
+            Blocks <span className="text-xs text-cyan-500">(8 new)</span>
+          </a>
+          <a
+            href="https://pro.cult-ui.com/sections"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(
+              "text-base font-semibold transition-colors hover:text-foreground/80"
+            )}
+          >
+            Sections <span className="text-xs text-cyan-500">(10 new)</span>
+          </a>
+          <a
+            href="https://newcult.co"
+            className={cn(
+              "text-base font-semibold transition-colors hover:text-foreground/80"
+            )}
+          >
+            Templates <span className="text-xs text-cyan-500">(1 new)</span>
+          </a>
+        </div>
+
+        <ScrollArea className="my-4 mr-2 h-[calc(100vh-12rem)] rounded-sm px-3 pb-2 shadow-inner ring-1 ring-border/60">
           <div className="flex flex-col space-y-2">
             {docsConfig.sidebarNav.map((item, index) => (
               <div key={index} className="flex flex-col space-y-3 pt-6">
