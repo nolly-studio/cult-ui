@@ -32,7 +32,7 @@ export function AnimatedNumber({
   useEffect(() => {
     spring.set(value)
     if (onAnimationStart) onAnimationStart()
-    const unsubscribe = spring.onChange(() => {
+    const unsubscribe = spring.on("change", () => {
       if (spring.get() === value && onAnimationComplete) onAnimationComplete()
     })
     return () => unsubscribe()
