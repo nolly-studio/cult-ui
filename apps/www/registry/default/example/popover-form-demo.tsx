@@ -109,7 +109,7 @@ type Theme = "light" | "dark" | "system"
 export function ColorThemeSwitcherExample() {
   const [theme, setTheme] = useState<Theme>("system")
   const [systemTheme, setSystemTheme] = useState<"light" | "dark">("light");
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const themes: Theme[] = ["light", "dark", "system"]
 
   useEffect(() => {
