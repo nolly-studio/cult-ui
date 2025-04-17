@@ -161,11 +161,11 @@ export function ColorThemeSwitcherExample() {
                     key={t}
                     onClick={() => setTheme(t)}
                     className={`w-full flex items-center px-3 py-2 text-sm rounded-md ${isSelected
-                        ? `bg-primary ${effectiveTheme === "light"
-                          ? "text-white"
-                          : "text-black"
-                        }`
-                        : `hover:bg-primary hover:text-white dark:hover:bg-white dark:hover:text-gray-800 dark:text-white`
+                      ? `bg-primary ${effectiveTheme === "light"
+                        ? "text-white"
+                        : "text-black"
+                      }`
+                      : ` hover:text-black hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white dark:text-white`
                       }`}
                   >
                     {t === "light" && <Sun className="mr-2 h-4 w-4" />}
