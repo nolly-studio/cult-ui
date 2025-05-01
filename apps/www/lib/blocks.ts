@@ -75,9 +75,7 @@ export async function getBlock(
 async function _getAllBlocks(style: Style["name"] = DEFAULT_BLOCKS_STYLE) {
   const index = z.record(registryEntrySchema).parse(Index[style])
 
-  return Object.values(index).filter(
-    (block) => block.type === "components:block"
-  )
+  return Object.values(index).filter((block) => block.type === "registry:block")
 }
 
 async function _getBlockCode(

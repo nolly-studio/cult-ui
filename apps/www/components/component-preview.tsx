@@ -12,6 +12,8 @@ import { StyleSwitcher } from "@/components/style-switcher"
 import { ThemeWrapper } from "@/components/theme-wrapper"
 import { styles } from "@/registry/styles"
 
+import { InstallationCli } from "./cli-install-button"
+
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string
   extractClassname?: boolean
@@ -86,6 +88,7 @@ export function ComponentPreview({
               Code
             </TabsTrigger>
           </TabsList>
+          <InstallationCli value={name.replace("-demo", "")} />
         </div>
         <TabsContent
           value="preview"

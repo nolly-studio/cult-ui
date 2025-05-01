@@ -1,6 +1,10 @@
-import { blocks } from "@/registry/blocks"
+import { type Registry } from "shadcn/registry"
+
 import { examples } from "@/registry/examples"
-import { Registry } from "@/registry/schema"
 import { ui } from "@/registry/ui"
 
-export const registry: Registry = [...ui, ...examples, ...blocks]
+export const registry = {
+  name: "shadcn/ui",
+  homepage: "https://ui.shadcn.com",
+  items: [...ui, ...examples],
+} satisfies Registry

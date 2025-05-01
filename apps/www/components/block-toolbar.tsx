@@ -22,6 +22,8 @@ import { BlockCopyButton } from "@/components/block-copy-button"
 import { StyleSwitcher } from "@/components/style-switcher"
 import { Block } from "@/registry/schema"
 
+import { InstallationCli } from "./cli-install-button"
+
 export function BlockToolbar({
   block,
   resizablePanelRef,
@@ -50,6 +52,7 @@ export function BlockToolbar({
             Code
           </TabsTrigger>
         </TabsList>
+
         <Separator orientation="vertical" className="mx-2 hidden h-4 md:flex" />
         <StyleSwitcher
           className="h-[calc(theme(spacing.7)_-_1px)] dark:h-7"

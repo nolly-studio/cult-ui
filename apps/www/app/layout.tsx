@@ -111,6 +111,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <ThemeSwitcher />
             <Analytics />
             <GoogleTagManager gtmId="G-7E7YD8249G" />
+
             <NewYorkToaster />
             <DefaultToaster />
             <NewYorkSonner />

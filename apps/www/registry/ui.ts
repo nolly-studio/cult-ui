@@ -1,223 +1,394 @@
-import { Registry } from "@/registry/schema"
+import { type Registry } from "shadcn/registry"
 
-export const ui: Registry = [
+export const ui: Registry["items"] = [
   {
     name: "text-animate",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["ui/text-animate.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/text-animate.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
-
   {
     name: "texture-button",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["@radix-ui/react-slot"],
-    files: ["ui/texture-button.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/texture-button.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "texture-card",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: [""],
-    files: ["ui/texture-card.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/texture-card.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "shift-card",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: [""],
-    files: ["ui/shift-card.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/shift-card.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "minimal-card",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: [""],
-    files: ["ui/minimal-card.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/minimal-card.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "dynamic-island",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["ui/dynamic-island.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/dynamic-island.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "direction-aware-tabs",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion", "react-use-measure"],
-    files: ["ui/direction-aware-tabs.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/direction-aware-tabs.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "bg-animate-button",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: [""],
-    files: ["ui/bg-animate-button.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/bg-animate-button.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "family-button",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: [""],
-    files: ["ui/family-button.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/family-button.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "side-panel",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: [""],
-    files: ["ui/side-panel.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/side-panel.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "bg-media",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: [""],
-    files: ["ui/bg-media.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/bg-media.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "three-d-carousel",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: [""],
-    files: ["ui/three-d-carousel.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/three-d-carousel.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "tweet-grid",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: [""],
-    files: ["ui/tweet-grid.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/tweet-grid.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "gradient-heading",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["@radix-ui/react-slot"],
-    files: ["ui/gradient-heading.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/gradient-heading.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "typewriter",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["ui/typewriter.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/typewriter.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "animated-number",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["ui/animated-number.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/animated-number.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "sortable-list",
-    type: "components:ui",
-    dependencies: ["framer-motion, react-use-measure"],
-    files: ["ui/sortable-list.tsx"],
+    type: "registry:ui",
+    dependencies: ["framer-motion", "react-use-measure"],
+    files: [
+      {
+        path: "registry/default/ui/sortable-list.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "dock",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["ui/dock.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/dock.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "lightboard",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: [""],
-    files: ["ui/lightboard.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/lightboard.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "canvas-fractal-grid",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["ui/canvas-fractal-grid.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/canvas-fractal-grid.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "bg-animated-fractal-dot-grid",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["ui/bg-animated-fractal-dot-grid.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/bg-animated-fractal-dot-grid.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "bg-animated-gradient",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["ui/bg-animated-gradient.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/bg-animated-gradient.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
-
   {
     name: "popover",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["ui/popover.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/popover.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "floating-panel",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["ui/floating-panel.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/floating-panel.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "color-picker",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["ui/color-picker.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/color-picker.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
-
   {
     name: "shader-lens-blur",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion", "three", "jotai"],
-    files: ["ui/shader-lens-blur.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/shader-lens-blur.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
-
   {
     name: "popover-form",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["ui/popover-form.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/popover-form.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "expandable",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["ui/expandable.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/expandable.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "logo-carousel",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["ui/logo-carousel.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/logo-carousel.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "loading-carousel",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["ui/loading-carousel.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/loading-carousel.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "hover-video-player",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["ui/hover-video-player.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/hover-video-player.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "neumorph-eyebrow",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: [""],
-    files: ["ui/neumorph-eyebrow.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/neumorph-eyebrow.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "neumorph-button",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: [""],
-    files: ["ui/neumorph-button.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/neumorph-button.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "feature-carousel",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["ui/feature-carousel.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/feature-carousel.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "intro-disclosure",
-    type: "components:ui",
+    type: "registry:ui",
     dependencies: [
       "framer-motion",
       "react-use-measure",
       "button",
       "aspect-ratio",
     ],
-    files: ["ui/intro-disclosure.tsx"],
+    files: [
+      {
+        path: "registry/default/ui/intro-disclosure.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
 ]

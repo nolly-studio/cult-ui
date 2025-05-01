@@ -15,9 +15,11 @@
     "preview": "next build && next start -p 3001",
     "typecheck": "contentlayer build && tsc --noEmit",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
-    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
+    "registry:build": "shadcn build"
   },
   "dependencies": {
+    "shadcn": "2.5.0",
     "@faker-js/faker": "^8.2.0",
     "@hookform/resolvers": "^3.1.0",
     "@next/third-parties": "^15.3.1",

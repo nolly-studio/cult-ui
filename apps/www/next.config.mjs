@@ -4,6 +4,9 @@ import { createContentlayerPlugin } from "next-contentlayer"
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  outputFileTracingIncludes: {
+    registry: ["./registry/**/*"],
+  },
   images: {
     remotePatterns: [
       {

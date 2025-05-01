@@ -29,6 +29,8 @@ import { FrameworkDocs } from "@/components/framework-docs"
 import { StyleWrapper } from "@/components/style-wrapper"
 import { Style } from "@/registry/styles"
 
+import { InstallationCli } from "./cli-install-button"
+
 const components = {
   Accordion,
   AccordionContent,
@@ -224,6 +226,7 @@ const components = {
   Callout,
   ComponentPreview,
   ComponentExample,
+  InstallationCli,
   ComponentSource,
   AspectRatio,
   CodeBlockWrapper: ({ ...props }) => (

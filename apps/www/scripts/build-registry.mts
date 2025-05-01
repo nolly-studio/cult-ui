@@ -1,4 +1,4 @@
-// @sts-nocheck
+// @ts-nocheck
 import { existsSync, promises as fs, readFileSync } from "fs"
 import { tmpdir } from "os"
 import path, { basename } from "path"
@@ -40,9 +40,13 @@ export const Index: Record<string, any> = {
     index += `  "${style.name}": {`
 
     // Build style index.
-    for (const item of registry) {
+    for (const item of registry.items) {
       const resolveFiles = item.files.map(
-        (file) => `registry/${style.name}/${file}`
+        (file: { path: string; type: string }) => {
+          // Remove registry/default/ prefix if it exists
+          const cleanPath = file.path.replace(/^registry\/default\//, "")
+          return `registry/${style.name}/${cleanPath}`
+        }
       )
       const type = item.type.split(":")[1]
       let sourceFilename = ""
@@ -156,7 +160,10 @@ export const Index: Record<string, any> = {
 
                 const newImports = importLine.isDefault
                   ? importLine.text
-                  : new Set([...imports, child])
+                  : new Set([
+                      ...(Array.isArray(imports) ? imports : [imports]),
+                      child,
+                    ])
 
                 componentImports.set(
                   importLine.module,
@@ -221,15 +228,15 @@ export const Index: Record<string, any> = {
       name: "${item.name}",
       type: "${item.type}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
-      component: React.lazy(() => import("@/registry/${style.name}/${type}/${
-        item.name
-      }")),
+      component: React.lazy(() => import("@/registry/${style.name}/${
+        item.type === "registry:component" ? "example" : "ui"
+      }/${item.name}")),
       source: "${sourceFilename}",
-      files: [${resolveFiles.map((file) => `"${file}"`)}],
-      category: "${item.category}",
-      subcategory: "${item.subcategory}",
+      files: [${resolveFiles.map((file: string) => `"${file}"`)}],
+      category: "${item.category || "undefined"}",
+      subcategory: "${item.subcategory || "undefined"}",
       chunks: [${chunks.map(
-        (chunk) => `{
+        (chunk: any) => `{
         name: "${chunk.name}",
         description: "${chunk.description}",
         component: ${chunk.component}
@@ -253,12 +260,29 @@ export const Index: Record<string, any> = {
   // ----------------------------------------------------------------------------
   // Build registry/index.json.
   // ----------------------------------------------------------------------------
-  const names = registry.filter((item) => item.type === "components:ui")
-  const registryJson = JSON.stringify(names, null, 2)
+  const registryJson = {
+    $schema: "https://ui.shadcn.com/schema/registry.json",
+    name: "cult/ui",
+    homepage: "https://cult-ui.com",
+    items: registry.items.map((item) => ({
+      name: item.name,
+      type: item.type,
+      title: item.title || item.name,
+      description: item.description || "",
+      dependencies: item.dependencies || [],
+      registryDependencies: item.registryDependencies || [],
+      files: item.files.map((file) => ({
+        path: file.path,
+        type: file.type,
+        target: file.target,
+      })),
+    })),
+  }
+
   rimraf.sync(path.join(REGISTRY_PATH, "index.json"))
   await fs.writeFile(
     path.join(REGISTRY_PATH, "index.json"),
-    registryJson,
+    JSON.stringify(registryJson, null, 2),
     "utf8"
   )
 
@@ -279,19 +303,21 @@ async function buildStyles(registry: Registry) {
       await fs.mkdir(targetPath, { recursive: true })
     }
 
-    for (const item of registry) {
-      if (item.type !== "components:ui") {
+    for (const item of registry.items) {
+      if (item.type !== "registry:ui") {
         continue
       }
 
-      const files = item.files?.map((file) => {
+      const files = item.files?.map((file: { path: string; type: string }) => {
+        // Remove registry/default/ prefix if it exists
+        const cleanPath = file.path.replace(/^registry\/default\//, "")
         const content = readFileSync(
-          path.join(process.cwd(), "registry", style.name, file),
+          path.join(process.cwd(), "registry", style.name, cleanPath),
           "utf8"
         )
 
         return {
-          name: basename(file),
+          name: basename(cleanPath),
           content,
         }
       })
@@ -469,7 +495,7 @@ async function buildThemes() {
           const [resolvedBase, scale] = resolvedColor.split("-")
           const color = scale
             ? colorsData[resolvedBase].find(
-                (item) => item.scale === parseInt(scale)
+                (item: { scale: number }) => item.scale === parseInt(scale)
               )
             : colorsData[resolvedBase]
           if (color) {
@@ -581,7 +607,7 @@ async function buildThemes() {
     // ----------------------------------------------------------------------------
     rimraf.sync(path.join(REGISTRY_PATH, "themes"))
     for (const baseColor of ["slate", "gray", "zinc", "neutral", "stone"]) {
-      const payload = {
+      const payload: Record<string, any> = {
         name: baseColor,
         label: baseColor.charAt(0).toUpperCase() + baseColor.slice(1),
         cssVars: {},
@@ -597,7 +623,7 @@ async function buildThemes() {
             const [resolvedBase, scale] = resolvedColor.split("-")
             const color = scale
               ? colorsData[resolvedBase].find(
-                  (item) => item.scale === parseInt(scale)
+                  (item: { scale: number }) => item.scale === parseInt(scale)
                 )
               : colorsData[resolvedBase]
             if (color) {

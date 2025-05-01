@@ -33,7 +33,8 @@
     "release": "changeset version",
     "pub:beta": "cd packages/cli && pnpm pub:beta",
     "pub:release": "cd packages/cli && pnpm pub:release",
-    "test": "turbo run test --force"
+    "test": "turbo run test --force",
+    "registry:build": "pnpm --filter=www registry:build"
   },
   "packageManager": "pnpm@9.0.4",
   "dependencies": {
