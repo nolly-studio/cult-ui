@@ -13,6 +13,7 @@ import { ThemeWrapper } from "@/components/theme-wrapper"
 import { styles } from "@/registry/styles"
 
 import { InstallationCli } from "./cli-install-button"
+import { OpenInV0Button } from "./open-in-v0-button"
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string
@@ -88,6 +89,7 @@ export function ComponentPreview({
               Code
             </TabsTrigger>
           </TabsList>
+          <OpenInV0Button name={name.replace("-demo", "")} />
           <InstallationCli value={name.replace("-demo", "")} />
         </div>
         <TabsContent

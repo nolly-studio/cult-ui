@@ -124,13 +124,13 @@ export function InstallationCli({ value, className }: InstallationCliProps) {
       {/* Command section */}
       <div
         className={cn(
-          "flex flex-1 items-center gap-2 overflow-x-auto px-3 py-2.5 scrollbar-hide",
+          "scrollbar-hide flex flex-1 items-center gap-2 overflow-x-auto px-3 py-2.5",
           isVerticalLayout && "w-full"
         )}
       >
         <Terminal
           className={cn(
-            "flex-shrink-0 text-emerald-400",
+            "shrink-0 text-emerald-400",
             isSmallScreen ? "size-3.5" : "size-4"
           )}
         />
