@@ -61,7 +61,9 @@ export function MainNav() {
           Sections <span className="text-xs text-cyan-500">(10 new)</span>
         </a>
         <a
-          href="https://pro.cult-ui.com/sections"
+          href="https://pro.cult-ui.com/templates"
+          target="_blank"
+          rel="noopener noreferrer"
           className={cn(
             "text-base font-semibold transition-colors hover:text-foreground/80",
             pathname?.startsWith("/examples")
