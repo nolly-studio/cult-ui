@@ -36,7 +36,7 @@ export function TemplateGrid() {
               rel="noopener noreferrer"
               href={card.slug}
             >
-              <MinimalCard className=" relative  p-2 no-underline shadow-sm transition-colors  dark:bg-neutral-800/90 dark:hover:bg-neutral-800/80">
+              <MinimalCard className=" relative  p-2 no-underline shadow-sm transition-colors  dark:bg-neutral-950/90 dark:hover:bg-neutral-800/80">
                 <div
                   className={cn(
                     "relative mb-6 h-[190px] w-full rounded-[20px]",
@@ -88,7 +88,7 @@ export function TemplateGrid() {
 export const TEMPLATES_GRID = [
   {
     name: "Logo GPT",
-    slug: "https://www.newcult.co/templates/logo-gpt-template",
+    slug: "https://pro.cult-ui.com/templates/logo-gpt-template",
     new: true,
     downloadUrl: "cult-logo-gpt-template.zip",
     liveUrl: "https://cult-logo.vercel.app", // replace with the actual live URL
@@ -124,13 +124,13 @@ export const TEMPLATES_GRID = [
   },
   {
     name: "Directory",
-    slug: "https://www.newcult.co/templates/cult-directory-template",
+    slug: "https://pro.cult-ui.com/templates/cult-directory-template",
     new: true,
     downloadUrl: "cult-directory.zip",
     liveUrl: "https://nextjs.design", // replace with the actual live URL
     meta: "fullstack",
     description:
-      "Automated directory platform with AI enrichment, web scraping pipeline, and built-in authentication for rapid deployment of SEO-optimized listings.",
+      "Automated directory platform with AI enrichment, and web scraping pipeline for rapid deployment of SEO-optimized listings.",
     features: [
       {
         name: "Scraping",
@@ -165,7 +165,7 @@ export const TEMPLATES_GRID = [
   },
   {
     name: "Travel Stash",
-    slug: "https://www.newcult.co/templates/cult-offline-travel-stash",
+    slug: "https://pro.cult-ui.com/templates/cult-offline-travel-stash",
     new: false,
     downloadUrl: "cult-offline-travel-stash.zip",
     liveUrl: "https://dub.sh/travl", // replace with the actual live URL
@@ -207,7 +207,7 @@ export const TEMPLATES_GRID = [
     downloadUrl: "cult-landing-page.zip",
     liveUrl: "https://dub.sh/rune",
     gradient: "bg-gradient-to-b from-white/10 to-[#FF9150] via-[#FFD0B7]/30",
-    slug: "https://www.newcult.co/templates/cult-landing-page",
+    slug: "https://pro.cult-ui.com/templates/cult-landing-page",
     description:
       "Modern landing page template featuring Framer Motion animations, custom navigation components, and responsive design optimized for conversions.",
     features: [
@@ -230,7 +230,7 @@ export const TEMPLATES_GRID = [
 
   {
     name: "Cult SEO",
-    slug: "https://www.newcult.co/templates/cult-seo",
+    slug: "https://pro.cult-ui.com/templates/cult-seo",
     new: false,
     downloadUrl: "cult-seo.zip",
     liveUrl: "https://cleanmyseo.com",
@@ -265,7 +265,7 @@ export const TEMPLATES_GRID = [
 
   {
     name: "Manifest",
-    slug: "https://www.newcult.co/templates/manifest",
+    slug: "https://pro.cult-ui.com/templates/manifest",
     meta: "fullstack",
     liveUrl: "https://dub.sh/vector",
     downloadUrl: "cult-manifest-v1.2.zip",
