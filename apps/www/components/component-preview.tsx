@@ -89,8 +89,10 @@ export function ComponentPreview({
               Code
             </TabsTrigger>
           </TabsList>
-          <OpenInV0Button name={name.replace("-demo", "")} />
-          <InstallationCli value={name.replace("-demo", "")} />
+          <div className="grid max-w-md grid-cols-2 gap-2">
+            <OpenInV0Button name={name.replace("-demo", "")} />
+            <InstallationCli value={name.replace("-demo", "")} />
+          </div>
         </div>
         <TabsContent
           value="preview"

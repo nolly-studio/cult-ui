@@ -59,14 +59,6 @@ export function InstallationCli({ value, className }: InstallationCliProps) {
       >
         <div className="flex items-center gap-2">
           <ShadcnLogo className="size-4 text-zinc-100" />
-          <span
-            className={cn(
-              "text-sm font-medium text-zinc-100",
-              isSmallScreen && !isVerticalLayout ? "hidden" : "block"
-            )}
-          >
-            shadcn
-          </span>
         </div>
 
         {/* Copy button appears in header on vertical layout */}
