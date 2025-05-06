@@ -107,23 +107,34 @@ export function NewsletterSignupExample() {
 type Theme = "light" | "dark" | "system"
 
 export function ColorThemeSwitcherExample() {
-  const [theme, setTheme] = useState("")
-  const [open, setOpen] = useState(true)
+  const [theme, setTheme] = useState<Theme>("system")
+  const [systemTheme, setSystemTheme] = useState<"light" | "dark">("light");
+  const [open, setOpen] = useState(false)
   const themes: Theme[] = ["light", "dark", "system"]
+
+  useEffect(() => {
+    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)")
+    const updateSystemTheme = () => {
+      setSystemTheme(systemPrefersDark.matches ? "dark" : "light")
+    }
+
+    updateSystemTheme()
+    systemPrefersDark.addEventListener("change", updateSystemTheme)
+
+    return () => {
+      systemPrefersDark.removeEventListener("change", updateSystemTheme)
+    }
+  }, []);
 
   useEffect(() => {
     const root = window.document.documentElement
     root.classList.remove("light", "dark")
     if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches
-        ? "dark"
-        : "light"
       root.classList.add(systemTheme)
     } else {
-      if (theme) root.classList.add(theme)
+      root.classList.add(theme)
     }
-  }, [theme])
+  }, [theme, systemTheme])
 
   return (
     <div className="flex w-full items-center justify-center">
@@ -142,27 +153,33 @@ export function ColorThemeSwitcherExample() {
             </h3>
 
             <div className="pt-2 space-y-2">
-              {themes.map((t) => (
-                <button
-                  key={t}
-                  onClick={() => setTheme(t)}
-                  className={`w-full flex items-center px-3 py-2 text-sm rounded-md ${
-                    theme === t
-                      ? "bg-primary text-white"
-                      : "hover:bg-gray-100 dark:hover:bg-gray-800"
-                  }`}
-                >
-                  {t === "light" && <Sun className="mr-2 h-4 w-4" />}
-                  {t === "dark" && <Moon className="mr-2 h-4 w-4" />}
-                  {t === "system" && <Monitor className="mr-2 h-4 w-4" />}
-                  <span className="capitalize">{t}</span>
-                </button>
-              ))}
+              {themes.map((t) => {
+                const isSelected = theme === t
+                const effectiveTheme = t === "system" ? systemTheme : t
+                return (
+                  < button
+                    key={t}
+                    onClick={() => setTheme(t)}
+                    className={`w-full flex items-center px-3 py-2 text-sm rounded-md ${isSelected
+                      ? `bg-primary ${effectiveTheme === "light"
+                        ? "text-white"
+                        : "text-black"
+                      }`
+                      : ` hover:text-black hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white dark:text-white`
+                      }`}
+                  >
+                    {t === "light" && <Sun className="mr-2 h-4 w-4" />}
+                    {t === "dark" && <Moon className="mr-2 h-4 w-4 " />}
+                    {t === "system" && <Monitor className="mr-2 h-4 w-4" />}
+                    <span className="capitalize">{t}</span>
+                  </button>
+                )
+              })}
             </div>
           </div>
         }
       />
-    </div>
+    </div >
   )
 }
 
