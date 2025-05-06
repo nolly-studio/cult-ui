@@ -286,6 +286,13 @@ export const Index: Record<string, any> = {
     "utf8"
   )
 
+  // Also write the registry to apps/www/registry.json
+  await fs.writeFile(
+    path.join(process.cwd(), "registry.json"),
+    JSON.stringify(registryJson, null, 2),
+    "utf8"
+  )
+
   // Write style index.
   rimraf.sync(path.join(process.cwd(), "__registry__/index.tsx"))
   await fs.writeFile(path.join(process.cwd(), "__registry__/index.tsx"), index)

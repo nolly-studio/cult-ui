@@ -386,4 +386,15 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "text-gif-demo",
+    type: "registry:component",
+    registryDependencies: ["text-gif"],
+    files: [
+      {
+        path: "registry/default/example/text-gif-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ]

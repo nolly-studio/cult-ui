@@ -391,4 +391,15 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "text-gif",
+    type: "registry:ui",
+    dependencies: ["next/image", "framer-motion"],
+    files: [
+      {
+        path: "registry/default/ui/text-gif.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev -p 3003",
     "build": "contentlayer build && pnpm build:registry && next build",
-    "build:registry": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --loglevel silent --write \"registry/**/*.{ts,tsx,mdx}\" --cache",
+    "build:registry": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --loglevel silent --write \"registry/**/*.{ts,tsx,mdx}\" --cache && pnpm shadcn:build",
     "build:docs": "contentlayer build",
     "seed:tasks": "tsx --tsconfig ./tsconfig.scripts.json ./app/(app)/examples/tasks/data/seed.ts",
     "start": "next start -p 3001",
@@ -16,7 +16,7 @@
     "typecheck": "contentlayer build && tsc --noEmit",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
-    "registry:build": "shadcn build"
+    "shadcn:build": "shadcn build"
   },
   "dependencies": {
     "shadcn": "2.5.0",

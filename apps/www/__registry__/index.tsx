@@ -390,6 +390,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "text-gif": {
+      name: "text-gif",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/text-gif")),
+      source: "",
+      files: ["registry/default/ui/text-gif.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "text-animate-demo": {
       name: "text-animate-demo",
       type: "registry:component",
@@ -771,6 +782,17 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/intro-disclosure-demo")),
       source: "",
       files: ["registry/default/example/intro-disclosure-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "text-gif-demo": {
+      name: "text-gif-demo",
+      type: "registry:component",
+      registryDependencies: ["text-gif"],
+      component: React.lazy(() => import("@/registry/default/example/text-gif-demo")),
+      source: "",
+      files: ["registry/default/example/text-gif-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []

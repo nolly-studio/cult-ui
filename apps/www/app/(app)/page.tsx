@@ -29,7 +29,7 @@ export default function IndexPage() {
             <Announcement />
           </FadeIn>
           <FadeIn>
-            <div className="pt-4 md:pt-0">
+            <div className="py-4 md:py-0">
               <GradientHeading
                 weight="bold"
                 className="text-center text-xl font-bold leading-tight tracking-tighter md:text-5xl "

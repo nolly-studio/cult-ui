@@ -571,6 +571,23 @@
       ]
     },
     {
+      "name": "text-gif",
+      "type": "registry:ui",
+      "title": "text-gif",
+      "description": "",
+      "dependencies": [
+        "next/image",
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/text-gif.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "text-animate-demo",
       "type": "registry:component",
       "title": "text-animate-demo",
@@ -1131,6 +1148,22 @@
       "files": [
         {
           "path": "registry/default/example/intro-disclosure-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "text-gif-demo",
+      "type": "registry:component",
+      "title": "text-gif-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "text-gif"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/text-gif-demo.tsx",
           "type": "registry:component"
         }
       ]

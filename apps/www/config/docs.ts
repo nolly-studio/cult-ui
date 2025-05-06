@@ -209,6 +209,12 @@ export const docsConfig: DocsConfig = {
           title: "Typography & Text",
           items: [
             {
+              title: "Text Gif",
+              href: "/docs/components/text-gif",
+              items: [],
+              label: "new",
+            },
+            {
               title: "Gradient Heading",
               href: "/docs/components/gradient-heading",
               items: [],
