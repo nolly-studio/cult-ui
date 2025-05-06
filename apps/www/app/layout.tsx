@@ -19,45 +19,44 @@ import { ThemeSwitcher } from "@/components/theme-switcher"
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    template: `%s · Cult UI`,
   },
   metadataBase: new URL(siteConfig.url),
   description: siteConfig.description,
+
+  /* Google ignores meta-keywords for ranking, but others may use them. */
   keywords: [
-    "Shadcn",
-    "Shadcn Templates",
-    "Shadcn Components",
-    "Shadcn Blocks",
-    "Shadcn Sections",
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "Server Components",
-    "Radix UI",
+    "shadcn",
+    "shadcn ui",
+    "shadcn components",
+    "shadcn blocks",
+    "shadcn templates",
+    "shadcn animate",
+    "tailwind css",
+    "next.js 15",
+    "typescript ui kit",
   ],
-  authors: [
-    {
-      name: "Jordan-Gilliam",
-      url: "https://Jordan-Gilliam.com",
-    },
-  ],
-  creator: "Jordan-Gilliam",
+
+  authors: [{ name: "Jordan Gilliam", url: "https://cult-ui.com" }],
+  creator: "Jordan Gilliam",
+
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
-    siteName: siteConfig.name,
+    siteName: "Cult UI",
     images: [
       {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: siteConfig.name,
+        alt: "Cult UI – Shadcn UI Components, Blocks & Templates",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
@@ -65,11 +64,13 @@ export const metadata: Metadata = {
     images: [siteConfig.ogImage],
     creator: "@nolansym",
   },
+
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
+
   manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
