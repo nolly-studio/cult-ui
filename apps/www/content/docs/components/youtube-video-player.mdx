@@ -1,0 +1,291 @@
+---
+title: YouTube Video Player
+description: A modern YouTube video player component with expandable modal view, custom thumbnails, and smooth animations.
+component: true
+---
+
+<ComponentPreview
+  name="youtube-video-player-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="Interactive YouTube video player with multiple examples"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/youtube-video-player.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies:</Step>
+
+```bash
+npm install framer-motion lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="youtube-video-player" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { YouTubePlayer } from "@/components/ui/youtube-video-player"
+```
+
+```tsx
+export default function Example() {
+  return (
+    <YouTubePlayer
+      videoId="dQw4w9WgXcQ"
+      title="Never Gonna Give You Up - Rick Astley"
+    />
+  )
+}
+```
+
+## Props
+
+| Prop                    | Type      | Default | Description                            |
+| ----------------------- | --------- | ------- | -------------------------------------- |
+| videoId                 | `string`  | -       | YouTube video ID or full URL           |
+| title                   | `string`  | -       | Video title displayed on thumbnail     |
+| defaultExpanded         | `boolean` | `false` | Start in expanded modal view           |
+| customThumbnail         | `string`  | -       | Custom thumbnail image URL             |
+| className               | `string`  | -       | Additional CSS classes for container   |
+| containerClassName      | `string`  | -       | CSS classes for video container        |
+| expandedClassName       | `string`  | -       | CSS classes for expanded modal view    |
+| thumbnailClassName      | `string`  | -       | CSS classes for thumbnail container    |
+| thumbnailImageClassName | `string`  | -       | CSS classes for thumbnail image        |
+| playButtonClassName     | `string`  | -       | CSS classes for play button            |
+| playIconClassName       | `string`  | -       | CSS classes for play icon              |
+| titleClassName          | `string`  | -       | CSS classes for video title            |
+| controlsClassName       | `string`  | -       | CSS classes for controls container     |
+| expandButtonClassName   | `string`  | -       | CSS classes for expand/minimize button |
+| backdropClassName       | `string`  | -       | CSS classes for modal backdrop         |
+| playerClassName         | `string`  | -       | CSS classes for player container       |
+
+## Examples
+
+### Basic Player
+
+```tsx
+<YouTubePlayer
+  videoId="dQw4w9WgXcQ"
+  title="Never Gonna Give You Up - Rick Astley"
+/>
+```
+
+### With Custom Thumbnail
+
+```tsx
+<YouTubePlayer
+  videoId="jNQXAC9IVRw"
+  title="Me at the zoo - First YouTube Video"
+  customThumbnail="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=450&fit=crop&crop=center"
+/>
+```
+
+### Default Expanded
+
+```tsx
+<YouTubePlayer
+  videoId="ScMzIvxBSi4"
+  title="The Evolution of Dance"
+  defaultExpanded={true}
+/>
+```
+
+### Custom Styling
+
+```tsx
+<YouTubePlayer
+  videoId="kJQP7kiw5Fk"
+  title="Despacito - Luis Fonsi ft. Daddy Yankee"
+  containerClassName="border-2 border-primary rounded-2xl shadow-2xl"
+  thumbnailImageClassName="opacity-90 saturate-150"
+  playButtonClassName="bg-primary/20 border-primary hover:bg-primary/30"
+  playIconClassName="text-primary fill-primary"
+  titleClassName="text-primary font-bold"
+  controlsClassName="right-4 top-4"
+  expandButtonClassName="bg-primary/20 hover:bg-primary/30 border-primary"
+/>
+```
+
+### Multiple Players Grid
+
+```tsx
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <YouTubePlayer
+    videoId="9bZkp7q19f0"
+    title="PSY - GANGNAM STYLE"
+    className="w-full"
+  />
+  <YouTubePlayer
+    videoId="fJ9rUzIMcZQ"
+    title="Queen – Bohemian Rhapsody"
+    className="w-full"
+  />
+  <YouTubePlayer
+    videoId="L_jWHffIx5E"
+    title="Smash Mouth - All Star"
+    className="w-full"
+  />
+</div>
+```
+
+## URL Format Support
+
+The component automatically handles different YouTube URL formats:
+
+```tsx
+// Video ID
+<YouTubePlayer videoId="dQw4w9WgXcQ" />
+
+// Full YouTube URL
+<YouTubePlayer videoId="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
+
+// Short URL
+<YouTubePlayer videoId="https://youtu.be/dQw4w9WgXcQ" />
+```
+
+## Advanced Usage
+
+### With All Customization Options
+
+```tsx
+import { YouTubePlayer } from "@/components/ui/youtube-video-player"
+
+export default function AdvancedPlayer() {
+  return (
+    <div className="max-w-4xl mx-auto p-8">
+      <YouTubePlayer
+        videoId="dQw4w9WgXcQ"
+        title="Custom Styled Player"
+        customThumbnail="/custom-thumbnail.jpg"
+        defaultExpanded={false}
+        // Container styling
+        className="mb-8"
+        containerClassName="border-2 border-gradient rounded-xl overflow-hidden shadow-lg"
+        expandedClassName="border-none shadow-2xl"
+        // Thumbnail styling
+        thumbnailClassName="bg-gradient-to-br from-blue-500/20 to-purple-500/20"
+        thumbnailImageClassName="opacity-80 transition-opacity hover:opacity-100"
+        // Play button styling
+        playButtonClassName="bg-white/90 hover:bg-white border-2 border-blue-500 shadow-lg"
+        playIconClassName="text-blue-500 fill-blue-500"
+        // Title styling
+        titleClassName="text-white font-bold text-lg drop-shadow-lg"
+        // Controls styling
+        controlsClassName="right-3 top-3"
+        expandButtonClassName="bg-black/50 hover:bg-black/70 border border-white/20"
+        // Modal styling
+        backdropClassName="bg-black/60 backdrop-blur-md"
+        playerClassName="bg-black rounded-lg"
+      />
+    </div>
+  )
+}
+```
+
+## Component Architecture
+
+The YouTube Player consists of two main sub-components:
+
+### YouTubePlayer (Main Component)
+
+The primary component that handles the video player logic, state management, and rendering. It includes:
+
+- Thumbnail display with custom image support
+- Play button with customizable styling
+- Expandable modal functionality
+- URL parsing for different YouTube formats
+- Keyboard shortcuts (ESC to close modal)
+
+### YouTubePlayerControls
+
+A separate component for the expand/minimize controls that can be used independently:
+
+```tsx
+import { YouTubePlayerControls } from "@/components/ui/youtube-video-player"
+
+;<YouTubePlayerControls
+  videoId="unique-id"
+  expanded={false}
+  playing={false}
+  isHovered={true}
+  onToggleExpand={() => {}}
+  controlsClassName="custom-controls"
+  expandButtonClassName="custom-expand-btn"
+/>
+```
+
+## Features
+
+### Core Features
+
+- **Expandable Modal**: Full-screen modal view with smooth animations
+- **Custom Thumbnails**: Support for custom thumbnail images
+- **URL Flexibility**: Handles video IDs, full URLs, and short URLs
+- **Responsive Design**: Works seamlessly across all device sizes
+- **Keyboard Navigation**: ESC key closes expanded view
+
+### User Experience
+
+- **Smooth Animations**: Powered by Framer Motion for fluid transitions
+- **Hover Effects**: Interactive controls that appear on hover
+- **Loading States**: Graceful handling of video loading
+- **Accessibility**: ARIA labels and keyboard support
+
+### Customization
+
+- **Extensive Styling**: 12+ className props for complete customization
+- **Flexible Layout**: Works in grids, cards, and custom containers
+- **Theme Integration**: Follows your design system colors and spacing
+- **Component Composition**: Sub-components can be used independently
+
+## Accessibility
+
+The YouTube Player includes comprehensive accessibility features:
+
+- **ARIA Labels**: Proper labeling for screen readers
+- **Keyboard Navigation**: Full keyboard support including ESC to close
+- **Focus Management**: Proper focus handling in modal states
+- **Semantic HTML**: Uses appropriate HTML elements and structure
+- **High Contrast**: Respects system preferences for reduced motion
+
+## Browser Support
+
+- Modern browsers with ES2018+ support
+- Requires JavaScript enabled for video playback
+- Falls back gracefully when YouTube embed is blocked
+- Mobile-first responsive design
+
+## Performance
+
+- **Lazy Loading**: Videos only load when play button is clicked
+- **Optimized Animations**: GPU-accelerated transforms with Framer Motion
+- **Efficient Re-renders**: Minimal state updates and memoization
+- **Lightweight Bundle**: Only includes necessary dependencies

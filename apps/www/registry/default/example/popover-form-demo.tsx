@@ -108,7 +108,7 @@ type Theme = "light" | "dark" | "system"
 
 export function ColorThemeSwitcherExample() {
   const [theme, setTheme] = useState<Theme>("system")
-  const [systemTheme, setSystemTheme] = useState<"light" | "dark">("light");
+  const [systemTheme, setSystemTheme] = useState<"light" | "dark">("light")
   const [open, setOpen] = useState(false)
   const themes: Theme[] = ["light", "dark", "system"]
 
@@ -124,7 +124,7 @@ export function ColorThemeSwitcherExample() {
     return () => {
       systemPrefersDark.removeEventListener("change", updateSystemTheme)
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
     const root = window.document.documentElement
@@ -157,16 +157,18 @@ export function ColorThemeSwitcherExample() {
                 const isSelected = theme === t
                 const effectiveTheme = t === "system" ? systemTheme : t
                 return (
-                  < button
+                  <button
                     key={t}
                     onClick={() => setTheme(t)}
-                    className={`w-full flex items-center px-3 py-2 text-sm rounded-md ${isSelected
-                      ? `bg-primary ${effectiveTheme === "light"
-                        ? "text-white"
-                        : "text-black"
-                      }`
-                      : ` hover:text-black hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white dark:text-white`
-                      }`}
+                    className={`w-full flex items-center px-3 py-2 text-sm rounded-md ${
+                      isSelected
+                        ? `bg-primary ${
+                            effectiveTheme === "light"
+                              ? "text-white"
+                              : "text-black"
+                          }`
+                        : ` hover:text-black hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white dark:text-white`
+                    }`}
                   >
                     {t === "light" && <Sun className="mr-2 h-4 w-4" />}
                     {t === "dark" && <Moon className="mr-2 h-4 w-4 " />}
@@ -179,7 +181,7 @@ export function ColorThemeSwitcherExample() {
           </div>
         }
       />
-    </div >
+    </div>
   )
 }
 

@@ -588,6 +588,40 @@
       ]
     },
     {
+      "name": "stripe-bg-guides",
+      "type": "registry:ui",
+      "title": "stripe-bg-guides",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/stripe-bg-guides.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "youtube-video-player",
+      "type": "registry:ui",
+      "title": "youtube-video-player",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/youtube-video-player.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "text-animate-demo",
       "type": "registry:component",
       "title": "text-animate-demo",
@@ -1164,6 +1198,38 @@
       "files": [
         {
           "path": "registry/default/example/text-gif-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "stripe-bg-guides-demo",
+      "type": "registry:component",
+      "title": "stripe-bg-guides-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "stripe-bg-guides"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/stripe-bg-guides-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "youtube-video-player-demo",
+      "type": "registry:component",
+      "title": "youtube-video-player-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "youtube-video-player"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/youtube-video-player-demo.tsx",
           "type": "registry:component"
         }
       ]

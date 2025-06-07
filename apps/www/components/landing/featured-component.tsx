@@ -165,21 +165,21 @@ export function LatestComponentVertical() {
             gifUrl="https://media.giphy.com/media/fnglNFjBGiyAFtm6ke/giphy.gif"
             text="The Secret"
             className="leading-[0.01rem]  md:leading-[0.05rem] "
-            size="xxl"
+            size="xl"
             weight="black"
           />
           <TextGif
             gifUrl="https://media.giphy.com/media/9Pmfazv34l7aNIKK05/giphy.gif"
-            text="🪬 Teachings 🧙‍♂️"
+            text="Teachings"
             className="leading-[0.01rem]  md:leading-[0.05rem] "
-            size="xxl"
+            size="xl"
             weight="black"
           />
           <TextGif
             gifUrl="https://media.giphy.com/media/3zvbrvbRe7wxBofOBI/giphy.gif"
             text="of All Ages "
             className="leading-[0.01rem]  md:leading-[0.05rem] "
-            size="xxl"
+            size="xl"
             weight="black"
           />
         </div>

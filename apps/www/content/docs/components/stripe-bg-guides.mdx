@@ -1,0 +1,81 @@
+---
+title: StripeBgGuides
+description: A full screen background grid of lines that animate
+component: true
+links:
+---
+
+<ComponentPreview
+  name="stripe-bg-guides-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/stripe-bg-guides.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="stripe-bg-guides" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { StripeBgGuides } from "@/components/ui/stripe-bg-guides"
+```
+
+```tsx
+export default function StripeBgGuideDemo() {
+  return (
+    <div className="relative w-full h-[400px] overflow-hidden rounded-lg border bg-background">
+      {/* Modified StripeBgGuides to work within a container */}
+      <StripeBgGuides
+        columnCount={6}
+        animated={true}
+        animationDuration={8}
+        glowColor="hsl(var(--primary))"
+        randomize={true}
+        randomInterval={3000}
+        contained={true}
+      />
+
+      {/* Content to demonstrate the background effect */}
+      <div className="relative z-10 flex h-full items-center justify-center">
+        <div className="max-w-md text-center">
+          <h3 className="text-2xl font-bold mb-2">Stripe Background Guides</h3>
+          <p className="text-muted-foreground">
+            Animated background guides with glowing effects, inspired by
+            Stripe's design system.
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+```

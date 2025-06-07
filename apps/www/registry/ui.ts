@@ -402,4 +402,27 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "stripe-bg-guides",
+    type: "registry:ui",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "registry/default/ui/stripe-bg-guides.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "youtube-video-player",
+    type: "registry:ui",
+    dependencies: ["framer-motion"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "registry/default/ui/youtube-video-player.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

@@ -30,6 +30,8 @@ import { StyleWrapper } from "@/components/style-wrapper"
 import { Style } from "@/registry/styles"
 
 import { InstallationCli } from "./cli-install-button"
+import { CodeBlockCommand } from "./code-block-command"
+import { CodeTabs } from "./code-tabs"
 
 const components = {
   Accordion,
@@ -228,6 +230,8 @@ const components = {
   ComponentExample,
   InstallationCli,
   ComponentSource,
+  CodeBlockCommand,
+  CodeTabs,
   AspectRatio,
   CodeBlockWrapper: ({ ...props }) => (
     <CodeBlockWrapper className="rounded-md border" {...props} />
@@ -277,16 +281,16 @@ const components = {
       {...props}
     />
   ),
-  Tabs: ({ className, ...props }: React.ComponentProps<typeof Tabs>) => (
-    <Tabs className={cn("relative mt-6 w-full", className)} {...props} />
-  ),
+  Tabs: ({ className, ...props }: React.ComponentProps<typeof Tabs>) => {
+    return <Tabs className={cn("relative mt-6 w-full", className)} {...props} />
+  },
   TabsList: ({
     className,
     ...props
   }: React.ComponentProps<typeof TabsList>) => (
     <TabsList
       className={cn(
-        "w-full justify-start rounded-none border-b bg-transparent p-0",
+        "justify-start gap-4 rounded-none bg-transparent px-2 md:px-0",
         className
       )}
       {...props}
@@ -298,10 +302,7 @@ const components = {
   }: React.ComponentProps<typeof TabsTrigger>) => (
     <TabsTrigger
       className={cn(
-        "relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none",
-        // "first:rounded-tl-lg first:border first:border-l-black/10 first:border-r-transparent first:border-t-black/10 first:dark:border-l-white/10 first:dark:border-t-white/10 ",
-        // " last:rounded-tr-lg last:border last:border-l-transparent last:border-r-black/10 last:border-t-black/10 last:dark:border-r-white/10 last:dark:border-t-white/10 ",
-        " rounded-tl-lg last:rounded-tr-lg last:border  last:border-l-black/10  last:border-t-black/10 dark:last:border-l-white/10 last:dark:border-r-white/10 last:dark:border-t-white/10 ",
+        "px-0 text-base text-muted-foreground data-[state=active]:text-foreground data-[state=active]:shadow-none dark:data-[state=active]:border-transparent dark:data-[state=active]:bg-transparent",
         className
       )}
       {...props}
@@ -313,12 +314,57 @@ const components = {
   }: React.ComponentProps<typeof TabsContent>) => (
     <TabsContent
       className={cn(
-        "relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold",
+        "*:[figure]:first:mt-0 relative [&>.steps]:mt-6 [&_h3.font-heading]:text-base [&_h3.font-heading]:font-medium",
         className
       )}
       {...props}
     />
   ),
+  Tab: ({ className, ...props }: React.ComponentProps<"div">) => (
+    <div className={cn(className)} {...props} />
+  ),
+  // Tabs: ({ className, ...props }: React.ComponentProps<typeof Tabs>) => (
+  //   <Tabs className={cn("relative mt-6 w-full", className)} {...props} />
+  // ),
+  // TabsList: ({
+  //   className,
+  //   ...props
+  // }: React.ComponentProps<typeof TabsList>) => (
+  //   <TabsList
+  //     className={cn(
+  //       "w-full justify-start rounded-none border-b bg-transparent p-0",
+  //       className
+  //     )}
+  //     {...props}
+  //   />
+  // ),
+  // TabsTrigger: ({
+  //   className,
+  //   ...props
+  // }: React.ComponentProps<typeof TabsTrigger>) => (
+  //   <TabsTrigger
+  //     className={cn(
+  //       "relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none",
+  //       // "first:rounded-tl-lg first:border first:border-l-black/10 first:border-r-transparent first:border-t-black/10 first:dark:border-l-white/10 first:dark:border-t-white/10 ",
+  //       // " last:rounded-tr-lg last:border last:border-l-transparent last:border-r-black/10 last:border-t-black/10 last:dark:border-r-white/10 last:dark:border-t-white/10 ",
+  //       " rounded-tl-lg last:rounded-tr-lg last:border  last:border-l-black/10  last:border-t-black/10 dark:last:border-l-white/10 last:dark:border-r-white/10 last:dark:border-t-white/10 ",
+  //       className
+  //     )}
+  //     {...props}
+  //   />
+  // ),
+  // TabsContent: ({
+  //   className,
+  //   ...props
+  // }: React.ComponentProps<typeof TabsContent>) => (
+  //   <TabsContent
+  //     className={cn(
+  //       "relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold",
+  //       className
+  //     )}
+  //     {...props}
+  //   />
+  // ),
   FrameworkDocs: ({
     className,
     ...props
@@ -353,7 +399,7 @@ export function Mdx({ code }: MdxProps) {
   })
 
   return (
-    <div className="mdx">
+    <div className="mdx ">
       <Component components={components} />
     </div>
   )

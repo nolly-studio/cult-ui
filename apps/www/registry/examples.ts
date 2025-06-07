@@ -397,4 +397,26 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "stripe-bg-guides-demo",
+    type: "registry:component",
+    registryDependencies: ["stripe-bg-guides"],
+    files: [
+      {
+        path: "registry/default/example/stripe-bg-guides-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "youtube-video-player-demo",
+    type: "registry:component",
+    registryDependencies: ["youtube-video-player"],
+    files: [
+      {
+        path: "registry/default/example/youtube-video-player-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ]

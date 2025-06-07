@@ -42,7 +42,6 @@ export const docsConfig: DocsConfig = {
               title: "Neumorph Button",
               href: "/docs/components/neumorph-button",
               items: [],
-              label: "new",
             },
             {
               title: "Family Button",
@@ -68,7 +67,6 @@ export const docsConfig: DocsConfig = {
               title: "Expandable Card",
               href: "/docs/components/expandable",
               items: [],
-              label: "updated",
             },
             {
               title: "Minimal Card",
@@ -79,7 +77,6 @@ export const docsConfig: DocsConfig = {
               title: "Neumorph Eyebrow",
               href: "/docs/components/neumorph-eyebrow",
               items: [],
-              label: "new",
             },
             {
               title: "Texture Card",
@@ -100,19 +97,18 @@ export const docsConfig: DocsConfig = {
               title: "Feature Carousel",
               href: "/docs/components/feature-carousel",
               items: [],
-              label: "new",
+              label: "recent",
             },
             {
               title: "Intro Disclosure",
               href: "/docs/components/intro-disclosure",
               items: [],
-              label: "new",
+              label: "recent",
             },
             {
               title: "Loading Carousel",
               href: "/docs/components/loading-carousel",
               items: [],
-              label: "recent",
             },
           ],
         },
@@ -177,10 +173,16 @@ export const docsConfig: DocsConfig = {
           title: "Media",
           items: [
             {
+              title: "Stripe Bg Guides",
+              href: "/docs/components/stripe-bg-guides",
+              items: [],
+              label: "new",
+            },
+            {
               title: "Logo Carousel",
               href: "/docs/components/logo-carousel",
               items: [],
-              label: "recent",
+              // label: "recent",
             },
             {
               title: "3D Carousel",
@@ -191,7 +193,7 @@ export const docsConfig: DocsConfig = {
               title: "Hover Video Player",
               href: "/docs/components/hover-video-player",
               items: [],
-              label: "recent",
+              // label: "recent",
             },
             {
               title: "Bg Media Hero",
@@ -203,6 +205,12 @@ export const docsConfig: DocsConfig = {
               href: "/docs/components/tweet-grid",
               items: [],
             },
+            {
+              title: "YouTube Video Player",
+              href: "/docs/components/youtube-video-player",
+              items: [],
+              label: "new",
+            },
           ],
         },
         {
@@ -212,7 +220,7 @@ export const docsConfig: DocsConfig = {
               title: "Text Gif",
               href: "/docs/components/text-gif",
               items: [],
-              label: "new",
+              label: "recent",
             },
             {
               title: "Gradient Heading",

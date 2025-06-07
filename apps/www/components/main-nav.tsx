@@ -25,7 +25,7 @@ export function MainNav() {
         <Link
           href="/docs/components"
           className={cn(
-            "text-base font-semibold transition-colors hover:text-foreground/80",
+            "text-sm font-semibold transition-colors hover:text-foreground/80",
             pathname?.startsWith("/docs/components")
               ? "text-foreground"
               : "text-foreground/60"
@@ -39,39 +39,39 @@ export function MainNav() {
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
-            "text-base font-semibold transition-colors hover:text-foreground/80",
+            "text-sm font-semibold transition-colors hover:text-foreground/80",
             pathname?.startsWith("/examples")
               ? "text-foreground"
               : "text-foreground/60"
           )}
         >
-          Blocks <span className="text-xs text-cyan-500">(8 new)</span>
+          Blocks <span className="text-xs text-pink-500">(8 new)</span>
         </a>
         <a
           href="https://pro.cult-ui.com/sections"
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
-            "text-base font-semibold transition-colors hover:text-foreground/80",
+            "text-sm font-semibold transition-colors hover:text-foreground/80",
             pathname?.startsWith("/examples")
               ? "text-foreground"
               : "text-foreground/60"
           )}
         >
-          Sections <span className="text-xs text-cyan-500">(10 new)</span>
+          Sections <span className="text-xs text-pink-500">(10 new)</span>
         </a>
         <a
           href="https://pro.cult-ui.com/templates"
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
-            "text-base font-semibold transition-colors hover:text-foreground/80",
+            "text-sm font-semibold transition-colors hover:text-foreground/80",
             pathname?.startsWith("/examples")
               ? "text-foreground"
               : "text-foreground/60"
           )}
         >
-          Templates <span className="text-xs text-cyan-500">(1 new)</span>
+          Templates <span className="text-xs text-pink-500">(1 new)</span>
         </a>
 
         {/* <Link
