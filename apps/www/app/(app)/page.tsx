@@ -2,6 +2,7 @@ import Link from "next/link"
 import { IceCream } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
+import { ghStars } from "@/lib/fetchGhStars"
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
@@ -19,6 +20,7 @@ import { TemplateGrid } from "@/components/landing/template-grid"
 import { PageActions, PageHeader } from "@/components/page-header"
 
 export default function IndexPage() {
+  const stars = ghStars()
   return (
     <div className=" isolate min-h-screen overflow-hidden  pb-8 sm:pb-12 md:pb-0">
       <div className="container relative pt-12 md:pt-8">
@@ -62,7 +64,7 @@ export default function IndexPage() {
               )}
             >
               <Icons.gitHub className="mr-2 h-5 w-5" />
-              GitHub
+              GitHub {stars || "2.3k"}+
             </Link>
           </PageActions>
         </PageHeader>

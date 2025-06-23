@@ -1,5 +1,6 @@
 "use client"
 
+import { ghStars } from "@/lib/fetchGhStars"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -14,6 +15,8 @@ import {
 } from "@/registry/default/ui/texture-card"
 
 export function CardsCreateAccount() {
+  const stars = ghStars()
+
   return (
     <TextureCard>
       <TextureCardHeader className="space-y-1 px-2">
@@ -29,6 +32,7 @@ export function CardsCreateAccount() {
           <Button variant="outline">
             <Icons.gitHub className="mr-2 h-4 w-4" />
             Github
+            {stars}
           </Button>
           <Button variant="outline">
             <Icons.google className="mr-2 h-4 w-4" />
