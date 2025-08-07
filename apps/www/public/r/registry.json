@@ -1,0 +1,1238 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "cult/ui",
+  "homepage": "https://cult-ui.com",
+  "items": [
+    {
+      "name": "text-animate",
+      "type": "registry:ui",
+      "title": "text-animate",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/text-animate.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "texture-button",
+      "type": "registry:ui",
+      "title": "texture-button",
+      "description": "",
+      "dependencies": [
+        "@radix-ui/react-slot"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/texture-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "texture-card",
+      "type": "registry:ui",
+      "title": "texture-card",
+      "description": "",
+      "dependencies": [
+        ""
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/texture-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "shift-card",
+      "type": "registry:ui",
+      "title": "shift-card",
+      "description": "",
+      "dependencies": [
+        ""
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/shift-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "minimal-card",
+      "type": "registry:ui",
+      "title": "minimal-card",
+      "description": "",
+      "dependencies": [
+        ""
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/minimal-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dynamic-island",
+      "type": "registry:ui",
+      "title": "dynamic-island",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/dynamic-island.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "direction-aware-tabs",
+      "type": "registry:ui",
+      "title": "direction-aware-tabs",
+      "description": "",
+      "dependencies": [
+        "framer-motion",
+        "react-use-measure"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/direction-aware-tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "bg-animate-button",
+      "type": "registry:ui",
+      "title": "bg-animate-button",
+      "description": "",
+      "dependencies": [
+        ""
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/bg-animate-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "family-button",
+      "type": "registry:ui",
+      "title": "family-button",
+      "description": "",
+      "dependencies": [
+        ""
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/family-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "side-panel",
+      "type": "registry:ui",
+      "title": "side-panel",
+      "description": "",
+      "dependencies": [
+        ""
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/side-panel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "bg-media",
+      "type": "registry:ui",
+      "title": "bg-media",
+      "description": "",
+      "dependencies": [
+        ""
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/bg-media.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "three-d-carousel",
+      "type": "registry:ui",
+      "title": "three-d-carousel",
+      "description": "",
+      "dependencies": [
+        ""
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/three-d-carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tweet-grid",
+      "type": "registry:ui",
+      "title": "tweet-grid",
+      "description": "",
+      "dependencies": [
+        ""
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/tweet-grid.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "gradient-heading",
+      "type": "registry:ui",
+      "title": "gradient-heading",
+      "description": "",
+      "dependencies": [
+        "@radix-ui/react-slot"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/gradient-heading.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "typewriter",
+      "type": "registry:ui",
+      "title": "typewriter",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/typewriter.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "animated-number",
+      "type": "registry:ui",
+      "title": "animated-number",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-number.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sortable-list",
+      "type": "registry:ui",
+      "title": "sortable-list",
+      "description": "",
+      "dependencies": [
+        "framer-motion",
+        "react-use-measure"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/sortable-list.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dock",
+      "type": "registry:ui",
+      "title": "dock",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/dock.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "lightboard",
+      "type": "registry:ui",
+      "title": "lightboard",
+      "description": "",
+      "dependencies": [
+        ""
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/lightboard.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "canvas-fractal-grid",
+      "type": "registry:ui",
+      "title": "canvas-fractal-grid",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/canvas-fractal-grid.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "bg-animated-fractal-dot-grid",
+      "type": "registry:ui",
+      "title": "bg-animated-fractal-dot-grid",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/bg-animated-fractal-dot-grid.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "bg-animated-gradient",
+      "type": "registry:ui",
+      "title": "bg-animated-gradient",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/bg-animated-gradient.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "popover",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "floating-panel",
+      "type": "registry:ui",
+      "title": "floating-panel",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/floating-panel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "color-picker",
+      "type": "registry:ui",
+      "title": "color-picker",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/color-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "shader-lens-blur",
+      "type": "registry:ui",
+      "title": "shader-lens-blur",
+      "description": "",
+      "dependencies": [
+        "framer-motion",
+        "three",
+        "jotai"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/shader-lens-blur.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover-form",
+      "type": "registry:ui",
+      "title": "popover-form",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/popover-form.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "expandable",
+      "type": "registry:ui",
+      "title": "expandable",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/expandable.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "logo-carousel",
+      "type": "registry:ui",
+      "title": "logo-carousel",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/logo-carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "loading-carousel",
+      "type": "registry:ui",
+      "title": "loading-carousel",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/loading-carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hover-video-player",
+      "type": "registry:ui",
+      "title": "hover-video-player",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/hover-video-player.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "neumorph-eyebrow",
+      "type": "registry:ui",
+      "title": "neumorph-eyebrow",
+      "description": "",
+      "dependencies": [
+        ""
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/neumorph-eyebrow.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "neumorph-button",
+      "type": "registry:ui",
+      "title": "neumorph-button",
+      "description": "",
+      "dependencies": [
+        ""
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/neumorph-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "feature-carousel",
+      "type": "registry:ui",
+      "title": "feature-carousel",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/feature-carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "intro-disclosure",
+      "type": "registry:ui",
+      "title": "intro-disclosure",
+      "description": "",
+      "dependencies": [
+        "framer-motion",
+        "react-use-measure",
+        "button",
+        "aspect-ratio"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/intro-disclosure.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "text-gif",
+      "type": "registry:ui",
+      "title": "text-gif",
+      "description": "",
+      "dependencies": [
+        "next/image",
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/text-gif.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stripe-bg-guides",
+      "type": "registry:ui",
+      "title": "stripe-bg-guides",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/stripe-bg-guides.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "youtube-video-player",
+      "type": "registry:ui",
+      "title": "youtube-video-player",
+      "description": "",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/youtube-video-player.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "text-animate-demo",
+      "type": "registry:component",
+      "title": "text-animate-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "text-animate"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/text-animate-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "texture-button-demo",
+      "type": "registry:component",
+      "title": "texture-button-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "texture-button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/texture-button-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "texture-card-demo",
+      "type": "registry:component",
+      "title": "texture-card-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "texture-card",
+        "texture-button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/texture-card-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "shift-card-demo",
+      "type": "registry:component",
+      "title": "shift-card-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "shift-card",
+        "texture-button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/shift-card-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "minimal-card-demo",
+      "type": "registry:component",
+      "title": "minimal-card-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "minimal-card"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/minimal-card-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "dynamic-island-demo",
+      "type": "registry:component",
+      "title": "dynamic-island-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "dynamic-island"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/dynamic-island-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "direction-aware-tabs-demo",
+      "type": "registry:component",
+      "title": "direction-aware-tabs-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "direction-aware-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/direction-aware-tabs-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "bg-animate-button-demo",
+      "type": "registry:component",
+      "title": "bg-animate-button-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "bg-animate-button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/bg-animate-button-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "family-button-demo",
+      "type": "registry:component",
+      "title": "family-button-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "family-button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/family-button-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "side-panel-demo",
+      "type": "registry:component",
+      "title": "side-panel-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "side-panel"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/side-panel-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "bg-media-demo",
+      "type": "registry:component",
+      "title": "bg-media-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "bg-media"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/bg-media-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "three-d-carousel-demo",
+      "type": "registry:component",
+      "title": "three-d-carousel-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "three-d-carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/three-d-carousel-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "tweet-grid-demo",
+      "type": "registry:component",
+      "title": "tweet-grid-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "tweet-grid",
+        "gradient-heading"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/tweet-grid-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "gradient-heading-demo",
+      "type": "registry:component",
+      "title": "gradient-heading-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "gradient-heading"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/gradient-heading-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "typewriter-demo",
+      "type": "registry:component",
+      "title": "typewriter-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "typewriter"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/typewriter-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-number-demo",
+      "type": "registry:component",
+      "title": "animated-number-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "animated-number"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/animated-number-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sortable-list-demo",
+      "type": "registry:component",
+      "title": "sortable-list-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "sortable-list"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/sortable-list-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "dock-demo",
+      "type": "registry:component",
+      "title": "dock-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "dock"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/dock-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "lightboard-demo",
+      "type": "registry:component",
+      "title": "lightboard-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "lightboard"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/lightboard-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "canvas-fractal-grid-demo",
+      "type": "registry:component",
+      "title": "canvas-fractal-grid-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "canvas-fractal-grid"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/canvas-fractal-grid-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "bg-animated-fractal-dot-grid-demo",
+      "type": "registry:component",
+      "title": "bg-animated-fractal-dot-grid-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "bg-animated-fractal-dot-grid"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/bg-animated-fractal-dot-grid-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "bg-animated-gradient-demo",
+      "type": "registry:component",
+      "title": "bg-animated-gradient-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "bg-animated-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/bg-animated-gradient-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "popover-demo",
+      "type": "registry:component",
+      "title": "popover-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/popover-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "floating-panel-demo",
+      "type": "registry:component",
+      "title": "floating-panel-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "floating-panel"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/floating-panel-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "color-picker-demo",
+      "type": "registry:component",
+      "title": "color-picker-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "color-picker"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/color-picker-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "shader-lens-blur-demo",
+      "type": "registry:component",
+      "title": "shader-lens-blur-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "shader-lens-blur",
+        "color-picker"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/shader-lens-blur-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "popover-form-demo",
+      "type": "registry:component",
+      "title": "popover-form-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "popover-form"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/popover-form-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "expandable-demo",
+      "type": "registry:component",
+      "title": "expandable-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "expandable"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/expandable-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "logo-carousel-demo",
+      "type": "registry:component",
+      "title": "logo-carousel-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "logo-carousel",
+        "gradient-heading"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/logo-carousel-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "loading-carousel-demo",
+      "type": "registry:component",
+      "title": "loading-carousel-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "loading-carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/loading-carousel-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "hover-video-player-demo",
+      "type": "registry:component",
+      "title": "hover-video-player-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "hover-video-player"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/hover-video-player-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "neumorph-eyebrow-demo",
+      "type": "registry:component",
+      "title": "neumorph-eyebrow-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "neumorph-eyebrow"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/neumorph-eyebrow-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "neumorph-button-demo",
+      "type": "registry:component",
+      "title": "neumorph-button-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "neumorph-button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/neumorph-button-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "feature-carousel-demo",
+      "type": "registry:component",
+      "title": "feature-carousel-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "feature-carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/feature-carousel-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "intro-disclosure-demo",
+      "type": "registry:component",
+      "title": "intro-disclosure-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "intro-disclosure"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/intro-disclosure-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "text-gif-demo",
+      "type": "registry:component",
+      "title": "text-gif-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "text-gif"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/text-gif-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "stripe-bg-guides-demo",
+      "type": "registry:component",
+      "title": "stripe-bg-guides-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "stripe-bg-guides"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/stripe-bg-guides-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "youtube-video-player-demo",
+      "type": "registry:component",
+      "title": "youtube-video-player-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "youtube-video-player"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/youtube-video-player-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}
