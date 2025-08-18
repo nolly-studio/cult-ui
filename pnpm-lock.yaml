@@ -112,8 +112,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(react-hook-form@7.44.2(react@18.2.0))
       '@next/third-parties':
-        specifier: ^15.3.1
-        version: 15.3.1(next@14.1.3(@babel/core@7.22.6)(@opentelemetry/api@1.4.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+        specifier: ^15.4.6
+        version: 15.4.6(next@14.1.3(@babel/core@7.22.6)(@opentelemetry/api@1.4.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
       '@radix-ui/react-accessible-icon':
         specifier: ^1.0.3
         version: 1.0.3(@types/react-dom@18.2.22)(@types/react@18.2.65)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -1382,8 +1382,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@next/third-parties@15.3.1':
-    resolution: {integrity: sha512-8v1pAtRjcaCbs80qcYLLCrSsECgeSb0WMU0J3pMBYNavG3Y3yQOgFog18nVgiNrNB20HkyrScquWsy8gcdiGRA==}
+  '@next/third-parties@15.4.6':
+    resolution: {integrity: sha512-1BVymp3iVCMKvfIAlU1yptJuVnwiiyOs852WqPmj8bHPK7dcJN7vGEvH2uIKy9yBOi2UXZevlRT5njPDLZDHYg==}
     peerDependencies:
       next: ^13.0.0 || ^14.0.0 || ^15.0.0
       react: ^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0
@@ -7966,7 +7966,7 @@ snapshots:
   '@next/swc-win32-x64-msvc@14.1.3':
     optional: true
 
-  '@next/third-parties@15.3.1(next@14.1.3(@babel/core@7.22.6)(@opentelemetry/api@1.4.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)':
+  '@next/third-parties@15.4.6(next@14.1.3(@babel/core@7.22.6)(@opentelemetry/api@1.4.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)':
     dependencies:
       next: 14.1.3(@babel/core@7.22.6)(@opentelemetry/api@1.4.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0

@@ -1,6 +1,6 @@
 import "@/styles/globals.css"
 import { Metadata, Viewport } from "next"
-import { GoogleTagManager } from "@next/third-parties/google"
+import { GoogleAnalytics } from "@next/third-parties/google"
 
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
@@ -111,7 +111,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <TailwindIndicator />
             <ThemeSwitcher />
             <Analytics />
-            <GoogleTagManager gtmId="G-7E7YD8249G" />
+
+            <GoogleAnalytics gaId="G-5K1GVTD1JG" />
 
             <NewYorkToaster />
             <DefaultToaster />
