@@ -2,6 +2,7 @@
 
 import { ArrowRight, Merge } from "lucide-react"
 
+import { ghStars } from "@/lib/fetchGhStars"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { TextureButton } from "@/registry/default/ui/texture-button"
@@ -15,6 +16,8 @@ import {
 } from "@/registry/default/ui/texture-card"
 
 export default function TextureCardDemo() {
+  const stars = ghStars()
+
   return (
     <div className="flex items-center justify-center py-4">
       <div className="dark:bg-stone-950  h-full    rounded-md">
@@ -80,6 +83,7 @@ export default function TextureCardDemo() {
                         />
                       </svg>
                       <span className="pl-2">Github</span>
+                      {stars}
                     </TextureButton>
                   </div>
                   <div className="text-center text-sm mb-4">or</div>
