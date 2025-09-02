@@ -35,7 +35,7 @@ const timerVariants = cva(
   }
 )
 
-const timerIconVariants = cva("transition-transform duration-200", {
+const timerIconVariants = cva("transition-transform duration-[2000ms]", {
   variants: {
     size: {
       sm: "w-3 h-3",
