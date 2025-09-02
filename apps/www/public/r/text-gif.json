@@ -3,11 +3,8 @@
   "name": "text-gif",
   "type": "registry:ui",
   "title": "text-gif",
-  "description": "",
-  "dependencies": [
-    "next/image",
-    "framer-motion"
-  ],
+  "description": "Text component with GIF-like animation effects and customizable styling",
+  "dependencies": [],
   "registryDependencies": [],
   "files": [
     {

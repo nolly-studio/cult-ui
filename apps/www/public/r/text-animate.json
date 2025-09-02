@@ -3,9 +3,9 @@
   "name": "text-animate",
   "type": "registry:ui",
   "title": "text-animate",
-  "description": "",
+  "description": "Animated text component with customizable reveal effects and timing",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "registryDependencies": [],
   "files": [

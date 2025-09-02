@@ -3,9 +3,9 @@
   "name": "animated-number",
   "type": "registry:ui",
   "title": "animated-number",
-  "description": "",
+  "description": "Number component with smooth counting animations and customizable formatting",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "registryDependencies": [],
   "files": [

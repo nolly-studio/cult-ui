@@ -1,9 +1,7 @@
 {
   "name": "text-gif",
-  "dependencies": [
-    "next/image",
-    "framer-motion"
-  ],
+  "description": "Text component with GIF-like animation effects and customizable styling",
+  "dependencies": [],
   "files": [
     {
       "name": "text-gif.tsx",

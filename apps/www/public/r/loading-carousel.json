@@ -3,9 +3,9 @@
   "name": "loading-carousel",
   "type": "registry:ui",
   "title": "loading-carousel",
-  "description": "",
+  "description": "Loading carousel component with smooth transitions and customizable content",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "registryDependencies": [],
   "files": [

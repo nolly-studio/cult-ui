@@ -3,9 +3,9 @@
   "name": "dynamic-island",
   "type": "registry:ui",
   "title": "dynamic-island",
-  "description": "",
+  "description": "iOS-style dynamic island component with expandable content and smooth animations",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "registryDependencies": [],
   "files": [

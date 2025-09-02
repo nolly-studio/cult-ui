@@ -3,9 +3,9 @@
   "name": "feature-carousel",
   "type": "registry:ui",
   "title": "feature-carousel",
-  "description": "",
+  "description": "Feature carousel component with smooth transitions and customizable layouts",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "registryDependencies": [],
   "files": [

@@ -3,7 +3,7 @@
   "name": "bg-media",
   "type": "registry:ui",
   "title": "bg-media",
-  "description": "",
+  "description": "Background media component with video/image support and overlay effects",
   "dependencies": [
     ""
   ],

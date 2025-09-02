@@ -1,5 +1,6 @@
 {
   "name": "shift-card",
+  "description": "Card component with shift animation effects and hover interactions",
   "dependencies": [
     ""
   ],

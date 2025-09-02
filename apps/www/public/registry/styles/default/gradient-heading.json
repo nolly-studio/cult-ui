@@ -1,5 +1,6 @@
 {
   "name": "gradient-heading",
+  "description": "Heading component with gradient text effects and customizable styling",
   "dependencies": [
     "@radix-ui/react-slot"
   ],

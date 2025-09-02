@@ -3,9 +3,9 @@
   "name": "color-picker",
   "type": "registry:ui",
   "title": "color-picker",
-  "description": "",
+  "description": "Interactive color picker component with HSL support and preset colors",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "registryDependencies": [],
   "files": [

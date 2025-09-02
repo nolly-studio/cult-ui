@@ -3,7 +3,7 @@
   "name": "texture-button",
   "type": "registry:ui",
   "title": "texture-button",
-  "description": "",
+  "description": "Button component with texture overlay effects and customizable variants",
   "dependencies": [
     "@radix-ui/react-slot"
   ],

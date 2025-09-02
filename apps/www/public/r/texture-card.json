@@ -3,7 +3,7 @@
   "name": "texture-card",
   "type": "registry:ui",
   "title": "texture-card",
-  "description": "",
+  "description": "Card component with texture background and customizable styling options",
   "dependencies": [
     ""
   ],

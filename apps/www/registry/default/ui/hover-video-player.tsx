@@ -33,8 +33,8 @@ import React, {
   useState,
 } from "react"
 import Image from "next/image"
-import { AnimatePresence, motion } from "framer-motion"
 import { Maximize, Minimize, Pause, Play, Volume2, VolumeX } from "lucide-react"
+import { AnimatePresence, motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"

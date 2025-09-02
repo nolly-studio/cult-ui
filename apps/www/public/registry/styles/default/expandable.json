@@ -1,7 +1,8 @@
 {
   "name": "expandable",
+  "description": "Expandable component system with smooth animations and customizable presets",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "files": [
     {

@@ -3,9 +3,9 @@
   "name": "typewriter",
   "type": "registry:ui",
   "title": "typewriter",
-  "description": "",
+  "description": "Typewriter effect component with customizable typing speed and cursor animation",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "registryDependencies": [],
   "files": [

@@ -3,7 +3,7 @@
   "name": "shift-card",
   "type": "registry:ui",
   "title": "shift-card",
-  "description": "",
+  "description": "Card component with shift animation effects and hover interactions",
   "dependencies": [
     ""
   ],

@@ -3,7 +3,7 @@
   "name": "tweet-grid",
   "type": "registry:ui",
   "title": "tweet-grid",
-  "description": "",
+  "description": "Grid layout component for displaying tweet-like content cards",
   "dependencies": [
     ""
   ],

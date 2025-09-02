@@ -1,7 +1,8 @@
 {
   "name": "text-animate",
+  "description": "Animated text component with customizable reveal effects and timing",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "files": [
     {

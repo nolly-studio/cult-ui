@@ -3,9 +3,9 @@
   "name": "canvas-fractal-grid",
   "type": "registry:ui",
   "title": "canvas-fractal-grid",
-  "description": "",
+  "description": "Interactive canvas-based fractal dot grid with mouse tracking and wave effects",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "registryDependencies": [],
   "files": [

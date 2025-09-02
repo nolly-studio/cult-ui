@@ -1,7 +1,8 @@
 {
   "name": "animated-number",
+  "description": "Number component with smooth counting animations and customizable formatting",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "files": [
     {

@@ -1,7 +1,8 @@
 {
   "name": "feature-carousel",
+  "description": "Feature carousel component with smooth transitions and customizable layouts",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "files": [
     {

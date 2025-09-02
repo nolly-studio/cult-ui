@@ -3,9 +3,9 @@
   "name": "direction-aware-tabs",
   "type": "registry:ui",
   "title": "direction-aware-tabs",
-  "description": "",
+  "description": "Tab component with direction-aware animations and smooth transitions",
   "dependencies": [
-    "framer-motion",
+    "motion",
     "react-use-measure"
   ],
   "registryDependencies": [],

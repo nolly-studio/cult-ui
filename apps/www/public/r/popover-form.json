@@ -3,9 +3,9 @@
   "name": "popover-form",
   "type": "registry:ui",
   "title": "popover-form",
-  "description": "",
+  "description": "Form popover component with success states and animated transitions",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "registryDependencies": [],
   "files": [

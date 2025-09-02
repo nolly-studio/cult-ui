@@ -1,7 +1,8 @@
 {
   "name": "dock",
+  "description": "macOS-style dock component with hover effects and smooth animations",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "files": [
     {

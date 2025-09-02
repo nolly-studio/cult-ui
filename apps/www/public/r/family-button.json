@@ -3,7 +3,7 @@
   "name": "family-button",
   "type": "registry:ui",
   "title": "family-button",
-  "description": "",
+  "description": "Button component with family-style design and interactive hover effects",
   "dependencies": [
     ""
   ],

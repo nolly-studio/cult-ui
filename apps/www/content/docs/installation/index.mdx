@@ -30,7 +30,57 @@ export function cn(...inputs: ClassValue[]) {
 }
 ```
 
-### Component Installation
+### CLI Installation (shadcn v3)
+
+For projects using shadcn CLI v3, you can configure the Cult UI registry to install components directly via the command line.
+
+#### Configure Registry
+
+Add the Cult UI registry to your `components.json` file:
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "app/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "iconLibrary": "lucide",
+  "registries": {
+    "@cult-ui": "https://cult-ui.com/r/{name}.json"
+  }
+}
+```
+
+#### Install Components
+
+Once configured, you can install components using:
+
+```bash
+# Install a single component
+npx shadcn@beta add @cult-ui/text-gif
+
+# Install multiple components
+npx shadcn@beta add @cult-ui/texture-card @cult-ui/texture-button
+
+# Search for components
+npx shadcn@beta search @cult-ui --query "texture-button"
+```
+
+### Manual Installation
 
 You're ready to go! Visit any [component](/components) page and follow the provided instructions.
 

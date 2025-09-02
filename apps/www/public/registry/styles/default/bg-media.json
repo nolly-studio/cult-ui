@@ -1,5 +1,6 @@
 {
   "name": "bg-media",
+  "description": "Background media component with video/image support and overlay effects",
   "dependencies": [
     ""
   ],

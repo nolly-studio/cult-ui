@@ -3,7 +3,7 @@
   "name": "neumorph-eyebrow",
   "type": "registry:ui",
   "title": "neumorph-eyebrow",
-  "description": "",
+  "description": "Neumorphic eyebrow component with soft shadow effects and modern styling",
   "dependencies": [
     ""
   ],

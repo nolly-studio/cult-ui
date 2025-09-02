@@ -1,5 +1,6 @@
 {
   "name": "lightboard",
+  "description": "Interactive lightboard component with customizable grid and lighting effects",
   "dependencies": [
     ""
   ],

@@ -3,7 +3,7 @@
   "name": "minimal-card",
   "type": "registry:ui",
   "title": "minimal-card",
-  "description": "",
+  "description": "Clean and minimal card component with subtle styling and hover effects",
   "dependencies": [
     ""
   ],

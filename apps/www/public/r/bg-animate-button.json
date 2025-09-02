@@ -3,7 +3,7 @@
   "name": "bg-animate-button",
   "type": "registry:ui",
   "title": "bg-animate-button",
-  "description": "",
+  "description": "Button component with animated background effects and gradient transitions",
   "dependencies": [
     ""
   ],

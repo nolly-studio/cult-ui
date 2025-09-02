@@ -1,7 +1,8 @@
 {
   "name": "bg-animated-gradient",
+  "description": "Animated gradient background component with customizable color transitions",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "files": [
     {

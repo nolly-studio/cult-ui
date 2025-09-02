@@ -1,5 +1,6 @@
 {
   "name": "neumorph-eyebrow",
+  "description": "Neumorphic eyebrow component with soft shadow effects and modern styling",
   "dependencies": [
     ""
   ],

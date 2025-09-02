@@ -35,6 +35,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "timer-demo",
+    type: "registry:component",
+    registryDependencies: ["timer", "texture-button"],
+    files: [
+      {
+        path: "registry/default/example/timer-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
     name: "shift-card-demo",
     type: "registry:component",
     registryDependencies: ["shift-card", "texture-button"],

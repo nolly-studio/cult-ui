@@ -1,7 +1,8 @@
 {
   "name": "logo-carousel",
+  "description": "Animated logo carousel with staggered animations and customizable columns",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "files": [
     {

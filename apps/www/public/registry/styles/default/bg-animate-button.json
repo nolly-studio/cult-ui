@@ -1,5 +1,6 @@
 {
   "name": "bg-animate-button",
+  "description": "Button component with animated background effects and gradient transitions",
   "dependencies": [
     ""
   ],

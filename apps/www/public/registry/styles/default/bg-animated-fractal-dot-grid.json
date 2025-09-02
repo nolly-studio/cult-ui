@@ -1,7 +1,8 @@
 {
   "name": "bg-animated-fractal-dot-grid",
+  "description": "Background animated fractal dot grid with performance optimization and responsive design",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "files": [
     {

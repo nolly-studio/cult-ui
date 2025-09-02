@@ -16,7 +16,7 @@
   "scripts": {
     "build": "turbo run build",
     "build:cli": "turbo --filter=cult-ui build",
-    "build:registry": "pnpm --filter=www build:registry",
+    "build:registry": "pnpm --filter=www build:registry && npx shadcn@latest build",
     "dev": "turbo run dev --parallel",
     "cli:dev": "turbo --filter=cult-ui dev",
     "cli:start": "pnpm --filter=cult-ui start:dev",

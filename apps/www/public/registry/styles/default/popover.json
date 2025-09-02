@@ -1,7 +1,8 @@
 {
   "name": "popover",
+  "description": "Animated popover component with form support and smooth transitions",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "files": [
     {

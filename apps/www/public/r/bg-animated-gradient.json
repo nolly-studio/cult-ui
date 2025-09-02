@@ -3,9 +3,9 @@
   "name": "bg-animated-gradient",
   "type": "registry:ui",
   "title": "bg-animated-gradient",
-  "description": "",
+  "description": "Animated gradient background component with customizable color transitions",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "registryDependencies": [],
   "files": [

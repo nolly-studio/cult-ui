@@ -1,7 +1,8 @@
 {
   "name": "canvas-fractal-grid",
+  "description": "Interactive canvas-based fractal dot grid with mouse tracking and wave effects",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "files": [
     {

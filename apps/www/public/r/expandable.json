@@ -3,9 +3,9 @@
   "name": "expandable",
   "type": "registry:ui",
   "title": "expandable",
-  "description": "",
+  "description": "Expandable component system with smooth animations and customizable presets",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "registryDependencies": [],
   "files": [

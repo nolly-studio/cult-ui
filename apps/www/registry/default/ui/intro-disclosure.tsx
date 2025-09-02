@@ -2,13 +2,13 @@
 
 import * as React from "react"
 import Image from "next/image"
+import { CheckIcon, ExternalLinkIcon } from "lucide-react"
 import {
   AnimatePresence,
   motion,
   useAnimation,
   type PanInfo,
-} from "framer-motion"
-import { CheckIcon, ExternalLinkIcon } from "lucide-react"
+} from "motion/react"
 
 import { cn } from "@/lib/utils"
 import { AspectRatio } from "@/components/ui/aspect-ratio"

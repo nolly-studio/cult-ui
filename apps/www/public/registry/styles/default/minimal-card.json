@@ -1,5 +1,6 @@
 {
   "name": "minimal-card",
+  "description": "Clean and minimal card component with subtle styling and hover effects",
   "dependencies": [
     ""
   ],

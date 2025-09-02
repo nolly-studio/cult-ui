@@ -1,5 +1,6 @@
 {
   "name": "tweet-grid",
+  "description": "Grid layout component for displaying tweet-like content cards",
   "dependencies": [
     ""
   ],

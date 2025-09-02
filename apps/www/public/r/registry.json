@@ -52,6 +52,22 @@
       ]
     },
     {
+      "name": "timer",
+      "type": "registry:ui",
+      "title": "timer",
+      "description": "",
+      "dependencies": [
+        ""
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/timer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "shift-card",
       "type": "registry:ui",
       "title": "shift-card",
@@ -666,6 +682,23 @@
       "files": [
         {
           "path": "registry/default/example/texture-card-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "timer-demo",
+      "type": "registry:component",
+      "title": "timer-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "timer",
+        "texture-button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/timer-demo.tsx",
           "type": "registry:component"
         }
       ]

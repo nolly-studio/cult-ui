@@ -1,7 +1,8 @@
 {
   "name": "sortable-list",
+  "description": "Drag-and-drop sortable list component with smooth animations and reordering",
   "dependencies": [
-    "framer-motion",
+    "motion",
     "react-use-measure"
   ],
   "files": [

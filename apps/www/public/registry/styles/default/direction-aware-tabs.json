@@ -1,7 +1,8 @@
 {
   "name": "direction-aware-tabs",
+  "description": "Tab component with direction-aware animations and smooth transitions",
   "dependencies": [
-    "framer-motion",
+    "motion",
     "react-use-measure"
   ],
   "files": [

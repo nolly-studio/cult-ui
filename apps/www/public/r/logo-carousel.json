@@ -3,9 +3,9 @@
   "name": "logo-carousel",
   "type": "registry:ui",
   "title": "logo-carousel",
-  "description": "",
+  "description": "Animated logo carousel with staggered animations and customizable columns",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "registryDependencies": [],
   "files": [

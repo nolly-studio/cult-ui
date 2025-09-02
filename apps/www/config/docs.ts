@@ -30,6 +30,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/installation",
           items: [],
         },
+        {
+          title: "MCP Server",
+          href: "/docs/mcp-server",
+          items: [],
+        },
       ],
     },
     {
@@ -97,13 +102,11 @@ export const docsConfig: DocsConfig = {
               title: "Feature Carousel",
               href: "/docs/components/feature-carousel",
               items: [],
-              label: "recent",
             },
             {
               title: "Intro Disclosure",
               href: "/docs/components/intro-disclosure",
               items: [],
-              label: "recent",
             },
             {
               title: "Loading Carousel",
@@ -161,7 +164,12 @@ export const docsConfig: DocsConfig = {
               href: "/docs/components/color-picker",
               items: [],
             },
-
+            {
+              title: "Timer",
+              href: "/docs/components/timer",
+              label: "new",
+              items: [],
+            },
             {
               title: "MacOS Dock",
               href: "/docs/components/dock",
@@ -176,7 +184,7 @@ export const docsConfig: DocsConfig = {
               title: "Stripe Bg Guides",
               href: "/docs/components/stripe-bg-guides",
               items: [],
-              label: "new",
+              label: "recent",
             },
             {
               title: "Logo Carousel",
@@ -209,7 +217,7 @@ export const docsConfig: DocsConfig = {
               title: "YouTube Video Player",
               href: "/docs/components/youtube-video-player",
               items: [],
-              label: "new",
+              label: "recent",
             },
           ],
         },

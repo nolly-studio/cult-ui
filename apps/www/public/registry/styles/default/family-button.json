@@ -1,5 +1,6 @@
 {
   "name": "family-button",
+  "description": "Button component with family-style design and interactive hover effects",
   "dependencies": [
     ""
   ],

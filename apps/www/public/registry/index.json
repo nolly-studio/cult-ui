@@ -7,9 +7,9 @@
       "name": "text-animate",
       "type": "registry:ui",
       "title": "text-animate",
-      "description": "",
+      "description": "Animated text component with customizable reveal effects and timing",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -23,7 +23,7 @@
       "name": "texture-button",
       "type": "registry:ui",
       "title": "texture-button",
-      "description": "",
+      "description": "Button component with texture overlay effects and customizable variants",
       "dependencies": [
         "@radix-ui/react-slot"
       ],
@@ -39,7 +39,7 @@
       "name": "texture-card",
       "type": "registry:ui",
       "title": "texture-card",
-      "description": "",
+      "description": "Card component with texture background and customizable styling options",
       "dependencies": [
         ""
       ],
@@ -52,10 +52,26 @@
       ]
     },
     {
+      "name": "timer",
+      "type": "registry:ui",
+      "title": "timer",
+      "description": "Countdown timer component with customizable duration and visual styles",
+      "dependencies": [
+        ""
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/timer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "shift-card",
       "type": "registry:ui",
       "title": "shift-card",
-      "description": "",
+      "description": "Card component with shift animation effects and hover interactions",
       "dependencies": [
         ""
       ],
@@ -71,7 +87,7 @@
       "name": "minimal-card",
       "type": "registry:ui",
       "title": "minimal-card",
-      "description": "",
+      "description": "Clean and minimal card component with subtle styling and hover effects",
       "dependencies": [
         ""
       ],
@@ -87,9 +103,9 @@
       "name": "dynamic-island",
       "type": "registry:ui",
       "title": "dynamic-island",
-      "description": "",
+      "description": "iOS-style dynamic island component with expandable content and smooth animations",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -103,9 +119,9 @@
       "name": "direction-aware-tabs",
       "type": "registry:ui",
       "title": "direction-aware-tabs",
-      "description": "",
+      "description": "Tab component with direction-aware animations and smooth transitions",
       "dependencies": [
-        "framer-motion",
+        "motion",
         "react-use-measure"
       ],
       "registryDependencies": [],
@@ -120,7 +136,7 @@
       "name": "bg-animate-button",
       "type": "registry:ui",
       "title": "bg-animate-button",
-      "description": "",
+      "description": "Button component with animated background effects and gradient transitions",
       "dependencies": [
         ""
       ],
@@ -136,7 +152,7 @@
       "name": "family-button",
       "type": "registry:ui",
       "title": "family-button",
-      "description": "",
+      "description": "Button component with family-style design and interactive hover effects",
       "dependencies": [
         ""
       ],
@@ -152,7 +168,7 @@
       "name": "side-panel",
       "type": "registry:ui",
       "title": "side-panel",
-      "description": "",
+      "description": "Sliding side panel component with customizable positioning and animations",
       "dependencies": [
         ""
       ],
@@ -168,7 +184,7 @@
       "name": "bg-media",
       "type": "registry:ui",
       "title": "bg-media",
-      "description": "",
+      "description": "Background media component with video/image support and overlay effects",
       "dependencies": [
         ""
       ],
@@ -184,7 +200,7 @@
       "name": "three-d-carousel",
       "type": "registry:ui",
       "title": "three-d-carousel",
-      "description": "",
+      "description": "3D carousel component with perspective effects and smooth item transitions",
       "dependencies": [
         ""
       ],
@@ -200,7 +216,7 @@
       "name": "tweet-grid",
       "type": "registry:ui",
       "title": "tweet-grid",
-      "description": "",
+      "description": "Grid layout component for displaying tweet-like content cards",
       "dependencies": [
         ""
       ],
@@ -216,7 +232,7 @@
       "name": "gradient-heading",
       "type": "registry:ui",
       "title": "gradient-heading",
-      "description": "",
+      "description": "Heading component with gradient text effects and customizable styling",
       "dependencies": [
         "@radix-ui/react-slot"
       ],
@@ -232,9 +248,9 @@
       "name": "typewriter",
       "type": "registry:ui",
       "title": "typewriter",
-      "description": "",
+      "description": "Typewriter effect component with customizable typing speed and cursor animation",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -248,9 +264,9 @@
       "name": "animated-number",
       "type": "registry:ui",
       "title": "animated-number",
-      "description": "",
+      "description": "Number component with smooth counting animations and customizable formatting",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -264,9 +280,9 @@
       "name": "sortable-list",
       "type": "registry:ui",
       "title": "sortable-list",
-      "description": "",
+      "description": "Drag-and-drop sortable list component with smooth animations and reordering",
       "dependencies": [
-        "framer-motion",
+        "motion",
         "react-use-measure"
       ],
       "registryDependencies": [],
@@ -281,9 +297,9 @@
       "name": "dock",
       "type": "registry:ui",
       "title": "dock",
-      "description": "",
+      "description": "macOS-style dock component with hover effects and smooth animations",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -297,7 +313,7 @@
       "name": "lightboard",
       "type": "registry:ui",
       "title": "lightboard",
-      "description": "",
+      "description": "Interactive lightboard component with customizable grid and lighting effects",
       "dependencies": [
         ""
       ],
@@ -313,9 +329,9 @@
       "name": "canvas-fractal-grid",
       "type": "registry:ui",
       "title": "canvas-fractal-grid",
-      "description": "",
+      "description": "Interactive canvas-based fractal dot grid with mouse tracking and wave effects",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -329,9 +345,9 @@
       "name": "bg-animated-fractal-dot-grid",
       "type": "registry:ui",
       "title": "bg-animated-fractal-dot-grid",
-      "description": "",
+      "description": "Background animated fractal dot grid with performance optimization and responsive design",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -345,9 +361,9 @@
       "name": "bg-animated-gradient",
       "type": "registry:ui",
       "title": "bg-animated-gradient",
-      "description": "",
+      "description": "Animated gradient background component with customizable color transitions",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -361,9 +377,9 @@
       "name": "popover",
       "type": "registry:ui",
       "title": "popover",
-      "description": "",
+      "description": "Animated popover component with form support and smooth transitions",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -377,9 +393,9 @@
       "name": "floating-panel",
       "type": "registry:ui",
       "title": "floating-panel",
-      "description": "",
+      "description": "Floating panel component with backdrop blur and position-aware animations",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -393,9 +409,9 @@
       "name": "color-picker",
       "type": "registry:ui",
       "title": "color-picker",
-      "description": "",
+      "description": "Interactive color picker component with HSL support and preset colors",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -409,9 +425,9 @@
       "name": "shader-lens-blur",
       "type": "registry:ui",
       "title": "shader-lens-blur",
-      "description": "",
+      "description": "WebGL shader component with lens blur effects and mouse interaction",
       "dependencies": [
-        "framer-motion",
+        "motion",
         "three",
         "jotai"
       ],
@@ -427,9 +443,9 @@
       "name": "popover-form",
       "type": "registry:ui",
       "title": "popover-form",
-      "description": "",
+      "description": "Form popover component with success states and animated transitions",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -443,9 +459,9 @@
       "name": "expandable",
       "type": "registry:ui",
       "title": "expandable",
-      "description": "",
+      "description": "Expandable component system with smooth animations and customizable presets",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -459,9 +475,9 @@
       "name": "logo-carousel",
       "type": "registry:ui",
       "title": "logo-carousel",
-      "description": "",
+      "description": "Animated logo carousel with staggered animations and customizable columns",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -475,9 +491,9 @@
       "name": "loading-carousel",
       "type": "registry:ui",
       "title": "loading-carousel",
-      "description": "",
+      "description": "Loading carousel component with smooth transitions and customizable content",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -491,9 +507,9 @@
       "name": "hover-video-player",
       "type": "registry:ui",
       "title": "hover-video-player",
-      "description": "",
+      "description": "Video player component that plays on hover with smooth animations",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -507,7 +523,7 @@
       "name": "neumorph-eyebrow",
       "type": "registry:ui",
       "title": "neumorph-eyebrow",
-      "description": "",
+      "description": "Neumorphic eyebrow component with soft shadow effects and modern styling",
       "dependencies": [
         ""
       ],
@@ -523,7 +539,7 @@
       "name": "neumorph-button",
       "type": "registry:ui",
       "title": "neumorph-button",
-      "description": "",
+      "description": "Neumorphic button component with soft shadows and tactile interaction effects",
       "dependencies": [
         ""
       ],
@@ -539,9 +555,9 @@
       "name": "feature-carousel",
       "type": "registry:ui",
       "title": "feature-carousel",
-      "description": "",
+      "description": "Feature carousel component with smooth transitions and customizable layouts",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -555,14 +571,15 @@
       "name": "intro-disclosure",
       "type": "registry:ui",
       "title": "intro-disclosure",
-      "description": "",
+      "description": "Intro disclosure component with expandable content and smooth animations",
       "dependencies": [
-        "framer-motion",
-        "react-use-measure",
+        "motion",
+        "react-use-measure"
+      ],
+      "registryDependencies": [
         "button",
         "aspect-ratio"
       ],
-      "registryDependencies": [],
       "files": [
         {
           "path": "registry/default/ui/intro-disclosure.tsx",
@@ -574,11 +591,8 @@
       "name": "text-gif",
       "type": "registry:ui",
       "title": "text-gif",
-      "description": "",
-      "dependencies": [
-        "next/image",
-        "framer-motion"
-      ],
+      "description": "Text component with GIF-like animation effects and customizable styling",
+      "dependencies": [],
       "registryDependencies": [],
       "files": [
         {
@@ -591,9 +605,9 @@
       "name": "stripe-bg-guides",
       "type": "registry:ui",
       "title": "stripe-bg-guides",
-      "description": "",
+      "description": "Stripe-style background guides component with animated patterns and effects",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -607,9 +621,9 @@
       "name": "youtube-video-player",
       "type": "registry:ui",
       "title": "youtube-video-player",
-      "description": "",
+      "description": "YouTube video player component with custom controls and smooth animations",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [
         "button"
@@ -666,6 +680,23 @@
       "files": [
         {
           "path": "registry/default/example/texture-card-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "timer-demo",
+      "type": "registry:component",
+      "title": "timer-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "timer",
+        "texture-button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/timer-demo.tsx",
           "type": "registry:component"
         }
       ]

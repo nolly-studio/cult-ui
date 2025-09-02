@@ -3,9 +3,9 @@
   "name": "floating-panel",
   "type": "registry:ui",
   "title": "floating-panel",
-  "description": "",
+  "description": "Floating panel component with backdrop blur and position-aware animations",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "registryDependencies": [],
   "files": [

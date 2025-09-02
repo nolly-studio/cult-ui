@@ -1,0 +1,348 @@
+---
+title: Timer
+description: A flexible timer component system with compound components for displaying elapsed time. Features multiple variants, sizes, formats, and a custom hook for advanced timer functionality.
+component: true
+links:
+---
+
+<ComponentPreview
+  name="timer-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/timer.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="timer" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Timer,
+  TimerDisplay,
+  TimerIcon,
+  TimerRoot,
+  useTimer,
+} from "@/components/ui/timer"
+```
+
+### Basic Timer
+
+```tsx
+<Timer loading={true} />
+```
+
+### Compound Components
+
+For more flexibility, you can use the individual components:
+
+```tsx
+<TimerRoot variant="outline" size="lg">
+  <TimerIcon loading={true} />
+  <TimerDisplay time="01:23" />
+</TimerRoot>
+```
+
+### Timer with Custom Format
+
+```tsx
+<Timer loading={true} format="MM:SS" variant="outline" size="lg" />
+```
+
+### Timer with Callback
+
+```tsx
+import { useState } from "react"
+
+const [isLoading, setIsLoading] = useState(false)
+
+const handleTick = (seconds: number, milliseconds: number) => {
+  console.log(`Elapsed: ${seconds}.${milliseconds}s`)
+}
+
+return (
+  <div>
+    <Timer
+      loading={isLoading}
+      onTick={handleTick}
+      format="SS.MS"
+      variant="outline"
+    />
+    <button onClick={() => setIsLoading(!isLoading)}>
+      {isLoading ? "Stop" : "Start"}
+    </button>
+  </div>
+)
+```
+
+### Different Formats
+
+```tsx
+// Seconds with milliseconds
+<Timer loading={true} format="SS.MS" />
+
+// Minutes:Seconds
+<Timer loading={true} format="MM:SS" />
+
+// Hours:Minutes:Seconds
+<Timer loading={true} format="HH:MM:SS" />
+```
+
+## API Reference
+
+### Timer Props
+
+| Prop                   | Type                                                 | Default     | Description                                 |
+| ---------------------- | ---------------------------------------------------- | ----------- | ------------------------------------------- |
+| `loading`              | `boolean`                                            | `false`     | Whether the timer is running/loading        |
+| `onTick`               | `(seconds: number, milliseconds: number) => void`    | -           | Callback called on each timer tick          |
+| `resetOnLoadingChange` | `boolean`                                            | `true`      | Whether to reset timer when loading changes |
+| `format`               | `"SS.MS" \| "MM:SS" \| "HH:MM:SS"`                   | `"SS.MS"`   | Time display format                         |
+| `variant`              | `"default" \| "outline" \| "ghost" \| "destructive"` | `"default"` | Timer variant                               |
+| `size`                 | `"sm" \| "md" \| "lg"`                               | `"md"`      | Timer size                                  |
+| `className`            | `string`                                             | -           | Additional CSS classes                      |
+
+### TimerRoot Props
+
+| Prop        | Type                                                 | Default     | Description                  |
+| ----------- | ---------------------------------------------------- | ----------- | ---------------------------- |
+| `variant`   | `"default" \| "outline" \| "ghost" \| "destructive"` | `"default"` | Timer container variant      |
+| `size`      | `"sm" \| "md" \| "lg"`                               | `"md"`      | Timer size                   |
+| `loading`   | `boolean`                                            | `false`     | Whether the timer is running |
+| `className` | `string`                                             | -           | Additional CSS classes       |
+
+### TimerIcon Props
+
+| Prop        | Type                                          | Default | Description                   |
+| ----------- | --------------------------------------------- | ------- | ----------------------------- |
+| `size`      | `"sm" \| "md" \| "lg"`                        | `"md"`  | Icon size                     |
+| `loading`   | `boolean`                                     | `false` | Whether to show loading state |
+| `icon`      | `React.ComponentType<{ className?: string }>` | `Clock` | Custom icon component         |
+| `className` | `string`                                      | -       | Additional CSS classes        |
+
+### TimerDisplay Props
+
+| Prop        | Type                   | Default | Description                      |
+| ----------- | ---------------------- | ------- | -------------------------------- |
+| `time`      | `string`               | -       | Time value to display            |
+| `label`     | `string`               | -       | Optional label for accessibility |
+| `size`      | `"sm" \| "md" \| "lg"` | `"md"`  | Display size                     |
+| `className` | `string`               | -       | Additional CSS classes           |
+
+### useTimer Hook
+
+The Timer component uses the `useTimer` hook internally, which you can also use directly:
+
+```tsx
+import { useTimer } from "@/components/ui/timer"
+
+const {
+  elapsedTime,
+  milliseconds,
+  formattedTime,
+  isRunning,
+  reset,
+  start,
+  stop,
+} = useTimer({
+  loading: true,
+  onTick: (seconds, ms) => console.log(`${seconds}.${ms}s`),
+  format: "SS.MS",
+})
+```
+
+#### useTimer Options
+
+| Option                 | Type                                              | Default   | Description                                 |
+| ---------------------- | ------------------------------------------------- | --------- | ------------------------------------------- |
+| `loading`              | `boolean`                                         | `false`   | Whether the timer is running                |
+| `onTick`               | `(seconds: number, milliseconds: number) => void` | -         | Callback called on each timer tick          |
+| `resetOnLoadingChange` | `boolean`                                         | `true`    | Whether to reset timer when loading changes |
+| `format`               | `"SS.MS" \| "MM:SS" \| "HH:MM:SS"`                | `"SS.MS"` | Time display format                         |
+
+#### useTimer Return
+
+| Property        | Type         | Description                            |
+| --------------- | ------------ | -------------------------------------- |
+| `elapsedTime`   | `number`     | Elapsed time in seconds                |
+| `milliseconds`  | `number`     | Current milliseconds (0-999)           |
+| `formattedTime` | `object`     | Formatted time object with display     |
+| `isRunning`     | `boolean`    | Whether the timer is currently running |
+| `reset`         | `() => void` | Reset the timer to 0                   |
+| `start`         | `() => void` | Start the timer                        |
+| `stop`          | `() => void` | Stop the timer                         |
+
+## Examples
+
+### Loading State Timer
+
+```tsx
+const [isLoading, setIsLoading] = useState(false)
+
+return (
+  <div className="flex items-center gap-4">
+    <Timer
+      loading={isLoading}
+      variant="outline"
+      size="lg"
+      format="SS.MS"
+    />
+    <button onClick={() => setIsLoading(!isLoading)}>
+      {isLoading ? "Stop" : "Start"}
+    </button>
+  </div>
+)
+```
+
+### Timer with Progress Tracking
+
+```tsx
+const [isLoading, setIsLoading] = useState(false)
+const [elapsedTime, setElapsedTime] = useState(0)
+
+const handleTick = (seconds: number, milliseconds: number) => {
+  setElapsedTime(seconds)
+  // Update progress bar, send analytics, etc.
+}
+
+return (
+  <div className="space-y-4">
+    <Timer
+      loading={isLoading}
+      onTick={handleTick}
+      variant="ghost"
+      size="lg"
+      format="MM:SS"
+    />
+    <div className="text-sm text-muted-foreground">
+      Elapsed: {elapsedTime} seconds
+    </div>
+    <button onClick={() => setIsLoading(!isLoading)}>
+      {isLoading ? "Stop" : "Start"}
+    </button>
+  </div>
+)
+```
+
+### Different Time Formats
+
+```tsx
+// For short durations (seconds with milliseconds)
+<Timer loading={true} format="SS.MS" variant="default" />
+
+// For medium durations (minutes:seconds)
+<Timer loading={true} format="MM:SS" variant="outline" />
+
+// For long durations (hours:minutes:seconds)
+<Timer loading={true} format="HH:MM:SS" variant="ghost" />
+```
+
+### Custom Timer with Compound Components
+
+```tsx
+import { Pause, Play, RotateCcw } from "lucide-react"
+
+import {
+  TimerDisplay,
+  TimerIcon,
+  TimerRoot,
+  useTimer,
+} from "@/components/ui/timer"
+
+function CustomTimer() {
+  const { formattedTime, isRunning, start, stop, reset } = useTimer({
+    format: "MM:SS",
+  })
+
+  return (
+    <div className="flex items-center gap-4">
+      <TimerRoot variant="outline" size="lg">
+        <TimerIcon loading={isRunning} />
+        <TimerDisplay time={formattedTime.display} />
+      </TimerRoot>
+
+      <div className="flex gap-2">
+        <button onClick={isRunning ? stop : start}>
+          {isRunning ? (
+            <Pause className="w-4 h-4" />
+          ) : (
+            <Play className="w-4 h-4" />
+          )}
+        </button>
+        <button onClick={reset}>
+          <RotateCcw className="w-4 h-4" />
+        </button>
+      </div>
+    </div>
+  )
+}
+```
+
+### Custom Icon
+
+```tsx
+import { Stopwatch } from "lucide-react"
+
+import { Timer } from "@/components/ui/timer"
+
+;<TimerRoot variant="destructive" size="lg">
+  <TimerIcon loading={true} icon={Stopwatch} />
+  <TimerDisplay time="02:15" />
+</TimerRoot>
+```
+
+### Using the Hook Directly
+
+```tsx
+import { useTimer } from "@/components/ui/timer"
+
+function CustomTimer() {
+  const { elapsedTime, formattedTime, isRunning, start, stop, reset } =
+    useTimer({
+      loading: false,
+      format: "MM:SS",
+    })
+
+  return (
+    <div className="space-y-4">
+      <div className="text-2xl font-mono">{formattedTime.display}</div>
+      <div className="flex gap-2">
+        <button onClick={isRunning ? stop : start}>
+          {isRunning ? "Stop" : "Start"}
+        </button>
+        <button onClick={reset}>Reset</button>
+      </div>
+    </div>
+  )
+}
+```

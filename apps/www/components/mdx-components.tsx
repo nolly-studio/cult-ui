@@ -30,6 +30,7 @@ import { StyleWrapper } from "@/components/style-wrapper"
 import { Style } from "@/registry/styles"
 
 import { InstallationCli } from "./cli-install-button"
+import { CliRegistrySnippet } from "./cli-registry-snippet"
 import { CodeBlockCommand } from "./code-block-command"
 import { CodeTabs } from "./code-tabs"
 
@@ -232,6 +233,7 @@ const components = {
   ComponentSource,
   CodeBlockCommand,
   CodeTabs,
+  CliRegistrySnippet,
   AspectRatio,
   CodeBlockWrapper: ({ ...props }) => (
     <CodeBlockWrapper className="rounded-md border" {...props} />
@@ -318,7 +320,18 @@ const components = {
         className
       )}
       {...props}
-    />
+    >
+      {props.value === "cli" ? (
+        <div className="flex flex-col space-y-4">
+          <div className="w-full rounded-md [&_button]:hidden [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">
+            {props.children}
+          </div>
+          <CliRegistrySnippet />
+        </div>
+      ) : (
+        props.children
+      )}
+    </TabsContent>
   ),
   Tab: ({ className, ...props }: React.ComponentProps<"div">) => (
     <div className={cn(className)} {...props} />

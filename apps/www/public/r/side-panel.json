@@ -3,7 +3,7 @@
   "name": "side-panel",
   "type": "registry:ui",
   "title": "side-panel",
-  "description": "",
+  "description": "Sliding side panel component with customizable positioning and animations",
   "dependencies": [
     ""
   ],

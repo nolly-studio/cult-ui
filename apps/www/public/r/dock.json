@@ -3,9 +3,9 @@
   "name": "dock",
   "type": "registry:ui",
   "title": "dock",
-  "description": "",
+  "description": "macOS-style dock component with hover effects and smooth animations",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "registryDependencies": [],
   "files": [

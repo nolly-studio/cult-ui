@@ -1,7 +1,8 @@
 {
   "name": "typewriter",
+  "description": "Typewriter effect component with customizable typing speed and cursor animation",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "files": [
     {

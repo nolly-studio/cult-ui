@@ -3,9 +3,9 @@
   "name": "stripe-bg-guides",
   "type": "registry:ui",
   "title": "stripe-bg-guides",
-  "description": "",
+  "description": "Stripe-style background guides component with animated patterns and effects",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "registryDependencies": [],
   "files": [

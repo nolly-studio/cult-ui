@@ -1,0 +1,346 @@
+---
+description: This is how to create a registry component
+globs:
+---
+
+# Cursor Rules for Adding New UI Components to Cult UI Registry
+
+## Overview
+
+This document outlines the complete process for adding a new UI component to the Cult UI registry system. Follow these steps in order to ensure proper integration.
+
+## Step-by-Step Process
+
+### 1. Create the Component File
+
+**Location**: `apps/www/registry/default/ui/[component-name].tsx`
+
+**Requirements**:
+
+- Use TypeScript with React
+- Include proper TypeScript interfaces for props
+- Use `"use client"` directive if component uses client-side features
+- Export the component with a descriptive name (e.g., `TextureButton`)
+- Include `displayName` for debugging
+- Use proper imports from `@/lib/utils` for `cn` utility
+- Follow existing component patterns for styling and structure
+
+**Example structure**:
+
+```tsx
+"use client"
+
+import * as React from "react"
+import { cva } from "class-variance-authority"
+
+import { cn } from "@/lib/utils"
+
+// Component variants using cva
+const componentVariants = cva("base-classes", {
+  variants: {
+    variant: {
+      default: "default-classes",
+      // other variants
+    },
+    size: {
+      default: "default-size",
+      // other sizes
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "default",
+  },
+})
+
+export interface ComponentProps extends React.HTMLAttributes<HTMLElement> {
+  variant?: "default" | "other"
+  size?: "default" | "other"
+  // other props
+}
+
+const ComponentName = React.forwardRef<HTMLElement, ComponentProps>(
+  ({ className, variant, size, ...props }, ref) => {
+    return (
+      <element
+        className={cn(componentVariants({ variant, size }), className)}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+
+ComponentName.displayName = "ComponentName"
+
+export { ComponentName }
+```
+
+### 2. Create the Example/Demo File
+
+**Location**: `apps/www/registry/default/example/[component-name]-demo.tsx`
+
+**Requirements**:
+
+- Use `"use client"` directive
+- Import the component from the correct path: `@/registry/default/ui/[component-name]`
+- Create a comprehensive demo showing all variants and use cases
+- Use proper styling with dark mode support
+- Include responsive design considerations
+- Export as default function with descriptive name
+
+**Example structure**:
+
+```tsx
+"use client"
+
+import { ComponentName } from "@/registry/default/ui/component-name"
+
+export default function ComponentNameDemo() {
+  return (
+    <div className="dark:bg-stone-950 py-6 px-4 md:px-0 rounded-md flex justify-center">
+      <div>
+        {/* Demo content showing all variants */}
+        <div className="flex flex-col gap-3 max-w-lg mt-4">
+          <ComponentName variant="default">Default</ComponentName>
+          <ComponentName variant="other">Other Variant</ComponentName>
+        </div>
+      </div>
+    </div>
+  )
+}
+```
+
+### 3. Create Documentation File
+
+**Location**: `apps/www/content/docs/components/[component-name].mdx`
+
+**Requirements**:
+
+- Include frontmatter with title, description, and component flag
+- Add ComponentPreview with the demo name
+- Include installation instructions (CLI and manual)
+- Provide usage examples
+- Follow existing documentation patterns
+
+**Example structure**:
+
+````mdx
+---
+title: ComponentName
+description: Brief description of the component
+component: true
+links:
+---
+
+<ComponentPreview
+  name="component-name-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/component-name.json
+```
+
+<CliRegistrySnippet />
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="component-name" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { ComponentName } from "@/components/ui/component-name"
+```
+
+```tsx
+<ComponentName variant="default">Content</ComponentName>
+```
+````
+
+### 4. Update Registry Files
+
+#### A. Update `apps/www/registry/ui.ts`
+
+Add a new entry to the `ui` array:
+
+```typescript
+{
+  name: "component-name",
+  type: "registry:ui",
+  dependencies: ["dependency1", "dependency2"], // or [""] if no dependencies
+  files: [
+    {
+      path: "registry/default/ui/component-name.tsx",
+      type: "registry:ui",
+    },
+  ],
+},
+```
+
+**Dependencies to consider**:
+
+- `framer-motion` - for animations
+- `@radix-ui/react-slot` - for polymorphic components
+- `react-use-measure` - for measurements
+- `three` - for 3D components
+- `jotai` - for state management
+- `next/image` - for Next.js image optimization
+- `button` - for button dependencies
+- `aspect-ratio` - for aspect ratio components
+
+#### B. Update `apps/www/registry/examples.ts`
+
+Add a new entry to the `examples` array:
+
+```typescript
+{
+  name: "component-name-demo",
+  type: "registry:component",
+  registryDependencies: ["component-name"], // include other dependencies if needed
+  files: [
+    {
+      path: "registry/default/example/component-name-demo.tsx",
+      type: "registry:component",
+    },
+  ],
+},
+```
+
+### 5. Update Documentation Configuration
+
+**File**: `apps/www/config/docs.ts`
+
+Add the new component to the appropriate section in the `sidebarNav` array. Choose the correct category:
+
+- **Buttons & Controls**: For button-like components
+- **Cards & Containers**: For card and container components
+- **Onboarding & Tours**: For onboarding and tutorial components
+- **Layout & Forms**: For layout and form components
+- **Interactive Elements**: For interactive UI elements
+- **Media**: For media-related components
+- **Typography & Text**: For text and typography components
+- **Visual Effects**: For visual effect components
+
+**Example addition**:
+
+```typescript
+{
+  title: "Component Display Name",
+  href: "/docs/components/component-name",
+  items: [],
+  // Optional: label: "new" | "recent"
+},
+```
+
+## Naming Conventions
+
+### File Names
+
+- Use kebab-case for file names: `component-name.tsx`
+- Use kebab-case for demo files: `component-name-demo.tsx`
+- Use kebab-case for documentation: `component-name.mdx`
+
+### Component Names
+
+- Use PascalCase for component names: `ComponentName`
+- Use descriptive, clear names that indicate the component's purpose
+
+### Registry Names
+
+- Use kebab-case for registry entries: `component-name`
+- Use kebab-case for demo registry entries: `component-name-demo`
+
+## Dependencies
+
+### Common Dependencies
+
+- `framer-motion` - Animation library
+- `@radix-ui/react-slot` - Polymorphic component support
+- `react-use-measure` - Element measurement hooks
+- `three` - 3D graphics library
+- `jotai` - State management
+- `next/image` - Next.js image optimization
+- `button` - Button component dependency
+- `aspect-ratio` - Aspect ratio component
+
+### Dependency Guidelines
+
+- Always include `framer-motion` if the component has animations
+- Include `@radix-ui/react-slot` if the component supports polymorphic rendering
+- Include `react-use-measure` if the component needs to measure elements
+- Include `three` and `jotai` for 3D components
+- Include `next/image` if using Next.js image optimization
+- Include other registry components as `registryDependencies` if they're used
+
+## Testing Checklist
+
+Before considering the component complete, verify:
+
+- [ ] Component file created in `apps/www/registry/default/ui/`
+- [ ] Demo file created in `apps/www/registry/default/example/`
+- [ ] Documentation file created in `apps/www/content/docs/components/`
+- [ ] Entry added to `apps/www/registry/ui.ts`
+- [ ] Entry added to `apps/www/registry/examples.ts`
+- [ ] Entry added to `apps/www/config/docs.ts`
+- [ ] Component renders correctly in all variants
+- [ ] Demo shows all component variations
+- [ ] Documentation is complete and accurate
+- [ ] All dependencies are properly declared
+- [ ] TypeScript types are correct
+- [ ] Component follows existing patterns and conventions
+
+## File Structure Summary
+
+```
+apps/www/
+├── registry/
+│   ├── default/
+│   │   ├── ui/
+│   │   │   └── [component-name].tsx          # Component implementation
+│   │   └── example/
+│   │       └── [component-name]-demo.tsx     # Demo/example
+│   ├── ui.ts                                 # Registry entries
+│   └── examples.ts                           # Example registry entries
+├── content/docs/components/
+│   └── [component-name].mdx                  # Documentation
+└── config/
+    └── docs.ts                               # Navigation configuration
+```
+
+## Notes
+
+- Always follow existing patterns and conventions
+- Ensure components are accessible and responsive
+- Test components in both light and dark modes
+- Use proper TypeScript types and interfaces
+- Include comprehensive examples in demos
+- Write clear, helpful documentation
+- Consider the component's placement in the navigation structure

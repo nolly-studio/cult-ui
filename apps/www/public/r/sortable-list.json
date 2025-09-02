@@ -3,9 +3,9 @@
   "name": "sortable-list",
   "type": "registry:ui",
   "title": "sortable-list",
-  "description": "",
+  "description": "Drag-and-drop sortable list component with smooth animations and reordering",
   "dependencies": [
-    "framer-motion",
+    "motion",
     "react-use-measure"
   ],
   "registryDependencies": [],

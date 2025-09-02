@@ -1,5 +1,6 @@
 {
   "name": "three-d-carousel",
+  "description": "3D carousel component with perspective effects and smooth item transitions",
   "dependencies": [
     ""
   ],

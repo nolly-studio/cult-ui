@@ -1,7 +1,8 @@
 {
   "name": "loading-carousel",
+  "description": "Loading carousel component with smooth transitions and customizable content",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "files": [
     {

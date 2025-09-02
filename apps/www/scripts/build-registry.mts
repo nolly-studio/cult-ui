@@ -227,6 +227,7 @@ export const Index: Record<string, any> = {
     "${item.name}": {
       name: "${item.name}",
       type: "${item.type}",
+      description: "${item.description || ""}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
       component: React.lazy(() => import("@/registry/${style.name}/${
         item.type === "registry:component" ? "example" : "ui"

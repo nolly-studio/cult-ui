@@ -3,7 +3,7 @@
   "name": "three-d-carousel",
   "type": "registry:ui",
   "title": "three-d-carousel",
-  "description": "",
+  "description": "3D carousel component with perspective effects and smooth item transitions",
   "dependencies": [
     ""
   ],

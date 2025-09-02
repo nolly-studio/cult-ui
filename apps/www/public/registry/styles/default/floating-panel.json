@@ -1,7 +1,8 @@
 {
   "name": "floating-panel",
+  "description": "Floating panel component with backdrop blur and position-aware animations",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "files": [
     {
