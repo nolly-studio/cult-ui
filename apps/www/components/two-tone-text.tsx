@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
-const gradientVariants = cva("tracking-tight bg-clip-text text-transparent", {
+const gradientVariants = cva("bg-clip-text tracking-tight text-transparent", {
   variants: {
     variant: {
       default:
@@ -191,8 +191,8 @@ export function TwoToneText({
               ? "text-muted-foreground hover:text-muted-foreground/90"
               : "text-primary hover:text-primary/90",
             "relative inline-block transition-all duration-200",
-            "after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-current after:scale-x-0 after:origin-right after:transition-transform after:duration-300",
-            "hover:after:scale-x-100 hover:after:origin-left"
+            "after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-right after:scale-x-0 after:bg-current after:transition-transform after:duration-300",
+            "hover:after:origin-left hover:after:scale-x-100"
           )}
         >
           {link.text}
@@ -232,7 +232,7 @@ export function TwoToneText({
       {!allowWrap && (
         <span
           className={cn(
-            "block mt-1",
+            "mt-1 block",
             sizeClasses[size] === "sm" ? "mt-0.5" : "mt-1"
           )}
         ></span>

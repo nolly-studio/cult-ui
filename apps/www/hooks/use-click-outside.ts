@@ -25,5 +25,3 @@ export default function useClickOutside<T extends HTMLElement = HTMLElement>(
     }
   }, [ref, handler])
 }
-
-

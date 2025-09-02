@@ -109,8 +109,8 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                     and other resources from multiple sources in one project.
                     Think of it like having different app stores - you can get
                     UI components from shadcn, AI prompts from v0, and custom
-                    tools from your company's private registry, all using the
-                    same command.
+                    tools from your company&apos;s private registry, all using
+                    the same command.
                   </p>
                 </div>
 
@@ -121,28 +121,28 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                   </h4>
                   <div className="space-y-2 text-sm text-gray-600">
                     <div className="flex items-start space-x-2">
-                      <span className="text-gray-400 mt-0.5">1.</span>
+                      <span className="mt-0.5 text-gray-400">1.</span>
                       <span>
                         Configure registries in your{" "}
-                        <code className="bg-gray-100 px-1.5 py-0.5 rounded text-xs">
+                        <code className="rounded bg-gray-100 px-1.5 py-0.5 text-xs">
                           components.json
                         </code>
                       </span>
                     </div>
                     <div className="flex items-start space-x-2">
-                      <span className="text-gray-400 mt-0.5">2.</span>
+                      <span className="mt-0.5 text-gray-400">2.</span>
                       <span>
                         Install resources using{" "}
-                        <code className="bg-gray-100 px-1.5 py-0.5 rounded text-xs">
+                        <code className="rounded bg-gray-100 px-1.5 py-0.5 text-xs">
                           npx shadcn@beta add @namespace/resource
                         </code>
                       </span>
                     </div>
                     <div className="flex items-start space-x-2">
-                      <span className="text-gray-400 mt-0.5">3.</span>
+                      <span className="mt-0.5 text-gray-400">3.</span>
                       <span>
                         View resources before installing with{" "}
-                        <code className="bg-gray-100 px-1.5 py-0.5 rounded text-xs">
+                        <code className="rounded bg-gray-100 px-1.5 py-0.5 text-xs">
                           npx shadcn@beta view @namespace/resource
                         </code>
                       </span>
@@ -154,12 +154,12 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                 <div className="space-y-3">
                   <button
                     onClick={() => handleHelpSectionToggle("basic")}
-                    className="flex items-center justify-between w-full text-left hover:text-zinc-900 transition-colors"
+                    className="flex w-full items-center justify-between text-left transition-colors hover:text-zinc-900"
                   >
                     <h4 className="text-sm font-medium text-zinc-600">
                       Basic Usage
                     </h4>
-                    <span className="text-zinc-400 text-sm">
+                    <span className="text-sm text-zinc-400">
                       {activeHelpSection === "basic" ? "−" : "+"}
                     </span>
                   </button>
@@ -167,7 +167,7 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                     <div className="space-y-2 pl-4">
                       <div className="space-y-2">
                         <div className="space-y-1">
-                          <code className="text-sm text-zinc-800 bg-zinc-50 px-2 py-1 rounded block">
+                          <code className="block rounded bg-zinc-50 px-2 py-1 text-sm text-zinc-800">
                             npx shadcn@beta add @cult-ui/button
                           </code>
                           <p className="text-sm text-zinc-600">
@@ -175,7 +175,7 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                           </p>
                         </div>
                         <div className="space-y-1">
-                          <code className="text-sm text-zinc-800 bg-zinc-50 px-2 py-1 rounded block">
+                          <code className="block rounded bg-zinc-50 px-2 py-1 text-sm text-zinc-800">
                             npx shadcn@beta add @cult-ui/button @cult-ui/card
                           </code>
                           <p className="text-sm text-zinc-600">
@@ -183,8 +183,9 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                           </p>
                         </div>
                         <div className="space-y-1">
-                          <code className="text-sm text-zinc-800 bg-zinc-50 px-2 py-1 rounded block">
-                            npx shadcn@beta search @cult-ui --query "button"
+                          <code className="block rounded bg-zinc-50 px-2 py-1 text-sm text-zinc-800">
+                            npx shadcn@beta search @cult-ui --query
+                            &quot;button&quot;
                           </code>
                           <p className="text-sm text-zinc-600">
                             Search for button-related resources
@@ -199,12 +200,12 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                 <div className="space-y-3">
                   <button
                     onClick={() => handleHelpSectionToggle("config")}
-                    className="flex items-center justify-between w-full text-left hover:text-zinc-900 transition-colors"
+                    className="flex w-full items-center justify-between text-left transition-colors hover:text-zinc-900"
                   >
                     <h4 className="text-sm font-medium text-zinc-600">
                       Configuration
                     </h4>
-                    <span className="text-zinc-400 text-sm">
+                    <span className="text-sm text-zinc-400">
                       {activeHelpSection === "config" ? "−" : "+"}
                     </span>
                   </button>
@@ -215,7 +216,7 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                           <h5 className="text-sm font-medium text-zinc-800">
                             Simple Registry
                           </h5>
-                          <pre className="text-xs text-zinc-600 bg-zinc-50 p-2 rounded overflow-x-auto">
+                          <pre className="overflow-x-auto rounded bg-zinc-50 p-2 text-xs text-zinc-600">
                             {`{
   "@cult-ui": "https://cult-ui.com/r/{name}.json",
   "@v0": "https://v0.dev/chat/b/{name}"
@@ -226,7 +227,7 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                           <h5 className="text-sm font-medium text-zinc-800">
                             With Multiple Registries
                           </h5>
-                          <pre className="text-xs text-zinc-600 bg-zinc-50 p-2 rounded overflow-x-auto">
+                          <pre className="overflow-x-auto rounded bg-zinc-50 p-2 text-xs text-zinc-600">
                             {`{
   "@cult-ui": "https://cult-ui.com/r/{name}.json",
   "@v0": "https://v0.dev/chat/b/{name}",
@@ -243,12 +244,12 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                 <div className="space-y-3">
                   <button
                     onClick={() => handleHelpSectionToggle("advanced")}
-                    className="flex items-center justify-between w-full text-left hover:text-zinc-900 transition-colors"
+                    className="flex w-full items-center justify-between text-left transition-colors hover:text-zinc-900"
                   >
                     <h4 className="text-sm font-medium text-zinc-600">
                       Advanced Setup
                     </h4>
-                    <span className="text-zinc-400 text-sm">
+                    <span className="text-sm text-zinc-400">
                       {activeHelpSection === "advanced" ? "−" : "+"}
                     </span>
                   </button>
@@ -258,7 +259,7 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                         <h5 className="text-sm font-medium text-zinc-800">
                           Complete components.json
                         </h5>
-                        <pre className="text-xs text-zinc-600 bg-zinc-50 p-2 rounded overflow-x-auto">
+                        <pre className="overflow-x-auto rounded bg-zinc-50 p-2 text-xs text-zinc-600">
                           {`{
   "$schema": "https://ui.shadcn.com/schema.json",
   "style": "new-york",
@@ -294,40 +295,40 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                 <div className="space-y-3">
                   <button
                     onClick={() => handleHelpSectionToggle("troubleshoot")}
-                    className="flex items-center justify-between w-full text-left hover:text-zinc-900 transition-colors"
+                    className="flex w-full items-center justify-between text-left transition-colors hover:text-zinc-900"
                   >
                     <h4 className="text-sm font-medium text-zinc-600">
                       Troubleshooting
                     </h4>
-                    <span className="text-zinc-400 text-sm">
+                    <span className="text-sm text-zinc-400">
                       {activeHelpSection === "troubleshoot" ? "−" : "+"}
                     </span>
                   </button>
                   {activeHelpSection === "troubleshoot" && (
                     <div className="space-y-2 pl-4 text-sm text-zinc-600">
                       <div className="flex items-start space-x-2">
-                        <span className="text-zinc-400 mt-0.5">•</span>
+                        <span className="mt-0.5 text-zinc-400">•</span>
                         <span>
                           <strong>Registry not found:</strong> Check your{" "}
-                          <code className="bg-zinc-100 px-1.5 py-0.5 rounded text-xs">
+                          <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs">
                             components.json
                           </code>{" "}
                           configuration
                         </span>
                       </div>
                       <div className="flex items-start space-x-2">
-                        <span className="text-zinc-400 mt-0.5">•</span>
+                        <span className="mt-0.5 text-zinc-400">•</span>
                         <span>
                           <strong>Resource not found:</strong> Check resource
                           name and registry URL pattern
                         </span>
                       </div>
                       <div className="flex items-start space-x-2">
-                        <span className="text-zinc-400 mt-0.5">•</span>
+                        <span className="mt-0.5 text-zinc-400">•</span>
                         <span>
-                          <strong>Installation fails:</strong> Ensure you're
-                          using{" "}
-                          <code className="bg-zinc-100 px-1.5 py-0.5 rounded text-xs">
+                          <strong>Installation fails:</strong> Ensure
+                          you&apos;re using{" "}
+                          <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs">
                             shadcn@beta
                           </code>{" "}
                           for v3 features
@@ -341,12 +342,12 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                 <div className="space-y-3">
                   <button
                     onClick={() => handleHelpSectionToggle("resources")}
-                    className="flex items-center justify-between w-full text-left hover:text-zinc-900 transition-colors"
+                    className="flex w-full items-center justify-between text-left transition-colors hover:text-zinc-900"
                   >
                     <h4 className="text-sm font-medium text-zinc-600">
                       Resources & Docs
                     </h4>
-                    <span className="text-zinc-400 text-sm">
+                    <span className="text-sm text-zinc-400">
                       {activeHelpSection === "resources" ? "−" : "+"}
                     </span>
                   </button>
@@ -356,7 +357,7 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                         href="https://ui.shadcn.com/docs/registry/namespaced-registries"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block text-sm text-blue-600 hover:text-blue-800 transition-colors"
+                        className="block text-sm text-blue-600 transition-colors hover:text-blue-800"
                       >
                         → Full Documentation
                       </a>
@@ -364,7 +365,7 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                         href="https://ui.shadcn.com/docs/registry/registry-item-json"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block text-sm text-blue-600 hover:text-blue-800 transition-colors"
+                        className="block text-sm text-blue-600 transition-colors hover:text-blue-800"
                       >
                         → Registry Item Schema
                       </a>
@@ -372,7 +373,7 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                         href="https://github.com/shadcn/ui"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block text-sm text-blue-600 hover:text-blue-800 transition-colors"
+                        className="block text-sm text-blue-600 transition-colors hover:text-blue-800"
                       >
                         → GitHub Repository
                       </a>
@@ -431,11 +432,11 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
     )
 
     return (
-      <div className="hidden md:block space-y-2 w-full max-w-lg mx-auto">
+      <div className="mx-auto hidden w-full max-w-lg space-y-2 md:block">
         <Badge variant="outline" className="bg-gray-100">
           OPTION 1
         </Badge>
-        <div className="flex items-center gap-2 mb-2">
+        <div className="mb-2 flex items-center gap-2">
           <TwoToneText
             primaryText="Install with shadcn cli"
             secondaryText="Quickly add components to existing project"
@@ -445,7 +446,7 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
         </div>
         <MotionConfig transition={transition}>
           <div
-            className="w-full max-w-lg mx-auto rounded-2xl shadow-[0_0_0_1px_rgba(0,0,0,0.08),0px_2px_2px_rgba(0,0,0,0.04),0px_8px_16px_-4px_rgba(0,0,0,0.04)]"
+            className="mx-auto w-full max-w-lg rounded-2xl shadow-[0_0_0_1px_rgba(0,0,0,0.08),0px_2px_2px_rgba(0,0,0,0.04),0px_8px_16px_-4px_rgba(0,0,0,0.04)]"
             ref={ref}
           >
             <div className="rounded-2xl">
@@ -459,12 +460,12 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                       exit={{ height: 0 }}
                       className=""
                     >
-                      <div ref={contentRef} className=" pt-2 px-2 pb-1">
-                        <h4 className="text-sm font-medium text-gray-900 px-2">
+                      <div ref={contentRef} className=" px-2 pb-1 pt-2">
+                        <h4 className="px-2 text-sm font-medium text-gray-900">
                           {activeTitle}
                         </h4>
 
-                        <div className="shadow-elevation-light bg-[#F7F7F8] rounded-[0.8rem] px-3 py-4 mt-3">
+                        <div className="shadow-elevation-light mt-3 rounded-[0.8rem] bg-[#F7F7F8] px-3 py-4">
                           {renderContent()}
                         </div>
                       </div>
@@ -475,7 +476,7 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
 
               {/* Navigation bar */}
               <div
-                className="flex items-center w-full justify-center p-[1px]"
+                className="flex w-full items-center justify-center p-[1px]"
                 ref={menuRef}
               >
                 <div className="flex w-full items-center">
@@ -484,15 +485,15 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                       key={button.id}
                       onClick={button.onClick}
                       className={cn(
-                        "text-sm text-gray-600 hover:text-gray-900 transition-colors flex-1 py-4 px-2 ",
-                        button.isActive ? "text-gray-900 font-medium" : "",
+                        "flex-1 px-2 py-4 text-sm text-gray-600 transition-colors hover:text-gray-900 ",
+                        button.isActive ? "font-medium text-gray-900" : "",
                         active === null ? "hover:bg-muted/50" : "",
                         button.isFirst && !isOpen ? "hover:rounded-l-2xl" : "",
                         button.isLast && !isOpen ? "hover:rounded-r-2xl" : ""
                       )}
                     >
-                      <div className="flex justify-center items-center gap-2">
-                        <div className="text-[10px] w-5  flex items-center justify-center shadow-inner-shadow font-bold  rounded-md  transition-all duration-300">
+                      <div className="flex items-center justify-center gap-2">
+                        <div className="shadow-inner-shadow flex  w-5 items-center justify-center rounded-md text-[10px]  font-bold  transition-all duration-300">
                           <span
                             className={cn(
                               "w-full rounded-md bg-muted",

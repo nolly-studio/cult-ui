@@ -48,7 +48,7 @@ export function CliRegistrySnippet({ className }: CliRegistrySnippetProps) {
         <CollapsibleTrigger asChild>
           <Button
             variant="ghost"
-            className="flex items-center gap-2 p-0 h-auto text-sm text-muted-foreground hover:text-foreground"
+            className="flex h-auto items-center gap-2 p-0 text-sm text-muted-foreground hover:text-foreground"
           >
             {isOpen ? (
               <ChevronDownIcon className="h-4 w-4" />
@@ -63,14 +63,14 @@ export function CliRegistrySnippet({ className }: CliRegistrySnippetProps) {
           <div className="space-y-2">
             <p className="text-sm text-muted-foreground">
               Add this to your{" "}
-              <code className="bg-muted px-1.5 py-0.5 rounded text-xs">
+              <code className="rounded bg-muted px-1.5 py-0.5 text-xs">
                 components.json
               </code>{" "}
               file:
             </p>
 
             <div className="relative">
-              <pre className="bg-muted p-3 rounded-md text-sm overflow-x-auto">
+              <pre className="overflow-x-auto rounded-md bg-muted p-3 text-sm">
                 <code>{registrySnippet}</code>
               </pre>
 
@@ -114,7 +114,7 @@ export function CliRegistrySnippet({ className }: CliRegistrySnippetProps) {
 
             <p className="text-xs text-muted-foreground">
               Then install with:{" "}
-              <code className="bg-muted px-1.5 py-0.5 rounded text-xs">
+              <code className="rounded bg-muted px-1.5 py-0.5 text-xs">
                 npx shadcn@beta add @cult-ui/component-name
               </code>
             </p>
