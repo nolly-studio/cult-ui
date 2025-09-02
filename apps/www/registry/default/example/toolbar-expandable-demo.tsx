@@ -89,7 +89,7 @@ const deploymentSteps = [
     icon: Palette,
     content: (
       <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label>Primary Color</Label>
             <div className="flex gap-2">
@@ -252,25 +252,25 @@ export default function DynamicToolbarDemo() {
   >(null)
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="max-w-5xl mx-auto">
+    <div className="">
+      <div className="max-w-sm sm:max-w-5xl mx-auto">
         <div className="relative">
-          <div className="px-6 pt-16 pb-12 text-center">
+          <div className="px-4 sm:px-6 pt-8 sm:pt-16 pb-8 sm:pb-12 text-center">
             <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-medium bg-muted text-muted-foreground rounded-full border">
               Component Demo
             </div>
-            <h1 className="text-3xl font-semibold text-foreground mb-3 text-balance">
+            <h1 className="text-2xl sm:text-3xl font-semibold text-foreground mb-3 text-balance">
               Dynamic Toolbar Expandable
             </h1>
-            <p className="text-muted-foreground max-w-lg mx-auto text-balance leading-relaxed">
+            <p className="text-muted-foreground max-w-lg mx-auto text-balance leading-relaxed text-sm sm:text-base">
               Sophisticated expandable toolbar with smooth animations and
               step-based navigation for complex workflows.
             </p>
           </div>
         </div>
 
-        <div className=" space-y-16 max-w-2xl mx-auto ">
-          <section className="bg-muted/50 rounded-xl border p-6 pb-8">
+        <div className="space-y-12 sm:space-y-16 max-w-2xl mx-auto px-4 sm:px-0">
+          <section className="sm:bg-muted/50 rounded-xl sm:border p-4 sm:p-6 pb-6 sm:pb-8">
             <div className="mb-8">
               <h2 className="text-lg font-medium text-foreground mb-2">
                 Controlled Usage
@@ -280,11 +280,12 @@ export default function DynamicToolbarDemo() {
               </p>
             </div>
 
-            <div className="mb-6 p-4 ">
+            <div className="mb-6 p-3 sm:p-4">
               <div className="flex flex-wrap gap-2 mb-3">
                 <Button
                   variant="outline"
                   size="sm"
+                  className="text-xs sm:text-sm"
                   onClick={() => {
                     setControlledExpanded(!controlledExpanded)
                     if (!controlledExpanded && !controlledActiveStep) {
@@ -297,6 +298,7 @@ export default function DynamicToolbarDemo() {
                 <Button
                   variant="outline"
                   size="sm"
+                  className="text-xs sm:text-sm"
                   onClick={() => {
                     setControlledExpanded(true)
                     setControlledActiveStep("configure")
@@ -307,6 +309,7 @@ export default function DynamicToolbarDemo() {
                 <Button
                   variant="outline"
                   size="sm"
+                  className="text-xs sm:text-sm"
                   onClick={() => {
                     setControlledExpanded(true)
                     setControlledActiveStep("deploy")
@@ -317,6 +320,7 @@ export default function DynamicToolbarDemo() {
                 <Button
                   variant="ghost"
                   size="sm"
+                  className="text-xs sm:text-sm"
                   onClick={() => {
                     setControlledExpanded(false)
                     setControlledActiveStep(null)
@@ -341,7 +345,7 @@ export default function DynamicToolbarDemo() {
             />
           </section>
 
-          <section>
+          <section className="sm:bg-muted/50 rounded-xl sm:border p-4 sm:p-6 pb-6 sm:pb-8">
             <div className="mb-8">
               <h2 className="text-lg font-medium text-foreground mb-2">
                 Deployment Workflow
@@ -354,7 +358,7 @@ export default function DynamicToolbarDemo() {
             <ToolbarExpandable steps={deploymentSteps} badgeText="DEPLOYMENT" />
           </section>
 
-          <section>
+          <section className="sm:bg-muted/50 rounded-xl sm:border p-4 sm:p-6 pb-6 sm:pb-8">
             <div className="mb-8">
               <h2 className="text-lg font-medium text-foreground mb-2">
                 Download Configuration
@@ -377,7 +381,7 @@ export default function DynamicToolbarDemo() {
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-4">
               <div className="flex items-start gap-3">
                 <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
                 <div>
@@ -396,7 +400,7 @@ export default function DynamicToolbarDemo() {
                     Responsive Design
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    Desktop optimized, mobile aware
+                    Fully responsive with mobile optimization
                   </div>
                 </div>
               </div>

@@ -154,18 +154,9 @@ export function LatestComponentVertical() {
       </div>
 
       {/* <div className=" mt-4 flex max-w-xl grow flex-col items-center justify-center space-y-0 rounded-[14px] border border-dashed border-black/10  bg-neutral-300/20 p-4 md:mt-0 md:rounded-md md:rounded-br-[20px] md:rounded-tr-[35px]"> */}
-      <div className="mx-auto w-full ">
-        <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center  py-8 lg:pb-8 lg:pt-3">
-          <section>
-            <div className="mb-8">
-              <h2 className="mb-2 text-lg font-medium text-foreground">
-                Deployment Workflow
-              </h2>
-              <p className="text-sm text-muted-foreground">
-                5-step process with internal state management
-              </p>
-            </div>
-
+      <div className="mx-auto  w-full ">
+        <div className="mx-auto flex w-full  flex-col items-center py-8  sm:max-w-screen-lg lg:pb-8 lg:pt-3">
+          <section className="max-w-xs sm:max-w-none">
             <DynamicToolbarExpandable steps={deploymentSteps} />
           </section>
         </div>

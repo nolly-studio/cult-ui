@@ -229,7 +229,7 @@ const DynamicToolbarExpandable = React.memo<DynamicToolbarExpandableProps>(
     return (
       <div
         className={cn(
-          "mx-auto hidden w-full max-w-lg space-y-2 md:block",
+          "mx-auto w-full max-w-sm space-y-2 px-2 sm:max-w-lg sm:px-0",
           className
         )}
       >
@@ -258,13 +258,13 @@ const DynamicToolbarExpandable = React.memo<DynamicToolbarExpandableProps>(
                       exit={{ height: 0 }}
                       className=""
                     >
-                      <div ref={contentRef} className="px-2 pt-2 ">
+                      <div ref={contentRef} className="px-2 pt-2 sm:px-2">
                         <h4 className="px-2 text-sm font-medium text-foreground">
                           {activeTitle}
                         </h4>
 
                         <div className="pb-1">
-                          <div className="mb-2 mt-3 rounded-[0.8rem] bg-muted/50 px-3 py-4  shadow-[0px_1px_1px_0px_rgba(0,0,0,0.05),0px_1px_1px_0px_rgba(255,252,240,0.5)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.1)_inset,0px_0px_1px_0px_rgba(28,27,26,0.5)] dark:shadow-[0px_1px_1px_0px_rgba(0,0,0,0.2),0px_1px_1px_0px_rgba(255,255,255,0.05)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.05)_inset,0px_0px_1px_0px_rgba(0,0,0,0.8)]">
+                          <div className="mb-2 mt-3 rounded-[0.8rem] bg-muted/50 px-3 py-4 shadow-[0px_1px_1px_0px_rgba(0,0,0,0.05),0px_1px_1px_0px_rgba(255,252,240,0.5)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.1)_inset,0px_0px_1px_0px_rgba(28,27,26,0.5)] dark:shadow-[0px_1px_1px_0px_rgba(0,0,0,0.2),0px_1px_1px_0px_rgba(255,255,255,0.05)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.05)_inset,0px_0px_1px_0px_rgba(0,0,0,0.8)]">
                             {renderContent()}
                           </div>
                         </div>
@@ -279,7 +279,7 @@ const DynamicToolbarExpandable = React.memo<DynamicToolbarExpandableProps>(
                 <ScrollArea
                   className="w-full"
                   viewportClassName="scrollbar-hide"
-                  maskHeight={20}
+                  maskHeight={16}
                   ref={(element) => {
                     if (element) {
                       menuContainerRef.current = element
@@ -287,20 +287,20 @@ const DynamicToolbarExpandable = React.memo<DynamicToolbarExpandableProps>(
                     }
                   }}
                 >
-                  <div className="flex w-max items-center p-px">
+                  <div className="flex w-max min-w-full items-center p-px">
                     {navigationButtons.map((button, index) => (
                       <button
                         key={button.id}
                         data-step-index={index}
                         onClick={button.onClick}
                         className={cn(
-                          "flex shrink-0 items-center gap-2 whitespace-nowrap p-4 text-sm text-muted-foreground transition-colors",
+                          "flex min-h-[44px] shrink-0 items-center gap-2 whitespace-nowrap p-3 text-sm text-muted-foreground transition-colors sm:min-h-0 sm:p-4",
                           button.isActive
                             ? "bg-muted/50 font-medium text-foreground"
-                            : "hover:bg-muted/60"
+                            : "hover:bg-muted/60 active:bg-muted/70"
                         )}
                       >
-                        <div className="flex w-5 items-center justify-center rounded-md text-[10px] font-bold shadow-[0px_1px_1px_0px_hsla(0,0%,0%,0.02)_inset,0px_1px_1px_0px_hsla(0,0%,0%,0.02)_inset,0px_0px_0px_1px_rgba(255,255,255,0.25)] transition-all duration-300 dark:shadow-[0px_1px_1px_0px_hsla(0,0%,100%,0.02)_inset,0px_1px_1px_0px_rgba(255,255,255,0.05)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.05)_inset,0px_0px_1px_0px_rgba(0,0,0,0.25)]">
+                        <div className="flex size-5 items-center justify-center rounded-md text-[10px] font-bold shadow-[0px_1px_1px_0px_hsla(0,0%,0%,0.02)_inset,0px_1px_1px_0px_hsla(0,0%,0%,0.02)_inset,0px_0px_0px_1px_rgba(255,255,255,0.25)] transition-all duration-300 dark:shadow-[0px_1px_1px_0px_hsla(0,0%,100%,0.02)_inset,0px_1px_1px_0px_rgba(255,255,255,0.05)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.05)_inset,0px_0px_1px_0px_rgba(0,0,0,0.25)] sm:size-5">
                           <span
                             className={cn(
                               "w-full rounded-md",
@@ -312,7 +312,7 @@ const DynamicToolbarExpandable = React.memo<DynamicToolbarExpandableProps>(
                             {button.step}
                           </span>
                         </div>
-                        <span className="text-sm font-medium text-foreground">
+                        <span className="text-xs font-medium text-foreground sm:text-sm">
                           {button.label}
                         </span>
                       </button>
@@ -413,7 +413,7 @@ function useClickOutside<T extends HTMLElement = HTMLElement>(
   }, [ref, handler])
 }
 
-export function useTouchPrimary() {
+function useTouchPrimary() {
   const [isTouchPrimary, setIsTouchPrimary] = useState(false)
 
   useEffect(() => {
@@ -688,7 +688,11 @@ const ScrollMask = ({
   )
 }
 
-export default DynamicToolbarExpandable
+export default function ToolbarExpandable(
+  props: DynamicToolbarExpandableProps
+) {
+  return <DynamicToolbarExpandable {...props} />
+}
 
 export const deploymentSteps = [
   {
