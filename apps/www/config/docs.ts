@@ -153,6 +153,7 @@ export const docsConfig: DocsConfig = {
               title: "Toolbar Expandable",
               href: "/docs/components/toolbar-expandable",
               items: [],
+              label: "new",
             },
           ],
         },
