@@ -28,7 +28,6 @@ import {
   type MouseEvent,
 } from "react"
 import Image, { type StaticImageData } from "next/image"
-import cult from "@/assets/cults.png"
 import clsx from "clsx"
 import {
   AnimatePresence,
@@ -687,7 +686,7 @@ export function FeatureCarousel({
               <AnimatedStepImage
                 alt={image.alt}
                 className="pointer-events-none top-[50%] w-[90%] overflow-hidden rounded-2xl border border-neutral-100/10 md:left-[35px] md:top-[30%] md:w-full dark:border-zinc-700"
-                src={cult}
+                src="/cults.png"
                 preset="fadeInScale"
                 delay={0.1}
               />

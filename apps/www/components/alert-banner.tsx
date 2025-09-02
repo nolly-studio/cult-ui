@@ -21,7 +21,7 @@ export function AlertBanner() {
               Introducing <span className="font-black">cult ui pro</span>
             </p>
 
-            <div className="h-1 w-1 rounded-full bg-black"></div>
+            <div className="size-1 rounded-full bg-black"></div>
 
             <span className="hidden md:block">
               full stack blocks, ai agents and more.

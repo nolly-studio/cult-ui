@@ -476,7 +476,7 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
 
               {/* Navigation bar */}
               <div
-                className="flex w-full items-center justify-center p-[1px]"
+                className="flex w-full items-center justify-center p-px"
                 ref={menuRef}
               >
                 <div className="flex w-full items-center">

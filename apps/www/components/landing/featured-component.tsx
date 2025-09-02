@@ -1,17 +1,12 @@
 import Link from "next/link"
 import { ArrowRight, SparklesIcon } from "lucide-react"
 
-import LogoCarouselDemo from "@/registry/default/example/logo-carousel-demo"
 import { ContactFormExample } from "@/registry/default/example/popover-form-demo"
-import ShaderLensBlurDemo from "@/registry/default/example/shader-lens-blur-demo"
-import TextGifDemo from "@/registry/default/example/text-gif-demo"
 import { GradientHeading } from "@/registry/default/ui/gradient-heading"
 import { LightBoard } from "@/registry/default/ui/lightboard"
-import LogoCarousel from "@/registry/default/ui/logo-carousel"
-import ShaderLensBlur from "@/registry/default/ui/shader-lens-blur"
-import { TextGif } from "@/registry/default/ui/text-gif"
 
 import { Badge } from "../ui/badge"
+import DynamicToolbarExpandable, { deploymentSteps } from "./toolbar-expandable"
 
 export function FeaturedComponent() {
   return (
@@ -32,7 +27,7 @@ export function FeaturedComponent() {
               className="flex items-center gap-1 "
             >
               A retro light board marquee that you can draw on
-              <ArrowRight className="hidden h-4 w-4 md:block" />
+              <ArrowRight className="hidden size-4 md:block" />
             </Link>
           </div>
         </div>
@@ -119,7 +114,7 @@ export function LatestComponent() {
               className="flex items-center gap-1 "
             >
               Headless popover form animation. <br /> Inspired by @emilkowalski_
-              <ArrowRight className="hidden h-4 w-4 md:block" />
+              <ArrowRight className="hidden size-4 md:block" />
             </Link>
           </div>
         </div>
@@ -146,12 +141,12 @@ export function LatestComponentVertical() {
       <div className="flex flex-col justify-center pb-2 pl-4 pt-14 md:items-center">
         <div className="flex  gap-2">
           <div>
-            <GradientHeading>Text Gif</GradientHeading>
+            <GradientHeading>Toolbar Expandable</GradientHeading>
             <Link
               href="/docs/components/text-gif"
               className="flex items-center gap-1 "
             >
-              Animated text with a gif background.
+              Step-based expandable toolbar with smooth animations.
               {/* <ArrowRight className="hidden h-4 w-4 md:block" /> */}
             </Link>
           </div>
@@ -161,27 +156,18 @@ export function LatestComponentVertical() {
       {/* <div className=" mt-4 flex max-w-xl grow flex-col items-center justify-center space-y-0 rounded-[14px] border border-dashed border-black/10  bg-neutral-300/20 p-4 md:mt-0 md:rounded-md md:rounded-br-[20px] md:rounded-tr-[35px]"> */}
       <div className="mx-auto w-full ">
         <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center  py-8 lg:pb-8 lg:pt-3">
-          <TextGif
-            gifUrl="https://media.giphy.com/media/fnglNFjBGiyAFtm6ke/giphy.gif"
-            text="The Secret"
-            className="leading-[0.01rem]  md:leading-[0.05rem] "
-            size="xl"
-            weight="black"
-          />
-          <TextGif
-            gifUrl="https://media.giphy.com/media/9Pmfazv34l7aNIKK05/giphy.gif"
-            text="Teachings"
-            className="leading-[0.01rem]  md:leading-[0.05rem] "
-            size="xl"
-            weight="black"
-          />
-          <TextGif
-            gifUrl="https://media.giphy.com/media/3zvbrvbRe7wxBofOBI/giphy.gif"
-            text="of All Ages "
-            className="leading-[0.01rem]  md:leading-[0.05rem] "
-            size="xl"
-            weight="black"
-          />
+          <section>
+            <div className="mb-8">
+              <h2 className="mb-2 text-lg font-medium text-foreground">
+                Deployment Workflow
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                5-step process with internal state management
+              </p>
+            </div>
+
+            <DynamicToolbarExpandable steps={deploymentSteps} />
+          </section>
         </div>
       </div>
       {/* </div> */}

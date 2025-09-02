@@ -7,6 +7,21 @@ const nextConfig = {
   outputFileTracingIncludes: {
     registry: ["./registry/**/*"],
   },
+  webpack: (config, { isServer }) => {
+    // Handle Node.js built-in modules
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        path: false,
+        util: false,
+        fs: false,
+        net: false,
+        tls: false,
+      }
+    }
+
+    return config
+  },
   images: {
     remotePatterns: [
       {

@@ -154,8 +154,6 @@ links:
 npx shadcn@latest add https://cult-ui.com/r/component-name.json
 ```
 
-<CliRegistrySnippet />
-
 </TabsContent>
 
 <TabsContent value="manual">

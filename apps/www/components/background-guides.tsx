@@ -148,9 +148,9 @@ export function AnimatedBackgroundGuides({
       aria-hidden="true"
       style={{ zIndex: -1 }}
     >
-      <div className="z-0 h-full w-full px-4 sm:px-6 lg:px-24">
+      <div className="z-0 size-full px-4 sm:px-6 lg:px-24">
         <div
-          className="mx-auto h-full w-full"
+          className="mx-auto size-full"
           style={{
             display: "grid",
             gridTemplateColumns: responsive

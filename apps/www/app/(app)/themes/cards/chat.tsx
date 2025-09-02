@@ -112,7 +112,7 @@ export function CardsChat() {
                   className="ml-auto rounded-full"
                   onClick={() => setOpen(true)}
                 >
-                  <Plus className="h-4 w-4" />
+                  <Plus className="size-4" />
                   <span className="sr-only">New message</span>
                 </Button>
               </TooltipTrigger>
@@ -162,7 +162,7 @@ export function CardsChat() {
               onChange={(event) => setInput(event.target.value)}
             />
             <Button type="submit" size="icon" disabled={inputLength === 0}>
-              <Send className="h-4 w-4" />
+              <Send className="size-4" />
               <span className="sr-only">Send</span>
             </Button>
           </form>
@@ -215,7 +215,7 @@ export function CardsChat() {
                       </p>
                     </div>
                     {selectedUsers.includes(user) ? (
-                      <Check className="ml-auto flex h-5 w-5 text-primary" />
+                      <Check className="ml-auto flex size-5 text-primary" />
                     ) : null}
                   </CommandItem>
                 ))}

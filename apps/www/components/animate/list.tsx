@@ -137,7 +137,7 @@ const ListItem: React.FC<ListItemProps> = ({
                       id={`checkbox-${item.id}`}
                       aria-label="Mark as done"
                       onCheckedChange={() => onCompleteItem(item.id)}
-                      className="ml-3 h-5 w-5 rounded-md border-neutral-400/80 bg-black "
+                      className="ml-3 size-5 rounded-md border-neutral-400/80 bg-black "
                     />
                     <motion.span className="w-full px-1 text-lg tracking-tight text-neutral-300/90">
                       {item.text}
@@ -211,7 +211,7 @@ const ListItem: React.FC<ListItemProps> = ({
                 className=" group inline-flex  h-9 items-center justify-center whitespace-nowrap rounded-md px-3 text-sm font-medium ring-offset-background transition-colors duration-150 hover:bg-[#141712] hover:text-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
                 onClick={() => onRemoveItem(item.id)}
               >
-                <Trash className="h-4 w-4 text-red-400 transition-colors duration-150 group-hover:fill-red-400/60" />
+                <Trash className="size-4 text-red-400 transition-colors duration-150 group-hover:fill-red-400/60" />
               </button>
             </motion.div>
           ) : null}
@@ -252,12 +252,12 @@ const List: React.FC<ListProps> = ({
               disabled={items.length > 5}
               onClick={onAddItem}
             >
-              <Plus className="dark:text-netural-100 h-4 w-4 text-neutral-800" />
+              <Plus className="dark:text-netural-100 size-4 text-neutral-800" />
               New stage
             </button>
             <div data-tip="Reset task list">
               <button onClick={onResetItems}>
-                <RepeatIcon className="dark:text-netural-100 h-4 w-4 text-neutral-800" />
+                <RepeatIcon className="dark:text-netural-100 size-4 text-neutral-800" />
               </button>
             </div>
           </div>
@@ -514,7 +514,7 @@ const AIAgentListDemo: React.FC = () => {
             open={isOpen}
             onOpenChange={(open) => setOpenItemId(open ? item.id : null)}
             className={cn(
-              "flex h-full w-full flex-col items-center justify-center gap-2 px-1",
+              "flex size-full flex-col items-center justify-center gap-2 px-1",
               isOpen ? "py-1" : "py-3"
             )}
           >
@@ -529,9 +529,9 @@ const AIAgentListDemo: React.FC = () => {
                 )}
               >
                 {isOpen ? (
-                  <XIcon className="h-5 w-5 text-neutral-500" />
+                  <XIcon className="size-5 text-neutral-500" />
                 ) : (
-                  <CogIcon className="mt-1.5 h-6 w-6 text-neutral-500 hover:rotate-12" />
+                  <CogIcon className="mt-1.5 size-6 text-neutral-500 hover:rotate-12" />
                 )}
               </motion.button>
             </CollapsibleTrigger>
@@ -576,7 +576,7 @@ const AIAgentListDemo: React.FC = () => {
                   exit={{ opacity: 0, transition: { duration: 0 } }}
                 >
                   <div className="flex items-center gap-2 pt-2">
-                    <motion.div className="h-1.5 w-1.5 rounded-full bg-cyan-200" />
+                    <motion.div className="size-1.5 rounded-full bg-cyan-200" />
                     <span className="text-xs text-neutral-300/80">Changes</span>
                   </div>
                   <div className="ml-auto mr-2 pt-2 ">

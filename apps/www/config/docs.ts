@@ -149,6 +149,11 @@ export const docsConfig: DocsConfig = {
               href: "/docs/components/sortable-list",
               items: [],
             },
+            {
+              title: "Toolbar Expandable",
+              href: "/docs/components/toolbar-expandable",
+              items: [],
+            },
           ],
         },
         {

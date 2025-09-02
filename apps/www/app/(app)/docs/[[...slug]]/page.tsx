@@ -87,13 +87,11 @@ export default async function DocPage({ params }: DocPageProps) {
   const toc = await getTableOfContents(doc.body.raw)
 
   return (
-    <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_100px] ">
+    <main className="relative py-6 lg:gap-10 lg:py-8 2xl:grid 2xl:grid-cols-[1fr_100px] ">
       <div className="mx-auto w-full min-w-0 border-border px-2 py-4 sm:rounded-lg sm:border sm:bg-card sm:p-4 lg:px-6">
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
-          <div className="overflow-hidden text-ellipsis whitespace-nowrap">
-            Docs
-          </div>
-          <ChevronRightIcon className="h-4 w-4" />
+          <div className="truncate">Docs</div>
+          <ChevronRightIcon className="size-4" />
           <div className="font-medium text-foreground">{doc.title}</div>
         </div>
         <div className="space-y-2">
@@ -116,7 +114,7 @@ export default async function DocPage({ params }: DocPageProps) {
                 className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
               >
                 Docs
-                <ExternalLinkIcon className="h-3 w-3" />
+                <ExternalLinkIcon className="size-3" />
               </Link>
             )}
             {doc.links?.api && (
@@ -127,7 +125,7 @@ export default async function DocPage({ params }: DocPageProps) {
                 className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
               >
                 API Reference
-                <ExternalLinkIcon className="h-3 w-3" />
+                <ExternalLinkIcon className="size-3" />
               </Link>
             )}
           </div>

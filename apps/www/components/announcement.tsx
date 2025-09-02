@@ -12,10 +12,10 @@ export function Announcement() {
       target="_blank"
       rel="noreferrer"
     >
-      <Blocks className="h-4 w-4 group-hover:rotate-6 group-hover:fill-cyan-300" />{" "}
+      <Blocks className="size-4 group-hover:rotate-6 group-hover:fill-cyan-300" />{" "}
       <Separator className="mx-2 h-4 bg-neutral-900" orientation="vertical" />{" "}
       <span>New! polar.sh saas template</span>
-      <ArrowRightIcon className="ml-1 h-4 w-4" />
+      <ArrowRightIcon className="ml-1 size-4" />
     </Link>
   )
 }

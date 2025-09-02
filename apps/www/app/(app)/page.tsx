@@ -61,7 +61,7 @@ export default function IndexPage() {
                 "  rounded-xl transition-all hover:bg-muted/50"
               )}
             >
-              <Icons.gitHub className="mr-2 h-5 w-5" />
+              <Icons.gitHub className="mr-2 size-5" />
               GitHub
             </Link>
           </PageActions>
@@ -100,18 +100,18 @@ export default function IndexPage() {
         aria-label="Technologies used"
       >
         <div className="flex items-center gap-2 rounded-full border border-border/50 bg-background/50 px-4 py-2 backdrop-blur-sm">
-          <ReactIcon className="h-5 w-5 text-[#61DAFB]" aria-hidden="true" />
+          <ReactIcon className="size-5 text-[#61DAFB]" aria-hidden="true" />
           <span className="text-sm font-medium">React</span>
         </div>
 
         <div className="flex items-center gap-2 rounded-full border border-border/50 bg-background/50 px-4 py-2 backdrop-blur-sm">
-          <Icons.logo className="h-4 w-4" />
+          <Icons.logo className="size-4" />
           <span className="text-sm font-medium">Shadcn/ui</span>
         </div>
 
         <div className="flex items-center gap-2 rounded-full border border-border/50 bg-background/50 px-4 py-2 backdrop-blur-sm">
           <TailwindCSSIcon
-            className="h-5 w-5 text-[#06B6D4]"
+            className="size-5 text-[#06B6D4]"
             aria-hidden="true"
           />
           <span className="text-sm font-medium">Tailwind CSS</span>

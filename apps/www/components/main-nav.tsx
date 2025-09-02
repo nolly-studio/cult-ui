@@ -3,6 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { ExternalLink } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
@@ -15,7 +16,7 @@ export function MainNav() {
   return (
     <div className="mr-4 hidden md:flex ">
       <Link href="/" className="mr-6 flex items-center space-x-2">
-        <Icons.cultLogoBasic className="h-6 w-6 fill-black  " />
+        <Icons.cultLogoBasic className="size-6 fill-black  " />
         <span className="hidden text-lg font-bold sm:inline-block">
           cult ui
         </span>
@@ -39,39 +40,42 @@ export function MainNav() {
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
-            "text-sm font-semibold transition-colors hover:text-foreground/80",
+            "flex items-center gap-2 text-sm font-semibold transition-colors hover:text-foreground/80",
             pathname?.startsWith("/examples")
               ? "text-foreground"
               : "text-foreground/60"
           )}
         >
           Blocks <span className="text-xs text-pink-500">(8 new)</span>
+          <ExternalLink className="size-3" />
         </a>
         <a
           href="https://pro.cult-ui.com/sections"
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
-            "text-sm font-semibold transition-colors hover:text-foreground/80",
+            "flex items-center gap-2 text-sm font-semibold transition-colors hover:text-foreground/80",
             pathname?.startsWith("/examples")
               ? "text-foreground"
               : "text-foreground/60"
           )}
         >
           Sections <span className="text-xs text-pink-500">(10 new)</span>
+          <ExternalLink className="size-3" />
         </a>
         <a
           href="https://pro.cult-ui.com/templates"
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
-            "text-sm font-semibold transition-colors hover:text-foreground/80",
+            "flex items-center gap-2 text-sm font-semibold transition-colors hover:text-foreground/80",
             pathname?.startsWith("/examples")
               ? "text-foreground"
               : "text-foreground/60"
           )}
         >
           Templates <span className="text-xs text-pink-500">(1 new)</span>
+          <ExternalLink className="size-3" />
         </a>
 
         {/* <Link

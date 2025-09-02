@@ -51,9 +51,9 @@ export function CliRegistrySnippet({ className }: CliRegistrySnippetProps) {
             className="flex h-auto items-center gap-2 p-0 text-sm text-muted-foreground hover:text-foreground"
           >
             {isOpen ? (
-              <ChevronDownIcon className="h-4 w-4" />
+              <ChevronDownIcon className="size-4" />
             ) : (
-              <ChevronRightIcon className="h-4 w-4" />
+              <ChevronRightIcon className="size-4" />
             )}
             <span>Configure registry (shadcn v3)</span>
           </Button>
@@ -79,7 +79,7 @@ export function CliRegistrySnippet({ className }: CliRegistrySnippetProps) {
                 size="icon"
                 onClick={onCopy}
                 className={cn(
-                  "absolute right-2 top-2 h-8 w-8 transition-all duration-200",
+                  "absolute right-2 top-2 size-8 transition-all duration-200",
                   isCopied
                     ? "bg-green-100 text-green-600 hover:bg-green-100"
                     : "hover:bg-background"
@@ -95,7 +95,7 @@ export function CliRegistrySnippet({ className }: CliRegistrySnippetProps) {
                       exit={{ scale: 0.5, opacity: 0 }}
                       transition={{ duration: 0.15 }}
                     >
-                      <CheckIcon className="h-4 w-4" />
+                      <CheckIcon className="size-4" />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -105,7 +105,7 @@ export function CliRegistrySnippet({ className }: CliRegistrySnippetProps) {
                       exit={{ scale: 0.5, opacity: 0 }}
                       transition={{ duration: 0.15 }}
                     >
-                      <CopyIcon className="h-4 w-4" />
+                      <CopyIcon className="size-4" />
                     </motion.div>
                   )}
                 </AnimatePresence>

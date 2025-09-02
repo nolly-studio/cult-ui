@@ -83,6 +83,11 @@ export default makeSource({
   contentDirPath: "./content",
   documentTypes: [Doc],
   mdx: {
+    esbuildOptions: (options) => {
+      options.platform = "node"
+      options.external = ["path", "util", "fs", "net", "tls"]
+      return options
+    },
     remarkPlugins: [remarkGfm, codeImport],
     rehypePlugins: [
       rehypeSlug,

@@ -430,4 +430,21 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "toolbar-expandable-demo",
+    type: "registry:component",
+    registryDependencies: [
+      "toolbar-expandable",
+      "button",
+      "input",
+      "label",
+      "textarea",
+    ],
+    files: [
+      {
+        path: "registry/default/example/toolbar-expandable-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ]

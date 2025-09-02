@@ -71,7 +71,7 @@ export function InstallationCli({ value, className }: InstallationCliProps) {
                   size="icon"
                   onClick={onCopy}
                   className={cn(
-                    "relative h-8 w-8 rounded-md transition-all duration-200 hover:bg-zinc-800",
+                    "relative size-8 rounded-md transition-all duration-200 hover:bg-zinc-800",
                     isCopied
                       ? "bg-green-900/30 text-green-400 hover:bg-green-900/30"
                       : "text-zinc-400 hover:text-zinc-100"
@@ -147,7 +147,7 @@ export function InstallationCli({ value, className }: InstallationCliProps) {
                 onClick={onCopy}
                 className={cn(
                   "relative m-1 rounded-md transition-all duration-200 hover:bg-zinc-800",
-                  isMediumScreen ? "h-7 w-7" : "h-8 w-8",
+                  isMediumScreen ? "size-7" : "size-8",
                   isCopied
                     ? "bg-green-900/30 text-green-400 hover:bg-green-900/30"
                     : "text-zinc-400 hover:text-zinc-100"

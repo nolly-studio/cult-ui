@@ -65,7 +65,7 @@ export function BasicExample() {
         className="rounded-full border border-primary/10 "
         onClick={() => setValue(value + 1000)}
       >
-        <Plus className="h-4 w-4" />
+        <Plus className="size-4" />
       </Button>
     </div>
   )
@@ -90,7 +90,7 @@ export function PrecisionExample() {
             className="ml-auto rounded-full border border-primary/10 py-5"
             onClick={() => setValue(value + 123.456)}
           >
-            <Plus className="h-4 w-4" />
+            <Plus className="size-4" />
           </Button>
         </div>
       </TextureCardContent>
@@ -119,7 +119,7 @@ export function FormatExample() {
             className="ml-auto rounded-full border border-primary/10 py-5"
             onClick={() => setValue(value + 250)}
           >
-            <Plus className="h-4 w-4" />
+            <Plus className="size-4" />
           </Button>
         </div>
       </TextureCardContent>
@@ -158,7 +158,7 @@ export function HooksExample() {
             className="ml-auto rounded-full border border-primary/10 py-5"
             onClick={() => setValue(value + 500)}
           >
-            <Plus className="h-4 w-4" />
+            <Plus className="size-4" />
           </Button>
         </div>
       </TextureCardContent>
@@ -202,7 +202,7 @@ export function CustomSpringExample() {
             className="rounded-full border border-primary/10 py-5"
             onClick={() => setValue(value + 500)}
           >
-            <Plus className="mr-2 h-4 w-4" />
+            <Plus className="mr-2 size-4" />
             Increase
           </Button>
           <Button
@@ -210,7 +210,7 @@ export function CustomSpringExample() {
             disabled={value <= 500}
             onClick={() => setValue(value - 300)}
           >
-            <Minus className="mr-2 h-4 w-4" />
+            <Minus className="mr-2 size-4" />
             Decrease
           </Button>
         </div>

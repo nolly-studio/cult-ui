@@ -269,7 +269,7 @@ function IconCheck({ className, ...props }: React.ComponentProps<"svg">) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 256 256"
       fill="currentColor"
-      className={cn("h-4 w-4", className)}
+      className={cn("size-4", className)}
       {...props}
     >
       <path d="m229.66 77.66-128 128a8 8 0 0 1-11.32 0l-56-56a8 8 0 0 1 11.32-11.32L96 188.69 218.34 66.34a8 8 0 0 1 11.32 11.32Z" />
@@ -416,7 +416,7 @@ function FeatureCard({
                   ease: [0.23, 1, 0.32, 1],
                 }}
               >
-                <p className="text-sm leading-5 text-neutral-300 sm:text-base sm:leading-5 dark:text-zinc-400">
+                <p className="text-sm leading-5 text-neutral-300 dark:text-zinc-400 sm:text-base sm:leading-5">
                   <Balancer>{steps[step].description}</Balancer>
                 </p>
               </motion.div>
@@ -480,7 +480,7 @@ function Steps({
                       scale: isCurrent ? 1.2 : 1,
                     }}
                     className={cn(
-                      "flex h-4 w-4 shrink-0 items-center justify-center rounded-full duration-300",
+                      "flex size-4 shrink-0 items-center justify-center rounded-full duration-300",
                       isCompleted &&
                         "bg-brand-400 dark:bg-brand-400 text-white",
                       isCurrent &&
@@ -498,7 +498,7 @@ function Steps({
                           damping: 20,
                         }}
                       >
-                        <IconCheck className="h-3 w-3 stroke-white stroke-[3] text-white dark:stroke-black" />
+                        <IconCheck className="size-3 stroke-white stroke-[3] text-white dark:stroke-black" />
                       </motion.div>
                     ) : (
                       <span
@@ -591,7 +591,7 @@ export function FeatureCarousel({
            */
           return (
             <motion.div
-              className="relative h-full w-full"
+              className="relative size-full"
               onAnimationComplete={handleAnimationComplete}
             >
               <AnimatedStepImage
@@ -621,7 +621,7 @@ export function FeatureCarousel({
            */
           return (
             <motion.div
-              className="relative h-full w-full"
+              className="relative size-full"
               onAnimationComplete={handleAnimationComplete}
             >
               <AnimatedStepImage
@@ -677,7 +677,7 @@ export function FeatureCarousel({
             >
               <AnimatedStepImage
                 alt={image.alt}
-                className="pointer-events-none top-[50%] w-[90%] overflow-hidden rounded-2xl border border-neutral-100/10 md:left-[35px] md:top-[30%] md:w-full dark:border-zinc-700"
+                className="pointer-events-none top-[50%] w-[90%] overflow-hidden rounded-2xl border border-neutral-100/10 dark:border-zinc-700 md:left-[35px] md:top-[30%] md:w-full"
                 src={cult}
                 preset="fadeInScale"
                 delay={0.1}
@@ -694,7 +694,7 @@ export function FeatureCarousel({
         <motion.div
           key={step}
           {...ANIMATION_PRESETS.fadeInScale}
-          className="absolute h-full w-full"
+          className="absolute size-full"
         >
           {content()}
         </motion.div>
@@ -709,12 +709,12 @@ export function FeatureCarousel({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
-        className="absolute left-[12rem] top-5 z-50 h-full w-full cursor-pointer md:left-0"
+        className="absolute left-48 top-5 z-50 size-full cursor-pointer md:left-0"
       >
         <Steps current={step} onChange={() => {}} steps={steps} />
       </motion.div>
       <motion.div
-        className="absolute right-0 top-0 z-50 h-full w-full cursor-pointer md:left-0"
+        className="absolute right-0 top-0 z-50 size-full cursor-pointer md:left-0"
         onClick={handleIncrement}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}

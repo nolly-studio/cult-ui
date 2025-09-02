@@ -24,7 +24,7 @@ export function SiteHeader() {
         className={cn(
           "sticky top-0 z-50 w-full    ",
           pathname?.includes("/docs")
-            ? "-mb-12 bg-[#FAFAFA]   backdrop-blur supports-[backdrop-filter]:bg-background/60 lg:backdrop-blur-xl dark:bg-[#171517]"
+            ? "-mb-12 bg-[#FAFAFA]   backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:bg-[#171517] lg:backdrop-blur-xl"
             : "-mb-14"
         )}
       >
@@ -55,7 +55,7 @@ export function SiteHeader() {
                     "w-9 px-0"
                   )}
                 >
-                  <Icons.gitHub className="h-4 w-4" />
+                  <Icons.gitHub className="size-4" />
                   <span className="sr-only">GitHub</span>
                 </div>
               </Link>
@@ -72,7 +72,7 @@ export function SiteHeader() {
                     "w-9 px-0"
                   )}
                 >
-                  <Icons.twitter className="h-3 w-3 fill-current" />
+                  <Icons.twitter className="size-3 fill-current" />
                   <span className="sr-only">Twitter</span>
                 </div>
               </Link>

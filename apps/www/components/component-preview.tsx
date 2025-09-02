@@ -98,7 +98,7 @@ export function ComponentPreview({
             <CopyButton
               value={codeString}
               variant="outline"
-              className="h-7 w-7 text-foreground opacity-100 hover:bg-muted hover:text-foreground [&_svg]:size-3.5"
+              className="size-7 text-foreground opacity-100 hover:bg-muted hover:text-foreground [&_svg]:size-3.5"
             />
           </div>
         </div>
@@ -117,7 +117,7 @@ export function ComponentPreview({
               data-align={align}
               // className="preview flex h-[450px] w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start"
               className={cn(
-                "preview flex min-h-[350px] w-full justify-center bg-white p-3 md:p-10 dark:bg-neutral-950",
+                "preview flex min-h-[350px] w-full justify-center bg-white p-3 dark:bg-neutral-950 md:p-10",
                 {
                   "items-center": align === "center",
                   "items-start": align === "start",
@@ -128,7 +128,7 @@ export function ComponentPreview({
               <React.Suspense
                 fallback={
                   <div className="flex items-center text-sm text-muted-foreground">
-                    <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                    <Icons.spinner className="mr-2 size-4 animate-spin" />
                     Loading...
                   </div>
                 }

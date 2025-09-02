@@ -473,6 +473,18 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "toolbar-expandable": {
+      name: "toolbar-expandable",
+      type: "registry:ui",
+      description: "Expandable toolbar component with step-based navigation, smooth animations, and enhanced scrolling",
+      registryDependencies: ["badge"],
+      component: React.lazy(() => import("@/registry/default/ui/toolbar-expandable")),
+      source: "",
+      files: ["registry/default/ui/toolbar-expandable.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "text-animate-demo": {
       name: "text-animate-demo",
       type: "registry:component",
@@ -937,6 +949,18 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/youtube-video-player-demo")),
       source: "",
       files: ["registry/default/example/youtube-video-player-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "toolbar-expandable-demo": {
+      name: "toolbar-expandable-demo",
+      type: "registry:component",
+      description: "",
+      registryDependencies: ["toolbar-expandable","button","input","label","textarea"],
+      component: React.lazy(() => import("@/registry/default/example/toolbar-expandable-demo")),
+      source: "",
+      files: ["registry/default/example/toolbar-expandable-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []

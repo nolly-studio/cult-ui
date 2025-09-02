@@ -636,6 +636,25 @@
       ]
     },
     {
+      "name": "toolbar-expandable",
+      "type": "registry:ui",
+      "title": "toolbar-expandable",
+      "description": "Expandable toolbar component with step-based navigation, smooth animations, and enhanced scrolling",
+      "dependencies": [
+        "motion",
+        "@radix-ui/react-scroll-area"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/toolbar-expandable.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "text-animate-demo",
       "type": "registry:component",
       "title": "text-animate-demo",
@@ -1261,6 +1280,26 @@
       "files": [
         {
           "path": "registry/default/example/youtube-video-player-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "toolbar-expandable-demo",
+      "type": "registry:component",
+      "title": "toolbar-expandable-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "toolbar-expandable",
+        "button",
+        "input",
+        "label",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/toolbar-expandable-demo.tsx",
           "type": "registry:component"
         }
       ]

@@ -510,4 +510,18 @@ export const ui: Registry["items"] = [
     description:
       "YouTube video player component with custom controls and smooth animations",
   },
+  {
+    name: "toolbar-expandable",
+    type: "registry:ui",
+    dependencies: ["motion", "@radix-ui/react-scroll-area"],
+    registryDependencies: ["badge"],
+    files: [
+      {
+        path: "registry/default/ui/toolbar-expandable.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Expandable toolbar component with step-based navigation, smooth animations, and enhanced scrolling",
+  },
 ]

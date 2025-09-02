@@ -29,7 +29,7 @@ export function MobileNav() {
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
+            className="size-5"
           >
             <path
               d="M3 5H11"
@@ -62,7 +62,7 @@ export function MobileNav() {
           className="flex items-center"
           onOpenChange={setOpen}
         >
-          <Icons.cultLogoBasic className="h-6 w-6 fill-black  " />
+          <Icons.cultLogoBasic className="size-6 fill-black  " />
           <span className=" text-lg font-bold sm:inline-block">cult ui</span>
           <span className="sr-only">{siteConfig.name}</span>
         </MobileLink>
