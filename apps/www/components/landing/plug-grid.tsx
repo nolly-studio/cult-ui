@@ -20,7 +20,7 @@ export function PlugCardGrid() {
     {
       title: "Free SEO Improvement Tool",
       description:
-        "Quickly evaluate your website's SEO performance for free. AI improvements + Open graph preview.",
+        "Quickly evaluate your website's SEO performance for free. Open graph preview included.",
       href: "https://cleanmyseo.com",
       img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2FoNGR5OXpvMnZ2a3NpNWpqYnlnOG82aWYzMnJhY256ajVuOWhpMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/w1LYqDDIpDaLKj6N5t/giphy.gif",
     },
@@ -42,7 +42,7 @@ export function PlugCardGrid() {
         <StickerIcon className="mr-1  fill-[#A3C0E0] stroke-1 text-neutral-800" />{" "}
         Additional goods
       </Badge>
-      <div className="   flex flex-col justify-center  space-y-4 rounded-[34px]   p-3 pt-12">
+      <div className="   flex flex-col justify-center  space-y-4 rounded-b-[34px]   p-3 pt-12">
         <div className="relative grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
           {cards.map((card) => (
             <a
@@ -51,7 +51,7 @@ export function PlugCardGrid() {
               rel="noopener noreferrer"
               href={card.href}
             >
-              <MinimalCard className="bg-transparent">
+              <MinimalCard className="rounded-t-xl bg-transparent">
                 <MinimalCardTitle className="text-base text-neutral-800">
                   {card.title}
                 </MinimalCardTitle>

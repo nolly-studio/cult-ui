@@ -12,6 +12,7 @@ import {
   TailwindCSSIcon,
   TypeScriptIcon,
 } from "@/components/icons"
+import { MiniBlocksGrid } from "@/components/landing/blocks-grid"
 import { FeaturesSection } from "@/components/landing/feature-section"
 import { LatestComponentVertical } from "@/components/landing/featured-component"
 import { PlugCardGrid } from "@/components/landing/plug-grid"
@@ -21,7 +22,7 @@ import { PageActions, PageHeader } from "@/components/page-header"
 export default function IndexPage() {
   return (
     <div className=" isolate min-h-screen overflow-hidden  pb-8 sm:pb-12 md:pb-0">
-      <div className="container relative pt-12 md:pt-8">
+      <div className="container relative pt-12 md:py-8">
         <PageHeader>
           <Announcement />
 
@@ -72,6 +73,10 @@ export default function IndexPage() {
             <LatestComponentVertical />
           </div>
 
+          <div className=" mx-auto   max-w-4xl rounded-[24px]  border border-black/5 p-2 shadow-sm ">
+            <MiniBlocksGrid />
+          </div>
+
           <div className=" mx-auto   max-w-4xl rounded-[24px] border border-black/5 p-2 shadow-sm ">
             <TemplateGrid />
           </div>
@@ -81,7 +86,7 @@ export default function IndexPage() {
           </div>
         </section>
       </div>
-      <section className=" my-12 hidden w-full md:block">
+      {/* <section className=" my-12 hidden w-full md:block">
         <div className=" relative mx-auto max-w-4xl rounded-[24px] border border-black/5 p-2 shadow-sm md:rounded-[44px]">
           <Badge
             variant="outline"
@@ -92,7 +97,7 @@ export default function IndexPage() {
           </Badge>
           <FeaturesSection />
         </div>
-      </section>
+      </section> */}
       {/* Feature Pills */}
       <div
         className="flex flex-wrap items-center justify-center gap-3 md:gap-4"
