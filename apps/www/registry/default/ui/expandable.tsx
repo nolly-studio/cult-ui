@@ -27,7 +27,12 @@ interface ExpandableContextType {
   expandDirection: "vertical" | "horizontal" | "both" // Direction of expansion
   expandBehavior: "replace" | "push" // How the expansion affects surrounding content
   transitionDuration: number // Duration of the expansion/collapse animation
-  easeType: string // Easing function for the animation
+  easeType:
+    | "easeInOut"
+    | "easeIn"
+    | "easeOut"
+    | "linear"
+    | [number, number, number, number] // Easing function for the animation
   initialDelay: number // Delay before the animation starts
   onExpandEnd?: () => void // Callback function when expansion ends
   onCollapseEnd?: () => void // Callback function when collapse ends
@@ -40,7 +45,7 @@ const ExpandableContext = createContext<ExpandableContextType>({
   expandDirection: "vertical", // 'vertical' | 'horizontal' | 'both' // Direction of expansion
   expandBehavior: "replace", // How the expansion affects surrounding content
   transitionDuration: 0.3, // Duration of the expansion/collapse animation
-  easeType: "easeInOut", // Easing function for the animation
+  easeType: "easeInOut" as const, // Easing function for the animation
   initialDelay: 0,
 })
 
@@ -54,7 +59,12 @@ interface ExpandableProps extends ExpandablePropsBase {
   expanded?: boolean
   onToggle?: () => void
   transitionDuration?: number
-  easeType?: string
+  easeType?:
+    | "easeInOut"
+    | "easeIn"
+    | "easeOut"
+    | "linear"
+    | [number, number, number, number]
   expandDirection?: "vertical" | "horizontal" | "both"
   expandBehavior?: "replace" | "push"
   initialDelay?: number
@@ -71,7 +81,7 @@ const Expandable = React.forwardRef<HTMLDivElement, ExpandableProps>(
       expanded,
       onToggle,
       transitionDuration = 0.3,
-      easeType = "easeInOut",
+      easeType = "easeInOut" as const,
       expandDirection = "vertical",
       expandBehavior = "replace",
       initialDelay = 0,
@@ -120,12 +130,10 @@ const Expandable = React.forwardRef<HTMLDivElement, ExpandableProps>(
         <motion.div
           ref={ref}
           initial={false}
-          animate={{
-            transition: {
-              duration: transitionDuration,
-              ease: easeType,
-              delay: initialDelay,
-            },
+          transition={{
+            duration: transitionDuration,
+            ease: easeType,
+            delay: initialDelay,
           }}
           {...props}
         >

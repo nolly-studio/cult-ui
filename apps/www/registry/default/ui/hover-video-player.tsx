@@ -89,7 +89,7 @@ interface HoverVideoPlayerContextType {
   isPiP: boolean
   isMobile: boolean
   controlsVisible: boolean
-  videoRef: React.RefObject<HTMLVideoElement>
+  videoRef: React.RefObject<HTMLVideoElement | null>
   togglePlay: () => void
   toggleMute: () => void
   togglePiP: () => void
@@ -208,7 +208,7 @@ const HoverVideoPlayer: React.FC<HoverVideoPlayerProps> = ({
   // Refs for DOM elements and timing
   const containerRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
-  const playbackTimeoutRef = useRef<NodeJS.Timeout>()
+  const playbackTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const lastPlayAttemptRef = useRef<number>(0)
 
   // Consolidated state management

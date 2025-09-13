@@ -27,11 +27,11 @@ interface AnimatedBackgroundGuidesProps {
 }
 
 const easingFunctions = {
-  linear: [0, 0, 1, 1],
-  easeIn: [0.42, 0, 1, 1],
-  easeOut: [0, 0, 0.58, 1],
-  easeInOut: [0.42, 0, 0.58, 1],
-  spring: [0.175, 0.885, 0.32, 1.275],
+  linear: [0, 0, 1, 1] as const,
+  easeIn: [0.42, 0, 1, 1] as const,
+  easeOut: [0, 0, 0.58, 1] as const,
+  easeInOut: [0.42, 0, 0.58, 1] as const,
+  spring: [0.175, 0.885, 0.32, 1.275] as const,
 }
 
 export function AnimatedBackgroundGuides({

@@ -3,7 +3,7 @@ import { createContentlayerPlugin } from "next-contentlayer"
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
+  outputFileTracingRoot: "/Users/jordangilliam/dev/cult-templates-mono-repo/__PRODUCT__/cult-ui",
   outputFileTracingIncludes: {
     registry: ["./registry/**/*"],
   },

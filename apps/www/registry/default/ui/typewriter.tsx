@@ -22,7 +22,7 @@ export function Typewriter({ delay, texts, baseText = "" }: ITypewriterProps) {
       type: "tween",
       delay,
       duration: 1,
-      ease: "easeInOut",
+      ease: [0.42, 0, 0.58, 1] as const,
       onComplete: () => setAnimationComplete(true),
     })
     return () => {
@@ -74,7 +74,7 @@ function RepeatedTextAnimation({
       type: "tween",
       delay,
       duration: 1,
-      ease: "easeIn",
+      ease: [0.42, 0, 1, 1] as const,
       repeat: Infinity,
       repeatType: "reverse",
       repeatDelay: 1,
@@ -102,7 +102,7 @@ const cursorVariants = {
       duration: 1,
       repeat: Infinity,
       repeatDelay: 0,
-      ease: "linear",
+      ease: [0, 0, 1, 1] as const,
       times: [0, 0.5, 0.5, 1],
     },
   },

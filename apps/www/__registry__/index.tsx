@@ -485,6 +485,18 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "texture-overlay": {
+      name: "texture-overlay",
+      type: "registry:ui",
+      description: "Texture overlay component with various CSS gradient patterns for adding visual texture to backgrounds",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/texture-overlay")),
+      source: "",
+      files: ["registry/default/ui/texture-overlay.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "text-animate-demo": {
       name: "text-animate-demo",
       type: "registry:component",
@@ -961,6 +973,18 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/example/toolbar-expandable-demo")),
       source: "",
       files: ["registry/default/example/toolbar-expandable-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "texture-overlay-demo": {
+      name: "texture-overlay-demo",
+      type: "registry:component",
+      description: "",
+      registryDependencies: ["texture-overlay"],
+      component: React.lazy(() => import("@/registry/default/example/texture-overlay-demo")),
+      source: "",
+      files: ["registry/default/example/texture-overlay-demo.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []

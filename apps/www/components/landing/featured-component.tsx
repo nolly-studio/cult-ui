@@ -130,7 +130,7 @@ export function LatestComponent() {
 export function LatestComponentVertical() {
   return (
     // <div className=" relative flex w-full flex-col rounded-[24px] border border-black/5 bg-neutral-800/10 p-2 shadow-sm md:flex-row md:items-center md:gap-24 md:rounded-t-[40px] md:p-2 mx-auto">
-    <div className=" relative mx-auto flex w-full flex-col rounded-[18px] border border-black/5 bg-neutral-800/5 p-2 shadow-sm  md:items-start md:gap-8 md:rounded-b-[20px] md:rounded-t-[40px] md:p-2">
+    <div className=" relative mx-auto flex w-full flex-col  md:p-2">
       <Badge
         variant="outline"
         className="absolute left-4 top-6 rounded-[14px] border border-black/10 text-base md:left-6"

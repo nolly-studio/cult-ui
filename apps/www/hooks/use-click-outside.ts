@@ -3,7 +3,7 @@
 import { useEffect, type RefObject } from "react"
 
 export default function useClickOutside<T extends HTMLElement = HTMLElement>(
-  ref: RefObject<T>,
+  ref: RefObject<T | null>,
   handler: (event: Event) => void
 ) {
   useEffect(() => {
@@ -25,3 +25,6 @@ export default function useClickOutside<T extends HTMLElement = HTMLElement>(
     }
   }, [ref, handler])
 }
+
+
+

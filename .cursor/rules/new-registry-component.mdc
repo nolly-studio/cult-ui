@@ -174,9 +174,7 @@ npx shadcn@latest add https://cult-ui.com/r/component-name.json
 
 ## Usage
 
-```tsx
-import { ComponentName } from "@/components/ui/component-name"
-```
+
 
 ```tsx
 <ComponentName variant="default">Content</ComponentName>

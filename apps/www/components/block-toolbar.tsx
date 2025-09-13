@@ -29,7 +29,7 @@ export function BlockToolbar({
   resizablePanelRef,
 }: {
   block: Block & { hasLiftMode: boolean }
-  resizablePanelRef: React.RefObject<ImperativePanelHandle>
+  resizablePanelRef: React.RefObject<ImperativePanelHandle | null>
 }) {
   const { isLiftMode, toggleLiftMode } = useLiftMode(block.name)
 

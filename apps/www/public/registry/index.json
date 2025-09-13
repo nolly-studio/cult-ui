@@ -655,6 +655,22 @@
       ]
     },
     {
+      "name": "texture-overlay",
+      "type": "registry:ui",
+      "title": "texture-overlay",
+      "description": "Texture overlay component with various CSS gradient patterns for adding visual texture to backgrounds",
+      "dependencies": [
+        ""
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/texture-overlay.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "text-animate-demo",
       "type": "registry:component",
       "title": "text-animate-demo",
@@ -1300,6 +1316,22 @@
       "files": [
         {
           "path": "registry/default/example/toolbar-expandable-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "texture-overlay-demo",
+      "type": "registry:component",
+      "title": "texture-overlay-demo",
+      "description": "",
+      "dependencies": [],
+      "registryDependencies": [
+        "texture-overlay"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/texture-overlay-demo.tsx",
           "type": "registry:component"
         }
       ]

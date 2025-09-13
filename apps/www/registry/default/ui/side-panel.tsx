@@ -20,17 +20,17 @@ const sectionVariants = {
     width: "97%",
     transition: {
       duration: 0.3,
-      ease: "easeInOut",
+      ease: [0.42, 0, 0.58, 1] as const,
       delayChildren: 0.3,
       staggerChildren: 0.2,
     },
   },
   closed: {
-    transition: { duration: 0.2, ease: "easeInOut" },
+    transition: { duration: 0.2, ease: [0.42, 0, 0.58, 1] as const },
   },
 }
 
-const sharedTransition = { duration: 0.6, ease: "easeInOut" }
+const sharedTransition = { duration: 0.6, ease: [0.42, 0, 0.58, 1] as const }
 
 export const SidePanel = forwardRef<HTMLDivElement, PanelContainerProps>(
   ({ panelOpen, handlePanelOpen, className, renderButton, children }, ref) => {
@@ -45,7 +45,7 @@ export const SidePanel = forwardRef<HTMLDivElement, PanelContainerProps>(
           )}
           animate={panelOpen ? "open" : "closed"}
           variants={sectionVariants}
-          transition={{ duration: 0.2, ease: "easeInOut" }}
+          transition={{ duration: 0.2, ease: [0.42, 0, 0.58, 1] as const }}
         >
           <motion.div
             animate={{ height: bounds.height > 0 ? bounds.height : 0.1 }}
@@ -99,7 +99,11 @@ type ResizablePanelProps = {
 
 const ResizablePanel = React.forwardRef<HTMLDivElement, ResizablePanelProps>(
   ({ children }, ref) => {
-    const transition = { type: "ease", ease: "easeInOut", duration: 0.4 }
+    const transition = {
+      type: "tween" as const,
+      ease: [0.42, 0, 0.58, 1] as const,
+      duration: 0.4,
+    }
 
     return (
       <MotionConfig transition={transition}>

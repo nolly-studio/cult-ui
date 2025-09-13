@@ -447,4 +447,15 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "texture-overlay-demo",
+    type: "registry:component",
+    registryDependencies: ["texture-overlay"],
+    files: [
+      {
+        path: "registry/default/example/texture-overlay-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ]

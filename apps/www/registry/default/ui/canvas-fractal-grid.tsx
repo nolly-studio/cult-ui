@@ -76,17 +76,22 @@ const NoiseOverlay: React.FC<{ opacity: number }> = ({ opacity }) => (
 
 const useResponsive = () => {
   const [windowSize, setWindowSize] = useState({
-    width: typeof window !== "undefined" ? window.innerWidth : 0,
-    height: typeof window !== "undefined" ? window.innerHeight : 0,
+    width: 0,
+    height: 0,
   })
 
   useEffect(() => {
+    if (typeof window === "undefined") return
+
     const handleResize = () => {
       setWindowSize({
         width: window.innerWidth,
         height: window.innerHeight,
       })
     }
+
+    // Set initial size
+    handleResize()
 
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
@@ -106,6 +111,8 @@ const usePerformance = (
   const [fps, setFps] = useState(60)
 
   useEffect(() => {
+    if (typeof window === "undefined") return
+
     let frameCount = 0
     let lastTime = globalThis.performance.now()
     let framerId: number
@@ -191,7 +198,7 @@ const DotCanvas: React.FC<{
     mousePos,
   }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null)
-    const animationRef = useRef<number>()
+    const animationRef = useRef<number | null>(null)
 
     const drawDots = useCallback(
       (ctx: CanvasRenderingContext2D, time: number) => {
@@ -275,6 +282,8 @@ const DotCanvas: React.FC<{
     )
 
     useEffect(() => {
+      if (typeof window === "undefined") return
+
       const canvas = canvasRef.current
       if (!canvas) return
 
@@ -424,6 +433,8 @@ export function CanvasFractalGrid({
   }, [])
 
   useEffect(() => {
+    if (typeof window === "undefined") return
+
     window.addEventListener("mousemove", handleMouseMove)
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [handleMouseMove])

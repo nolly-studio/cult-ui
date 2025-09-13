@@ -277,6 +277,12 @@ export const docsConfig: DocsConfig = {
               href: "/docs/components/shader-lens-blur",
               items: [],
             },
+            {
+              title: "Texture Overlay",
+              href: "/docs/components/texture-overlay",
+              items: [],
+              label: "new",
+            },
           ],
         },
       ],

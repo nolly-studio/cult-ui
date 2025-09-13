@@ -524,4 +524,17 @@ export const ui: Registry["items"] = [
     description:
       "Expandable toolbar component with step-based navigation, smooth animations, and enhanced scrolling",
   },
+  {
+    name: "texture-overlay",
+    type: "registry:ui",
+    dependencies: [""],
+    files: [
+      {
+        path: "registry/default/ui/texture-overlay.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Texture overlay component with various CSS gradient patterns for adding visual texture to backgrounds",
+  },
 ]

@@ -14,13 +14,13 @@ import { AnimatePresence, MotionConfig, motion } from "motion/react"
 import { cn } from "@/lib/utils"
 
 const TRANSITION = {
-  type: "spring",
+  type: "spring" as const,
   bounce: 0.05,
   duration: 0.3,
 }
 
 function useClickOutside(
-  ref: React.RefObject<HTMLElement>,
+  ref: React.RefObject<HTMLElement | null>,
   handler: () => void
 ) {
   useEffect(() => {

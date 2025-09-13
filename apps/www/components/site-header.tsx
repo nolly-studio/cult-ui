@@ -19,7 +19,6 @@ export function SiteHeader() {
   let pathname = usePathname()
   return (
     <>
-      {/* <AlertBanner /> */}
       <header
         className={cn(
           "sticky top-0 z-50 w-full    ",
@@ -32,15 +31,6 @@ export function SiteHeader() {
           <MainNav />
           <MobileNav />
           <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-            {!pathname?.includes("/docs") ? (
-              <div className="hidden lg:block lg:w-full">
-                <DistortedGlass></DistortedGlass>
-              </div>
-            ) : null}
-
-            {/* <div className="w-full flex-1 md:w-auto md:flex-none">
-              <CommandMenu />
-            </div> */}
             <nav className="flex items-center ">
               <Link
                 href={siteConfig.links.github}
@@ -80,6 +70,12 @@ export function SiteHeader() {
             </nav>
           </div>
         </div>
+
+        {!pathname?.includes("/docs") ? (
+          <div className="hidden lg:block lg:w-full -mt-[17px]">
+            <DistortedGlass></DistortedGlass>
+          </div>
+        ) : null}
       </header>
     </>
   )

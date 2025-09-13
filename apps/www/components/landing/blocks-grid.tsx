@@ -1,77 +1,24 @@
-"use client"
+import { SVGProps } from "react"
+import { ExternalLink, Shapes } from "lucide-react"
 
-import { SVGProps, useState } from "react"
-import { ExternalLink, IceCream, Shapes, X } from "lucide-react"
-
-import { cn } from "@/lib/utils"
 import { Card } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 
 import { Badge } from "../ui/badge"
 
 export function MiniBlocksGrid() {
-  const [search, setSearch] = useState("")
-
-  const clearSearch = () => {
-    setSearch("")
-  }
-
-  const hasActiveFilters = search.length > 0
-
   return (
-    <div className=" relative flex w-full flex-col rounded-[18px] border border-black/5 bg-neutral-800/5 p-2 shadow-sm md:flex-row md:items-center md:gap-24 md:rounded-[18px] md:p-2">
+    <div className=" relative flex w-full flex-col p-2">
       <Badge
         variant="outline"
         className="absolute left-4 top-4 rounded-[14px] border border-black/10 text-base text-neutral-800 md:left-6"
       >
         <Shapes className="mr-1 size-4  fill-[#D2F583] stroke-1 text-neutral-800" />
-        <h4>Blocks</h4>
+        <h4>New Blocks</h4>
       </Badge>
       <div className="   flex flex-col justify-center  space-y-4 rounded-[34px]   p-3 pt-12">
         <div className="space-y-4 ">
-          <div className="flex flex-wrap items-center gap-4 ">
-            <Input
-              placeholder="Search pro blocks..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="rounded-full md:w-[270px]"
-            />
-            {hasActiveFilters && (
-              <button
-                onClick={clearSearch}
-                className={cn(
-                  "inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs transition-colors",
-                  "text-muted-foreground hover:text-foreground",
-                  "shadow-elevation-light bg-background"
-                )}
-              >
-                <X className="size-3.5" />
-                <span>Clear search</span>
-              </button>
-            )}
-          </div>
-
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {BLOCK_PREVIEW_DATA.filter((block) => {
-              const searchTerm = search.toLowerCase()
-              const matchesSearch =
-                block.title.toLowerCase().includes(searchTerm) ||
-                block.description.toLowerCase().includes(searchTerm) ||
-                block.meta.tags.some((tag) =>
-                  tag.toLowerCase().includes(searchTerm)
-                ) ||
-                block.dependencies.some((dep) =>
-                  dep.toLowerCase().includes(searchTerm)
-                ) ||
-                (block.meta.externalServices || []).some((service) =>
-                  service.toLowerCase().includes(searchTerm)
-                ) ||
-                (block.meta.apisUsed || []).some((api) =>
-                  api.toLowerCase().includes(searchTerm)
-                )
-
-              return matchesSearch
-            })
+            {BLOCK_PREVIEW_DATA.slice(0, 6)
               .sort((a, b) => {
                 // Sort blocks with isNew: true first
                 if (a.isNew && !b.isNew) return -1
@@ -91,41 +38,24 @@ export function MiniBlocksGrid() {
                   rel="noopener noreferrer"
                   className="group"
                 >
-                  <Card className="group h-full overflow-hidden rounded-2xl border-none p-0 shadow-[0px_1px_1px_0px_rgba(0,_0,_0,_0.05),_0px_1px_1px_0px_rgba(255,_252,_240,_0.5)_inset,_0px_0px_0px_1px_hsla(0,_0%,_100%,_0.1)_inset,_0px_0px_1px_0px_rgba(28,_27,_26,_0.5)] transition-all">
+                  <Card className="group h-full overflow-hidden rounded-2xl border-none p-0 shadow-[0px_1px_1px_0px_rgba(0,_0,_0,_0.05),_0px_1px_1px_0px_rgba(255,_252,_240,_0.5)_inset,_0px_0px_0px_1px_hsla(0,_0%,_100%,_0.1)_inset,_0px_0px_1px_0px_rgba(28,_27,_26,_0.5)] transition-all brightness-100  hover:brightness-110">
                     <div className="flex h-full flex-col pt-4">
                       <div className="flex-1 px-4">
                         <div className="flex items-start justify-between">
                           <h3 className="text-sm font-semibold tracking-tight">
                             {block.title}
                           </h3>
-                          {/* {block.isNew && (
-                            <div className="ml-2 text-xs text-primary bg-primary/10 rounded-full px-2 py-0.5">
-                              New
-                            </div>
-                          )} */}
                         </div>
 
                         {block.meta.problemSolved && (
-                          <div className="mt-2 text-[10px] text-muted-foreground">
-                            <strong>Solves</strong>{" "}
-                            <span className="line-clamp-1 ">
-                              {block.meta.problemSolved[0]}
+                          <div className="mt-2 text-sm leading-tight tracking-tight text-muted-foreground">
+                            <span className="line-clamp-4 ">
+                              {block.description}
                             </span>
                           </div>
                         )}
-
-                        <div className="mt-3 flex flex-wrap gap-1">
-                          {block.meta.tags.slice(0, 2).map((tag) => (
-                            <div
-                              key={tag}
-                              className="rounded-md border border-border/50 bg-muted/50 px-1.5 py-0.5 text-[10px] text-muted-foreground"
-                            >
-                              {tag.split("-").join(" ")}
-                            </div>
-                          ))}
-                        </div>
                       </div>
-                      <div className="mt-3 flex items-center justify-between gap-3 border-t border-t-[#EFEFEC] px-4 py-3 group-hover:bg-muted/50">
+                      <div className="mt-3 flex items-center justify-between gap-3  px-4 py-3 ">
                         <div className="flex items-center gap-1">
                           {(() => {
                             const allDependencies = Array.from(
@@ -177,9 +107,9 @@ export function MiniBlocksGrid() {
                             ))
                           })()}
                         </div>
-                        <div className="text-xs text-muted-foreground">
+                        <div className="text-[10px] text-muted-foreground/40 group-hover:text-muted-foreground transition-colors duration-300 ease-out">
                           <span className="flex items-center gap-1">
-                            Preview <ExternalLink className="size-3" />
+                            Preview <ExternalLink className="size-3 " />
                           </span>
                         </div>
                       </div>
@@ -202,511 +132,58 @@ export function MiniBlocksGrid() {
 
 const BLOCK_PREVIEW_DATA = [
   {
-    name: "ai-elements-chat",
-    title: "AI Elements Chat",
+    name: "ai-chat-agent-routing-pattern",
+    title: "Agent - Routing Pattern",
     description:
-      "A chatbot built using the AI SDK, AI Elements components and gpt-5-nano.",
-    tags: ["ai", "chat", "ai-sdk", "openai"],
-    dependencies: [
-      "@ai-sdk/react",
-      "ai",
-      "lucide-react",
-      "@upstash/ratelimit",
-      "@upstash/redis",
-    ],
-    externalServices: ["openai"],
-    apisUsed: ["openai"],
-    isNew: true,
-    dateReleased: "2025-08-11",
-    meta: {
-      tags: ["ai", "chat", "ai-sdk", "openai"],
-      externalServices: ["openai"],
-      apisUsed: ["openai"],
-      problemSolved: ["AI-powered chatbots"],
-    },
-  },
-  {
-    name: "ai-elements-sources-chat",
-    title: "AI Elements Sources Chat",
-    description:
-      "A chat interface built using AI Elements components that provides source citations and references for AI responses using Perplexity Sonar model.",
-    tags: ["ai", "chat", "ai-sdk", "sources", "citations", "perplexity"],
-    dependencies: [
-      "@ai-sdk/react",
-      "ai",
-      "@upstash/ratelimit",
-      "@upstash/redis",
-    ],
-    externalServices: ["perplexity"],
-    apisUsed: ["perplexity"],
-    isNew: true,
-    dateReleased: "2025-08-25",
-    meta: {
-      tags: ["ai", "chat", "ai-sdk", "sources", "citations", "perplexity"],
-      externalServices: ["perplexity"],
-      apisUsed: ["perplexity"],
-      problemSolved: [
-        "AI chat with source citations",
-        "Verifiable AI responses",
-        "Research and fact-checking",
-        "Transparent AI information sources",
-      ],
-    },
-  },
-  {
-    name: "ai-elements-task-demo",
-    title: "AI Elements Task Demo",
-    description:
-      "A comprehensive demonstration block showcasing the Task component from AI Elements with realistic development workflow examples using AI SDK's experimental_generateObject.",
+      "Routes user requests to specialized AI agents. Uses AI SDK v5 streaming to classify requests and send them to the right agent for customer support.",
     tags: [
       "ai",
-      "task-management",
-      "ai-sdk",
-      "workflow",
-      "demo",
-      "experimental",
-    ],
-    dependencies: ["ai"],
-    externalServices: ["openai"],
-    apisUsed: ["openai"],
-    isNew: true,
-    dateReleased: "2025-08-25",
-    meta: {
-      tags: [
-        "ai",
-        "task-management",
-        "ai-sdk",
-        "workflow",
-        "demo",
-        "experimental",
-      ],
-      externalServices: ["openai"],
-      apisUsed: ["openai"],
-      problemSolved: [
-        "Interactive task management interfaces",
-        "AI-powered workflow generation",
-        "Development process visualization",
-        "Task component demonstration",
-        "Structured AI responses with schemas",
-      ],
-    },
-  },
-  {
-    name: "ai-agents-parallel-processing",
-    title: "AI Agents Parallel Processing",
-    description:
-      "A comprehensive demonstration block showcasing parallel processing with AI agents for concurrent content analysis from multiple perspectives using server actions.",
-    tags: [
-      "ai",
-      "parallel-processing",
+      "routing",
       "ai-agents",
-      "server-actions",
-      "content-analysis",
-      "demo",
+      "streaming",
+      "chat-pattern",
+      "ai-sdk-v5",
+      "customer-support",
     ],
     dependencies: [
       "ai",
-      "@ai-sdk/openai",
       "zod",
-      "lucide-react",
       "@upstash/ratelimit",
       "@upstash/redis",
+      "sonner",
+      "lucide-react",
     ],
     externalServices: ["openai"],
     apisUsed: ["openai"],
     isNew: true,
-    dateReleased: "2025-09-02",
+    dateReleased: "2025-09-08",
     meta: {
       tags: [
         "ai",
-        "parallel-processing",
+        "routing",
         "ai-agents",
-        "server-actions",
-        "content-analysis",
-        "demo",
+        "streaming",
+        "chat-pattern",
+        "ai-sdk-v5",
+        "customer-support",
       ],
       externalServices: ["openai"],
       apisUsed: ["openai"],
       problemSolved: [
-        "Concurrent content analysis from multiple perspectives",
-        "Parallel AI processing for faster results",
-        "Multi-agent AI system demonstration",
-        "Comprehensive content analysis workflows",
-        "Efficient resource utilization in AI processing",
-      ],
-    },
-  },
-  {
-    name: "ai-elements-tool",
-    title: "AI Elements Tool Demo",
-    description:
-      "A demonstration block showcasing the Tool component from AI Elements with interactive tool execution examples, including a weather API tool with input/output schemas.",
-    tags: ["ai", "tools", "ai-sdk", "tool-execution", "demo", "weather-api"],
-    dependencies: [
-      "@ai-sdk/react",
-      "ai",
-      "zod",
-      "@upstash/ratelimit",
-      "@upstash/redis",
-    ],
-    externalServices: ["openai"],
-    apisUsed: ["openai"],
-    isNew: true,
-    dateReleased: "2025-08-25",
-    meta: {
-      tags: ["ai", "tools", "ai-sdk", "tool-execution", "demo", "weather-api"],
-      externalServices: ["openai"],
-      apisUsed: ["openai"],
-      problemSolved: [
-        "Interactive tool execution interfaces",
-        "AI-powered tool calling demonstrations",
-        "Tool input/output schema visualization",
-        "Real-time tool execution feedback",
-        "Structured tool parameter handling",
-      ],
-    },
-  },
-  {
-    name: "ai-elements-v0-clone",
-    title: "V0 Clone",
-    description:
-      "A demonstration block showcasing AI Elements components with a chat interface and web preview functionality, demonstrating how to clone and extend AI-powered applications.",
-    tags: ["ai", "v0-sdk", "clone", "ai-sdk", "chat", "web-preview", "demo"],
-    dependencies: [
-      "lucide-react",
-      "@upstash/ratelimit",
-      "@upstash/redis",
-      "v0-sdk",
-      "@v0-sdk/react",
-    ],
-    externalServices: ["openai"],
-    apisUsed: ["openai"],
-    isNew: true,
-    dateReleased: "2025-08-26",
-    meta: {
-      tags: ["ai", "v0-sdk", "clone", "ai-sdk", "chat", "web-preview", "demo"],
-      externalServices: ["openai"],
-      apisUsed: ["openai"],
-      problemSolved: [
-        "AI-powered application cloning",
-        "Interactive chat interfaces",
-        "Web preview functionality",
-        "Message rendering and display",
-        "AI Elements component integration",
-      ],
-    },
-  },
-  {
-    name: "ai-elements-reasoning-chat",
-    title: "AI Elements Reasoning Chat",
-    description:
-      "A specialized chat interface that emphasizes AI reasoning capabilities and step-by-step thinking processes using AI Elements components.",
-    tags: ["ai", "chat", "ai-sdk", "reasoning", "thinking", "analysis"],
-    dependencies: [
-      "@ai-sdk/react",
-      "ai",
-      "lucide-react",
-      "@upstash/ratelimit",
-      "@upstash/redis",
-    ],
-    externalServices: ["deepseek"],
-    apisUsed: ["deepseek"],
-    isNew: true,
-    dateReleased: "2025-08-25",
-    meta: {
-      tags: ["ai", "chat", "ai-sdk", "reasoning", "thinking", "analysis"],
-      externalServices: ["deepseek"],
-      apisUsed: ["deepseek"],
-      problemSolved: [
-        "AI reasoning and step-by-step thinking",
-        "Complex problem analysis",
-        "Educational AI interactions",
-        "Transparent AI decision making",
-      ],
-    },
-  },
-  {
-    name: "ai-agents-sandbox",
-    title: "AI Agents Sandbox",
-    description:
-      "A sandbox environment for experimenting with different AI agent patterns using the AI SDK, including sequential processing, routing, parallel processing, orchestrator-worker, and evaluator-optimizer patterns.",
-    tags: ["ai", "agents", "llm", "openai", "sandbox"],
-    dependencies: [
-      "@ai-sdk/openai",
-      "ai",
-      "zod",
-      "mathjs",
-      "motion",
-      "lucide-react",
-      "@upstash/redis",
-      "@upstash/ratelimit",
-      "react-markdown",
-      "@number-flow/react",
-      "unified",
-      "geist",
-      "sonner",
-      "class-variance-authority",
-      "shiki",
-      "next-themes",
-    ],
-    externalServices: ["openai", "upstash"],
-    apisUsed: ["openai", "upstash"],
-    meta: {
-      tags: ["ai", "agents", "llm", "openai", "sandbox"],
-      externalServices: ["openai", "upstash"],
-      apisUsed: ["openai", "upstash"],
-      problemSolved: [
-        "Demonstrates different AI agent patterns",
-        "Provides interactive environment for testing AI agents",
-        "Shows best practices for AI agent implementation",
-        "Implements rate limiting to prevent abuse",
-      ],
-    },
-  },
-  {
-    name: "cheerio-scraper",
-    title: "Cheerio Web Scraper",
-    description:
-      "A simple web scraper using Cheerio to extract content, links, and images from websites",
-    tags: ["cheerio", "scraper", "web", "data-extraction"],
-    dependencies: ["cheerio", "zod", "sonner"],
-    externalServices: [],
-    apisUsed: [],
-    isNew: false,
-    dateReleased: "2025-05-07",
-    meta: {
-      tags: ["cheerio", "scraper", "web", "data-extraction"],
-      externalServices: [],
-      apisUsed: [],
-      problemSolved: [
-        "Extract content from websites",
-        "Fetch links and images from web pages",
-        "Simple web scraping without complex setup",
-      ],
-    },
-  },
-  {
-    name: "jina-scraper",
-    title: "Jina AI Web Scraper",
-    description:
-      "A simple web scraper using Jina AI's scraper service to extract content, links, and images from websites while bypassing common scraping limitations",
-    tags: ["jina", "scraper", "web", "data-extraction", "proxy"],
-    dependencies: ["zod", "sonner"],
-    externalServices: ["jina"],
-    apisUsed: ["jina"],
-    isNew: false,
-    dateReleased: "2025-05-08",
-    meta: {
-      tags: ["jina", "scraper", "web", "data-extraction", "proxy"],
-      externalServices: ["jina"],
-      apisUsed: ["jina"],
-      problemSolved: [
-        "Extract content from websites",
-        "Fetch links and images from web pages",
-        "Bypass common scraping limitations like rate limiting and bot detection",
-        "Simple web scraping without complex setup",
-      ],
-    },
-  },
-  {
-    name: "ai-websearch",
-    title: "AI Web Search",
-    description:
-      "A minimal yet powerful block for searching the web using Open AI websearch tool.",
-    tags: ["ai", "websearch", "openai"],
-    dependencies: [
-      "ai",
-      "@ai-sdk/openai",
-      "react-markdown",
-      "lucide-react",
-      "motion",
-      "@upstash/ratelimit",
-      "@upstash/redis",
-    ],
-    externalServices: ["openai"],
-    apisUsed: ["OpenAI"],
-    isNew: true,
-    dateReleased: "2025-05-12",
-    meta: {
-      tags: ["ai", "websearch", "openai"],
-      externalServices: ["openai"],
-      apisUsed: ["OpenAI"],
-      problemSolved: [
-        "Search the web with AI",
-        "Get results with sources",
-        "Error handling and validation",
-      ],
-    },
-  },
-  {
-    name: "ai-generate-audio",
-    title: "AI Generate Audio",
-    description: "A minimal block for generating audio using Open AI.",
-    tags: ["ai", "generate-audio", "openai"],
-    dependencies: [
-      "ai",
-      "@ai-sdk/openai",
-      "lucide-react",
-      "@upstash/ratelimit",
-      "react-hook-form",
-      "zod",
-      "@upstash/redis",
-      "motion",
-    ],
-    externalServices: ["openai"],
-    apisUsed: ["OpenAI"],
-    isNew: true,
-    dateReleased: "2025-05-12",
-    meta: {
-      tags: ["ai", "generate-audio", "openai"],
-      externalServices: ["openai"],
-      apisUsed: ["OpenAI"],
-      problemSolved: [
-        "Generate audio from text with AI",
-        "Error handling and validation",
-      ],
-    },
-  },
-  {
-    name: "ai-pdf-ingest",
-    title: "AI PDF Ingest",
-    description: "A minimal block for ingesting PDF files using Open AI.",
-    tags: ["ai", "generate-audio", "openai"],
-    dependencies: [
-      "ai",
-      "@ai-sdk/openai",
-      "react-markdown",
-      "lucide-react",
-      "motion",
-      "@upstash/ratelimit",
-      "@upstash/redis",
-    ],
-    externalServices: ["openai"],
-    apisUsed: ["OpenAI"],
-    isNew: false,
-    dateReleased: "2025-05-12",
-    meta: {
-      tags: ["ai", "generate-audio", "openai"],
-      externalServices: ["openai"],
-      apisUsed: ["OpenAI"],
-      problemSolved: [
-        "Generate audio from text with AI",
-        "Error handling and validation",
-      ],
-    },
-  },
-  {
-    name: "reddit-editor-agent",
-    title: "Reddit Editor Agent",
-    description:
-      "A Reddit editor agent that uses the AI SDK to edit Reddit posts.",
-    tags: ["ai", "agents", "reddit", "openai"],
-    dependencies: [
-      "@ai-sdk/openai",
-      "ai",
-      "zod",
-      "tiptap-markdown",
-      "@tiptap/extension-link",
-      "@tiptap/extension-underline",
-      "@tiptap/starter-kit",
-      "@tiptap/react",
-      "tippy.js",
-      "lucide-react",
-      "sonner",
-      "motion",
-      "@uidotdev/usehooks",
-      "geist",
-      "react-markdown",
-    ],
-    externalServices: ["openai", "upstash"],
-    apisUsed: ["openai", "upstash"],
-    isNew: true,
-    dateReleased: "2025-08-07",
-    meta: {
-      tags: ["ai", "agents", "reddit", "openai"],
-      externalServices: ["openai", "upstash"],
-      apisUsed: ["openai", "upstash"],
-      problemSolved: ["Tip Tap Reddit Post Editor"],
-    },
-  },
-  {
-    name: "ai-elements-image",
-    title: "AI Elements Image Generation",
-    description:
-      "An AI-powered image generation interface using DALL-E 3, built with AI Elements components for a seamless image creation experience.",
-    tags: ["ai", "image-generation", "ai-sdk", "dall-e", "openai"],
-    dependencies: [
-      "ai",
-      "@upstash/ratelimit",
-      "@upstash/redis",
-      "@ai-sdk/openai",
-    ],
-    externalServices: ["openai"],
-    apisUsed: ["openai"],
-    isNew: true,
-    dateReleased: "2025-08-25",
-    meta: {
-      tags: ["ai", "image-generation", "ai-sdk", "dall-e", "openai"],
-      externalServices: ["openai"],
-      apisUsed: ["openai"],
-      problemSolved: [
-        "AI-powered image generation",
-        "Interactive image creation interfaces",
-        "DALL-E 3 integration",
-        "Real-time image generation feedback",
-        "Structured prompt handling",
-      ],
-    },
-  },
-  {
-    name: "ai-elements-inline-citation",
-    title: "AI Elements Inline Citation",
-    description:
-      "An AI-powered content generation interface with inline citations, built with AI Elements components for creating well-researched content with proper source attribution.",
-    tags: [
-      "ai",
-      "citations",
-      "ai-sdk",
-      "content-generation",
-      "research",
-      "openai",
-    ],
-    dependencies: [
-      "@ai-sdk/react",
-      "ai",
-      "zod",
-      "@upstash/ratelimit",
-      "@upstash/redis",
-    ],
-    externalServices: ["openai"],
-    apisUsed: ["openai"],
-    isNew: true,
-    dateReleased: "2025-08-25",
-    meta: {
-      tags: [
-        "ai",
-        "citations",
-        "ai-sdk",
-        "content-generation",
-        "research",
-        "openai",
-      ],
-      externalServices: ["openai"],
-      apisUsed: ["openai"],
-      problemSolved: [
-        "AI-powered content generation with citations",
-        "Interactive citation interfaces",
-        "Research content creation",
-        "Source attribution and verification",
-        "Structured citation handling",
+        "Intelligent request routing to specialized AI agents",
+        "Stage-based streaming with custom data parts",
+        "Real-time classification and agent selection",
+        "Customer support request automation",
+        "AI SDK v5 streaming pattern implementation",
+        "Multi-agent chat system architecture",
       ],
     },
   },
   {
     name: "ai-sdk-gemini-flash-text",
-    title: "AI SDK Gemini Flash Text",
     description:
-      "Advanced text generation and market research analysis using Google's Gemini 2.5 Flash model through the Vercel AI SDK, featuring interactive charts and comprehensive data visualization",
+      "Generates text and analyzes market research using Google's Gemini 2.5 Flash. Includes interactive charts and data visualization.",
+    title: "Gemini Flash Text",
     tags: [
       "ai",
       "text-generation",
@@ -720,8 +197,8 @@ const BLOCK_PREVIEW_DATA = [
       "interactive",
     ],
     dependencies: [
-      "ai",
       "@ai-sdk/google",
+      "ai",
       "zod",
       "lucide-react",
       "@upstash/ratelimit",
@@ -729,10 +206,10 @@ const BLOCK_PREVIEW_DATA = [
       "recharts",
       "motion",
     ],
-    externalServices: ["google-ai", "google", "upstash"],
+    externalServices: ["google-ai", "upstash"],
     apisUsed: ["google-ai", "upstash"],
     isNew: true,
-    dateReleased: "2025-08-27",
+    dateReleased: "2025-09-03",
     meta: {
       tags: [
         "ai",
@@ -762,9 +239,9 @@ const BLOCK_PREVIEW_DATA = [
   },
   {
     name: "ai-sdk-gemini-flash-image",
-    title: "AI SDK Gemini Flash Image ",
     description:
-      "Generates an image using Gemini 2.5 Flash Image Preview model through the Vercel AI SDK, with built-in rate limiting and comprehensive error handling",
+      "Generates images using Google's Gemini 2.5 Flash. Includes rate limiting and error handling.",
+    title: "Gemini Flash Image Generator",
     tags: [
       "ai",
       "image-generation",
@@ -775,15 +252,14 @@ const BLOCK_PREVIEW_DATA = [
     ],
     dependencies: [
       "ai",
-      "@ai-sdk/google",
       "lucide-react",
       "@upstash/ratelimit",
       "@upstash/redis",
     ],
-    externalServices: ["google-ai", "google", "upstash"],
-    apisUsed: ["google-ai", "upstash"],
+    // externalServices: ["google-ai", "upstash"],
+    // apisUsed: ["google-ai", "upstash"],
     isNew: true,
-    dateReleased: "2025-08-27",
+    dateReleased: "2025-09-03",
     meta: {
       tags: [
         "ai",
@@ -799,6 +275,235 @@ const BLOCK_PREVIEW_DATA = [
         "AI-powered image generation using text prompts",
         "Rate limiting to prevent API abuse",
         "Comprehensive error handling with user feedback",
+      ],
+    },
+  },
+  {
+    title: "Gemini Flash Image Editor",
+    name: "ai-sdk-gemini-flash-image-edit",
+    description:
+      "Generate and edit images using Google's Gemini 2.5 Flash. Create new images from text or edit existing ones with natural language. Includes version history and image comparison.",
+    tags: [
+      "ai",
+      "image-generation",
+      "image-editing",
+      "google",
+      "gemini",
+      "vercel-ai-sdk",
+      "rate-limiting",
+      "performance",
+      "useReducer",
+      "version-history",
+      "image-comparison",
+      "custom-hooks",
+    ],
+    dependencies: [
+      "ai",
+      "lucide-react",
+      "@upstash/ratelimit",
+      "@upstash/redis",
+    ],
+    externalServices: ["google-ai", "upstash"],
+    apisUsed: ["google-ai", "upstash"],
+    isNew: true,
+    dateReleased: "2025-09-13",
+    meta: {
+      tags: [
+        "ai",
+        "image-generation",
+        "image-editing",
+        "google",
+        "gemini",
+        "vercel-ai-sdk",
+        "rate-limiting",
+        "performance",
+        "useReducer",
+        "version-history",
+        "image-comparison",
+        "custom-hooks",
+      ],
+      externalServices: ["google-ai", "upstash"],
+      apisUsed: ["google-ai", "upstash"],
+      problemSolved: [
+        "AI-powered image generation using text prompts",
+        "AI-powered image editing with natural language",
+        "Peak React performance with useReducer state management",
+        "Version history and image comparison functionality",
+        "Rate limiting to prevent API abuse",
+        "Comprehensive error handling with user feedback",
+        "Interactive editing workflow with undo/reset functionality",
+        "Custom hooks for maintainable state management",
+        "O(1) version lookups with refs for optimal performance",
+      ],
+    },
+  },
+  {
+    name: "ai-chat-agent-multi-step-tool-pattern",
+    title: "Agent - Multi-Step Tool Pattern",
+    description:
+      "AI agent that uses multiple tools in sequence. Includes web search, news search, analysis, and decision making with type safety.",
+    tags: [
+      "ai",
+      "agents",
+      "tools",
+      "multi-step",
+      "web-search",
+      "news",
+      "analysis",
+      "ai-sdk-v5",
+      "strongly-typed",
+      "streaming",
+    ],
+    dependencies: [
+      "@ai-sdk/react",
+      "ai",
+      "@ai-sdk/openai",
+      "zod",
+      "@upstash/ratelimit",
+      "@upstash/redis",
+      "sonner",
+      "lucide-react",
+    ],
+    externalServices: ["perplexity", "openai", "hackernews"],
+    apisUsed: ["perplexity", "openai", "hackernews"],
+    isNew: true,
+    dateReleased: "2025-09-12",
+    meta: {
+      tags: [
+        "ai",
+        "agents",
+        "tools",
+        "multi-step",
+        "web-search",
+        "news",
+        "analysis",
+        "ai-sdk-v5",
+        "strongly-typed",
+        "streaming",
+      ],
+      externalServices: ["perplexity", "openai", "hackernews"],
+      apisUsed: ["perplexity", "openai", "hackernews"],
+      problemSolved: [
+        "Complex problem solving with multi-step reasoning using AI SDK v5",
+        "Real-time web search and news integration with strongly typed tools",
+        "Iterative AI agent workflows with Experimental_Agent",
+        "Tool-based AI agent patterns with full type safety",
+        "Research and analysis automation with streaming support",
+        "Modern AI agent development with UIToolInvocation pattern",
+      ],
+    },
+  },
+  {
+    name: "ai-chat-agent-orchestrater-pattern",
+    title: "Agent - Orchestrator Pattern",
+    description:
+      "AI agent that manages complex projects by coordinating specialized workers. Handles task assignment and tracks deliverables.",
+    tags: [
+      "ai",
+      "agents",
+      "orchestrator",
+      "worker",
+      "project-management",
+      "coordination",
+      "ai-sdk-v5",
+      "strongly-typed",
+      "streaming",
+      "deliverables",
+    ],
+    dependencies: [
+      "@ai-sdk/react",
+      "ai",
+      "zod",
+      "@upstash/ratelimit",
+      "@upstash/redis",
+      "sonner",
+      "lucide-react",
+    ],
+    externalServices: ["openai"],
+    apisUsed: ["openai"],
+    isNew: true,
+    dateReleased: "2025-09-10",
+    meta: {
+      tags: [
+        "ai",
+        "agents",
+        "orchestrator",
+        "worker",
+        "project-management",
+        "coordination",
+        "ai-sdk-v5",
+        "strongly-typed",
+        "streaming",
+        "deliverables",
+      ],
+      externalServices: ["openai"],
+      apisUsed: ["openai"],
+      problemSolved: [
+        "Complex project coordination through specialized workers using AI SDK v5",
+        "Automated project planning and task assignment with strongly typed tools",
+        "Real-time progress tracking and issue resolution with Experimental_Agent",
+        "Orchestrator-Worker pattern implementation with full type safety",
+        "Project lifecycle management with deliverable tracking",
+        "Modern AI agent coordination patterns with UIToolInvocation",
+      ],
+    },
+  },
+  {
+    name: "ai-chat-agent-evaluator-optimizer-pattern",
+    title: "Agent - Evaluator-Optimizer",
+    description:
+      "AI agent that improves content quality through evaluation and optimization. Uses specialized tools to assess quality and fix issues automatically.",
+    tags: [
+      "ai",
+      "agents",
+      "orchestrator",
+      "evaluator",
+      "optimizer",
+      "quality-assurance",
+      "content-optimization",
+      "ai-sdk-v5",
+      "streaming",
+      "error-recovery",
+      "tool-coordination",
+    ],
+    dependencies: [
+      "@ai-sdk/react",
+      "ai",
+      "@ai-sdk/openai",
+      "zod",
+      "@upstash/ratelimit",
+      "@upstash/redis",
+      "sonner",
+      "lucide-react",
+    ],
+    externalServices: ["openai"],
+    apisUsed: ["openai"],
+    isNew: true,
+    dateReleased: "2025-09-11",
+    meta: {
+      tags: [
+        "ai",
+        "agents",
+        "orchestrator",
+        "evaluator",
+        "optimizer",
+        "quality-assurance",
+        "content-optimization",
+        "ai-sdk-v5",
+        "streaming",
+        "error-recovery",
+        "tool-coordination",
+      ],
+      externalServices: ["openai"],
+      apisUsed: ["openai"],
+      problemSolved: [
+        "Quality assurance through systematic evaluation and optimization using AI SDK v5",
+        "Single orchestrator agent coordinating specialized evaluator and optimizer tools",
+        "Automated content quality assessment with strongly typed tools",
+        "Iterative content improvement based on evaluation feedback",
+        "Error recovery and self-improvement capabilities with Experimental_Agent",
+        "Quality threshold management and optimization strategies",
+        "Modern AI agent quality control patterns with UIToolInvocation",
       ],
     },
   },

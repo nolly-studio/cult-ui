@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { IceCream } from "lucide-react"
+
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
@@ -22,7 +22,7 @@ import { PageActions, PageHeader } from "@/components/page-header"
 export default function IndexPage() {
   return (
     <div className=" isolate min-h-screen overflow-hidden  pb-8 sm:pb-12 md:pb-0">
-      <div className="container relative pt-12 md:py-8">
+      <div className="container relative py-12 md:pt-0">
         <PageHeader>
           <Announcement />
 
@@ -69,35 +69,24 @@ export default function IndexPage() {
         </PageHeader>
 
         <section className="w-full space-y-4 md:block">
-          <div className=" mx-auto   w-full max-w-4xl rounded-[24px] border border-black/5 p-2 shadow-sm md:rounded-t-[44px]">
+          <div className=" mx-auto   w-full max-w-4xl rounded-3xl shadow-[0px_1px_1px_0px_rgba(0,_0,_0,_0.05),_0px_1px_1px_0px_rgba(255,_252,_240,_0.5)_inset,_0px_0px_0px_1px_hsla(0,_0%,_100%,_0.1)_inset,_0px_0px_1px_0px_rgba(28,_27,_26,_0.5)] bg-white">
             <LatestComponentVertical />
           </div>
 
-          <div className=" mx-auto   max-w-4xl rounded-[24px]  border border-black/5 p-2 shadow-sm ">
+          <div className=" mx-auto   max-w-4xl ">
             <MiniBlocksGrid />
           </div>
 
-          <div className=" mx-auto   max-w-4xl rounded-[24px] border border-black/5 p-2 shadow-sm ">
+          <div className=" mx-auto   max-w-4xl   ">
             <TemplateGrid />
           </div>
 
-          <div className=" mx-auto   max-w-4xl rounded-[24px] border border-black/5 p-2 shadow-sm md:rounded-b-[44px] md:rounded-t-[20px]">
+          <div className=" mx-auto   max-w-4xl ">
             <PlugCardGrid />
           </div>
         </section>
       </div>
-      {/* <section className=" my-12 hidden w-full md:block">
-        <div className=" relative mx-auto max-w-4xl rounded-[24px] border border-black/5 p-2 shadow-sm md:rounded-[44px]">
-          <Badge
-            variant="outline"
-            className="absolute left-4 top-6 rounded-[14px] border border-black/10 text-base md:left-6"
-          >
-            <IceCream className=" fill-[#A3C0E0]  stroke-1 text-neutral-800" />{" "}
-            Component Preview
-          </Badge>
-          <FeaturesSection />
-        </div>
-      </section> */}
+
       {/* Feature Pills */}
       <div
         className="flex flex-wrap items-center justify-center gap-3 md:gap-4"

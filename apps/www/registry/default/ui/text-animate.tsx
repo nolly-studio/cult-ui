@@ -34,7 +34,7 @@ const animationVariants = {
         opacity: 1,
         y: [0, -10, 0],
         transition: {
-          type: "spring",
+          type: "spring" as const,
           damping: 12,
           stiffness: 100,
         },
@@ -67,7 +67,7 @@ const animationVariants = {
       visible: {
         opacity: 1,
         scale: 1.1,
-        transition: { type: "spring", damping: 15, stiffness: 400 },
+        transition: { type: "spring" as const, damping: 15, stiffness: 400 },
       },
       hidden: { opacity: 0, scale: 0 },
     },
@@ -82,12 +82,15 @@ const animationVariants = {
     child: {
       hidden: {
         y: "200%",
-        transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.85 },
+        transition: {
+          ease: [0.455, 0.03, 0.515, 0.955] as const,
+          duration: 0.85,
+        },
       },
       visible: {
         y: 0,
         transition: {
-          ease: [0.125, 0.92, 0.69, 0.975], //  Drawing attention to dynamic content or interactive elements, where the animation needs to be engaging but not abrupt
+          ease: [0.125, 0.92, 0.69, 0.975] as const, //  Drawing attention to dynamic content or interactive elements, where the animation needs to be engaging but not abrupt
           duration: 0.75,
           //   ease: [0.455, 0.03, 0.515, 0.955], // smooth and gradual acceleration followed by a steady deceleration towards the end of the animation
           //   ease: [0.115, 0.955, 0.655, 0.939], // smooth and gradual acceleration followed by a steady deceleration towards the end of the animation
@@ -108,7 +111,7 @@ const animationVariants = {
       hidden: {
         y: "100%", // Starting from below but not too far to ensure a dramatic but manageable shift.
         transition: {
-          ease: [0.75, 0, 0.25, 1], // Starting quickly
+          ease: [0.75, 0, 0.25, 1] as const, // Starting quickly
           duration: 0.6, // Shortened duration for a more dramatic start
         },
       },
@@ -116,7 +119,7 @@ const animationVariants = {
         y: 0,
         transition: {
           duration: 0.8, // Slightly longer to accommodate the slow middle and swift end
-          ease: [0.22, 1, 0.36, 1], // This easing function starts quickly (dramatic shift), slows down (slow middle), and ends quickly (clean swift end)
+          ease: [0.22, 1, 0.36, 1] as const, // This easing function starts quickly (dramatic shift), slows down (slow middle), and ends quickly (clean swift end)
         },
       },
     },
@@ -132,12 +135,15 @@ const animationVariants = {
     child: {
       hidden: {
         y: "200%",
-        transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.45 },
+        transition: {
+          ease: [0.455, 0.03, 0.515, 0.955] as const,
+          duration: 0.45,
+        },
       },
       visible: {
         y: 0,
         transition: {
-          ease: [0.5, -0.15, 0.25, 1.05],
+          ease: [0.5, -0.15, 0.25, 1.05] as const,
           duration: 0.75,
         },
       },
@@ -158,7 +164,7 @@ const animationVariants = {
         y: `0em`,
         transition: {
           duration: 0.65,
-          ease: [0.65, 0, 0.75, 1], // Great! Swift Beginning, Prolonged Ease, Quick Finish
+          ease: [0.65, 0, 0.75, 1] as const, // Great! Swift Beginning, Prolonged Ease, Quick Finish
           //   ease: [0.75, 0.05, 0.85, 1], // Quick Start, Smooth Middle, Sharp End
           //   ease: [0.7, -0.25, 0.9, 1.25], // Fast Acceleration, Gentle Slowdown, Sudden Snap
           //   ease: [0.7, -0.5, 0.85, 1.5], // Quick Leap, Soft Glide, Snappy Closure
@@ -184,7 +190,7 @@ const animationVariants = {
           //   ease: [0.75, 0.05, 0.85, 1], // Quick Start, Smooth Middle, Sharp End
           //   ease: [0.7, -0.25, 0.9, 1.25], // Fast Acceleration, Gentle Slowdown, Sudden Snap
           //   ease: [0.65, 0, 0.75, 1], // Great! Swift Beginning, Prolonged Ease, Quick Finish
-          ease: [0.85, 0.1, 0.9, 1.2], // Rapid Initiation, Subtle Slow, Sharp Conclusion
+          ease: [0.85, 0.1, 0.9, 1.2] as const, // Rapid Initiation, Subtle Slow, Sharp Conclusion
         },
       },
     },

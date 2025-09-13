@@ -76,8 +76,12 @@ const keywords = [
 ]
 
 const duration = 0.15
-const transition = { duration, ease: [0.32, 0.72, 0, 1], filter: "blur(4px)" }
-const transitionOverlay = { duration: 0.5, ease: [0.32, 0.72, 0, 1] }
+const transition = {
+  duration,
+  ease: [0.32, 0.72, 0, 1] as const,
+  filter: "blur(4px)",
+}
+const transitionOverlay = { duration: 0.5, ease: [0.32, 0.72, 0, 1] as const }
 
 const Carousel = memo(
   ({
@@ -129,7 +133,7 @@ const Carousel = memo(
             controls.start({
               rotateY: rotation.get() + info.velocity.x * 0.05,
               transition: {
-                type: "spring",
+                type: "spring" as const,
                 stiffness: 100,
                 damping: 30,
                 mass: 0.1,
@@ -218,7 +222,7 @@ function ThreeDPhotoCarousel() {
               transition={{
                 delay: 0.5,
                 duration: 0.5,
-                ease: [0.25, 0.1, 0.25, 1],
+                ease: [0.25, 0.1, 0.25, 1] as const,
               }} // Clean ease-out curve
               style={{
                 willChange: "transform",

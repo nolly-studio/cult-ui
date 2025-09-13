@@ -18,8 +18,7 @@ import { Badge } from "../ui/badge"
 
 export function TemplateGrid() {
   return (
-    // <div className="dark relative flex w-full flex-col rounded-[24px] border border-black/5 bg-neutral-800/10 p-2 shadow-sm md:flex-row md:items-center md:gap-24 md:rounded-[40px] md:p-2">
-    <div className="dark relative flex w-full flex-col rounded-[18px] border border-black/5 bg-neutral-800/5 p-2 shadow-sm md:flex-row md:items-center md:gap-24 md:rounded-[18px] md:p-2">
+    <div className="dark relative flex w-full flex-col p-2 md:flex-row md:items-center md:gap-24 ">
       <Badge
         variant="outline"
         className="absolute left-4 top-4 rounded-[14px] border border-black/10 text-base text-neutral-800 md:left-6"

@@ -51,9 +51,7 @@ npm install framer-motion lucide-react
 
 ## Usage
 
-```tsx
-import { YouTubePlayer } from "@/components/ui/youtube-video-player"
-```
+
 
 ```tsx
 export default function Example() {
@@ -176,7 +174,6 @@ The component automatically handles different YouTube URL formats:
 ### With All Customization Options
 
 ```tsx
-import { YouTubePlayer } from "@/components/ui/youtube-video-player"
 
 export default function AdvancedPlayer() {
   return (
@@ -229,9 +226,8 @@ The primary component that handles the video player logic, state management, and
 A separate component for the expand/minimize controls that can be used independently:
 
 ```tsx
-import { YouTubePlayerControls } from "@/components/ui/youtube-video-player"
 
-;<YouTubePlayerControls
+<YouTubePlayerControls
   videoId="unique-id"
   expanded={false}
   playing={false}

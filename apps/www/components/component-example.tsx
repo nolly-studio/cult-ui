@@ -28,12 +28,12 @@ export function ComponentExample({
 
   const codeString = React.useMemo(() => {
     if (
-      typeof Code?.props["data-rehype-pretty-code-fragment"] !== "undefined"
+      typeof (Code?.props as any)?.["data-rehype-pretty-code-fragment"] !== "undefined"
     ) {
       const [, Button] = React.Children.toArray(
-        Code.props.children
+        (Code?.props as any)?.children
       ) as React.ReactElement[]
-      return Button?.props?.value || Button?.props?.__rawString__ || null
+      return (Button?.props as any)?.value || (Button?.props as any)?.__rawString__ || null
     }
   }, [Code])
 

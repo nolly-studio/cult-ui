@@ -11,7 +11,7 @@ import { TwoToneText } from "./two-tone-text"
 import { Badge } from "./ui/badge"
 
 const transition = {
-  type: "spring",
+  type: "spring" as const,
   bounce: 0.1,
   duration: 0.25,
 }

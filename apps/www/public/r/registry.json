@@ -9,7 +9,7 @@
       "title": "text-animate",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -105,7 +105,7 @@
       "title": "dynamic-island",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -121,7 +121,7 @@
       "title": "direction-aware-tabs",
       "description": "",
       "dependencies": [
-        "framer-motion",
+        "motion",
         "react-use-measure"
       ],
       "registryDependencies": [],
@@ -250,7 +250,7 @@
       "title": "typewriter",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -266,7 +266,7 @@
       "title": "animated-number",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -282,7 +282,7 @@
       "title": "sortable-list",
       "description": "",
       "dependencies": [
-        "framer-motion",
+        "motion",
         "react-use-measure"
       ],
       "registryDependencies": [],
@@ -299,7 +299,7 @@
       "title": "dock",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -331,7 +331,7 @@
       "title": "canvas-fractal-grid",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -347,7 +347,7 @@
       "title": "bg-animated-fractal-dot-grid",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -363,7 +363,7 @@
       "title": "bg-animated-gradient",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -379,7 +379,7 @@
       "title": "popover",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -395,7 +395,7 @@
       "title": "floating-panel",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -411,7 +411,7 @@
       "title": "color-picker",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -427,7 +427,7 @@
       "title": "shader-lens-blur",
       "description": "",
       "dependencies": [
-        "framer-motion",
+        "motion",
         "three",
         "jotai"
       ],
@@ -445,7 +445,7 @@
       "title": "popover-form",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -461,7 +461,7 @@
       "title": "expandable",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -477,7 +477,7 @@
       "title": "logo-carousel",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -493,7 +493,7 @@
       "title": "loading-carousel",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -509,7 +509,7 @@
       "title": "hover-video-player",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -557,7 +557,7 @@
       "title": "feature-carousel",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -573,7 +573,7 @@
       "title": "intro-disclosure",
       "description": "",
       "dependencies": [
-        "framer-motion",
+        "motion",
         "react-use-measure",
         "button",
         "aspect-ratio"
@@ -593,7 +593,7 @@
       "description": "",
       "dependencies": [
         "next/image",
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -609,7 +609,7 @@
       "title": "stripe-bg-guides",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [],
       "files": [
@@ -625,7 +625,7 @@
       "title": "youtube-video-player",
       "description": "",
       "dependencies": [
-        "framer-motion"
+        "motion"
       ],
       "registryDependencies": [
         "button"

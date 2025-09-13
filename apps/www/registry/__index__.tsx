@@ -149,17 +149,18 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
-    "tweet-grid": {
-      name: "tweet-grid",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      component: React.lazy(() => import("@/registry/default/ui/tweet-grid")),
-      source: "",
-      files: ["registry/default/ui/tweet-grid.tsx"],
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: [],
-    },
+    // Temporarily disabled due to react-tweet CSS module issues
+    // "tweet-grid": {
+    //   name: "tweet-grid",
+    //   type: "registry:ui",
+    //   registryDependencies: undefined,
+    //   component: React.lazy(() => import("@/registry/default/ui/tweet-grid")),
+    //   source: "",
+    //   files: ["registry/default/ui/tweet-grid.tsx"],
+    //   category: "undefined",
+    //   subcategory: "undefined",
+    //   chunks: [],
+    // },
     "gradient-heading": {
       name: "gradient-heading",
       type: "registry:ui",
@@ -625,19 +626,20 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
-    "tweet-grid-demo": {
-      name: "tweet-grid-demo",
-      type: "registry:component",
-      registryDependencies: ["tweet-grid", "gradient-heading"],
-      component: React.lazy(
-        () => import("@/registry/default/example/tweet-grid-demo")
-      ),
-      source: "",
-      files: ["registry/default/example/tweet-grid-demo.tsx"],
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: [],
-    },
+    // Temporarily disabled due to react-tweet CSS module issues
+    // "tweet-grid-demo": {
+    //   name: "tweet-grid-demo",
+    //   type: "registry:component",
+    //   registryDependencies: ["tweet-grid", "gradient-heading"],
+    //   component: React.lazy(
+    //     () => import("@/registry/default/example/tweet-grid-demo")
+    //   ),
+    //   source: "",
+    //   files: ["registry/default/example/tweet-grid-demo.tsx"],
+    //   category: "undefined",
+    //   subcategory: "undefined",
+    //   chunks: [],
+    // },
     "gradient-heading-demo": {
       name: "gradient-heading-demo",
       type: "registry:component",

@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 
 const transition = {
-  type: "spring",
+  type: "spring" as const,
   bounce: 0.1,
   duration: 0.25,
 }
@@ -327,7 +327,7 @@ interface Bounds {
 function useMeasure(): [
   (node: HTMLElement | null) => void,
   Bounds,
-  () => void
+  () => void,
 ] {
   const [bounds, setBounds] = useState<Bounds>({
     left: 0,
@@ -337,7 +337,7 @@ function useMeasure(): [
   })
 
   const [node, setNode] = useState<HTMLElement | null>(null)
-  const observer = useRef<ResizeObserver>()
+  const observer = useRef<ResizeObserver | null>(null)
 
   const disconnect = useCallback(() => {
     if (observer.current) {
@@ -376,7 +376,7 @@ function useMeasure(): [
 }
 
 function useClickOutside<T extends HTMLElement = HTMLElement>(
-  ref: RefObject<T>,
+  ref: RefObject<T | null>,
   handler: (event: MouseEvent | TouchEvent) => void
 ) {
   useEffect(() => {

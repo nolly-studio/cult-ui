@@ -7,7 +7,6 @@ import { ExternalLink } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
 import { Icons } from "@/components/icons"
 
 export function MainNav() {
@@ -77,26 +76,6 @@ export function MainNav() {
           Templates <span className="text-xs text-pink-500">(1 new)</span>
           <ExternalLink className="size-3" />
         </a>
-
-        {/* <Link
-          href="/blocks"
-          className={cn(
-            "transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/blocks")
-              ? "text-foreground"
-              : "text-foreground/60"
-          )}
-        >
-          Blocks
-        </Link> */}
-        {/* <Link
-          href={siteConfig.links.github}
-          className={cn(
-            "hidden text-foreground/60 transition-colors hover:text-foreground/80 lg:block"
-          )}
-        >
-          GitHub
-        </Link> */}
       </nav>
     </div>
   )

@@ -43,7 +43,11 @@ type ResizablePanelProps = {
 // ResizablePanel Component
 const ResizablePanel = forwardRef<HTMLDivElement, ResizablePanelProps>(
   ({ children, className, ...props }, ref) => {
-    const transition = { type: "ease", ease: "easeInOut", duration: 0.4 }
+    const transition = {
+      type: "tween" as const,
+      ease: [0.42, 0, 0.58, 1] as const,
+      duration: 0.4,
+    }
 
     return (
       <MotionConfig transition={transition}>
@@ -152,7 +156,7 @@ const VideoContent: React.FC<VideoContentProps> = ({ url, videoOpen }) => {
   // Define transition properties
   const transition = {
     duration: 0.2,
-    ease: [0.04, 0.62, 0.23, 0.98], // Custom cubic-bezier easing
+    ease: [0.04, 0.62, 0.23, 0.98] as const, // Custom cubic-bezier easing
     delay: 0.3,
   }
 

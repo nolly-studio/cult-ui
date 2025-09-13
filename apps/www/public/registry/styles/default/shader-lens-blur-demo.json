@@ -1,7 +1,7 @@
 {
   "name": "shader-lens-blur-demo",
   "dependencies": [
-    "framer-motion",
+    "motion",
     "three",
     "jotai"
   ],

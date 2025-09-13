@@ -29,7 +29,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 
 const transition = {
-  type: "spring",
+  type: "spring" as const,
   bounce: 0.1,
   duration: 0.25,
 }
@@ -351,7 +351,7 @@ function useMeasure(): [
   })
 
   const [node, setNode] = useState<HTMLElement | null>(null)
-  const observer = useRef<ResizeObserver>()
+  const observer = useRef<ResizeObserver | null>(null)
 
   const disconnect = useCallback(() => {
     if (observer.current) {
@@ -390,7 +390,7 @@ function useMeasure(): [
 }
 
 function useClickOutside<T extends HTMLElement = HTMLElement>(
-  ref: RefObject<T>,
+  ref: RefObject<T | null>,
   handler: (event: MouseEvent | TouchEvent) => void
 ) {
   useEffect(() => {

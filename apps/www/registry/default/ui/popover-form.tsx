@@ -80,7 +80,11 @@ export function PopoverForm({
                   key="success"
                   initial={{ y: -32, opacity: 0, filter: "blur(4px)" }}
                   animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-                  transition={{ type: "spring", duration: 0.4, bounce: 0 }}
+                  transition={{
+                    type: "spring" as const,
+                    duration: 0.4,
+                    bounce: 0,
+                  }}
                   className="flex h-full flex-col items-center justify-center"
                 >
                   {successChild || <PopoverFormSuccess />}
@@ -88,7 +92,11 @@ export function PopoverForm({
               ) : (
                 <motion.div
                   exit={{ y: 8, opacity: 0, filter: "blur(4px)" }}
-                  transition={{ type: "spring", duration: 0.4, bounce: 0 }}
+                  transition={{
+                    type: "spring" as const,
+                    duration: 0.4,
+                    bounce: 0,
+                  }}
                   key="open-child"
                   style={{ borderRadius: 10 }}
                   className="h-full border bg-white dark:bg-[#121212] z-20 "
@@ -141,7 +149,7 @@ export function PopoverFormButton({
 }
 
 const useClickOutside = (
-  ref: RefObject<HTMLElement>,
+  ref: RefObject<HTMLElement | null>,
   handleOnClickOutside: (event: MouseEvent | TouchEvent) => void
 ) => {
   useEffect(() => {

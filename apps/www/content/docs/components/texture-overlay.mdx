@@ -1,0 +1,166 @@
+---
+title: Texture Overlay
+description: A component that provides various texture overlay patterns using CSS gradients for adding visual texture to backgrounds and surfaces.
+component: true
+links:
+---
+
+<ComponentPreview
+  name="texture-overlay-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All texture patterns and variations"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/texture-overlay.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="texture-overlay" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { TextureOverlay } from "@/components/ui/texture-overlay"
+```
+
+### Basic Usage
+
+```tsx
+<TextureOverlay texture="dots" />
+<TextureOverlay texture="grid" opacity={0.5} />
+<TextureOverlay texture="none" />
+```
+
+### With Custom Styling
+
+```tsx
+<div className="relative bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg p-8">
+  <TextureOverlay texture="grid" className="mix-blend-overlay" />
+  <div className="relative z-10">
+    <h2>Content with texture overlay</h2>
+  </div>
+</div>
+```
+
+## API Reference
+
+### Props
+
+| Prop        | Type          | Default                     | Description                              |
+| ----------- | ------------- | --------------------------- | ---------------------------------------- |
+| `texture`   | `TextureType` | -                           | The type of texture pattern to display   |
+| `opacity`   | `number`      | `defaultOpacities[texture]` | The opacity of the texture overlay (0-1) |
+| `className` | `string`      | -                           | Additional CSS classes to apply          |
+
+### TextureType
+
+The `TextureType` union includes the following options:
+
+- `"dots"` - Small circular dots pattern
+- `"grid"` - Grid lines pattern
+- `"noise"` - Random noise pattern
+- `"crosshatch"` - Crosshatch pattern
+- `"diagonal"` - Diagonal lines pattern
+- `"radialDots"` - Radial dots from center
+- `"scatteredDots"` - Scattered dots pattern
+- `"halftone"` - Halftone dots pattern
+- `"triangular"` - Triangular pattern
+- `"chevron"` - Chevron pattern
+- `"paperGrain"` - Paper grain texture
+- `"horizontalLines"` - Horizontal lines
+- `"verticalLines"` - Vertical lines
+- `"none"` - No texture (component returns null)
+
+## Examples
+
+### Card with Texture Background
+
+```tsx
+<div className="relative bg-card rounded-lg p-6 shadow-lg">
+  <TextureOverlay texture="paperGrain" opacity={0.3} />
+  <div className="relative z-10">
+    <h3 className="text-lg font-semibold">Card Title</h3>
+    <p className="text-muted-foreground">Card content with subtle texture</p>
+  </div>
+</div>
+```
+
+### Hero Section with Texture
+
+```tsx
+<section className="relative min-h-screen bg-gradient-to-br from-slate-900 to-slate-800">
+  <TextureOverlay texture="noise" opacity={0.4} />
+  <div className="relative z-10 flex items-center justify-center">
+    <div className="text-center">
+      <h1 className="text-4xl font-bold text-white">Hero Title</h1>
+      <p className="text-slate-300">Hero subtitle with texture background</p>
+    </div>
+  </div>
+</section>
+```
+
+### Multiple Texture Layers
+
+```tsx
+<div className="relative bg-background rounded-lg p-8">
+  <TextureOverlay texture="grid" opacity={0.2} />
+  <TextureOverlay texture="dots" opacity={0.1} className="mix-blend-multiply" />
+  <div className="relative z-10">
+    <h2>Layered Textures</h2>
+    <p>Combining multiple texture patterns</p>
+  </div>
+</div>
+```
+
+## Styling
+
+The component uses CSS gradients to create texture patterns. You can customize the appearance by:
+
+- Adjusting the `opacity` prop for transparency
+- Adding custom `className` for additional styling
+- Using CSS blend modes like `mix-blend-overlay` or `mix-blend-multiply`
+- Combining multiple `TextureOverlay` components for layered effects
+
+## Performance
+
+The component is optimized for performance by:
+
+- Using CSS gradients instead of images
+- Minimal DOM footprint (single div element)
+- No JavaScript animations or calculations
+- Lightweight and fast rendering
+
+## Accessibility
+
+The component is designed to be accessible:
+
+- Uses `pointer-events-none` to ensure it doesn't interfere with user interactions
+- Positioned absolutely to not affect document flow
+- Can be safely used as decorative elements
