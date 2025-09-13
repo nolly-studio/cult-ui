@@ -3,7 +3,7 @@ import { visit } from "unist-util-visit"
 
 export function rehypeNpmCommand() {
   return (tree: UnistTree) => {
-    visit(tree, (node: UnistNode) => {
+    visit(tree as any, (node: UnistNode) => {
       if (node.type !== "element" || node?.tagName !== "pre") {
         return
       }

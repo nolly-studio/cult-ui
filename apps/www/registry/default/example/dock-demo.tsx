@@ -73,7 +73,7 @@ function DockAnimation() {
     : gradients
 
   return (
-    <div className="  flex items-center justify-center">
+    <div className=" w-full  flex items-center justify-center">
       <Dock>
         {responsiveGradients.map((src, index) =>
           src ? (

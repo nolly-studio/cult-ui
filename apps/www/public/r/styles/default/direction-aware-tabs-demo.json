@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "direction-aware-tabs-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "direction-aware-tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/direction-aware-tabs-demo.tsx",
+      "content": "\"use client\"\n\nimport { BgAnimateButton } from \"../ui/bg-animate-button\"\nimport { DirectionAwareTabs } from \"../ui/direction-aware-tabs\"\n\nconst DirectionAwareTabsDemo = ({}) => {\n  const tabs = [\n    {\n      id: 0,\n      label: \"ocean\",\n      content: (\n        <div className=\"border border-border/50 w-full flex flex-col items-center p-4 rounded-lg gap-3\">\n          <BgAnimateButton animation=\"spin-fast\" gradient=\"ocean\">\n            Button\n          </BgAnimateButton>\n          <BgAnimateButton animation=\"spin\" gradient=\"ocean\">\n            Button\n          </BgAnimateButton>\n          <BgAnimateButton animation=\"spin-slow\" gradient=\"ocean\">\n            Button\n          </BgAnimateButton>\n        </div>\n      ),\n    },\n    {\n      id: 1,\n      label: \"forest\",\n      content: (\n        <div className=\"border border-border/50 w-full flex flex-col items-center p-4 rounded-lg gap-3\">\n          <BgAnimateButton animation=\"spin-fast\" gradient=\"forest\">\n            Button\n          </BgAnimateButton>\n          <BgAnimateButton animation=\"spin\" gradient=\"forest\">\n            Button\n          </BgAnimateButton>\n          <BgAnimateButton animation=\"spin-slow\" gradient=\"forest\">\n            Button\n          </BgAnimateButton>\n        </div>\n      ),\n    },\n    {\n      id: 2,\n      label: \"default\",\n      content: (\n        <div className=\"border border-border/50 w-full flex flex-col items-center gap-3 p-4\">\n          <BgAnimateButton animation=\"spin-fast\" gradient=\"default\">\n            Button\n          </BgAnimateButton>\n          <BgAnimateButton animation=\"spin\" gradient=\"default\">\n            Button\n          </BgAnimateButton>\n          <BgAnimateButton animation=\"spin-slow\" gradient=\"default\">\n            Button\n          </BgAnimateButton>\n        </div>\n      ),\n    },\n    {\n      id: 3,\n      label: \"sunset\",\n      content: (\n        <div className=\"border border-border/50 w-full flex flex-col items-center p-4 rounded-lg gap-3\">\n          <BgAnimateButton animation=\"spin-fast\" gradient=\"sunset\">\n            Button\n          </BgAnimateButton>\n          <BgAnimateButton animation=\"spin\" gradient=\"sunset\">\n            Button\n          </BgAnimateButton>\n          <BgAnimateButton animation=\"spin-slow\" gradient=\"sunset\">\n            Button\n          </BgAnimateButton>\n        </div>\n      ),\n    },\n  ]\n\n  return (\n    <div className=\"\">\n      <DirectionAwareTabs tabs={tabs} />\n    </div>\n  )\n}\n\nexport default DirectionAwareTabsDemo\n",
+      "type": "registry:component"
+    }
+  ]
+}

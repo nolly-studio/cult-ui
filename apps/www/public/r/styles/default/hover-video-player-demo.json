@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-video-player-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "hover-video-player"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/hover-video-player-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\nimport { motion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport { GradientHeading } from \"../ui/gradient-heading\"\nimport { HoverVideoPlayer } from \"../ui/hover-video-player\"\n\nexport default function HoverVideoPlayerDemo() {\n  return (\n    <div className=\"flex flex-col gap-12 py-12 w-full h-full items-center justify-center\">\n      <div className=\"text-center\">\n        <GradientHeading>Hover video player</GradientHeading>\n      </div>\n      <motion.div\n        initial={{ maxWidth: \"24rem\" }} // 96 in rem\n        whileHover={{ maxWidth: \"100%\" }}\n        transition={{\n          duration: 0.5,\n          ease: [0.32, 0.72, 0, 1], // Custom easing for smooth animation\n        }}\n        className={cn(\n          \"group relative flex flex-col overflow-hidden rounded-lg w-full h-full\",\n          \"bg-white shadow-sm ring-1 ring-black/5\",\n          \"data-[dark]:bg-stone-800 data-[dark]:ring-white/15\"\n        )}\n      >\n        <HoverVideoPlayer\n          videoSrc=\"https://player.vimeo.com/video/1037289858\"\n          thumbnailSrc=\"/placeholders/newcopy-thumbnail.png\"\n          enableControls\n          style={{\n            width: \"100%\",\n            maxWidth: \"100vw\",\n            aspectRatio: \"16/9\",\n          }}\n        />\n      </motion.div>\n\n      <a href=\"https://www.newcult.co\" target=\"_blank\">\n        newcopy.ai\n      </a>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

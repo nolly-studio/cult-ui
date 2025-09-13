@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bg-animate-button-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "bg-animate-button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/bg-animate-button-demo.tsx",
+      "content": "import { BgAnimateButton } from \"../ui/bg-animate-button\"\n\ntype Gradients =\n  | \"sunrise\"\n  | \"ocean\"\n  | \"candy\"\n  | \"default\"\n  | \"forest\"\n  | \"sunset\"\n  | \"nebula\"\n\ntype Radius = \"full\" | \"xl\" | \"2xl\" | \"3xl\" | \"sm\"\ntype Animations = \"spin\" | \"pulse\" | \"spin-slow\" | \"spin-fast\"\n\nconst gradients: Gradients[] = [\n  \"sunrise\",\n  \"ocean\",\n  \"candy\",\n  \"forest\",\n  \"sunset\",\n  \"default\",\n  \"nebula\",\n]\nconst roundings: Radius[] = [\"full\", \"xl\", \"2xl\", \"3xl\", \"sm\"]\nconst animations: Animations[] = [\"spin\", \"pulse\", \"spin-slow\", \"spin-fast\"]\n\nexport const BgAnimateButtonsDemo = () => {\n  return (\n    <div className=\"w-full max-w-4xl\">\n      <div className=\" sm:px-12 md:px-24 flex flex-col justify-center  rounded-lg space-y-4\">\n        {/* Roundings Grid */}\n\n        <div className=\"grid grid-cols-3 gap-4\">\n          {roundings.slice(0, 2).map((rounding, i) => (\n            <BgAnimateButton\n              gradient={gradients[i + 1]}\n              key={rounding}\n              rounded={rounding}\n            >\n              {rounding}\n            </BgAnimateButton>\n          ))}\n        </div>\n        <div className=\"grid grid-cols-3 gap-4\">\n          {roundings.slice(2, 5).map((rounding, i) => (\n            <BgAnimateButton\n              gradient={gradients[i + 1]}\n              key={rounding}\n              rounded={rounding}\n            >\n              {rounding}\n            </BgAnimateButton>\n          ))}\n        </div>\n\n        {/* animations Grid */}\n        <div className=\"grid grid-cols-2 gap-4\">\n          {animations.map((animations, i) => (\n            <BgAnimateButton\n              key={animations}\n              gradient={gradients[i + 2]}\n              variant=\"ghost\"\n              animation={animations}\n            >\n              {animations}\n            </BgAnimateButton>\n          ))}\n        </div>\n      </div>\n    </div>\n  )\n}\n\nexport default BgAnimateButtonsDemo\n",
+      "type": "registry:component"
+    }
+  ]
+}

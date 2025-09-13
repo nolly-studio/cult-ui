@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "loading-carousel-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "loading-carousel"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/loading-carousel-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\n\nimport { Card, CardContent, CardHeader, CardTitle } from \"@/components/ui/card\"\n\nimport { LoadingCarousel } from \"../ui/loading-carousel\"\n\nexport default function LoadingCarouselDemo() {\n  return (\n    <div className=\"space-y-8 p-4 w-full\">\n      <div className=\"w-full\">\n        <CardHeader>\n          <CardTitle>Default LoadingCarousel</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <LoadingCarousel />\n        </CardContent>\n      </div>\n\n      <div className=\"w-full\">\n        <CardHeader>\n          <CardTitle>Wide Aspect Ratio with Top Text</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <LoadingCarousel\n            aspectRatio=\"wide\"\n            textPosition=\"top\"\n            showIndicators={false}\n          />\n        </CardContent>\n      </div>\n\n      <div className=\"w-full\">\n        <CardHeader>\n          <CardTitle>Background Tips + Gradient</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <LoadingCarousel\n            aspectRatio=\"wide\"\n            backgroundTips={true}\n            backgroundGradient={true}\n          />\n        </CardContent>\n      </div>\n\n      <div className=\"w-full\">\n        <CardHeader>\n          <CardTitle>Custom Interval and Navigation</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <LoadingCarousel autoplayInterval={2000} showNavigation={true} />\n        </CardContent>\n      </div>\n\n      <div className=\"w-full\">\n        <CardHeader>\n          <CardTitle>Shuffled Tips with Custom Interval</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <LoadingCarousel\n            shuffleTips={true}\n            autoplayInterval={3000}\n            showProgress={false}\n          />\n        </CardContent>\n      </div>\n\n      <div className=\"w-full\">\n        <CardHeader>\n          <CardTitle>Square Aspect Ratio with Background Tips</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <LoadingCarousel\n            aspectRatio=\"square\"\n            backgroundTips={true}\n            backgroundGradient={true}\n          />\n        </CardContent>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

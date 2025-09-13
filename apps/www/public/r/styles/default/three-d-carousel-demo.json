@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "three-d-carousel-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "three-d-carousel"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/three-d-carousel-demo.tsx",
+      "content": "import ThreeDPhotoCarousel from \"../ui/three-d-carousel\"\n\nexport default function ThreeDPhotoCarouselDemo() {\n  return (\n    <div className=\"w-full max-w-4xl\">\n      <div className=\"min-h-[500px]  flex flex-col justify-center border border-dashed rounded-lg space-y-4\">\n        <div className=\"p-2\">\n          <ThreeDPhotoCarousel />\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

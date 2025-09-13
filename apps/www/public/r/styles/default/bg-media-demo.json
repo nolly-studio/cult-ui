@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bg-media-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "bg-media"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/bg-media-demo.tsx",
+      "content": "import BackgroundMedia from \"../ui/bg-media\"\n\nexport default function BgMediaDemo() {\n  return (\n    <div className=\"w-full \">\n      <div className=\"md:min-w-[20rem] \">\n        <BackgroundMedia\n          type=\"video\"\n          variant=\"light\"\n          src=\"https://openaicomproductionae4b.blob.core.windows.net/production-twill-01/c74791d0-75d2-48e6-acae-96d13bc97c56/paper-planes.mp4\"\n        />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

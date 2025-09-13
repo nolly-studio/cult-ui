@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stripe-bg-guides-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "stripe-bg-guides"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/stripe-bg-guides-demo.tsx",
+      "content": "\"use client\"\n\nimport { StripeBgGuides } from \"../ui/stripe-bg-guides\"\n\nexport default function StripeBgGuidesDemo() {\n  return (\n    <div className=\"relative w-full h-[400px] overflow-hidden rounded-lg border bg-background\">\n      {/* Modified StripeBgGuides to work within a container */}\n      <StripeBgGuides\n        columnCount={6}\n        animated={true}\n        animationDuration={8}\n        glowColor=\"hsl(var(--primary))\"\n        randomize={true}\n        randomInterval={3000}\n        contained={true}\n      />\n\n      {/* Content to demonstrate the background effect */}\n      <div className=\"relative z-10 flex h-full items-center justify-center\">\n        <div className=\"max-w-md text-center\">\n          <h3 className=\"text-2xl font-bold mb-2\">Stripe Background Guides</h3>\n          <p className=\"text-muted-foreground\">\n            Animated background guides with glowing effects, inspired by\n            Stripe's design system.\n          </p>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

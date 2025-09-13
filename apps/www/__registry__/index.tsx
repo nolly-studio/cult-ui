@@ -989,5 +989,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "texture-overlay-demo": {
+      name: "texture-overlay-demo",
+      type: "registry:component",
+      description: "",
+      registryDependencies: ["texture-overlay"],
+      component: React.lazy(() => import("@/registry/default/example/texture-overlay-demo")),
+      source: "",
+      files: ["registry/default/example/texture-overlay-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
   },
 }

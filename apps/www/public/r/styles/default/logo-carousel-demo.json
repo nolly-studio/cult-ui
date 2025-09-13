@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "logo-carousel-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "logo-carousel",
+    "gradient-heading"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/logo-carousel-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\n\nimport { GradientHeading } from \"../ui/gradient-heading\"\nimport LogoCarousel from \"../ui/logo-carousel\"\n\nexport default function LogoCarouselDemo() {\n  return (\n    <div className=\"space-y-8  py-24\">\n      <div className=\"w-full max-w-screen-lg mx-auto flex flex-col items-center space-y-8\">\n        <div className=\"text-center\">\n          <GradientHeading variant=\"secondary\">\n            The best are already here\n          </GradientHeading>\n          <a href=\"https://www.newcult.co\" target=\"_blank\">\n            <GradientHeading size=\"xxl\">Join new cult</GradientHeading>\n          </a>\n        </div>\n\n        <LogoCarousel columnCount={3} />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

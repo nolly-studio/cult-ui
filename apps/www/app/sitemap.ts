@@ -1,9 +1,9 @@
 import { MetadataRoute } from "next"
-import { allDocs } from "contentlayer/generated"
+import { getAllDocSlugs } from "@/lib/get-doc-data"
 
 import { siteConfig } from "@/config/site"
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url
 
   // Define the main pages of your site
@@ -20,8 +20,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   // Add all docs paths
-  const docRoutes = allDocs.map((doc) => ({
-    url: `${baseUrl}/docs/${doc.slugAsParams}`,
+  const slugs = await getAllDocSlugs()
+  const docRoutes = slugs.map((slug: string[]) => ({
+    url: `${baseUrl}/docs/${slug.join("/")}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.7,

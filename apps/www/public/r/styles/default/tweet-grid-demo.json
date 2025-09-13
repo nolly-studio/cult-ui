@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tweet-grid-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "tweet-grid",
+    "gradient-heading"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/tweet-grid-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { GradientHeading } from \"../ui/gradient-heading\"\nimport { TweetGrid } from \"../ui/tweet-grid\"\n\n// Grab tweet ids\nconst exampleTweets = [\n  \"1742983975340327184\",\n  \"1743049700583116812\",\n  \"1754067409366073443\",\n  \"1753968111059861648\",\n  \"1754174981897118136\",\n  \"1743632296802988387\",\n  \"1754110885168021921\",\n  \"1760248682828419497\",\n  \"1760230134601122153\",\n  \"1760184980356088267\",\n]\n\nexport default function TweetGridDemo({}) {\n  return (\n    <div className=\"pb-12 md:max-w-4xl max-w-md\">\n      <div className=\"flex w-full justify-center pb-12\">\n        <GradientHeading size=\"xl\" weight=\"black\">\n          Join the club\n        </GradientHeading>\n      </div>\n      <div className=\"flex items-center justify-center w-full\">\n        <TweetGrid\n          className=\"w-80 md:w-full \"\n          tweets={exampleTweets}\n          columns={2}\n          spacing=\"lg\"\n        />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

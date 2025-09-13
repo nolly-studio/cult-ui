@@ -4,14 +4,19 @@ import * as React from "react"
 import { CheckIcon, ClipboardIcon, TerminalIcon } from "lucide-react"
 
 import { useConfig } from "@/hooks/use-config"
+import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { copyToClipboardWithMeta } from "@/components/copy-button"
 
 export function CodeBlockCommand({
   __npm__,
@@ -34,7 +39,7 @@ export function CodeBlockCommand({
     }
   }, [hasCopied])
 
-  const packageManager = "pnpm"
+  const packageManager = config.packageManager || "pnpm"
   const tabs = React.useMemo(() => {
     return {
       pnpm: __pnpm__,
@@ -62,7 +67,7 @@ export function CodeBlockCommand({
   }, [packageManager, tabs])
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto bg-background">
       <Tabs
         value={packageManager}
         className="gap-0"
@@ -73,8 +78,8 @@ export function CodeBlockCommand({
           })
         }}
       >
-        <div className="flex items-center gap-2 border-b border-border/50 px-3 py-1">
-          <div className="flex size-4 items-center justify-center rounded-[1px] bg-foreground opacity-70">
+        <div className="border-border/50 flex items-center gap-2 border-b px-3 py-1">
+          <div className="bg-foreground flex size-4 items-center justify-center rounded-[1px] opacity-70">
             <TerminalIcon className="text-code size-3" />
           </div>
           <TabsList className="rounded-none bg-transparent p-0">
@@ -83,7 +88,7 @@ export function CodeBlockCommand({
                 <TabsTrigger
                   key={key}
                   value={key}
-                  className="h-7 border border-transparent pt-0.5 data-[state=active]:border-input data-[state=active]:bg-accent data-[state=active]:shadow-none"
+                  className="data-[state=active]:bg-accent data-[state=active]:border-input h-7 border border-transparent pt-0.5 data-[state=active]:shadow-none"
                 >
                   {key}
                 </TabsTrigger>
@@ -114,7 +119,7 @@ export function CodeBlockCommand({
             data-slot="copy-button"
             size="icon"
             variant="ghost"
-            className="absolute right-2 top-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
+            className="absolute top-2 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
             onClick={copyCommand}
           >
             <span className="sr-only">Copy</span>

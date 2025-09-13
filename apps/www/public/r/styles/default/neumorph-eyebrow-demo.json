@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "neumorph-eyebrow-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "neumorph-eyebrow"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/neumorph-eyebrow-demo.tsx",
+      "content": "import { NeumorphEyebrow } from \"../ui/neumorph-eyebrow\"\n\nexport default function NeumorphEyebrowDemo() {\n  return (\n    <div className=\"space-y-4 flex flex-col items-center justify-center w-full\">\n      <NeumorphEyebrow>A milestone in scraping</NeumorphEyebrow>\n      <NeumorphEyebrow intent=\"primary\">Primary variant</NeumorphEyebrow>\n      <NeumorphEyebrow intent=\"secondary\">Secondary variant</NeumorphEyebrow>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}
