@@ -69,6 +69,7 @@
     "vitest": "^0.31.1"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.27.1",
     "@types/node": "^20.11.27",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
