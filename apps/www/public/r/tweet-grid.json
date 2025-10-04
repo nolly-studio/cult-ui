@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tweet-grid",
+  "type": "registry:ui",
+  "description": "Grid layout component for displaying tweet-like content cards",
+  "dependencies": [
+    ""
+  ],
+  "files": [
+    {
+      "path": "registry/default/ui/tweet-grid.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst tweetGridVariants = cva(\"max-w-4xl md:max-w-6xl px-2\", {\n  variants: {\n    columns: {\n      1: \"columns-1\",\n      2: \"sm:columns-2\",\n      3: \"md:columns-3\",\n      4: \"lg:columns-4\",\n      5: \"xl:columns-5\",\n    },\n  },\n  defaultVariants: {\n    columns: 3,\n  },\n})\n\nconst tweetItemVariants = cva(\"break-inside-avoid\", {\n  variants: {\n    spacing: {\n      sm: \"mb-2\",\n      md: \"mb-4\",\n      lg: \"mb-6\",\n    },\n  },\n  defaultVariants: {\n    spacing: \"md\",\n  },\n})\n\nexport interface TweetGridProps\n  extends VariantProps<typeof tweetGridVariants>,\n    VariantProps<typeof tweetItemVariants> {\n  tweets: string[]\n  className?: string\n}\n\n// Mock Tweet component to avoid react-tweet CSS import issues\nconst MockTweet: React.FC<{ id: string }> = ({ id }) => {\n  return (\n    <div className=\"bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-sm\">\n      <div className=\"flex items-center space-x-3 mb-3\">\n        <div className=\"w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center\">\n          <span className=\"text-white font-bold text-sm\">T</span>\n        </div>\n        <div>\n          <div className=\"font-semibold text-gray-900 dark:text-white\">\n            Twitter User\n          </div>\n          <div className=\"text-sm text-gray-500 dark:text-gray-400\">@user</div>\n        </div>\n      </div>\n      <div className=\"text-gray-900 dark:text-white mb-3\">\n        This is a mock tweet placeholder. Tweet ID: {id}\n      </div>\n      <div className=\"flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400\">\n        <span>💬 0</span>\n        <span>🔄 0</span>\n        <span>❤️ 0</span>\n      </div>\n    </div>\n  )\n}\n\nexport const TweetGrid: React.FC<TweetGridProps> = ({\n  tweets,\n  columns,\n  spacing,\n  className,\n}) => {\n  return (\n    <div className={cn(tweetGridVariants({ columns }), className)}>\n      {tweets.map((tweetId, i) => (\n        <div\n          key={`${tweetId}-${i}`}\n          className={cn(tweetItemVariants({ spacing }))}\n        >\n          <MockTweet id={tweetId} />\n        </div>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

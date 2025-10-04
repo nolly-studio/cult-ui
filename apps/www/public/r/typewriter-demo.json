@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typewriter-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "typewriter"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/typewriter-demo.tsx",
+      "content": "\"use client\"\n\nimport { ReactNode } from \"react\"\n\nimport { Typewriter } from \"../ui/typewriter\"\n\nconst texts = [\n  \"Testing 124\",\n  \"Look at newcult.co\",\n  \"and check gnow.io\",\n  \"Sick af\",\n]\n\nexport default function TypewriterDemo() {\n  return (\n    <IosOgShellCard>\n      <div className=\"ml-auto px-4 py-2 mb-3 text-white bg-blue-500 rounded-2xl\">\n        <p className=\"text-sm md:text-base font-semibold text-base-900 truncate\">\n          <Typewriter texts={texts} delay={1} baseText=\"Yo \" />\n        </p>\n      </div>\n    </IosOgShellCard>\n  )\n}\n\nfunction IosOgShellCard({ children }: { children: ReactNode }) {\n  return (\n    <div className=\"max-w-xs md:max-w-xl md:min-w-80 mx-auto flex flex-col rounded-lg bg-neutral-900 px-px pb-px shadow-inner-shadow\">\n      <div className=\"p-4 flex flex-col md:px-5\">\n        <div className=\"mb-2 text-sm md:text-neutral-500 text-neutral-500\">\n          iMessage\n        </div>\n        <div className=\"mb-3 text-xs md:text-sm text-neutral-500\">\n          Today 11:29\n        </div>\n        <div className=\"ml-auto px-4 py-2 mb-3 text-white bg-blue-500 rounded-2xl\">\n          <span>Hey!</span>\n        </div>\n        <div className=\"mr-auto px-4 py-2 mb-3 text-white bg-neutral-700 rounded-2xl\">\n          <span>Whats up bretheren?!</span>\n        </div>\n        {children}\n        <div className=\"mt-3 text-xs md:text-sm text-neutral-500\">\n          Delivered\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

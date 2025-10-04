@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timer-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "timer",
+    "texture-button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/timer-demo.tsx",
+      "content": "\"use client\"\n\nimport { Pause, Play, RotateCcw } from \"lucide-react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport {\n  Timer,\n  TimerDisplay,\n  TimerIcon,\n  TimerRoot,\n  useTimer,\n} from \"@/registry/default/ui/timer\"\n\nexport default function TimerExamples() {\n  return (\n    <div className=\"space-y-8 p-6\">\n      <div className=\"space-y-4\">\n        {/* Basic Timer */}\n        <div className=\"space-y-2\">\n          <h3 className=\"text-lg font-semibold\">Basic Timer</h3>\n          <Timer loading={true} />\n        </div>\n\n        {/* Variants */}\n        <div className=\"space-y-2\">\n          <h3 className=\"text-lg font-semibold\">Variants</h3>\n          <div className=\"flex gap-4 flex-wrap\">\n            <Timer variant=\"default\" loading={true} />\n            <Timer variant=\"outline\" loading={true} />\n            <Timer variant=\"ghost\" loading={true} />\n            <Timer variant=\"destructive\" loading={true} />\n          </div>\n        </div>\n\n        {/* Sizes */}\n        <div className=\"space-y-2\">\n          <h3 className=\"text-lg font-semibold\">Sizes</h3>\n          <div className=\"flex gap-4 items-center flex-wrap\">\n            <Timer size=\"sm\" loading={true} />\n            <Timer size=\"md\" loading={true} />\n            <Timer size=\"lg\" loading={true} />\n          </div>\n        </div>\n\n        {/* Compound Components */}\n        <div className=\"space-y-2\">\n          <h3 className=\"text-lg font-semibold\">Compound Components</h3>\n          <TimerRoot variant=\"outline\" size=\"lg\">\n            <TimerIcon loading={true} />\n            <TimerDisplay time=\"01:23\" />\n          </TimerRoot>\n        </div>\n\n        {/* Custom Timer with Controls */}\n        <CustomTimerExample />\n      </div>\n    </div>\n  )\n}\n\nfunction CustomTimerExample() {\n  const { formattedTime, isRunning, start, stop, reset } = useTimer({\n    format: \"MM:SS\",\n  })\n\n  return (\n    <div className=\"space-y-2\">\n      <h3 className=\"text-lg font-semibold\">Custom Timer with Controls</h3>\n      <div className=\"flex items-center gap-4\">\n        <TimerRoot variant=\"outline\" size=\"lg\">\n          <TimerIcon loading={isRunning} />\n          <TimerDisplay time={formattedTime.display} />\n        </TimerRoot>\n\n        <div className=\"flex gap-2\">\n          <Button\n            size=\"sm\"\n            variant=\"outline\"\n            onClick={isRunning ? stop : start}\n          >\n            {isRunning ? (\n              <Pause className=\"w-4 h-4\" />\n            ) : (\n              <Play className=\"w-4 h-4\" />\n            )}\n          </Button>\n          <Button size=\"sm\" variant=\"outline\" onClick={reset}>\n            <RotateCcw className=\"w-4 h-4\" />\n          </Button>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-heading-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "gradient-heading"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/gradient-heading-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { GradientHeading, Size, Variant, Weight } from \"../ui/gradient-heading\"\n\nexport default function GradientHeadingDemo() {\n  const variants: Variant[] = [\"default\", \"pink\", \"light\"]\n  const sizes: Size[] = [\"lg\", \"xl\", \"xxl\", \"xxxl\"]\n  const weights: Weight[] = [\"thin\", \"base\", \"semi\", \"bold\", \"black\"]\n\n  return (\n    <div className=\"space-y-8 p-4\">\n      {variants.map((variant) => (\n        <div key={variant}>\n          <h2 className=\"text-xl font-semibold mb-4\">Variant: {variant}</h2>\n          {sizes.map((size) => (\n            <div key={size} className=\"mb-2\">\n              {weights.map((weight) => (\n                <GradientHeading\n                  key={`${variant}-${size}-${weight}`}\n                  variant={variant}\n                  size={size}\n                  weight={weight}\n                  className=\"mb-2\"\n                >\n                  {`Heading - ${size}`}\n                </GradientHeading>\n              ))}\n            </div>\n          ))}\n        </div>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}
