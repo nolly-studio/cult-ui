@@ -4,6 +4,10 @@ Accessible and customizable components that you can copy and paste into your app
 
 ![hero](apps/www/public/og.png)
 
+
+# AI SDK Agents
+👉 [Complex ai sdk patterns you can copy and paste](https://www.aisdkagents.com)
+
 ## Documentation
 
 Visit https://cult-ui.com/docs to view the documentation.
