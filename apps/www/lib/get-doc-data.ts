@@ -5,7 +5,7 @@ export async function getDocData(slug: string[]) {
     const doc = source.getPage(slug)
     return doc
   } catch (error) {
-    console.error('Error fetching doc data:', error)
+    console.error("Error fetching doc data:", error)
     return null
   }
 }
@@ -13,9 +13,9 @@ export async function getDocData(slug: string[]) {
 export async function getAllDocSlugs() {
   try {
     const pages = source.getPages()
-    return pages ? pages.map(page => page.slugs) : []
+    return pages ? pages.map((page) => page.slugs) : []
   } catch (error) {
-    console.error('Error fetching doc slugs:', error)
+    console.error("Error fetching doc slugs:", error)
     return []
   }
 }

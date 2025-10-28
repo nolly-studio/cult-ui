@@ -15,15 +15,15 @@ export function ThemeProvider({
   const forcedThemeFromPathname = pathname === "/" ? "light" : undefined
   return (
     <JotaiProvider>
-    <NextThemesProvider
-      attribute="class"
-      defaultTheme="system"
-      forcedTheme={forcedThemeFromPathname}
-      enableSystem
-      disableTransitionOnChange
-      enableColorScheme
-      {...props}
-    >
+      <NextThemesProvider
+        attribute="class"
+        defaultTheme="system"
+        forcedTheme={forcedThemeFromPathname}
+        enableSystem
+        disableTransitionOnChange
+        enableColorScheme
+        {...props}
+      >
         <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
       </NextThemesProvider>
     </JotaiProvider>

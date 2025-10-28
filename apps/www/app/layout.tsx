@@ -1,4 +1,5 @@
 import "@/styles/globals.css"
+
 import { Metadata, Viewport } from "next"
 import { GoogleAnalytics } from "@next/third-parties/google"
 

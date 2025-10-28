@@ -1,8 +1,8 @@
 "use client"
 
 import React, {
-  ReactNode,
   createContext,
+  ReactNode,
   useContext,
   useEffect,
   useState,
@@ -10,8 +10,8 @@ import React, {
 import {
   AnimatePresence,
   HTMLMotionProps,
-  TargetAndTransition,
   motion,
+  TargetAndTransition,
   useMotionValue,
   useSpring,
 } from "motion/react"
@@ -326,7 +326,7 @@ const ExpandableContent = React.forwardRef<
                     children as React.ReactNode,
                     (child, index) => (
                       <motion.div
-                        key={index}
+                        key={`${child?.toLocaleString}-${index}`}
                         variants={{
                           hidden: { opacity: 0, y: 20 },
                           visible: { opacity: 1, y: 0 },
@@ -440,16 +440,17 @@ const ExpandableCard = React.forwardRef<HTMLDivElement, ExpandableCardProps>(
         <div
           className={cn(
             "grid grid-cols-1 rounded-lg sm:rounded-xl md:rounded-[2rem]",
-            "shadow-[inset_0_0_1px_1px_#ffffff4d] sm:shadow-[inset_0_0_2px_1px_#ffffff4d]",
-            "ring-1 ring-black/5",
+            "shadow-[inset_0_0_1px_1px_hsl(var(--border)/0.3)] dark:shadow-[inset_0_0_1px_1px_hsl(var(--border)/0.5)]",
+            "sm:shadow-[inset_0_0_2px_1px_hsl(var(--border)/0.3)] dark:sm:shadow-[inset_0_0_2px_1px_hsl(var(--border)/0.5)]",
+            "ring-1 ring-border/50",
             "max-w-[calc(100%-1rem)] sm:max-w-[calc(100%-2rem)] md:max-w-[calc(100%-4rem)]",
             "mx-auto w-full",
             "transition-all duration-300 ease-in-out"
           )}
         >
           {/* Nested divs purely for styling and layout (the shadow ring around the card) */}
-          <div className="grid grid-cols-1 rounded-lg sm:rounded-xl md:rounded-[2rem] p-1 sm:p-1.5 md:p-2 shadow-md shadow-black/5">
-            <div className="rounded-md sm:rounded-lg md:rounded-3xl bg-white p-2 sm:p-3 md:p-4 shadow-xl ring-1 ring-black/5">
+          <div className="grid grid-cols-1 rounded-lg sm:rounded-xl md:rounded-[2rem] p-1 sm:p-1.5 md:p-2 shadow-md">
+            <div className="rounded-md sm:rounded-lg md:rounded-3xl bg-white dark:bg-muted p-2 sm:p-3 md:p-4 shadow-xl ring-1 ring-border/50">
               <div className="w-full h-full overflow-hidden">
                 {/* Ref for measuring content dimensions (so we can let framer know to animate into the dimensions) */}
                 <div ref={measureRef} className="flex flex-col h-full">
@@ -470,10 +471,27 @@ ExpandableCard.displayName = "ExpandableCard"
 const ExpandableTrigger = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ children, ...props }, ref) => {
+>(({ children, className, ...props }, ref) => {
   const { toggleExpand } = useExpandable()
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault()
+      toggleExpand()
+    }
+  }
+
   return (
-    <div ref={ref} onClick={toggleExpand} className="cursor-pointer" {...props}>
+    <div
+      ref={ref}
+      onClick={toggleExpand}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-label="Toggle expand"
+      className={cn("cursor-pointer", className)}
+      {...props}
+    >
       {children}
     </div>
   )

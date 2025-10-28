@@ -82,7 +82,6 @@ For more flexibility, you can use the individual components:
 ### Timer with Callback
 
 ```tsx
-
 const [isLoading, setIsLoading] = useState(false)
 
 const handleTick = (seconds: number, milliseconds: number) => {
@@ -163,7 +162,6 @@ return (
 The Timer component uses the `useTimer` hook internally, which you can also use directly:
 
 ```tsx
-
 const {
   elapsedTime,
   milliseconds,
@@ -209,12 +207,7 @@ const [isLoading, setIsLoading] = useState(false)
 
 return (
   <div className="flex items-center gap-4">
-    <Timer
-      loading={isLoading}
-      variant="outline"
-      size="lg"
-      format="SS.MS"
-    />
+    <Timer loading={isLoading} variant="outline" size="lg" format="SS.MS" />
     <button onClick={() => setIsLoading(!isLoading)}>
       {isLoading ? "Stop" : "Start"}
     </button>
@@ -300,8 +293,6 @@ function CustomTimer() {
 ### Custom Icon
 
 ```tsx
-
-
 <TimerRoot variant="destructive" size="lg">
   <TimerIcon loading={true} icon={Stopwatch} />
   <TimerDisplay time="02:15" />
@@ -311,7 +302,6 @@ function CustomTimer() {
 ### Using the Hook Directly
 
 ```tsx
-
 function CustomTimer() {
   const { elapsedTime, formattedTime, isRunning, start, stop, reset } =
     useTimer({

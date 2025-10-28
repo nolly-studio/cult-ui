@@ -2,7 +2,7 @@
 
 import { IconCheck, IconChevronDown, IconCopy } from "@tabler/icons-react"
 
-
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -17,7 +17,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { Separator } from "@/components/ui/separator"
-import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 
 function getPromptUrl(baseURL: string, url: string) {
   return `${baseURL}?q=${encodeURIComponent(

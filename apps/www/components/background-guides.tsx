@@ -166,8 +166,8 @@ export function AnimatedBackgroundGuides({
                   index === 0
                     ? "left-0"
                     : index === columns.length - 1
-                    ? "right-0"
-                    : "left-1/2"
+                      ? "right-0"
+                      : "left-1/2"
                 } w-px ${
                   solidLines.includes(index + 1)
                     ? "bg-gray-300"

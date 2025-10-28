@@ -188,8 +188,8 @@ export function TwoToneText({
             gradientVariant === "none"
               ? "text-black dark:text-white"
               : gradientVariant === "helper"
-              ? "text-muted-foreground hover:text-muted-foreground/90"
-              : "text-primary hover:text-primary/90",
+                ? "text-muted-foreground hover:text-muted-foreground/90"
+                : "text-primary hover:text-primary/90",
             "relative inline-block transition-all duration-200",
             "after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-current after:transition-transform after:duration-300",
             "hover:after:origin-left hover:after:scale-x-100"

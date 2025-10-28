@@ -1,7 +1,7 @@
 "use client"
 
 import { ReactNode, useMemo, useState } from "react"
-import { AnimatePresence, MotionConfig, motion } from "motion/react"
+import { AnimatePresence, motion, MotionConfig } from "motion/react"
 import useMeasure from "react-use-measure"
 
 import { cn } from "@/lib/utils"

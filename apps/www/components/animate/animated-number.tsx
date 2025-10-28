@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Minus, Plus } from "lucide-react"
-import { MotionValue, motion, useSpring, useTransform } from "motion/react"
+import { motion, MotionValue, useSpring, useTransform } from "motion/react"
 import { toast } from "sonner"
 
 import { GradientHeading } from "@/registry/default/ui/gradient-heading"

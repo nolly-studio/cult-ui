@@ -37,6 +37,7 @@ import { ThemeWrapper } from "@/components/theme-wrapper"
 import { Theme, themes } from "@/registry/themes"
 
 import "@/styles/mdx.css"
+
 import {
   Tooltip,
   TooltipContent,

@@ -9,7 +9,7 @@ import React, {
   type RefObject,
 } from "react"
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area"
-import { AnimatePresence, MotionConfig, motion } from "motion/react"
+import { AnimatePresence, motion, MotionConfig } from "motion/react"
 
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"

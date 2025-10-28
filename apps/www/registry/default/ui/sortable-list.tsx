@@ -7,8 +7,8 @@ import { Trash } from "lucide-react"
 import {
   AnimatePresence,
   LayoutGroup,
-  Reorder,
   motion,
+  Reorder,
   useDragControls,
 } from "motion/react"
 import useMeasure from "react-use-measure"
@@ -46,7 +46,7 @@ function SortableListItem({
 }: SortableListItemProps) {
   let [ref, bounds] = useMeasure()
   const [isDragging, setIsDragging] = useState(false)
-  const [isDraggable, setIsDraggable] = useState(true)
+  // const [isDraggable, setIsDraggable] = useState(true)
   const dragControls = useDragControls()
 
   const handleDragStart = (event: any) => {
@@ -66,7 +66,7 @@ function SortableListItem({
           value={item}
           className={cn(
             "relative z-auto grow",
-            "h-full rounded-xl bg-[#161716]/80",
+            "h-full rounded-xl bg-primary dark:bg-primary-foreground",
             "shadow-[0px_1px_0px_0px_hsla(0,0%,100%,.03)_inset,0px_0px_0px_1px_hsla(0,0%,100%,.03)_inset,0px_0px_0px_1px_rgba(0,0,0,.1),0px_2px_2px_0px_rgba(0,0,0,.1),0px_4px_4px_0px_rgba(0,0,0,.1),0px_8px_8px_0px_rgba(0,0,0,.1)]",
             item.checked ? "cursor-not-allowed" : "cursor-grab",
             item.checked && !isDragging ? "w-7/10" : "w-full"
@@ -126,13 +126,15 @@ function SortableListItem({
                     className="flex  items-center space-x-2 "
                   >
                     {/* List Remove Actions */}
-                    <Checkbox
-                      checked={item.checked}
-                      id={`checkbox-${item.id}`}
-                      aria-label="Mark to delete"
-                      onCheckedChange={() => onCompleteItem(item.id)}
-                      className=" ml-3 h-5 w-5 rounded-md border-white/20 bg-black/30 data-[state=checked]:bg-black data-[state=checked]:text-red-200"
-                    />
+                    <div className="pl-3 pt-1">
+                      <Checkbox
+                        checked={item.checked}
+                        id={`checkbox-${item.id}`}
+                        aria-label="Mark to delete"
+                        onCheckedChange={() => onCompleteItem(item.id)}
+                        className="  h-5 w-5 rounded-md border-white/20 bg-black/30 data-[state=checked]:bg-black data-[state=checked]:text-red-200"
+                      />
+                    </div>
                     {/* List Order */}
                     <p className="font-mono text-xs pl-1 text-white/50">
                       {order + 1}
@@ -171,7 +173,7 @@ function SortableListItem({
             </motion.div>
           </div>
           <div
-            onPointerDown={isDraggable ? handleDragStart : undefined}
+            onPointerDown={handleDragStart}
             style={{ touchAction: "none" }}
           />
         </Reorder.Item>
@@ -231,6 +233,7 @@ function SortableListItem({
               className="inset-0 z-0 border-spacing-1  rounded-r-xl rounded-l-sm border-r-2   border-r-red-300/60 bg-[#161716]/80 shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(0,0,0,0.1),0_2px_2px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.1),0_8px_8px_0_rgba(0,0,0,0.1)] dark:bg-[#161716]/50"
             >
               <button
+                type="button"
                 className="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-md px-3 text-sm font-medium  transition-colors duration-150   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
                 onClick={() => onRemoveItem(item.id)}
               >

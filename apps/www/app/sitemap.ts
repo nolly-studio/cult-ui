@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next"
-import { getAllDocSlugs } from "@/lib/get-doc-data"
 
 import { siteConfig } from "@/config/site"
+import { getAllDocSlugs } from "@/lib/get-doc-data"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url

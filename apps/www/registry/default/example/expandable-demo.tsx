@@ -63,7 +63,7 @@ function DesignSyncExample() {
           >
             <ExpandableCardHeader>
               <div className="flex justify-between items-start w-full">
-                <div>
+                <div className="flex items-start flex-col">
                   <Badge
                     variant="secondary"
                     className="bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-100 mb-2"
@@ -419,83 +419,15 @@ export function WeatherForecastCard() {
   )
 }
 
-function ControlledExpandableCard() {
-  const [isExpanded, setIsExpanded] = useState(false)
-
-  const handleToggle = () => {
-    setIsExpanded((prev) => !prev)
-  }
-
-  return (
-    <div className="space-y-4">
-      <Button onClick={handleToggle} className="mb-4">
-        {isExpanded ? "Collapse" : "Expand"}
-      </Button>
-
-      <Expandable
-        expanded={isExpanded}
-        onToggle={handleToggle}
-        expandDirection="vertical"
-        expandBehavior="push"
-        onExpandStart={() => toast.info("Expanding controlled card...")}
-        onExpandEnd={() => toast.info("Controlled card expanded!")}
-      >
-        <ExpandableCard
-          collapsedSize={{ width: 300, height: 100 }}
-          expandedSize={{ width: 300, height: 300 }}
-        >
-          <ExpandableTrigger>
-            <ExpandableCardHeader>
-              <h3 className="text-lg font-semibold">
-                Controlled Expandable Card
-              </h3>
-              <Badge variant="secondary">
-                {isExpanded ? "Expanded" : "Collapsed"}
-              </Badge>
-            </ExpandableCardHeader>
-          </ExpandableTrigger>
-          <ExpandableCardContent>
-            <p className="mb-4">
-              This card's expanded state is controlled externally.
-            </p>
-            <ExpandableContent preset="fade" stagger staggerChildren={0.1}>
-              <p className="mb-2">This content fades in when expanded.</p>
-              <p className="mb-2">
-                It uses staggered animation for child elements.
-              </p>
-              <p>The expansion is controlled by the button above.</p>
-            </ExpandableContent>
-          </ExpandableCardContent>
-          <ExpandableCardFooter>
-            <ExpandableContent preset="slide-up">
-              <p className="text-sm text-gray-500">
-                Footer content slides up when expanded
-              </p>
-            </ExpandableContent>
-          </ExpandableCardFooter>
-        </ExpandableCard>
-      </Expandable>
-    </div>
-  )
-}
-
 export default function ExpandableCardExamples() {
   return (
-    <div className="p-8 w-full max-w-7xl mx-auto space-y-12">
-      <div className="flex flex-col items-center space-y-24">
-        <div className="min-h-[480px]">
-          <DesignSyncExample />
-        </div>
-        <div className="flex gap-24 min-h-[600px]">
-          <ProductShowcaseCard />
-          <WeatherForecastCard />
-        </div>
-        {/* <div>
-        </div> */}
-        {/* <div>
-          <h2 className="text-xl font-semibold mb-4">Controlled Expandable</h2>
-          <ControlledExpandableCard />
-        </div> */}
+    <div className=" w-full max-w-7xl mx-auto space-y-12 ">
+      <div className="flex flex-col items-center space-y-24 p-8">
+        <DesignSyncExample />
+        <ProductShowcaseCard />
+        <WeatherForecastCard />
+
+        <div className="flex gap-24 min-h-[600px]"></div>
       </div>
     </div>
   )

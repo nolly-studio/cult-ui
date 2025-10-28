@@ -8,10 +8,10 @@ import Autoplay from "embla-carousel-autoplay"
 import { ChevronRight } from "lucide-react"
 import {
   AnimatePresence,
-  MotionProps,
-  Variants,
   motion,
+  MotionProps,
   useAnimation,
+  Variants,
 } from "motion/react"
 
 import { cn } from "@/lib/utils"

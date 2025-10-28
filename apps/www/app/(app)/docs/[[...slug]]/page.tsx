@@ -10,11 +10,11 @@ import { findNeighbour } from "fumadocs-core/server"
 
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import { DocsCopyPage } from "@/components/docs-copy-page"
 import { DocsTableOfContents } from "@/components/docs-toc"
 import { GetCultProCta } from "@/components/get-cult-pro-cta"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -27,7 +27,7 @@ export function generateStaticParams() {
 export async function generateMetadata(props: {
   params: Promise<{ slug?: string[] }>
 }) {
-  const params = await props. params
+  const params = await props.params
   const page = source.getPage(params.slug)
 
   if (!page) {

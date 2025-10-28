@@ -9,7 +9,7 @@ import React, {
   useState,
 } from "react"
 import { ArrowLeftIcon } from "lucide-react"
-import { AnimatePresence, MotionConfig, Variants, motion } from "motion/react"
+import { AnimatePresence, motion, MotionConfig, Variants } from "motion/react"
 
 import { cn } from "@/lib/utils"
 

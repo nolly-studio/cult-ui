@@ -37,10 +37,10 @@ export default function IndexPage() {
           {/* CTA Buttons */}
           <PageActions>
             <Link
-              href="/docs"
+              href="/docs/components/toolbar-expandable"
               className={cn(
                 buttonVariants({ size: "sm" }),
-                "  rounded-xl transition-all "
+                "rounded-xl transition-all"
               )}
             >
               Get Started
@@ -80,11 +80,7 @@ export default function IndexPage() {
       </div>
 
       {/* Feature Pills */}
-      <div
-        className="flex flex-wrap items-center justify-center gap-3 md:gap-4"
-        role="list"
-        aria-label="Technologies used"
-      >
+      <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
         <div className="flex items-center gap-2 rounded-full border border-border/50 bg-background/50 px-4 py-2 backdrop-blur-sm">
           <ReactIcon className="size-5 text-[#61DAFB]" aria-hidden="true" />
           <span className="text-sm font-medium">React</span>

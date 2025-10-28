@@ -19,7 +19,7 @@ import {
   Settings,
   Upload,
 } from "lucide-react"
-import { AnimatePresence, MotionConfig, motion } from "motion/react"
+import { AnimatePresence, motion, MotionConfig } from "motion/react"
 
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
@@ -341,7 +341,7 @@ interface Bounds {
 function useMeasure(): [
   (node: HTMLElement | null) => void,
   Bounds,
-  () => void
+  () => void,
 ] {
   const [bounds, setBounds] = useState<Bounds>({
     left: 0,
