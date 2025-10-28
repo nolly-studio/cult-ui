@@ -14,7 +14,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { DocsCopyPage } from "@/components/docs-copy-page"
 import { DocsTableOfContents } from "@/components/docs-toc"
-import { GetCultProCta } from "@/components/get-cult-pro-cta"
+import { GetAISDKAgentsCta } from "@/components/get-cult-pro-cta"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -204,7 +204,7 @@ export default async function Page(props: {
           </div>
         ) : null}
         <div className="flex flex-1 flex-col gap-12 px-6">
-          <GetCultProCta />
+          <GetAISDKAgentsCta />
         </div>
       </div>
     </div>
