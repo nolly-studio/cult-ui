@@ -83,7 +83,10 @@ function ComponentCode({
   title: string | undefined
 }) {
   return (
-    <figure data-rehype-pretty-code-figure="" className="[&>pre]:max-h-96">
+    <figure
+      data-rehype-pretty-code-figure=""
+      className="relative [&>pre]:max-h-[650px] [&>pre]:overflow-auto"
+    >
       {title && (
         <figcaption
           data-rehype-pretty-code-title=""
@@ -94,7 +97,9 @@ function ComponentCode({
           {title}
         </figcaption>
       )}
-      <CopyButton value={code} />
+      <div className="absolute top-2 right-2 z-10">
+        <CopyButton value={code} />
+      </div>
       <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
     </figure>
   )
