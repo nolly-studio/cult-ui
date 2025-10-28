@@ -35,6 +35,20 @@ export function MainNav() {
         </Link>
 
         <a
+          href="https://aisdkagents.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(
+            "flex items-center gap-2 text-sm font-semibold transition-colors hover:text-foreground/80",
+            pathname?.startsWith("/examples")
+              ? "text-foreground"
+              : "text-foreground/60"
+          )}
+        >
+          AI Agents <span className="text-xs text-pink-500">(82 new)</span>
+          <ExternalLink className="size-3" />
+        </a>
+        <a
           href="https://pro.cult-ui.com/blocks"
           target="_blank"
           rel="noopener noreferrer"
@@ -48,7 +62,8 @@ export function MainNav() {
           Blocks <span className="text-xs text-pink-500">(8 new)</span>
           <ExternalLink className="size-3" />
         </a>
-        <a
+        {/* Temporarily disabled */}
+        {/* <a
           href="https://pro.cult-ui.com/sections"
           target="_blank"
           rel="noopener noreferrer"
@@ -61,7 +76,7 @@ export function MainNav() {
         >
           Sections <span className="text-xs text-pink-500">(10 new)</span>
           <ExternalLink className="size-3" />
-        </a>
+        </a> */}
         <a
           href="https://pro.cult-ui.com/templates"
           target="_blank"

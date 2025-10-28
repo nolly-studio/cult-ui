@@ -1,19 +1,11 @@
 import Link from "next/link"
 
-
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
 import { Announcement } from "@/components/announcement"
-import {
-  Icons,
-  ReactIcon,
-  TailwindCSSIcon,
-  TypeScriptIcon,
-} from "@/components/icons"
+import { Icons, ReactIcon, TailwindCSSIcon } from "@/components/icons"
 import { MiniBlocksGrid } from "@/components/landing/blocks-grid"
-import { FeaturesSection } from "@/components/landing/feature-section"
 import { LatestComponentVertical } from "@/components/landing/featured-component"
 import { PlugCardGrid } from "@/components/landing/plug-grid"
 import { TemplateGrid } from "@/components/landing/template-grid"
