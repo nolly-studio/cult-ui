@@ -35,7 +35,7 @@ export function MainNav() {
         </Link>
 
         <a
-          href="https://aisdkagents.com"
+          href="https://aisdkagents.com/patterns"
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
