@@ -133,7 +133,7 @@ export function GetAISDKAgentsCta({ className }: React.ComponentProps<"div">) {
       </div>
 
       <a
-        href="https://www.aisdkagents.com/"
+        href="https://www.aisdkagents.com/patterns"
         target="_blank"
         rel="noreferrer"
         className="absolute inset-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-[oklch(0.7_0.25_320)]/20 focus:ring-offset-2 dark:focus:ring-offset-zinc-900"
