@@ -1,0 +1,329 @@
+---
+title: BackgroundImageTexture
+description: A background texture component with multiple texture variants and customizable opacity
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="bg-image-texture-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/bg-image-texture.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="bg-image-texture" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { BackgroundImageTexture } from "@/components/ui/bg-image-texture"
+```
+
+### Basic Usage
+
+Apply a texture background to any container:
+
+```tsx
+<BackgroundImageTexture variant="fabric-of-squares" opacity={0.5}>
+  <div className="p-8">
+    <h2>Content with texture background</h2>
+    <p>Your content goes here</p>
+  </div>
+</BackgroundImageTexture>
+```
+
+### Texture Variants
+
+Choose from five different texture patterns:
+
+```tsx
+// Fabric of squares pattern
+<BackgroundImageTexture variant="fabric-of-squares" opacity={0.5}>
+  <div>Content</div>
+</BackgroundImageTexture>
+
+// Grid noise pattern
+<BackgroundImageTexture variant="grid-noise" opacity={0.5}>
+  <div>Content</div>
+</BackgroundImageTexture>
+
+// Inflicted pattern
+<BackgroundImageTexture variant="inflicted" opacity={0.5}>
+  <div>Content</div>
+</BackgroundImageTexture>
+
+// Debut light pattern
+<BackgroundImageTexture variant="debut-light" opacity={0.5}>
+  <div>Content</div>
+</BackgroundImageTexture>
+
+// Groovepaper pattern
+<BackgroundImageTexture variant="groovepaper" opacity={0.5}>
+  <div>Content</div>
+</BackgroundImageTexture>
+
+// No texture (transparent)
+<BackgroundImageTexture variant="none" opacity={0.5}>
+  <div>Content</div>
+</BackgroundImageTexture>
+```
+
+### Opacity Control
+
+Adjust the opacity to control how visible the texture is:
+
+```tsx
+// Subtle texture (low opacity)
+<BackgroundImageTexture variant="grid-noise" opacity={0.2}>
+  <div>Content</div>
+</BackgroundImageTexture>
+
+// Medium texture (default)
+<BackgroundImageTexture variant="grid-noise" opacity={0.5}>
+  <div>Content</div>
+</BackgroundImageTexture>
+
+// Bold texture (high opacity)
+<BackgroundImageTexture variant="grid-noise" opacity={0.8}>
+  <div>Content</div>
+</BackgroundImageTexture>
+```
+
+### Without Children
+
+The component can be used without children for a pure background texture:
+
+```tsx
+<BackgroundImageTexture
+  variant="fabric-of-squares"
+  opacity={0.5}
+  className="h-64 w-full rounded-lg"
+/>
+```
+
+## API Reference
+
+### BackgroundImageTexture Props
+
+| Prop        | Type              | Default               | Description                              |
+| ----------- | ----------------- | --------------------- | ---------------------------------------- |
+| `variant`   | `TextureVariant`  | `"fabric-of-squares"` | Texture pattern variant                  |
+| `opacity`   | `number`          | `0.5`                 | Opacity of the texture (0 to 1)          |
+| `className` | `string`          | -                     | Additional CSS classes for the container |
+| `children`  | `React.ReactNode` | -                     | Content to display on top of the texture |
+
+### TextureVariant Type
+
+```tsx
+type TextureVariant =
+  | "fabric-of-squares"
+  | "grid-noise"
+  | "inflicted"
+  | "debut-light"
+  | "groovepaper"
+  | "none"
+```
+
+## Features
+
+- **Multiple Texture Variants**: Choose from 5 different texture patterns
+- **Customizable Opacity**: Control texture visibility from 0 to 1
+- **Flexible Usage**: Use with or without children content
+- **Accessible**: Texture layer is marked with `aria-hidden="true"`
+- **Non-Interactive**: Texture layer has `pointer-events-none` to allow interaction with content
+- **Responsive**: Works seamlessly across all screen sizes
+
+## Examples
+
+### Card with Texture
+
+Add texture to card components:
+
+```tsx
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+  </CardHeader>
+  <CardContent className="p-0">
+    <BackgroundImageTexture
+      variant="debut-light"
+      opacity={0.3}
+      className="rounded-b-lg p-6"
+    >
+      <div>
+        <h4 className="font-semibold">Card Content</h4>
+        <p className="text-sm text-muted-foreground">
+          Cards look great with subtle texture backgrounds
+        </p>
+      </div>
+    </BackgroundImageTexture>
+  </CardContent>
+</Card>
+```
+
+### Hero Section
+
+Use texture in hero sections:
+
+```tsx
+<BackgroundImageTexture
+  variant="groovepaper"
+  opacity={0.4}
+  className="rounded-lg p-12 min-h-[400px] flex items-center justify-center"
+>
+  <div className="text-center space-y-4">
+    <h1 className="text-4xl font-bold">Hero Title</h1>
+    <p className="text-lg text-muted-foreground">
+      Perfect for hero sections and banners
+    </p>
+  </div>
+</BackgroundImageTexture>
+```
+
+### All Variants Showcase
+
+Display all texture variants:
+
+```tsx
+const variants = [
+  "fabric-of-squares",
+  "grid-noise",
+  "inflicted",
+  "debut-light",
+  "groovepaper",
+] as const
+
+<div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+  {variants.map((variant) => (
+    <BackgroundImageTexture
+      key={variant}
+      variant={variant}
+      opacity={0.5}
+      className="rounded-lg border border-border p-6 h-48 flex items-center justify-center"
+    >
+      <div className="text-center">
+        <p className="text-sm font-medium">{variant}</p>
+      </div>
+    </BackgroundImageTexture>
+  ))}
+</div>
+```
+
+### Opacity Variations
+
+Compare different opacity levels:
+
+```tsx
+const opacities = [0.2, 0.5, 0.8]
+
+<div className="grid grid-cols-3 gap-4">
+  {opacities.map((opacity) => (
+    <BackgroundImageTexture
+      key={opacity}
+      variant="grid-noise"
+      opacity={opacity}
+      className="rounded-lg border border-border p-6 h-48 flex items-center justify-center"
+    >
+      <div className="text-center">
+        <p className="text-sm font-medium">Opacity: {opacity}</p>
+      </div>
+    </BackgroundImageTexture>
+  ))}
+</div>
+```
+
+### Dynamic Opacity Control
+
+Use state to control opacity dynamically:
+
+```tsx
+import { useState } from "react"
+
+import { BackgroundImageTexture } from "@/components/ui/bg-image-texture"
+import { Slider } from "@/components/ui/slider"
+
+function DynamicTextureExample() {
+  const [opacity, setOpacity] = useState([0.5])
+
+  return (
+    <div className="space-y-4">
+      <Slider
+        value={opacity}
+        onValueChange={setOpacity}
+        min={0}
+        max={1}
+        step={0.01}
+      />
+      <BackgroundImageTexture
+        variant="fabric-of-squares"
+        opacity={opacity[0]}
+        className="rounded-lg p-8 min-h-[300px]"
+      >
+        <div>
+          <h3 className="text-2xl font-bold mb-2">Dynamic Texture</h3>
+          <p>Adjust the slider to change texture opacity</p>
+        </div>
+      </BackgroundImageTexture>
+    </div>
+  )
+}
+```
+
+### Custom Styling
+
+Apply custom styles to the container:
+
+```tsx
+<BackgroundImageTexture
+  variant="grid-noise"
+  opacity={0.5}
+  className="rounded-xl border-2 border-primary p-8 shadow-lg"
+>
+  <div>Custom styled content</div>
+</BackgroundImageTexture>
+```
+
+### Section Dividers
+
+Use texture as decorative section dividers:
+
+```tsx
+<section className="py-12">
+  <BackgroundImageTexture
+    variant="inflicted"
+    opacity={0.2}
+    className="h-32 w-full"
+  />
+</section>
+```

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "distorted-glass",
+  "type": "registry:ui",
+  "description": "A glass morphism effect component using SVG filters with fractal noise to create visual transitions between sections",
+  "dependencies": [
+    ""
+  ],
+  "files": [
+    {
+      "path": "registry/default/ui/distorted-glass.tsx",
+      "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport const DistortedGlass = ({ className }: { className?: string }) => {\n  return (\n    <>\n      <div\n        className={cn(\n          \"relative hidden h-[50px] w-[360px] overflow-hidden rounded-b-2xl lg:w-[600px]  xl:block xl:w-full\",\n          className\n        )}\n      >\n        <div className=\"pointer-events-none absolute bottom-0  z-10 size-full overflow-hidden rounded-b-2xl  border border-[#f5f5f51a]\">\n          <div className=\"glass-effect size-full\"></div>\n        </div>\n        <svg>\n          <title>Distorted Glass</title>\n          <defs>\n            <filter id=\"fractal-noise-glass\">\n              <feTurbulence\n                type=\"fractalNoise\"\n                baseFrequency=\"0.12 0.12\"\n                numOctaves=\"1\"\n                result=\"warp\"\n              ></feTurbulence>\n              <feDisplacementMap\n                xChannelSelector=\"R\"\n                yChannelSelector=\"G\"\n                scale=\"30\"\n                in=\"SourceGraphic\"\n                in2=\"warp\"\n              />\n            </filter>\n          </defs>\n        </svg>\n      </div>\n\n      <style jsx>{`\n        .glass-effect {\n          background: rgba(0, 0, 0, 0.2);\n          background: repeating-radial-gradient(\n            circle at 50%50%,\n            rgb(255 255 255 / 0),\n            rgba(255, 255, 255, 0.2) 10px,\n            rgb(255 255 255) 31px\n          );\n          filter: url(#fractal-noise-glass);\n          background-size: 6px 6px;\n          backdrop-filter: blur(0px);\n        }\n      `}</style>\n    </>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -16,7 +16,7 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
   return items.length ? (
     <div className="w-full">
       {items.map((item, index) => (
-        <div key={index} className={cn("pb-4")}>
+        <div key={`${item.title}-${index}`} className={cn("pb-4")}>
           <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
             {item.title}
           </h4>
@@ -41,7 +41,11 @@ export function DocsSidebarNavItems({
   return items?.length ? (
     <div className="grid grid-flow-row auto-rows-max text-sm">
       {items.map((item, index) => (
-        <NavItem key={index} item={item} pathname={pathname} />
+        <NavItem
+          key={`${item.title}-${index}`}
+          item={item}
+          pathname={pathname}
+        />
       ))}
     </div>
   ) : null
@@ -88,7 +92,7 @@ function NavItem({ item, pathname }: NavItemProps) {
           </span>
         )}
         {item.label === "recent" && (
-          <span className="ml-2 rounded-sm border border-black  px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+          <span className="ml-2 rounded-sm border border-black bg-cyan-200  px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
             {item.label}
           </span>
         )}

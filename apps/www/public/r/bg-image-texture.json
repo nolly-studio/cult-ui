@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bg-image-texture",
+  "type": "registry:ui",
+  "description": "Background texture component with multiple texture variants and customizable opacity",
+  "dependencies": [
+    ""
+  ],
+  "files": [
+    {
+      "path": "registry/default/ui/bg-image-texture.tsx",
+      "content": "import type React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport type TextureVariant =\n  | \"fabric-of-squares\"\n  | \"grid-noise\"\n  | \"inflicted\"\n  | \"debut-light\"\n  | \"groovepaper\"\n  | \"none\"\n\ninterface BackgroundImageTextureProps {\n  variant?: TextureVariant\n  opacity?: number\n  className?: string\n  children?: React.ReactNode\n}\n\nconst textureMap: Record<Exclude<TextureVariant, \"none\">, string> = {\n  \"fabric-of-squares\": \"/textures/fabric-of-squares.png\",\n  \"grid-noise\": \"/textures/grid-noise.png\",\n  inflicted: \"/textures/inflicted.png\",\n  \"debut-light\": \"/textures/debut-light.png\",\n  groovepaper: \"/textures/groovepaper.png\",\n}\n\nexport function BackgroundImageTexture({\n  variant = \"fabric-of-squares\",\n  opacity = 0.5,\n  className,\n  children,\n}: BackgroundImageTextureProps) {\n  const textureUrl = variant !== \"none\" ? textureMap[variant] : null\n\n  return (\n    <div className={cn(\"relative\", className)}>\n      {textureUrl && (\n        <div\n          aria-hidden=\"true\"\n          className=\"pointer-events-none absolute inset-0\"\n          style={{\n            backgroundImage: `url(${textureUrl})`,\n            backgroundRepeat: \"repeat\",\n            opacity,\n          }}\n        />\n      )}\n      {children && <div className=\"relative\">{children}</div>}\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

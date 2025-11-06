@@ -1,0 +1,192 @@
+---
+title: DistortedGlass
+description: A glass morphism effect component using SVG filters with fractal noise to create visual transitions between sections
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="distorted-glass-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/distorted-glass.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="distorted-glass" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { DistortedGlass } from "@/components/ui/distorted-glass"
+```
+
+### Basic Usage
+
+```tsx
+<DistortedGlass />
+```
+
+### Header Navigation Example
+
+Use the distorted glass effect to create a smooth transition between header and content:
+
+```tsx
+<div className="rounded-lg border bg-white dark:bg-slate-900 overflow-hidden shadow-lg">
+  <div className="flex h-14 items-center px-6 border-b">
+    <div className="flex flex-1 items-center justify-between">
+      <div className="flex items-center space-x-6">
+        <span className="font-semibold">Logo</span>
+        <nav className="hidden md:flex space-x-4">
+          <span className="text-sm text-muted-foreground">Home</span>
+          <span className="text-sm text-muted-foreground">About</span>
+          <span className="text-sm text-muted-foreground">Contact</span>
+        </nav>
+      </div>
+      <button className="text-sm px-4 py-2 rounded-md bg-primary text-primary-foreground">
+        Sign In
+      </button>
+    </div>
+  </div>
+  <div className="relative w-full -mt-[17px]">
+    <DistortedGlass />
+  </div>
+  <div className="p-8 space-y-4">
+    <h3 className="text-xl font-semibold">Hero Section</h3>
+    <p className="text-muted-foreground">
+      The distorted glass effect creates a beautiful transition between the header and content areas.
+    </p>
+  </div>
+</div>
+```
+
+### Content Overlay Example
+
+Create a frosted glass effect over content:
+
+```tsx
+<div className="relative rounded-lg border overflow-hidden">
+  <div className="aspect-video bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 flex items-center justify-center">
+    <div className="text-center space-y-2">
+      <h3 className="text-3xl font-bold text-white">Beautiful Background</h3>
+      <p className="text-white/80">Content visible through the glass effect</p>
+    </div>
+  </div>
+  <div className="relative w-full -mt-[17px]">
+    <DistortedGlass />
+  </div>
+  <div className="p-8 bg-white dark:bg-slate-900">
+    <p className="text-muted-foreground">
+      The distorted glass creates a frosted glass effect that provides visual separation
+      while maintaining the connection to the content below.
+    </p>
+  </div>
+</div>
+```
+
+### Standalone Example
+
+Use as a decorative element between sections:
+
+```tsx
+<div className="rounded-lg border bg-white dark:bg-slate-900 overflow-hidden shadow-lg">
+  <div className="p-8 space-y-4">
+    <h3 className="text-xl font-semibold">Section Title</h3>
+    <p className="text-muted-foreground">
+      This is a content section with the distorted glass effect below it.
+    </p>
+  </div>
+  <div className="relative w-full -mt-[17px]">
+    <DistortedGlass />
+  </div>
+</div>
+```
+
+## API Reference
+
+The `DistortedGlass` component is a presentational component with no props. It creates a glass morphism effect using SVG filters.
+
+## Features
+
+- **Glass Morphism Effect**: Uses SVG filters with fractal noise to create a unique glass-like appearance
+- **Responsive**: Automatically hidden on smaller screens for optimal mobile experience
+- **Performance Optimized**: Lightweight implementation using CSS and SVG filters
+- **Visual Transitions**: Perfect for creating smooth transitions between sections
+- **No Dependencies**: Pure CSS and SVG, no external dependencies required
+
+## How It Works
+
+The component uses an SVG filter with fractal noise (`feTurbulence`) combined with a displacement map (`feDisplacementMap`) to create the distorted glass effect. The effect is applied to a repeating radial gradient background to simulate the glass texture.
+
+## Examples
+
+### Between Card Sections
+
+```tsx
+<div className="rounded-lg border bg-white dark:bg-slate-900 overflow-hidden">
+  <div className="p-8">
+    <h2 className="text-2xl font-bold mb-4">Top Section</h2>
+    <p className="text-muted-foreground">Content above the glass effect</p>
+  </div>
+  <div className="relative w-full -mt-[17px]">
+    <DistortedGlass />
+  </div>
+  <div className="p-8 bg-white dark:bg-slate-900">
+    <h2 className="text-2xl font-bold mb-4">Bottom Section</h2>
+    <p className="text-muted-foreground">Content below the glass effect</p>
+  </div>
+</div>
+```
+
+### With Gradient Background
+
+```tsx
+<div className="relative rounded-lg overflow-hidden">
+  <div className="h-64 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center">
+    <h2 className="text-4xl font-bold text-white">Background Content</h2>
+  </div>
+  <div className="relative w-full -mt-[17px]">
+    <DistortedGlass />
+  </div>
+  <div className="p-8 bg-white dark:bg-slate-900">
+    <p>Content section with glass transition</p>
+  </div>
+</div>
+```
+
+## Notes
+
+- The component is hidden on screens smaller than `xl` breakpoint for better mobile experience
+- Use negative margin (`-mt-[17px]`) to overlap the glass effect with the content above
+- The effect works best with contrasting backgrounds
+- Ensure proper z-index layering when using with other elements
+

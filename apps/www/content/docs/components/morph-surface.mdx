@@ -1,0 +1,429 @@
+---
+title: MorphSurface
+description: A morphing surface component with smooth animations, customizable dimensions, and configurable content
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="morph-surface-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/morph-surface.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="morph-surface" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { MorphSurface } from "@/components/ui/morph-surface"
+```
+
+### Basic Usage
+
+The component works out of the box with no configuration needed:
+
+```tsx
+<MorphSurface />
+```
+
+### Custom Labels and Content
+
+Customize the trigger label, placeholder, and submit behavior:
+
+```tsx
+<MorphSurface
+  triggerLabel="Send Feedback"
+  placeholder="Share your thoughts..."
+  onSubmit={async (formData) => {
+    const message = formData.get("message") as string
+    console.log("Submitted:", message)
+    // Handle submission
+  }}
+  onSuccess={() => {
+    console.log("Feedback submitted successfully!")
+  }}
+/>
+```
+
+### Custom Dimensions
+
+Adjust the size when collapsed and expanded:
+
+```tsx
+<MorphSurface
+  collapsedWidth="auto"
+  collapsedHeight={48}
+  expandedWidth={400}
+  expandedHeight={250}
+  triggerLabel="Custom Size"
+  placeholder="This surface is larger..."
+/>
+```
+
+### Custom Trigger Icon
+
+Add an icon to the trigger button:
+
+```tsx
+import { HelpCircle } from "lucide-react"
+
+;<MorphSurface
+  triggerLabel="Help"
+  triggerIcon={<HelpCircle className="w-4 h-4" />}
+  placeholder="How can we help you?"
+/>
+```
+
+### Controlled State
+
+Control the open/close state externally:
+
+```tsx
+import { useState } from "react"
+
+function ControlledExample() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <div>
+      <button onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? "Close" : "Open"} Morph Surface
+      </button>
+      <MorphSurface
+        isOpen={isOpen}
+        onOpenChange={setIsOpen}
+        triggerLabel="Controlled"
+        placeholder="This surface is controlled externally..."
+      />
+    </div>
+  )
+}
+```
+
+### Custom Animation Speed
+
+Speed up or slow down animations (higher values = slower animations):
+
+```tsx
+// Slow animations (2x slower)
+<MorphSurface animationSpeed={2} triggerLabel="Slow Animation" />
+
+// Fast animations (2x faster)
+<MorphSurface animationSpeed={0.5} triggerLabel="Fast Animation" />
+```
+
+### Custom Styling
+
+Apply custom className props for styling:
+
+```tsx
+<MorphSurface
+  className="shadow-2xl"
+  triggerClassName="hover:bg-primary/10"
+  contentClassName="border-2 border-primary/20"
+  triggerLabel="Styled"
+  placeholder="Custom styling applied..."
+/>
+```
+
+## API Reference
+
+### MorphSurface Props
+
+| Prop               | Type                                         | Default                  | Description                                               |
+| ------------------ | -------------------------------------------- | ------------------------ | --------------------------------------------------------- |
+| `collapsedWidth`   | `number \| "auto"`                           | `360`                    | Width when collapsed                                      |
+| `collapsedHeight`  | `number`                                     | `44`                     | Height when collapsed                                     |
+| `expandedWidth`    | `number`                                     | `360`                    | Width when expanded                                       |
+| `expandedHeight`   | `number`                                     | `200`                    | Height when expanded                                      |
+| `animationSpeed`   | `number`                                     | `1`                      | Animation speed divisor (higher = slower, lower = faster) |
+| `springConfig`     | `SpringConfig`                               | -                        | Custom spring animation configuration                     |
+| `triggerLabel`     | `string`                                     | `"Feedback"`             | Label text for the trigger button                         |
+| `triggerIcon`      | `React.ReactNode`                            | -                        | Icon to display in the trigger button                     |
+| `placeholder`      | `string`                                     | `"What's on your mind?"` | Placeholder text for the textarea input                   |
+| `submitLabel`      | `string`                                     | `"⌘ Enter"`              | Label for the submit button                               |
+| `onSubmit`         | `(data: FormData) => void \| Promise<void>`  | -                        | Callback when form is submitted                           |
+| `onOpen`           | `() => void`                                 | -                        | Callback when surface opens                               |
+| `onClose`          | `() => void`                                 | -                        | Callback when surface closes                              |
+| `onSuccess`        | `() => void`                                 | -                        | Callback after successful submission                      |
+| `isOpen`           | `boolean`                                    | -                        | Controlled state for open/close                           |
+| `onOpenChange`     | `(open: boolean) => void`                    | -                        | Callback for controlled state changes                     |
+| `className`        | `string`                                     | -                        | Additional CSS classes for the root container             |
+| `triggerClassName` | `string`                                     | -                        | Additional CSS classes for the trigger button             |
+| `contentClassName` | `string`                                     | -                        | Additional CSS classes for the content area               |
+| `renderTrigger`    | `(props: TriggerProps) => React.ReactNode`   | -                        | Custom render function for the trigger                    |
+| `renderContent`    | `(props: ContentProps) => React.ReactNode`   | -                        | Custom render function for the content                    |
+| `renderIndicator`  | `(props: IndicatorProps) => React.ReactNode` | -                        | Custom render function for the indicator dot              |
+
+### SpringConfig Type
+
+```tsx
+type SpringConfig = {
+  type: "spring"
+  stiffness: number
+  damping: number
+  mass?: number
+  delay?: number
+}
+```
+
+### Render Props Types
+
+```tsx
+interface TriggerProps {
+  isOpen: boolean
+  onClick: () => void
+  className?: string
+}
+
+interface ContentProps {
+  isOpen: boolean
+  onClose: () => void
+  onSubmit: (data: FormData) => void | Promise<void>
+  className?: string
+}
+
+interface IndicatorProps {
+  success: boolean
+  isOpen: boolean
+  className?: string
+}
+```
+
+## Features
+
+- **Smooth Animations**: Uses Framer Motion for fluid morphing transitions
+- **Customizable Dimensions**: Configure width and height for both collapsed and expanded states
+- **Form Handling**: Built-in form submission with FormData extraction
+- **Controlled & Uncontrolled**: Support for both controlled and uncontrolled state management
+- **Customizable Content**: Customize labels, placeholders, icons, and styling
+- **Render Props**: Full control over trigger, content, and indicator rendering
+- **Keyboard Shortcuts**: Built-in support for ⌘ Enter (submit) and Escape (close)
+- **Success States**: Visual feedback with animated checkmark indicator
+- **Accessibility**: Proper focus management and keyboard navigation
+- **Click Outside**: Automatically closes when clicking outside the component
+
+## Examples
+
+### Feedback Form
+
+Use as a feedback collection component:
+
+```tsx
+<MorphSurface
+  triggerLabel="Send Feedback"
+  placeholder="What can we improve?"
+  onSubmit={async (formData) => {
+    const message = formData.get("message") as string
+    await fetch("/api/feedback", {
+      method: "POST",
+      body: JSON.stringify({ message }),
+    })
+  }}
+  onSuccess={() => {
+    toast.success("Thank you for your feedback!")
+  }}
+/>
+```
+
+### Help/Support Widget
+
+Use as a help widget:
+
+```tsx
+import { HelpCircle } from "lucide-react"
+
+;<MorphSurface
+  triggerLabel="Need Help?"
+  triggerIcon={<HelpCircle className="w-4 h-4" />}
+  placeholder="How can we assist you?"
+  onSubmit={async (formData) => {
+    // Handle help request
+  }}
+/>
+```
+
+### Custom Dimensions
+
+Create a larger feedback surface:
+
+```tsx
+<MorphSurface
+  collapsedWidth="auto"
+  collapsedHeight={56}
+  expandedWidth={500}
+  expandedHeight={300}
+  triggerLabel="Extended Feedback"
+  placeholder="Share your detailed thoughts..."
+/>
+```
+
+### With Custom Spring Config
+
+Customize animation spring physics:
+
+```tsx
+<MorphSurface
+  springConfig={{
+    type: "spring",
+    stiffness: 400,
+    damping: 30,
+    mass: 0.5,
+  }}
+  triggerLabel="Custom Animation"
+/>
+```
+
+### Controlled State Example
+
+Control the component state externally:
+
+```tsx
+import { useState } from "react"
+
+function ControlledMorphSurface() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <div className="space-y-4">
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className="px-4 py-2 bg-primary text-primary-foreground rounded-md"
+      >
+        {isOpen ? "Close" : "Open"} Feedback
+      </button>
+      <MorphSurface
+        isOpen={isOpen}
+        onOpenChange={setIsOpen}
+        triggerLabel="Feedback"
+        placeholder="Controlled state example..."
+      />
+    </div>
+  )
+}
+```
+
+### Custom Render Props
+
+Use render props for maximum customization:
+
+```tsx
+<MorphSurface
+  renderTrigger={({ isOpen, onClick, className }) => (
+    <button onClick={onClick} className={cn("custom-trigger", className)}>
+      {isOpen ? "Close" : "Open"}
+    </button>
+  )}
+  renderContent={({ isOpen, onClose, onSubmit, className }) => (
+    <div className={cn("custom-content", className)}>
+      <textarea placeholder="Custom content..." />
+      <button onClick={() => onSubmit(new FormData())}>Submit</button>
+    </div>
+  )}
+/>
+```
+
+### Async Form Submission
+
+Handle async form submissions:
+
+```tsx
+<MorphSurface
+  triggerLabel="Submit Issue"
+  placeholder="Describe the issue..."
+  onSubmit={async (formData) => {
+    const message = formData.get("message") as string
+
+    try {
+      const response = await fetch("/api/issues", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message }),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to submit")
+      }
+
+      // Success handling is automatic
+    } catch (error) {
+      console.error("Submission error:", error)
+      throw error // Re-throw to prevent success state
+    }
+  }}
+  onSuccess={() => {
+    toast.success("Issue submitted successfully!")
+  }}
+/>
+```
+
+### Multiple Instances
+
+Use multiple instances with different configurations:
+
+```tsx
+<div className="flex gap-4">
+  <MorphSurface triggerLabel="Feedback" placeholder="General feedback..." />
+  <MorphSurface
+    triggerLabel="Bug Report"
+    placeholder="Report a bug..."
+    expandedWidth={400}
+  />
+  <MorphSurface
+    triggerLabel="Feature Request"
+    placeholder="Suggest a feature..."
+    animationSpeed={0.8}
+  />
+</div>
+```
+
+## Keyboard Shortcuts
+
+- **⌘ Enter** (Mac) / **Ctrl Enter** (Windows): Submit the form
+- **Escape**: Close the surface
+
+## Notes
+
+- The component automatically focuses the textarea when opened
+- Click outside the component to close it
+- Form submission extracts FormData from the form element
+- Success indicator shows for 1.5 seconds after successful submission
+- The component uses layoutId animations for smooth morphing transitions
+- Works seamlessly in both light and dark modes
+
+## Inspiration
+
+This component is inspired by the [Morph Surface](https://devouringdetails.com/) prototype from [Devouring Details](https://devouringdetails.com/), an interactive reference manual for interaction design by Rauno Freiberg. Devouring Details explores interaction design principles through 23 downloadable React components, showcasing the craft of interaction design with attention to detail.

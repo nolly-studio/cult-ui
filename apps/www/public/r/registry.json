@@ -327,6 +327,20 @@
       "description": "Animated gradient background component with customizable color transitions"
     },
     {
+      "name": "bg-image-texture",
+      "type": "registry:ui",
+      "dependencies": [
+        ""
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/bg-image-texture.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Background texture component with multiple texture variants and customizable opacity"
+    },
+    {
       "name": "popover",
       "type": "registry:ui",
       "dependencies": [
@@ -591,6 +605,79 @@
       "description": "Texture overlay component with various CSS gradient patterns for adding visual texture to backgrounds"
     },
     {
+      "name": "squiggle-arrow",
+      "type": "registry:ui",
+      "dependencies": [
+        ""
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/squiggle-arrow.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "A playful, hand-drawn squiggly arrow component with customizable variants, directions, and sizes"
+    },
+    {
+      "name": "code-block",
+      "type": "registry:ui",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/code-block.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "A beautiful code block component with tabs, copy functionality, and smooth animations"
+    },
+    {
+      "name": "mock-browser-window",
+      "type": "registry:ui",
+      "dependencies": [
+        ""
+      ],
+      "registryDependencies": [
+        "texture-overlay"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/mock-browser-window.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "A customizable browser window mockup component with support for Chrome, Safari, and generic styles, customizable sidebars, and themes"
+    },
+    {
+      "name": "morph-surface",
+      "type": "registry:ui",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/morph-surface.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "A morphing surface component with smooth animations, customizable dimensions, and configurable content"
+    },
+    {
+      "name": "distorted-glass",
+      "type": "registry:ui",
+      "dependencies": [
+        ""
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/distorted-glass.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "A glass morphism effect component using SVG filters with fractal noise to create visual transitions between sections"
+    },
+    {
       "name": "text-animate-demo",
       "type": "registry:component",
       "registryDependencies": [
@@ -745,6 +832,19 @@
       "files": [
         {
           "path": "registry/default/example/bg-media-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "bg-image-texture-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "bg-image-texture"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/bg-image-texture-demo.tsx",
           "type": "registry:component"
         }
       ]
@@ -1129,6 +1229,76 @@
       "files": [
         {
           "path": "registry/default/example/texture-overlay-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "squiggle-arrow-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "squiggle-arrow"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/squiggle-arrow-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "code-block-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "code-block"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/code-block-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "mock-browser-window-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "mock-browser-window",
+        "button",
+        "input",
+        "label",
+        "select",
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/mock-browser-window-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "morph-surface-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "morph-surface"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/morph-surface-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "distorted-glass-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "distorted-glass"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/distorted-glass-demo.tsx",
           "type": "registry:component"
         }
       ]

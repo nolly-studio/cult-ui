@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code-block-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "code-block"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/code-block-demo.tsx",
+      "content": "import { CodeBlock } from \"@/registry/default/ui/code-block\"\n\nfunction CodeBlockDemo() {\n  return (\n    <main className=\" \">\n      <div className=\"mx-auto space-y-8\">\n        {/* Multi-tab example */}\n        <div className=\"space-y-3\">\n          <h2 className=\"text-xl font-semibold\">\n            Package Manager Installation\n          </h2>\n          <CodeBlock\n            tabs={[\n              {\n                label: \"npm\",\n                code: \"npm install @acme/ui\",\n                language: \"bash\",\n              },\n              {\n                label: \"pnpm\",\n                code: \"pnpm add @acme/ui\",\n                language: \"bash\",\n              },\n              {\n                label: \"yarn\",\n                code: \"yarn add @acme/ui\",\n                language: \"bash\",\n              },\n              {\n                label: \"bun\",\n                code: \"bun add @acme/ui\",\n                language: \"bash\",\n              },\n            ]}\n          />\n        </div>\n\n        {/* Single code block example */}\n        <div className=\"space-y-3\">\n          <h2 className=\"text-xl font-semibold\">Single Code Block</h2>\n          <CodeBlock\n            code={`import { CodeBlock } from '@/components/code-block'\n\nexport default function Page() {\n  return (\n    <CodeBlock\n      code=\"console.log('Hello, world!')\"\n      language=\"javascript\"\n    />\n  )\n}`}\n            language=\"tsx\"\n          />\n        </div>\n\n        {/* API example */}\n        <div className=\"space-y-3\">\n          <h2 className=\"text-xl font-semibold\">API Configuration</h2>\n          <CodeBlock\n            tabs={[\n              {\n                label: \".env.local\",\n                code: `NEXT_PUBLIC_API_URL=https://api.example.com\nAPI_SECRET_KEY=your-secret-key`,\n                language: \"bash\",\n              },\n              {\n                label: \"config.ts\",\n                code: `export const config = {\n  apiUrl: process.env.NEXT_PUBLIC_API_URL,\n  apiKey: process.env.API_SECRET_KEY,\n}`,\n                language: \"typescript\",\n              },\n            ]}\n          />\n        </div>\n      </div>\n    </main>\n  )\n}\n\nexport default CodeBlockDemo\n",
+      "type": "registry:component"
+    }
+  ]
+}

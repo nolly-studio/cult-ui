@@ -85,7 +85,7 @@ function ComponentCode({
   return (
     <figure
       data-rehype-pretty-code-figure=""
-      className="relative [&>pre]:max-h-[650px] [&>pre]:overflow-auto"
+      className="group relative [&>pre]:max-h-[650px] [&>pre]:overflow-auto"
     >
       {title && (
         <figcaption
@@ -97,8 +97,8 @@ function ComponentCode({
           {title}
         </figcaption>
       )}
-      <div className="absolute top-2 right-2 z-10">
-        <CopyButton value={code} />
+      <div className="absolute top-2 right-2 z-10 opacity-70 group-hover:opacity-100 transition-opacity duration-150">
+        <CopyButton value={code} className="hover:opacity-100" />
       </div>
       <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
     </figure>

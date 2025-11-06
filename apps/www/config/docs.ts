@@ -93,25 +93,29 @@ export const docsConfig: DocsConfig = {
               href: "/docs/components/shift-card",
               items: [],
             },
-          ],
-        },
-        {
-          title: "Onboarding & Tours",
-          items: [
             {
-              title: "Feature Carousel",
-              href: "/docs/components/feature-carousel",
+              title: "Browser Window",
+              href: "/docs/components/mock-browser-window",
               items: [],
+              label: "new",
             },
             {
-              title: "Intro Disclosure",
-              href: "/docs/components/intro-disclosure",
+              title: "Texture Overlay",
+              href: "/docs/components/texture-overlay",
               items: [],
+              label: "recent",
             },
             {
-              title: "Loading Carousel",
-              href: "/docs/components/loading-carousel",
+              title: "Distorted Glass",
+              href: "/docs/components/distorted-glass",
               items: [],
+              label: "new",
+            },
+            {
+              title: "Background Texture",
+              href: "/docs/components/bg-image-texture",
+              items: [],
+              label: "new",
             },
           ],
         },
@@ -119,6 +123,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Layout & Forms",
           items: [
+            {
+              title: "Morph Surface",
+              href: "/docs/components/morph-surface",
+              items: [],
+              label: "new",
+            },
             {
               title: "Direction Aware Tabs",
               href: "/docs/components/direction-aware-tabs",
@@ -153,10 +163,37 @@ export const docsConfig: DocsConfig = {
               title: "Toolbar Expandable",
               href: "/docs/components/toolbar-expandable",
               items: [],
+              label: "recent",
+            },
+            {
+              title: "Code Block",
+              href: "/docs/components/code-block",
+              items: [],
               label: "new",
             },
           ],
         },
+        {
+          title: "Onboarding & Tours",
+          items: [
+            {
+              title: "Feature Carousel",
+              href: "/docs/components/feature-carousel",
+              items: [],
+            },
+            {
+              title: "Intro Disclosure",
+              href: "/docs/components/intro-disclosure",
+              items: [],
+            },
+            {
+              title: "Loading Carousel",
+              href: "/docs/components/loading-carousel",
+              items: [],
+            },
+          ],
+        },
+
         {
           title: "Interactive Elements",
           items: [
@@ -173,13 +210,18 @@ export const docsConfig: DocsConfig = {
             {
               title: "Timer",
               href: "/docs/components/timer",
-              label: "new",
               items: [],
             },
             {
               title: "MacOS Dock",
               href: "/docs/components/dock",
               items: [],
+            },
+            {
+              title: "Squiggle Arrow",
+              href: "/docs/components/squiggle-arrow",
+              items: [],
+              label: "new",
             },
           ],
         },
@@ -190,13 +232,12 @@ export const docsConfig: DocsConfig = {
               title: "Stripe Bg Guides",
               href: "/docs/components/stripe-bg-guides",
               items: [],
-              label: "recent",
             },
             {
               title: "Logo Carousel",
               href: "/docs/components/logo-carousel",
               items: [],
-              // label: "recent",
+              label: "recent",
             },
             {
               title: "3D Carousel",
@@ -223,7 +264,7 @@ export const docsConfig: DocsConfig = {
               title: "YouTube Video Player",
               href: "/docs/components/youtube-video-player",
               items: [],
-              label: "recent",
+              // label: "recent",
             },
           ],
         },
@@ -234,7 +275,7 @@ export const docsConfig: DocsConfig = {
               title: "Text Gif",
               href: "/docs/components/text-gif",
               items: [],
-              label: "recent",
+              // label: "recent",
             },
             {
               title: "Gradient Heading",
@@ -258,7 +299,6 @@ export const docsConfig: DocsConfig = {
             },
           ],
         },
-
         {
           title: "Visual Effects",
           items: [
@@ -273,15 +313,14 @@ export const docsConfig: DocsConfig = {
               items: [],
             },
             {
-              title: "Shader Lens Blur",
-              href: "/docs/components/shader-lens-blur",
+              title: "Canvas Fractal Grid",
+              href: "/docs/components/canvas-fractal-grid",
               items: [],
             },
             {
-              title: "Texture Overlay",
-              href: "/docs/components/texture-overlay",
+              title: "Shader Lens Blur",
+              href: "/docs/components/shader-lens-blur",
               items: [],
-              label: "new",
             },
           ],
         },

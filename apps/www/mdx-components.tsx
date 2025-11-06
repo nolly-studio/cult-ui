@@ -172,7 +172,7 @@ export const mdxComponents = {
     )
   },
   figure: ({ className, ...props }: React.ComponentProps<"figure">) => {
-    return <figure className={cn(className)} {...props} />
+    return <figure className={cn("group relative", className)} {...props} />
   },
   figcaption: ({
     className,
@@ -243,7 +243,15 @@ export const mdxComponents = {
     // Default codeblock.
     return (
       <>
-        {__raw__ && <CopyButton value={__raw__} src={__src__} />}
+        {__raw__ && (
+          <div className="absolute top-2 right-2 z-10 opacity-70 group-hover:opacity-100 transition-opacity duration-150">
+            <CopyButton
+              value={__raw__}
+              src={__src__}
+              className="hover:opacity-100"
+            />
+          </div>
+        )}
         <code {...props} />
       </>
     )

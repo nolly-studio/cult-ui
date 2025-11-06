@@ -134,6 +134,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "bg-image-texture-demo",
+    type: "registry:component",
+    registryDependencies: ["bg-image-texture"],
+    files: [
+      {
+        path: "registry/default/example/bg-image-texture-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
     name: "three-d-carousel-demo",
     type: "registry:component",
     registryDependencies: ["three-d-carousel"],
@@ -454,6 +465,68 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "registry/default/example/texture-overlay-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "squiggle-arrow-demo",
+    type: "registry:component",
+    registryDependencies: ["squiggle-arrow"],
+    files: [
+      {
+        path: "registry/default/example/squiggle-arrow-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "code-block-demo",
+    type: "registry:component",
+    registryDependencies: ["code-block"],
+    files: [
+      {
+        path: "registry/default/example/code-block-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "mock-browser-window-demo",
+    type: "registry:component",
+    registryDependencies: [
+      "mock-browser-window",
+      "button",
+      "input",
+      "label",
+      "select",
+      "switch",
+    ],
+    files: [
+      {
+        path: "registry/default/example/mock-browser-window-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "morph-surface-demo",
+    type: "registry:component",
+    registryDependencies: ["morph-surface"],
+    files: [
+      {
+        path: "registry/default/example/morph-surface-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "distorted-glass-demo",
+    type: "registry:component",
+    registryDependencies: ["distorted-glass"],
+    files: [
+      {
+        path: "registry/default/example/distorted-glass-demo.tsx",
         type: "registry:component",
       },
     ],

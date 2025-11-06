@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "squiggle-arrow",
+  "type": "registry:ui",
+  "description": "A playful, hand-drawn squiggly arrow component with customizable variants, directions, and sizes",
+  "dependencies": [
+    ""
+  ],
+  "files": [
+    {
+      "path": "registry/default/ui/squiggle-arrow.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\ninterface SquigglyArrowProps {\n  width?: number\n  height?: number\n  strokeWidth?: number\n  className?: string\n  direction?: \"right\" | \"left\" | \"up\" | \"down\"\n  variant?: \"wavy\" | \"bouncy\" | \"smooth\"\n}\n\nexport default function SquigglyArrow({\n  width = 200,\n  height = 100,\n  strokeWidth = 2.5,\n  className,\n  direction = \"right\",\n  variant = \"wavy\",\n}: SquigglyArrowProps) {\n  const paths = {\n    wavy: {\n      body: \"M 15 50 Q 35 35, 55 48 T 95 52 Q 115 48, 135 50 Q 145 52, 155 48\",\n      head: \"M 155 48 Q 147 44, 143 42 M 155 48 Q 148 53, 144 56\",\n    },\n    bouncy: {\n      body: \"M 15 50 Q 45 32, 65 50 Q 85 68, 105 50 Q 125 32, 145 50 Q 152 54, 158 50\",\n      head: \"M 158 50 Q 149 45, 145 43 M 158 50 Q 150 56, 146 59\",\n    },\n    smooth: {\n      body: \"M 15 50 Q 60 38, 100 48 Q 135 56, 158 50\",\n      head: \"M 158 50 Q 149 45, 145 43 M 158 50 Q 150 56, 146 59\",\n    },\n  }\n\n  const rotations = {\n    right: \"rotate(0)\",\n    left: \"rotate(180 100 50)\",\n    down: \"rotate(90 100 50)\",\n    up: \"rotate(-90 100 50)\",\n  }\n\n  const selectedPath = paths[variant]\n  const rotation = rotations[direction]\n\n  return (\n    <svg\n      width={width}\n      height={height}\n      viewBox=\"-10 -10 220 120\"\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      className={cn(\"text-foreground\", className)}\n    >\n      <title>Squiggly arrow</title>\n      <g transform={rotation}>\n        {/* Squiggly arrow body */}\n        <path\n          d={selectedPath.body}\n          stroke=\"currentColor\"\n          strokeWidth={strokeWidth}\n          strokeLinecap=\"round\"\n          fill=\"none\"\n        />\n\n        {/* Arrow head */}\n        <path\n          d={selectedPath.head}\n          stroke=\"currentColor\"\n          strokeWidth={strokeWidth}\n          strokeLinecap=\"round\"\n        />\n      </g>\n    </svg>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

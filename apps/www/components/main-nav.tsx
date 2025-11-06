@@ -45,7 +45,7 @@ export function MainNav() {
               : "text-foreground/60"
           )}
         >
-          AI Agents <span className="text-xs text-pink-500">(82 new)</span>
+          AI Agents <span className="text-xs text-pink-500">(72 new)</span>
           <ExternalLink className="size-3" />
         </a>
         <a

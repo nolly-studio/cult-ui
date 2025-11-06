@@ -583,6 +583,31 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "bg-image-texture": {
+    name: "bg-image-texture",
+    description:
+      "Background texture component with multiple texture variants and customizable opacity",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/bg-image-texture.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/bg-image-texture.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   popover: {
     name: "popover",
     description:
@@ -1033,6 +1058,131 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "squiggle-arrow": {
+    name: "squiggle-arrow",
+    description:
+      "A playful, hand-drawn squiggly arrow component with customizable variants, directions, and sizes",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/squiggle-arrow.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/squiggle-arrow.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "code-block": {
+    name: "code-block",
+    description:
+      "A beautiful code block component with tabs, copy functionality, and smooth animations",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/code-block.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/code-block.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "mock-browser-window": {
+    name: "mock-browser-window",
+    description:
+      "A customizable browser window mockup component with support for Chrome, Safari, and generic styles, customizable sidebars, and themes",
+    type: "registry:ui",
+    registryDependencies: ["texture-overlay"],
+    files: [
+      {
+        path: "registry/default/ui/mock-browser-window.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/mock-browser-window.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "morph-surface": {
+    name: "morph-surface",
+    description:
+      "A morphing surface component with smooth animations, customizable dimensions, and configurable content",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/morph-surface.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/morph-surface.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "distorted-glass": {
+    name: "distorted-glass",
+    description:
+      "A glass morphism effect component using SVG filters with fractal noise to create visual transitions between sections",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/distorted-glass.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/distorted-glass.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "text-animate-demo": {
     name: "text-animate-demo",
     description: "",
@@ -1327,6 +1477,32 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/default/example/bg-media-demo.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "bg-image-texture-demo": {
+    name: "bg-image-texture-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["bg-image-texture"],
+    files: [
+      {
+        path: "registry/default/example/bg-image-texture-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/bg-image-texture-demo.tsx"
+      )
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -2072,6 +2248,141 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/default/example/texture-overlay-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "squiggle-arrow-demo": {
+    name: "squiggle-arrow-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["squiggle-arrow"],
+    files: [
+      {
+        path: "registry/default/example/squiggle-arrow-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/squiggle-arrow-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "code-block-demo": {
+    name: "code-block-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["code-block"],
+    files: [
+      {
+        path: "registry/default/example/code-block-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/example/code-block-demo.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "mock-browser-window-demo": {
+    name: "mock-browser-window-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: [
+      "mock-browser-window",
+      "button",
+      "input",
+      "label",
+      "select",
+      "switch",
+    ],
+    files: [
+      {
+        path: "registry/default/example/mock-browser-window-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/mock-browser-window-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "morph-surface-demo": {
+    name: "morph-surface-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["morph-surface"],
+    files: [
+      {
+        path: "registry/default/example/morph-surface-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/morph-surface-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "distorted-glass-demo": {
+    name: "distorted-glass-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["distorted-glass"],
+    files: [
+      {
+        path: "registry/default/example/distorted-glass-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/distorted-glass-demo.tsx"
       )
       const exportName =
         Object.keys(mod).find(

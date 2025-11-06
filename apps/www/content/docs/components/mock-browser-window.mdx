@@ -1,0 +1,360 @@
+---
+title: BrowserWindow
+description: A customizable browser window mockup component with support for Chrome, Safari, and generic styles, customizable sidebars, and themes
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="mock-browser-window-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/mock-browser-window.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="mock-browser-window" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { BrowserWindow } from "@/components/ui/mock-browser-window"
+```
+
+### Basic Usage
+
+```tsx
+<BrowserWindow>
+  <div className="p-8">Your content here</div>
+</BrowserWindow>
+```
+
+### Browser Variants
+
+Display different browser styles:
+
+```tsx
+// Chrome-style window
+<BrowserWindow variant="chrome" url="https://example.com" />
+
+// Safari-style window
+<BrowserWindow variant="safari" url="https://example.com" />
+
+// Generic browser window
+<BrowserWindow variant="generic" />
+```
+
+### Header Styles
+
+Control the header appearance:
+
+```tsx
+// Minimal header (only window controls)
+<BrowserWindow headerStyle="minimal" />
+
+// Full header with address bar
+<BrowserWindow headerStyle="full" url="https://example.com" />
+```
+
+### Sizes
+
+Choose from different window sizes:
+
+```tsx
+<BrowserWindow size="sm" />    // Small
+<BrowserWindow size="md" />    // Medium (default)
+<BrowserWindow size="lg" />    // Large
+<BrowserWindow size="xl" />    // Extra Large
+```
+
+### Sidebar
+
+Add and position a sidebar:
+
+```tsx
+<BrowserWindow
+  showSidebar={true}
+  sidebarPosition="left"
+  sidebarItems={[
+    { label: "Dashboard", active: true },
+    { label: "Users", badge: "12" },
+    { label: "Analytics", badge: "new" },
+    { label: "Settings" },
+  ]}
+/>
+```
+
+### Themes
+
+Apply different themes:
+
+```tsx
+<BrowserWindow theme="light" />
+<BrowserWindow theme="dark" />
+<BrowserWindow theme="auto" /> // Follows system theme
+```
+
+### Custom Content
+
+Add your own content inside the window:
+
+```tsx
+<BrowserWindow
+  variant="chrome"
+  headerStyle="full"
+  url="https://app.example.com"
+>
+  <div className="p-8">
+    <h1 className="text-2xl font-bold">Dashboard</h1>
+    <p className="text-muted-foreground">Welcome to your dashboard</p>
+  </div>
+</BrowserWindow>
+```
+
+## API Reference
+
+### BrowserWindow Props
+
+| Prop              | Type                                     | Default     | Description                                 |
+| ----------------- | ---------------------------------------- | ----------- | ------------------------------------------- |
+| `children`        | `React.ReactNode`                        | -           | Custom content to display inside the window |
+| `className`       | `string`                                 | -           | Additional CSS classes                      |
+| `size`            | `"sm" \| "md" \| "lg" \| "xl"`           | `"md"`      | Window size                                 |
+| `showSidebar`     | `boolean`                                | `false`     | Whether to show the sidebar                 |
+| `sidebarPosition` | `"left" \| "right" \| "top" \| "bottom"` | `"left"`    | Position of the sidebar                     |
+| `headerStyle`     | `"minimal" \| "full"`                    | `"minimal"` | Header style: minimal or with address bar   |
+| `variant`         | `"chrome" \| "safari" \| "generic"`      | `"generic"` | Browser variant style                       |
+| `theme`           | `"light" \| "dark" \| "auto"`            | `"auto"`    | Color theme                                 |
+| `url`             | `string`                                 | -           | URL to display in the address bar           |
+| `sidebarItems`    | `SidebarItem[]`                          | -           | Array of sidebar items                      |
+| `texture`         | `TextureType`                            | `"none"`    | Texture overlay type                        |
+| `textureOpacity`  | `number`                                 | `0.25`      | Opacity of the texture overlay              |
+
+### SidebarItem Interface
+
+| Property | Type               | Description                        |
+| -------- | ------------------ | ---------------------------------- |
+| `icon`   | `React.ReactNode`  | Optional icon for the sidebar item |
+| `label`  | `string`           | Label text                         |
+| `active` | `boolean`          | Whether the item is active         |
+| `badge`  | `string \| number` | Optional badge display             |
+
+## Features
+
+- **Multiple Browser Variants**: Chrome, Safari, and generic styles
+- **Customizable Header**: Minimal or full header with address bar
+- **Flexible Sidebar**: Show/hide sidebar with configurable position (left, right, top, bottom)
+- **Multiple Sizes**: Small, medium, large, and extra-large presets
+- **Theme Support**: Light, dark, or auto theme
+- **Sidebar Items**: Support for icons, labels, badges, and active states
+- **Custom Content**: Add any React content inside the window
+- **Texture Overlays**: Optional texture overlays for visual effects
+
+## Examples
+
+### Chrome Dashboard
+
+```tsx
+<BrowserWindow
+  variant="chrome"
+  headerStyle="full"
+  url="https://app.example.com/dashboard"
+  showSidebar={true}
+  sidebarPosition="left"
+  sidebarItems={[
+    { label: "Overview", active: true },
+    { label: "Users", badge: "12" },
+    { label: "Analytics", badge: "new" },
+    { label: "Settings" },
+  ]}
+>
+  <div className="p-8">
+    <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
+    <div className="grid grid-cols-3 gap-4">
+      <div className="p-4 bg-muted rounded-lg">Card 1</div>
+      <div className="p-4 bg-muted rounded-lg">Card 2</div>
+      <div className="p-4 bg-muted rounded-lg">Card 3</div>
+    </div>
+  </div>
+</BrowserWindow>
+```
+
+### Safari Minimal
+
+```tsx
+<BrowserWindow
+  variant="safari"
+  headerStyle="minimal"
+  size="md"
+  showSidebar={false}
+>
+  <div className="p-8 text-center">
+    <h2 className="text-xl font-semibold">Clean Design</h2>
+    <p className="text-muted-foreground mt-2">Minimal browser window</p>
+  </div>
+</BrowserWindow>
+```
+
+### Sidebar Positions
+
+```tsx
+// Left sidebar (default)
+<BrowserWindow
+  showSidebar={true}
+  sidebarPosition="left"
+  sidebarItems={[
+    { label: "Home", active: true },
+    { label: "About" },
+    { label: "Contact" },
+  ]}
+/>
+
+// Right sidebar
+<BrowserWindow
+  showSidebar={true}
+  sidebarPosition="right"
+  sidebarItems={[
+    { label: "Settings" },
+    { label: "Profile" },
+  ]}
+/>
+
+// Top sidebar
+<BrowserWindow
+  showSidebar={true}
+  sidebarPosition="top"
+  sidebarItems={[
+    { label: "Overview" },
+    { label: "Analytics" },
+    { label: "Reports" },
+  ]}
+/>
+
+// Bottom sidebar
+<BrowserWindow
+  showSidebar={true}
+  sidebarPosition="bottom"
+  sidebarItems={[
+    { label: "Navigation" },
+    { label: "Links" },
+  ]}
+/>
+```
+
+### With Icons and Badges
+
+```tsx
+import { Bell, Home, Settings, Users } from "lucide-react"
+
+;<BrowserWindow
+  variant="chrome"
+  headerStyle="full"
+  url="https://app.example.com"
+  showSidebar={true}
+  sidebarItems={[
+    { icon: <Home className="w-4 h-4" />, label: "Home", active: true },
+    { icon: <Users className="w-4 h-4" />, label: "Users", badge: "12" },
+    { icon: <Bell className="w-4 h-4" />, label: "Notifications", badge: "3" },
+    { icon: <Settings className="w-4 h-4" />, label: "Settings" },
+  ]}
+/>
+```
+
+### Different Sizes
+
+```tsx
+// Small window
+<BrowserWindow size="sm" url="https://example.com" />
+
+// Medium window (default)
+<BrowserWindow size="md" url="https://example.com" />
+
+// Large window
+<BrowserWindow size="lg" url="https://example.com" />
+
+// Extra large window
+<BrowserWindow size="xl" url="https://example.com" />
+```
+
+### Dark Theme
+
+```tsx
+<BrowserWindow
+  variant="chrome"
+  theme="dark"
+  headerStyle="full"
+  url="https://app.example.com"
+>
+  <div className="p-8">
+    <h1 className="text-2xl font-bold text-white">Dark Mode</h1>
+  </div>
+</BrowserWindow>
+```
+
+### With Custom Content
+
+```tsx
+<BrowserWindow
+  variant="safari"
+  headerStyle="full"
+  url="https://portfolio.example.com"
+  size="lg"
+>
+  <div className="h-full flex items-center justify-center">
+    <div className="text-center space-y-4">
+      <h1 className="text-4xl font-bold">Welcome</h1>
+      <p className="text-muted-foreground text-lg">
+        Beautiful browser mockup for your designs
+      </p>
+    </div>
+  </div>
+</BrowserWindow>
+```
+
+### Code Preview
+
+```tsx
+<BrowserWindow
+  variant="chrome"
+  headerStyle="full"
+  url="https://code.example.com"
+  size="lg"
+>
+  <div className="p-6 bg-[#1e1e1e] h-full overflow-auto">
+    <pre className="text-sm text-white">
+      <code>{`function hello() {
+  console.log('Hello, world!')
+}`}</code>
+    </pre>
+  </div>
+</BrowserWindow>
+```

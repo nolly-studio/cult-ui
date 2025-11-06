@@ -235,7 +235,7 @@ export const TEMPLATES_GRID = [
     liveUrl: "https://cleanmyseo.com",
     meta: "fullstack",
     description:
-      "Comprehensive SEO analysis tool with web crawling, performance testing, and AI-powered optimization recommendations for website improvement.",
+      "Comprehensive SEO analysis tool with web crawling, performance testing, and AI-powered optimization recs for website improvement.",
     features: [
       {
         name: "RSC Web Scraping",

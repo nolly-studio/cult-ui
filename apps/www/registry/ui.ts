@@ -301,6 +301,19 @@ export const ui: Registry["items"] = [
       "Animated gradient background component with customizable color transitions",
   },
   {
+    name: "bg-image-texture",
+    type: "registry:ui",
+    dependencies: [""],
+    files: [
+      {
+        path: "registry/default/ui/bg-image-texture.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Background texture component with multiple texture variants and customizable opacity",
+  },
+  {
     name: "popover",
     type: "registry:ui",
     dependencies: ["motion"],
@@ -536,5 +549,71 @@ export const ui: Registry["items"] = [
     ],
     description:
       "Texture overlay component with various CSS gradient patterns for adding visual texture to backgrounds",
+  },
+  {
+    name: "squiggle-arrow",
+    type: "registry:ui",
+    dependencies: [""],
+    files: [
+      {
+        path: "registry/default/ui/squiggle-arrow.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "A playful, hand-drawn squiggly arrow component with customizable variants, directions, and sizes",
+  },
+  {
+    name: "code-block",
+    type: "registry:ui",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/default/ui/code-block.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "A beautiful code block component with tabs, copy functionality, and smooth animations",
+  },
+  {
+    name: "mock-browser-window",
+    type: "registry:ui",
+    dependencies: [""],
+    registryDependencies: ["texture-overlay"],
+    files: [
+      {
+        path: "registry/default/ui/mock-browser-window.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "A customizable browser window mockup component with support for Chrome, Safari, and generic styles, customizable sidebars, and themes",
+  },
+  {
+    name: "morph-surface",
+    type: "registry:ui",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/default/ui/morph-surface.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "A morphing surface component with smooth animations, customizable dimensions, and configurable content",
+  },
+  {
+    name: "distorted-glass",
+    type: "registry:ui",
+    dependencies: [""],
+    files: [
+      {
+        path: "registry/default/ui/distorted-glass.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "A glass morphism effect component using SVG filters with fractal noise to create visual transitions between sections",
   },
 ]
