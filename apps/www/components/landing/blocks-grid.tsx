@@ -854,7 +854,7 @@ export function VercelIcon(props: SVGProps<SVGSVGElement>) {
       preserveAspectRatio="xMidYMid"
       {...props}
     >
-      <path fill="#000" d="m128 0 128 221.705H0z" />
+      <path fill="currentColor" d="m128 0 128 221.705H0z" />
     </svg>
   )
 }

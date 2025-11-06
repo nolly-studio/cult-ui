@@ -95,7 +95,8 @@ export function GetAISDKAgentsCta({ className }: React.ComponentProps<"div">) {
 
         {/* Description */}
         <p className="text-sm  leading-snug max-w-[60ch] tracking-tight ">
-          Real world vercel <VercelIcon className="size-4 inline-block mr-1" />
+          Real world vercel{" "}
+          <VercelIcon className="size-4 dark:text-white inline-block mr-1" />
           <span className="font-medium">AI SDK v.6</span> Patterns you can copy
           and paste.
         </p>
