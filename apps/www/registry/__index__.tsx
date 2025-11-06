@@ -1183,6 +1183,56 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "family-drawer": {
+    name: "family-drawer",
+    description:
+      "A multi-view drawer component with smooth animations, view navigation, and customizable content views",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/family-drawer.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/family-drawer.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "expandable-screen": {
+    name: "expandable-screen",
+    description:
+      "A full-screen expandable component with morphing animations using shared layout IDs for smooth transitions",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/expandable-screen.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/expandable-screen.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "text-animate-demo": {
     name: "text-animate-demo",
     description: "",
@@ -2383,6 +2433,65 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/default/example/distorted-glass-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "family-drawer-demo": {
+    name: "family-drawer-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["family-drawer"],
+    files: [
+      {
+        path: "registry/default/example/family-drawer-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/family-drawer-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "expandable-screen-demo": {
+    name: "expandable-screen-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: [
+      "expandable-screen",
+      "button",
+      "input",
+      "label",
+      "select",
+      "textarea",
+    ],
+    files: [
+      {
+        path: "registry/default/example/expandable-screen-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/expandable-screen-demo.tsx"
       )
       const exportName =
         Object.keys(mod).find(

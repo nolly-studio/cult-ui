@@ -531,4 +531,33 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "family-drawer-demo",
+    type: "registry:component",
+    registryDependencies: ["family-drawer"],
+    files: [
+      {
+        path: "registry/default/example/family-drawer-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "expandable-screen-demo",
+    type: "registry:component",
+    registryDependencies: [
+      "expandable-screen",
+      "button",
+      "input",
+      "label",
+      "select",
+      "textarea",
+    ],
+    files: [
+      {
+        path: "registry/default/example/expandable-screen-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ]

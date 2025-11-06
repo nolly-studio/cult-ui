@@ -96,9 +96,9 @@ export default async function Page(props: {
     >
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="h-(--top-spacing) shrink-0" />
-        <div className="mx-auto flex w-full max-w-4xl min-w-0 flex-1 flex-col gap-8 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
-          <div className="flex flex-col gap-2">
-            <div className="flex flex-col gap-2">
+        <div className="mx-auto flex w-full max-w-4xl min-w-0 flex-1 flex-col gap-4 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
+          <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1">
               <div className="flex items-start justify-between">
                 <h1 className="scroll-m-20 text-4xl font-semibold tracking-tight sm:text-3xl xl:text-4xl">
                   {doc.title}
@@ -143,7 +143,7 @@ export default async function Page(props: {
                 </p>
               )}
             </div>
-            {links ? (
+            {/* {links ? (
               <div className="flex items-center space-x-2 pt-4">
                 {links?.doc && (
                   <Badge variant="secondary">
@@ -160,7 +160,7 @@ export default async function Page(props: {
                   </Badge>
                 )}
               </div>
-            ) : null}
+            ) : null} */}
           </div>
           <div className="w-full flex-1 *:data-[slot=alert]:first:mt-0">
             <MDX components={mdxComponents} />

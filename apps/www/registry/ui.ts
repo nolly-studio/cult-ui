@@ -616,4 +616,35 @@ export const ui: Registry["items"] = [
     description:
       "A glass morphism effect component using SVG filters with fractal noise to create visual transitions between sections",
   },
+  {
+    name: "family-drawer",
+    type: "registry:ui",
+    dependencies: [
+      "motion",
+      "react-use-measure",
+      "vaul",
+      "@radix-ui/react-slot",
+    ],
+    files: [
+      {
+        path: "registry/default/ui/family-drawer.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "A multi-view drawer component with smooth animations, view navigation, and customizable content views",
+  },
+  {
+    name: "expandable-screen",
+    type: "registry:ui",
+    dependencies: ["motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/default/ui/expandable-screen.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "A full-screen expandable component with morphing animations using shared layout IDs for smooth transitions",
+  },
 ]

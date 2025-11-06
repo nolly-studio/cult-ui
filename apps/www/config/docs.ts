@@ -54,6 +54,12 @@ export const docsConfig: DocsConfig = {
               items: [],
             },
             {
+              title: "Family Drawer",
+              href: "/docs/components/family-drawer",
+              label: "new",
+              items: [],
+            },
+            {
               title: "Texture Button",
               href: "/docs/components/texture-button",
               items: [],
@@ -68,6 +74,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Cards & Containers",
           items: [
+            {
+              title: "Expandable Screen",
+              href: "/docs/components/expandable-screen",
+              items: [],
+              label: "new",
+            },
             {
               title: "Expandable Card",
               href: "/docs/components/expandable",

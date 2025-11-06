@@ -1,0 +1,408 @@
+---
+title: FamilyDrawer
+description: A multi-view drawer component with smooth animations, view navigation, and customizable content views
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="family-drawer-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## References
+
+<Citations>
+  <p className="font-medium text-primary">Inspiration</p>
+  <CitationList>
+    <CitationItem>
+      <CitationLink
+        href="https://animations.dev/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Animations.dev - Family Drawer Walkthrough
+      </CitationLink>
+    </CitationItem>
+  </CitationList>
+</Citations>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/family-drawer.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="family-drawer" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+The FamilyDrawer component is a multi-view drawer system that allows you to create navigation between different views within a drawer. It uses Framer Motion for smooth animations and Vaul for drawer functionality.
+
+### Basic Example
+
+```tsx
+import {
+  FamilyDrawerAnimatedContent,
+  FamilyDrawerAnimatedWrapper,
+  FamilyDrawerContent,
+  FamilyDrawerRoot,
+  FamilyDrawerTrigger,
+  FamilyDrawerViewContent,
+  useFamilyDrawer,
+} from "@/components/ui/family-drawer"
+
+function DefaultView() {
+  const { setView } = useFamilyDrawer()
+
+  return (
+    <>
+      <header className="mb-4 flex h-[72px] items-center border-b border-border pl-2">
+        <h2 className="text-[19px] font-semibold text-foreground">Menu</h2>
+      </header>
+      <div className="space-y-3">
+        <button onClick={() => setView("settings")}>Settings</button>
+        <button onClick={() => setView("profile")}>Profile</button>
+      </div>
+    </>
+  )
+}
+
+function SettingsView() {
+  const { setView } = useFamilyDrawer()
+
+  return (
+    <div>
+      <h2>Settings</h2>
+      <button onClick={() => setView("default")}>Back</button>
+    </div>
+  )
+}
+
+export default function FamilyDrawerDemo() {
+  const views = {
+    default: DefaultView,
+    settings: SettingsView,
+  }
+
+  return (
+    <FamilyDrawerRoot views={views}>
+      <FamilyDrawerTrigger>Open Drawer</FamilyDrawerTrigger>
+      <FamilyDrawerContent>
+        <FamilyDrawerAnimatedWrapper>
+          <FamilyDrawerAnimatedContent>
+            <FamilyDrawerViewContent />
+          </FamilyDrawerAnimatedContent>
+        </FamilyDrawerAnimatedWrapper>
+      </FamilyDrawerContent>
+    </FamilyDrawerRoot>
+  )
+}
+```
+
+## Components
+
+### FamilyDrawerRoot
+
+The root component that provides context and manages drawer state. It accepts a `views` prop to define the available views.
+
+```typescriptreact
+<FamilyDrawerRoot
+  views={views}
+  defaultView="default"
+  onViewChange={(view) => console.log(view)}
+>
+  {/* Other FamilyDrawer components */}
+</FamilyDrawerRoot>
+```
+
+**Props:**
+
+- `views?: ViewsRegistry` - Object mapping view names to React components
+- `defaultView?: string` - Initial view to display (default: "default")
+- `onViewChange?: (view: string) => void` - Callback when view changes
+- `open?: boolean` - Controlled open state
+- `defaultOpen?: boolean` - Uncontrolled default open state
+- `onOpenChange?: (open: boolean) => void` - Callback when open state changes
+
+### FamilyDrawerTrigger
+
+The trigger button that opens the drawer. Can be used with `asChild` to compose with other components.
+
+```typescriptreact
+<FamilyDrawerTrigger>Open Drawer</FamilyDrawerTrigger>
+
+// Or with asChild
+<FamilyDrawerTrigger asChild>
+  <Button>Open Drawer</Button>
+</FamilyDrawerTrigger>
+```
+
+**Props:**
+
+- `asChild?: boolean` - Render as child component
+- `className?: string` - Additional CSS classes
+
+### FamilyDrawerContent
+
+The main content container for the drawer. Handles positioning and animations.
+
+```typescriptreact
+<FamilyDrawerContent>
+  {/* Drawer content */}
+</FamilyDrawerContent>
+```
+
+**Props:**
+
+- `className?: string` - Additional CSS classes
+- `asChild?: boolean` - Render as child component
+
+### FamilyDrawerAnimatedWrapper
+
+Wrapper component that measures content height for smooth animations.
+
+```typescriptreact
+<FamilyDrawerAnimatedWrapper>
+  {/* Content that needs height measurement */}
+</FamilyDrawerAnimatedWrapper>
+```
+
+**Props:**
+
+- `className?: string` - Additional CSS classes
+
+### FamilyDrawerAnimatedContent
+
+Content wrapper that handles view transitions with opacity animations.
+
+```typescriptreact
+<FamilyDrawerAnimatedContent>
+  {/* Animated content */}
+</FamilyDrawerAnimatedContent>
+```
+
+### FamilyDrawerViewContent
+
+Renders the current view component based on the active view.
+
+```typescriptreact
+<FamilyDrawerViewContent views={views} />
+```
+
+**Props:**
+
+- `views?: ViewsRegistry` - Optional views prop (uses context views if not provided)
+
+### FamilyDrawerHeader
+
+A header component with icon, title, and description.
+
+```typescriptreact
+<FamilyDrawerHeader
+  icon={<SettingsIcon />}
+  title="Settings"
+  description="Configure your preferences"
+/>
+```
+
+**Props:**
+
+- `icon?: ReactNode` - Icon element
+- `title: string` - Header title
+- `description?: string` - Header description
+
+### FamilyDrawerButton
+
+A styled button component for navigation within the drawer.
+
+```typescriptreact
+<FamilyDrawerButton onClick={() => setView("settings")}>
+  Settings
+</FamilyDrawerButton>
+```
+
+**Props:**
+
+- `onClick?: () => void` - Click handler
+- `className?: string` - Additional CSS classes
+- `asChild?: boolean` - Render as child component
+
+### FamilyDrawerSecondaryButton
+
+A secondary styled button variant.
+
+```typescriptreact
+<FamilyDrawerSecondaryButton onClick={handleSave}>
+  Save
+</FamilyDrawerSecondaryButton>
+```
+
+**Props:**
+
+- `onClick?: () => void` - Click handler
+- `className?: string` - Additional CSS classes
+- `asChild?: boolean` - Render as child component
+
+### FamilyDrawerClose
+
+A close button component for the drawer.
+
+```typescriptreact
+<FamilyDrawerClose />
+```
+
+**Props:**
+
+- `className?: string` - Additional CSS classes
+- `asChild?: boolean` - Render as child component
+
+### FamilyDrawerPortal
+
+Portal component for rendering the drawer outside the DOM hierarchy.
+
+```typescriptreact
+<FamilyDrawerPortal>
+  <FamilyDrawerContent>
+    {/* Content */}
+  </FamilyDrawerContent>
+</FamilyDrawerPortal>
+```
+
+### FamilyDrawerOverlay
+
+The backdrop overlay for the drawer.
+
+```typescriptreact
+<FamilyDrawerOverlay onClick={() => setView("default")} />
+```
+
+**Props:**
+
+- `className?: string` - Additional CSS classes
+- `onClick?: () => void` - Click handler
+
+### useFamilyDrawer Hook
+
+Hook to access drawer context and control view navigation.
+
+```typescriptreact
+function MyView() {
+  const { view, setView, isOpen } = useFamilyDrawer()
+
+  return (
+    <div>
+      <p>Current view: {view}</p>
+      <button onClick={() => setView("other")}>Switch View</button>
+    </div>
+  )
+}
+```
+
+**Returns:**
+
+- `view: string` - Current active view name
+- `setView: (view: string) => void` - Function to change the active view
+- `isOpen: boolean` - Whether the drawer is open
+- `opacityDuration: number` - Calculated animation duration based on content height
+- `elementRef: RefObject` - Ref for measuring content height
+- `bounds: BoundingBox` - Measured bounds of the content
+
+## Advanced Usage
+
+### Custom Views via Props
+
+You can define views directly in the root component:
+
+```typescriptreact
+const views = {
+  default: DefaultView,
+  settings: SettingsView,
+  profile: ProfileView,
+}
+
+<FamilyDrawerRoot views={views} defaultView="default">
+  {/* Components */}
+</FamilyDrawerRoot>
+```
+
+### View Navigation
+
+Navigate between views using the `setView` function from the hook:
+
+```typescriptreact
+function DefaultView() {
+  const { setView } = useFamilyDrawer()
+
+  return (
+    <div>
+      <button onClick={() => setView("settings")}>Go to Settings</button>
+      <button onClick={() => setView("profile")}>Go to Profile</button>
+    </div>
+  )
+}
+```
+
+### Controlled State
+
+Control the drawer and view state externally:
+
+```typescriptreact
+const [open, setOpen] = useState(false)
+const [view, setView] = useState("default")
+
+<FamilyDrawerRoot
+  open={open}
+  onOpenChange={setOpen}
+  defaultView={view}
+  onViewChange={setView}
+>
+  {/* Components */}
+</FamilyDrawerRoot>
+```
+
+## Customization
+
+The FamilyDrawer component is highly customizable. You can:
+
+- Customize styles by passing `className` props to components
+- Define custom views with your own components
+- Control animations by modifying the transition durations
+- Use `asChild` prop to compose with your own styled components
+
+## Accessibility
+
+The FamilyDrawer component includes:
+
+- Keyboard navigation support (Escape key to close)
+- Proper ARIA attributes via Vaul
+- Focus management
+- Screen reader support
+
+The component builds on Vaul's accessibility features, ensuring a good experience for all users.
