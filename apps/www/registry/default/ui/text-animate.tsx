@@ -32,7 +32,7 @@ const animationVariants = {
     child: {
       visible: {
         opacity: 1,
-        y: [0, -10, 0],
+        y: 0,
         transition: {
           type: "spring" as const,
           damping: 12,

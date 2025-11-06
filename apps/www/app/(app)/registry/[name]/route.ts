@@ -1,7 +1,9 @@
 import { promises as fs } from "fs"
 import path from "path"
 import { NextResponse } from "next/server"
-import { registryItemSchema } from "shadcn/registry"
+import { registryItemSchema as shadcnRegistryItemSchema } from "shadcn/schema"
+
+// import { registryItemSchema } from "@/lib/schema"
 
 // Use the registry.json file to generate static paths.
 export const generateStaticParams = async () => {
@@ -36,7 +38,7 @@ export async function GET(
     }
 
     // Validate before file operations.
-    const registryItem = registryItemSchema.parse(component)
+    const registryItem = shadcnRegistryItemSchema.parse(component)
 
     // If the component has no files, return a 400 error.
     if (!registryItem.files?.length) {
