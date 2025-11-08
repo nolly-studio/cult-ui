@@ -238,7 +238,7 @@ function FloatingPanelTitle({ children }: FloatingPanelTitleProps) {
     >
       <motion.div
         layoutId={`floating-panel-label-${uniqueId}`}
-        className="text-sm font-semibold text-zinc-900 dark:text-zinc-100"
+        className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 w-fit"
         id={`floating-panel-title-${uniqueId}`}
       >
         {children}
