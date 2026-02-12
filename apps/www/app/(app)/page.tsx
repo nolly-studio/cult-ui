@@ -56,8 +56,8 @@ export default function IndexPage() {
 
 					{/* Hero Description */}
 					<p className="mx-auto max-w-2xl text-center font-light text-base text-foreground/70 leading-relaxed md:text-lg">
-						{componentCount}+ animated components and effects. <br /> Free,
-						open source, and built to drop into any shadcn/ui project.
+						{componentCount}+ animated components and effects. <br /> Free, open
+						source, and built to drop into any shadcn/ui project.
 					</p>
 
 					{/* CTA Buttons */}
@@ -72,7 +72,7 @@ export default function IndexPage() {
 							target="_blank"
 							rel="noreferrer"
 							href={siteConfig.links.github}
-							className="flex items-center gap-2 border border-border bg-background px-6 py-3 font-mono text-sm uppercase tracking-wider transition-all hover:border-foreground/40 hover:bg-foreground hover:text-background"
+							className="md:flex hidden items-center gap-2 border border-border bg-background px-6 py-3 font-mono text-sm uppercase tracking-wider transition-all hover:border-foreground/40 hover:bg-foreground hover:text-background"
 						>
 							<Icons.gitHub className="size-4" />
 							GitHub
@@ -82,7 +82,10 @@ export default function IndexPage() {
 					{/* Tech Stack Pills */}
 					<div className="flex flex-wrap items-center justify-center gap-2">
 						<div className="flex items-center gap-1.5 border border-border px-2 py-0.5">
-							<ReactIcon className="size-3.5 text-[#61DAFB]" aria-hidden="true" />
+							<ReactIcon
+								className="size-3.5 text-[#61DAFB]"
+								aria-hidden="true"
+							/>
 							<span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
 								React
 							</span>
