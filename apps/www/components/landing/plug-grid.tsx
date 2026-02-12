@@ -1,68 +1,79 @@
-import { StickerIcon } from "lucide-react"
-
-import {
-  MinimalCard,
-  MinimalCardDescription,
-  MinimalCardTitle,
-} from "@/registry/default/ui/minimal-card"
-
-import { Badge } from "../ui/badge"
+import { ArrowRight, StickerIcon } from "lucide-react"
 
 export function PlugCardGrid() {
   const cards = [
     {
-      title: "Free AI Marketing ",
+      title: "Free AI Marketing",
       description:
         "An AI Cofounder that knows your brand. Start creating marketing copy that converts.",
       href: "https://www.newcopy.ai",
-      img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXFpaG1vaG83YTgxdTdxc2ZreHNtaGphYjF4aXd6c3JvbXNodW9ubSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7bzrBMHEsgPb20T3C5/giphy.gif",
     },
     {
       title: "Free SEO Improvement Tool",
       description:
         "Quickly evaluate your website's SEO performance for free. Open graph preview included.",
       href: "https://cleanmyseo.com",
-      img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2FoNGR5OXpvMnZ2a3NpNWpqYnlnOG82aWYzMnJhY256ajVuOWhpMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/w1LYqDDIpDaLKj6N5t/giphy.gif",
     },
     {
       title: "Full Stack Shadcn Templates",
       description:
         "Comprehensive Next.js + Supabase templates built with Tailwind CSS, Cult components, and shadcn.",
       href: "https://www.newcult.co",
-      img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3p0Nm1xcnE2eDNkOTJ6NndxaTJlejFodGozZ3RpcXc4MW80OHkwYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AdRaGoL5xT1SdI6J5v/giphy.gif",
     },
   ]
 
   return (
-    <div className="relative  w-full space-y-4 p-2">
-      <Badge
-        variant="outline"
-        className="absolute left-4 top-4 rounded-[14px] border border-black/10 text-base md:left-6"
-      >
-        <StickerIcon className="mr-1  fill-[#A3C0E0] stroke-1 text-neutral-800" />{" "}
-        Additional goods
-      </Badge>
-      <div className="   flex flex-col justify-center  space-y-4 rounded-b-[34px]   p-3 pt-12">
-        <div className="relative grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
-          {cards.map((card) => (
-            <a
-              key={card.title}
-              target="_blank"
-              rel="noopener noreferrer"
-              href={card.href}
-            >
-              <MinimalCard className="rounded-t-xl bg-transparent">
-                <MinimalCardTitle className="text-base text-neutral-800">
-                  {card.title}
-                </MinimalCardTitle>
-                <MinimalCardDescription className="text-neutral-900">
-                  {card.description}
-                </MinimalCardDescription>
-              </MinimalCard>
-            </a>
-          ))}
+    <section className="w-full py-16 md:py-24">
+      {/* Section Header */}
+      <div className="mb-12 text-center">
+        <div className="mx-auto mb-6 flex max-w-2xl items-center justify-center gap-4">
+          <div className="h-px flex-1 bg-border" />
+          <div className="flex items-center gap-2 border border-border bg-background px-3 py-1.5">
+            <StickerIcon className="size-4 text-muted-foreground" />
+            <span className="font-mono text-[11px] uppercase tracking-wider">
+              Additional Goods
+            </span>
+          </div>
+          <div className="h-px flex-1 bg-border" />
         </div>
       </div>
-    </div>
+
+      {/* Cards Grid */}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {cards.map((card) => (
+          <a
+            key={card.title}
+            target="_blank"
+            rel="noopener noreferrer"
+            href={card.href}
+            className="group relative flex flex-col border border-border bg-background p-4 transition-all duration-150 hover:border-foreground/10 hover:shadow-lg hover:shadow-primary/5"
+          >
+            {/* Corner accents */}
+            <div className="-top-px -left-px pointer-events-none absolute h-3 w-3 border-primary/50 border-t-2 border-l-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
+            <div className="-top-px -right-px pointer-events-none absolute h-3 w-3 border-primary/50 border-t-2 border-r-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
+            <div className="-bottom-px -left-px pointer-events-none absolute h-3 w-3 border-primary/50 border-b-2 border-l-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
+            <div className="-bottom-px -right-px pointer-events-none absolute h-3 w-3 border-primary/50 border-r-2 border-b-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
+
+            {/* Title */}
+            <h3 className="mb-2 font-medium text-sm leading-tight tracking-tight">
+              {card.title}
+            </h3>
+
+            {/* Description */}
+            <p className="mb-4 flex-1 font-light text-muted-foreground text-xs leading-relaxed">
+              {card.description}
+            </p>
+
+            {/* Footer */}
+            <div className="flex items-center justify-end border-border border-t pt-3">
+              <span className="flex items-center gap-1 font-mono text-[10px] text-muted-foreground uppercase tracking-wider transition-colors group-hover:text-primary">
+                Visit
+                <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
   )
 }

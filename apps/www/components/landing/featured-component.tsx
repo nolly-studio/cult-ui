@@ -129,39 +129,47 @@ export function LatestComponent() {
 
 export function LatestComponentVertical() {
   return (
-    // <div className=" relative flex w-full flex-col rounded-[24px] border border-black/5 bg-neutral-800/10 p-2 shadow-sm md:flex-row md:items-center md:gap-24 md:rounded-t-[40px] md:p-2 mx-auto">
-    <div className=" relative mx-auto flex w-full flex-col  md:p-2">
-      <Badge
-        variant="outline"
-        className="absolute left-4 top-6 rounded-[14px] border border-black/10 text-base md:left-6"
-      >
-        <SparklesIcon className="  mr-1 fill-[#EEBDE0] stroke-1 text-neutral-800" />{" "}
-        <h4>Latest component</h4>
-      </Badge>
-      <div className="flex flex-col justify-center pb-2 pl-4 pt-14 md:items-center">
-        <div className="flex  gap-2">
-          <div>
-            <GradientHeading>Toolbar Expandable</GradientHeading>
-            <Link
-              href="/docs/components/text-gif"
-              className="flex items-center gap-1 "
-            >
-              Step-based expandable toolbar with smooth animations.
-              {/* <ArrowRight className="hidden h-4 w-4 md:block" /> */}
-            </Link>
-          </div>
+    <div className="group relative mx-auto flex w-full flex-col border border-border bg-background transition-all duration-150 hover:border-foreground/10 hover:shadow-lg hover:shadow-primary/5">
+      {/* Corner accents */}
+      <div className="-top-px -left-px pointer-events-none absolute h-3 w-3 border-primary/50 border-t-2 border-l-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
+      <div className="-top-px -right-px pointer-events-none absolute h-3 w-3 border-primary/50 border-t-2 border-r-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
+      <div className="-bottom-px -left-px pointer-events-none absolute h-3 w-3 border-primary/50 border-b-2 border-l-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
+      <div className="-bottom-px -right-px pointer-events-none absolute h-3 w-3 border-primary/50 border-r-2 border-b-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
+
+      {/* Header */}
+      <div className="flex flex-col items-center border-border border-b px-4 pb-4 pt-5 text-center">
+        <div className="mb-3 border border-border bg-background px-2 py-1">
+          <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+            Latest Component
+          </span>
         </div>
+        <h3 className="mb-1.5 font-medium text-lg leading-tight tracking-tight">
+          Toolbar Expandable
+        </h3>
+        <p className="max-w-md font-light text-muted-foreground text-sm leading-relaxed">
+          Step-based expandable toolbar with smooth animations.
+        </p>
       </div>
 
-      {/* <div className=" mt-4 flex max-w-xl grow flex-col items-center justify-center space-y-0 rounded-[14px] border border-dashed border-black/10  bg-neutral-300/20 p-4 md:mt-0 md:rounded-md md:rounded-br-[20px] md:rounded-tr-[35px]"> */}
-      <div className="mx-auto  w-full ">
-        <div className="mx-auto flex w-full  flex-col items-center py-8  sm:max-w-screen-lg lg:pb-8 lg:pt-3">
+      {/* Demo */}
+      <div className="mx-auto w-full bg-muted/20">
+        <div className="mx-auto flex w-full flex-col items-center py-8 sm:max-w-screen-lg lg:pb-8 lg:pt-6">
           <section className="max-w-xs sm:max-w-none">
             <DynamicToolbarExpandable steps={deploymentSteps} />
           </section>
         </div>
       </div>
-      {/* </div> */}
+
+      {/* Footer */}
+      <div className="flex items-center justify-center border-border border-t px-4 py-3">
+        <Link
+          href="/docs/components/toolbar-expandable"
+          className="flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground transition-colors hover:text-primary"
+        >
+          View Component
+          <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
+        </Link>
+      </div>
     </div>
   )
 }

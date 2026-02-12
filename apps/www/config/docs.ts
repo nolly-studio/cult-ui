@@ -56,7 +56,7 @@ export const docsConfig: DocsConfig = {
 						{
 							title: "Family Drawer",
 							href: "/docs/components/family-drawer",
-							label: "new",
+							label: "recent",
 							items: [],
 						},
 						{
@@ -78,7 +78,6 @@ export const docsConfig: DocsConfig = {
 							title: "Expandable Screen",
 							href: "/docs/components/expandable-screen",
 							items: [],
-							label: "recent",
 						},
 						{
 							title: "Expandable Card",
@@ -109,7 +108,6 @@ export const docsConfig: DocsConfig = {
 							title: "Browser Window",
 							href: "/docs/components/mock-browser-window",
 							items: [],
-							label: "new",
 						},
 						{
 							title: "Texture Overlay",
@@ -180,7 +178,7 @@ export const docsConfig: DocsConfig = {
 							title: "Code Block",
 							href: "/docs/components/code-block",
 							items: [],
-							label: "new",
+							label: "recent",
 						},
 					],
 				},
@@ -218,18 +216,18 @@ export const docsConfig: DocsConfig = {
 							href: "/docs/components/color-picker",
 							items: [],
 						},
-            {
-              title: "Choice Poll",
-              href: "/docs/components/choice-poll",
-              items: [],
-              label: "new",
-            },
-            {
-              title: "Vote Tally",
-              href: "/docs/components/vote-tally",
-              items: [],
-              label: "new",
-            },
+						{
+							title: "Choice Poll",
+							href: "/docs/components/choice-poll",
+							items: [],
+							label: "new",
+						},
+						{
+							title: "Vote Tally",
+							href: "/docs/components/vote-tally",
+							items: [],
+							label: "new",
+						},
 						{
 							title: "Poll Widget",
 							href: "/docs/components/poll-widget",
@@ -260,7 +258,7 @@ export const docsConfig: DocsConfig = {
 							title: "Squiggle Arrow",
 							href: "/docs/components/squiggle-arrow",
 							items: [],
-							label: "new",
+							label: "recent",
 						},
 					],
 				},
@@ -286,7 +284,6 @@ export const docsConfig: DocsConfig = {
 							title: "Hover Video Player",
 							href: "/docs/components/hover-video-player",
 							items: [],
-							// label: "recent",
 						},
 						{
 							title: "Bg Media Hero",
@@ -302,7 +299,6 @@ export const docsConfig: DocsConfig = {
 							title: "YouTube Video Player",
 							href: "/docs/components/youtube-video-player",
 							items: [],
-							// label: "recent",
 						},
 					],
 				},
@@ -313,7 +309,6 @@ export const docsConfig: DocsConfig = {
 							title: "Text Gif",
 							href: "/docs/components/text-gif",
 							items: [],
-							// label: "recent",
 						},
 						{
 							title: "Gradient Heading",
