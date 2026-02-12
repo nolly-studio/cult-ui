@@ -3,11 +3,12 @@
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
 	ArrowRight02Icon,
-	GridIcon,
+	Layers01Icon,
+	ShapeCollectionIcon,
 	SparklesIcon,
 } from "@hugeicons/core-free-icons";
 import Image from "next/image";
-import Link from "next/link";
+
 import type { SVGProps } from "react";
 import { useId, useState } from "react";
 import {
@@ -17,6 +18,7 @@ import {
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+import { PixelHeading } from "./pixel-heading-word";
 
 // ---------------------------------------------------------------------------
 // Inline SVG Icon Components (only the icons used by the 6 featured blocks)
@@ -1031,7 +1033,7 @@ export function WhatsIncluded() {
 
 	return (
 		<TooltipProvider>
-			<section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+			<section className="mx-auto max-w-6xl md:px-4 py-16 md:py-24">
 				{/* Section Header */}
 				<div className="mb-12 text-center">
 					{/* Section divider */}
@@ -1039,8 +1041,8 @@ export function WhatsIncluded() {
 						<div className="h-px flex-1 bg-gradient-to-r from-transparent to-border" />
 						<div className="flex items-center gap-2 border border-border bg-background px-4 py-2">
 							<HugeiconsIcon
-								className="size-3.5 text-muted-foreground"
-								icon={GridIcon}
+								className="size-3.5 md:size-4 fill-blue-400/60"
+								icon={ShapeCollectionIcon}
 							/>
 							<span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
 								AI SDK AGENTS
@@ -1049,11 +1051,18 @@ export function WhatsIncluded() {
 						<div className="h-px flex-1 bg-gradient-to-l from-transparent to-border" />
 					</div>
 
-					<h2 className="mx-auto mb-4 max-w-3xl font-medium text-3xl tracking-tight md:text-4xl lg:text-5xl">
+					<PixelHeading
+						as="h2"
+						className="mx-auto mb-4 max-w-3xl font-medium text-3xl tracking-tight md:text-4xl lg:text-5xl"
+						initialFont="square"
+						hoverFont="line"
+						disableCycling
+						disableHover
+					>
 						{TOTAL_PATTERN_COUNT}+ AI Patterns
-					</h2>
+					</PixelHeading>
 
-					<p className="mx-auto max-w-md font-light text-base text-foreground/70 leading-relaxed md:text-lg">
+					<p className="mx-auto max-w-md px-4 md:px-0 font-light text-base text-foreground/70 leading-relaxed md:text-lg">
 						Live interactive previews. Copy and paste what you need. Install
 						with shadcn, download as Nextjs app, or open in v0.
 					</p>
@@ -1099,24 +1108,28 @@ export function WhatsIncluded() {
 					<div className="mb-12 text-center">
 						{/* Index marker */}
 						<div className="mx-auto mb-6 flex max-w-2xl items-center justify-center gap-4">
-							<div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-							<div className="flex items-center gap-2 border border-primary/30 bg-primary/5 px-3 py-1.5">
+							<div className="flex items-center gap-2 border border-primary/30  px-3 py-1.5">
 								<HugeiconsIcon
-									className="size-4 text-primary"
-									icon={SparklesIcon}
+									className="size-3.5 md:size-4 fill-cyan-400/40"
+									icon={Layers01Icon}
 								/>
 								<span className="font-mono text-[11px] text-primary uppercase tracking-wider">
 									AI SDK AGENT TEMPLATES
 								</span>
 							</div>
-							<div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 						</div>
 
-						<h2 className="mx-auto mb-4 max-w-3xl font-medium text-3xl tracking-tight md:text-4xl lg:text-5xl">
+						<PixelHeading
+							as="h2"
+							className="mx-auto mb-4 max-w-3xl font-medium text-3xl tracking-tight md:text-4xl lg:text-5xl"
+							initialFont="square"
+							disableCycling
+							disableHover
+						>
 							{TEMPLATES.length} Full-Stack Templates
-						</h2>
+						</PixelHeading>
 
-						<p className="mx-auto max-w-2xl font-light text-base text-foreground/70 leading-relaxed md:text-lg">
+						<p className="mx-auto px-4 md:px-0 max-w-2xl font-light text-base text-foreground/70 leading-relaxed md:text-lg">
 							Production-ready starter templates with authentication, payments,
 							databases, and AI integrations. Ship faster with complete
 							codebases.

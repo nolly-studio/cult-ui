@@ -1008,6 +1008,31 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "ai-instructions": {
+    name: "ai-instructions",
+    description:
+      "Manage and toggle AI instructions with a popover, search, and create-dialog",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/ai-instructions.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/ai-instructions.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "intro-disclosure": {
     name: "intro-disclosure",
     description:
@@ -1323,6 +1348,112 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/default/ui/expandable-screen.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "pixel-heading-character": {
+    name: "pixel-heading-character",
+    description:
+      "Per-character pixel-font heading with four animation modes using Geist pixel fonts",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/pixel-heading-character.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/ui/pixel-heading-character.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "pixel-heading-word": {
+    name: "pixel-heading-word",
+    description:
+      "Whole-word pixel-font heading that swaps or cycles fonts on hover using Geist pixel fonts",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/pixel-heading-word.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/pixel-heading-word.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "pixel-paragraph-words-inverse": {
+    name: "pixel-paragraph-words-inverse",
+    description:
+      "Paragraph in pixel font where specific words escape into interactive sans/mono with hover swap or cycle",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/pixel-paragraph-words-inverse.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/ui/pixel-paragraph-words-inverse.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "pixel-paragraph-words": {
+    name: "pixel-paragraph-words",
+    description:
+      "Paragraph where specific words render in an interactive pixel font that swaps or cycles on hover",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/pixel-paragraph-words.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/ui/pixel-paragraph-words.tsx"
+      )
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -2351,6 +2482,32 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "ai-instructions-demo": {
+    name: "ai-instructions-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["ai-instructions"],
+    files: [
+      {
+        path: "registry/default/example/ai-instructions-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/ai-instructions-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "intro-disclosure-demo": {
     name: "intro-disclosure-demo",
     description: "",
@@ -2694,6 +2851,110 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/default/example/expandable-screen-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "pixel-heading-character-demo": {
+    name: "pixel-heading-character-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["pixel-heading-character"],
+    files: [
+      {
+        path: "registry/default/example/pixel-heading-character-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/pixel-heading-character-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "pixel-heading-word-demo": {
+    name: "pixel-heading-word-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["pixel-heading-word"],
+    files: [
+      {
+        path: "registry/default/example/pixel-heading-word-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/pixel-heading-word-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "pixel-paragraph-words-inverse-demo": {
+    name: "pixel-paragraph-words-inverse-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["pixel-paragraph-words-inverse"],
+    files: [
+      {
+        path: "registry/default/example/pixel-paragraph-words-inverse-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/pixel-paragraph-words-inverse-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "pixel-paragraph-words-demo": {
+    name: "pixel-paragraph-words-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["pixel-paragraph-words"],
+    files: [
+      {
+        path: "registry/default/example/pixel-paragraph-words-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/pixel-paragraph-words-demo.tsx"
       )
       const exportName =
         Object.keys(mod).find(

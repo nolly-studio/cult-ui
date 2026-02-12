@@ -9,17 +9,18 @@ import cultSeoOg from "@/components/landing/assets/cult-seo-og.png";
 import manifestBottomLeft from "@/components/landing/assets/manifest-library.png";
 import runeHero from "@/components/landing/assets/rune-hero.png";
 import travelStash4 from "@/components/landing/assets/travel-stash.png";
+import { PixelHeading } from "./pixel-heading-word";
 
 export function TemplateGrid() {
 	return (
-		<section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+		<section className="mx-auto max-w-6xl md:px-4 py-16 md:py-24">
 			{/* Section Header */}
 			<div className="mb-12 text-center">
 				{/* Sub-section marker */}
 				<div className="mx-auto mb-8 flex max-w-xl items-center justify-center gap-4">
 					<div className="h-px flex-1 bg-border/60" />
 					<div className="flex items-center gap-2 border border-border/60 bg-background px-3 py-1.5">
-						<IceCream className="size-3.5 text-muted-foreground" />
+						<IceCream className="size-3.5 md:size-4 fill-sky-400/50" />
 						<span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
 							TEMPLATES
 						</span>
@@ -27,13 +28,20 @@ export function TemplateGrid() {
 					<div className="h-px flex-1 bg-border/60" />
 				</div>
 
-				<h2 className="mx-auto mb-4 max-w-3xl font-medium text-3xl tracking-tight md:text-4xl lg:text-5xl">
+				<PixelHeading
+					as="h2"
+					className="mx-auto mb-4 max-w-3xl font-medium text-3xl tracking-tight md:text-4xl lg:text-5xl"
+					initialFont="square"
+					disableCycling
+					disableHover
+				>
 					{TEMPLATES_GRID.length} Starter Templates
-				</h2>
+				</PixelHeading>
 
-			<p className="mx-auto max-w-md font-light text-base text-foreground/70 leading-relaxed md:text-lg">
-				Production-ready starter templates with authentication, payments, databases, and AI integrations. Ship faster with complete codebases.
-			</p>
+				<p className="mx-auto px-4 md:px-0 max-w-md font-light text-base text-foreground/70 leading-relaxed md:text-lg">
+					Production-ready starter templates with auth, payments, supabase db,
+					and more.
+				</p>
 			</div>
 
 			{/* Templates Grid */}

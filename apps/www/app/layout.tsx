@@ -4,7 +4,9 @@ import { Metadata, Viewport } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 import { siteConfig } from "@/config/site";
-import { fontSans } from "@/lib/fonts";
+// import { fontSans } from "@/lib/fonts";
+import { GeistSans } from "geist/font/sans";
+
 import { cn } from "@/lib/utils";
 import { Toaster as NewYorkSonner } from "@/components/ui/sonner";
 import {
@@ -16,6 +18,14 @@ import { AnimatedBackgroundGuides } from "@/components/background-guides";
 import { ThemeProvider } from "@/components/providers";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { ThemeSwitcher } from "@/components/theme-switcher";
+import {
+	GeistPixelSquare,
+	GeistPixelGrid,
+	GeistPixelCircle,
+	GeistPixelTriangle,
+	GeistPixelLine,
+} from "geist/font/pixel";
+import { GeistMono } from "geist/font/mono";
 
 export const metadata: Metadata = {
 	title: {
@@ -94,7 +104,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
 				<body
 					className={cn(
 						"relative min-h-screen bg-background font-sans antialiased",
-						fontSans.variable,
+						GeistPixelSquare.variable,
+						GeistPixelGrid.variable,
+						GeistPixelCircle.variable,
+						GeistPixelTriangle.variable,
+						GeistPixelLine.variable,
+						GeistSans.variable,
+						GeistMono.variable,
 					)}
 				>
 					{/* <AnimatedBackgroundGuides /> */}

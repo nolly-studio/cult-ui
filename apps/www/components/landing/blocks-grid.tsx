@@ -1,16 +1,17 @@
 import { SVGProps } from "react";
 import { ArrowRight, Shapes } from "lucide-react";
+import { PixelHeading } from "./pixel-heading-word";
 
 export function MiniBlocksGrid() {
 	return (
-		<section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+		<section className="mx-auto max-w-6xl md:px-4 py-16 md:py-12">
 			{/* Section Header */}
 			<div className="mb-12 text-center">
 				{/* Section divider */}
 				<div className="mx-auto mb-8 flex max-w-2xl items-center justify-center gap-4">
 					<div className="h-px flex-1 bg-gradient-to-r from-transparent to-border" />
 					<div className="flex items-center gap-2 border border-border bg-background px-4 py-2">
-						<Shapes className="size-3.5 text-muted-foreground" />
+						<Shapes className="size-3.5 md:size-4 fill-pink-400/50" />
 						<span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
 							CULT PRO
 						</span>
@@ -18,12 +19,19 @@ export function MiniBlocksGrid() {
 					<div className="h-px flex-1 bg-gradient-to-l from-transparent to-border" />
 				</div>
 
-				<h2 className="mx-auto mb-4 max-w-3xl font-medium text-3xl tracking-tight md:text-4xl lg:text-5xl">
+				<PixelHeading
+					as="h2"
+					className="mx-auto mb-4 max-w-3xl font-medium text-3xl tracking-tight md:text-4xl lg:text-5xl"
+					initialFont="square"
+					disableCycling
+					disableHover
+				>
 					Premium Cult Blocks
-				</h2>
+				</PixelHeading>
 
-				<p className="mx-auto max-w-md font-light text-base text-foreground/70 leading-relaxed md:text-lg">
-					Premium full-stack blocks and marketing patterns. Copy and paste into your project.
+				<p className="mx-auto max-w-md  font-light text-base text-foreground/70 leading-relaxed md:text-lg">
+					Rad full-stack blocks and marketing patterns. <br /> Copy and paste
+					into your project.
 				</p>
 			</div>
 

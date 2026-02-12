@@ -717,4 +717,56 @@ export const ui: Registry["items"] = [
     description:
       "A full-screen expandable component with morphing animations using shared layout IDs for smooth transitions",
   },
+  {
+    name: "pixel-heading-character",
+    type: "registry:ui",
+    dependencies: ["geist"],
+    files: [
+      {
+        path: "registry/default/ui/pixel-heading-character.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Per-character pixel-font heading with four animation modes using Geist pixel fonts",
+  },
+  {
+    name: "pixel-heading-word",
+    type: "registry:ui",
+    dependencies: ["geist"],
+    files: [
+      {
+        path: "registry/default/ui/pixel-heading-word.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Whole-word pixel-font heading that swaps or cycles fonts on hover using Geist pixel fonts",
+  },
+  {
+    name: "pixel-paragraph-words-inverse",
+    type: "registry:ui",
+    dependencies: ["geist"],
+    files: [
+      {
+        path: "registry/default/ui/pixel-paragraph-words-inverse.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Paragraph in pixel font where specific words escape into interactive sans/mono with hover swap or cycle",
+  },
+  {
+    name: "pixel-paragraph-words",
+    type: "registry:ui",
+    dependencies: ["geist"],
+    files: [
+      {
+        path: "registry/default/ui/pixel-paragraph-words.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Paragraph where specific words render in an interactive pixel font that swaps or cycles on hover",
+  },
 ]

@@ -643,9 +643,7 @@ export function InstructionsHoverCard({
 }: InstructionsHoverCardProps) {
   return (
     <HoverCard openDelay={300} closeDelay={100}>
-      <HoverCardTrigger>
-        {children}
-      </HoverCardTrigger>
+      <HoverCardTrigger>{children}</HoverCardTrigger>
       <HoverCardContent
         align="start"
         className="w-72"

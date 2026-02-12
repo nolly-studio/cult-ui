@@ -615,4 +615,48 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "pixel-heading-character-demo",
+    type: "registry:component",
+    registryDependencies: ["pixel-heading-character"],
+    files: [
+      {
+        path: "registry/default/example/pixel-heading-character-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "pixel-heading-word-demo",
+    type: "registry:component",
+    registryDependencies: ["pixel-heading-word"],
+    files: [
+      {
+        path: "registry/default/example/pixel-heading-word-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "pixel-paragraph-words-inverse-demo",
+    type: "registry:component",
+    registryDependencies: ["pixel-paragraph-words-inverse"],
+    files: [
+      {
+        path: "registry/default/example/pixel-paragraph-words-inverse-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "pixel-paragraph-words-demo",
+    type: "registry:component",
+    registryDependencies: ["pixel-paragraph-words"],
+    files: [
+      {
+        path: "registry/default/example/pixel-paragraph-words-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ]

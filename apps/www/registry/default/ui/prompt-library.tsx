@@ -47,7 +47,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { Textarea } from "@/components/ui/textarea"
-
 import { useOptionalPromptInputController } from "@/components/ai-elements/prompt-input"
 
 // ============================================================================
@@ -607,9 +606,7 @@ export function PromptLibraryHoverCard({
 }: PromptLibraryHoverCardProps) {
   return (
     <HoverCard openDelay={300} closeDelay={100}>
-      <HoverCardTrigger>
-        {children}
-      </HoverCardTrigger>
+      <HoverCardTrigger>{children}</HoverCardTrigger>
       <HoverCardContent
         align="start"
         className="w-80"

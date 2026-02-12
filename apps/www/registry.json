@@ -572,6 +572,21 @@
       "description": "Browse, insert, and manage prompt templates with categories and custom prompts"
     },
     {
+      "name": "ai-instructions",
+      "type": "registry:ui",
+      "dependencies": [
+        "@hugeicons/core-free-icons",
+        "@hugeicons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/ai-instructions.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Manage and toggle AI instructions with a popover, search, and create-dialog"
+    },
+    {
       "name": "intro-disclosure",
       "type": "registry:ui",
       "registryDependencies": [
@@ -769,6 +784,62 @@
         }
       ],
       "description": "A full-screen expandable component with morphing animations using shared layout IDs for smooth transitions"
+    },
+    {
+      "name": "pixel-heading-character",
+      "type": "registry:ui",
+      "dependencies": [
+        "geist"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/pixel-heading-character.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Per-character pixel-font heading with four animation modes using Geist pixel fonts"
+    },
+    {
+      "name": "pixel-heading-word",
+      "type": "registry:ui",
+      "dependencies": [
+        "geist"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/pixel-heading-word.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Whole-word pixel-font heading that swaps or cycles fonts on hover using Geist pixel fonts"
+    },
+    {
+      "name": "pixel-paragraph-words-inverse",
+      "type": "registry:ui",
+      "dependencies": [
+        "geist"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/pixel-paragraph-words-inverse.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Paragraph in pixel font where specific words escape into interactive sans/mono with hover swap or cycle"
+    },
+    {
+      "name": "pixel-paragraph-words",
+      "type": "registry:ui",
+      "dependencies": [
+        "geist"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/pixel-paragraph-words.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Paragraph where specific words render in an interactive pixel font that swaps or cycles on hover"
     },
     {
       "name": "text-animate-demo",
@@ -1297,6 +1368,19 @@
       ]
     },
     {
+      "name": "ai-instructions-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "ai-instructions"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/ai-instructions-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "intro-disclosure-demo",
       "type": "registry:component",
       "registryDependencies": [
@@ -1475,6 +1559,58 @@
       "files": [
         {
           "path": "registry/default/example/expandable-screen-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pixel-heading-character-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "pixel-heading-character"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/pixel-heading-character-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pixel-heading-word-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "pixel-heading-word"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/pixel-heading-word-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pixel-paragraph-words-inverse-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "pixel-paragraph-words-inverse"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/pixel-paragraph-words-inverse-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pixel-paragraph-words-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "pixel-paragraph-words"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/pixel-paragraph-words-demo.tsx",
           "type": "registry:component"
         }
       ]

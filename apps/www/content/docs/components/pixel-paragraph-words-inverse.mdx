@@ -1,0 +1,230 @@
+---
+title: Pixel Paragraph Inverse
+description: Paragraph rendered in a pixel font where specific words escape into a sans or mono font.
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="pixel-paragraph-words-inverse-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="Interactive playground"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/pixel-paragraph-words-inverse.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the `geist` font package.</Step>
+
+```bash
+npm install geist
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="pixel-paragraph-words-inverse" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Font Setup
+
+This component requires the **Geist Pixel fonts**. Follow these steps to configure them in your project.
+
+### 1. Register font variables in your root layout
+
+Import the pixel font variants from `geist/font/pixel` and apply their CSS variable classes to `<body>`:
+
+```tsx title="app/layout.tsx"
+import { GeistSans } from "geist/font/sans"
+import { GeistMono } from "geist/font/mono"
+import {
+  GeistPixelSquare,
+  GeistPixelGrid,
+  GeistPixelCircle,
+  GeistPixelTriangle,
+  GeistPixelLine,
+} from "geist/font/pixel"
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body
+        className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelSquare.variable} ${GeistPixelGrid.variable} ${GeistPixelCircle.variable} ${GeistPixelTriangle.variable} ${GeistPixelLine.variable}`}
+      >
+        {children}
+      </body>
+    </html>
+  )
+}
+```
+
+### 2. Map CSS variables in your Tailwind CSS theme
+
+```css title="globals.css (Tailwind v4)"
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-pixel-square: var(--font-geist-pixel-square);
+  --font-pixel-grid: var(--font-geist-pixel-grid);
+  --font-pixel-circle: var(--font-geist-pixel-circle);
+  --font-pixel-triangle: var(--font-geist-pixel-triangle);
+  --font-pixel-line: var(--font-geist-pixel-line);
+}
+```
+
+For **Tailwind v3**, use the `extend` key in `tailwind.config.ts`:
+
+```ts title="tailwind.config.ts (Tailwind v3)"
+export default {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-geist-sans)"],
+        mono: ["var(--font-geist-mono)"],
+        "pixel-square": ["var(--font-geist-pixel-square)"],
+        "pixel-grid": ["var(--font-geist-pixel-grid)"],
+        "pixel-circle": ["var(--font-geist-pixel-circle)"],
+        "pixel-triangle": ["var(--font-geist-pixel-triangle)"],
+        "pixel-line": ["var(--font-geist-pixel-line)"],
+      },
+    },
+  },
+}
+```
+
+## Usage
+
+```tsx
+import { PixelParagraphInverse } from "@/components/ui/pixel-paragraph-words-inverse"
+```
+
+### Basic
+
+Base text in pixel, specific words escape to sans:
+
+```tsx
+<PixelParagraphInverse
+  text="54+ animated components and effects. Free, open source, and built to drop into any shadcn/ui project."
+  plainWords={["animated", "shadcn/ui"]}
+  plainFont="sans"
+  pixelFont="square"
+  className="text-lg text-muted-foreground"
+/>
+```
+
+### Mono Escape
+
+Use mono instead of sans for the escaped words:
+
+```tsx
+<PixelParagraphInverse
+  text="Build beautiful interfaces with pixel-perfect typography."
+  plainWords={["beautiful", "pixel-perfect"]}
+  plainFont="mono"
+  className="text-lg text-muted-foreground"
+/>
+```
+
+### Different Pixel Fonts
+
+Change the base pixel font:
+
+```tsx
+<PixelParagraphInverse
+  text="Grid-based pixel typography with highlighted words."
+  plainWords={["highlighted"]}
+  pixelFont="grid"
+  plainFont="sans"
+  className="text-lg"
+/>
+```
+
+### Styling Plain Words
+
+Apply custom classes to the escaped words:
+
+```tsx
+<PixelParagraphInverse
+  text="Important words can be visually distinct from the base text."
+  plainWords={["Important", "visually distinct"]}
+  plainFont="sans"
+  plainWordClassName="text-foreground font-semibold"
+  className="text-lg text-muted-foreground"
+/>
+```
+
+### As a Different Element
+
+Render as a `<span>` or `<div>` instead of `<p>`:
+
+```tsx
+<PixelParagraphInverse
+  as="span"
+  text="Inline pixel text with plain escapes."
+  plainWords={["plain escapes"]}
+  className="text-sm"
+/>
+```
+
+## API Reference
+
+### PixelParagraphInverse Props
+
+| Prop                 | Type                                                         | Default     | Description                                                                                |
+| -------------------- | ------------------------------------------------------------ | ----------- | ------------------------------------------------------------------------------------------ |
+| `text`               | `string`                                                     | —           | The paragraph text to render                                                                |
+| `plainWords`         | `string[]`                                                   | `[]`        | Words/phrases to render in plain (sans/mono) font. Matching is case-sensitive, longest-first |
+| `as`                 | `"p" \| "span" \| "div"`                                    | `"p"`       | The wrapper element to render                                                               |
+| `pixelFont`          | `"square" \| "grid" \| "circle" \| "triangle" \| "line"`    | `"square"`  | The pixel font used for the base text                                                       |
+| `plainFont`          | `"sans" \| "mono"`                                           | `"sans"`    | The font for escaped words                                                                  |
+| `plainWordClassName` | `string`                                                     | —           | Extra className applied to each plain-word span                                             |
+| `className`          | `string`                                                     | —           | Additional CSS classes applied to the wrapper element                                        |
+
+## How It Works
+
+1. The `text` string is split into alternating segments: **pixel** (base) and **plain** (escaped words)
+2. Pixel segments render in the chosen pixel font as static text
+3. Plain segments render as `<span>` elements with the chosen plain font class (`font-sans` or `font-mono`)
+4. Matching is **longest-first** — if `plainWords` contains both `"ui"` and `"shadcn/ui"`, the longer phrase takes priority
+5. Matching is **case-sensitive** — `"React"` will not match `"react"`
+
+## Features
+
+- **Inverse design** — base text is pixel, highlighted words are sans/mono
+- **Static font assignment** — no hover/cycling complexity, just clean font mixing
+- **Server-compatible** — no `"use client"` needed, no state or effects
+- **Five pixel font variants** — Square, Grid, Circle, Triangle, and Line
+- **Longest-match-first** — multi-word phrases match correctly without partial collisions
+- **Composable** — renders as `<p>`, `<span>`, or `<div>` with full className support
+
+## Pixel Paragraph vs Pixel Paragraph Inverse
+
+| Feature          | Pixel Paragraph                              | Pixel Paragraph Inverse                         |
+| ---------------- | -------------------------------------------- | ----------------------------------------------- |
+| Base text        | Normal font (sans)                           | Pixel font                                       |
+| Highlighted words| Pixel font                                   | Sans/mono font                                   |
+| Best for         | Accenting key words in normal body text      | Full pixel paragraphs with readable escapes      |

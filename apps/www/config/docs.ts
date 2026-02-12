@@ -306,6 +306,30 @@ export const docsConfig: DocsConfig = {
 					title: "Typography & Text",
 					items: [
 						{
+							title: "Pixel Heading (Character)",
+							href: "/docs/components/pixel-heading-character",
+							items: [],
+							label: "new",
+						},
+						{
+							title: "Pixel Heading (Word)",
+							href: "/docs/components/pixel-heading-word",
+							items: [],
+							label: "new",
+						},
+						{
+							title: "Pixel Paragraph",
+							href: "/docs/components/pixel-paragraph-words",
+							items: [],
+							label: "new",
+						},
+						{
+							title: "Pixel Paragraph Inverse",
+							href: "/docs/components/pixel-paragraph-words-inverse",
+							items: [],
+							label: "new",
+						},
+						{
 							title: "Text Gif",
 							href: "/docs/components/text-gif",
 							items: [],

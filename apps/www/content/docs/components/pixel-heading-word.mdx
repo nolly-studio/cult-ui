@@ -1,0 +1,262 @@
+---
+title: Pixel Heading (Word)
+description: Whole-word pixel-font heading that swaps between two fonts or cycles through all five on hover. Uses Geist pixel fonts with zero animation dependencies.
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="pixel-heading-word-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="Interactive playground"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/pixel-heading-word.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the `geist` font package.</Step>
+
+```bash
+npm install geist
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="pixel-heading-word" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Font Setup
+
+This component requires the **Geist Pixel fonts**. Follow these steps to configure them in your project.
+
+### 1. Register font variables in your root layout
+
+Import the pixel font variants from `geist/font/pixel` and apply their CSS variable classes to `<body>`:
+
+```tsx title="app/layout.tsx"
+import { GeistSans } from "geist/font/sans"
+import { GeistMono } from "geist/font/mono"
+import {
+  GeistPixelSquare,
+  GeistPixelGrid,
+  GeistPixelCircle,
+  GeistPixelTriangle,
+  GeistPixelLine,
+} from "geist/font/pixel"
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body
+        className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelSquare.variable} ${GeistPixelGrid.variable} ${GeistPixelCircle.variable} ${GeistPixelTriangle.variable} ${GeistPixelLine.variable}`}
+      >
+        {children}
+      </body>
+    </html>
+  )
+}
+```
+
+Each import exposes a `.variable` property that injects a CSS custom property:
+
+| Import                | CSS Variable                    |
+| --------------------- | ------------------------------- |
+| `GeistSans`           | `--font-geist-sans`            |
+| `GeistMono`           | `--font-geist-mono`            |
+| `GeistPixelSquare`    | `--font-geist-pixel-square`    |
+| `GeistPixelGrid`      | `--font-geist-pixel-grid`      |
+| `GeistPixelCircle`    | `--font-geist-pixel-circle`    |
+| `GeistPixelTriangle`  | `--font-geist-pixel-triangle`  |
+| `GeistPixelLine`      | `--font-geist-pixel-line`      |
+
+### 2. Map CSS variables in your Tailwind CSS theme
+
+Add the font mappings to your global CSS file so the `font-pixel-*` utility classes resolve correctly:
+
+```css title="globals.css (Tailwind v4)"
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-pixel-square: var(--font-geist-pixel-square);
+  --font-pixel-grid: var(--font-geist-pixel-grid);
+  --font-pixel-circle: var(--font-geist-pixel-circle);
+  --font-pixel-triangle: var(--font-geist-pixel-triangle);
+  --font-pixel-line: var(--font-geist-pixel-line);
+}
+```
+
+For **Tailwind v3**, use the `extend` key in `tailwind.config.ts`:
+
+```ts title="tailwind.config.ts (Tailwind v3)"
+export default {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-geist-sans)"],
+        mono: ["var(--font-geist-mono)"],
+        "pixel-square": ["var(--font-geist-pixel-square)"],
+        "pixel-grid": ["var(--font-geist-pixel-grid)"],
+        "pixel-circle": ["var(--font-geist-pixel-circle)"],
+        "pixel-triangle": ["var(--font-geist-pixel-triangle)"],
+        "pixel-line": ["var(--font-geist-pixel-line)"],
+      },
+    },
+  },
+}
+```
+
+## Usage
+
+```tsx
+import { PixelHeading } from "@/components/ui/pixel-heading-word"
+```
+
+### Swap Mode
+
+Set `initialFont` and `hoverFont` to swap between two specific fonts on hover:
+
+```tsx
+<PixelHeading initialFont="square" hoverFont="circle" className="text-6xl">
+  Swap on hover
+</PixelHeading>
+```
+
+### Cycle Mode
+
+Omit `hoverFont` to cycle through every pixel font on hover:
+
+```tsx
+<PixelHeading initialFont="square" className="text-6xl">
+  Cycle on hover
+</PixelHeading>
+```
+
+### Custom Cycle Speed
+
+Control how fast fonts cycle in cycle mode:
+
+```tsx
+<PixelHeading cycleInterval={150} className="text-6xl">
+  Fast cycle
+</PixelHeading>
+```
+
+### Show Font Label
+
+Display the current font name beneath the heading:
+
+```tsx
+<PixelHeading showLabel className="text-6xl">
+  With label
+</PixelHeading>
+```
+
+### Custom Heading Level
+
+Render as any heading element (`h1`–`h6`):
+
+```tsx
+<PixelHeading as="h3" className="text-4xl">
+  H3 heading
+</PixelHeading>
+```
+
+### Font Change Callback
+
+Listen for font index changes:
+
+```tsx
+<PixelHeading
+  onFontIndexChange={(index) => console.log("Font index:", index)}
+  className="text-6xl"
+>
+  With callback
+</PixelHeading>
+```
+
+## API Reference
+
+### PixelHeading Props
+
+| Prop                | Type                                              | Default     | Description                                                             |
+| ------------------- | ------------------------------------------------- | ----------- | ----------------------------------------------------------------------- |
+| `as`                | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"h1"`      | HTML heading level to render                                             |
+| `initialFont`       | `"square" \| "grid" \| "circle" \| "triangle" \| "line"` | `"square"` | The resting pixel font displayed by default                       |
+| `hoverFont`         | `"square" \| "grid" \| "circle" \| "triangle" \| "line"` | —          | Font to show on hover. When set, swaps instead of cycling          |
+| `cycleInterval`     | `number`                                          | `300`       | Interval in ms between font cycles on hover (cycle mode only)            |
+| `defaultFontIndex`  | `number`                                          | `0`         | Initial font index (0–4). Ignored when `initialFont` is set             |
+| `showLabel`         | `boolean`                                         | `false`     | Show the active font name label beneath the heading                      |
+| `onFontIndexChange` | `(index: number) => void`                         | —           | Callback fired when the active font changes                              |
+| `className`         | `string`                                          | —           | Additional CSS classes applied to the heading element                     |
+
+### Swap Mode vs Cycle Mode
+
+| Behavior       | Swap Mode                                    | Cycle Mode                                           |
+| -------------- | -------------------------------------------- | ---------------------------------------------------- |
+| Configuration  | Set both `initialFont` and `hoverFont`       | Set `initialFont` only (omit `hoverFont`)            |
+| On hover       | Instantly swaps to `hoverFont`               | Cycles through all 5 fonts at `cycleInterval` speed  |
+| On leave       | Returns to `initialFont`                     | Stops cycling, stays on last font                    |
+| Keyboard       | No keyboard step (instant swap)              | Enter/Space advances one font                        |
+
+### Available Pixel Fonts
+
+| Font Name  | Tailwind Class         | CSS Variable                    |
+| ---------- | ---------------------- | ------------------------------- |
+| `square`   | `font-pixel-square`    | `--font-geist-pixel-square`    |
+| `grid`     | `font-pixel-grid`      | `--font-geist-pixel-grid`      |
+| `circle`   | `font-pixel-circle`    | `--font-geist-pixel-circle`    |
+| `triangle` | `font-pixel-triangle`  | `--font-geist-pixel-triangle`  |
+| `line`     | `font-pixel-line`      | `--font-geist-pixel-line`      |
+
+## Features
+
+- **Two interaction modes** — swap between two fonts or cycle through all five
+- **Whole-word animation** — the entire heading changes font at once for a bold effect
+- **Accessible** — keyboard support (Enter/Space to step), focus management, and `aria-live` label
+- **Zero animation dependencies** — uses CSS transitions only, no motion library needed
+- **Composable** — renders as any heading level with full className support
+
+## Pixel Heading (Character) vs Pixel Heading (Word)
+
+| Feature                | Character variant                          | Word variant                       |
+| ---------------------- | ------------------------------------------ | ---------------------------------- |
+| Animation granularity  | Each character animates independently      | Whole heading changes at once      |
+| Modes                  | uniform, multi, wave, random               | swap, cycle                        |
+| Auto-play              | Yes                                        | No (hover/focus only)              |
+| Prefix support         | Yes                                        | No                                 |
+| Character isolation    | Yes                                        | No                                 |
+| Stagger control        | Yes                                        | N/A                                |
+| Best for               | Hero text, large display headings          | Buttons, labels, smaller headings  |
+
+## Notes
+
+- The component uses five Geist pixel font variants: Square, Grid, Circle, Triangle, and Line
+- In swap mode, the transition between fonts uses a CSS `transition-all duration-150` for smoothness
+- In cycle mode, fonts advance every `cycleInterval` ms while the heading is hovered or focused
+- Keyboard users can step through fonts one at a time with Enter or Space (cycle mode only)
+- The `showLabel` feature uses an `<output>` element with `aria-live="polite"` for screen reader announcements

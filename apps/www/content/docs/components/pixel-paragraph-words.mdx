@@ -1,0 +1,223 @@
+---
+title: Pixel Paragraph
+description: Paragraph where specific words render in a pixel font while the rest of the text stays in the normal typeface.
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="pixel-paragraph-words-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="Interactive playground"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/pixel-paragraph-words.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the `geist` font package.</Step>
+
+```bash
+npm install geist
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="pixel-paragraph-words" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Font Setup
+
+This component requires the **Geist Pixel fonts**. Follow these steps to configure them in your project.
+
+### 1. Register font variables in your root layout
+
+Import the pixel font variants from `geist/font/pixel` and apply their CSS variable classes to `<body>`:
+
+```tsx title="app/layout.tsx"
+import { GeistSans } from "geist/font/sans"
+import { GeistMono } from "geist/font/mono"
+import {
+  GeistPixelSquare,
+  GeistPixelGrid,
+  GeistPixelCircle,
+  GeistPixelTriangle,
+  GeistPixelLine,
+} from "geist/font/pixel"
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body
+        className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelSquare.variable} ${GeistPixelGrid.variable} ${GeistPixelCircle.variable} ${GeistPixelTriangle.variable} ${GeistPixelLine.variable}`}
+      >
+        {children}
+      </body>
+    </html>
+  )
+}
+```
+
+### 2. Map CSS variables in your Tailwind CSS theme
+
+```css title="globals.css (Tailwind v4)"
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-pixel-square: var(--font-geist-pixel-square);
+  --font-pixel-grid: var(--font-geist-pixel-grid);
+  --font-pixel-circle: var(--font-geist-pixel-circle);
+  --font-pixel-triangle: var(--font-geist-pixel-triangle);
+  --font-pixel-line: var(--font-geist-pixel-line);
+}
+```
+
+For **Tailwind v3**, use the `extend` key in `tailwind.config.ts`:
+
+```ts title="tailwind.config.ts (Tailwind v3)"
+export default {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-geist-sans)"],
+        mono: ["var(--font-geist-mono)"],
+        "pixel-square": ["var(--font-geist-pixel-square)"],
+        "pixel-grid": ["var(--font-geist-pixel-grid)"],
+        "pixel-circle": ["var(--font-geist-pixel-circle)"],
+        "pixel-triangle": ["var(--font-geist-pixel-triangle)"],
+        "pixel-line": ["var(--font-geist-pixel-line)"],
+      },
+    },
+  },
+}
+```
+
+## Usage
+
+```tsx
+import { PixelParagraph } from "@/components/ui/pixel-paragraph-words"
+```
+
+### Basic
+
+Highlight specific words in a pixel font:
+
+```tsx
+<PixelParagraph
+  text="54+ animated components and effects. Free, open source, and built to drop into any shadcn/ui project."
+  pixelWords={["animated", "shadcn/ui"]}
+  font="square"
+  className="text-lg text-muted-foreground"
+/>
+```
+
+### Different Pixel Fonts
+
+Choose any of the five pixel font variants:
+
+```tsx
+<PixelParagraph
+  text="Triangle-based pixel typography with highlighted words."
+  pixelWords={["Triangle-based", "highlighted"]}
+  font="triangle"
+  className="text-lg"
+/>
+```
+
+### Styling Pixel Words
+
+Apply custom classes to the pixel words:
+
+```tsx
+<PixelParagraph
+  text="Important words stand out from the base text."
+  pixelWords={["Important", "stand out"]}
+  font="grid"
+  pixelWordClassName="text-foreground font-semibold"
+  className="text-lg text-muted-foreground"
+/>
+```
+
+### As a Different Element
+
+Render as a `<span>` or `<div>` instead of `<p>`:
+
+```tsx
+<PixelParagraph
+  as="div"
+  text="Block-level pixel text with highlighted words."
+  pixelWords={["highlighted words"]}
+  className="text-sm"
+/>
+```
+
+## API Reference
+
+### PixelParagraph Props
+
+| Prop                | Type                                                         | Default     | Description                                                                           |
+| ------------------- | ------------------------------------------------------------ | ----------- | ------------------------------------------------------------------------------------- |
+| `text`              | `string`                                                     | —           | The paragraph text to render                                                           |
+| `pixelWords`        | `string[]`                                                   | `[]`        | Words/phrases to render in a pixel font. Matching is case-sensitive, longest-first     |
+| `as`                | `"p" \| "span" \| "div"`                                    | `"p"`       | The wrapper element to render                                                          |
+| `font`              | `"square" \| "grid" \| "circle" \| "triangle" \| "line"`    | `"square"`  | The pixel font for highlighted words                                                   |
+| `pixelWordClassName`| `string`                                                     | —           | Extra className applied to each pixel-word span                                        |
+| `className`         | `string`                                                     | —           | Additional CSS classes applied to the wrapper element                                   |
+
+### Available Pixel Fonts
+
+| Font Name  | Tailwind Class         | CSS Variable                    |
+| ---------- | ---------------------- | ------------------------------- |
+| `square`   | `font-pixel-square`    | `--font-geist-pixel-square`    |
+| `grid`     | `font-pixel-grid`      | `--font-geist-pixel-grid`      |
+| `circle`   | `font-pixel-circle`    | `--font-geist-pixel-circle`    |
+| `triangle` | `font-pixel-triangle`  | `--font-geist-pixel-triangle`  |
+| `line`     | `font-pixel-line`      | `--font-geist-pixel-line`      |
+
+## How It Works
+
+1. The `text` string is split into alternating segments: **plain** (normal font) and **pixel** (highlighted words)
+2. Plain segments render as standard `<span>` elements in the inherited font
+3. Pixel segments render as `<span>` elements with the chosen pixel font class applied
+4. Matching is **longest-first** — if `pixelWords` contains both `"ui"` and `"shadcn/ui"`, the longer phrase takes priority
+5. Matching is **case-sensitive** — `"React"` will not match `"react"`
+
+## Features
+
+- **Static font assignment** — pixel words get the chosen font, no hover/cycling complexity
+- **Five pixel font variants** — Square, Grid, Circle, Triangle, and Line
+- **Longest-match-first** — multi-word phrases match correctly without partial collisions
+- **Server-compatible** — no `"use client"` needed, no state or effects
+- **Composable** — renders as `<p>`, `<span>`, or `<div>` with full className support
+
+## Pixel Paragraph vs Pixel Paragraph Inverse
+
+| Feature          | Pixel Paragraph                              | Pixel Paragraph Inverse                         |
+| ---------------- | -------------------------------------------- | ----------------------------------------------- |
+| Base text        | Normal font (sans)                           | Pixel font                                       |
+| Highlighted words| Pixel font                                   | Sans/mono font                                   |
+| Best for         | Accenting key words in normal body text      | Full pixel paragraphs with readable escapes      |

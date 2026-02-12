@@ -135,6 +135,9 @@ importers:
       '@next/third-parties':
         specifier: 16.0.1
         version: 16.0.1(next@16.1.6(@babel/core@7.28.4)(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)
+      '@paper-design/shaders-react':
+        specifier: ^0.0.71
+        version: 0.0.71(@types/react@19.2.2)(react@19.2.4)
       '@radix-ui/react-accessible-icon':
         specifier: ^1.1.7
         version: 1.1.7(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -310,8 +313,8 @@ importers:
         specifier: ^15.7.11
         version: 15.7.11(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(next@16.1.6(@babel/core@7.28.4)(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(tailwindcss@4.1.13)
       geist:
-        specifier: ^1.2.2
-        version: 1.5.1(next@16.1.6(@babel/core@7.28.4)(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
+        specifier: ^1.7.0
+        version: 1.7.0(next@16.1.6(@babel/core@7.28.4)(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
       input-otp:
         specifier: ^1.4.2
         version: 1.4.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -1813,6 +1816,18 @@ packages:
     engines: {node: '>=14.0.0'}
     cpu: [x64]
     os: [win32]
+
+  '@paper-design/shaders-react@0.0.71':
+    resolution: {integrity: sha512-kTqjIlyZcpkwqJie+3ldEDscTtx1oOi8eRBD5QgWKI21GaNn/SSg26092M5zzqr3e8dVANv0ktS2ICSjbMFKbw==}
+    peerDependencies:
+      '@types/react': ^18 || ^19
+      react: ^18 || ^19
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+
+  '@paper-design/shaders@0.0.71':
+    resolution: {integrity: sha512-brCt05YxxyjBrhnE3l1wJJHcFXsM8aE4lmpd9TMQp+p0dMU3F+OWkJZL9m/RC1Tt7om5xr0Wg7d0HYm+b9NYZA==}
 
   '@pkgr/core@0.2.9':
     resolution: {integrity: sha512-QNqXyfVS2wm9hweSYD2O7F0G06uurj9kZ96TRQE5Y9hU7+tgdZwIkbAKc5Ocy1HxEY2kuDQa6cQ1WRs/O5LFKA==}
@@ -4858,8 +4873,8 @@ packages:
   fzf@0.5.2:
     resolution: {integrity: sha512-Tt4kuxLXFKHy8KT40zwsUPUkg1CrsgY25FxA2U/j/0WgEDCk3ddc/zLTCCcbSHX9FcKtLuVaDGtGE/STWC+j3Q==}
 
-  geist@1.5.1:
-    resolution: {integrity: sha512-mAHZxIsL2o3ZITFaBVFBnwyDOw+zNLYum6A6nIjpzCGIO8QtC3V76XF2RnZTyLx1wlDTmMDy8jg3Ib52MIjGvQ==}
+  geist@1.7.0:
+    resolution: {integrity: sha512-ZaoiZwkSf0DwwB1ncdLKp+ggAldqxl5L1+SXaNIBGkPAqcu+xjVJLxlf3/S8vLt9UHx1xu5fz3lbzKCj5iOVdQ==}
     peerDependencies:
       next: '>=13.2.0'
 
@@ -9373,6 +9388,15 @@ snapshots:
   '@oxc-transform/binding-win32-x64-msvc@0.82.3':
     optional: true
 
+  '@paper-design/shaders-react@0.0.71(@types/react@19.2.2)(react@19.2.4)':
+    dependencies:
+      '@paper-design/shaders': 0.0.71
+      react: 19.2.4
+    optionalDependencies:
+      '@types/react': 19.2.2
+
+  '@paper-design/shaders@0.0.71': {}
+
   '@pkgr/core@0.2.9': {}
 
   '@radix-ui/number@1.1.1': {}
@@ -12942,7 +12966,7 @@ snapshots:
 
   fzf@0.5.2: {}
 
-  geist@1.5.1(next@16.1.6(@babel/core@7.28.4)(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)):
+  geist@1.7.0(next@16.1.6(@babel/core@7.28.4)(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)):
     dependencies:
       next: 16.1.6(@babel/core@7.28.4)(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
 

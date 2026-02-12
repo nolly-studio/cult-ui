@@ -8,6 +8,10 @@ import { PlugCardGrid } from "@/components/landing/plug-grid";
 import { TemplateGrid } from "@/components/landing/template-grid";
 import { WhatsIncluded } from "@/components/landing/ai-sdk-agents-patterns";
 import { ui } from "@/registry/ui";
+import { PixelHeading } from "@/components/landing/pixel-heading-character";
+
+import { PixelParagraphInverse } from "@/components/landing/pixel-paragraph-words-inverse";
+import { Footer } from "@/components/landing/footer";
 
 export default function IndexPage() {
 	const componentCount = ui.length;
@@ -17,8 +21,8 @@ export default function IndexPage() {
 				{/* ─── Hero ─── */}
 				<section className="mx-auto flex max-w-[980px] flex-col items-center gap-2 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-14">
 					{/* Index marker */}
-					<div className="mx-auto mb-6 flex max-w-2xl items-center justify-center gap-4">
-						<div className="h-px flex-1 bg-border" />
+					<div className="mx-auto mb-1 flex max-w-2xl items-center justify-center gap-4">
+						{/* <div className="h-px flex-1 bg-border" />
 						<Link
 							href="https://aisdkagents.com"
 							target="_blank"
@@ -46,27 +50,50 @@ export default function IndexPage() {
 								<line x1="10" y1="14" x2="21" y2="3" />
 							</svg>
 						</Link>
-						<div className="h-px flex-1 bg-border" />
+						<div className="h-px flex-1 bg-border" /> */}
 					</div>
 
 					{/* Hero Title */}
-					<h1 className="mb-4 text-center text-3xl font-medium leading-tight tracking-tight md:text-4xl lg:text-7xl lg:leading-[1.1]">
-						Shadcn, expanded
-					</h1>
+					<PixelHeading
+						as="h1"
+						prefix="Shadcn,"
+						// isolate={{ x: "mono", c: "mono" }}
+						prefixFont="line"
+						mode="wave"
+						autoPlay
+						cycleInterval={200}
+						staggerDelay={0}
+						className="text-center text-4xl  leading-tight tracking-tight md:text-4xl lg:text-8xl lg:leading-[1.1]"
+					>
+						expanded
+					</PixelHeading>
 
 					{/* Hero Description */}
-					<p className="mx-auto max-w-2xl text-center font-light text-base text-foreground/70 leading-relaxed md:text-lg">
-						{componentCount}+ animated components and effects. <br /> Free, open
-						source, and built to drop into any shadcn/ui project.
-					</p>
+					{/* <PixelParagraph
+						text={`${componentCount}+ animated components and effects.\nFree, open source, built to drop into any shadcn/ui project.`}
+						pixelWords={["animated", "shadcn/ui"]}
+						initialFont="grid"
+						hoverFont="circle"
+						className="mx-auto max-w-2xl whitespace-pre-line text-center leading-relaxed md:text-2xl"
+					/> */}
+
+					<PixelParagraphInverse
+						text={`${componentCount}+ animated components and effects. Free, open source, built to drop into any shadcn/ui project.`}
+						plainWords={["and ", "to", "any"]}
+						initialPlainFont="mono"
+						pixelFont="square"
+						className="mx-auto max-w-2xl text-sm whitespace-pre-line text-center md:leading-snug md:text-2xl"
+					/>
 
 					{/* CTA Buttons */}
 					<div className="flex w-full items-center justify-center gap-4 py-6">
 						<Link
 							href="/docs/components/toolbar-expandable"
-							className="border border-foreground bg-foreground px-6 py-3 font-mono text-sm uppercase tracking-wider text-white transition-all hover:bg-foreground/90"
+							className="border border-foreground bg-foreground px-6 py-3  text-sm uppercase tracking-wider text-white transition-all hover:bg-foreground/90 "
 						>
-							Browse {componentCount} Components
+							<PixelParagraphInverse
+								text={`Browse ${componentCount} Components`}
+							/>
 						</Link>
 						<Link
 							target="_blank"
@@ -129,6 +156,7 @@ export default function IndexPage() {
 						<PlugCardGrid />
 					</div>
 				</section>
+				<Footer />
 			</div>
 		</div>
 	);
