@@ -1,0 +1,147 @@
+---
+title: Feature Voting
+description: List of features with up-vote support, optional sorting by vote count, and controlled or uncontrolled state.
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="feature-voting-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/feature-voting.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="feature-voting" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+Use `FeatureVoting.Root` with `FeatureVoting.Item` for each feature; each item can include Trigger, Title, Description, and Count. Supports controlled or uncontrolled vote counts and voted-features state, and optional sorting via `FeatureVoting.Group`.
+
+### Basic list
+
+```tsx
+import { FeatureVoting } from "@/registry/default/ui/feature-voting"
+
+export default function Example() {
+  return (
+    <FeatureVoting.Root>
+      <FeatureVoting.Item value="dark-mode">
+        <FeatureVoting.Title>Dark mode</FeatureVoting.Title>
+        <FeatureVoting.Description>System-aware dark theme</FeatureVoting.Description>
+        <FeatureVoting.Count />
+        <FeatureVoting.Trigger>Vote</FeatureVoting.Trigger>
+      </FeatureVoting.Item>
+      <FeatureVoting.Item value="keyboard-shortcuts">
+        <FeatureVoting.Title>Keyboard shortcuts</FeatureVoting.Title>
+        <FeatureVoting.Description>Customizable hotkeys</FeatureVoting.Description>
+        <FeatureVoting.Count />
+        <FeatureVoting.Trigger>Vote</FeatureVoting.Trigger>
+      </FeatureVoting.Item>
+    </FeatureVoting.Root>
+  )
+}
+```
+
+### Controlled votes and voted features
+
+Wire `value` / `onValueChange` and `votedFeatures` / `onVotedFeaturesChange` to sync with your backend or state.
+
+```tsx
+import { useState } from "react"
+import { FeatureVoting } from "@/registry/default/ui/feature-voting"
+
+export default function Example() {
+  const [votes, setVotes] = useState({ "dark-mode": 10, "keyboard-shortcuts": 5 })
+  const [voted, setVoted] = useState(new Set<string>())
+
+  return (
+    <FeatureVoting.Root
+      value={votes}
+      onValueChange={setVotes}
+      votedFeatures={voted}
+      onVotedFeaturesChange={setVoted}
+    >
+      <FeatureVoting.Item value="dark-mode">
+        <FeatureVoting.Title>Dark mode</FeatureVoting.Title>
+        <FeatureVoting.Count />
+        <FeatureVoting.Trigger>Vote</FeatureVoting.Trigger>
+      </FeatureVoting.Item>
+      <FeatureVoting.Item value="keyboard-shortcuts">
+        <FeatureVoting.Title>Keyboard shortcuts</FeatureVoting.Title>
+        <FeatureVoting.Count />
+        <FeatureVoting.Trigger>Vote</FeatureVoting.Trigger>
+      </FeatureVoting.Item>
+    </FeatureVoting.Root>
+  )
+}
+```
+
+### With sorting by votes
+
+Wrap items in `FeatureVoting.Group` with `sortBy="votes-desc"` or `sortBy="votes-asc"` to reorder by vote count.
+
+```tsx
+import { FeatureVoting } from "@/registry/default/ui/feature-voting"
+
+export default function Example() {
+  return (
+    <FeatureVoting.Root defaultValue={{ a: 2, b: 5, c: 1 }}>
+      <FeatureVoting.Group sortBy="votes-desc">
+        <FeatureVoting.Item value="a">
+          <FeatureVoting.Title>Option A</FeatureVoting.Title>
+          <FeatureVoting.Count />
+          <FeatureVoting.Trigger>Vote</FeatureVoting.Trigger>
+        </FeatureVoting.Item>
+        <FeatureVoting.Item value="b">
+          <FeatureVoting.Title>Option B</FeatureVoting.Title>
+          <FeatureVoting.Count />
+          <FeatureVoting.Trigger>Vote</FeatureVoting.Trigger>
+        </FeatureVoting.Item>
+        <FeatureVoting.Item value="c">
+          <FeatureVoting.Title>Option C</FeatureVoting.Title>
+          <FeatureVoting.Count />
+          <FeatureVoting.Trigger>Vote</FeatureVoting.Trigger>
+        </FeatureVoting.Item>
+      </FeatureVoting.Group>
+    </FeatureVoting.Root>
+  )
+}
+```
+
+## Features
+
+- Vote and unvote per feature via Trigger; one vote per user per feature (tracked by `votedFeatures`)
+- Controlled or uncontrolled: `value` / `defaultValue` and `onValueChange` for vote counts; `votedFeatures` / `defaultVotedFeatures` and `onVotedFeaturesChange` for which features the user voted for
+- Optional sorting: `FeatureVoting.Group` with `sortBy="votes-asc"` or `sortBy="votes-desc"`
+- Compound API: Root, Group, Item, Trigger, Count, Title, Description
+- `useFeatureVoting()` hook for external access to vote state and actions

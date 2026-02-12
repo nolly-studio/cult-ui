@@ -1,0 +1,142 @@
+---
+title: Choice Poll
+description: A poll component with single or multiple selection, optional results, and keyboard navigation.
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="choice-poll-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/choice-poll.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="choice-poll" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+Use `ChoicePoll.Root` with Header, Title, Description, Options (each Option with Indicator and Label), and Footer. Supports single or multiple selection, controlled or uncontrolled value, and optional results after voting.
+
+### Basic poll
+
+```tsx
+import { ChoicePoll } from "@/registry/default/ui/choice-poll"
+
+export default function Example() {
+  return (
+    <ChoicePoll.Root>
+      <ChoicePoll.Header>
+        <ChoicePoll.Title>Which feature matters most?</ChoicePoll.Title>
+        <ChoicePoll.Description>
+          Pick one option. Results are shown after you vote.
+        </ChoicePoll.Description>
+      </ChoicePoll.Header>
+      <ChoicePoll.Options>
+        <ChoicePoll.Option value="speed">
+          <ChoicePoll.Indicator />
+          <ChoicePoll.Label>Faster builds</ChoicePoll.Label>
+        </ChoicePoll.Option>
+        <ChoicePoll.Option value="dx">
+          <ChoicePoll.Indicator />
+          <ChoicePoll.Label>Better DX</ChoicePoll.Label>
+        </ChoicePoll.Option>
+        <ChoicePoll.Option value="docs">
+          <ChoicePoll.Indicator />
+          <ChoicePoll.Label>Clearer docs</ChoicePoll.Label>
+        </ChoicePoll.Option>
+      </ChoicePoll.Options>
+      <ChoicePoll.Footer />
+    </ChoicePoll.Root>
+  )
+}
+```
+
+### Poll with results (controlled)
+
+Wire `value` / `onValueChange` and set `showResults`, `hasVoted`, and `votes` when the user submits to show results and "You voted".
+
+```tsx
+import { useState } from "react"
+import { ChoicePoll } from "@/registry/default/ui/choice-poll"
+
+export default function Example() {
+  const [value, setValue] = useState<string | undefined>()
+  const [hasVoted, setHasVoted] = useState(false)
+  const votes = { speed: 42, dx: 28, docs: 30 }
+
+  return (
+    <ChoicePoll.Root
+      value={value}
+      onValueChange={setValue}
+      hasVoted={hasVoted}
+      showResults
+      votes={votes}
+    >
+      <ChoicePoll.Header>
+        <ChoicePoll.Title>Which feature matters most?</ChoicePoll.Title>
+        <ChoicePoll.Description>Pick one, then submit.</ChoicePoll.Description>
+      </ChoicePoll.Header>
+      <ChoicePoll.Options>
+        <ChoicePoll.Option value="speed">
+          <ChoicePoll.Indicator />
+          <ChoicePoll.Label>Faster builds</ChoicePoll.Label>
+          <ChoicePoll.Progress />
+          <ChoicePoll.Percentage />
+        </ChoicePoll.Option>
+        <ChoicePoll.Option value="dx">
+          <ChoicePoll.Indicator />
+          <ChoicePoll.Label>Better DX</ChoicePoll.Label>
+          <ChoicePoll.Progress />
+          <ChoicePoll.Percentage />
+        </ChoicePoll.Option>
+        <ChoicePoll.Option value="docs">
+          <ChoicePoll.Indicator />
+          <ChoicePoll.Label>Clearer docs</ChoicePoll.Label>
+          <ChoicePoll.Progress />
+          <ChoicePoll.Percentage />
+        </ChoicePoll.Option>
+      </ChoicePoll.Options>
+      <ChoicePoll.Footer />
+      {/* In real usage, a submit button would set hasVoted to true */}
+    </ChoicePoll.Root>
+  )
+}
+```
+
+## Features
+
+- Single or multiple selection via `multiple`
+- Controlled or uncontrolled value via `value` / `defaultValue` and `onValueChange`
+- Optional results: `showResults`, `votes`, `hasVoted` for progress bars and "You voted"
+- Keyboard navigation (Arrow keys, Home, End) in the options list
+- Compound API: Root, Header, Title, Description, Options, Option, Indicator, Label, Progress, Percentage, Footer

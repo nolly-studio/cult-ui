@@ -1,4 +1,4 @@
-import { Registry } from "shadcn/registry"
+import { type Registry } from "@/registry/schema"
 
 export const examples: Registry["items"] = [
   {
@@ -393,6 +393,61 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "registry/default/example/feature-carousel-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "choice-poll-demo",
+    type: "registry:component",
+    registryDependencies: ["choice-poll"],
+    files: [
+      {
+        path: "registry/default/example/choice-poll-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "vote-tally-demo",
+    type: "registry:component",
+    registryDependencies: ["vote-tally"],
+    files: [
+      {
+        path: "registry/default/example/vote-tally-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "poll-widget-demo",
+    type: "registry:component",
+    registryDependencies: ["poll-widget"],
+    files: [
+      {
+        path: "registry/default/example/poll-widget-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "prompt-library-demo",
+    type: "registry:component",
+    registryDependencies: ["prompt-library"],
+    files: [
+      {
+        path: "registry/default/example/prompt-library-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "ai-instructions-demo",
+    type: "registry:component",
+    registryDependencies: ["ai-instructions"],
+    files: [
+      {
+        path: "registry/default/example/ai-instructions-demo.tsx",
         type: "registry:component",
       },
     ],

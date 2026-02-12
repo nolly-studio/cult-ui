@@ -281,7 +281,6 @@ export const mdxComponents = {
   }: React.ComponentProps<"img">) => (
     <Image
       className={cn("mt-6 rounded-md border", className)}
-      // @ts-expect-error
       src={src || ""}
       width={Number(width)}
       height={Number(height)}

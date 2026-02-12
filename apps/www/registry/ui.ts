@@ -1,4 +1,4 @@
-import { type Registry } from "shadcn/registry"
+import { type Registry } from "@/registry/schema"
 
 export const ui: Registry["items"] = [
   {
@@ -468,6 +468,76 @@ export const ui: Registry["items"] = [
     ],
     description:
       "Feature carousel component with smooth transitions and customizable layouts",
+  },
+  {
+    name: "choice-poll",
+    type: "registry:ui",
+    dependencies: ["@radix-ui/react-use-controllable-state", "lucide-react"],
+    files: [
+      {
+        path: "registry/default/ui/choice-poll.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Poll component with single or multiple selection, optional results, and keyboard navigation",
+  },
+  {
+    name: "vote-tally",
+    type: "registry:ui",
+    dependencies: ["@radix-ui/react-use-controllable-state"],
+    files: [
+      {
+        path: "registry/default/ui/vote-tally.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "List of items with up-vote support, optional sorting by vote count, and controlled or uncontrolled state",
+  },
+  {
+    name: "poll-widget",
+    type: "registry:ui",
+    dependencies: [
+      "@radix-ui/react-use-controllable-state",
+      "class-variance-authority",
+      "lucide-react",
+      "motion",
+    ],
+    files: [
+      {
+        path: "registry/default/ui/poll-widget.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Poll widget with inline, popover, and dialog modes, optional results, and animations",
+  },
+  {
+    name: "prompt-library",
+    type: "registry:ui",
+    dependencies: ["@hugeicons/core-free-icons", "@hugeicons/react"],
+    files: [
+      {
+        path: "registry/default/ui/prompt-library.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Browse, insert, and manage prompt templates with categories and custom prompts",
+  },
+  {
+    name: "ai-instructions",
+    type: "registry:ui",
+    dependencies: ["@hugeicons/core-free-icons", "@hugeicons/react"],
+    files: [
+      {
+        path: "registry/default/ui/ai-instructions.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Manage and toggle AI instructions with a popover, search, and create-dialog",
   },
   {
     name: "intro-disclosure",

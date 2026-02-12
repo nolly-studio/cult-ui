@@ -1,4 +1,4 @@
-import { type Registry } from "shadcn/registry"
+import { type Registry } from "@/registry/schema"
 
 import { examples } from "@/registry/examples"
 import { ui } from "@/registry/ui"

@@ -1,0 +1,142 @@
+---
+title: Feature Poll
+description: A poll / feature-vote component with single or multiple selection, optional results, and keyboard navigation.
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="feature-poll-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/feature-poll.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="feature-poll" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+Use `FeaturePoll.Root` with Header, Title, Description, Options (each Option with Indicator and Label), and Footer. Supports single or multiple selection, controlled or uncontrolled value, and optional results after voting.
+
+### Basic poll
+
+```tsx
+import { FeaturePoll } from "@/registry/default/ui/feature-poll"
+
+export default function Example() {
+  return (
+    <FeaturePoll.Root>
+      <FeaturePoll.Header>
+        <FeaturePoll.Title>Which feature matters most?</FeaturePoll.Title>
+        <FeaturePoll.Description>
+          Pick one option. Results are shown after you vote.
+        </FeaturePoll.Description>
+      </FeaturePoll.Header>
+      <FeaturePoll.Options>
+        <FeaturePoll.Option value="speed">
+          <FeaturePoll.Indicator />
+          <FeaturePoll.Label>Faster builds</FeaturePoll.Label>
+        </FeaturePoll.Option>
+        <FeaturePoll.Option value="dx">
+          <FeaturePoll.Indicator />
+          <FeaturePoll.Label>Better DX</FeaturePoll.Label>
+        </FeaturePoll.Option>
+        <FeaturePoll.Option value="docs">
+          <FeaturePoll.Indicator />
+          <FeaturePoll.Label>Clearer docs</FeaturePoll.Label>
+        </FeaturePoll.Option>
+      </FeaturePoll.Options>
+      <FeaturePoll.Footer />
+    </FeaturePoll.Root>
+  )
+}
+```
+
+### Poll with results (controlled)
+
+Wire `value` / `onValueChange` and set `showResults`, `hasVoted`, and `votes` when the user submits to show results and “You voted”.
+
+```tsx
+import { useState } from "react"
+import { FeaturePoll } from "@/registry/default/ui/feature-poll"
+
+export default function Example() {
+  const [value, setValue] = useState<string | undefined>()
+  const [hasVoted, setHasVoted] = useState(false)
+  const votes = { speed: 42, dx: 28, docs: 30 }
+
+  return (
+    <FeaturePoll.Root
+      value={value}
+      onValueChange={setValue}
+      hasVoted={hasVoted}
+      showResults
+      votes={votes}
+    >
+      <FeaturePoll.Header>
+        <FeaturePoll.Title>Which feature matters most?</FeaturePoll.Title>
+        <FeaturePoll.Description>Pick one, then submit.</FeaturePoll.Description>
+      </FeaturePoll.Header>
+      <FeaturePoll.Options>
+        <FeaturePoll.Option value="speed">
+          <FeaturePoll.Indicator />
+          <FeaturePoll.Label>Faster builds</FeaturePoll.Label>
+          <FeaturePoll.Progress />
+          <FeaturePoll.Percentage />
+        </FeaturePoll.Option>
+        <FeaturePoll.Option value="dx">
+          <FeaturePoll.Indicator />
+          <FeaturePoll.Label>Better DX</FeaturePoll.Label>
+          <FeaturePoll.Progress />
+          <FeaturePoll.Percentage />
+        </FeaturePoll.Option>
+        <FeaturePoll.Option value="docs">
+          <FeaturePoll.Indicator />
+          <FeaturePoll.Label>Clearer docs</FeaturePoll.Label>
+          <FeaturePoll.Progress />
+          <FeaturePoll.Percentage />
+        </FeaturePoll.Option>
+      </FeaturePoll.Options>
+      <FeaturePoll.Footer />
+      {/* In real usage, a submit button would set hasVoted to true */}
+    </FeaturePoll.Root>
+  )
+}
+```
+
+## Features
+
+- Single or multiple selection via `multiple`
+- Controlled or uncontrolled value via `value` / `defaultValue` and `onValueChange`
+- Optional results: `showResults`, `votes`, `hasVoted` for progress bars and “You voted”
+- Keyboard navigation (Arrow keys, Home, End) in the options list
+- Compound API: Root, Header, Title, Description, Options, Option, Indicator, Label, Progress, Percentage, Footer

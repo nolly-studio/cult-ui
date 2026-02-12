@@ -1,0 +1,147 @@
+---
+title: Vote Tally
+description: List of items with up-vote support, optional sorting by vote count, and controlled or uncontrolled state.
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="vote-tally-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/vote-tally.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="vote-tally" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+Use `VoteTally.Root` with `VoteTally.Item` for each item; each item can include Trigger, Title, Description, and Count. Supports controlled or uncontrolled vote counts and voted-items state, and optional sorting via `VoteTally.Group`.
+
+### Basic list
+
+```tsx
+import { VoteTally } from "@/registry/default/ui/vote-tally"
+
+export default function Example() {
+  return (
+    <VoteTally.Root>
+      <VoteTally.Item value="dark-mode">
+        <VoteTally.Title>Dark mode</VoteTally.Title>
+        <VoteTally.Description>System-aware dark theme</VoteTally.Description>
+        <VoteTally.Count />
+        <VoteTally.Trigger>Vote</VoteTally.Trigger>
+      </VoteTally.Item>
+      <VoteTally.Item value="keyboard-shortcuts">
+        <VoteTally.Title>Keyboard shortcuts</VoteTally.Title>
+        <VoteTally.Description>Customizable hotkeys</VoteTally.Description>
+        <VoteTally.Count />
+        <VoteTally.Trigger>Vote</VoteTally.Trigger>
+      </VoteTally.Item>
+    </VoteTally.Root>
+  )
+}
+```
+
+### Controlled votes and voted items
+
+Wire `value` / `onValueChange` and `votedItems` / `onVotedItemsChange` to sync with your backend or state.
+
+```tsx
+import { useState } from "react"
+import { VoteTally } from "@/registry/default/ui/vote-tally"
+
+export default function Example() {
+  const [votes, setVotes] = useState({ "dark-mode": 10, "keyboard-shortcuts": 5 })
+  const [voted, setVoted] = useState(new Set<string>())
+
+  return (
+    <VoteTally.Root
+      value={votes}
+      onValueChange={setVotes}
+      votedItems={voted}
+      onVotedItemsChange={setVoted}
+    >
+      <VoteTally.Item value="dark-mode">
+        <VoteTally.Title>Dark mode</VoteTally.Title>
+        <VoteTally.Count />
+        <VoteTally.Trigger>Vote</VoteTally.Trigger>
+      </VoteTally.Item>
+      <VoteTally.Item value="keyboard-shortcuts">
+        <VoteTally.Title>Keyboard shortcuts</VoteTally.Title>
+        <VoteTally.Count />
+        <VoteTally.Trigger>Vote</VoteTally.Trigger>
+      </VoteTally.Item>
+    </VoteTally.Root>
+  )
+}
+```
+
+### With sorting by votes
+
+Wrap items in `VoteTally.Group` with `sortBy="votes-desc"` or `sortBy="votes-asc"` to reorder by vote count.
+
+```tsx
+import { VoteTally } from "@/registry/default/ui/vote-tally"
+
+export default function Example() {
+  return (
+    <VoteTally.Root defaultValue={{ a: 2, b: 5, c: 1 }}>
+      <VoteTally.Group sortBy="votes-desc">
+        <VoteTally.Item value="a">
+          <VoteTally.Title>Option A</VoteTally.Title>
+          <VoteTally.Count />
+          <VoteTally.Trigger>Vote</VoteTally.Trigger>
+        </VoteTally.Item>
+        <VoteTally.Item value="b">
+          <VoteTally.Title>Option B</VoteTally.Title>
+          <VoteTally.Count />
+          <VoteTally.Trigger>Vote</VoteTally.Trigger>
+        </VoteTally.Item>
+        <VoteTally.Item value="c">
+          <VoteTally.Title>Option C</VoteTally.Title>
+          <VoteTally.Count />
+          <VoteTally.Trigger>Vote</VoteTally.Trigger>
+        </VoteTally.Item>
+      </VoteTally.Group>
+    </VoteTally.Root>
+  )
+}
+```
+
+## Features
+
+- Vote and unvote per item via Trigger; one vote per user per item (tracked by `votedItems`)
+- Controlled or uncontrolled: `value` / `defaultValue` and `onValueChange` for vote counts; `votedItems` / `defaultVotedItems` and `onVotedItemsChange` for which items the user voted for
+- Optional sorting: `VoteTally.Group` with `sortBy="votes-asc"` or `sortBy="votes-desc"`
+- Compound API: Root, Group, Item, Trigger, Count, Title, Description
+- `useVoteTally()` hook for external access to vote state and actions

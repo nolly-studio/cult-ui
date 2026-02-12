@@ -18,7 +18,8 @@ import * as React from "react"
 export const Index: Record<string, any> = {`
   for (const item of registry.items) {
     const resolveFiles = item.files?.map(
-      (file) => `registry/default/${file.path}`
+      (file: { path: string; type: string; target?: string }) =>
+        `registry/default/${file.path}`
     )
     if (!resolveFiles) {
       continue
@@ -34,7 +35,7 @@ export const Index: Record<string, any> = {`
     description: "${item.description ?? ""}",
     type: "${item.type}",
     registryDependencies: ${JSON.stringify(item.registryDependencies)},
-    files: [${item.files?.map((file) => {
+    files: [${item.files?.map((file: { path: string; type: string; target?: string }) => {
       const filePath = typeof file === "string" ? file : file.path
       const resolvedFilePath = path.resolve(filePath)
       return typeof file === "string"
@@ -54,8 +55,8 @@ export const Index: Record<string, any> = {`
     })`
         : "null"
     },
-    categories: ${JSON.stringify(item.categories)},
-    meta: ${JSON.stringify(item.meta)},
+    categories: ${JSON.stringify((item as { categories?: unknown }).categories ?? undefined)},
+    meta: ${JSON.stringify((item as { meta?: unknown }).meta ?? undefined)},
   },`
   }
 

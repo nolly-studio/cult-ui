@@ -7,7 +7,7 @@ import { NpmCommands } from "types/unist"
 
 import { Event, trackEvent } from "@/lib/events"
 import { cn } from "@/lib/utils"
-import { Button, ButtonProps } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,10 +15,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-interface CopyButtonProps extends ButtonProps {
+export interface CopyButtonProps extends React.ComponentProps<typeof Button> {
   value: string
   src?: string
   event?: Event["name"]
+  className?: string
+  variant?: React.ComponentProps<typeof Button>["variant"]
 }
 
 export async function copyToClipboardWithMeta(value: string, event?: Event) {

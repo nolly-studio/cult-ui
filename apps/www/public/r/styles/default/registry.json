@@ -511,6 +511,67 @@
       "description": "Feature carousel component with smooth transitions and customizable layouts"
     },
     {
+      "name": "choice-poll",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-use-controllable-state",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/choice-poll.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Poll component with single or multiple selection, optional results, and keyboard navigation"
+    },
+    {
+      "name": "vote-tally",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-use-controllable-state"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/vote-tally.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "List of items with up-vote support, optional sorting by vote count, and controlled or uncontrolled state"
+    },
+    {
+      "name": "poll-widget",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-use-controllable-state",
+        "class-variance-authority",
+        "lucide-react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/poll-widget.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Poll widget with inline, popover, and dialog modes, optional results, and animations"
+    },
+    {
+      "name": "prompt-library",
+      "type": "registry:ui",
+      "dependencies": [
+        "@hugeicons/core-free-icons",
+        "@hugeicons/react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/prompt-library.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Browse, insert, and manage prompt templates with categories and custom prompts"
+    },
+    {
       "name": "intro-disclosure",
       "type": "registry:ui",
       "registryDependencies": [
@@ -1179,6 +1240,58 @@
       "files": [
         {
           "path": "registry/default/example/feature-carousel-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "choice-poll-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "choice-poll"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/choice-poll-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "vote-tally-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "vote-tally"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/vote-tally-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "poll-widget-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "poll-widget"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/poll-widget-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "prompt-library-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "prompt-library"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/prompt-library-demo.tsx",
           "type": "registry:component"
         }
       ]

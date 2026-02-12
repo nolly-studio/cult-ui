@@ -1,0 +1,109 @@
+---
+title: Poll Widget
+description: Poll widget with inline, popover, and dialog modes, optional results, and animations.
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="poll-widget-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/poll-widget.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="poll-widget" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+Use `PollWidget` with `question`, `options`, and `votes` / `hasVoted` / `onVote` for results. Choose `mode`: `"inline"`, `"popover"`, or `"dialog"`. For popover and dialog, add `PollWidget.Trigger` and wrap content in `PollWidget.Content`. Inside content use `PollWidget.Question`, `PollWidget.Options`, `PollWidget.Option` (with `PollWidget.Indicator`, `PollWidget.Label`, `PollWidget.Percentage`), `PollWidget.Results`, and `PollWidget.Submit`.
+
+### Inline poll
+
+```tsx
+import { useCallback, useMemo, useState } from "react"
+import { PollWidget } from "@/registry/default/ui/poll-widget"
+
+const options = [
+  { id: "speed", label: "Faster builds" },
+  { id: "dx", label: "Better DX" },
+  { id: "docs", label: "Clearer docs" },
+]
+
+export default function Example() {
+  const [votes, setVotes] = useState({ speed: 0, dx: 0, docs: 0 })
+  const [hasVoted, setHasVoted] = useState(false)
+
+  const onVote = useCallback((selectedIds: string[]) => {
+    setVotes((prev) => {
+      const next = { ...prev }
+      for (const id of selectedIds) next[id] = (next[id] ?? 0) + 1
+      return next
+    })
+    setHasVoted(true)
+  }, [])
+
+  return (
+    <PollWidget
+      question="Which feature matters most?"
+      description="Pick one, then submit."
+      options={options}
+      votes={votes}
+      hasVoted={hasVoted}
+      onVote={onVote}
+      mode="inline"
+    >
+      <PollWidget.Content>
+        <PollWidget.Question />
+        <PollWidget.Options>
+          {options.map((opt) => (
+            <PollWidget.Option key={opt.id} value={opt.id}>
+              <PollWidget.Indicator />
+              <PollWidget.Label>{opt.label}</PollWidget.Label>
+              <PollWidget.Percentage />
+            </PollWidget.Option>
+          ))}
+        </PollWidget.Options>
+        <PollWidget.Results />
+        <PollWidget.Submit />
+      </PollWidget.Content>
+    </PollWidget>
+  )
+}
+```
+
+## Features
+
+- **Modes**: `inline` (default), `popover`, or `dialog` for different layouts
+- **Results**: Pass `votes`, `hasVoted`, and `onVote` to show progress and success state after voting
+- **Compound API**: PollWidget, Trigger, Content, Question, Options, Option, Indicator, Label, Percentage, Results, Submit, Success, Dialog
+- **Animations**: Voting → results → success transitions; optional auto-collapse in popover/dialog
