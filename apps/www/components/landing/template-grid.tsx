@@ -15,26 +15,25 @@ export function TemplateGrid() {
 		<section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
 			{/* Section Header */}
 			<div className="mb-12 text-center">
-				{/* Index marker */}
-				<div className="mx-auto mb-6 flex max-w-2xl items-center justify-center gap-4">
-					<div className="h-px flex-1 bg-border" />
-					<div className="flex items-center gap-2 border border-border bg-background px-3 py-1.5">
-						<IceCream className="size-4 text-muted-foreground" />
-						<span className="font-mono text-[11px] uppercase tracking-wider">
+				{/* Sub-section marker */}
+				<div className="mx-auto mb-8 flex max-w-xl items-center justify-center gap-4">
+					<div className="h-px flex-1 bg-border/60" />
+					<div className="flex items-center gap-2 border border-border/60 bg-background px-3 py-1.5">
+						<IceCream className="size-3.5 text-muted-foreground" />
+						<span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
 							TEMPLATES
 						</span>
 					</div>
-					<div className="h-px flex-1 bg-border" />
+					<div className="h-px flex-1 bg-border/60" />
 				</div>
 
 				<h2 className="mx-auto mb-4 max-w-3xl font-medium text-3xl tracking-tight md:text-4xl lg:text-5xl">
 					{TEMPLATES_GRID.length} Starter Templates
 				</h2>
 
-				<p className="mx-auto max-w-2xl font-light text-base text-foreground/70 leading-relaxed md:text-lg">
-					Full-stack Next.js templates with AI integrations, authentication, and
-					modern tooling. Download and ship.
-				</p>
+			<p className="mx-auto max-w-md font-light text-base text-foreground/70 leading-relaxed md:text-lg">
+				Production-ready starter templates with authentication, payments, databases, and AI integrations. Ship faster with complete codebases.
+			</p>
 			</div>
 
 			{/* Templates Grid */}

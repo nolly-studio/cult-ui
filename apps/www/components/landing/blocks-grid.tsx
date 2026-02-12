@@ -6,25 +6,24 @@ export function MiniBlocksGrid() {
 		<section className="mx-auto max-w-6xl px-4 py-16 md:py-24">
 			{/* Section Header */}
 			<div className="mb-12 text-center">
-				{/* Index marker */}
-				<div className="mx-auto mb-6 flex max-w-2xl items-center justify-center gap-4">
-					<div className="h-px flex-1 bg-border" />
-					<div className="flex items-center gap-2 border border-border bg-background px-3 py-1.5">
-						<Shapes className="size-4 text-muted-foreground" />
-						<span className="font-mono text-[11px] uppercase tracking-wider">
-							BLOCKS
+				{/* Section divider */}
+				<div className="mx-auto mb-8 flex max-w-2xl items-center justify-center gap-4">
+					<div className="h-px flex-1 bg-gradient-to-r from-transparent to-border" />
+					<div className="flex items-center gap-2 border border-border bg-background px-4 py-2">
+						<Shapes className="size-3.5 text-muted-foreground" />
+						<span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+							CULT PRO
 						</span>
 					</div>
-					<div className="h-px flex-1 bg-border" />
+					<div className="h-px flex-1 bg-gradient-to-l from-transparent to-border" />
 				</div>
 
 				<h2 className="mx-auto mb-4 max-w-3xl font-medium text-3xl tracking-tight md:text-4xl lg:text-5xl">
 					Premium Cult Blocks
 				</h2>
 
-				<p className="mx-auto max-w-2xl font-light text-base text-foreground/70 leading-relaxed md:text-lg">
-					Premium full-stack blocks and marketing patterns.
-					<br /> Copy and paste into your project.
+				<p className="mx-auto max-w-md font-light text-base text-foreground/70 leading-relaxed md:text-lg">
+					Premium full-stack blocks and marketing patterns. Copy and paste into your project.
 				</p>
 			</div>
 

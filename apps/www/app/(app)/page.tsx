@@ -117,19 +117,6 @@ export default function IndexPage() {
 						<WhatsIncluded />
 					</div>
 
-					{/* Divider between AI SDK Agents and Cult Pro */}
-					<div className="mx-auto max-w-4xl py-12">
-						<div className="mx-auto flex max-w-2xl items-center justify-center gap-4">
-							<div className="h-px flex-1 bg-gradient-to-r from-transparent to-border" />
-							<div className="flex items-center gap-2 border border-border bg-background px-4 py-2">
-								<span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-									CULT PRO
-								</span>
-							</div>
-							<div className="h-px flex-1 bg-gradient-to-l from-transparent to-border" />
-						</div>
-					</div>
-
 					<div className="mx-auto max-w-4xl">
 						<MiniBlocksGrid />
 					</div>
