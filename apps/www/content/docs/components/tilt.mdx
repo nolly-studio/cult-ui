@@ -1,0 +1,75 @@
+---
+title: Tilt
+description: A 3D tilt component that reacts to mouse movement
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="tilt-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/tilt.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="tilt" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Tilt } from "@/components/ui/tilt"
+```
+
+```tsx
+export default function TiltDemo() {
+  return (
+    <Tilt
+      className="w-72 h-96 rounded-3xl bg-gradient-to-br from-indigo-500 to-purple-500 shadow-2xl flex flex-col items-center justify-center p-8 text-white"
+      maxRotation={20}
+      scale={1.1}
+    >
+      <div style={{ transform: "translateZ(50px)" }}>
+        <h3 className="text-2xl font-bold">Tilt Me</h3>
+      </div>
+    </Tilt>
+  )
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `maxRotation` | `number` | `15` | The maximum rotation in degrees. |
+| `scale` | `number` | `1.05` | The scale factor on hover. |
+| `springOptions` | `SpringOptions` | `{ stiffness: 300, damping: 30, mass: 1 }` | Spring animation configuration. |

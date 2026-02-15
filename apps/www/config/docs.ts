@@ -260,6 +260,12 @@ export const docsConfig: DocsConfig = {
 							items: [],
 							label: "recent",
 						},
+						{
+							title: "Tilt",
+							href: "/docs/components/tilt",
+							items: [],
+							label: "new",
+						},
 					],
 				},
 				{

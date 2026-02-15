@@ -842,6 +842,20 @@
       "description": "Paragraph where specific words render in an interactive pixel font that swaps or cycles on hover"
     },
     {
+      "name": "tilt",
+      "type": "registry:ui",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/tilt.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "A 3D tilt component that reacts to mouse movement with smooth spring animations"
+    },
+    {
       "name": "text-animate-demo",
       "type": "registry:component",
       "registryDependencies": [
@@ -1611,6 +1625,19 @@
       "files": [
         {
           "path": "registry/default/example/pixel-paragraph-words-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "tilt-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "tilt"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/tilt-demo.tsx",
           "type": "registry:component"
         }
       ]

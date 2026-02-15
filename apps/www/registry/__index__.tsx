@@ -1464,6 +1464,31 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  tilt: {
+    name: "tilt",
+    description:
+      "A 3D tilt component that reacts to mouse movement with smooth spring animations",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/tilt.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/tilt.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "text-animate-demo": {
     name: "text-animate-demo",
     description: "",
@@ -2956,6 +2981,30 @@ export const Index: Record<string, any> = {
       const mod = await import(
         "@/registry/default/example/pixel-paragraph-words-demo.tsx"
       )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "tilt-demo": {
+    name: "tilt-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["tilt"],
+    files: [
+      {
+        path: "registry/default/example/tilt-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/example/tilt-demo.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tilt-demo",
+  "registryDependencies": [
+    "tilt"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/tilt-demo.tsx",
+      "content": "import React from \"react\"\n\nimport { Tilt } from \"@/registry/default/ui/tilt\"\n\nexport default function TiltDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-20\">\n      <Tilt\n        className=\"w-72 h-96 rounded-3xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 shadow-2xl flex flex-col items-center justify-center p-8 text-white border border-white/20\"\n        maxRotation={20}\n        scale={1.1}\n      >\n        <div\n          style={{ transform: \"translateZ(50px)\" }}\n          className=\"flex flex-col items-center\"\n        >\n          <div className=\"w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-6 shadow-xl border border-white/10\">\n            <svg\n              xmlns=\"http://www.w3.org/2000/svg\"\n              width=\"40\"\n              height=\"40\"\n              viewBox=\"0 0 24 24\"\n              fill=\"none\"\n              stroke=\"currentColor\"\n              strokeWidth=\"2\"\n              strokeLinecap=\"round\"\n              strokeLinejoin=\"round\"\n            >\n              <path d=\"M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3\" />\n            </svg>\n          </div>\n          <h3 className=\"text-3xl font-black mb-2 tracking-tighter\">CULT UI</h3>\n          <p className=\"text-center text-white/80 font-medium\">\n            Hover over me to experience the 3D tilt effect. Built with Framer\n            Motion.\n          </p>\n        </div>\n\n        <div\n          style={{ transform: \"translateZ(30px)\" }}\n          className=\"mt-8 px-6 py-2 rounded-full bg-white text-indigo-600 font-bold text-sm shadow-lg\"\n        >\n          Get Started\n        </div>\n      </Tilt>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

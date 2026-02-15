@@ -659,4 +659,15 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "tilt-demo",
+    type: "registry:component",
+    registryDependencies: ["tilt"],
+    files: [
+      {
+        path: "registry/default/example/tilt-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ]

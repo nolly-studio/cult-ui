@@ -769,4 +769,17 @@ export const ui: Registry["items"] = [
     description:
       "Paragraph where specific words render in an interactive pixel font that swaps or cycles on hover",
   },
+  {
+    name: "tilt",
+    type: "registry:ui",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/default/ui/tilt.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "A 3D tilt component that reacts to mouse movement with smooth spring animations",
+  },
 ]
