@@ -165,7 +165,7 @@ API_SECRET_KEY=your-secret-key`,
 | ----------- | ----------- | -------- | ------------------------------------------- |
 | `tabs`      | `CodeTab[]` | -        | Array of code tabs for multi-tab display    |
 | `code`      | `string`    | -        | Single code string (when not using tabs)    |
-| `language`  | `string`    | `"bash"` | Language identifier for syntax highlighting |
+| `language`  | `string`    | `"bash"` | Language label only (syntax highlighting is not built in) |
 | `className` | `string`    | -        | Additional CSS classes                      |
 
 ### CodeTab Interface
@@ -174,7 +174,7 @@ API_SECRET_KEY=your-secret-key`,
 | ---------- | -------- | ---------------------------------- |
 | `label`    | `string` | Tab label displayed in the tab bar |
 | `code`     | `string` | Code content for this tab          |
-| `language` | `string` | Optional language identifier       |
+| `language` | `string` | Optional language label (no built-in syntax highlighting) |
 
 ## Features
 
