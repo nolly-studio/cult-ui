@@ -5,6 +5,7 @@ import { DropdownMenuTriggerProps } from "@radix-ui/react-dropdown-menu"
 import { CheckIcon, ClipboardIcon } from "lucide-react"
 import { NpmCommands } from "types/unist"
 
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { Event, trackEvent } from "@/lib/events"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -23,13 +24,6 @@ export interface CopyButtonProps extends React.ComponentProps<typeof Button> {
   variant?: React.ComponentProps<typeof Button>["variant"]
 }
 
-export async function copyToClipboardWithMeta(value: string, event?: Event) {
-  navigator.clipboard.writeText(value)
-  if (event) {
-    trackEvent(event)
-  }
-}
-
 export function CopyButton({
   value,
   className,
@@ -38,37 +32,29 @@ export function CopyButton({
   event,
   ...props
 }: CopyButtonProps) {
-  const [hasCopied, setHasCopied] = React.useState(false)
-
-  React.useEffect(() => {
-    setTimeout(() => {
-      setHasCopied(false)
-    }, 2000)
-  }, [hasCopied])
+  const { isCopied, copyToClipboard } = useCopyToClipboard({
+    onCopy: () => {
+      if (event) {
+        trackEvent({
+          name: event,
+          properties: {
+            code: value,
+          },
+        })
+      }
+    },
+  })
 
   return (
     <Button
       size="icon"
       variant={variant}
       className={cn("relative z-10 size-6  [&_svg]:size-3", className)}
-      onClick={() => {
-        copyToClipboardWithMeta(
-          value,
-          event
-            ? {
-                name: event,
-                properties: {
-                  code: value,
-                },
-              }
-            : undefined
-        )
-        setHasCopied(true)
-      }}
+      onClick={() => copyToClipboard(value)}
       {...props}
     >
       <span className="sr-only">Copy</span>
-      {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+      {isCopied ? <CheckIcon /> : <ClipboardIcon />}
     </Button>
   )
 }
@@ -85,18 +71,7 @@ export function CopyWithClassNames({
   className,
   ...props
 }: CopyWithClassNamesProps) {
-  const [hasCopied, setHasCopied] = React.useState(false)
-
-  React.useEffect(() => {
-    setTimeout(() => {
-      setHasCopied(false)
-    }, 2000)
-  }, [hasCopied])
-
-  const copyToClipboard = React.useCallback((value: string) => {
-    copyToClipboardWithMeta(value)
-    setHasCopied(true)
-  }, [])
+  const { isCopied, copyToClipboard } = useCopyToClipboard()
 
   return (
     <DropdownMenu>
@@ -109,7 +84,7 @@ export function CopyWithClassNames({
             className
           )}
         >
-          {hasCopied ? (
+          {isCopied ? (
             <CheckIcon className="size-3" />
           ) : (
             <ClipboardIcon className="size-3" />
@@ -138,26 +113,20 @@ export function CopyNpmCommandButton({
   className,
   ...props
 }: CopyNpmCommandButtonProps) {
-  const [hasCopied, setHasCopied] = React.useState(false)
-
-  React.useEffect(() => {
-    setTimeout(() => {
-      setHasCopied(false)
-    }, 2000)
-  }, [hasCopied])
+  const { isCopied, copyToClipboard } = useCopyToClipboard()
 
   const copyCommand = React.useCallback(
     (value: string, pm: "npm" | "pnpm" | "yarn" | "bun") => {
-      copyToClipboardWithMeta(value, {
+      copyToClipboard(value)
+      trackEvent({
         name: "copy_npm_command",
         properties: {
           command: value,
           pm,
         },
       })
-      setHasCopied(true)
     },
-    []
+    [copyToClipboard]
   )
 
   return (
@@ -171,7 +140,7 @@ export function CopyNpmCommandButton({
             className
           )}
         >
-          {hasCopied ? (
+          {isCopied ? (
             <CheckIcon className="size-3" />
           ) : (
             <ClipboardIcon className="size-3" />

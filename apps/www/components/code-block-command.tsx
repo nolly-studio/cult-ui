@@ -6,7 +6,8 @@ import { AnimatePresence, motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
-import { copyToClipboardWithMeta } from "@/components/copy-button"
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
+import { trackEvent } from "@/lib/events"
 
 export function CodeBlockCommand({
   __npm__,
@@ -20,14 +21,19 @@ export function CodeBlockCommand({
   __bun__?: string
 }) {
   const [config, setConfig] = useConfig()
-  const [hasCopied, setHasCopied] = React.useState(false)
-
-  React.useEffect(() => {
-    if (hasCopied) {
-      const timer = setTimeout(() => setHasCopied(false), 2000)
-      return () => clearTimeout(timer)
-    }
-  }, [hasCopied])
+  const { isCopied, copyToClipboard } = useCopyToClipboard({
+    onCopy: () => {
+      if (currentCommand) {
+        trackEvent({
+          name: "copy_npm_command",
+          properties: {
+            command: currentCommand,
+            pm: packageManager,
+          },
+        })
+      }
+    },
+  })
 
   const packageManager = config.packageManager || "pnpm"
   const tabs = React.useMemo(() => {
@@ -45,19 +51,8 @@ export function CodeBlockCommand({
   const currentCommand = tabs[packageManager] || availableTabs[0]?.[1] || ""
 
   const copyCommand = React.useCallback(() => {
-    if (!currentCommand) {
-      return
-    }
-
-    copyToClipboardWithMeta(currentCommand, {
-      name: "copy_npm_command",
-      properties: {
-        command: currentCommand,
-        pm: packageManager,
-      },
-    })
-    setHasCopied(true)
-  }, [packageManager, currentCommand])
+    copyToClipboard(currentCommand)
+  }, [currentCommand, copyToClipboard])
 
   const handleTabChange = (key: string) => {
     const currentIndex = availableTabs.findIndex(([k]) => k === packageManager)
@@ -155,9 +150,9 @@ export function CodeBlockCommand({
             <motion.div
               initial={false}
               animate={{
-                scale: hasCopied ? 0 : 1,
-                opacity: hasCopied ? 0 : 1,
-                rotate: hasCopied ? 90 : 0,
+                scale: isCopied ? 0 : 1,
+                opacity: isCopied ? 0 : 1,
+                rotate: isCopied ? 90 : 0,
               }}
               transition={{ duration: 0.2 }}
               className="absolute inset-0"
@@ -167,9 +162,9 @@ export function CodeBlockCommand({
             <motion.div
               initial={false}
               animate={{
-                scale: hasCopied ? 1 : 0,
-                opacity: hasCopied ? 1 : 0,
-                rotate: hasCopied ? 0 : -90,
+                scale: isCopied ? 1 : 0,
+                opacity: isCopied ? 1 : 0,
+                rotate: isCopied ? 0 : -90,
               }}
               transition={{ duration: 0.2 }}
               className="absolute inset-0"
@@ -177,7 +172,7 @@ export function CodeBlockCommand({
               <Check className="size-full" />
             </motion.div>
           </span>
-          <span>{hasCopied ? "Copied" : "Copy"}</span>
+          <span>{isCopied ? "Copied" : "Copy"}</span>
         </motion.button>
 
         <pre

@@ -1,10 +1,13 @@
 "use client"
 
+import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { SidebarNavItem } from "types/nav"
 
+import { useDebounce } from "@/hooks/use-debounce"
 import { cn } from "@/lib/utils"
+import { Input } from "@/components/ui/input"
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[]
@@ -12,21 +15,61 @@ export interface DocsSidebarNavProps {
 
 export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
   const pathname = usePathname()
+  const [search, setSearch] = React.useState("")
+  const debouncedSearch = useDebounce(search, 200)
 
-  return items.length ? (
+  const filteredItems = React.useMemo(() => {
+    if (!debouncedSearch) return items
+
+    return items
+      .map((item) => {
+        const matchingSubItems = item.items?.filter((subItem) =>
+          subItem.title.toLowerCase().includes(debouncedSearch.toLowerCase())
+        )
+
+        if (
+          item.title.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
+          (matchingSubItems && matchingSubItems.length > 0)
+        ) {
+          return {
+            ...item,
+            items: matchingSubItems,
+          }
+        }
+
+        return null
+      })
+      .filter(Boolean) as SidebarNavItem[]
+  }, [items, debouncedSearch])
+
+  return (
     <div className="w-full">
-      {items.map((item, index) => (
-        <div key={`${item.title}-${index}`} className={cn("pb-4")}>
-          <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
-            {item.title}
-          </h4>
-          {item?.items?.length && (
-            <DocsSidebarNavItems items={item.items} pathname={pathname} />
-          )}
+      <div className="mb-4 px-2">
+        <Input
+          placeholder="Filter components..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="h-8 text-xs"
+        />
+      </div>
+      {filteredItems.length ? (
+        filteredItems.map((item, index) => (
+          <div key={`${item.title}-${index}`} className={cn("pb-4")}>
+            <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
+              {item.title}
+            </h4>
+            {item?.items?.length && (
+              <DocsSidebarNavItems items={item.items} pathname={pathname} />
+            )}
+          </div>
+        ))
+      ) : (
+        <div className="px-2 py-4 text-xs text-muted-foreground">
+          No components found.
         </div>
-      ))}
+      )}
     </div>
-  ) : null
+  )
 }
 
 interface DocsSidebarNavItemsProps {

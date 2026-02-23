@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Clock } from "lucide-react"
 
+import { useReducedMotion } from "@/hooks/use-reduced-motion"
 import { cn } from "@/lib/utils"
 
 const timerVariants = cva(
@@ -144,10 +145,16 @@ TimerRoot.displayName = "TimerRoot"
  */
 export const TimerIcon = React.forwardRef<HTMLDivElement, TimerIconProps>(
   ({ size, loading, icon: Icon = Clock, className, ...props }, ref) => {
+    const prefersReducedMotion = useReducedMotion()
+    const shouldAnimate = loading && !prefersReducedMotion
+
     return (
       <div
         ref={ref}
-        className={cn(timerIconVariants({ size, loading }), className)}
+        className={cn(
+          timerIconVariants({ size, loading: shouldAnimate }),
+          className
+        )}
         {...props}
       >
         <Icon className="w-full h-full" />

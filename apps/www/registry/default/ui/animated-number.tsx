@@ -3,6 +3,8 @@
 import { useEffect } from "react"
 import { motion, MotionValue, useSpring, useTransform } from "motion/react"
 
+import { useReducedMotion } from "@/hooks/use-reduced-motion"
+
 interface AnimatedNumberProps {
   value: number
   mass?: number
@@ -24,6 +26,7 @@ export function AnimatedNumber({
   onAnimationStart,
   onAnimationComplete,
 }: AnimatedNumberProps) {
+  const prefersReducedMotion = useReducedMotion()
   const spring = useSpring(value, { mass, stiffness, damping })
   const display: MotionValue<string> = useTransform(spring, (current) =>
     format(parseFloat(current.toFixed(precision)))
@@ -37,6 +40,10 @@ export function AnimatedNumber({
     })
     return () => unsubscribe()
   }, [spring, value, onAnimationStart, onAnimationComplete])
+
+  if (prefersReducedMotion) {
+    return <span>{format(value)}</span>
+  }
 
   return <motion.span>{display}</motion.span>
 }

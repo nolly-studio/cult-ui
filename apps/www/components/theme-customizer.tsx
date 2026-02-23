@@ -32,7 +32,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { Skeleton } from "@/components/ui/skeleton"
-import { copyToClipboardWithMeta } from "@/components/copy-button"
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
+import { trackEvent } from "@/lib/events"
 import { ThemeWrapper } from "@/components/theme-wrapper"
 import { Theme, themes } from "@/registry/themes"
 
@@ -306,31 +307,30 @@ function Customizer() {
 function CopyCodeButton() {
   const [config] = useConfig()
   const activeTheme = themes.find((theme) => theme.name === config.theme)
-  const [hasCopied, setHasCopied] = React.useState(false)
+  const code = activeTheme ? getThemeCode(activeTheme, config.radius) : ""
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      setHasCopied(false)
-    }, 2000)
-  }, [hasCopied])
+  const { isCopied, copyToClipboard } = useCopyToClipboard({
+    onCopy: () => {
+      if (activeTheme) {
+        trackEvent({
+          name: "copy_theme_code",
+          properties: {
+            theme: activeTheme.name,
+            radius: config.radius,
+          },
+        })
+      }
+    },
+  })
 
   return (
     <>
       {activeTheme && (
         <Button
-          onClick={() => {
-            copyToClipboardWithMeta(getThemeCode(activeTheme, config.radius), {
-              name: "copy_theme_code",
-              properties: {
-                theme: activeTheme.name,
-                radius: config.radius,
-              },
-            })
-            setHasCopied(true)
-          }}
+          onClick={() => copyToClipboard(code)}
           className="md:hidden"
         >
-          {hasCopied ? (
+          {isCopied ? (
             <CheckIcon className="mr-2 size-4" />
           ) : (
             <CopyIcon className="mr-2 size-4" />
@@ -354,22 +354,10 @@ function CopyCodeButton() {
             {activeTheme && (
               <Button
                 size="sm"
-                onClick={() => {
-                  copyToClipboardWithMeta(
-                    getThemeCode(activeTheme, config.radius),
-                    {
-                      name: "copy_theme_code",
-                      properties: {
-                        theme: activeTheme.name,
-                        radius: config.radius,
-                      },
-                    }
-                  )
-                  setHasCopied(true)
-                }}
+                onClick={() => copyToClipboard(code)}
                 className="absolute right-4 top-4 bg-muted text-muted-foreground hover:bg-muted hover:text-muted-foreground"
               >
-                {hasCopied ? (
+                {isCopied ? (
                   <CheckIcon className="mr-2 size-4" />
                 ) : (
                   <CopyIcon className="mr-2 size-4" />
