@@ -698,8 +698,11 @@ function ChoicePollFooter({
   totalVotes,
   ...props
 }: ChoicePollFooterProps) {
-  const { totalVotes: contextTotalVotes, hasVoted, showResults } =
-    useChoicePollContext()
+  const {
+    totalVotes: contextTotalVotes,
+    hasVoted,
+    showResults,
+  } = useChoicePollContext()
   const votes = totalVotes ?? contextTotalVotes
 
   if (!showResults && !children) {
