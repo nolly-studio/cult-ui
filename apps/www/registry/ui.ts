@@ -799,4 +799,17 @@ export const ui: Registry["items"] = [
     description:
       "Composable multi-step onboarding primitives: Onboarding root with step navigation, FeatureCarousel, ChoiceGroup radio selector, TipsList, and StepIndicator with dots and pills variants",
   },
+  {
+    name: "gradient-button-group",
+    type: "registry:ui",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/default/ui/gradient-button-group.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Premium layered button group with animated active state, gradient ring accents, and theme toggle underlay",
+  },
 ]

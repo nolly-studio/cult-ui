@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/default/example/cosmic-button-demo.tsx",
-      "content": "\"use client\";\n\nimport { CosmicButton } from \"@/registry/default/ui/cosmic-button\";\n\nexport default function CosmicButtonDemo() {\n\treturn (\n\t\t<div className=\" p-6 rounded-3xl flex justify-center\">\n\t\t\t<div>\n\t\t\t\t<div className=\"grid place-items-center\">\n\t\t\t\t\t<CosmicButton as=\"button\" type=\"button\">\n\t\t\t\t\t\tCosmic button goes brrr\n\t\t\t\t\t</CosmicButton>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t);\n}\n",
+      "content": "\"use client\"\n\nimport { CosmicButton } from \"@/registry/default/ui/cosmic-button\"\n\nexport default function CosmicButtonDemo() {\n  return (\n    <div className=\" p-6 rounded-3xl flex justify-center\">\n      <div>\n        <div className=\"grid place-items-center\">\n          <CosmicButton as=\"button\" type=\"button\">\n            Cosmic button goes brrr\n          </CosmicButton>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:component"
     }
   ],

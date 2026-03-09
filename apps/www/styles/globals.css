@@ -911,3 +911,16 @@
 @utility animate-cosmic-spin-slow {
 	animation: cosmic-spin-slow 5s linear infinite;
 }
+
+@keyframes gold-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@utility animate-gold-spin {
+	animation: gold-spin 3s linear infinite;
+}

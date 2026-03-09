@@ -80,6 +80,12 @@ export const docsConfig: DocsConfig = {
 							label: "new",
 							items: [],
 						},
+						{
+							title: "Gradient Button Group",
+							href: "/docs/components/gradient-button-group",
+							items: [],
+							label: "new",
+						},
 					],
 				},
 				{

@@ -681,4 +681,15 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "gradient-button-group-demo",
+    type: "registry:component",
+    registryDependencies: ["gradient-button-group"],
+    files: [
+      {
+        path: "registry/default/example/gradient-button-group-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ]

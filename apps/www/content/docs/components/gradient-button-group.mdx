@@ -1,0 +1,78 @@
+---
+title: GradientButtonGroup
+description: Premium, layered button group navigation with animated active states and a theme-toggle underlay.
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="gradient-button-group-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[75%]"
+  description="Layered container and animated active button ring"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/gradient-button-group.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependency:</Step>
+
+```bash
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="gradient-button-group" />
+
+<Step>Add the required animation utility to your global styles.</Step>
+
+```css
+@keyframes gold-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@utility animate-gold-spin {
+  animation: gold-spin 3s linear infinite;
+}
+```
+
+<Step>Update import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { PremiumNavBar } from "@/components/ui/gradient-button-group"
+
+export function Example() {
+  return <PremiumNavBar />
+}
+```

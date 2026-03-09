@@ -1514,6 +1514,33 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "gradient-button-group": {
+    name: "gradient-button-group",
+    description:
+      "Premium layered button group with animated active state, gradient ring accents, and theme toggle underlay",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/gradient-button-group.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/ui/gradient-button-group.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "text-animate-demo": {
     name: "text-animate-demo",
     description: "",
@@ -3056,6 +3083,32 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/default/example/onboarding-demo.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "gradient-button-group-demo": {
+    name: "gradient-button-group-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["gradient-button-group"],
+    files: [
+      {
+        path: "registry/default/example/gradient-button-group-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/gradient-button-group-demo.tsx"
+      )
       const exportName =
         Object.keys(mod).find(
           (key) =>
