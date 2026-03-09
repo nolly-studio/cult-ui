@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useCallback } from "react"
+import { useCallback, useId } from "react"
 import { useAtom } from "jotai"
 import { Circle, CircleOff, Sliders, Square, Triangle } from "lucide-react"
 import { motion } from "motion/react"
@@ -37,6 +37,12 @@ function ShaderLensBlurDemo() {
 
 function ShaderBlurConfig() {
   const [config, setConfig] = useAtom(configAtom)
+  const id = useId()
+  const variationId = `${id}-variation`
+  const enableHoverId = `${id}-enable-hover`
+  const invertMouseId = `${id}-invert-mouse`
+  const widthId = `${id}-width`
+  const heightId = `${id}-height`
 
   const handleVariationChange = useCallback(
     (value: string) => {
@@ -67,9 +73,9 @@ function ShaderBlurConfig() {
   ]
 
   return (
-    <Card className="bg-black text-white border-neutral-800 to-bg-primary/100 bg-gradient-to-b from-primary/90 dark:from-card/100 dark:to-card/90">
-      <CardHeader className="border-b border-neutral-800">
-        <CardTitle className="text-xl font-bold flex items-center">
+    <Card className="border-border bg-card text-card-foreground">
+      <CardHeader className="border-b border-border">
+        <CardTitle className="flex items-center text-lg font-semibold">
           <Sliders className="w-5 h-5 mr-2" />
           Shader Configuration
         </CardTitle>
@@ -79,8 +85,8 @@ function ShaderBlurConfig() {
           <div className="space-y-6">
             <div className="space-y-4">
               <Label
-                htmlFor="variation"
-                className="text-sm font-medium text-neutral-400"
+                htmlFor={variationId}
+                className="text-sm font-medium text-muted-foreground"
               >
                 Variation
               </Label>
@@ -89,17 +95,17 @@ function ShaderBlurConfig() {
                 onValueChange={handleVariationChange}
               >
                 <SelectTrigger
-                  id="variation"
-                  className="w-full bg-neutral-900 border-neutral-700 text-white"
+                  id={variationId}
+                  className="w-full border-border bg-background"
                 >
                   <SelectValue placeholder="Select variation" />
                 </SelectTrigger>
-                <SelectContent className="bg-neutral-900 border-neutral-700 text-white">
+                <SelectContent className="border-border bg-popover text-popover-foreground">
                   {variationIcons.map((variation, index) => (
                     <SelectItem
-                      key={index}
+                      key={variation.label}
                       value={index.toString()}
-                      className="hover:bg-neutral-800"
+                      className="cursor-pointer"
                     >
                       <div className="flex items-center space-x-2">
                         <variation.icon className="w-5 h-5" />
@@ -111,17 +117,17 @@ function ShaderBlurConfig() {
               </Select>
             </div>
 
-            <Separator className="bg-neutral-800" />
+            <Separator />
 
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-neutral-300">Colors</h3>
+              <h3 className="text-sm font-medium">Colors</h3>
               <div className="grid grid-cols-2 gap-4">
                 {(["color1", "color2", "color3", "color4"] as const).map(
                   (color) => (
                     <div key={color} className="space-y-2">
                       <Label
                         htmlFor={color}
-                        className="text-sm font-medium text-neutral-400 block"
+                        className="block text-sm font-medium text-muted-foreground"
                       >
                         {color}
                       </Label>
@@ -130,11 +136,11 @@ function ShaderBlurConfig() {
                           <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="w-full h-10 rounded-md border-2 border-neutral-700 focus:border-blue-500 focus:outline-none"
+                            className="h-10 w-full rounded-md border border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                             style={{ backgroundColor: config[color] }}
                           />
                         </PopoverTrigger>
-                        <PopoverContent className="w-64 p-3 border-neutral-700">
+                        <PopoverContent className="w-64 border-border p-3">
                           <ColorPicker
                             color={config[color]}
                             onChange={(value) =>
@@ -152,66 +158,60 @@ function ShaderBlurConfig() {
 
           <div className="space-y-6">
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-neutral-300">
-                Options
-              </h3>
+              <h3 className="text-sm font-medium">Options</h3>
               <div className="flex flex-col space-y-4">
                 <div className="flex items-center justify-between">
                   <Label
-                    htmlFor="enableHover"
-                    className="text-sm font-medium text-neutral-400"
+                    htmlFor={enableHoverId}
+                    className="text-sm font-medium text-muted-foreground"
                   >
                     Enable Hover
                   </Label>
                   <Switch
-                    id="enableHover"
+                    id={enableHoverId}
                     checked={config.enableHover}
                     onCheckedChange={(checked) =>
                       setConfig((prev) => ({ ...prev, enableHover: checked }))
                     }
-                    className="data-[state=checked]:bg-blue-500"
                   />
                 </div>
                 <div className="flex items-center justify-between">
                   <Label
-                    htmlFor="invertMouse"
-                    className="text-sm font-medium text-neutral-400"
+                    htmlFor={invertMouseId}
+                    className="text-sm font-medium text-muted-foreground"
                   >
                     Invert Mouse
                   </Label>
                   <Switch
-                    id="invertMouse"
+                    id={invertMouseId}
                     checked={config.invertMouse}
                     onCheckedChange={(checked) =>
                       setConfig((prev) => ({ ...prev, invertMouse: checked }))
                     }
-                    className="data-[state=checked]:bg-blue-500"
                   />
                 </div>
               </div>
             </div>
 
-            <Separator className="bg-neutral-800" />
+            <Separator />
 
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-neutral-300">
-                Dimensions
-              </h3>
+              <h3 className="text-sm font-medium">Dimensions</h3>
               <div className="space-y-6">
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <Label
-                      htmlFor="width"
-                      className="text-sm font-medium text-neutral-400"
+                      htmlFor={widthId}
+                      className="text-sm font-medium text-muted-foreground"
                     >
                       Width
                     </Label>
-                    <span className="text-sm text-neutral-400">
+                    <span className="text-sm text-muted-foreground">
                       {config.width}px
                     </span>
                   </div>
                   <Slider
-                    id="width"
+                    id={widthId}
                     min={100}
                     max={1000}
                     step={10}
@@ -219,23 +219,22 @@ function ShaderBlurConfig() {
                     onValueChange={([value]) =>
                       handleDimensionChange("width", value)
                     }
-                    className="[&_[role=slider]]:bg-blue-500"
                   />
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <Label
-                      htmlFor="height"
-                      className="text-sm font-medium text-neutral-400"
+                      htmlFor={heightId}
+                      className="text-sm font-medium text-muted-foreground"
                     >
                       Height
                     </Label>
-                    <span className="text-sm text-neutral-400">
+                    <span className="text-sm text-muted-foreground">
                       {config.height}px
                     </span>
                   </div>
                   <Slider
-                    id="height"
+                    id={heightId}
                     min={100}
                     max={1000}
                     step={10}
@@ -243,7 +242,6 @@ function ShaderBlurConfig() {
                     onValueChange={([value]) =>
                       handleDimensionChange("height", value)
                     }
-                    className="[&_[role=slider]]:bg-blue-500"
                   />
                 </div>
               </div>

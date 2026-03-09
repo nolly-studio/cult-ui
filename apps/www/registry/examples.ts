@@ -13,6 +13,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "cosmic-button-demo",
+    type: "registry:component",
+    registryDependencies: ["cosmic-button"],
+    files: [
+      {
+        path: "registry/default/example/cosmic-button-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
     name: "texture-button-demo",
     type: "registry:component",
     registryDependencies: ["texture-button"],
@@ -655,6 +666,17 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "registry/default/example/pixel-paragraph-words-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "onboarding-demo",
+    type: "registry:component",
+    registryDependencies: ["onboarding"],
+    files: [
+      {
+        path: "registry/default/example/onboarding-demo.tsx",
         type: "registry:component",
       },
     ],

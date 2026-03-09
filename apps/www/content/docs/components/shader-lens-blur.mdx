@@ -1,6 +1,6 @@
 ---
 title: ShaderLensBlur
-description: blur go brr
+description: Interactive WebGL lens blur shader with pointer-reactive distortion, color gradients, and shape variations.
 component: true
 links: {}
 ---
@@ -8,25 +8,8 @@ links: {}
 <ComponentPreview
   name="shader-lens-blur-demo"
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="All variations"
+  description="Interactive playground"
 />
-
-## References
-
-<Citations>
-  <p className="font-medium text-primary">Inspiration</p>
-  <CitationList>
-    <CitationItem>
-      <CitationLink
-        href="https://github.com/guilanier/codrops-sdf-lensblur"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        codrops-sdf-lensblur
-      </CitationLink>
-    </CitationItem>
-  </CitationList>
-</Citations>
 
 ## Installation
 
@@ -49,6 +32,12 @@ npx shadcn@latest add https://cult-ui.com/r/shader-lens-blur.json
 
 <Steps>
 
+<Step>Install the required dependencies:</Step>
+
+```bash
+npm install jotai three motion next-themes
+```
+
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="shader-lens-blur" />
@@ -60,3 +49,134 @@ npx shadcn@latest add https://cult-ui.com/r/shader-lens-blur.json
 </TabsContent>
 
 </CodeTabs>
+
+## Usage
+
+```tsx
+import ShaderLensBlur from "@/components/ui/shader-lens-blur"
+```
+
+### Basic
+
+Render the default interactive lens blur canvas:
+
+```tsx
+<div className="w-full max-w-2xl">
+  <ShaderLensBlur />
+</div>
+```
+
+### Programmatic Configuration
+
+`ShaderLensBlur` reads its configuration from the exported `configAtom`. This makes it easy to drive from your own controls, presets, or app state.
+
+```tsx
+"use client"
+
+import { useAtom } from "jotai"
+import ShaderLensBlur, { configAtom } from "@/components/ui/shader-lens-blur"
+
+export function ShaderLensBlurControlled() {
+  const [config, setConfig] = useAtom(configAtom)
+
+  return (
+    <div className="space-y-4">
+      <ShaderLensBlur />
+      <button
+        className="rounded-md border px-3 py-2 text-sm"
+        onClick={() =>
+          setConfig((prev) => ({
+            ...prev,
+            variation: (prev.variation + 1) % 4,
+            invertMouse: !prev.invertMouse,
+          }))
+        }
+      >
+        Toggle Preset
+      </button>
+      <p className="text-sm text-muted-foreground">
+        Current variation: {config.variation}
+      </p>
+    </div>
+  )
+}
+```
+
+### Set Explicit Dimensions
+
+The component supports custom canvas dimensions through the same atom config:
+
+```tsx
+setConfig((prev) => ({
+  ...prev,
+  width: "100%",
+  height: "520px",
+}))
+```
+
+## API Reference
+
+### Exports
+
+| Export            | Type                             | Description |
+| ----------------- | -------------------------------- | ----------- |
+| `ShaderLensBlur`  | `React.ComponentType`            | Main interactive shader component |
+| `configAtom`      | `Atom<ShaderConfig>`             | Shared state for colors, variation, interaction mode, and dimensions |
+
+### `ShaderConfig` Shape
+
+| Key            | Type      | Default     | Description |
+| -------------- | --------- | ----------- | ----------- |
+| `variation`    | `number`  | `3`         | Shape mode (`0` square-ish frame, `1` solid circle, `2` ring, `3` triangle) |
+| `color1`       | `string`  | `#D5F981`   | Gradient color stop 1 |
+| `color2`       | `string`  | `#A1BBE7`   | Gradient color stop 2 |
+| `color3`       | `string`  | `#F2BAE2`   | Gradient color stop 3 |
+| `color4`       | `string`  | `#68E8FA`   | Gradient color stop 4 |
+| `enableHover`  | `boolean` | `true`      | Enables pointer tracking without requiring press/drag |
+| `invertMouse`  | `boolean` | `true`      | Inverts the pointer influence mask |
+| `width`        | `string`  | `"100%"`    | Container width style |
+| `height`       | `string`  | `"400px"`   | Container height style |
+
+## Behavior Notes
+
+- Uses a `THREE.WebGLRenderer` with an orthographic full-screen quad and custom fragment shader.
+- Pointer input is translated from container-space into shader-space and corrected for device pixel ratio.
+- Shader colors and variation update live when `configAtom` changes.
+- Theme awareness is built in (`next-themes`) and influences subtle color mixing behavior in the shader.
+
+## Accessibility & UX Tips
+
+- Provide a visible parent label or heading so users understand what interaction is expected.
+- Keep height at least `280px` for comfortable pointer/touch interaction.
+- For touch-first contexts, consider `enableHover: false` so effects primarily respond during active touch/press.
+
+## Troubleshooting
+
+### Blur hotspot feels offset from pointer
+
+- Ensure you are using the latest component version (includes DPR-correct pointer mapping).
+- Avoid additional CSS transforms (for example `scale(...)`) on the canvas container.
+- If wrapping inside animated layout components, verify the container reports stable bounds (`getBoundingClientRect`).
+
+### Nothing renders
+
+- Confirm WebGL is available in the browser/environment.
+- Confirm required dependencies are installed and import paths were updated.
+- If using theme features, ensure your app is wrapped with `ThemeProvider` from `next-themes`.
+
+## References
+
+<Citations>
+  <p className="font-medium text-primary">Inspiration</p>
+  <CitationList>
+    <CitationItem>
+      <CitationLink
+        href="https://github.com/guilanier/codrops-sdf-lensblur"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        codrops-sdf-lensblur
+      </CitationLink>
+    </CitationItem>
+  </CitationList>
+</Citations>

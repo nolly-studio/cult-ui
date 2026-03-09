@@ -495,7 +495,7 @@ export function IntroDisclosure({
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent
-          className="max-w-5xl p-0 gap-0 overflow-hidden "
+          className="max-w-[calc(100dvw-2rem)] p-0 gap-0 overflow-hidden sm:max-w-5xl"
           onKeyDown={handleKeyDown}
         >
           <DialogHeader className="p-6 space-y-2 bg-muted border-b border-border">

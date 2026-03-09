@@ -21,6 +21,14 @@ Run the `cult-ui` init command to setup your project:
 npx cult-ui@latest init
 ```
 
+### Add motion
+
+Install `motion` for animation-powered components:
+
+```bash
+npm install motion
+```
+
 ### Configure components.json
 
 You will be asked a few questions to configure `components.json`:
@@ -31,7 +39,7 @@ Which color would you like to use as base color? › Slate
 Do you want to use CSS variables for colors? › no / yes
 ```
 
-### Fonts
+### Fonts (Tailwind v4)
 
 I use [Inter](https://rsms.me/inter/) as the default font. Inter is not required. You can replace it with any other font.
 
@@ -47,7 +55,7 @@ import { cn } from "@/lib/utils"
 
 const fontSans = FontSans({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-inter",
 })
 
 export default function RootLayout({ children }: RootLayoutProps) {
@@ -67,22 +75,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
 }
 ```
 
-**2. Configure `theme.extend.fontFamily` in `tailwind.config.js`**
+**2. Map your font variable in `globals.css`**
 
-```js showLineNumbers title=tailwind.config.js {9-11}
-const { fontFamily } = require("tailwindcss/defaultTheme")
+```css title="app/globals.css"
+@import "tailwindcss";
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  darkMode: ["class"],
-  content: ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
-      },
-    },
-  },
+@theme inline {
+  --font-sans: var(--font-inter);
 }
 ```
 
@@ -110,8 +109,7 @@ Here's how I structure my Next.js apps. You can use this as a reference:
 │   └── globals.css
 ├── next.config.js
 ├── package.json
-├── postcss.config.js
-├── tailwind.config.js
+├── postcss.config.mjs
 └── tsconfig.json
 ```
 

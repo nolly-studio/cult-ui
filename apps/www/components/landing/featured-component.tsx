@@ -9,6 +9,8 @@ import { Badge } from "../ui/badge";
 import DynamicToolbarExpandable, {
 	deploymentSteps,
 } from "./toolbar-expandable";
+import OnboardingDemo from "@/registry/default/example/onboarding-demo";
+import ShiftCardDemo from "@/registry/default/example/shift-card-demo";
 
 export function FeaturedComponent() {
 	return (
@@ -146,10 +148,10 @@ export function LatestComponentVertical() {
 					</span>
 				</div>
 				<h3 className="mb-1.5 font-medium text-lg leading-tight tracking-tight">
-					Toolbar Expandable
+					Shift Card
 				</h3>
 				<p className="max-w-md font-light text-muted-foreground text-sm leading-relaxed">
-					Step-based expandable toolbar with smooth animations.
+					A card that shows more detail on hover
 				</p>
 			</div>
 
@@ -157,7 +159,7 @@ export function LatestComponentVertical() {
 			<div className="mx-auto w-full bg-muted/20">
 				<div className="mx-auto flex w-full flex-col items-center py-8 sm:max-w-screen-lg lg:pb-8 lg:pt-6">
 					<section className="max-w-xs sm:max-w-none">
-						<DynamicToolbarExpandable steps={deploymentSteps} />
+						<ShiftCardDemo />
 					</section>
 				</div>
 			</div>
@@ -165,7 +167,7 @@ export function LatestComponentVertical() {
 			{/* Footer */}
 			<div className="flex items-center justify-center border-border border-t px-4 py-3">
 				<Link
-					href="/docs/components/toolbar-expandable"
+					href="/docs/components/shift-card"
 					className="flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground transition-colors hover:text-primary"
 				>
 					View Component

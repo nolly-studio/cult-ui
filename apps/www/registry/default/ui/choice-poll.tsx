@@ -4,8 +4,10 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useRef,
+  useState,
   type ComponentProps,
   type KeyboardEvent,
   type MouseEvent,
@@ -32,7 +34,7 @@ export interface ChoicePollRootProps
   multiple?: boolean
   /** Whether the poll is disabled */
   disabled?: boolean
-  /** Whether to show results after voting */
+  /** Whether poll results should be visible after voting */
   showResults?: boolean
   /** Vote counts per option (for showing results) */
   votes?: Record<string, number>
@@ -115,6 +117,27 @@ function useChoicePollOptionContext() {
   return context
 }
 
+function useAnimatedPercentage(percentage: number, shouldShowResults: boolean) {
+  const [animatedPercentage, setAnimatedPercentage] = useState(
+    shouldShowResults ? percentage : 0
+  )
+
+  useEffect(() => {
+    if (!shouldShowResults) {
+      setAnimatedPercentage(0)
+      return
+    }
+
+    const frame = requestAnimationFrame(() => {
+      setAnimatedPercentage(percentage)
+    })
+
+    return () => cancelAnimationFrame(frame)
+  }, [percentage, shouldShowResults])
+
+  return animatedPercentage
+}
+
 /* -----------------------------------------------------------------------------
  * Variants
  * -------------------------------------------------------------------------- */
@@ -178,8 +201,8 @@ const progressVariants = cva(
     variants: {
       state: {
         idle: "bg-transparent",
-        selected: "bg-primary/10",
-        voted: "bg-muted/50",
+        selected: "bg-primary/15",
+        voted: "bg-primary/10",
       },
     },
     defaultVariants: {
@@ -274,7 +297,7 @@ function ChoicePollRoot({
       selected,
       multiple,
       disabled,
-      showResults: showResults || hasVoted,
+      showResults: showResults && hasVoted,
       votes,
       totalVotes,
       hasVoted,
@@ -464,6 +487,7 @@ function ChoicePollOption({
   const disabled = rootDisabled || optionDisabled
   const selected = isSelected(value)
   const percentage = getPercentage(value)
+  const animatedPercentage = useAnimatedPercentage(percentage, showResults)
 
   const getState = (): "idle" | "selected" | "voted" => {
     if (hasVoted) {
@@ -521,7 +545,7 @@ function ChoicePollOption({
             className={cn(
               progressVariants({ state: selected ? "selected" : "voted" })
             )}
-            style={{ width: `${percentage}%` }}
+            style={{ width: `${animatedPercentage}%` }}
           />
         )}
 
@@ -606,6 +630,7 @@ function ChoicePollLabel({
 function ChoicePollProgress({ className, ...props }: ChoicePollProgressProps) {
   const { showResults } = useChoicePollContext()
   const { percentage, isSelected } = useChoicePollOptionContext()
+  const animatedPercentage = useAnimatedPercentage(percentage, showResults)
 
   if (!showResults) {
     return null
@@ -626,7 +651,7 @@ function ChoicePollProgress({ className, ...props }: ChoicePollProgressProps) {
           "block h-full rounded-full transition-all duration-500 ease-out",
           isSelected ? "bg-primary" : "bg-muted-foreground/30"
         )}
-        style={{ width: `${percentage}%` }}
+        style={{ width: `${animatedPercentage}%` }}
       />
     </span>
   )
@@ -643,6 +668,7 @@ function ChoicePollPercentage({
 }: ChoicePollPercentageProps) {
   const { showResults } = useChoicePollContext()
   const { percentage } = useChoicePollOptionContext()
+  const animatedPercentage = useAnimatedPercentage(percentage, showResults)
 
   if (!showResults) {
     return null
@@ -657,7 +683,7 @@ function ChoicePollPercentage({
       data-slot="choice-poll-percentage"
       {...props}
     >
-      {children ?? `${percentage}%`}
+      {children ?? `${Math.round(animatedPercentage)}%`}
     </span>
   )
 }
@@ -672,8 +698,13 @@ function ChoicePollFooter({
   totalVotes,
   ...props
 }: ChoicePollFooterProps) {
-  const { totalVotes: contextTotalVotes, hasVoted } = useChoicePollContext()
+  const { totalVotes: contextTotalVotes, hasVoted, showResults } =
+    useChoicePollContext()
   const votes = totalVotes ?? contextTotalVotes
+
+  if (!showResults && !children) {
+    return null
+  }
 
   return (
     <div

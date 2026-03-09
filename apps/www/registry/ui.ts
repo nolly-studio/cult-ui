@@ -15,6 +15,19 @@ export const ui: Registry["items"] = [
       "Animated text component with customizable reveal effects and timing",
   },
   {
+    name: "cosmic-button",
+    type: "registry:ui",
+    dependencies: [""],
+    files: [
+      {
+        path: "registry/default/ui/cosmic-button.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Animated button/link with cosmic gradient border effect, renders as anchor or button",
+  },
+  {
     name: "texture-button",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-slot"],
@@ -768,5 +781,22 @@ export const ui: Registry["items"] = [
     ],
     description:
       "Paragraph where specific words render in an interactive pixel font that swaps or cycles on hover",
+  },
+  {
+    name: "onboarding",
+    type: "registry:ui",
+    dependencies: [
+      "@radix-ui/react-use-controllable-state",
+      "class-variance-authority",
+    ],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "registry/default/ui/onboarding.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Composable multi-step onboarding primitives: Onboarding root with step navigation, FeatureCarousel, ChoiceGroup radio selector, TipsList, and StepIndicator with dots and pills variants",
   },
 ]

@@ -66,8 +66,8 @@ export function VoteTallyExample() {
           {FEATURES.map((feature) => (
             <VoteTally.Item
               className={cn(
-                "flex items-start gap-3 rounded-lg border border-neutral-200 p-3",
-                "data-voted:border-neutral-900 data-voted:bg-neutral-50",
+                "flex items-start gap-3 rounded-lg border border-border bg-background p-3",
+                "data-voted:bg-muted",
                 "data-disabled:cursor-not-allowed data-disabled:opacity-50"
               )}
               key={feature.id}
@@ -76,10 +76,10 @@ export function VoteTallyExample() {
               <VoteTally.Trigger
                 className={cn(
                   "flex shrink-0 flex-col items-center gap-0.5 rounded-md border px-2 py-1.5",
-                  "border-neutral-200 bg-white text-neutral-600",
-                  "hover:border-neutral-300 hover:bg-neutral-50",
-                  "focus-visible:outline-2 focus-visible:outline-neutral-900 focus-visible:outline-offset-2",
-                  "data-[state=voted]:border-neutral-900 data-[state=voted]:bg-neutral-900 data-[state=voted]:text-white",
+                  "border-border bg-background text-muted-foreground",
+                  "hover:bg-muted hover:text-foreground",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                  "data-[state=voted]:bg-muted data-[state=voted]:text-foreground",
                   "disabled:pointer-events-none disabled:opacity-50"
                 )}
               >
@@ -88,10 +88,10 @@ export function VoteTallyExample() {
               </VoteTally.Trigger>
 
               <div className="flex min-w-0 flex-col gap-0.5">
-                <VoteTally.Title className="text-balance font-medium text-neutral-900 text-sm">
+                <VoteTally.Title className="text-balance font-medium text-foreground text-sm">
                   {feature.title}
                 </VoteTally.Title>
-                <VoteTally.Description className="text-pretty text-neutral-500 text-sm">
+                <VoteTally.Description className="text-pretty text-muted-foreground text-sm">
                   {feature.description}
                 </VoteTally.Description>
               </div>
@@ -126,21 +126,21 @@ export function VoteTallyCompact() {
           <VoteTally.Item
             className={cn(
               "flex items-center justify-between gap-2 rounded px-2 py-1.5",
-              "hover:bg-neutral-100",
-              "data-voted:bg-neutral-100"
+              "hover:bg-muted",
+              "data-voted:bg-muted"
             )}
             key={feature.id}
             value={feature.id}
           >
-            <VoteTally.Title className="text-neutral-700 text-sm">
+            <VoteTally.Title className="text-foreground text-sm">
               {feature.title}
             </VoteTally.Title>
 
             <VoteTally.Trigger
               className={cn(
                 "flex items-center gap-1 rounded px-1.5 py-0.5 text-xs",
-                "text-neutral-500 hover:text-neutral-700",
-                "data-[state=voted]:font-medium data-[state=voted]:text-neutral-900"
+                "text-muted-foreground hover:text-foreground",
+                "data-[state=voted]:font-medium data-[state=voted]:text-foreground"
               )}
             >
               <ArrowUp aria-hidden className="size-3" />

@@ -1,6 +1,6 @@
 ---
 title: DynamicIsland
-description: A do anything be anything component inspired by apples dynamic island
+description: Composable, animated Dynamic Island primitives for building adaptive notification, status, and action surfaces.
 component: true
 links: {}
 ---
@@ -8,7 +8,7 @@ links: {}
 <ComponentPreview
   name="dynamic-island-demo"
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="All variations"
+  description="Interactive state transitions"
 />
 
 ## References
@@ -54,7 +54,7 @@ npx shadcn@latest add https://cult-ui.com/r/dynamic-island.json
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install framer-motion
+npm install motion
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -73,227 +73,200 @@ npm install framer-motion
 
 ```tsx
 import {
-  DynamicBlob,
-  DynamicBlobProvider,
+  DynamicIsland,
+  DynamicIslandProvider,
   DynamicContainer,
-  DynamicDescription,
   DynamicDiv,
+  DynamicDescription,
   DynamicTitle,
-  useDynamicBlobSize,
-} from "@/components/cult/special/DynamicBlob/DynamicBlob"
+  useDynamicIslandSize,
+} from "@/components/ui/dynamic-island"
 ```
 
 ```tsx
-const blobStates = ["compact", "large", "tall", "long", "medium", "ultra"]
+const STATES = ["compact", "large", "tall", "long", "medium"] as const
 
-const DynamicAction = () => {
-  const { state: blobState, scheduleAnimation, setSize } = useDynamicBlobSize()
+function DynamicIslandContent() {
+  const { state, setSize } = useDynamicIslandSize()
 
-  // Function to cycle through the states
-  const cycleBlobStates = () => {
-    const currentIndex = blobStates.indexOf(blobState.size)
-    const nextIndex = (currentIndex + 1) % blobStates.length
-    // @ts-ignore
-    setSize(blobStates[nextIndex])
+  const cycleState = () => {
+    const currentIndex = STATES.indexOf(state.size as (typeof STATES)[number])
+    const nextIndex = (currentIndex + 1) % STATES.length
+    setSize(STATES[nextIndex])
   }
 
-  // Provide dynamic detail in such a beautiful small place :)
-  const renderCompactState = () => (
-    <DynamicContainer className="flex items-center justify-center h-full w-full">
-      <div className="relative w-full flex items-center">
-        <DynamicDescription className="absolute left-4  my-auto text-lg font-medium tracking-tighter text-white ">
-          <div className="bg-cyan-400 h-5 w-5 rounded-full" />
-        </DynamicDescription>
-
-        <DynamicDescription className="absolute text-white right-4  my-auto text-lg font-bold tracking-tighter ">
-          compact
-        </DynamicDescription>
-      </div>
-    </DynamicContainer>
-  )
-
-  // Great for call to action, popping up in users face :)
-  const renderLargeState = () => (
-    <DynamicContainer className="flex items-center justify-center h-full w-full">
-      <div className="relative  flex w-full items-center justify-between gap-6 px-4">
-        <Loader className="animate-spin h-12 w-12  text-yellow-300" />
-        <div className="animate-spin h-12 w-12  text-yellow-300 rounded-md" />
-
-        <DynamicTitle className="my-auto text-2xl font-black tracking-tighter text-white ">
-          large
-        </DynamicTitle>
-      </div>
-    </DynamicContainer>
-  )
-
-  // Great for user onboarding, forms, etc
-  const renderTallState = () => (
-    <DynamicContainer className="  flex flex-col mt-6 w-full items-start  gap-1 px-8 font-semibold">
-      <DynamicDescription className="bg-cyan-300 rounded-2xl tracking-tight leading-5  p-2">
-        The Cult of Pythagoras
-      </DynamicDescription>
-      <DynamicDescription className="bg-cyan-300 rounded-2xl tracking-tight leading-5  p-2 text-left">
-        Music of the Spheres, an idea that celestial bodies produce a form of
-        music through their movements
-      </DynamicDescription>
-
-      <DynamicTitle className=" text-4xl font-black tracking-tighter text-cyan-100 ">
-        any cool cults?
-      </DynamicTitle>
-    </DynamicContainer>
-  )
-
-  // Render function for other states
-  const renderOtherStates = () => (
-    <div className="flex items-center justify-center h-full w-full">
-      <p className="text-white">cycle states</p>
-    </div>
-  )
-
-  // Main render logic based on size
-  function renderState() {
-    switch (blobState.size) {
+  const renderState = () => {
+    switch (state.size) {
       case "compact":
-        return renderCompactState()
+        return (
+          <DynamicContainer className="flex h-full w-full items-center justify-between px-4 text-white">
+            <DynamicDescription className="text-sm opacity-80">Now playing</DynamicDescription>
+            <DynamicTitle className="text-sm font-semibold">Cult FM</DynamicTitle>
+          </DynamicContainer>
+        )
       case "large":
-        return renderLargeState()
+        return (
+          <DynamicContainer className="flex h-full w-full items-center justify-center">
+            <DynamicTitle className="text-2xl font-black text-white">Syncing...</DynamicTitle>
+          </DynamicContainer>
+        )
       case "tall":
-        return renderTallState()
-      // Optionally add cases for other states as necessary
+        return (
+          <DynamicContainer className="flex h-full w-full flex-col items-start gap-2 p-5 text-white">
+            <DynamicTitle className="text-xl font-bold">New message</DynamicTitle>
+            <DynamicDescription className="text-sm text-neutral-300">
+              Your team invited you to review the latest release.
+            </DynamicDescription>
+          </DynamicContainer>
+        )
       default:
-        return renderOtherStates()
+        return (
+          <DynamicContainer className="flex h-full w-full items-center justify-center">
+            <DynamicDiv className="text-sm text-white/90">Tap to cycle states</DynamicDiv>
+          </DynamicContainer>
+        )
     }
   }
 
   return (
-    <div className=" h-full">
-      <div className="flex flex-col gap-4  h-full">
-        <div className="absolute bottom-1 left-2">
-          <Button
-            onClick={cycleBlobStates}
-            variant="secondary"
-            className="mt-4 p-2 border rounded-lg max-w-[200px] "
-          >
-            Click
-            <MousePointerClickIcon className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
-        <div className="absolute top-1 right-2">
-          <div>
-            <Badge variant="outline">prev - {blobState.previousSize}</Badge>
-            <Badge variant="outline">cur -{blobState.size}</Badge>
-          </div>
-        </div>
-
-        <DynamicBlob id="dynamic-blob">{renderState()}</DynamicBlob>
-      </div>
-    </div>
+    <>
+      <button onClick={cycleState}>Cycle</button>
+      <DynamicIsland id="example-island">{renderState()}</DynamicIsland>
+    </>
   )
 }
 
-export default function DynamicBlobDemo() {
-  const { state: blobState, scheduleAnimation, setSize } = useDynamicBlobSize()
-
-  // Function to cycle through the states
-  const cycleBlobStates = () => {
-    const currentIndex = blobStates.indexOf(blobState.size)
-    const nextIndex = (currentIndex + 1) % blobStates.length
-    // @ts-ignore
-    setSize(blobStates[nextIndex])
-  }
-
-  // Provide dynamic detail in such a beautiful small place :)
-  const renderCompactState = () => (
-    <DynamicContainer className="flex items-center justify-center h-full w-full">
-      <div className="relative w-full flex items-center">
-        <DynamicDescription className="absolute left-4  my-auto text-lg font-medium tracking-tighter text-white ">
-          <div className="bg-cyan-400 h-5 w-5 rounded-full" />
-        </DynamicDescription>
-
-        <DynamicDescription className="absolute text-white right-4  my-auto text-lg font-bold tracking-tighter ">
-          compact
-        </DynamicDescription>
-      </div>
-    </DynamicContainer>
-  )
-
-  // Great for call to action, popping up in users face :)
-  const renderLargeState = () => (
-    <DynamicContainer className="flex items-center justify-center h-full w-full">
-      <div className="relative  flex w-full items-center justify-between gap-6 px-4">
-        <Loader className="animate-spin h-12 w-12  text-yellow-300" />
-        <div className="animate-spin h-12 w-12  text-yellow-300 rounded-md" />
-
-        <DynamicTitle className="my-auto text-2xl font-black tracking-tighter text-white ">
-          large
-        </DynamicTitle>
-      </div>
-    </DynamicContainer>
-  )
-
-  // Great for user onboarding, forms, etc
-  const renderTallState = () => (
-    <DynamicContainer className="  flex flex-col mt-6 w-full items-start  gap-1 px-8 font-semibold">
-      <DynamicDescription className="bg-cyan-300 rounded-2xl tracking-tight leading-5  p-2">
-        The Cult of Pythagoras
-      </DynamicDescription>
-      <DynamicDescription className="bg-cyan-300 rounded-2xl tracking-tight leading-5  p-2 text-left">
-        Music of the Spheres, an idea that celestial bodies produce a form of
-        music through their movements
-      </DynamicDescription>
-
-      <DynamicTitle className=" text-4xl font-black tracking-tighter text-cyan-100 ">
-        any cool cults?
-      </DynamicTitle>
-    </DynamicContainer>
-  )
-
-  // Render function for other states
-  const renderOtherStates = () => (
-    <div className="flex items-center justify-center h-full w-full">
-      <p className="text-white">cycle states</p>
-    </div>
-  )
-
-  // Main render logic based on size
-  function renderState() {
-    switch (blobState.size) {
-      case "compact":
-        return renderCompactState()
-      case "large":
-        return renderLargeState()
-      case "tall":
-        return renderTallState()
-      // Optionally add cases for other states as necessary
-      default:
-        return renderOtherStates()
-    }
-  }
+export default function Example() {
   return (
-    <DynamicBlobProvider initialSize="default">
-      <div className=" h-full">
-        <div className="flex flex-col gap-4  h-full">
-          <div className="absolute bottom-1 left-2">
-            <Button
-              onClick={cycleBlobStates}
-              variant="secondary"
-              className="mt-4 p-2 border rounded-lg max-w-[200px] "
-            >
-              Click
-              <MousePointerClickIcon className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
-          <div className="absolute top-1 right-2">
-            <div>
-              <Badge variant="outline">prev - {blobState.previousSize}</Badge>
-              <Badge variant="outline">cur -{blobState.size}</Badge>
-            </div>
-          </div>
-
-          <DynamicBlob id="dynamic-blob">{renderState()}</DynamicBlob>
-        </div>
-      </div>
-    </DynamicBlobProvider>
+    <DynamicIslandProvider initialSize="default">
+      <DynamicIslandContent />
+    </DynamicIslandProvider>
   )
 }
 ```
+
+## Anatomy
+
+The Dynamic Island is built from small primitives you compose together:
+
+- `DynamicIslandProvider` manages size state and transition queue.
+- `DynamicIsland` renders the animated shell (width, height, radius).
+- `DynamicContainer` wraps each state view with enter/exit motion.
+- `DynamicTitle`, `DynamicDescription`, and `DynamicDiv` animate content blocks.
+- `useDynamicIslandSize` gives you `state`, `setSize`, and `scheduleAnimation`.
+
+## Size Presets
+
+Use these built-in shape presets with `setSize(...)` or `initialSize`.
+
+| Preset | Intended use |
+| --- | --- |
+| `default` | Idle base state |
+| `compact` | Small status indicator |
+| `compactLong` | Compact but wider row |
+| `compactMedium` | Medium compact card |
+| `large` | Prominent status/action |
+| `long` | Horizontal content row |
+| `medium` | Multi-line panel |
+| `tall` | Stacked content |
+| `ultra` | Large immersive panel |
+| `massive` | Full, oversized layout |
+| `minimalLeading` | Tiny leading indicator |
+| `minimalTrailing` | Tiny trailing indicator |
+| `reset` | Internal reset shape |
+| `empty` | Hidden/zero layout |
+
+## Controlled State Transitions
+
+Switch island layouts directly from app events:
+
+```tsx
+const { setSize } = useDynamicIslandSize()
+
+setSize("compact")
+setSize("medium")
+```
+
+Use the current and previous state to render context-aware UI:
+
+```tsx
+const { state } = useDynamicIslandSize()
+
+<span>Current: {state.size}</span>
+<span>Previous: {state.previousSize}</span>
+```
+
+## Scheduled Animations
+
+Queue a sequence of size transitions for guided flows:
+
+```tsx
+import { useScheduledAnimations } from "@/components/ui/dynamic-island"
+
+function IntroSequence() {
+  useScheduledAnimations([
+    { size: "compact", delay: 800 },
+    { size: "large", delay: 1200 },
+    { size: "tall", delay: 1400 },
+    { size: "medium", delay: 1000 },
+  ])
+
+  return null
+}
+```
+
+`delay` is the wait time (in milliseconds) before each step.
+
+## API Reference
+
+### `DynamicIslandProvider`
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `ReactNode` | — | Provider contents |
+| `initialSize` | `SizePresets` | `"default"` | Initial island size |
+| `initialAnimation` | `{ size: SizePresets; delay: number }[]` | `[]` | Optional initial transition queue |
+
+### `DynamicIsland`
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | — | Required id for the animated island element |
+| `children` | `ReactNode` | — | State-specific content |
+| `...props` | `HTMLMotionProps<"div">` | — | Passed to the root motion container |
+
+### `DynamicContainer`
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` | `string` | — | Additional classes for the animated wrapper |
+| `children` | `ReactNode` | — | Content for current size state |
+
+### `DynamicTitle`, `DynamicDescription`, `DynamicDiv`
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `className` | `string` | — | Styling classes |
+| `children` | `ReactNode` | — | Animated content |
+
+### `useDynamicIslandSize()`
+
+Returns:
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `state.size` | `SizePresets` | Current active preset |
+| `state.previousSize` | `SizePresets \| undefined` | Previously rendered preset |
+| `state.animationQueue` | `{ size: SizePresets; delay: number }[]` | Pending queued transitions |
+| `state.isAnimating` | `boolean` | Whether a queued animation sequence is in progress |
+| `setSize` | `(size: SizePresets) => void` | Immediately switch to a preset |
+| `scheduleAnimation` | `(steps: { size: SizePresets; delay: number }[]) => void` | Queue timed transitions |
+| `presets` | `Record<SizePresets, Preset>` | Raw preset dimensions and radii |
+
+## Best Practices
+
+- Keep each size state focused on one job (status, CTA, detail, confirmation).
+- Prefer `DynamicContainer` per state to keep transitions smooth and predictable.
+- Use `state.isAnimating` to disable controls during scripted animation sequences.
+- Keep heavy effects or expensive rendering outside frequently changing state views.
+- Place this component in client-rendered UI (`"use client"`), since it depends on browser size and motion.

@@ -447,6 +447,22 @@
 			transform: rotate(0);
 		}
 	}
+	@keyframes cosmic-spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+	@keyframes cosmic-spin-slow {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(-360deg);
+		}
+	}
 
 	/* Expose as animate-* tokens */
 	--animate-marquee: marquee var(--duration) linear infinite;
@@ -459,6 +475,8 @@
 	--animate-rotate-once-down-2s-delay: rotateIconDown 2s ease 0.75s forwards;
 	--animate-slide-down: slideDownShort 0.75s forwards;
 	--animate-slide-up: slideUp 3s forwards;
+	--animate-cosmic-spin: cosmic-spin 3s linear infinite;
+	--animate-cosmic-spin-slow: cosmic-spin-slow 5s linear infinite;
 }
 
 /* Base resets */
@@ -866,4 +884,30 @@
 		font-family: var(--font-mono);
 		font-size: 0.8rem;
 	}
+}
+
+@keyframes cosmic-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes cosmic-spin-slow {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(-360deg);
+	}
+}
+
+@utility animate-cosmic-spin {
+	animation: cosmic-spin 3s linear infinite;
+}
+
+@utility animate-cosmic-spin-slow {
+	animation: cosmic-spin-slow 5s linear infinite;
 }

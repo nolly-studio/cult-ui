@@ -2,7 +2,8 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { SidebarNavItem } from "types/nav"
+import { useEffect, useRef } from "react"
+import type { SidebarNavItem } from "types/nav"
 
 import { cn } from "@/lib/utils"
 
@@ -12,9 +13,27 @@ export interface DocsSidebarNavProps {
 
 export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
   const pathname = usePathname()
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!pathname) return
+
+    const activeLink = containerRef.current?.querySelector<HTMLElement>(
+      '[data-sidebar-active="true"]'
+    )
+
+    if (!activeLink) return
+
+    requestAnimationFrame(() => {
+      activeLink.scrollIntoView({
+        block: "center",
+        inline: "nearest",
+      })
+    })
+  }, [pathname])
 
   return items.length ? (
-    <div className="w-full">
+    <div ref={containerRef} className="w-full">
       {items.map((item, index) => (
         <div key={`${item.title}-${index}`} className={cn("pb-4")}>
           <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
@@ -77,6 +96,7 @@ function NavItem({ item, pathname }: NavItemProps) {
     return (
       <Link
         href={item.href}
+        data-sidebar-active={isActive ? "true" : undefined}
         className={cn(
           "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline",
           item.disabled && "cursor-not-allowed opacity-60",

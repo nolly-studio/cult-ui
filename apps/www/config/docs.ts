@@ -35,6 +35,11 @@ export const docsConfig: DocsConfig = {
 					href: "/docs/mcp-server",
 					items: [],
 				},
+				{
+					title: "Changelog",
+					href: "/docs/changelog",
+					items: [],
+				},
 			],
 		},
 		{
@@ -56,17 +61,23 @@ export const docsConfig: DocsConfig = {
 						{
 							title: "Family Drawer",
 							href: "/docs/components/family-drawer",
-							label: "recent",
 							items: [],
 						},
 						{
 							title: "Texture Button",
 							href: "/docs/components/texture-button",
+							label: "updated",
 							items: [],
 						},
 						{
 							title: "Bg Animate Button",
 							href: "/docs/components/bg-animate-button",
+							items: [],
+						},
+						{
+							title: "Cosmic Button",
+							href: "/docs/components/cosmic-button",
+							label: "new",
 							items: [],
 						},
 					],
@@ -102,6 +113,7 @@ export const docsConfig: DocsConfig = {
 						{
 							title: "Shift Card",
 							href: "/docs/components/shift-card",
+							label: "updated",
 							items: [],
 						},
 						{
@@ -118,13 +130,11 @@ export const docsConfig: DocsConfig = {
 							title: "Distorted Glass",
 							href: "/docs/components/distorted-glass",
 							items: [],
-							label: "recent",
 						},
 						{
 							title: "Background Texture",
 							href: "/docs/components/bg-image-texture",
 							items: [],
-							label: "recent",
 						},
 					],
 				},
@@ -136,7 +146,7 @@ export const docsConfig: DocsConfig = {
 							title: "Morph Surface",
 							href: "/docs/components/morph-surface",
 							items: [],
-							label: "new",
+							label: "updated",
 						},
 						{
 							title: "Direction Aware Tabs",
@@ -178,13 +188,18 @@ export const docsConfig: DocsConfig = {
 							title: "Code Block",
 							href: "/docs/components/code-block",
 							items: [],
-							label: "recent",
 						},
 					],
 				},
 				{
 					title: "Onboarding & Tours",
 					items: [
+						{
+							title: "Onboarding",
+							href: "/docs/components/onboarding",
+							items: [],
+							label: "new",
+						},
 						{
 							title: "Feature Carousel",
 							href: "/docs/components/feature-carousel",
@@ -193,6 +208,7 @@ export const docsConfig: DocsConfig = {
 						{
 							title: "Intro Disclosure",
 							href: "/docs/components/intro-disclosure",
+							label: "updated",
 							items: [],
 						},
 						{
@@ -220,19 +236,19 @@ export const docsConfig: DocsConfig = {
 							title: "Choice Poll",
 							href: "/docs/components/choice-poll",
 							items: [],
-							label: "new",
+							label: "updated",
 						},
 						{
 							title: "Vote Tally",
 							href: "/docs/components/vote-tally",
 							items: [],
-							label: "new",
+							label: "recent",
 						},
 						{
 							title: "Poll Widget",
 							href: "/docs/components/poll-widget",
 							items: [],
-							label: "new",
+							label: "recent",
 						},
 						{
 							title: "Prompt Library",
@@ -258,7 +274,6 @@ export const docsConfig: DocsConfig = {
 							title: "Squiggle Arrow",
 							href: "/docs/components/squiggle-arrow",
 							items: [],
-							label: "recent",
 						},
 					],
 				},
@@ -306,28 +321,28 @@ export const docsConfig: DocsConfig = {
 					title: "Typography & Text",
 					items: [
 						{
-							title: "Pixel Heading (Character)",
+							title: "Pixel Heading (Char)",
 							href: "/docs/components/pixel-heading-character",
 							items: [],
-							label: "new",
+							label: "recent",
 						},
 						{
 							title: "Pixel Heading (Word)",
 							href: "/docs/components/pixel-heading-word",
 							items: [],
-							label: "new",
+							label: "recent",
 						},
 						{
 							title: "Pixel Paragraph",
 							href: "/docs/components/pixel-paragraph-words",
 							items: [],
-							label: "new",
+							label: "recent",
 						},
 						{
-							title: "Pixel Paragraph Inverse",
+							title: "Pixel Paragraph Inv",
 							href: "/docs/components/pixel-paragraph-words-inverse",
 							items: [],
-							label: "new",
+							label: "recent",
 						},
 						{
 							title: "Text Gif",
@@ -377,6 +392,7 @@ export const docsConfig: DocsConfig = {
 						{
 							title: "Shader Lens Blur",
 							href: "/docs/components/shader-lens-blur",
+							label: "updated",
 							items: [],
 						},
 					],

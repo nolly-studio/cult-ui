@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { atom, useAtom } from "jotai"
 import { motion } from "motion/react"
 import { useTheme } from "next-themes"
@@ -39,7 +39,7 @@ vec2 coord(in vec2 p) {
 }
 
 #define st0 coord(gl_FragCoord.xy)
-#define mx coord(u_mouse)
+#define mx coord(u_mouse * u_pixelRatio)
 
 float sdRoundRect(vec2 p, vec2 b, float r) {
     vec2 d = abs(p - 0.5) * 4.2 - b + vec2(r);
@@ -158,6 +158,7 @@ export function ShaderLensBlur() {
   const cameraRef = useRef<THREE.OrthographicCamera | null>(null)
   const materialRef = useRef<THREE.ShaderMaterial | null>(null)
   const rafRef = useRef<number | null>(null)
+  const pixelRatioRef = useRef(1)
   const [isInteracting, setIsInteracting] = useState(false)
   const { theme } = useTheme()
 
@@ -180,8 +181,17 @@ export function ShaderLensBlur() {
     cameraRef.current.bottom = -1
     cameraRef.current.updateProjectionMatrix()
 
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2)
+    pixelRatioRef.current = pixelRatio
+
+    rendererRef.current.setPixelRatio(pixelRatio)
     rendererRef.current.setSize(w, h)
-    materialRef.current.uniforms.u_resolution.value.set(w, h)
+
+    const drawingBufferSize = rendererRef.current.getDrawingBufferSize(
+      new THREE.Vector2()
+    )
+    materialRef.current.uniforms.u_resolution.value.copy(drawingBufferSize)
+    materialRef.current.uniforms.u_pixelRatio.value = pixelRatio
   }, [])
 
   const updateMousePosition = useCallback(
@@ -210,6 +220,11 @@ export function ShaderLensBlur() {
       )
         return
 
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2)
+      if (pixelRatio !== pixelRatioRef.current) {
+        updateSize()
+      }
+
       materialRef.current.uniforms.u_time.value = time * 0.001
       materialRef.current.uniforms.u_hoverStrength.value =
         isInteracting || config.enableHover ? 0.3 : 0
@@ -217,7 +232,7 @@ export function ShaderLensBlur() {
       rendererRef.current.render(sceneRef.current, cameraRef.current)
       rafRef.current = requestAnimationFrame(animate)
     },
-    [config.enableHover, isInteracting]
+    [config.enableHover, isInteracting, updateSize]
   )
 
   useEffect(() => {
@@ -298,21 +313,25 @@ export function ShaderLensBlur() {
         updateMousePosition(touch.clientX, touch.clientY)
       }
     }
+    const handlePointerDown = () => setIsInteracting(true)
+    const handlePointerUp = () => setIsInteracting(false)
+    const handleTouchStart = () => setIsInteracting(true)
+    const handleTouchEnd = () => setIsInteracting(false)
 
     container.addEventListener("pointermove", handlePointerMove)
     container.addEventListener("touchmove", handleTouchMove)
-    container.addEventListener("pointerdown", () => setIsInteracting(true))
-    container.addEventListener("pointerup", () => setIsInteracting(false))
-    container.addEventListener("touchstart", () => setIsInteracting(true))
-    container.addEventListener("touchend", () => setIsInteracting(false))
+    container.addEventListener("pointerdown", handlePointerDown)
+    container.addEventListener("pointerup", handlePointerUp)
+    container.addEventListener("touchstart", handleTouchStart)
+    container.addEventListener("touchend", handleTouchEnd)
 
     return () => {
       container.removeEventListener("pointermove", handlePointerMove)
       container.removeEventListener("touchmove", handleTouchMove)
-      container.removeEventListener("pointerdown", () => setIsInteracting(true))
-      container.removeEventListener("pointerup", () => setIsInteracting(false))
-      container.removeEventListener("touchstart", () => setIsInteracting(true))
-      container.removeEventListener("touchend", () => setIsInteracting(false))
+      container.removeEventListener("pointerdown", handlePointerDown)
+      container.removeEventListener("pointerup", handlePointerUp)
+      container.removeEventListener("touchstart", handleTouchStart)
+      container.removeEventListener("touchend", handleTouchEnd)
     }
   }, [updateMousePosition])
 

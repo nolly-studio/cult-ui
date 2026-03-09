@@ -31,6 +31,31 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "cosmic-button": {
+    name: "cosmic-button",
+    description:
+      "Animated button/link with cosmic gradient border effect, renders as anchor or button",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/cosmic-button.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/cosmic-button.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "texture-button": {
     name: "texture-button",
     description:
@@ -1464,6 +1489,31 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  onboarding: {
+    name: "onboarding",
+    description:
+      "Composable multi-step onboarding primitives: Onboarding root with step navigation, FeatureCarousel, ChoiceGroup radio selector, TipsList, and StepIndicator with dots and pills variants",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "registry/default/ui/onboarding.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/onboarding.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "text-animate-demo": {
     name: "text-animate-demo",
     description: "",
@@ -1479,6 +1529,32 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/default/example/text-animate-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "cosmic-button-demo": {
+    name: "cosmic-button-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["cosmic-button"],
+    files: [
+      {
+        path: "registry/default/example/cosmic-button-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/cosmic-button-demo.tsx"
       )
       const exportName =
         Object.keys(mod).find(
@@ -2956,6 +3032,30 @@ export const Index: Record<string, any> = {
       const mod = await import(
         "@/registry/default/example/pixel-paragraph-words-demo.tsx"
       )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "onboarding-demo": {
+    name: "onboarding-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["onboarding"],
+    files: [
+      {
+        path: "registry/default/example/onboarding-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/example/onboarding-demo.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
