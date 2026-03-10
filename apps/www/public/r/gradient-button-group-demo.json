@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/default/example/gradient-button-group-demo.tsx",
-      "content": "\"use client\"\n\nimport { PremiumNavBar } from \"@/registry/default/ui/gradient-button-group\"\n\nexport default function GradientButtonGroupDemo() {\n  return (\n    <div className=\"flex min-h-[320px] mx-auto items-center justify-center overflow-hidden rounded-md w-full \">\n      <PremiumNavBar />\n    </div>\n  )\n}\n",
+      "content": "\"use client\";\n\nimport { GradientButtonGroup } from \"@/registry/default/ui/gradient-button-group\";\n\nexport default function GradientButtonGroupDemo() {\n\treturn (\n\t\t<div className=\"flex min-h-[320px] mx-auto items-center justify-center overflow-hidden rounded-md w-full \">\n\t\t\t<GradientButtonGroup />\n\t\t</div>\n\t);\n}\n",
       "type": "registry:component"
     }
   ]
