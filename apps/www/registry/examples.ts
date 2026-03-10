@@ -692,4 +692,15 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "terminal-animation-demo",
+    type: "registry:component",
+    registryDependencies: ["terminal-animation"],
+    files: [
+      {
+        path: "registry/default/example/terminal-animation-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ]

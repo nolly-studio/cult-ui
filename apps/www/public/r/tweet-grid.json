@@ -3,9 +3,6 @@
   "name": "tweet-grid",
   "type": "registry:ui",
   "description": "Grid layout component for displaying tweet-like content cards",
-  "dependencies": [
-    ""
-  ],
   "files": [
     {
       "path": "registry/default/ui/tweet-grid.tsx",

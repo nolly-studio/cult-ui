@@ -92,7 +92,7 @@ export default function ShiftCardDemo() {
       width={150}
       height={200}
       alt="Animated Middle"
-      className="rounded-sm  border-2 border-white dark:border-black"
+      className="rounded-lg  border-2 border-white dark:border-black"
     />
   )
 

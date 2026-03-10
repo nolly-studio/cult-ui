@@ -3,9 +3,6 @@
   "name": "squiggle-arrow",
   "type": "registry:ui",
   "description": "A playful, hand-drawn squiggly arrow component with customizable variants, directions, and sizes",
-  "dependencies": [
-    ""
-  ],
   "files": [
     {
       "path": "registry/default/ui/squiggle-arrow.tsx",

@@ -277,6 +277,12 @@ export const docsConfig: DocsConfig = {
 							items: [],
 						},
 						{
+							title: "Terminal Animation",
+							href: "/docs/components/terminal-animation",
+							items: [],
+							label: "new",
+						},
+						{
 							title: "Squiggle Arrow",
 							href: "/docs/components/squiggle-arrow",
 							items: [],

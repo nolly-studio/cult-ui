@@ -2,9 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "minimal-card",
   "description": "Clean and minimal card component with subtle styling and hover effects",
-  "dependencies": [
-    ""
-  ],
   "files": [
     {
       "path": "registry/default/ui/minimal-card.tsx",

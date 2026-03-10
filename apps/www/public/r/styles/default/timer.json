@@ -2,9 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "timer",
   "description": "Countdown timer component with customizable duration and visual styles",
-  "dependencies": [
-    ""
-  ],
   "files": [
     {
       "path": "registry/default/ui/timer.tsx",

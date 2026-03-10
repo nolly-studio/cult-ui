@@ -3,9 +3,6 @@
   "name": "bg-animate-button",
   "type": "registry:ui",
   "description": "Button component with animated background effects and gradient transitions",
-  "dependencies": [
-    ""
-  ],
   "files": [
     {
       "path": "registry/default/ui/bg-animate-button.tsx",

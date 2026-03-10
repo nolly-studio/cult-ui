@@ -3,9 +3,6 @@
   "name": "neumorph-button",
   "type": "registry:ui",
   "description": "Neumorphic button component with soft shadows and tactile interaction effects",
-  "dependencies": [
-    ""
-  ],
   "files": [
     {
       "path": "registry/default/ui/neumorph-button.tsx",

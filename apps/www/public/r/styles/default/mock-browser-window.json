@@ -2,9 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "mock-browser-window",
   "description": "A customizable browser window mockup component with support for Chrome, Safari, and generic styles, customizable sidebars, and themes",
-  "dependencies": [
-    ""
-  ],
   "registryDependencies": [
     "texture-overlay"
   ],

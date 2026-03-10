@@ -2,9 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "neumorph-button",
   "description": "Neumorphic button component with soft shadows and tactile interaction effects",
-  "dependencies": [
-    ""
-  ],
   "files": [
     {
       "path": "registry/default/ui/neumorph-button.tsx",

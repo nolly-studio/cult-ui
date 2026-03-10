@@ -3,9 +3,6 @@
   "name": "bg-image-texture",
   "type": "registry:ui",
   "description": "Background texture component with multiple texture variants and customizable opacity",
-  "dependencies": [
-    ""
-  ],
   "files": [
     {
       "path": "registry/default/ui/bg-image-texture.tsx",

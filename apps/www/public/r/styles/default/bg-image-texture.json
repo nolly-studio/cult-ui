@@ -2,9 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "bg-image-texture",
   "description": "Background texture component with multiple texture variants and customizable opacity",
-  "dependencies": [
-    ""
-  ],
   "files": [
     {
       "path": "registry/default/ui/bg-image-texture.tsx",

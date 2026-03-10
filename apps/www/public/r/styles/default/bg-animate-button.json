@@ -2,9 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "bg-animate-button",
   "description": "Button component with animated background effects and gradient transitions",
-  "dependencies": [
-    ""
-  ],
   "files": [
     {
       "path": "registry/default/ui/bg-animate-button.tsx",

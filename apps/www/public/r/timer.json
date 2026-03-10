@@ -3,9 +3,6 @@
   "name": "timer",
   "type": "registry:ui",
   "description": "Countdown timer component with customizable duration and visual styles",
-  "dependencies": [
-    ""
-  ],
   "files": [
     {
       "path": "registry/default/ui/timer.tsx",

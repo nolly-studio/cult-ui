@@ -1541,6 +1541,31 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "terminal-animation": {
+    name: "terminal-animation",
+    description:
+      "Composable terminal animation primitives with typed command playback, tabbed scenarios, and customizable output rendering",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/terminal-animation.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/terminal-animation.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "text-animate-demo": {
     name: "text-animate-demo",
     description: "",
@@ -3108,6 +3133,32 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/default/example/gradient-button-group-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "terminal-animation-demo": {
+    name: "terminal-animation-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["terminal-animation"],
+    files: [
+      {
+        path: "registry/default/example/terminal-animation-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/terminal-animation-demo.tsx"
       )
       const exportName =
         Object.keys(mod).find(

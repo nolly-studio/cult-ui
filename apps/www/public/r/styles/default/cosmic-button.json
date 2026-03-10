@@ -2,9 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "cosmic-button",
   "description": "Animated button/link with cosmic gradient border effect, renders as anchor or button",
-  "dependencies": [
-    ""
-  ],
   "files": [
     {
       "path": "registry/default/ui/cosmic-button.tsx",

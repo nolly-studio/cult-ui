@@ -3,9 +3,6 @@
   "name": "mock-browser-window",
   "type": "registry:ui",
   "description": "A customizable browser window mockup component with support for Chrome, Safari, and generic styles, customizable sidebars, and themes",
-  "dependencies": [
-    ""
-  ],
   "registryDependencies": [
     "texture-overlay"
   ],

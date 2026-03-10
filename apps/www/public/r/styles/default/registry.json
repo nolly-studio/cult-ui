@@ -19,9 +19,6 @@
     {
       "name": "cosmic-button",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/cosmic-button.tsx",
@@ -47,9 +44,6 @@
     {
       "name": "texture-card",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/texture-card.tsx",
@@ -61,9 +55,6 @@
     {
       "name": "timer",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/timer.tsx",
@@ -75,9 +66,6 @@
     {
       "name": "shift-card",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/shift-card.tsx",
@@ -89,9 +77,6 @@
     {
       "name": "minimal-card",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/minimal-card.tsx",
@@ -132,9 +117,6 @@
     {
       "name": "bg-animate-button",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/bg-animate-button.tsx",
@@ -146,9 +128,6 @@
     {
       "name": "family-button",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/family-button.tsx",
@@ -160,9 +139,6 @@
     {
       "name": "side-panel",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/side-panel.tsx",
@@ -174,9 +150,6 @@
     {
       "name": "bg-media",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/bg-media.tsx",
@@ -188,9 +161,6 @@
     {
       "name": "three-d-carousel",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/three-d-carousel.tsx",
@@ -202,9 +172,6 @@
     {
       "name": "tweet-grid",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/tweet-grid.tsx",
@@ -287,9 +254,6 @@
     {
       "name": "lightboard",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/lightboard.tsx",
@@ -343,9 +307,6 @@
     {
       "name": "bg-image-texture",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/bg-image-texture.tsx",
@@ -485,9 +446,6 @@
     {
       "name": "neumorph-eyebrow",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/neumorph-eyebrow.tsx",
@@ -499,9 +457,6 @@
     {
       "name": "neumorph-button",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/neumorph-button.tsx",
@@ -683,9 +638,6 @@
     {
       "name": "texture-overlay",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/texture-overlay.tsx",
@@ -697,9 +649,6 @@
     {
       "name": "squiggle-arrow",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/squiggle-arrow.tsx",
@@ -725,9 +674,6 @@
     {
       "name": "mock-browser-window",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "registryDependencies": [
         "texture-overlay"
       ],
@@ -756,9 +702,6 @@
     {
       "name": "distorted-glass",
       "type": "registry:ui",
-      "dependencies": [
-        ""
-      ],
       "files": [
         {
           "path": "registry/default/ui/distorted-glass.tsx",
@@ -886,6 +829,21 @@
         }
       ],
       "description": "Premium layered button group with animated active state, gradient ring accents, and theme toggle underlay"
+    },
+    {
+      "name": "terminal-animation",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "@radix-ui/react-use-controllable-state"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/terminal-animation.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Composable terminal animation primitives with typed command playback, tabbed scenarios, and customizable output rendering"
     },
     {
       "name": "text-animate-demo",
@@ -1696,6 +1654,19 @@
       "files": [
         {
           "path": "registry/default/example/gradient-button-group-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "terminal-animation-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "terminal-animation"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/terminal-animation-demo.tsx",
           "type": "registry:component"
         }
       ]

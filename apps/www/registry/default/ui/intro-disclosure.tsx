@@ -43,16 +43,20 @@ function useMediaQuery(query: string) {
   return matches ?? false
 }
 
-function useFeatureVisibility(featureId: string) {
+function useFeatureVisibility(
+  featureId: string,
+  variant: "desktop" | "mobile"
+) {
+  const storageKey = `feature_${featureId}_${variant}`
   const [isVisible, setIsVisible] = React.useState<boolean | null>(null)
 
   React.useEffect(() => {
-    const storedValue = localStorage.getItem(`feature_${featureId}`)
+    const storedValue = localStorage.getItem(storageKey)
     setIsVisible(storedValue ? JSON.parse(storedValue) : true)
-  }, [featureId])
+  }, [storageKey])
 
   const hideFeature = () => {
-    localStorage.setItem(`feature_${featureId}`, JSON.stringify(false))
+    localStorage.setItem(storageKey, JSON.stringify(false))
     setIsVisible(false)
   }
 
@@ -410,7 +414,8 @@ export function IntroDisclosure({
   const [direction, setDirection] = React.useState<1 | -1>(1)
   const isDesktopQuery = useMediaQuery("(min-width: 768px)")
   const isDesktop = forceVariant ? forceVariant === "desktop" : isDesktopQuery
-  const { isVisible, hideFeature } = useFeatureVisibility(featureId)
+  const variant = isDesktop ? "desktop" : "mobile"
+  const { isVisible, hideFeature } = useFeatureVisibility(featureId, variant)
   const stepRef = React.useRef<HTMLButtonElement>(null)
 
   // Close the dialog if feature is hidden

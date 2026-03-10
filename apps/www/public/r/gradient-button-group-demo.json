@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-button-group-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "gradient-button-group"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/gradient-button-group-demo.tsx",
+      "content": "\"use client\"\n\nimport { PremiumNavBar } from \"@/registry/default/ui/gradient-button-group\"\n\nexport default function GradientButtonGroupDemo() {\n  return (\n    <div className=\"flex min-h-[320px] mx-auto items-center justify-center overflow-hidden rounded-md w-full \">\n      <PremiumNavBar />\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

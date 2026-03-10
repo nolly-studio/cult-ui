@@ -17,7 +17,7 @@ export const ui: Registry["items"] = [
   {
     name: "cosmic-button",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/cosmic-button.tsx",
@@ -43,7 +43,7 @@ export const ui: Registry["items"] = [
   {
     name: "texture-card",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/texture-card.tsx",
@@ -56,7 +56,7 @@ export const ui: Registry["items"] = [
   {
     name: "timer",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/timer.tsx",
@@ -69,7 +69,7 @@ export const ui: Registry["items"] = [
   {
     name: "shift-card",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/shift-card.tsx",
@@ -82,7 +82,7 @@ export const ui: Registry["items"] = [
   {
     name: "minimal-card",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/minimal-card.tsx",
@@ -121,7 +121,7 @@ export const ui: Registry["items"] = [
   {
     name: "bg-animate-button",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/bg-animate-button.tsx",
@@ -134,7 +134,7 @@ export const ui: Registry["items"] = [
   {
     name: "family-button",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/family-button.tsx",
@@ -147,7 +147,7 @@ export const ui: Registry["items"] = [
   {
     name: "side-panel",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/side-panel.tsx",
@@ -160,7 +160,7 @@ export const ui: Registry["items"] = [
   {
     name: "bg-media",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/bg-media.tsx",
@@ -173,7 +173,7 @@ export const ui: Registry["items"] = [
   {
     name: "three-d-carousel",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/three-d-carousel.tsx",
@@ -186,7 +186,7 @@ export const ui: Registry["items"] = [
   {
     name: "tweet-grid",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/tweet-grid.tsx",
@@ -264,7 +264,7 @@ export const ui: Registry["items"] = [
   {
     name: "lightboard",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/lightboard.tsx",
@@ -316,7 +316,7 @@ export const ui: Registry["items"] = [
   {
     name: "bg-image-texture",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/bg-image-texture.tsx",
@@ -446,7 +446,7 @@ export const ui: Registry["items"] = [
   {
     name: "neumorph-eyebrow",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/neumorph-eyebrow.tsx",
@@ -459,7 +459,7 @@ export const ui: Registry["items"] = [
   {
     name: "neumorph-button",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/neumorph-button.tsx",
@@ -623,7 +623,7 @@ export const ui: Registry["items"] = [
   {
     name: "texture-overlay",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/texture-overlay.tsx",
@@ -636,7 +636,7 @@ export const ui: Registry["items"] = [
   {
     name: "squiggle-arrow",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/squiggle-arrow.tsx",
@@ -662,7 +662,7 @@ export const ui: Registry["items"] = [
   {
     name: "mock-browser-window",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     registryDependencies: ["texture-overlay"],
     files: [
       {
@@ -689,7 +689,7 @@ export const ui: Registry["items"] = [
   {
     name: "distorted-glass",
     type: "registry:ui",
-    dependencies: [""],
+    // dependencies: [""],
     files: [
       {
         path: "registry/default/ui/distorted-glass.tsx",
@@ -811,5 +811,21 @@ export const ui: Registry["items"] = [
     ],
     description:
       "Premium layered button group with animated active state, gradient ring accents, and theme toggle underlay",
+  },
+  {
+    name: "terminal-animation",
+    type: "registry:ui",
+    dependencies: [
+      "@radix-ui/react-slot",
+      "@radix-ui/react-use-controllable-state",
+    ],
+    files: [
+      {
+        path: "registry/default/ui/terminal-animation.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Composable terminal animation primitives with typed command playback, tabbed scenarios, and customizable output rendering",
   },
 ]

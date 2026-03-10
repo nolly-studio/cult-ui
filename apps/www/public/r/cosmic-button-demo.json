@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cosmic-button-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "cosmic-button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/cosmic-button-demo.tsx",
+      "content": "\"use client\"\n\nimport { CosmicButton } from \"@/registry/default/ui/cosmic-button\"\n\nexport default function CosmicButtonDemo() {\n  return (\n    <div className=\" p-6 rounded-3xl flex justify-center\">\n      <div>\n        <div className=\"grid place-items-center\">\n          <CosmicButton as=\"button\" type=\"button\">\n            Cosmic button goes brrr\n          </CosmicButton>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

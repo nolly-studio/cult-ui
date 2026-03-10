@@ -77,13 +77,6 @@ async function getFileContent(file: z.infer<typeof registryItemFileSchema>) {
 
   let code = sourceFile.getFullText()
 
-  // Some registry items uses default export.
-  // We want to use named export instead.
-  // TODO: do we really need this? - @shadcn.
-  if (file.type !== "registry:page") {
-    code = code.replaceAll("export default", "export")
-  }
-
   // Fix imports.
   code = fixImport(code)
 

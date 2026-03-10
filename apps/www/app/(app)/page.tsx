@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { siteConfig } from "@/config/site";
+import { GitHubButton } from "@/components/github-link";
 import { Icons, ReactIcon, TailwindCSSIcon } from "@/components/icons";
 import { MiniBlocksGrid } from "@/components/landing/blocks-grid";
 import { LatestComponentVertical } from "@/components/landing/featured-component";
@@ -12,6 +12,7 @@ import { PixelHeading } from "@/components/landing/pixel-heading-character";
 
 import { PixelParagraphInverse } from "@/components/landing/pixel-paragraph-words-inverse";
 import { Footer } from "@/components/landing/footer";
+import { Suspense } from "react";
 
 export default function IndexPage() {
 	const componentCount = ui.length;
@@ -95,15 +96,8 @@ export default function IndexPage() {
 								text={`Browse ${componentCount} Components`}
 							/>
 						</Link>
-						<Link
-							target="_blank"
-							rel="noreferrer"
-							href={siteConfig.links.github}
-							className="md:flex hidden items-center gap-2 border border-border bg-background px-6 py-3 font-mono text-sm uppercase tracking-wider transition-all hover:border-foreground/40 hover:bg-foreground hover:text-background"
-						>
-							<Icons.gitHub className="size-4" />
-							GitHub
-						</Link>
+
+						<GitHubButton />
 					</div>
 
 					{/* Tech Stack Pills */}

@@ -2,9 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "family-button",
   "description": "Button component with family-style design and interactive hover effects",
-  "dependencies": [
-    ""
-  ],
   "files": [
     {
       "path": "registry/default/ui/family-button.tsx",

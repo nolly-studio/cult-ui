@@ -3,9 +3,6 @@
   "name": "minimal-card",
   "type": "registry:ui",
   "description": "Clean and minimal card component with subtle styling and hover effects",
-  "dependencies": [
-    ""
-  ],
   "files": [
     {
       "path": "registry/default/ui/minimal-card.tsx",

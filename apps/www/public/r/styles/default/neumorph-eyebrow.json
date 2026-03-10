@@ -2,9 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "neumorph-eyebrow",
   "description": "Neumorphic eyebrow component with soft shadow effects and modern styling",
-  "dependencies": [
-    ""
-  ],
   "files": [
     {
       "path": "registry/default/ui/neumorph-eyebrow.tsx",

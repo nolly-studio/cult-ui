@@ -2,9 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "distorted-glass",
   "description": "A glass morphism effect component using SVG filters with fractal noise to create visual transitions between sections",
-  "dependencies": [
-    ""
-  ],
   "files": [
     {
       "path": "registry/default/ui/distorted-glass.tsx",

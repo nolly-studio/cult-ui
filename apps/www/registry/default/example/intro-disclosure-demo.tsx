@@ -84,8 +84,8 @@ export default function IntroDisclosureDemo() {
 
   const updateStorageState = () => {
     setStorageState({
-      desktop: localStorage.getItem("feature_intro-demo"),
-      mobile: localStorage.getItem("feature_intro-demo-mobile"),
+      desktop: localStorage.getItem("feature_intro-demo_desktop"),
+      mobile: localStorage.getItem("feature_intro-demo_mobile"),
     })
   }
 
@@ -116,14 +116,14 @@ export default function IntroDisclosureDemo() {
   }
 
   const handleClearDesktop = () => {
-    localStorage.removeItem("feature_intro-demo")
+    localStorage.removeItem("feature_intro-demo_desktop")
     updateStorageState()
     router.refresh()
     toast.success("Desktop storage cleared")
   }
 
   const handleClearMobile = () => {
-    localStorage.removeItem("feature_intro-demo-mobile")
+    localStorage.removeItem("feature_intro-demo_mobile")
     updateStorageState()
     router.refresh()
     toast.success("Mobile storage cleared")
@@ -215,7 +215,7 @@ export default function IntroDisclosureDemo() {
                 open={openMobile}
                 setOpen={setOpenMobile}
                 steps={steps}
-                featureId="intro-demo-mobile"
+                featureId="intro-demo"
                 onComplete={() => toast.success("Mobile tour completed")}
                 onSkip={() => toast.info("Mobile tour skipped")}
                 forceVariant="mobile"

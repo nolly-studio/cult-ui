@@ -13,7 +13,11 @@ import { ModeToggle } from "@/components/mode-toggle"
 
 import { DistortedGlass } from "./distorted-glass"
 
-export function SiteHeader() {
+interface SiteHeaderProps {
+  githubLink?: React.ReactNode
+}
+
+export function SiteHeader({ githubLink }: SiteHeaderProps) {
   let pathname = usePathname()
   return (
     <header
@@ -29,23 +33,25 @@ export function SiteHeader() {
         <MobileNav />
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <nav className="flex items-center ">
-            <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={cn(
-                  buttonVariants({
-                    variant: "ghost",
-                  }),
-                  "w-9 px-0"
-                )}
+            {githubLink ?? (
+              <Link
+                href={siteConfig.links.github}
+                target="_blank"
+                rel="noreferrer"
               >
-                <Icons.gitHub className="size-4" />
-                <span className="sr-only">GitHub</span>
-              </div>
-            </Link>
+                <div
+                  className={cn(
+                    buttonVariants({
+                      variant: "ghost",
+                    }),
+                    "w-9 px-0"
+                  )}
+                >
+                  <Icons.gitHub className="size-4" />
+                  <span className="sr-only">GitHub</span>
+                </div>
+              </Link>
+            )}
             <Link
               href={siteConfig.links.twitter}
               target="_blank"

@@ -2,9 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "side-panel",
   "description": "Sliding side panel component with customizable positioning and animations",
-  "dependencies": [
-    ""
-  ],
   "files": [
     {
       "path": "registry/default/ui/side-panel.tsx",
