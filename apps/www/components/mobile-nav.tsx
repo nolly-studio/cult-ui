@@ -69,36 +69,28 @@ export function MobileNav() {
 
 				<div className="flex flex-col space-y-3 bg-background pt-4">
 					<a
-						href="https://pro.cult-ui.com/blocks"
+						href="https://aisdkagents.com/patterns"
 						target="_blank"
 						rel="noopener noreferrer"
 						className={cn(
 							"text-base font-semibold transition-colors hover:text-foreground/80",
 						)}
 					>
-						Blocks <span className="text-xs text-cyan-500">(8 new)</span>
+						Blocks <span className="text-xs text-lime-500">(100 new)</span>
 					</a>
 					<a
-						href="https://pro.cult-ui.com/sections"
+						href="https://aisdkagents.com/templates"
 						target="_blank"
 						rel="noopener noreferrer"
 						className={cn(
 							"text-base font-semibold transition-colors hover:text-foreground/80",
 						)}
 					>
-						Sections <span className="text-xs text-cyan-500">(10 new)</span>
-					</a>
-					<a
-						href="https://newcult.co"
-						className={cn(
-							"text-base font-semibold transition-colors hover:text-foreground/80",
-						)}
-					>
-						Templates <span className="text-xs text-cyan-500">(1 new)</span>
+						Templates <span className="text-xs text-lime-500">(4 new)</span>
 					</a>
 				</div>
 
-				<ScrollArea className="my-4 mr-2 h-[calc(100vh-12rem)] rounded-sm px-3 pb-2 shadow-inner ring-1 ring-border/60">
+				<ScrollArea className="my-4 mr-2 h-[calc(100vh-12rem)] rounded-sm px-3 pb-2 ">
 					<div className="flex flex-col space-y-2">
 						{docsConfig.sidebarNav.map((item, index) => (
 							<div key={index} className="flex flex-col space-y-3 pt-6">
