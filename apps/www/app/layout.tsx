@@ -4,7 +4,7 @@ import { Metadata, Viewport } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 import { siteConfig } from "@/config/site";
-// import { fontSans } from "@/lib/fonts";
+
 import { GeistSans } from "geist/font/sans";
 
 import { cn } from "@/lib/utils";
@@ -14,9 +14,9 @@ import {
 	Toaster as NewYorkToaster,
 } from "@/components/ui/toaster";
 import { Analytics } from "@/components/analytics";
-import { AnimatedBackgroundGuides } from "@/components/background-guides";
+
 import { ThemeProvider } from "@/components/providers";
-import { TailwindIndicator } from "@/components/tailwind-indicator";
+
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import {
 	GeistPixelSquare,
@@ -98,45 +98,46 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
 	return (
-		<>
-			<html lang="en" suppressHydrationWarning>
-				<head />
-				<body
-					className={cn(
-						"relative min-h-screen bg-background font-sans antialiased",
-						GeistPixelSquare.variable,
-						GeistPixelGrid.variable,
-						GeistPixelCircle.variable,
-						GeistPixelTriangle.variable,
-						GeistPixelLine.variable,
-						GeistSans.variable,
-						GeistMono.variable,
-					)}
+		<html lang="en" suppressHydrationWarning>
+			<head />
+
+			<body
+				className={cn(
+					"relative min-h-screen bg-background font-sans antialiased",
+					"group/body overscroll-none antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
+					GeistPixelSquare.variable,
+					GeistPixelGrid.variable,
+					GeistPixelCircle.variable,
+					GeistPixelTriangle.variable,
+					GeistPixelLine.variable,
+					GeistSans.variable,
+					GeistMono.variable,
+				)}
+			>
+				{/* <AnimatedBackgroundGuides /> */}
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
 				>
-					{/* <AnimatedBackgroundGuides /> */}
-					<ThemeProvider
-						attribute="class"
-						defaultTheme="system"
-						enableSystem
-						disableTransitionOnChange
-					>
-						<div vaul-drawer-wrapper="">
-							<div className="relative z-10 flex min-h-screen flex-col ">
+					<div vaul-drawer-wrapper="">
+						<div className="">{children}</div>
+						{/* <div className="relative z-10 flex min-h-screen flex-col ">
 								{children}
-							</div>
-						</div>
-						<TailwindIndicator />
-						<ThemeSwitcher />
-						<Analytics />
+							</div> */}
+					</div>
+					{/* <TailwindIndicator /> */}
+					<ThemeSwitcher />
+					<Analytics />
 
-						<GoogleAnalytics gaId="G-5K1GVTD1JG" />
+					<GoogleAnalytics gaId="G-5K1GVTD1JG" />
 
-						<NewYorkToaster />
-						<DefaultToaster />
-						<NewYorkSonner />
-					</ThemeProvider>
-				</body>
-			</html>
-		</>
+					<NewYorkToaster />
+					<DefaultToaster />
+					<NewYorkSonner />
+				</ThemeProvider>
+			</body>
+		</html>
 	);
 }

@@ -1,4 +1,4 @@
-import { type Registry } from "@/registry/schema"
+import type { Registry } from "@/registry/schema"
 
 export const examples: Registry["items"] = [
   {
@@ -699,6 +699,61 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "registry/default/example/terminal-animation-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "hero-dithering-demo",
+    type: "registry:component",
+    registryDependencies: ["hero-dithering"],
+    files: [
+      {
+        path: "registry/default/example/hero-dithering-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "hero-color-panels-demo",
+    type: "registry:component",
+    registryDependencies: ["hero-color-panel"],
+    files: [
+      {
+        path: "registry/default/example/hero-color-panels-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "hero-static-radial-gradient-demo",
+    type: "registry:component",
+    registryDependencies: ["hero-static-radial-gradient"],
+    files: [
+      {
+        path: "registry/default/example/hero-static-radial-gradient-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "hero-heatmap-demo",
+    type: "registry:component",
+    registryDependencies: ["hero-heatmap"],
+    files: [
+      {
+        path: "registry/default/example/hero-heatmap-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "hero-liquid-metal-demo",
+    type: "registry:component",
+    registryDependencies: ["hero-liquid-metal"],
+    files: [
+      {
+        path: "registry/default/example/hero-liquid-metal-demo.tsx",
         type: "registry:component",
       },
     ],

@@ -12,8 +12,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Icons } from "@/components/icons";
 
-import { Separator } from "./ui/separator";
-
 export function MobileNav() {
 	const [open, setOpen] = React.useState(false);
 

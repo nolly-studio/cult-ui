@@ -1,16 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { mdxComponents } from "@/mdx-components";
-import {
-	IconArrowLeft,
-	IconArrowRight,
-	IconArrowUpRight,
-} from "@tabler/icons-react";
+import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { findNeighbour } from "fumadocs-core/server";
 
 import { source } from "@/lib/source";
 import { absoluteUrl } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
+
 import { Button } from "@/components/ui/button";
 import { DocsCopyPage } from "@/components/docs-copy-page";
 import { DocsTableOfContents } from "@/components/docs-toc";
@@ -86,9 +82,6 @@ export default async function Page(props: {
 	const MDX = doc.body;
 	const neighbours = await findNeighbour(source.pageTree, page.url);
 
-	// @ts-expect-error - revisit fumadocs types.
-	const links = doc.links;
-
 	return (
 		<div
 			data-slot="docs"
@@ -96,7 +89,7 @@ export default async function Page(props: {
 		>
 			<div className="flex min-w-0 flex-1 flex-col">
 				<div className="h-(--top-spacing) shrink-0" />
-				<div className="mx-auto flex w-full max-w-4xl min-w-0 flex-1 flex-col gap-4 px-1 py-2 md:py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
+				<div className="mx-auto flex w-full max-w-4xl xl:max-w-6xl min-w-0 flex-1 flex-col gap-4 px-1 py-14 text-neutral-800 md:px-0 lg:py-16 dark:text-neutral-300">
 					<div className="flex flex-col gap-1">
 						<div className="flex flex-col gap-1">
 							<div className="flex items-start justify-between">

@@ -1,4 +1,4 @@
-import { MainNavItem, SidebarNavItem } from "types/nav";
+import type { MainNavItem, SidebarNavItem } from "types/nav";
 
 interface DocsConfig {
 	mainNav: MainNavItem[];
@@ -46,6 +46,88 @@ export const docsConfig: DocsConfig = {
 			title: "Components",
 			items: [
 				{
+					title: "Marketing & Landing",
+					items: [
+						{
+							title: "Hero Dithering",
+							href: "/docs/components/hero-dithering",
+							items: [],
+							label: "new",
+						},
+						{
+							title: "Hero Color Panels",
+							href: "/docs/components/hero-color-panels",
+							items: [],
+							label: "new",
+						},
+						{
+							title: "Hero Heatmap",
+							href: "/docs/components/hero-heatmap",
+							items: [],
+							label: "new",
+						},
+						{
+							title: "Hero Liquid Metal",
+							href: "/docs/components/hero-liquid-metal",
+							items: [],
+							label: "new",
+						},
+						{
+							title: "Hero Static Radial Gradient",
+							href: "/docs/components/hero-static-radial-gradient",
+							items: [],
+							label: "new",
+						},
+						{
+							title: "Bg Media Hero",
+							href: "/docs/components/bg-media",
+							items: [],
+						},
+						{
+							title: "Logo Carousel",
+							href: "/docs/components/logo-carousel",
+							items: [],
+						},
+						{
+							title: "Tweet Grid",
+							href: "/docs/components/tweet-grid",
+							items: [],
+						},
+						{
+							title: "Gradient Heading",
+							href: "/docs/components/gradient-heading",
+							items: [],
+						},
+					],
+				},
+				{
+					title: "Guided Experiences",
+					items: [
+						{
+							title: "Onboarding",
+							href: "/docs/components/onboarding",
+							items: [],
+							label: "new",
+						},
+						{
+							title: "Feature Carousel",
+							href: "/docs/components/feature-carousel",
+							items: [],
+						},
+						{
+							title: "Intro Disclosure",
+							href: "/docs/components/intro-disclosure",
+							label: "updated",
+							items: [],
+						},
+						{
+							title: "Loading Carousel",
+							href: "/docs/components/loading-carousel",
+							items: [],
+						},
+					],
+				},
+				{
 					title: "Buttons & Controls",
 					items: [
 						{
@@ -56,11 +138,6 @@ export const docsConfig: DocsConfig = {
 						{
 							title: "Family Button",
 							href: "/docs/components/family-button",
-							items: [],
-						},
-						{
-							title: "Family Drawer",
-							href: "/docs/components/family-drawer",
 							items: [],
 						},
 						{
@@ -195,31 +272,9 @@ export const docsConfig: DocsConfig = {
 							href: "/docs/components/code-block",
 							items: [],
 						},
-					],
-				},
-				{
-					title: "Onboarding & Tours",
-					items: [
 						{
-							title: "Onboarding",
-							href: "/docs/components/onboarding",
-							items: [],
-							label: "new",
-						},
-						{
-							title: "Feature Carousel",
-							href: "/docs/components/feature-carousel",
-							items: [],
-						},
-						{
-							title: "Intro Disclosure",
-							href: "/docs/components/intro-disclosure",
-							label: "updated",
-							items: [],
-						},
-						{
-							title: "Loading Carousel",
-							href: "/docs/components/loading-carousel",
+							title: "Family Drawer",
+							href: "/docs/components/family-drawer",
 							items: [],
 						},
 					],
@@ -293,16 +348,6 @@ export const docsConfig: DocsConfig = {
 					title: "Media",
 					items: [
 						{
-							title: "Stripe Bg Guides",
-							href: "/docs/components/stripe-bg-guides",
-							items: [],
-						},
-						{
-							title: "Logo Carousel",
-							href: "/docs/components/logo-carousel",
-							items: [],
-						},
-						{
 							title: "3D Carousel",
 							href: "/docs/components/three-d-carousel",
 							items: [],
@@ -310,16 +355,6 @@ export const docsConfig: DocsConfig = {
 						{
 							title: "Hover Video Player",
 							href: "/docs/components/hover-video-player",
-							items: [],
-						},
-						{
-							title: "Bg Media Hero",
-							href: "/docs/components/bg-media",
-							items: [],
-						},
-						{
-							title: "Tweet Grid",
-							href: "/docs/components/tweet-grid",
 							items: [],
 						},
 						{
@@ -362,11 +397,6 @@ export const docsConfig: DocsConfig = {
 							items: [],
 						},
 						{
-							title: "Gradient Heading",
-							href: "/docs/components/gradient-heading",
-							items: [],
-						},
-						{
 							title: "Text Animate",
 							href: "/docs/components/text-animate",
 							items: [],
@@ -405,6 +435,11 @@ export const docsConfig: DocsConfig = {
 							title: "Shader Lens Blur",
 							href: "/docs/components/shader-lens-blur",
 							label: "updated",
+							items: [],
+						},
+						{
+							title: "Stripe Bg Guides",
+							href: "/docs/components/stripe-bg-guides",
 							items: [],
 						},
 					],

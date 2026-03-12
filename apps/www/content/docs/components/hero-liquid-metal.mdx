@@ -1,0 +1,335 @@
+---
+title: Hero Liquid Metal
+description: Split-layout hero section with responsive LiquidMetal shader visuals, CTA content, and tech stack badges.
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="hero-liquid-metal-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[95%]"
+  description="Responsive hero section with desktop and mobile LiquidMetal shader treatments"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/hero-liquid-metal.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install required dependencies.</Step>
+
+```bash
+npm install @paper-design/shaders-react
+```
+
+<Step>Install required registry dependencies if they are not already in your project.</Step>
+
+```bash
+npx shadcn@latest add button badge
+```
+
+<Step>Copy and paste the component source into your project.</Step>
+
+<ComponentSource name="hero-liquid-metal" />
+
+<Step>Optionally copy the demo as a starting point.</Step>
+
+<ComponentSource name="hero-liquid-metal-demo" />
+
+<Step>Update import paths to match your project structure.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+### Quick start with the composite component
+
+Pass shader props directly on `HeroLiquidMetal` for a one-line hero:
+
+```tsx
+import { HeroLiquidMetal } from "@/components/ui/hero-liquid-metal"
+
+export default function Page() {
+  return (
+    <main className="min-h-screen">
+      <HeroLiquidMetal
+        width={1280}
+        height={720}
+        image="https://shaders.paper.design/images/logos/diamond.svg"
+        colorBack="#ffffff00"
+        colorTint="#2c5d72"
+        shape={undefined}
+        repetition={6}
+        softness={0.8}
+        shiftRed={1}
+        shiftBlue={-1}
+        distortion={0.4}
+        contour={0.4}
+        angle={0}
+        speed={1}
+        scale={0.6}
+        fit="contain"
+      />
+    </main>
+  )
+}
+```
+
+### Compose with primitives
+
+For full control over layout and copy, use the root and slot components:
+
+```tsx
+import {
+  HeroLiquidMetalRoot,
+  HeroLiquidMetalContainer,
+  HeroLiquidMetalContent,
+  HeroLiquidMetalHeading,
+  HeroLiquidMetalDescription,
+  HeroLiquidMetalActions,
+  HeroLiquidMetalBadges,
+  HeroLiquidMetalVisual,
+  HeroLiquidMetalMobileVisual,
+} from "@/components/ui/hero-liquid-metal"
+```
+
+```tsx
+export default function Page() {
+  return (
+    <main className="min-h-screen">
+      <HeroLiquidMetalRoot>
+        <HeroLiquidMetalContainer>
+          <HeroLiquidMetalContent>
+            <HeroLiquidMetalHeading />
+            <HeroLiquidMetalDescription />
+            <HeroLiquidMetalActions />
+            <div
+              className="flex justify-center lg:justify-start"
+              data-slot="hero-liquid-metal-badges-wrap"
+            >
+              <HeroLiquidMetalBadges />
+            </div>
+          </HeroLiquidMetalContent>
+          <HeroLiquidMetalVisual />
+        </HeroLiquidMetalContainer>
+        <HeroLiquidMetalMobileVisual />
+      </HeroLiquidMetalRoot>
+    </main>
+  )
+}
+```
+
+## What You Get
+
+- Split hero layout with copy and CTA on the left and LiquidMetal shader visual on the right.
+- Memoized `LiquidMetal` render path for stable re-renders.
+- Desktop and mobile shader variants with configurable tint, repetition, softness, dispersion, and distortion.
+- **Root-level shader props**: pass shader/common props directly on `HeroLiquidMetal` or `HeroLiquidMetalRoot` for convenience.
+- Built-in badge row for highlighting stack metadata.
+- Works as a full-width section and can be dropped into landing pages directly.
+
+## API Reference
+
+### Exports
+
+| Export | Type | Description |
+| --- | --- | --- |
+| `HeroLiquidMetalRoot` | `HeroLiquidMetalRootProps` | Context provider and root section primitive |
+| `HeroLiquidMetalContainer` | `div` primitive | Main hero grid wrapper |
+| `HeroLiquidMetalContent` | `div` primitive | Left-side content column primitive |
+| `HeroLiquidMetalHeading` | `HeroLiquidMetalHeadingProps` | Heading block primitive (title + subtitle) |
+| `HeroLiquidMetalDescription` | `HeroLiquidMetalDescriptionProps` | Description block primitive |
+| `HeroLiquidMetalActions` | `HeroLiquidMetalActionsProps` | CTA wrapper primitive |
+| `HeroLiquidMetalCTA` | `HeroLiquidMetalCTAProps` | Reusable CTA slot component |
+| `HeroLiquidMetalBadges` | `HeroLiquidMetalBadgesProps` | Reusable badge row primitive |
+| `HeroLiquidMetalVisual` | `HeroLiquidMetalVisualProps` | Desktop visual shader wrapper primitive |
+| `HeroLiquidMetalMobileVisual` | `HeroLiquidMetalMobileVisualProps` | Mobile visual shader wrapper primitive |
+| `HeroLiquidMetal` / `default` | `HeroLiquidMetalProps` | Convenience assembled version built from primitives |
+| `useHeroLiquidMetal` | `() => HeroLiquidMetalContextValue` | Hook for context-driven custom composition |
+| `HeroLiquidMetalShaderOverrides` | type | Shader/common props that can be passed at the root |
+
+### Props
+
+`HeroLiquidMetalRoot` owns shared defaults, normalized shader props, and composition state.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `srTitle` | `string` | `"AI SDK Agents"` | Screen-reader-only heading text |
+| `title` | `ReactNode` | `"AI SDK Agents"` | First line of visible heading |
+| `subtitle` | `ReactNode` | `"Copy and Paste"` | Second line of visible heading |
+| `description` | `ReactNode` | built-in marketing copy | Supporting paragraph content |
+| `showCta` | `boolean` | `true` | Toggle CTA rendering |
+| `ctaProps` | `Partial<HeroLiquidMetalCTAProps>` | built-in CTA | Override CTA label/link/target/rel/click handler |
+| `renderCta` | `(defaultCta) => ReactNode` | `undefined` | Wrap or replace default CTA node |
+| `showBadges` | `boolean` | `true` | Toggle tech badges |
+| `techStack` | `HeroLiquidMetalTechItem[]` | Next.js + AI SDK | Badge data source |
+| `renderBadge` | `(tech, index, defaultBadge) => ReactNode` | `undefined` | Custom badge rendering hook |
+| `desktopShaderProps` | `Partial<LiquidMetalProps>` | built-in desktop shader settings | Override desktop shader values |
+| `mobileShaderProps` | `Partial<LiquidMetalProps>` | built-in mobile shader settings | Override mobile shader values |
+| `className` | `string` | `undefined` | Root section class override |
+
+### Root-level shader/common props (HeroLiquidMetalShaderOverrides)
+
+You can pass these on `HeroLiquidMetal` or `HeroLiquidMetalRoot`; they are merged into both desktop and mobile shader props (before `desktopShaderProps` / `mobileShaderProps`).
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `width` | `number \| string` | `1280` | CSS width style of the shader |
+| `height` | `number \| string` | `720` | CSS height style of the shader |
+| `image` | `string \| HTMLImageElement` | `"/cult-icon.svg"` | Optional effect mask image (transparent background recommended) |
+| `shape` | `"none" \| "circle" \| "daisy" \| "metaballs"` | `undefined` | Fallback predefined shape when no `image` is used |
+| `colorBack` | `string` | `"#ffffff00"` | Background color |
+| `colorTint` | `string` | `"#2c5d72"` | Overlay tint color (color burn blend) |
+| `repetition` | `number` | `6` | Density of pattern stripes (1-10) |
+| `softness` | `number` | `0.8` | Color transition sharpness (0-1) |
+| `shiftRed` | `number` | `1` | R-channel dispersion (-1 to 1) |
+| `shiftBlue` | `number` | `-1` | B-channel dispersion (-1 to 1) |
+| `distortion` | `number` | `0.4` | Noise distortion over pattern (0-1) |
+| `contour` | `number` | `0.4` | Distortion strength on shape edges (0-1) |
+| `angle` | `number` | `0` | Pattern animation direction (0-360) |
+| `speed` | `number` | `1` | Animation speed (`0` pauses animation) |
+| `frame` | `number` | `undefined` | Starting point of animation |
+| `scale` | `number` | `0.6` (desktop) | Overall zoom level (0.01-4) |
+| `rotation` | `number` | `undefined` | Overall rotation angle (0-360) |
+| `offsetX` | `number` | `undefined` | Horizontal center offset (-1 to 1) |
+| `offsetY` | `number` | `undefined` | Vertical center offset (-1 to 1) |
+| `fit` | `"contain" \| "cover"` | `"contain"` | Fit mode for rendering into canvas |
+| `originX` | `number` | `undefined` | Reference point for world width in canvas (0-1) |
+| `originY` | `number` | `undefined` | Reference point for world height in canvas (0-1) |
+| `minPixelRatio` | `number` | shader default | Minimum render pixel ratio |
+| `maxPixelCount` | `number` | shader default | Maximum pixel count to process |
+
+## Customization Patterns
+
+### Tune LiquidMetal via root-level props
+
+Use the composite component and pass shader props directly:
+
+```tsx
+<HeroLiquidMetal
+  width={1280}
+  height={720}
+  image="https://shaders.paper.design/images/logos/diamond.svg"
+  colorBack="#ffffff00"
+  colorTint="#2c5d72"
+  repetition={6}
+  softness={0.8}
+  shiftRed={1}
+  shiftBlue={-1}
+  distortion={0.4}
+  contour={0.4}
+  angle={0}
+  speed={1}
+  scale={0.6}
+  fit="contain"
+/>
+```
+
+### Override desktop and mobile separately
+
+Use `desktopShaderProps` and `mobileShaderProps` when composing with primitives:
+
+```tsx
+<HeroLiquidMetalRoot
+  desktopShaderProps={{
+    speed: 0.7,
+    scale: 0.8,
+    repetition: 7,
+    softness: 0.9,
+    distortion: 0.3,
+    colorTint: "#4f46e5",
+  }}
+  mobileShaderProps={{
+    speed: 0.65,
+    scale: 0.78,
+    colorTint: "#0ea5e9",
+  }}
+>
+  {/* compose primitives */}
+</HeroLiquidMetalRoot>
+```
+
+### Swap hero copy and CTA
+
+Replace copy and CTA target via props:
+
+```tsx
+<HeroLiquidMetalRoot
+  title="Your Product"
+  subtitle="Ship faster"
+  description="Reusable hero primitive with configurable LiquidMetal visuals."
+  ctaProps={{
+    label: "Get started",
+    href: "/signup",
+    target: "_self",
+  }}
+>
+  {/* compose primitives */}
+</HeroLiquidMetalRoot>
+```
+
+### Compose with slot primitives
+
+Use primitive exports for custom layout composition:
+
+```tsx
+<HeroLiquidMetalRoot>
+  <HeroLiquidMetalContainer>
+    <HeroLiquidMetalContent>
+      <HeroLiquidMetalHeading />
+      <HeroLiquidMetalDescription />
+      <HeroLiquidMetalActions />
+      <HeroLiquidMetalBadges />
+    </HeroLiquidMetalContent>
+    <HeroLiquidMetalVisual desktopShaderProps={{ colorTint: "#0f766e", distortion: 0.28 }} />
+  </HeroLiquidMetalContainer>
+  <HeroLiquidMetalMobileVisual />
+</HeroLiquidMetalRoot>
+```
+
+## Performance Notes
+
+- `LiquidMetal` is wrapped with `memo` to avoid unnecessary rerenders.
+- Mobile and desktop effects are rendered as separate sections so each layout can be tuned independently.
+- Keep the hero in client-rendered regions only (`"use client"` is required).
+
+## Accessibility Notes
+
+- Includes a screen-reader-only heading (`sr-only`) so page structure remains meaningful.
+- CTA link includes `rel="noopener noreferrer"` when opened in a new tab.
+- Ensure visible contrast remains sufficient if you change shader colors or text opacity.
+
+## Troubleshooting
+
+### Shader does not render
+
+- Confirm `@paper-design/shaders-react` is installed.
+- Verify this component runs in a client context.
+- Confirm parent containers are not clipping to zero height.
+- Ensure `image` is a valid URL or loaded image if you are not using a predefined `shape`.
+
+### Layout looks crowded on small screens
+
+- Increase the mobile shader container height.
+- Reduce heading size classes or copy length.
+- Move badges under the fold for dense hero content.

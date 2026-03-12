@@ -1566,6 +1566,133 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "hero-dithering": {
+    name: "hero-dithering",
+    description:
+      "Split-layout hero section with responsive dithering shader visuals, CTA, and tech stack badges",
+    type: "registry:ui",
+    registryDependencies: ["badge", "button"],
+    files: [
+      {
+        path: "registry/default/ui/hero-dithering.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/hero-dithering.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "hero-color-panel": {
+    name: "hero-color-panel",
+    description:
+      "Split-layout hero section with responsive ColorPanels shader visuals, CTA, and tech stack badges",
+    type: "registry:ui",
+    registryDependencies: ["badge", "button"],
+    files: [
+      {
+        path: "registry/default/ui/hero-color-panel.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/hero-color-panel.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "hero-static-radial-gradient": {
+    name: "hero-static-radial-gradient",
+    description:
+      "Split-layout hero section with responsive StaticRadialGradient shader visuals, CTA, and tech stack badges",
+    type: "registry:ui",
+    registryDependencies: ["badge", "button"],
+    files: [
+      {
+        path: "registry/default/ui/hero-static-radial-gradient.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/ui/hero-static-radial-gradient.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "hero-heatmap": {
+    name: "hero-heatmap",
+    description:
+      "Split-layout hero section with responsive Heatmap shader visuals, CTA, and tech stack badges",
+    type: "registry:ui",
+    registryDependencies: ["badge", "button"],
+    files: [
+      {
+        path: "registry/default/ui/hero-heatmap.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/hero-heatmap.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "hero-liquid-metal": {
+    name: "hero-liquid-metal",
+    description:
+      "Split-layout hero section with responsive LiquidMetal shader visuals, CTA, and tech stack badges",
+    type: "registry:ui",
+    registryDependencies: ["badge", "button"],
+    files: [
+      {
+        path: "registry/default/ui/hero-liquid-metal.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/hero-liquid-metal.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "text-animate-demo": {
     name: "text-animate-demo",
     description: "",
@@ -3159,6 +3286,136 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/default/example/terminal-animation-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "hero-dithering-demo": {
+    name: "hero-dithering-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["hero-dithering"],
+    files: [
+      {
+        path: "registry/default/example/hero-dithering-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/hero-dithering-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "hero-color-panels-demo": {
+    name: "hero-color-panels-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["hero-color-panel"],
+    files: [
+      {
+        path: "registry/default/example/hero-color-panels-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/hero-color-panels-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "hero-static-radial-gradient-demo": {
+    name: "hero-static-radial-gradient-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["hero-static-radial-gradient"],
+    files: [
+      {
+        path: "registry/default/example/hero-static-radial-gradient-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/hero-static-radial-gradient-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "hero-heatmap-demo": {
+    name: "hero-heatmap-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["hero-heatmap"],
+    files: [
+      {
+        path: "registry/default/example/hero-heatmap-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/hero-heatmap-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "hero-liquid-metal-demo": {
+    name: "hero-liquid-metal-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["hero-liquid-metal"],
+    files: [
+      {
+        path: "registry/default/example/hero-liquid-metal-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/hero-liquid-metal-demo.tsx"
       )
       const exportName =
         Object.keys(mod).find(

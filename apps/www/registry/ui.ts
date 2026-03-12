@@ -1,4 +1,4 @@
-import { type Registry } from "@/registry/schema"
+import type { Registry } from "@/registry/schema"
 
 export const ui: Registry["items"] = [
   {
@@ -827,5 +827,75 @@ export const ui: Registry["items"] = [
     ],
     description:
       "Composable terminal animation primitives with typed command playback, tabbed scenarios, and customizable output rendering",
+  },
+  {
+    name: "hero-dithering",
+    type: "registry:ui",
+    dependencies: ["@paper-design/shaders-react"],
+    registryDependencies: ["badge", "button"],
+    files: [
+      {
+        path: "registry/default/ui/hero-dithering.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Split-layout hero section with responsive dithering shader visuals, CTA, and tech stack badges",
+  },
+  {
+    name: "hero-color-panel",
+    type: "registry:ui",
+    dependencies: ["@paper-design/shaders-react"],
+    registryDependencies: ["badge", "button"],
+    files: [
+      {
+        path: "registry/default/ui/hero-color-panel.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Split-layout hero section with responsive ColorPanels shader visuals, CTA, and tech stack badges",
+  },
+  {
+    name: "hero-static-radial-gradient",
+    type: "registry:ui",
+    dependencies: ["@paper-design/shaders-react"],
+    registryDependencies: ["badge", "button"],
+    files: [
+      {
+        path: "registry/default/ui/hero-static-radial-gradient.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Split-layout hero section with responsive StaticRadialGradient shader visuals, CTA, and tech stack badges",
+  },
+  {
+    name: "hero-heatmap",
+    type: "registry:ui",
+    dependencies: ["@paper-design/shaders-react"],
+    registryDependencies: ["badge", "button"],
+    files: [
+      {
+        path: "registry/default/ui/hero-heatmap.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Split-layout hero section with responsive Heatmap shader visuals, CTA, and tech stack badges",
+  },
+  {
+    name: "hero-liquid-metal",
+    type: "registry:ui",
+    dependencies: ["@paper-design/shaders-react"],
+    registryDependencies: ["badge", "button"],
+    files: [
+      {
+        path: "registry/default/ui/hero-liquid-metal.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Split-layout hero section with responsive LiquidMetal shader visuals, CTA, and tech stack badges",
   },
 ]
