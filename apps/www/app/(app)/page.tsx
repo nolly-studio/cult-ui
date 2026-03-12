@@ -89,7 +89,7 @@ export default function IndexPage() {
 					{/* CTA Buttons */}
 					<div className="flex w-full items-center justify-center gap-4 py-6">
 						<Link
-							href="/docs/components/dynamic-island"
+							href="/docs/components/hero-color-panels"
 							className="border border-foreground bg-foreground px-6 py-3  text-sm uppercase tracking-wider text-white transition-all hover:bg-foreground/90 "
 						>
 							<PixelParagraphInverse

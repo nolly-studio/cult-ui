@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ExternalLink } from "lucide-react";
@@ -23,7 +22,7 @@ export function MainNav() {
 			</Link>
 			<nav className="flex items-center gap-4 text-sm lg:gap-6">
 				<Link
-					href="/docs/components/dynamic-island"
+					href="/docs/components/hero-color-panels"
 					className={cn(
 						"text-sm font-semibold transition-colors hover:text-foreground/80",
 						pathname?.startsWith("/docs/components")
@@ -36,7 +35,8 @@ export function MainNav() {
 
 				<a
 					href="https://aisdkagents.com/patterns"
-					// target="_blank"
+					{/* biome-ignore lint/security/noBlankTarget: we want to open the link in a new tab */}
+					target="_blank"
 					// rel="noopener noreferrer"
 					className={cn(
 						"flex items-center gap-2 text-sm font-semibold transition-colors hover:text-foreground/80",
@@ -96,7 +96,8 @@ export function MainNav() {
         </a> */}
 				<a
 					href="https://aisdkagents.com/templates"
-					// target="_blank"
+					{/* biome-ignore lint/security/noBlankTarget: we want to open the link in a new tab */}
+					target="_blank"
 					// rel="noopener noreferrer"
 					className={cn(
 						"flex items-center gap-2 text-sm font-semibold transition-colors hover:text-foreground/80",
