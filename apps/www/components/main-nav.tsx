@@ -35,7 +35,7 @@ export function MainNav() {
 
 				<a
 					href="https://aisdkagents.com/patterns"
-					{/* biome-ignore lint/security/noBlankTarget: we want to open the link in a new tab */}
+					//  biome-ignore lint/security/noBlankTarget: we want to open the link in a new tab
 					target="_blank"
 					// rel="noopener noreferrer"
 					className={cn(
@@ -96,7 +96,7 @@ export function MainNav() {
         </a> */}
 				<a
 					href="https://aisdkagents.com/templates"
-					{/* biome-ignore lint/security/noBlankTarget: we want to open the link in a new tab */}
+					//  biome-ignore lint/security/noBlankTarget: we want to open the link in a new tab
 					target="_blank"
 					// rel="noopener noreferrer"
 					className={cn(
