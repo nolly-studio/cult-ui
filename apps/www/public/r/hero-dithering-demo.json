@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-dithering-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "hero-dithering"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/hero-dithering-demo.tsx",
+      "content": "\"use client\"\n\nimport {\n  AISDKIcon,\n  HeroDithering,\n  HeroDitheringActions,\n  HeroDitheringBadges,\n  HeroDitheringContainer,\n  HeroDitheringContent,\n  HeroDitheringDescription,\n  HeroDitheringHeading,\n  HeroDitheringMobileVisual,\n  HeroDitheringRoot,\n  HeroDitheringVisual,\n  NextjsIcon,\n} from \"../ui/hero-dithering\"\n\nexport default function HeroDitheringDemo() {\n  return (\n    <div className=\"space-y-16\">\n      <div className=\"space-y-4\">\n        <h3 className=\"font-medium text-lg\">Default</h3>\n        <HeroDithering />\n      </div>\n\n      <div className=\"space-y-4\">\n        <h3 className=\"font-medium text-lg\">Configured Via Props</h3>\n        <HeroDitheringRoot\n          ctaProps={{\n            href: \"#\",\n            label: \"Try NewCopy for marketing\",\n          }}\n          description=\"Human-in-the-loop marketing copy software that helps teams draft, review, and ship high-converting campaigns with confidence.\"\n          desktopShaderProps={{\n            colorFront: \"#8b5cf6\",\n            scale: 0.8,\n            speed: 0.7,\n          }}\n          mobileShaderProps={{\n            colorFront: \"#8b5cf6\",\n            speed: 0.65,\n          }}\n          srTitle=\"Composable hero\"\n          subtitle=\"Marketing\"\n          techStack={[\n            { name: \"Next.js\", version: \"v16\" },\n            { name: \"AI SDK\", version: \"v6\" },\n            { name: \"Tailwind\", version: \"v4\" },\n          ]}\n          title=\"Cursor for\"\n        >\n          <HeroDitheringContainer>\n            <HeroDitheringContent>\n              <HeroDitheringHeading />\n              <HeroDitheringDescription />\n              <HeroDitheringActions />\n              <div\n                className=\"flex justify-center lg:justify-start\"\n                data-slot=\"hero-dithering-badges-wrap\"\n              >\n                <HeroDitheringBadges\n                  techStack={[\n                    { name: \"Next.js\", version: \"v16\", icon: NextjsIcon },\n                    { name: \"AI SDK\", version: \"v6\", icon: AISDKIcon },\n                  ]}\n                />\n              </div>\n            </HeroDitheringContent>\n            <HeroDitheringVisual />\n          </HeroDitheringContainer>\n          <HeroDitheringMobileVisual />\n        </HeroDitheringRoot>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}
