@@ -4,7 +4,7 @@ import { YouTubePlayer } from "@/registry/default/ui/youtube-video-player"
 
 export default function YouTubeVideoPlayerDemo() {
   return (
-    <div className="space-y-12 p-8">
+    <div className="space-y-12 p-8 overflow-x-auto">
       <div className="space-y-4">
         <h1 className="text-3xl font-bold">YouTube Video Player Examples</h1>
         <p className="text-muted-foreground">
