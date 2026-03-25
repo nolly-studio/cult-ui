@@ -30,7 +30,8 @@ async function copyToClipboard() {
   }
   try {
     if (!isCopied.value) {
-      await navigator.clipboard.writeText(ctx.code)
+      await navigator.clipboard.writeText(ctx.code())
+      if (timeoutId) clearTimeout(timeoutId)
       isCopied.value = true
       emit("copy")
       timeoutId = setTimeout(() => { isCopied.value = false }, props.timeout)
