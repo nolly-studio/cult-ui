@@ -18,28 +18,17 @@ const eventSchema = z.object({
 
 export type Event = z.infer<typeof eventSchema>
 
-interface AnalyticsProvider {
-  track: (name: string, properties?: Record<string, string | number | boolean | null>) => void
-}
-
-function getAnalytics(): AnalyticsProvider | undefined {
-  if (typeof window === "undefined") return undefined
-  const win = window as Record<string, unknown>
-  const analytics = win.__analytics
-  if (
-    typeof analytics === "object" &&
-    analytics !== null &&
-    "track" in analytics &&
-    typeof (analytics as Record<string, unknown>).track === "function"
-  ) {
-    return analytics as AnalyticsProvider
+declare global {
+  interface Window {
+    __analytics?: {
+      track: (name: string, properties?: Record<string, string | number | boolean | null>) => void
+    }
   }
-  return undefined
 }
 
 export function trackEvent(input: Event): void {
   const event = eventSchema.parse(input)
-  if (event) {
-    getAnalytics()?.track(event.name, event.properties)
+  if (event && typeof window !== "undefined" && window.__analytics) {
+    window.__analytics.track(event.name, event.properties)
   }
 }

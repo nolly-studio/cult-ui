@@ -20,17 +20,17 @@ function flattenNode(node: MdastNode): string {
   return p.join("")
 }
 
-interface Item {
+export interface TocItem {
   title: string
   url: string
-  items?: Item[]
+  items?: TocItem[]
 }
 
-interface Items {
-  items?: Item[]
+export interface TableOfContents {
+  items?: TocItem[]
 }
 
-function getItems(node: MdastNode | undefined, current: Partial<Item>): Items {
+function getItems(node: MdastNode | undefined, current: Partial<TocItem>): TableOfContents {
   if (!node) {
     return {}
   }
@@ -51,8 +51,14 @@ function getItems(node: MdastNode | undefined, current: Partial<Item>): Items {
   }
 
   if (node.type === "list") {
-    (current as Items).items = node.children?.map((i) => getItems(i, {}) as Item)
-    return current
+    const result: TableOfContents = {
+      ...current,
+      items: node.children?.map((i) => {
+        const child = getItems(i, {})
+        return { title: "", url: "", ...child }
+      }),
+    }
+    return result
   } else if (node.type === "listItem") {
     const heading = getItems(node.children?.[0], {})
 
@@ -66,18 +72,18 @@ function getItems(node: MdastNode | undefined, current: Partial<Item>): Items {
   return {}
 }
 
-const getToc = () => (node: MdastNode, file: { data: Items }) => {
+const getToc = () => (node: MdastNode, file: { data: TableOfContents }) => {
   const table = toc(node)
   const items = getItems(table.map, {})
   file.data = items
 }
 
-export type TableOfContents = Items
-
 export async function getTableOfContents(
   content: string
 ): Promise<TableOfContents> {
   const result = await remark().use(getToc).process(content)
-
-  return result.data as TableOfContents
+  if (result.data && typeof result.data === "object" && "items" in result.data) {
+    return result.data
+  }
+  return {}
 }

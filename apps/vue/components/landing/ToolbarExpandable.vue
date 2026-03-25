@@ -7,7 +7,6 @@ interface DynamicStep {
   title: string
   description: string
   icon: string
-  contentHtml?: string
 }
 
 const props = withDefaults(
@@ -93,16 +92,9 @@ onUnmounted(() => {
   document.removeEventListener('touchstart', handleClickOutside)
 })
 
-const activeTitle = computed(() => {
-  if (!active.value) return ''
-  const step = props.steps.find((s) => s.id === active.value)
-  return step?.title || ''
-})
-
-const activeDescription = computed(() => {
-  if (!active.value) return ''
-  const step = props.steps.find((s) => s.id === active.value)
-  return step?.description || ''
+const activeStepData = computed(() => {
+  if (!active.value) return null
+  return props.steps.find((s) => s.id === active.value) ?? null
 })
 </script>
 
@@ -129,7 +121,7 @@ const activeDescription = computed(() => {
         >
           <div ref="contentRef" class="px-2 pt-2 sm:px-2">
             <h4 class="px-2 text-sm font-medium text-foreground">
-              {{ activeTitle }}
+              {{ activeStepData?.title }}
             </h4>
 
             <div class="pb-1">
@@ -139,7 +131,7 @@ const activeDescription = computed(() => {
                 <div class="space-y-4 pb-3">
                   <div class="space-y-2">
                     <h3 class="text-lg font-medium text-foreground">
-                      {{ activeTitle }}
+                      {{ activeStepData?.title }}
                     </h3>
                     <p class="text-sm text-muted-foreground">
                       {{ activeDescription }}
