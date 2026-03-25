@@ -9,17 +9,17 @@ const props = withDefaults(defineProps<{
   defaultExpanded?: boolean
   customThumbnail?: string
   class?: string
-  containerClassName?: string
-  expandedClassName?: string
-  thumbnailClassName?: string
-  thumbnailImageClassName?: string
-  playButtonClassName?: string
-  playIconClassName?: string
-  titleClassName?: string
-  controlsClassName?: string
-  expandButtonClassName?: string
-  backdropClassName?: string
-  playerClassName?: string
+  containerClass?: string
+  expandedClass?: string
+  thumbnailClass?: string
+  thumbnailImageClass?: string
+  playButtonClass?: string
+  playIconClass?: string
+  titleClass?: string
+  controlsClass?: string
+  expandButtonClass?: string
+  backdropClass?: string
+  playerClass?: string
 }>(), {
   defaultExpanded: false,
 })
@@ -94,16 +94,16 @@ onUnmounted(() => {
     <div
       :class="cn(
         'overflow-hidden border bg-card text-card-foreground shadow-lg rounded-xl',
-        containerClassName
+        containerClass
       )"
     >
-      <div :class="cn('relative aspect-video bg-muted', playerClassName)">
+      <div :class="cn('relative aspect-video bg-muted', playerClass)">
         <!-- Thumbnail state -->
         <template v-if="!playing">
           <div
             :class="cn(
               'absolute inset-0 bg-gradient-to-br from-muted to-muted/80',
-              thumbnailClassName
+              thumbnailClass
             )"
           >
             <img
@@ -112,7 +112,7 @@ onUnmounted(() => {
               :alt="title || 'Video thumbnail'"
               :class="cn(
                 'absolute inset-0 h-full w-full object-cover opacity-70',
-                thumbnailImageClassName
+                thumbnailImageClass
               )"
             />
           </div>
@@ -122,7 +122,7 @@ onUnmounted(() => {
               :class="cn(
                 'relative h-16 w-16 rounded-full border border-border/20 bg-background/80 backdrop-blur-sm md:h-20 md:w-20 p-0 inline-flex items-center justify-center',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-                playButtonClassName
+                playButtonClass
               )"
               aria-label="Play video"
               @click="handlePlay"
@@ -130,7 +130,7 @@ onUnmounted(() => {
               <Play
                 :class="cn(
                   'h-6 w-6 translate-x-[2px] fill-primary text-primary md:h-8 md:w-8',
-                  playIconClassName
+                  playIconClass
                 )"
               />
             </button>
@@ -139,7 +139,7 @@ onUnmounted(() => {
               v-if="title"
               :class="cn(
                 'mt-4 max-w-xs text-center text-sm font-medium text-secondary/90 md:max-w-md md:text-base',
-                titleClassName
+                titleClass
               )"
             >
               {{ title }}
@@ -161,12 +161,12 @@ onUnmounted(() => {
         <Transition name="fade">
           <div
             v-if="shouldShowControls"
-            :class="cn('absolute right-2 top-2 z-20', controlsClassName)"
+            :class="cn('absolute right-2 top-2 z-20', controlsClass)"
           >
             <button
               :class="cn(
                 'h-8 w-8 rounded-full bg-background/40 backdrop-blur-sm hover:bg-background/60 focus-visible:ring-ring/50 md:h-9 md:w-9 inline-flex items-center justify-center transition-transform hover:scale-105 active:scale-95',
-                expandButtonClassName
+                expandButtonClass
               )"
               :aria-label="expanded ? 'Minimize video' : 'Maximize video'"
               @click="toggleExpand"
@@ -187,7 +187,7 @@ onUnmounted(() => {
         v-if="expanded"
         :class="cn(
           'fixed inset-0 z-40 bg-background/80 backdrop-blur-sm',
-          backdropClassName
+          backdropClass
         )"
         aria-label="Close expanded video"
         @click="toggleExpand"
@@ -203,15 +203,15 @@ onUnmounted(() => {
           :class="cn(
             'overflow-hidden border bg-card text-card-foreground shadow-xl rounded-lg pointer-events-auto',
             'w-[90vw] max-w-[1200px] max-h-[90vh] aspect-video',
-            expandedClassName
+            expandedClass
           )"
         >
-          <div :class="cn('relative aspect-video bg-muted', playerClassName)">
+          <div :class="cn('relative aspect-video bg-muted', playerClass)">
             <template v-if="!playing">
               <div
                 :class="cn(
                   'absolute inset-0 bg-gradient-to-br from-muted to-muted/80',
-                  thumbnailClassName
+                  thumbnailClass
                 )"
               >
                 <img
@@ -220,7 +220,7 @@ onUnmounted(() => {
                   :alt="title || 'Video thumbnail'"
                   :class="cn(
                     'absolute inset-0 h-full w-full object-cover opacity-70',
-                    thumbnailImageClassName
+                    thumbnailImageClass
                   )"
                 />
               </div>
@@ -230,7 +230,7 @@ onUnmounted(() => {
                   :class="cn(
                     'relative h-16 w-16 rounded-full border border-border/20 bg-background/80 backdrop-blur-sm md:h-20 md:w-20 p-0 inline-flex items-center justify-center',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-                    playButtonClassName
+                    playButtonClass
                   )"
                   aria-label="Play video"
                   @click="handlePlay"
@@ -238,7 +238,7 @@ onUnmounted(() => {
                   <Play
                     :class="cn(
                       'h-6 w-6 translate-x-[2px] fill-primary text-primary md:h-8 md:w-8',
-                      playIconClassName
+                      playIconClass
                     )"
                   />
                 </button>
@@ -247,7 +247,7 @@ onUnmounted(() => {
                   v-if="title"
                   :class="cn(
                     'mt-4 max-w-xs text-center text-sm font-medium text-foreground/90 md:max-w-md md:text-base',
-                    titleClassName
+                    titleClass
                   )"
                 >
                   {{ title }}
@@ -268,12 +268,12 @@ onUnmounted(() => {
             <Transition name="fade">
               <div
                 v-if="shouldShowControls"
-                :class="cn('absolute right-2 top-2 z-20', controlsClassName)"
+                :class="cn('absolute right-2 top-2 z-20', controlsClass)"
               >
                 <button
                   :class="cn(
                     'h-8 w-8 rounded-full bg-background/40 backdrop-blur-sm hover:bg-background/60 focus-visible:ring-ring/50 md:h-9 md:w-9 inline-flex items-center justify-center transition-transform hover:scale-105 active:scale-95',
-                    expandButtonClassName
+                    expandButtonClass
                   )"
                   :aria-label="expanded ? 'Minimize video' : 'Maximize video'"
                   @click="toggleExpand"

@@ -130,6 +130,7 @@ const emit = defineEmits<{
 
 const selected = ref<string[]>([])
 const animationPhase = ref<PollWidgetAnimationPhase>('idle')
+const pendingTimeouts: ReturnType<typeof setTimeout>[] = []
 
 const totalVotes = computed(() =>
   Object.values(props.votes).reduce((sum, count) => sum + count, 0),
@@ -183,26 +184,39 @@ function getOptionState(optionId: string): 'idle' | 'selected' | 'voted' {
   return 'idle'
 }
 
+function scheduleTimeout(fn: () => void, delay: number) {
+  const id = setTimeout(() => {
+    const idx = pendingTimeouts.indexOf(id)
+    if (idx >= 0) pendingTimeouts.splice(idx, 1)
+    fn()
+  }, delay)
+  pendingTimeouts.push(id)
+}
+
 function submitVote() {
   if (selected.value.length === 0 || animationPhase.value !== 'idle') return
 
   animationPhase.value = 'voting'
 
-  setTimeout(() => {
+  scheduleTimeout(() => {
     emit('vote', [...selected.value])
     animationPhase.value = 'results'
 
-    setTimeout(() => {
+    scheduleTimeout(() => {
       animationPhase.value = 'success'
 
       if (props.autoCollapseDelay > 0) {
-        setTimeout(() => {
+        scheduleTimeout(() => {
           animationPhase.value = 'idle'
         }, props.successDuration)
       }
     }, props.autoCollapseDelay)
   }, 400)
 }
+
+onUnmounted(() => {
+  pendingTimeouts.forEach(clearTimeout)
+})
 
 /* ── Watch hasVoted ── */
 
