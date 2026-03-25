@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 
 defineOptions({ name: "EnvironmentVariable" })
 
-export const ENV_VAR_KEY = Symbol("env-var") as InjectionKey<{ name: string; value: string }>
+export const ENV_VAR_KEY = Symbol("env-var") as InjectionKey<{ name: () => string; value: () => string }>
 
 const props = defineProps<{
   class?: string
@@ -12,7 +12,7 @@ const props = defineProps<{
   value: string
 }>()
 
-provide(ENV_VAR_KEY, { name: props.name, value: props.value })
+provide(ENV_VAR_KEY, { name: () => props.name, value: () => props.value })
 </script>
 
 <template>
