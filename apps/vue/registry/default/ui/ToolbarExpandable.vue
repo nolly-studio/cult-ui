@@ -82,22 +82,9 @@ onUnmounted(() => {
   resizeObserver?.disconnect()
 })
 
-// Click outside
-function handleClickOutside(event: MouseEvent | TouchEvent) {
-  const el = containerRef.value
-  if (!el || el.contains(event.target as Node)) return
+useClickOutside(containerRef, () => {
   isOpen.value = false
   active.value = null
-}
-
-onMounted(() => {
-  document.addEventListener('mousedown', handleClickOutside)
-  document.addEventListener('touchstart', handleClickOutside)
-})
-
-onUnmounted(() => {
-  document.removeEventListener('mousedown', handleClickOutside)
-  document.removeEventListener('touchstart', handleClickOutside)
 })
 
 // Scroll button into view
