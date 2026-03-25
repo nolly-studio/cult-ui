@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 
 defineOptions({ name: "CodeBlock" })
 
-export const CODE_BLOCK_KEY = Symbol("code-block") as InjectionKey<{ code: string }>
+export const CODE_BLOCK_KEY = Symbol("code-block") as InjectionKey<{ code: () => string }>
 
 const props = withDefaults(
   defineProps<{
@@ -17,7 +17,7 @@ const props = withDefaults(
   { showLineNumbers: false }
 )
 
-provide(CODE_BLOCK_KEY, { code: props.code })
+provide(CODE_BLOCK_KEY, { code: () => props.code })
 
 const lines = computed(() => props.code.split("\n"))
 </script>
