@@ -305,9 +305,6 @@ export const PopoverHeader = defineComponent({
   },
 })
 
-// ============================================================================
-// PopoverBody
-// ============================================================================
 export const PopoverBody = defineComponent({
   name: 'PopoverBody',
   props: {
@@ -318,9 +315,6 @@ export const PopoverBody = defineComponent({
   },
 })
 
-// ============================================================================
-// PopoverButton
-// ============================================================================
 export const PopoverButton = defineComponent({
   name: 'PopoverButton',
   props: {
