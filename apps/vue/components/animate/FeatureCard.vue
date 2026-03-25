@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from "vue"
+import { useThrottleFn } from "@vueuse/core"
 import { cn } from "@/lib/utils"
 import { useMounted } from "@/composables/useMounted"
 
@@ -52,13 +53,13 @@ function increment() {
   setupTimer()
 }
 
-function handleMouseMove(event: MouseEvent) {
+const handleMouseMove = useThrottleFn((event: MouseEvent) => {
   const target = event.currentTarget
   if (!(target instanceof HTMLElement)) return
   const { left, top } = target.getBoundingClientRect()
   mouseX.value = event.clientX - left
   mouseY.value = event.clientY - top
-}
+}, 16)
 
 onMounted(() => {
   setupTimer()

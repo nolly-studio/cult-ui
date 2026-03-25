@@ -8,6 +8,7 @@ export function useCopyToClipboard({
   onCopy?: () => void
 } = {}) {
   const isCopied = ref(false)
+  let resetTimer: ReturnType<typeof setTimeout> | null = null
 
   function copyToClipboard(value: string) {
     if (typeof window === "undefined" || !navigator.clipboard?.writeText) {
@@ -24,7 +25,8 @@ export function useCopyToClipboard({
       }
 
       if (timeout !== 0) {
-        setTimeout(() => {
+        if (resetTimer) clearTimeout(resetTimer)
+        resetTimer = setTimeout(() => {
           isCopied.value = false
         }, timeout)
       }

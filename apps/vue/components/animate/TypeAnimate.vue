@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed } from "vue"
+import { ref, watch, onMounted, onUnmounted, computed } from "vue"
+import { useDocumentVisibility } from "@vueuse/core"
 
 interface Props {
   delay?: number
@@ -26,6 +27,8 @@ const repeatedDisplayLength = ref(0)
 const textIndex = ref(0)
 const baseComplete = ref(false)
 const isTypingForward = ref(true)
+
+const visibility = useDocumentVisibility()
 
 let animationFrame: ReturnType<typeof requestAnimationFrame> | null = null
 let startTime: number | null = null
@@ -94,6 +97,23 @@ onMounted(() => {
 
 onUnmounted(() => {
   if (animationFrame) cancelAnimationFrame(animationFrame)
+})
+
+watch(visibility, (state) => {
+  if (state === "hidden") {
+    if (animationFrame) {
+      cancelAnimationFrame(animationFrame)
+      animationFrame = null
+    }
+  } else if (!animationFrame) {
+    repeatedStartTime = null
+    if (baseComplete.value) {
+      animationFrame = requestAnimationFrame(animateRepeated)
+    } else {
+      startTime = null
+      animationFrame = requestAnimationFrame(animateBase)
+    }
+  }
 })
 </script>
 

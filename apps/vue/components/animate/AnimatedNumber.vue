@@ -44,8 +44,18 @@ watch(
   }
 )
 
+let emittedComplete = false
+
+watch(
+  () => props.value,
+  () => {
+    emittedComplete = false
+  }
+)
+
 watch(springValues, (val) => {
-  if (Math.abs(Number(val) - props.value) < 0.01) {
+  if (!emittedComplete && Math.abs(Number(val) - props.value) < 0.01) {
+    emittedComplete = true
     emit("animationComplete")
   }
 })
