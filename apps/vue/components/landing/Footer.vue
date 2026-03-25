@@ -17,7 +17,7 @@ import LocalTime from './LocalTime.vue'
         <!-- Dithering shader placeholder (no Vue equivalent for @paper-design/shaders-react) -->
         <div
           class="bg-black/5 dark:bg-white/5"
-          :style="{ height: '30.2vh' }"
+          style="height: 30.2vh"
         />
       </div>
     </div>

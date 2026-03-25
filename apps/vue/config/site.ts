@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Cult UI – Shadcn UI Components, Blocks & Templates",
   description:
-    "Open-source Shadcn UI components, animated blocks, and full templates you can copy-paste into any TypeScript/Next.js project.",
+    "Open-source Shadcn Vue components, animated blocks, and full templates you can copy-paste into any TypeScript/Vue/Nuxt project.",
   url: "https://cult-ui.com",
   ogImage: "https://cult-ui.com/og.png",
 

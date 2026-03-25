@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed } from "vue"
+import { ref, computed } from "vue"
+import { ChevronDown } from "lucide-vue-next"
 import { cn } from "@/lib/utils"
 
 defineOptions({ name: "AgentTool" })
@@ -29,18 +30,9 @@ const schemaJson = computed(() => JSON.stringify(schema.value, null, 2))
       @click="isOpen = !isOpen"
     >
       {{ props.tool.description ?? "No description" }}
-      <svg
+      <ChevronDown
         :class="cn('size-4 transition-transform', isOpen && 'rotate-180')"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path d="m6 9 6 6 6-6" />
-      </svg>
+      />
     </button>
     <div v-if="isOpen" class="px-3 pb-3">
       <div class="rounded-md bg-muted/50">

@@ -134,7 +134,7 @@ const activeStepData = computed(() => {
                       {{ activeStepData?.title }}
                     </h3>
                     <p class="text-sm text-muted-foreground">
-                      {{ activeDescription }}
+                      {{ activeStepData?.description }}
                     </p>
                   </div>
                   <!-- Step content slot -->

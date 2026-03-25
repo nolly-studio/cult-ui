@@ -1,6 +1,5 @@
 <script setup lang="ts">
-// FeatureSection — placeholder since it depends on heavy React-specific components
-// (GradientHeading, FeatureCarousel, react-wrap-balancer) that aren't yet converted.
+// Placeholder — GradientHeading and FeatureCarousel are not yet converted to Vue.
 </script>
 
 <template>
@@ -18,8 +17,6 @@
               Everything you need to ship
             </p>
           </div>
-
-          <div class="relative z-10 grid w-full gap-8" />
 
           <div class="rounded-[34px] bg-neutral-700 p-2">
             <div class="relative z-10 grid w-full gap-8 rounded-[28px] bg-neutral-950 p-2">
