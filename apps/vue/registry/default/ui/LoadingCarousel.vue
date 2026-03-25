@@ -3,7 +3,7 @@
  * Loading/tip carousel with autoplay and text scramble effect.
  * Uses embla-carousel-vue for carousel behavior.
  */
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import emblaCarouselVue from 'embla-carousel-vue'
 import Autoplay from 'embla-carousel-autoplay'
 import { ChevronRight } from 'lucide-vue-next'
@@ -69,15 +69,21 @@ const [emblaRef, emblaApi] = emblaCarouselVue(
 const currentIndex = ref(0)
 const displayText = ref('')
 const scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()'
+let scrambleIntervalId: ReturnType<typeof setInterval> | null = null
 
 function scrambleText(target: string) {
+  if (scrambleIntervalId) {
+    clearInterval(scrambleIntervalId)
+    scrambleIntervalId = null
+  }
+
   if (!props.animateText) {
     displayText.value = target
     return
   }
 
   let iteration = 0
-  const interval = setInterval(() => {
+  scrambleIntervalId = setInterval(() => {
     displayText.value = target
       .split('')
       .map((char, i) => {
@@ -86,9 +92,16 @@ function scrambleText(target: string) {
       })
       .join('')
     iteration += 1
-    if (iteration > target.length) clearInterval(interval)
+    if (iteration > target.length) {
+      clearInterval(scrambleIntervalId!)
+      scrambleIntervalId = null
+    }
   }, 30)
 }
+
+onUnmounted(() => {
+  if (scrambleIntervalId) clearInterval(scrambleIntervalId)
+})
 
 const aspectClass = computed(() => {
   switch (props.aspectRatio) {

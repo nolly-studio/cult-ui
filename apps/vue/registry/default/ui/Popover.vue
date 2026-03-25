@@ -34,10 +34,6 @@ export function usePopover(): PopoverContextType {
   return ctx
 }
 
-// ============================================================================
-// Props
-// ============================================================================
-
 const props = withDefaults(
   defineProps<{
     class?: string
@@ -45,14 +41,9 @@ const props = withDefaults(
   {}
 )
 
-// ============================================================================
-// State
-// ============================================================================
-
 const isOpen = ref(false)
 const note = ref('')
-let idCounter = 0
-const uniqueId = `popover-${++idCounter}-${Math.random().toString(36).slice(2, 7)}`
+const uniqueId = `popover-${Math.random().toString(36).slice(2, 9)}`
 
 function openPopover() {
   isOpen.value = true
@@ -87,7 +78,7 @@ provide(PopoverKey, {
 
 <!-- Sub-components exported from this file -->
 <script lang="ts">
-import { defineComponent, h, Transition } from 'vue'
+import { defineComponent, h, Transition, onMounted, onUnmounted } from 'vue'
 
 // ============================================================================
 // PopoverTrigger
@@ -127,31 +118,14 @@ export const PopoverContent = defineComponent({
     const { isOpen, closePopover, uniqueId } = inject(PopoverKey)!
     const formContainerRef = ref<HTMLDivElement | null>(null)
 
-    // Click outside
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        formContainerRef.value &&
-        !formContainerRef.value.contains(event.target as Node)
-      ) {
-        closePopover()
-      }
-    }
-
-    // Escape key
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape') {
-        closePopover()
-      }
-    }
+    useClickOutside(formContainerRef, () => closePopover())
 
     onMounted(() => {
-      document.addEventListener('mousedown', handleClickOutside)
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === 'Escape') closePopover()
+      }
       document.addEventListener('keydown', handleKeyDown)
-    })
-
-    onUnmounted(() => {
-      document.removeEventListener('mousedown', handleClickOutside)
-      document.removeEventListener('keydown', handleKeyDown)
+      onUnmounted(() => document.removeEventListener('keydown', handleKeyDown))
     })
 
     return () =>
