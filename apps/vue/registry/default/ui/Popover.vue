@@ -3,15 +3,13 @@ import {
   ref,
   provide,
   inject,
-  onMounted,
-  onUnmounted,
   computed,
   type InjectionKey,
   type Ref,
-  nextTick,
 } from 'vue'
 import { X } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
+import { useClickOutside } from '@/composables/useClickOutside'
 
 // ============================================================================
 // Context

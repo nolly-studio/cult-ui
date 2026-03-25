@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { ref } from 'vue'
 import { ChevronUp, Loader } from 'lucide-vue-next'
+import { useClickOutside } from '@/composables/useClickOutside'
 
-// ---- PopoverForm ----
 const props = withDefaults(
   defineProps<{
     open: boolean
@@ -26,20 +26,8 @@ const emit = defineEmits<{
 
 const popoverRef = ref<HTMLDivElement | null>(null)
 
-function onClickOutside(event: MouseEvent | TouchEvent) {
-  if (popoverRef.value && !popoverRef.value.contains(event.target as Node)) {
-    emit('update:open', false)
-  }
-}
-
-onMounted(() => {
-  document.addEventListener('mousedown', onClickOutside)
-  document.addEventListener('touchstart', onClickOutside)
-})
-
-onUnmounted(() => {
-  document.removeEventListener('mousedown', onClickOutside)
-  document.removeEventListener('touchstart', onClickOutside)
+useClickOutside(popoverRef, () => {
+  emit('update:open', false)
 })
 </script>
 
@@ -124,11 +112,6 @@ onUnmounted(() => {
   </div>
 </template>
 
-<script lang="ts">
-// Sub-components defined below as separate SFCs in the same file via defineComponent
-</script>
-
-<!-- PopoverFormButton -->
 <script lang="ts">
 import { defineComponent, h, TransitionGroup } from 'vue'
 
