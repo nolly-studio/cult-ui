@@ -5,7 +5,7 @@ import { CONFIRMATION_KEY } from "./Confirmation.vue"
 defineOptions({ name: "ConfirmationRequest" })
 
 const ctx = inject(CONFIRMATION_KEY)!
-const show = computed(() => ctx.state === "approval-requested")
+const show = computed(() => ctx.state() === "approval-requested")
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { provide, type InjectionKey } from "vue"
+import { computed, provide, reactive, toRefs, type InjectionKey } from "vue"
 import { cn } from "@/lib/utils"
 
 defineOptions({ name: "Confirmation" })
@@ -19,8 +19,8 @@ export interface ToolUIPartApproval {
 }
 
 export const CONFIRMATION_KEY = Symbol("confirmation") as InjectionKey<{
-  approval: ToolUIPartApproval | undefined
-  state: ToolUIPartState
+  approval: () => ToolUIPartApproval | undefined
+  state: () => ToolUIPartState
 }>
 
 const props = defineProps<{
@@ -34,8 +34,8 @@ const shouldRender = computed(
 )
 
 provide(CONFIRMATION_KEY, {
-  approval: props.approval,
-  state: props.state,
+  approval: () => props.approval,
+  state: () => props.state,
 })
 </script>
 
