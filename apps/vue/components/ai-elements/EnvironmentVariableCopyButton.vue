@@ -40,6 +40,7 @@ async function copyToClipboard() {
   }
   try {
     await navigator.clipboard.writeText(getTextToCopy())
+    if (timeoutId) clearTimeout(timeoutId)
     isCopied.value = true
     emit("copy")
     timeoutId = setTimeout(() => { isCopied.value = false }, props.timeout)
