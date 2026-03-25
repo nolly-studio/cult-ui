@@ -18,7 +18,7 @@ export const PLAIN_FONT_MAP: Record<PlainFont, string> = {
 }
 
 export const PLAIN_FONTS = Object.values(PLAIN_FONT_MAP)
-export const PLAIN_FONT_KEYS = Object.keys(PLAIN_FONT_MAP) as PlainFont[]
+export const PLAIN_FONT_KEYS: PlainFont[] = ['sans', 'mono']
 
 export type Segment = { type: 'pixel' | 'plain'; text: string }
 

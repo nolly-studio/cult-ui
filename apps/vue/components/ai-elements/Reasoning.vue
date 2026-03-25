@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, onMounted, onUnmounted, provide, computed, type InjectionKey, type Ref } from "vue"
+import { ref, watch, onUnmounted, provide, computed, type InjectionKey, type Ref } from "vue"
 import { cn } from "@/lib/utils"
 
 defineOptions({ name: "Reasoning" })

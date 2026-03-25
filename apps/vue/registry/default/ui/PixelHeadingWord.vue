@@ -1,11 +1,32 @@
 <script setup lang="ts">
-import { ref, computed, onUnmounted } from 'vue'
+/**
+ * Interactive heading that swaps or cycles through pixel font styles on hover.
+ *
+ * Swap mode: set initialFont and hoverFont to swap between two specific fonts.
+ * Cycle mode: omit hoverFont to cycle through every pixel font on hover.
+ */
+
+import { computed, onBeforeUnmount, ref } from 'vue'
+
 import { cn } from '@/lib/utils'
-import { type PixelFont, PIXEL_FONTS, PIXEL_FONT_KEYS } from '@/lib/pixel-fonts'
+
+type PixelFont = 'square' | 'grid' | 'circle' | 'triangle' | 'line'
+
+const PIXEL_FONT_MAP: Record<PixelFont, string> = {
+  square: 'font-pixel-square',
+  grid: 'font-pixel-grid',
+  circle: 'font-pixel-circle',
+  triangle: 'font-pixel-triangle',
+  line: 'font-pixel-line',
+}
+
+const PIXEL_FONTS = Object.values(PIXEL_FONT_MAP)
+const PIXEL_FONT_KEYS = Object.keys(PIXEL_FONT_MAP) as PixelFont[]
 
 const props = withDefaults(
   defineProps<{
     as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+    class?: string
     initialFont?: PixelFont
     hoverFont?: PixelFont
     cycleInterval?: number
@@ -13,11 +34,9 @@ const props = withDefaults(
     showLabel?: boolean
     disableHover?: boolean
     disableCycling?: boolean
-    class?: string
   }>(),
   {
     as: 'h1',
-    initialFont: 'square',
     cycleInterval: 300,
     defaultFontIndex: 0,
     showLabel: false,
@@ -30,6 +49,8 @@ const emit = defineEmits<{
   fontIndexChange: [index: number]
 }>()
 
+/* ── Resolve indices ── */
+
 const resolvedDefaultIndex = computed(() =>
   props.initialFont ? PIXEL_FONT_KEYS.indexOf(props.initialFont) : props.defaultFontIndex,
 )
@@ -40,27 +61,40 @@ const hoverIndex = computed(() =>
 
 const isSwapMode = computed(() => hoverIndex.value !== null)
 
+/* ── State ── */
+
 const fontIndex = ref(resolvedDefaultIndex.value)
 const isActive = ref(false)
-let intervalRef: ReturnType<typeof setInterval> | null = null
+let intervalId: ReturnType<typeof setInterval> | null = null
+
+function clearTimer() {
+  if (intervalId) {
+    clearInterval(intervalId)
+    intervalId = null
+  }
+}
+
+onBeforeUnmount(clearTimer)
+
+/* ── Cycling helpers ── */
 
 function advanceFont() {
-  fontIndex.value = (fontIndex.value + 1) % PIXEL_FONTS.length
-  emit('fontIndexChange', fontIndex.value)
+  const next = (fontIndex.value + 1) % PIXEL_FONTS.length
+  fontIndex.value = next
+  emit('fontIndexChange', next)
 }
 
 function startCycling() {
   isActive.value = true
-  intervalRef = setInterval(advanceFont, props.cycleInterval)
+  intervalId = setInterval(advanceFont, props.cycleInterval)
 }
 
 function stopCycling() {
   isActive.value = false
-  if (intervalRef) {
-    clearInterval(intervalRef)
-    intervalRef = null
-  }
+  clearTimer()
 }
+
+/* ── Swap helpers ── */
 
 function swapToHover() {
   if (hoverIndex.value === null) return
@@ -74,6 +108,8 @@ function swapToInitial() {
   fontIndex.value = resolvedDefaultIndex.value
   emit('fontIndexChange', resolvedDefaultIndex.value)
 }
+
+/* ── Event handlers ── */
 
 function handleMouseEnter() {
   if (props.disableHover) return
@@ -91,36 +127,32 @@ function handleMouseLeave() {
 
 function handleFocus() {
   if (props.disableHover) return
-  isSwapMode.value ? swapToHover() : (isActive.value = true)
+  if (isSwapMode.value) {
+    swapToHover()
+  } else {
+    isActive.value = true
+  }
 }
 
 function handleBlur() {
   if (props.disableHover) return
-  isSwapMode.value ? swapToInitial() : (isActive.value = false)
+  if (isSwapMode.value) {
+    swapToInitial()
+  } else {
+    isActive.value = false
+  }
 }
 
 function handleKeyDown(e: KeyboardEvent) {
-  if (props.disableHover || props.disableCycling) return
-  if (e.key === 'Enter' || e.key === ' ') {
-    e.preventDefault()
-    if (!isSwapMode.value) advanceFont()
+  if (!props.disableHover && !props.disableCycling) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      if (!isSwapMode.value) advanceFont()
+    }
   }
 }
 
 const currentFontLabel = computed(() => PIXEL_FONT_KEYS[fontIndex.value])
-
-const headingClass = computed(() =>
-  cn(
-    'cursor-default select-none transition-all duration-150',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-    PIXEL_FONTS[fontIndex.value],
-    props.class,
-  ),
-)
-
-onUnmounted(() => {
-  if (intervalRef) clearInterval(intervalRef)
-})
 </script>
 
 <template>
@@ -130,7 +162,14 @@ onUnmounted(() => {
       :data-state="isActive ? 'active' : 'idle'"
       :data-font="currentFontLabel"
       :tabindex="0"
-      :class="headingClass"
+      :class="
+        cn(
+          'cursor-default select-none transition-all duration-150',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+          PIXEL_FONTS[fontIndex],
+          props.class,
+        )
+      "
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
       @focus="handleFocus"
@@ -139,14 +178,17 @@ onUnmounted(() => {
     >
       <slot />
     </component>
+
     <output
-      v-if="showLabel"
+      v-if="props.showLabel"
       data-slot="pixel-heading-label"
       aria-live="polite"
-      :class="cn(
-        'text-xs uppercase tracking-widest text-muted-foreground transition-opacity duration-200',
-        isActive ? 'opacity-100' : 'opacity-0',
-      )"
+      :class="
+        cn(
+          'text-xs uppercase tracking-widest text-muted-foreground transition-opacity duration-200',
+          isActive ? 'opacity-100' : 'opacity-0',
+        )
+      "
     >
       {{ currentFontLabel }}
     </output>

@@ -1,43 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onUnmounted } from 'vue'
 import { cn } from '@/lib/utils'
-
-type PixelFont = 'square' | 'grid' | 'circle' | 'triangle' | 'line'
-
-const PIXEL_FONT_MAP: Record<PixelFont, string> = {
-  square: 'font-pixel-square',
-  grid: 'font-pixel-grid',
-  circle: 'font-pixel-circle',
-  triangle: 'font-pixel-triangle',
-  line: 'font-pixel-line',
-}
-
-const PIXEL_FONTS = Object.values(PIXEL_FONT_MAP)
-const PIXEL_FONT_KEYS = Object.keys(PIXEL_FONT_MAP) as PixelFont[]
-
-type Segment = { type: 'plain' | 'pixel'; text: string }
-
-function splitTextByPixelWords(text: string, pixelWords: string[]): Segment[] {
-  if (pixelWords.length === 0) return [{ type: 'plain', text }]
-  const sorted = [...pixelWords].sort((a, b) => b.length - a.length)
-  const escaped = sorted.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
-  const pattern = new RegExp(`(${escaped.join('|')})`, 'g')
-
-  const segments: Segment[] = []
-  let lastIndex = 0
-  for (const match of text.matchAll(pattern)) {
-    const matchStart = match.index ?? 0
-    if (matchStart > lastIndex) {
-      segments.push({ type: 'plain', text: text.slice(lastIndex, matchStart) })
-    }
-    segments.push({ type: 'pixel', text: match[0] })
-    lastIndex = matchStart + match[0].length
-  }
-  if (lastIndex < text.length) {
-    segments.push({ type: 'plain', text: text.slice(lastIndex) })
-  }
-  return segments
-}
+import { type PixelFont, PIXEL_FONTS, PIXEL_FONT_KEYS, splitTextByWords } from '@/lib/pixel-fonts'
 
 const props = withDefaults(
   defineProps<{
@@ -47,7 +11,7 @@ const props = withDefaults(
     initialFont?: PixelFont
     hoverFont?: PixelFont
     cycleInterval?: number
-    pixelWordClassName?: string
+    pixelWordClass?: string
     class?: string
   }>(),
   {
@@ -58,9 +22,8 @@ const props = withDefaults(
   },
 )
 
-const segments = computed(() => splitTextByPixelWords(props.text, props.pixelWords ?? []))
+const segments = computed(() => splitTextByWords(props.text, props.pixelWords ?? [], 'pixel'))
 
-// Per-word hover state management
 interface WordState {
   fontIndex: number
   isActive: boolean
@@ -105,7 +68,7 @@ function handleWordMouseLeave(index: number) {
 
 function getWordClass(index: number) {
   const state = getWordState(index)
-  return cn('cursor-default transition-all duration-150', PIXEL_FONTS[state.fontIndex], props.pixelWordClassName)
+  return cn('cursor-default transition-all duration-150', PIXEL_FONTS[state.fontIndex], props.pixelWordClass)
 }
 
 onUnmounted(() => {
@@ -116,7 +79,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <component :is="props.as" data-slot="pixel-paragraph" :class="cn(props.class)">
+  <component :is="props.as" data-slot="pixel-paragraph" :class="props.class">
     <template v-for="(segment, index) in segments" :key="`${segment.type}-${segment.text}-${index}`">
       <span
         v-if="segment.type === 'pixel'"

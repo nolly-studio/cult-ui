@@ -83,6 +83,7 @@ function getCurrentTheme(): "light" | "dark" {
 const theme = ref<"light" | "dark">(getCurrentTheme())
 let observer: MutationObserver | null = null
 let mql: MediaQueryList | null = null
+let handleMediaChange: (() => void) | null = null
 
 const source = computed(() => sources[props.variant])
 
@@ -169,7 +170,7 @@ onMounted(() => {
 
     if (window.matchMedia) {
       mql = window.matchMedia("(prefers-color-scheme: dark)")
-      const handleMediaChange = () => {
+      handleMediaChange = () => {
         theme.value = getCurrentTheme()
       }
       mql.addEventListener("change", handleMediaChange)
@@ -181,8 +182,8 @@ onUnmounted(() => {
   riveInstance?.cleanup()
   riveInstance = null
   observer?.disconnect()
-  if (mql) {
-    mql.removeEventListener("change", () => {})
+  if (mql && handleMediaChange) {
+    mql.removeEventListener("change", handleMediaChange)
   }
 })
 
