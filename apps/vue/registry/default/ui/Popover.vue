@@ -11,10 +11,6 @@ import { X } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
 import { useClickOutside } from '@/composables/useClickOutside'
 
-// ============================================================================
-// Context
-// ============================================================================
-
 interface PopoverContextType {
   isOpen: Ref<boolean>
   openPopover: () => void
@@ -80,9 +76,6 @@ provide(PopoverKey, {
 <script lang="ts">
 import { defineComponent, h, Transition, onMounted, onUnmounted } from 'vue'
 
-// ============================================================================
-// PopoverTrigger
-// ============================================================================
 export const PopoverTrigger = defineComponent({
   name: 'PopoverTrigger',
   props: {
@@ -106,9 +99,6 @@ export const PopoverTrigger = defineComponent({
   },
 })
 
-// ============================================================================
-// PopoverContent
-// ============================================================================
 export const PopoverContent = defineComponent({
   name: 'PopoverContent',
   props: {
@@ -162,9 +152,6 @@ export const PopoverContent = defineComponent({
   },
 })
 
-// ============================================================================
-// PopoverForm
-// ============================================================================
 export const PopoverForm = defineComponent({
   name: 'PopoverForm',
   props: {
@@ -192,9 +179,6 @@ export const PopoverForm = defineComponent({
   },
 })
 
-// ============================================================================
-// PopoverLabel
-// ============================================================================
 export const PopoverLabel = defineComponent({
   name: 'PopoverLabel',
   props: {
@@ -219,9 +203,6 @@ export const PopoverLabel = defineComponent({
   },
 })
 
-// ============================================================================
-// PopoverTextarea
-// ============================================================================
 export const PopoverTextarea = defineComponent({
   name: 'PopoverTextarea',
   props: {
@@ -243,9 +224,6 @@ export const PopoverTextarea = defineComponent({
   },
 })
 
-// ============================================================================
-// PopoverFooter
-// ============================================================================
 export const PopoverFooter = defineComponent({
   name: 'PopoverFooter',
   props: {
@@ -263,9 +241,6 @@ export const PopoverFooter = defineComponent({
   },
 })
 
-// ============================================================================
-// PopoverCloseButton
-// ============================================================================
 export const PopoverCloseButton = defineComponent({
   name: 'PopoverCloseButton',
   props: {
@@ -288,9 +263,6 @@ export const PopoverCloseButton = defineComponent({
   },
 })
 
-// ============================================================================
-// PopoverSubmitButton
-// ============================================================================
 export const PopoverSubmitButton = defineComponent({
   name: 'PopoverSubmitButton',
   props: {
@@ -313,9 +285,6 @@ export const PopoverSubmitButton = defineComponent({
   },
 })
 
-// ============================================================================
-// PopoverHeader
-// ============================================================================
 export const PopoverHeader = defineComponent({
   name: 'PopoverHeader',
   props: {

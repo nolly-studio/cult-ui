@@ -4,7 +4,7 @@
  * Expands from a trigger button into a textarea form with smooth transitions.
  * Supports controlled/uncontrolled open state and click-outside to close.
  */
-import { ref, computed, watch, nextTick, useTemplateRef } from 'vue'
+import { ref, computed, watch, nextTick, useTemplateRef, onUnmounted } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import { cn } from '@/lib/utils'
 
@@ -49,6 +49,7 @@ const textareaRef = useTemplateRef<HTMLTextAreaElement>('textarea')
 const internalIsOpen = ref(false)
 const success = ref(false)
 const message = ref('')
+let successTimeoutId: ReturnType<typeof setTimeout> | null = null
 
 const isOpen = computed({
   get: () => props.modelValue !== undefined ? props.modelValue : internalIsOpen.value,
@@ -89,7 +90,7 @@ async function handleSubmit() {
   closeForm()
   success.value = true
   emit('success')
-  setTimeout(() => { success.value = false }, 1500)
+  successTimeoutId = setTimeout(() => { success.value = false }, 1500)
 }
 
 function handleKeydown(e: KeyboardEvent) {
