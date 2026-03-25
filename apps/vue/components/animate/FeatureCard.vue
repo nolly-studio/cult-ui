@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from "vue"
 import { cn } from "@/lib/utils"
+import { useMounted } from "@/composables/useMounted"
 
 interface Step {
   id: string
@@ -31,7 +32,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const currentStep = ref(0)
-const mounted = ref(false)
+const mounted = useMounted()
 const mouseX = ref(0)
 const mouseY = ref(0)
 let timer: ReturnType<typeof setTimeout> | null = null
@@ -60,7 +61,6 @@ function handleMouseMove(event: MouseEvent) {
 }
 
 onMounted(() => {
-  mounted.value = true
   setupTimer()
 })
 

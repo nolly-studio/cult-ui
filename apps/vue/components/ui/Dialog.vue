@@ -1,21 +1,9 @@
 <script setup lang="ts">
-import { computed } from "vue"
-import {
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogOverlay,
-  DialogPortal,
-  DialogRoot,
-  DialogTitle,
-  DialogTrigger,
-} from "radix-vue"
-import { X } from "lucide-vue-next"
-import { cn } from "@/lib/utils"
+import { DialogRoot } from "radix-vue"
 
 defineOptions({ name: "Dialog" })
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     open?: boolean
     defaultOpen?: boolean
@@ -27,15 +15,15 @@ const props = withDefaults(
 const emit = defineEmits<{
   "update:open": [value: boolean]
 }>()
-
-const openModel = computed({
-  get: () => props.open,
-  set: (val) => emit("update:open", val),
-})
 </script>
 
 <template>
-  <DialogRoot v-model:open="openModel" :modal="modal">
+  <DialogRoot
+    :open="open"
+    :default-open="defaultOpen"
+    :modal="modal"
+    @update:open="emit('update:open', $event)"
+  >
     <slot />
   </DialogRoot>
 </template>
