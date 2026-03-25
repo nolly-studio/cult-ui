@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, onUnmounted, type Component, type VNode, nextTick } from 'vue'
+import { ref, computed, watch, onUnmounted, type Component, type VNode, nextTick } from 'vue'
 import { cn } from '@/lib/utils'
+import { useClickOutside } from '@/composables/useClickOutside'
 
 interface DynamicStep {
   id: string

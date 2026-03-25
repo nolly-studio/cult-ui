@@ -107,6 +107,10 @@ onClickOutside(containerRef, () => {
   if (isOpen.value) closeForm()
 })
 
+onUnmounted(() => {
+  if (successTimeoutId) clearTimeout(successTimeoutId)
+})
+
 const duration = computed(() => `${0.4 / props.animationSpeed}s`)
 
 const containerStyle = computed(() => ({
