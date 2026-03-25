@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 
 defineOptions({ name: "DialogContent" })
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     class?: string
     showCloseButton?: boolean
