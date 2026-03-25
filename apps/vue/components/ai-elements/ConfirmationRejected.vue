@@ -7,8 +7,8 @@ defineOptions({ name: "ConfirmationRejected" })
 const ctx = inject(CONFIRMATION_KEY)!
 
 const show = computed(() =>
-  ctx.approval?.approved === false &&
-  (ctx.state === "approval-responded" || ctx.state === "output-denied" || ctx.state === "output-available")
+  ctx.approval()?.approved === false &&
+  (ctx.state() === "approval-responded" || ctx.state() === "output-denied" || ctx.state() === "output-available")
 )
 </script>
 

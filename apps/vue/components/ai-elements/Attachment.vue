@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { provide, inject, computed } from "vue"
+import { provide, inject, computed, reactive, type InjectionKey } from "vue"
 import { cn } from "@/lib/utils"
 import {
   ATTACHMENTS_VARIANT_KEY,
@@ -12,8 +12,8 @@ import {
 defineOptions({ name: "Attachment" })
 
 export const ATTACHMENT_CONTEXT_KEY = Symbol("attachment-context") as InjectionKey<{
-  data: AttachmentData
-  mediaCategory: AttachmentMediaCategory
+  data: () => AttachmentData
+  mediaCategory: () => AttachmentMediaCategory
   variant: AttachmentVariant
   onRemove?: () => void
 }>
@@ -28,8 +28,8 @@ const variant = inject(ATTACHMENTS_VARIANT_KEY, "grid" as AttachmentVariant)
 const mediaCategory = computed(() => getMediaCategory(props.data))
 
 provide(ATTACHMENT_CONTEXT_KEY, {
-  data: props.data,
-  mediaCategory: mediaCategory.value,
+  data: () => props.data,
+  mediaCategory: () => mediaCategory.value,
   variant,
   onRemove: props.onRemove,
 })

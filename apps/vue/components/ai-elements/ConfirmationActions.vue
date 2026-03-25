@@ -10,7 +10,7 @@ const props = defineProps<{
 }>()
 
 const ctx = inject(CONFIRMATION_KEY)!
-const show = computed(() => ctx.state === "approval-requested")
+const show = computed(() => ctx.state() === "approval-requested")
 </script>
 
 <template>
