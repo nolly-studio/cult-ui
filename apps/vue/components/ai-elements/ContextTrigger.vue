@@ -16,7 +16,7 @@ const ICON_VIEWBOX = 24
 const ICON_CENTER = 12
 const ICON_STROKE_WIDTH = 2
 
-const usedPercent = computed(() => ctx.usedTokens / ctx.maxTokens)
+const usedPercent = computed(() => ctx.usedTokens() / ctx.maxTokens())
 const renderedPercent = computed(() =>
   new Intl.NumberFormat("en-US", { maximumFractionDigits: 1, style: "percent" }).format(usedPercent.value)
 )

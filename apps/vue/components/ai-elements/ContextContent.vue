@@ -12,12 +12,12 @@ const props = defineProps<{
 const ctx = inject(CONTEXT_KEY)!
 
 const PERCENT_MAX = 100
-const usedPercent = computed(() => ctx.usedTokens / ctx.maxTokens)
+const usedPercent = computed(() => ctx.usedTokens() / ctx.maxTokens())
 const displayPct = computed(() =>
   new Intl.NumberFormat("en-US", { maximumFractionDigits: 1, style: "percent" }).format(usedPercent.value)
 )
-const used = computed(() => new Intl.NumberFormat("en-US", { notation: "compact" }).format(ctx.usedTokens))
-const total = computed(() => new Intl.NumberFormat("en-US", { notation: "compact" }).format(ctx.maxTokens))
+const used = computed(() => new Intl.NumberFormat("en-US", { notation: "compact" }).format(ctx.usedTokens()))
+const total = computed(() => new Intl.NumberFormat("en-US", { notation: "compact" }).format(ctx.maxTokens()))
 </script>
 
 <template>

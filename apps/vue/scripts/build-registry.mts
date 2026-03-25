@@ -1,7 +1,6 @@
 import { exec } from "child_process"
 import { promises as fs } from "fs"
 import path from "path"
-import { rimraf } from "rimraf"
 
 import { registry } from "../registry/index"
 
@@ -13,15 +12,11 @@ import { defineAsyncComponent } from "vue"
 
 export const Index: Record<string, any> = {`
   for (const item of registry.items) {
-    const resolveFiles = item.files?.map(
-      (file: { path: string; type: string; target?: string }) =>
-        `registry/default/${file.path}`
-    )
-    if (!resolveFiles) {
+    if (!item.files?.length) {
       continue
     }
 
-    const componentPath = item.files?.[0]?.path
+    const componentPath = item.files[0]?.path
       ? `@/${item.files[0].path}`
       : ""
 
@@ -31,12 +26,9 @@ export const Index: Record<string, any> = {`
     description: "${item.description ?? ""}",
     type: "${item.type}",
     registryDependencies: ${JSON.stringify(item.registryDependencies)},
-    files: [${item.files?.map((file: { path: string; type: string; target?: string }) => {
-      const filePath = typeof file === "string" ? file : file.path
-      const resolvedFilePath = path.resolve(filePath)
-      return typeof file === "string"
-        ? `"${resolvedFilePath}"`
-        : `{
+    files: [${item.files.map((file: { path: string; type: string; target?: string }) => {
+      const filePath = file.path
+      return `{
       path: "${filePath}",
       type: "${file.type}",
       target: "${file.target ?? ""}"
@@ -53,10 +45,8 @@ export const Index: Record<string, any> = {`
   index += `
 }`
 
-  console.log(`#  ${Object.keys(registry.items).length} items found`)
+  console.log(`#  ${registry.items.length} items found`)
 
-  // Write style index.
-  rimraf.sync(path.join(process.cwd(), "registry/__index__.ts"))
   await fs.writeFile(
     path.join(process.cwd(), "registry/__index__.ts"),
     index
@@ -64,15 +54,11 @@ export const Index: Record<string, any> = {`
 }
 
 async function buildRegistryJsonFile() {
-  const fixedRegistry = registry
-
-  rimraf.sync(path.join(process.cwd(), `registry.json`))
   await fs.writeFile(
-    path.join(process.cwd(), `registry.json`),
-    JSON.stringify(fixedRegistry, null, 2)
+    path.join(process.cwd(), "registry.json"),
+    JSON.stringify(registry, null, 2)
   )
 
-  // Copy the registry.json to the public/r/styles/default directory.
   const outputDir = path.join(
     process.cwd(),
     "public/r/styles/default"
@@ -80,55 +66,37 @@ async function buildRegistryJsonFile() {
   await fs.mkdir(outputDir, { recursive: true })
   await fs.cp(
     path.join(process.cwd(), "registry.json"),
-    path.join(outputDir, "registry.json"),
-    { recursive: true }
+    path.join(outputDir, "registry.json")
   )
 }
 
 async function buildRegistry() {
-  return new Promise((resolve, reject) => {
-    const process = exec(
+  return new Promise<void>((resolve, reject) => {
+    const child = exec(
       `pnpm dlx shadcn-vue build registry.json --output public/r/styles/default`
     )
 
-    process.on("exit", (code) => {
+    let stderr = ""
+    child.stderr?.on("data", (data) => { stderr += data })
+    child.stdout?.pipe(process.stdout)
+
+    child.on("exit", (code) => {
       if (code === 0) {
-        resolve(undefined)
+        resolve()
       } else {
-        reject(new Error(`Process exited with code ${code}`))
+        reject(new Error(`shadcn-vue build failed (code ${code}): ${stderr}`))
       }
     })
   })
 }
 
-async function syncRegistry() {
-  const registryDir = path.join(process.cwd(), "registry")
-  const registryIndexPath = path.join(registryDir, "__index__.ts")
-  let registryContent = null
-
-  try {
-    registryContent = await fs.readFile(registryIndexPath, "utf8")
-  } catch {
-    // File might not exist yet
-  }
-
-  if (registryContent) {
-    await fs.writeFile(registryIndexPath, registryContent, "utf8")
-  }
-}
-
 try {
-  console.log("Building registry/__index__.ts...")
-  await buildRegistryIndex()
-
-  console.log("Building registry.json...")
-  await buildRegistryJsonFile()
+  // buildRegistryIndex and buildRegistryJsonFile are independent
+  console.log("Building registry/__index__.ts and registry.json...")
+  await Promise.all([buildRegistryIndex(), buildRegistryJsonFile()])
 
   console.log("Building registry...")
   await buildRegistry()
-
-  console.log("Syncing registry...")
-  await syncRegistry()
 } catch (error) {
   console.error(error)
   process.exit(1)

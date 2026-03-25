@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, reactive, computed } from 'vue'
 import { Check, Copy, RefreshCw } from 'lucide-vue-next'
 import ColorPicker from '../ui/color-picker'
 

@@ -15,17 +15,17 @@ const props = withDefaults(
 )
 
 const ctx = inject(ATTACHMENT_CONTEXT_KEY)!
-const label = computed(() => getAttachmentLabel(ctx.data))
+const label = computed(() => getAttachmentLabel(ctx.data()))
 </script>
 
 <template>
   <div v-if="ctx.variant !== 'grid'" :class="cn('min-w-0 flex-1', props.class)">
     <span class="block truncate">{{ label }}</span>
     <span
-      v-if="props.showMediaType && ctx.data.mediaType"
+      v-if="props.showMediaType && ctx.data().mediaType"
       class="block truncate text-muted-foreground text-xs"
     >
-      {{ ctx.data.mediaType }}
+      {{ ctx.data().mediaType }}
     </span>
   </div>
 </template>

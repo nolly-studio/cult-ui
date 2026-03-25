@@ -3,7 +3,7 @@ import { inject, computed, type Component } from "vue"
 import { cn } from "@/lib/utils"
 import { FileText, Globe, ImageIcon, Music2, Paperclip, Video } from "lucide-vue-next"
 import { ATTACHMENT_CONTEXT_KEY } from "./Attachment.vue"
-import type { AttachmentMediaCategory } from "./Attachments.vue"
+import type { AttachmentMediaCategory, AttachmentFileData } from "./Attachments.vue"
 
 defineOptions({ name: "AttachmentPreview" })
 
@@ -23,16 +23,21 @@ const mediaCategoryIcons: Record<AttachmentMediaCategory, Component> = {
 }
 
 const iconSize = computed(() => ctx.variant === "inline" ? "size-3" : "size-4")
-const Icon = computed(() => mediaCategoryIcons[ctx.mediaCategory])
+const Icon = computed(() => mediaCategoryIcons[ctx.mediaCategory()])
+
+const fileData = computed(() => {
+  const d = ctx.data()
+  return d.type === "file" ? d as AttachmentFileData : null
+})
 
 const isImageGrid = computed(
-  () => ctx.mediaCategory === "image" && ctx.data.type === "file" && (ctx.data as any).url && ctx.variant === "grid"
+  () => ctx.mediaCategory() === "image" && fileData.value?.url && ctx.variant === "grid"
 )
 const isImageInline = computed(
-  () => ctx.mediaCategory === "image" && ctx.data.type === "file" && (ctx.data as any).url && ctx.variant !== "grid"
+  () => ctx.mediaCategory() === "image" && fileData.value?.url && ctx.variant !== "grid"
 )
 const isVideo = computed(
-  () => ctx.mediaCategory === "video" && ctx.data.type === "file" && (ctx.data as any).url
+  () => ctx.mediaCategory() === "video" && fileData.value?.url
 )
 </script>
 
@@ -48,25 +53,25 @@ const isVideo = computed(
   >
     <img
       v-if="isImageGrid"
-      :alt="(ctx.data as any).filename || 'Image'"
+      :alt="fileData?.filename || 'Image'"
       class="size-full object-cover"
       :height="96"
-      :src="(ctx.data as any).url"
+      :src="fileData?.url"
       :width="96"
     />
     <img
       v-else-if="isImageInline"
-      :alt="(ctx.data as any).filename || 'Image'"
+      :alt="fileData?.filename || 'Image'"
       class="size-full rounded object-cover"
       :height="20"
-      :src="(ctx.data as any).url"
+      :src="fileData?.url"
       :width="20"
     />
     <video
       v-else-if="isVideo"
       class="size-full object-cover"
       muted
-      :src="(ctx.data as any).url"
+      :src="fileData?.url"
     />
     <slot v-else>
       <component :is="Icon" :class="cn(iconSize, 'text-muted-foreground')" />

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { provide, computed } from "vue"
+import { provide, computed, type InjectionKey } from "vue"
 import { cn } from "@/lib/utils"
 import {
   FileText,

@@ -11,17 +11,22 @@ export interface ContextSchema {
   modelId?: string
 }
 
-export const CONTEXT_KEY = Symbol("context") as InjectionKey<ContextSchema>
+export const CONTEXT_KEY = Symbol("context") as InjectionKey<{
+  usedTokens: () => number
+  maxTokens: () => number
+  usage: () => ContextSchema["usage"]
+  modelId: () => string | undefined
+}>
 
 const PERCENT_MAX = 100
 
 const props = defineProps<ContextSchema & { class?: string }>()
 
 provide(CONTEXT_KEY, {
-  usedTokens: props.usedTokens,
-  maxTokens: props.maxTokens,
-  usage: props.usage,
-  modelId: props.modelId,
+  usedTokens: () => props.usedTokens,
+  maxTokens: () => props.maxTokens,
+  usage: () => props.usage,
+  modelId: () => props.modelId,
 })
 
 const usedPercent = computed(() => props.usedTokens / props.maxTokens)
