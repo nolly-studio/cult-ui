@@ -1,29 +1,16 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, useSlots } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { cn } from '@/lib/utils'
-
-const PIXEL_FONTS = [
-  'font-pixel-square',
-  'font-pixel-grid',
-  'font-pixel-circle',
-  'font-pixel-triangle',
-  'font-pixel-line',
-] as const
+import { PIXEL_FONTS, PIXEL_FONT_MAP, PLAIN_FONT_MAP } from '@/lib/pixel-fonts'
 
 const FONT_LABELS = ['Square', 'Grid', 'Circle', 'Triangle', 'Line'] as const
 const FONT_COUNT = PIXEL_FONTS.length
 
-const PREFIX_FONT_MAP: Record<string, string> = {
-  square: 'font-pixel-square',
-  grid: 'font-pixel-grid',
-  circle: 'font-pixel-circle',
-  triangle: 'font-pixel-triangle',
-  line: 'font-pixel-line',
-}
+const PREFIX_FONT_MAP = PIXEL_FONT_MAP
 
 const ISOLATE_FONT_MAP: Record<string, string> = {
-  sans: 'font-sans',
-  mono: 'font-mono',
+  sans: PLAIN_FONT_MAP.sans,
+  mono: PLAIN_FONT_MAP.mono,
 }
 
 function resolveIsolateFont(value: string): string {

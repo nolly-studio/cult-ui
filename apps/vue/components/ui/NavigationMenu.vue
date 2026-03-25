@@ -8,6 +8,7 @@ export const navigationMenuTriggerStyle = cva(
 
 <script setup lang="ts">
 import { NavigationMenuRoot } from "radix-vue"
+import NavigationMenuViewport from "./NavigationMenuViewport.vue"
 import { cn } from "@/lib/utils"
 
 defineOptions({ name: "NavigationMenu" })

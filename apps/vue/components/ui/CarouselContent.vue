@@ -10,7 +10,7 @@ const { emblaRef, orientation } = useCarousel()
 </script>
 
 <template>
-  <div :ref="(el) => { emblaRef = el as HTMLElement }" class="overflow-hidden">
+  <div :ref="(el) => { if (el instanceof HTMLElement) emblaRef = el }" class="overflow-hidden">
     <div
       :class="
         cn(

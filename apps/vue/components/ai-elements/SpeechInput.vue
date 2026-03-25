@@ -45,8 +45,6 @@ const emit = defineEmits<{
   audioRecorded: [audioBlob: Blob]
 }>()
 
-defineExpose({})
-
 const isListening = ref(false)
 const isProcessing = ref(false)
 const isRecognitionReady = ref(false)

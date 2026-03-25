@@ -84,11 +84,8 @@ const sortedBlocks = computed(() => {
   return [...BLOCK_PREVIEW_DATA]
     .slice(0, 6)
     .sort((a, b) => {
-      if (a.isNew && !b.isNew) return -1
-      if (!a.isNew && b.isNew) return 1
-      return 0
-    })
-    .sort((a, b) => {
+      const newDiff = (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0)
+      if (newDiff !== 0) return newDiff
       const dateA = new Date(a.dateReleased || '0').getTime()
       const dateB = new Date(b.dateReleased || '0').getTime()
       return dateB - dateA

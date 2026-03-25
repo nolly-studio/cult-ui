@@ -1,49 +1,14 @@
 <script setup lang="ts">
 import { ref, computed, onUnmounted } from 'vue'
 import { cn } from '@/lib/utils'
-
-type PlainFont = 'sans' | 'mono'
-type PixelFont = 'square' | 'grid' | 'circle' | 'triangle' | 'line'
-
-const PLAIN_FONT_MAP: Record<PlainFont, string> = {
-  sans: 'font-sans',
-  mono: 'font-mono',
-}
-
-const PLAIN_FONTS = Object.values(PLAIN_FONT_MAP)
-const PLAIN_FONT_KEYS = Object.keys(PLAIN_FONT_MAP) as PlainFont[]
-
-const PIXEL_FONT_MAP: Record<PixelFont, string> = {
-  square: 'font-pixel-square',
-  grid: 'font-pixel-grid',
-  circle: 'font-pixel-circle',
-  triangle: 'font-pixel-triangle',
-  line: 'font-pixel-line',
-}
-
-type Segment = { type: 'pixel' | 'plain'; text: string }
-
-function splitTextByPlainWords(text: string, plainWords: string[]): Segment[] {
-  if (plainWords.length === 0) return [{ type: 'pixel', text }]
-  const sorted = [...plainWords].sort((a, b) => b.length - a.length)
-  const escaped = sorted.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
-  const pattern = new RegExp(`(${escaped.join('|')})`, 'g')
-
-  const segments: Segment[] = []
-  let lastIndex = 0
-  for (const match of text.matchAll(pattern)) {
-    const matchStart = match.index ?? 0
-    if (matchStart > lastIndex) {
-      segments.push({ type: 'pixel', text: text.slice(lastIndex, matchStart) })
-    }
-    segments.push({ type: 'plain', text: match[0] })
-    lastIndex = matchStart + match[0].length
-  }
-  if (lastIndex < text.length) {
-    segments.push({ type: 'pixel', text: text.slice(lastIndex) })
-  }
-  return segments
-}
+import {
+  type PlainFont,
+  type PixelFont,
+  PLAIN_FONTS,
+  PLAIN_FONT_KEYS,
+  PIXEL_FONT_MAP,
+  splitTextByWords,
+} from '@/lib/pixel-fonts'
 
 const props = withDefaults(
   defineProps<{
@@ -54,7 +19,7 @@ const props = withDefaults(
     initialPlainFont?: PlainFont
     hoverPlainFont?: PlainFont
     cycleInterval?: number
-    plainWordClassName?: string
+    plainWordClass?: string
     class?: string
   }>(),
   {
@@ -67,9 +32,8 @@ const props = withDefaults(
 )
 
 const pixelFontClass = computed(() => PIXEL_FONT_MAP[props.pixelFont ?? 'square'])
-const segments = computed(() => splitTextByPlainWords(props.text, props.plainWords ?? []))
+const segments = computed(() => splitTextByWords(props.text, props.plainWords ?? [], 'plain'))
 
-// Per-word hover state
 interface WordState {
   fontIndex: number
   isActive: boolean
@@ -114,7 +78,7 @@ function handleWordMouseLeave(index: number) {
 
 function getWordClass(index: number) {
   const state = getWordState(index)
-  return cn('cursor-default transition-all duration-150', PLAIN_FONTS[state.fontIndex], props.plainWordClassName)
+  return cn('cursor-default transition-all duration-150', PLAIN_FONTS[state.fontIndex], props.plainWordClass)
 }
 
 onUnmounted(() => {

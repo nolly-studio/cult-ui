@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { TabsRoot } from "radix-vue"
-import { cn } from "@/lib/utils"
 
 defineOptions({ name: "Tabs" })
 
@@ -17,7 +16,7 @@ const emit = defineEmits<{
 
 <template>
   <TabsRoot
-    :class="cn(props.class)"
+    :class="props.class"
     :default-value="defaultValue"
     :model-value="modelValue"
     @update:model-value="emit('update:modelValue', $event)"

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ref, watch, onUnmounted, provide, computed, type InjectionKey, type Ref } from "vue"
+import { ref, watch, onUnmounted, provide, computed, type InjectionKey, type Ref, type ComputedRef, type WritableComputedRef } from "vue"
 import { cn } from "@/lib/utils"
 
 defineOptions({ name: "Reasoning" })
 
 export interface ReasoningContext {
-  isStreaming: Ref<boolean>
-  isOpen: Ref<boolean>
-  duration: Ref<number | undefined>
+  isStreaming: ComputedRef<boolean>
+  isOpen: WritableComputedRef<boolean>
+  duration: ComputedRef<number | undefined>
 }
 
 export const reasoningKey = Symbol("reasoning") as InjectionKey<ReasoningContext>
@@ -99,9 +99,9 @@ onUnmounted(() => {
 })
 
 provide(reasoningKey, {
-  isStreaming: computed(() => props.isStreaming) as unknown as Ref<boolean>,
-  isOpen: isOpen as unknown as Ref<boolean>,
-  duration: duration as unknown as Ref<number | undefined>,
+  isStreaming: computed(() => props.isStreaming),
+  isOpen,
+  duration,
 })
 </script>
 

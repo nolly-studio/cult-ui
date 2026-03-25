@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { DialogRoot, DialogPortal, DialogOverlay } from "radix-vue"
-import { cn } from "@/lib/utils"
+import { DialogRoot } from "radix-vue"
 import UiDialogContent from "./DialogContent.vue"
 
 defineOptions({ name: "CommandDialog" })

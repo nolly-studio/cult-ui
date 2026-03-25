@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { AccordionRoot } from "radix-vue"
-import { cn } from "@/lib/utils"
 
 defineOptions({ name: "Accordion" })
 
@@ -15,7 +14,7 @@ const props = defineProps<{
 
 <template>
   <AccordionRoot
-    :class="cn(props.class)"
+    :class="props.class"
     :type="type ?? 'single'"
     :collapsible="collapsible"
     :default-value="defaultValue"

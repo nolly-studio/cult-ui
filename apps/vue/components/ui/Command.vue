@@ -9,6 +9,12 @@ const props = defineProps<{
   modelValue?: string
 }>()
 
+function onModelValueUpdate(value: string | string[]) {
+  if (typeof value === "string") {
+    emit("update:modelValue", value)
+  }
+}
+
 const emit = defineEmits<{
   "update:modelValue": [value: string]
 }>()
@@ -23,7 +29,7 @@ const emit = defineEmits<{
         props.class
       )
     "
-    @update:model-value="emit('update:modelValue', $event as string)"
+    @update:model-value="onModelValueUpdate"
   >
     <slot />
   </ComboboxRoot>
