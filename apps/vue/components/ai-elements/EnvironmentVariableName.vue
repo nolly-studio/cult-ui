@@ -14,6 +14,6 @@ const ctx = inject(ENV_VAR_KEY)!
 
 <template>
   <span :class="cn('font-mono text-sm', props.class)">
-    <slot>{{ ctx.name }}</slot>
+    <slot>{{ ctx.name() }}</slot>
   </span>
 </template>

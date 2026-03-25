@@ -14,7 +14,7 @@ const envVar = inject(ENV_VAR_KEY)!
 const envVars = inject(ENV_VARS_KEY)!
 
 const displayValue = computed(() =>
-  envVars.showValues.value ? envVar.value : "•".repeat(Math.min(envVar.value.length, 20))
+  envVars.showValues.value ? envVar.value() : "•".repeat(Math.min(envVar.value().length, 20))
 )
 </script>
 

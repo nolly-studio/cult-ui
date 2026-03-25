@@ -26,9 +26,9 @@ let timeoutId: ReturnType<typeof setTimeout> | undefined
 
 function getTextToCopy(): string {
   const formatMap = {
-    export: () => `export ${envVar.name}="${envVar.value}"`,
-    name: () => envVar.name,
-    value: () => envVar.value,
+    export: () => `export ${envVar.name()}="${envVar.value()}"`,
+    name: () => envVar.name(),
+    value: () => envVar.value(),
   }
   return formatMap[props.copyFormat]()
 }
