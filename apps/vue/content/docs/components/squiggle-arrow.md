@@ -1,0 +1,209 @@
+---
+title: SquiggleArrow
+description: A playful, hand-drawn squiggly arrow component with customizable variants, directions, and sizes
+component: true
+links: {}
+---
+
+::component-preview{name="squiggle-arrow-demo" className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]" description="All variations"}
+::
+
+## Installation
+
+::code-tabs
+---
+tabs:
+  - label: "CLI"
+    value: "cli"
+  - label: "Manual"
+    value: "manual"
+---
+
+#cli
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/squiggle-arrow.json
+```
+
+#manual
+
+::steps
+Copy and paste the following code into your project.
+
+::component-source{name="squiggle-arrow"}
+::
+
+Update the import paths to match your project setup.
+::
+
+::
+
+## Usage
+
+```tsx
+import SquigglyArrow from "@/components/ui/squiggle-arrow"
+```
+
+### Basic Usage
+
+```tsx
+<SquigglyArrow />
+```
+
+### Variants
+
+The component supports three different variants with unique squiggle patterns:
+
+```tsx
+// Wavy variant (default)
+<SquigglyArrow variant="wavy" />
+
+// Bouncy variant
+<SquigglyArrow variant="bouncy" />
+
+// Smooth variant
+<SquigglyArrow variant="smooth" />
+```
+
+### Directions
+
+Control the arrow direction:
+
+```tsx
+// Right (default)
+<SquigglyArrow direction="right" />
+
+// Left
+<SquigglyArrow direction="left" />
+
+// Up
+<SquigglyArrow direction="up" />
+
+// Down
+<SquigglyArrow direction="down" />
+```
+
+### Custom Sizes
+
+Adjust the arrow dimensions and stroke width:
+
+```tsx
+// Small arrow
+<SquigglyArrow width={150} height={75} strokeWidth={2} />
+
+// Medium arrow
+<SquigglyArrow width={250} height={125} strokeWidth={3} />
+
+// Large arrow
+<SquigglyArrow width={300} height={150} strokeWidth={4} />
+```
+
+### Custom Colors
+
+Use Tailwind classes to customize the arrow color:
+
+```tsx
+<SquigglyArrow className="text-blue-500" />
+<SquigglyArrow className="text-purple-600" />
+<SquigglyArrow className="text-green-600" />
+```
+
+## API Reference
+
+### SquigglyArrow Props
+
+| Prop          | Type                                  | Default   | Description                          |
+| ------------- | ------------------------------------- | --------- | ------------------------------------ |
+| `width`       | `number`                              | `200`     | Width of the SVG arrow               |
+| `height`      | `number`                              | `100`     | Height of the SVG arrow              |
+| `strokeWidth` | `number`                              | `2.5`     | Thickness of the arrow stroke        |
+| `className`   | `string`                              | -         | Additional CSS classes               |
+| `direction`   | `"right" \| "left" \| "up" \| "down"` | `"right"` | Direction the arrow points           |
+| `variant`     | `"wavy" \| "bouncy" \| "smooth"`      | `"wavy"`  | Visual style of the squiggle pattern |
+
+## Examples
+
+### Variant Showcase
+
+```tsx
+<div className="flex flex-col gap-4">
+  <div className="flex items-center gap-4">
+    <span>Wavy</span>
+    <SquigglyArrow variant="wavy" />
+  </div>
+  <div className="flex items-center gap-4">
+    <span>Bouncy</span>
+    <SquigglyArrow variant="bouncy" className="text-blue-500" />
+  </div>
+  <div className="flex items-center gap-4">
+    <span>Smooth</span>
+    <SquigglyArrow variant="smooth" className="text-purple-600" />
+  </div>
+</div>
+```
+
+### Direction Showcase
+
+```tsx
+<div className="flex flex-wrap gap-8 justify-center">
+  <div className="flex flex-col items-center gap-2">
+    <span>Right</span>
+    <SquigglyArrow direction="right" className="text-green-600" />
+  </div>
+  <div className="flex flex-col items-center gap-2">
+    <span>Left</span>
+    <SquigglyArrow direction="left" className="text-orange-600" />
+  </div>
+  <div className="flex flex-col items-center gap-2">
+    <span>Down</span>
+    <SquigglyArrow direction="down" className="text-pink-600" />
+  </div>
+  <div className="flex flex-col items-center gap-2">
+    <span>Up</span>
+    <SquigglyArrow direction="up" className="text-cyan-600" />
+  </div>
+</div>
+```
+
+### Size Variations
+
+```tsx
+<div className="flex items-center gap-8">
+  <SquigglyArrow width={150} height={75} strokeWidth={2} />
+  <SquigglyArrow
+    width={250}
+    height={125}
+    strokeWidth={3}
+    className="text-blue-500"
+  />
+  <SquigglyArrow
+    width={300}
+    height={150}
+    strokeWidth={4}
+    className="text-purple-600"
+  />
+</div>
+```
+
+### Call-to-Action Arrow
+
+```tsx
+<div className="flex items-center gap-2">
+  <span>Learn more</span>
+  <SquigglyArrow variant="bouncy" className="text-primary" />
+</div>
+```
+
+### Decorative Arrow
+
+```tsx
+<div className="flex flex-col items-center gap-4">
+  <h2>Check this out</h2>
+  <SquigglyArrow
+    direction="down"
+    variant="smooth"
+    className="text-muted-foreground"
+  />
+  <p>Scroll down for more</p>
+</div>
+```

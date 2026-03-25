@@ -1,0 +1,101 @@
+---
+title: Logo Carousel
+description: An animated carousel component for displaying brand logos with smooth transitions.
+component: true
+---
+
+::component-preview{name="logo-carousel-demo" className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"}
+::
+
+## Installation
+
+::code-tabs
+---
+tabs:
+  - label: "CLI"
+    value: "cli"
+  - label: "Manual"
+    value: "manual"
+---
+
+#cli
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/logo-carousel.json
+```
+
+#manual
+
+::steps
+Install the required dependencies:
+
+```bash
+npm install motion
+```
+
+Copy and paste the following code into your project.
+
+::component-source{name="logo-carousel"}
+::
+
+Update the import paths to match your project setup.
+::
+
+::
+
+## Usage
+
+```tsx
+export default function LogoCarouselDemo() {
+  return <LogoCarousel />
+}
+```
+
+## Props
+
+| Prop        | Type     | Default | Description                           |
+| ----------- | -------- | ------- | ------------------------------------- |
+| columnCount | `number` | `2`     | Number of columns to display logos in |
+
+## Examples
+
+### Default Two-Column Layout
+
+```tsx
+<LogoCarousel />
+```
+
+### Custom Column Count
+
+```tsx
+<LogoCarousel columnCount={3} />
+```
+
+## Adding Custom Logos
+
+To add custom logos to the carousel, modify the `allLogos` array in the component:
+
+```tsx
+const allLogos: Logo[] = [
+  { name: "CustomLogo", id: 1, img: CustomLogoComponent },
+  // Add more logos...
+]
+```
+
+Each logo should implement the `Logo` interface:
+
+```tsx
+interface Logo {
+  name: string
+  id: number
+  img: React.ComponentType<React.SVGProps<SVGSVGElement>>
+}
+```
+
+## Features
+
+- Smooth animations using Framer Motion
+- Automatic logo cycling with configurable columns
+- Randomized logo distribution for visual variety
+- SVG logo support with consistent sizing
+- Responsive design that works across different screen sizes

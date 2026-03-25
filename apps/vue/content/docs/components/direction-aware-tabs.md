@@ -1,0 +1,124 @@
+---
+title: DirectionAwareTabs
+description: Tabs that animate direction correctly
+component: true
+links: {}
+---
+
+::component-preview{name="direction-aware-tabs-demo" className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]" description="All variations"}
+::
+
+## Installation
+
+::code-tabs
+---
+tabs:
+  - label: "CLI"
+    value: "cli"
+  - label: "Manual"
+    value: "manual"
+---
+
+#cli
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/direction-aware-tabs.json
+```
+
+#manual
+
+::steps
+Copy and paste the following code into your project.
+
+::component-source{name="direction-aware-tabs"}
+::
+
+Update the import paths to match your project setup.
+::
+
+::
+
+## Usage
+
+```tsx
+const DirectionAwareTabsDemo = ({}) => {
+  const tabs = [
+    {
+      id: 0,
+      label: "ocean",
+      content: (
+        <div className="border border-black/10 w-full flex flex-col items-center p-4 rounded-lg gap-3">
+          <BgAnimateButton animation="spin-fast" gradient="ocean">
+            Button
+          </BgAnimateButton>
+          <BgAnimateButton animation="spin" gradient="ocean">
+            Button
+          </BgAnimateButton>
+          <BgAnimateButton animation="spin-slow" gradient="ocean">
+            Button
+          </BgAnimateButton>
+        </div>
+      ),
+    },
+    {
+      id: 1,
+      label: "forest",
+      content: (
+        <div className="border border-black/10 w-full flex flex-col items-center p-4 rounded-lg gap-3">
+          <BgAnimateButton animation="spin-fast" gradient="forest">
+            Button
+          </BgAnimateButton>
+          <BgAnimateButton animation="spin" gradient="forest">
+            Button
+          </BgAnimateButton>
+          <BgAnimateButton animation="spin-slow" gradient="forest">
+            Button
+          </BgAnimateButton>
+        </div>
+      ),
+    },
+    {
+      id: 2,
+      label: "default",
+      content: (
+        <div className="border border-black/10 w-full flex flex-col items-center gap-3 p-4">
+          <BgAnimateButton animation="spin-fast" gradient="default">
+            Button
+          </BgAnimateButton>
+          <BgAnimateButton animation="spin" gradient="default">
+            Button
+          </BgAnimateButton>
+          <BgAnimateButton animation="spin-slow" gradient="default">
+            Button
+          </BgAnimateButton>
+        </div>
+      ),
+    },
+    {
+      id: 3,
+      label: "sunset",
+      content: (
+        <div className="border border-black/10 w-full flex flex-col items-center p-4 rounded-lg gap-3">
+          <BgAnimateButton animation="spin-fast" gradient="sunset">
+            Button
+          </BgAnimateButton>
+          <BgAnimateButton animation="spin" gradient="sunset">
+            Button
+          </BgAnimateButton>
+          <BgAnimateButton animation="spin-slow" gradient="sunset">
+            Button
+          </BgAnimateButton>
+        </div>
+      ),
+    },
+  ]
+
+  return (
+    <div className="">
+      <DirectionAwareTabs tabs={tabs} />
+    </div>
+  )
+}
+
+export default DirectionAwareTabsDemo
+```

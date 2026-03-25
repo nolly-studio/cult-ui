@@ -1,0 +1,113 @@
+---
+title: Prompt Library
+description: Browse, insert, and manage prompt templates with categories and custom prompts.
+component: true
+links: {}
+---
+
+::component-preview{name="prompt-library-demo" className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"}
+::
+
+## Installation
+
+::code-tabs
+---
+tabs:
+  - label: "CLI"
+    value: "cli"
+  - label: "Manual"
+    value: "manual"
+---
+
+#cli
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/prompt-library.json
+```
+
+#manual
+
+::steps
+Copy and paste the following code into your project.
+
+::component-source{name="prompt-library"}
+::
+
+Update the import paths to match your project setup.
+::
+
+::
+
+## Usage
+
+Use `PromptLibrary` with `prompts`, `onPromptsChange`, and `onSelect`. Compose `PromptLibraryTrigger`, `PromptLibraryContent` (with `PromptLibrarySearch`, `PromptLibraryList`, `PromptLibraryEmpty`, `PromptLibraryGroup`, `PromptLibraryItem`), `PromptLibraryFooter`, `PromptLibraryCreateTrigger`, and `PromptLibraryCreateDialog` for the full experience.
+
+### Basic example
+
+```tsx
+import { useState } from "react"
+import {
+  PromptLibrary,
+  PromptLibraryTrigger,
+  PromptLibraryContent,
+  PromptLibrarySearch,
+  PromptLibraryList,
+  PromptLibraryEmpty,
+  PromptLibraryGroup,
+  PromptLibraryItem,
+  PromptLibraryFooter,
+  PromptLibraryCreateTrigger,
+  PromptLibraryCreateDialog,
+  type Prompt,
+} from "@/registry/default/ui/prompt-library"
+
+const prompts: Prompt[] = [
+  {
+    id: "code-review",
+    title: "Code Review",
+    description: "Review code for best practices",
+    prompt: "Please review this code for best practices and potential issues.",
+    category: "Development",
+  },
+]
+
+export default function Example() {
+  const [promptsState, setPromptsState] = useState(prompts)
+  const [lastSelected, setLastSelected] = useState<Prompt | null>(null)
+
+  return (
+    <PromptLibrary
+      prompts={promptsState}
+      onPromptsChange={setPromptsState}
+      onSelect={setLastSelected}
+    >
+      <PromptLibraryTrigger />
+      <PromptLibraryContent>
+        <PromptLibrarySearch />
+        <PromptLibraryList>
+          <PromptLibraryEmpty />
+          <PromptLibraryGroup heading="Development">
+            {promptsState
+              .filter((p) => p.category === "Development")
+              .map((prompt) => (
+                <PromptLibraryItem key={prompt.id} prompt={prompt} />
+              ))}
+          </PromptLibraryGroup>
+        </PromptLibraryList>
+        <PromptLibraryFooter>
+          <PromptLibraryCreateTrigger />
+        </PromptLibraryFooter>
+      </PromptLibraryContent>
+      <PromptLibraryCreateDialog />
+    </PromptLibrary>
+  )
+}
+```
+
+## Features
+
+- **Categories**: Group prompts with `PromptLibraryGroup` and optional `heading`
+- **Custom prompts**: Add and remove custom prompts via `onPromptsChange`, `PromptLibraryCreateTrigger`, and `PromptLibraryCreateDialog`
+- **Copy or insert**: Selecting a prompt copies to clipboard; when used with PromptInput, can insert directly
+- **Search**: `PromptLibrarySearch` filters the list
+- **Compound API**: PromptLibrary, PromptLibraryTrigger, PromptLibraryContent, PromptLibrarySearch, PromptLibraryList, PromptLibraryEmpty, PromptLibraryGroup, PromptLibraryItem, PromptLibraryFooter, PromptLibraryCreateTrigger, PromptLibraryCreateDialog

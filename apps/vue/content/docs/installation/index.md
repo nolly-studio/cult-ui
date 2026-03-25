@@ -1,0 +1,124 @@
+---
+title: Installation
+description: Install and configure Cult Components
+published: true
+---
+
+::callout{className="mb-6 border-emerald-600 bg-emerald-100 dark:border-emerald-400 dark:bg-emerald-900"}
+**Starting a new project?** Begin with shadcn first:
+
+```bash
+npx shadcn@latest init
+```
+
+This guides you through creating a base project with your preferred framework, icon library, and theme variables.
+::
+
+## Quick Start
+
+Run the following command to initialize shadcn/ui in a new project:
+
+```bash
+npx shadcn@latest init
+```
+
+Then continue below to install Cult Components and configure the Cult UI registry.
+
+## Pick Your Framework
+
+Choose your framework, then follow the installation guide:
+
+<div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-6">
+  ::linked-card{href="/docs/installation/next"}
+Next.js
+::
+  ::linked-card{href="/docs/installation/vite"}
+Vite
+::
+  ::linked-card{href="/docs/installation/manual"}
+Manual (React)
+::
+</div>
+
+::steps
+### Overview
+
+Cult Components are designed specifically for **React** and developed using **TypeScript**. They use **Tailwind CSS v4** for styling and **motion** along with CSS for animations. While Cult Components seamlessly integrate with the shadcn ecosystem, shadcn is not mandatory for their use, though some examples may include shadcn components.
+
+### Prerequisites
+
+To get started, ensure you have the following dependencies installed:
+
+```bash
+npm install -D tailwindcss@latest @tailwindcss/postcss clsx tailwind-merge
+npm install motion
+```
+
+Next, integrate our utility function by adding the following code to your project:
+
+```typescript
+// lib/utils.ts
+import clsx, { ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
+
+### CLI Installation (shadcn v3)
+
+For projects using shadcn CLI v3, you can configure the Cult UI registry to install components directly via the command line.
+
+#### Configure Registry
+
+Add the Cult UI registry to your `components.json` file:
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "app/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "iconLibrary": "lucide",
+  "registries": {
+    "@cult-ui": "https://cult-ui.com/r/{name}.json"
+  }
+}
+```
+
+#### Install Components
+
+Once configured, you can install components using:
+
+```bash
+# Install a single component
+npx shadcn@beta add @cult-ui/text-gif
+
+# Install multiple components
+npx shadcn@beta add @cult-ui/texture-card @cult-ui/texture-button
+
+# Search for components
+npx shadcn@beta search @cult-ui --query "texture-button"
+```
+
+### Manual Installation
+
+You're ready to go! Visit any [component](/components) page and follow the provided instructions.
+
+Just copy and paste the components you need—no unnecessary bloat or third-party dependencies.
+::

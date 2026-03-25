@@ -1,0 +1,281 @@
+---
+title: CodeBlock
+description: A beautiful code block component with tabs, copy functionality, and smooth animations
+component: true
+links: {}
+---
+
+::component-preview{name="code-block-demo" className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]" description="All variations"}
+::
+
+## References
+
+::citations
+---
+label: "Inspiration"
+items:
+  - text: "Kibo UI Code Block"
+    href: "https://www.kibo-ui.com/components/code-block"
+---
+::
+
+## Installation
+
+::code-tabs
+---
+tabs:
+  - label: "CLI"
+    value: "cli"
+  - label: "Manual"
+    value: "manual"
+---
+
+#cli
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/code-block.json
+```
+
+#manual
+
+::steps
+Copy and paste the following code into your project.
+
+::component-source{name="code-block"}
+::
+
+Update the import paths to match your project setup.
+::
+
+::
+
+## Usage
+
+```tsx
+import { CodeBlock } from "@/components/ui/code-block"
+```
+
+### Single Code Block
+
+Display a single code snippet:
+
+```tsx
+<CodeBlock code="console.log('Hello, world!')" language="javascript" />
+```
+
+### Multi-Tab Code Block
+
+Display multiple code snippets with tabs:
+
+```tsx
+<CodeBlock
+  tabs={[
+    {
+      label: "npm",
+      code: "npm install @acme/ui",
+      language: "bash",
+    },
+    {
+      label: "pnpm",
+      code: "pnpm add @acme/ui",
+      language: "bash",
+    },
+    {
+      label: "yarn",
+      code: "yarn add @acme/ui",
+      language: "bash",
+    },
+  ]}
+/>
+```
+
+### Package Manager Installation
+
+Common use case for showing different package manager commands:
+
+```tsx
+<CodeBlock
+  tabs={[
+    {
+      label: "npm",
+      code: "npm install @acme/ui",
+      language: "bash",
+    },
+    {
+      label: "pnpm",
+      code: "pnpm add @acme/ui",
+      language: "bash",
+    },
+    {
+      label: "yarn",
+      code: "yarn add @acme/ui",
+      language: "bash",
+    },
+    {
+      label: "bun",
+      code: "bun add @acme/ui",
+      language: "bash",
+    },
+  ]}
+/>
+```
+
+### Multi-Language Code Examples
+
+Show code examples in different languages:
+
+```tsx
+<CodeBlock
+  tabs={[
+    {
+      label: ".env.local",
+      code: `NEXT_PUBLIC_API_URL=https://api.example.com
+API_SECRET_KEY=your-secret-key`,
+      language: "bash",
+    },
+    {
+      label: "config.ts",
+      code: `export const config = {
+  apiUrl: process.env.NEXT_PUBLIC_API_URL,
+  apiKey: process.env.API_SECRET_KEY,
+}`,
+      language: "typescript",
+    },
+  ]}
+/>
+```
+
+## API Reference
+
+### CodeBlock Props
+
+| Prop        | Type        | Default  | Description                                 |
+| ----------- | ----------- | -------- | ------------------------------------------- |
+| `tabs`      | `CodeTab[]` | -        | Array of code tabs for multi-tab display    |
+| `code`      | `string`    | -        | Single code string (when not using tabs)    |
+| `language`  | `string`    | `"bash"` | Language identifier for syntax highlighting |
+| `className` | `string`    | -        | Additional CSS classes                      |
+
+### CodeTab Interface
+
+| Property   | Type     | Description                        |
+| ---------- | -------- | ---------------------------------- |
+| `label`    | `string` | Tab label displayed in the tab bar |
+| `code`     | `string` | Code content for this tab          |
+| `language` | `string` | Optional language identifier       |
+
+## Features
+
+- **Single & Multi-Tab Support**: Use either a single code block or multiple tabs
+- **Copy Functionality**: Built-in copy button with smooth animations
+- **Direction-Aware Animations**: Smooth transitions when switching tabs
+- **Dark Mode**: Automatically adapts to light and dark themes
+- **Accessible**: Proper ARIA labels and keyboard navigation support
+- **Responsive**: Scrollable tabs for mobile devices
+
+## Examples
+
+### Basic JavaScript
+
+```tsx
+<CodeBlock
+  code={`function greet(name) {
+  return \`Hello, \${name}!\`
+}
+
+console.log(greet('World'))`}
+  language="javascript"
+/>
+```
+
+### React Component
+
+```tsx
+<CodeBlock
+  code={`import { CodeBlock } from '@/components/code-block'
+
+export default function Page() {
+  return (
+    <CodeBlock
+      code="console.log('Hello, world!')"
+      language="javascript"
+    />
+  )
+}`}
+  language="tsx"
+/>
+```
+
+### Configuration Files
+
+```tsx
+<CodeBlock
+  tabs={[
+    {
+      label: "package.json",
+      code: `{
+  "name": "my-app",
+  "version": "1.0.0",
+  "dependencies": {
+    "@acme/ui": "^1.0.0"
+  }
+}`,
+      language: "json",
+    },
+    {
+      label: "tsconfig.json",
+      code: `{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "strict": true
+  }
+}`,
+      language: "json",
+    },
+  ]}
+/>
+```
+
+### API Examples
+
+```tsx
+<CodeBlock
+  tabs={[
+    {
+      label: "curl",
+      code: `curl -X POST https://api.example.com/users \\
+  -H "Content-Type: application/json" \\
+  -d '{"name": "John Doe"}'`,
+      language: "bash",
+    },
+    {
+      label: "JavaScript",
+      code: `const response = await fetch('https://api.example.com/users', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ name: 'John Doe' }),
+})`,
+      language: "javascript",
+    },
+    {
+      label: "Python",
+      code: `import requests
+
+response = requests.post(
+  'https://api.example.com/users',
+  json={'name': 'John Doe'}
+)`,
+      language: "python",
+    },
+  ]}
+/>
+```
+
+### Custom Styling
+
+```tsx
+<CodeBlock code="npm install @acme/ui" language="bash" className="my-8" />
+```

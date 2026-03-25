@@ -1,0 +1,114 @@
+---
+title: AI Instructions
+description: Manage and toggle AI instructions with a popover, search, and create-dialog.
+component: true
+links: {}
+---
+
+::component-preview{name="ai-instructions-demo" className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"}
+::
+
+## Installation
+
+::code-tabs
+---
+tabs:
+  - label: "CLI"
+    value: "cli"
+  - label: "Manual"
+    value: "manual"
+---
+
+#cli
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/ai-instructions.json
+```
+
+#manual
+
+::steps
+Copy and paste the following code into your project.
+
+::component-source{name="ai-instructions"}
+::
+
+Update the import paths to match your project setup.
+::
+
+::
+
+## Usage
+
+Use `Instructions` with `instructions`, `onInstructionsChange`, `value`, and `onValueChange`. Compose `InstructionsTrigger`, `InstructionsContent` (with `InstructionsSearch`, `InstructionsList`, `InstructionsEmpty`, `InstructionsGroup`, `InstructionsItem`), `InstructionsFooter`, `InstructionsCreateTrigger`, and `InstructionsCreateDialog` for the full experience.
+
+### Basic example
+
+```tsx
+import { useState } from "react"
+import {
+  Instruction,
+  Instructions,
+  InstructionsTrigger,
+  InstructionsContent,
+  InstructionsSearch,
+  InstructionsList,
+  InstructionsEmpty,
+  InstructionsGroup,
+  InstructionsItem,
+  InstructionsFooter,
+  InstructionsCreateTrigger,
+  InstructionsCreateDialog,
+} from "@/registry/default/ui/ai-instructions"
+
+const instructions: Instruction[] = [
+  {
+    id: "concise",
+    title: "Be Concise",
+    description: "Keep responses short and to the point",
+    content: "Provide brief, focused responses. Get to the point quickly.",
+  },
+]
+
+export default function Example() {
+  const [activeIds, setActiveIds] = useState<string[]>(["concise"])
+  const [instructionsState, setInstructionsState] = useState(instructions)
+
+  return (
+    <Instructions
+      instructions={instructionsState}
+      onInstructionsChange={setInstructionsState}
+      value={activeIds}
+      onValueChange={setActiveIds}
+    >
+      <InstructionsTrigger />
+      <InstructionsContent>
+        <InstructionsSearch />
+        <InstructionsList>
+          <InstructionsEmpty />
+          <InstructionsGroup heading="Available Instructions">
+            {instructionsState.map((instruction) => (
+              <InstructionsItem
+                key={instruction.id}
+                instruction={instruction}
+              />
+            ))}
+          </InstructionsGroup>
+        </InstructionsList>
+        <InstructionsFooter>
+          <InstructionsCreateTrigger />
+        </InstructionsFooter>
+      </InstructionsContent>
+      <InstructionsCreateDialog />
+    </Instructions>
+  )
+}
+```
+
+## Features
+
+- **Toggle active instructions**: Control which instructions are active via `value` and `onValueChange`
+- **Search**: `InstructionsSearch` filters the list
+- **Custom instructions**: Add custom instructions via `onInstructionsChange`, `InstructionsCreateTrigger`, and `InstructionsCreateDialog`
+- **Hover preview**: Optional hover card for full instruction content (when using `InstructionsItem` with content)
+- **Compound API**: Instructions, InstructionsTrigger, InstructionsContent, InstructionsSearch, InstructionsList, InstructionsEmpty, InstructionsGroup, InstructionsItem, InstructionsFooter, InstructionsCreateTrigger, InstructionsCreateDialog

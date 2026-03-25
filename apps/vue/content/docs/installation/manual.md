@@ -1,0 +1,172 @@
+---
+title: Manual Installation
+description: Add dependencies to your project manually.
+---
+
+::steps
+### Add Tailwind CSS
+
+Components are styled using Tailwind CSS. You need to install Tailwind CSS in your project.
+
+[Follow the Tailwind CSS installation instructions to get started.](https://tailwindcss.com/docs/installation)
+
+### Add dependencies
+
+Add the following dependencies to your project:
+
+```bash
+npm install -D tailwindcss @tailwindcss/postcss tailwindcss-animate
+npm install class-variance-authority clsx tailwind-merge motion
+```
+
+### Add icon library
+
+If you're using the `default` style, install `lucide-react`:
+
+```bash
+npm install lucide-react
+```
+
+If you're using the `new-york` style, install `@radix-ui/react-icons`:
+
+```bash
+npm install @radix-ui/react-icons
+```
+
+### Configure path aliases
+
+I use the `@` alias. This is how I configure it in tsconfig.json:
+
+```json {3-6} title="tsconfig.json"
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+
+The `@` alias is a preference. You can use other aliases if you want.
+
+**If you use a different alias such as ~, you'll need to update import statements when adding components.**
+
+### Configure Tailwind v4
+
+Create `postcss.config.mjs`:
+
+```js title="postcss.config.mjs"
+export default {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+}
+```
+
+### Configure styles
+
+Add the following to your styles/globals.css file. You can learn more about using CSS variables for theming in the [theming section](/docs/theming).
+
+```css title="globals.css"
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+}
+```
+
+### Add a cn helper
+
+I use a `cn` helper to make it easier to conditionally add Tailwind CSS classes. Here's how I define it in `lib/utils.ts`:
+
+```ts title="lib/utils.ts"
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
+
+### That's it
+
+You can now start adding components to your project.
+::

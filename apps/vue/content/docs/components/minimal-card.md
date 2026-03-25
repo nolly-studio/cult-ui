@@ -1,0 +1,103 @@
+---
+title: MinimalCard
+description: A minimal image card
+component: true
+links: {}
+---
+
+::component-preview{name="minimal-card-demo" className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]" description="All variations"}
+::
+
+## Installation
+
+::code-tabs
+---
+tabs:
+  - label: "CLI"
+    value: "cli"
+  - label: "Manual"
+    value: "manual"
+---
+
+#cli
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/minimal-card.json
+```
+
+#manual
+
+::steps
+Copy and paste the following code into your project.
+
+::component-source{name="minimal-card"}
+::
+
+Update the import paths to match your project setup.
+::
+
+::
+
+## Usage
+
+```tsx
+import {
+  MinimalCard,
+  MinimalCardDescription,
+  MinimalCardImage,
+  MinimalCardTitle,
+} from "@/components/ui/minimal-card"
+```
+
+```tsx
+const cards = [
+  {
+    title: "Sick title",
+    description:
+      "How to design with gestures and motion that feel intuitive and natural.",
+  },
+  {
+    title: "Sick title",
+    description:
+      "How to design with gestures and motion that feel intuitive and natural.",
+  },
+  {
+    title: "Sick title",
+    description:
+      "How to design with gestures and motion that feel intuitive and natural.",
+  },
+  {
+    title: "Sick title",
+    description:
+      "How to design with gestures and motion that feel intuitive and natural.",
+  },
+  {
+    title: "Sick title",
+    description:
+      "How to design with gestures and motion that feel intuitive and natural.",
+  },
+]
+
+export default function MinimalCardDemo() {
+  return (
+    <div className="w-full max-w-4xl">
+      <div className="p-2">
+        <h3 className="text-xl font-semibold">MinimalCard</h3>
+      </div>
+      <div className="min-h-[500px] p-4  flex flex-col justify-center border border-dashed rounded-lg space-y-4">
+        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {cards.map((card) => (
+            <MinimalCard>
+              <MinimalCardImage src="/basic-img.png" />
+              <MinimalCardTitle>{card.title}</MinimalCardTitle>
+              <MinimalCardDescription>
+                {card.description}
+              </MinimalCardDescription>
+            </MinimalCard>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+```

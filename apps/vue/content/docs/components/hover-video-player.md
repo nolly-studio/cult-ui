@@ -1,0 +1,136 @@
+---
+title: Hover Video Player
+description: A video player component that plays on hover with advanced features like mobile support, picture-in-picture, and custom overlays.
+component: true
+---
+
+::component-preview{name="hover-video-player-demo" className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"}
+::
+
+## Installation
+
+::code-tabs
+---
+tabs:
+  - label: "CLI"
+    value: "cli"
+  - label: "Manual"
+    value: "manual"
+---
+
+#cli
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/hover-video-player.json
+```
+
+#manual
+
+::steps
+Install the required dependencies:
+
+```bash
+npm install motion
+```
+
+Copy and paste the following code into your project.
+
+::component-source{name="hover-video-player"}
+::
+
+Update the import paths to match your project setup.
+::
+
+::
+
+## Usage
+
+```tsx
+export default function Example() {
+  return (
+    <HoverVideoPlayer
+      videoSrc="/demo-video.mp4"
+      thumbnailSrc="/demo-thumbnail.jpg"
+    />
+  )
+}
+```
+
+## Props
+
+| Prop               | Type        | Default    | Description                              |
+| ------------------ | ----------- | ---------- | ---------------------------------------- |
+| videoSrc           | `string`    | `required` | URL of the video to play                 |
+| thumbnailSrc       | `string`    | -          | URL of the thumbnail image               |
+| hoverOverlay       | `ReactNode` | -          | Custom overlay shown while hovering      |
+| pausedOverlay      | `ReactNode` | -          | Custom overlay shown when paused         |
+| loadingOverlay     | `ReactNode` | -          | Custom overlay shown while loading       |
+| playbackStartDelay | `number`    | `0`        | Delay before playing video on hover (ms) |
+| restartOnPaused    | `boolean`   | `false`    | Reset video position when paused         |
+| enableControls     | `boolean`   | `false`    | Show playback controls                   |
+| muted              | `boolean`   | `true`     | Start video muted                        |
+| loop               | `boolean`   | `true`     | Loop video playback                      |
+| cropTop            | `number`    | `0`        | Percentage to crop from top              |
+| cropBottom         | `number`    | `0`        | Percentage to crop from bottom           |
+
+## Examples
+
+### Basic Player
+
+```tsx
+<HoverVideoPlayer
+  videoSrc="/demo-video.mp4"
+  thumbnailSrc="/demo-thumbnail.jpg"
+/>
+```
+
+### With Controls
+
+```tsx
+<HoverVideoPlayer
+  videoSrc="/demo-video.mp4"
+  thumbnailSrc="/demo-thumbnail.jpg"
+  enableControls
+/>
+```
+
+### With Custom Overlays
+
+```tsx
+import { Spinner } from "@/components/ui/spinner"
+
+;<HoverVideoPlayer
+  videoSrc="/demo-video.mp4"
+  thumbnailSrc="/demo-thumbnail.jpg"
+  pausedOverlay={<PlayIcon className="h-12 w-12" />}
+  loadingOverlay={<Spinner />}
+  hoverOverlay={<div className="text-white">Now Playing</div>}
+/>
+```
+
+### With Cropping
+
+```tsx
+<HoverVideoPlayer
+  videoSrc="/demo-video.mp4"
+  thumbnailSrc="/demo-thumbnail.jpg"
+  cropTop={10}
+  cropBottom={10}
+/>
+```
+
+## Features
+
+- Lazy loading with Intersection Observer
+- Mobile touch support with tap-to-play
+- Picture-in-Picture mode
+- Custom overlay support for different states
+- Thumbnail support with smooth transitions
+- Playback controls with volume and progress
+- Responsive design that works across devices
+- Video cropping support for custom positioning
+- Automatic pause when out of viewport
+
+```
+
+```

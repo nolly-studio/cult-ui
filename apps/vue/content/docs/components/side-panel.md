@@ -1,0 +1,89 @@
+---
+title: SidePanel
+description: A side panel that triggers an expansion animation. Useful for video components or learn more etc.
+component: true
+links: {}
+---
+
+::component-preview{name="side-panel-demo" className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]" description="All variations"}
+::
+
+## Installation
+
+::code-tabs
+---
+tabs:
+  - label: "CLI"
+    value: "cli"
+  - label: "Manual"
+    value: "manual"
+---
+
+#cli
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/side-panel.json
+```
+
+#manual
+
+::steps
+Copy and paste the following code into your project.
+
+::component-source{name="side-panel"}
+::
+
+Update the import paths to match your project setup.
+::
+
+::
+
+## Usage
+
+```tsx
+export default function SidePanelExample() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleIsOpen = () => {
+    setIsOpen(!isOpen)
+  }
+
+  const renderOpenButton = (handleToggle: () => void) => (
+    <div
+      className={cn(
+        "flex items-center w-full justify-start pr-4 md:pl-4 py-1 md:py-1",
+        isOpen ? "pr-3" : ""
+      )}
+    >
+      <p className="text-xl font-black tracking-tight text-gray-900 sm:text-3xl">
+        <span className="bg-gradient-to-t from-neutral-200 to-stone-300 bg-clip-text font-brand text-xl font-bold text-transparent sm:text-6xl">
+          Open
+        </span>
+      </p>
+      <Button
+        className="rounded-r-[33px] py-8 ml-2 "
+        onClick={handleIsOpen}
+        variant="secondary"
+      >
+        {isOpen ? "close" : "open"}
+      </Button>
+    </div>
+  )
+
+  return (
+    <div className="w-full max-w-4xl">
+      <div className="min-h-[500px]  flex flex-col justify-center border border-dashed rounded-lg space-y-4">
+        <SidePanel
+          panelOpen={isOpen}
+          handlePanelOpen={handleIsOpen}
+          renderButton={renderOpenButton}
+        >
+          <div className="h-16 w-full">
+            <div>Content Here</div>
+          </div>
+        </SidePanel>
+      </div>
+    </div>
+  )
+}
+```
