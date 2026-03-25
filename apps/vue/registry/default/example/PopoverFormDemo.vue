@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onUnmounted } from 'vue'
 import { Mail, Monitor, Moon, Sun } from 'lucide-vue-next'
 import {
   PopoverForm,
@@ -12,6 +12,13 @@ import {
 
 type FormState = 'idle' | 'loading' | 'success'
 
+const timers: ReturnType<typeof setTimeout>[] = []
+onUnmounted(() => timers.forEach(clearTimeout))
+
+function scheduleTimeout(fn: () => void, ms: number) {
+  timers.push(setTimeout(fn, ms))
+}
+
 // Feedback Form
 const feedbackState = ref<FormState>('idle')
 const feedbackOpen = ref(false)
@@ -19,8 +26,8 @@ const feedback = ref('')
 
 function submitFeedback() {
   feedbackState.value = 'loading'
-  setTimeout(() => { feedbackState.value = 'success' }, 1500)
-  setTimeout(() => { feedbackOpen.value = false; feedbackState.value = 'idle'; feedback.value = '' }, 3300)
+  scheduleTimeout(() => { feedbackState.value = 'success' }, 1500)
+  scheduleTimeout(() => { feedbackOpen.value = false; feedbackState.value = 'idle'; feedback.value = '' }, 3300)
 }
 
 // Contact Form
@@ -32,8 +39,8 @@ const contactMessage = ref('')
 
 function submitContact() {
   contactState.value = 'loading'
-  setTimeout(() => { contactState.value = 'success' }, 1500)
-  setTimeout(() => { contactOpen.value = false; contactState.value = 'idle'; contactName.value = ''; contactEmail.value = ''; contactMessage.value = '' }, 3300)
+  scheduleTimeout(() => { contactState.value = 'success' }, 1500)
+  scheduleTimeout(() => { contactOpen.value = false; contactState.value = 'idle'; contactName.value = ''; contactEmail.value = ''; contactMessage.value = '' }, 3300)
 }
 
 // Newsletter Form
@@ -43,8 +50,8 @@ const email = ref('')
 
 function submitNewsletter() {
   newsletterState.value = 'loading'
-  setTimeout(() => { newsletterState.value = 'success' }, 1500)
-  setTimeout(() => { newsletterOpen.value = false; newsletterState.value = 'idle'; email.value = '' }, 3300)
+  scheduleTimeout(() => { newsletterState.value = 'success' }, 1500)
+  scheduleTimeout(() => { newsletterOpen.value = false; newsletterState.value = 'idle'; email.value = '' }, 3300)
 }
 
 // Theme Switcher

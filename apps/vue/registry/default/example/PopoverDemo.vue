@@ -22,9 +22,9 @@ const handleSubmit = (note: string) => {
 const colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33F1', '#33FFF1', '#F1FF33']
 
 const actions = [
-  { label: 'New File', action: () => console.log('New File') },
-  { label: 'Upload Image', action: () => console.log('Upload Image') },
-  { label: 'Edit Colors', action: () => console.log('Edit Colors') },
+  { label: 'New File', icon: Plus, action: () => console.log('New File') },
+  { label: 'Upload Image', icon: ImageIcon, action: () => console.log('Upload Image') },
+  { label: 'Edit Colors', icon: Paintbrush, action: () => console.log('Edit Colors') },
 ]
 </script>
 
@@ -77,8 +77,8 @@ const actions = [
           <PopoverContent class="w-48 h-48">
             <PopoverHeader>Quick Actions</PopoverHeader>
             <PopoverBody>
-              <PopoverButton v-for="(act, index) in actions" :key="index" @click="act.action">
-                <component :is="index === 0 ? Plus : index === 1 ? ImageIcon : Paintbrush" class="w-4 h-4" />
+              <PopoverButton v-for="act in actions" :key="act.label" @click="act.action">
+                <component :is="act.icon" class="w-4 h-4" />
                 <span>{{ act.label }}</span>
               </PopoverButton>
             </PopoverBody>

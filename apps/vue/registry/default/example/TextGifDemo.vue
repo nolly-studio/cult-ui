@@ -29,7 +29,7 @@ const selectedGif = ref(gifUrls[0])
       <div class="space-y-4">
         <label class="text-sm font-medium">GIF Background</label>
         <select v-model="selectedGif" class="w-full h-10 rounded-md border border-input bg-background px-3 text-sm">
-          <option v-for="(gif, index) in gifUrls" :key="index" :value="gif">GIF {{ index + 1 }}</option>
+          <option v-for="(gif, i) in gifUrls" :key="gif" :value="gif">GIF {{ i + 1 }}</option>
         </select>
       </div>
       <div class="space-y-4">

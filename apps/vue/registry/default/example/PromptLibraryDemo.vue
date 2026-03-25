@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import {
   PromptLibrary,
   PromptLibraryContent,
@@ -25,6 +25,11 @@ const SAMPLE_PROMPTS: Prompt[] = [
 
 const prompts = ref<Prompt[]>(SAMPLE_PROMPTS)
 const lastSelected = ref<Prompt | null>(null)
+
+const developmentPrompts = computed(() => prompts.value.filter(p => p.category === 'Development'))
+const testingPrompts = computed(() => prompts.value.filter(p => p.category === 'Testing'))
+const documentationPrompts = computed(() => prompts.value.filter(p => p.category === 'Documentation'))
+const customPrompts = computed(() => prompts.value.filter(p => p.isCustom))
 </script>
 
 <template>
@@ -45,28 +50,28 @@ const lastSelected = ref<Prompt | null>(null)
             <PromptLibraryEmpty />
             <PromptLibraryGroup heading="Development">
               <PromptLibraryItem
-                v-for="prompt in prompts.filter(p => p.category === 'Development')"
+                v-for="prompt in developmentPrompts"
                 :key="prompt.id"
                 :prompt="prompt"
               />
             </PromptLibraryGroup>
             <PromptLibraryGroup heading="Testing">
               <PromptLibraryItem
-                v-for="prompt in prompts.filter(p => p.category === 'Testing')"
+                v-for="prompt in testingPrompts"
                 :key="prompt.id"
                 :prompt="prompt"
               />
             </PromptLibraryGroup>
             <PromptLibraryGroup heading="Documentation">
               <PromptLibraryItem
-                v-for="prompt in prompts.filter(p => p.category === 'Documentation')"
+                v-for="prompt in documentationPrompts"
                 :key="prompt.id"
                 :prompt="prompt"
               />
             </PromptLibraryGroup>
             <PromptLibraryGroup heading="Custom">
               <PromptLibraryItem
-                v-for="prompt in prompts.filter(p => p.isCustom)"
+                v-for="prompt in customPrompts"
                 :key="prompt.id"
                 :prompt="prompt"
               />
