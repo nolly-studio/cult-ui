@@ -6,7 +6,7 @@
  * For popover/dialog modes, wrap externally with the appropriate Vue component.
  */
 
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, onUnmounted } from 'vue'
 import { cva } from 'class-variance-authority'
 import { BarChart3, Check } from 'lucide-vue-next'
 

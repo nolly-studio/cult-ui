@@ -1,11 +1,7 @@
-<script setup lang="ts">
-import { ref, computed, provide, inject, type InjectionKey } from 'vue'
-
-// ---- Types ----
+<script lang="ts">
+import { ref, computed, provide, inject, defineComponent, h, type InjectionKey, type PropType } from 'vue'
 
 export type VoteTallyValue = Record<string, number>
-
-// ---- Context ----
 
 interface VoteTallyContextValue {
   votes: () => VoteTallyValue
@@ -26,16 +22,6 @@ interface VoteTallyItemContextValue {
 const VoteTallyKey: InjectionKey<VoteTallyContextValue> = Symbol('VoteTally')
 const VoteTallyItemKey: InjectionKey<VoteTallyItemContextValue> = Symbol('VoteTallyItem')
 
-// This file exports sub-components; see below.
-// Usage in parent: <VoteTallyRoot>, <VoteTallyItem>, etc.
-
-defineOptions({ name: 'VoteTally' })
-</script>
-
-<script lang="ts">
-import { defineComponent, h, type PropType } from 'vue'
-
-// ---- Root ----
 export const VoteTallyRoot = defineComponent({
   name: 'VoteTallyRoot',
   props: {
@@ -106,7 +92,7 @@ export const VoteTallyRoot = defineComponent({
       hasVoted,
     }
 
-    provide(Symbol.for('VoteTally'), ctx)
+    provide(VoteTallyKey, ctx)
 
     return () =>
       h('ul', { 'aria-label': 'Vote tally list', 'data-disabled': props.disabled || undefined }, slots.default?.())
@@ -121,7 +107,7 @@ export const VoteTallyItem = defineComponent({
     disabled: { type: Boolean, default: false },
   },
   setup(props, { slots }) {
-    const ctx = inject<VoteTallyContextValue>(Symbol.for('VoteTally'))!
+    const ctx = inject(VoteTallyKey)!
     const disabled = computed(() => ctx.disabled() || props.disabled)
     const voted = computed(() => ctx.hasVoted(props.value))
     const voteCount = computed(() => ctx.getVoteCount(props.value))
@@ -131,7 +117,7 @@ export const VoteTallyItem = defineComponent({
       disabled: () => disabled.value,
     }
 
-    provide(Symbol.for('VoteTallyItem'), itemCtx)
+    provide(VoteTallyItemKey, itemCtx)
 
     return () =>
       h('li', {
@@ -151,7 +137,7 @@ export const VoteTallyGroup = defineComponent({
     sortBy: { type: String as PropType<'votes-asc' | 'votes-desc' | 'none'>, default: 'none' },
   },
   setup(props, { slots }) {
-    const ctx = inject<VoteTallyContextValue>(Symbol.for('VoteTally'))!
+    const ctx = inject(VoteTallyKey)!
 
     return () => {
       const children = slots.default?.() || []
@@ -177,8 +163,8 @@ export const VoteTallyGroup = defineComponent({
 export const VoteTallyTrigger = defineComponent({
   name: 'VoteTallyTrigger',
   setup(_, { slots, attrs }) {
-    const ctx = inject<VoteTallyContextValue>(Symbol.for('VoteTally'))!
-    const itemCtx = inject<VoteTallyItemContextValue>(Symbol.for('VoteTallyItem'))!
+    const ctx = inject(VoteTallyKey)!
+    const itemCtx = inject(VoteTallyItemKey)!
 
     const voted = computed(() => ctx.hasVoted(itemCtx.itemId))
     const disabled = computed(() => ctx.disabled() || itemCtx.disabled())
@@ -206,8 +192,8 @@ export const VoteTallyTrigger = defineComponent({
 export const VoteTallyCount = defineComponent({
   name: 'VoteTallyCount',
   setup(_, { slots, attrs }) {
-    const ctx = inject<VoteTallyContextValue>(Symbol.for('VoteTally'))!
-    const itemCtx = inject<VoteTallyItemContextValue>(Symbol.for('VoteTallyItem'))!
+    const ctx = inject(VoteTallyKey)!
+    const itemCtx = inject(VoteTallyItemKey)!
 
     const count = computed(() => ctx.getVoteCount(itemCtx.itemId))
 
@@ -236,7 +222,7 @@ export const VoteTallyDescription = defineComponent({
 
 // ---- Composable for external access ----
 export function useVoteTally() {
-  const ctx = inject<VoteTallyContextValue>(Symbol.for('VoteTally'))
+  const ctx = inject(VoteTallyKey)
   if (!ctx) {
     throw new Error('useVoteTally must be used within VoteTallyRoot')
   }
