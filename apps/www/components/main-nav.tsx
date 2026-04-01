@@ -45,9 +45,27 @@ export function MainNav() {
 							: "text-foreground/60",
 					)}
 				>
-					Blocks{" "}
+					AI Blocks{" "}
 					<span className="text-[10px] font-pixel-square shadow-inner text-black bg-[#ADFA1B] border px-1 border-black/20">
 						100 new
+					</span>
+					<ExternalLink className="size-3" />
+				</a>
+				<a
+					href="https://pro.cult-ui.com/docs"
+					//  biome-ignore lint/security/noBlankTarget: we want to open the link in a new tab
+					target="_blank"
+					// rel="noopener noreferrer"
+					className={cn(
+						"flex items-center gap-2 text-sm font-semibold transition-colors hover:text-foreground/80",
+						pathname?.startsWith("/examples")
+							? "text-foreground"
+							: "text-foreground/60",
+					)}
+				>
+					Marketing Blocks{" "}
+					<span className="text-[10px] font-pixel-square shadow-inner text-black bg-[#ADFA1B] border px-1 border-black/20">
+						124 new
 					</span>
 					<ExternalLink className="size-3" />
 				</a>

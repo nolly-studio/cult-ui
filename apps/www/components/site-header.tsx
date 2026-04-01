@@ -30,11 +30,22 @@ export function SiteHeader({ githubLink }: SiteHeaderProps) {
 			)}
 		>
 			<AlertBanner />
-			<div className="flex h-14 items-center  px-2 ">
+			<div className="relative z-10 flex h-14 items-center px-2">
 				<MainNav />
 				<MobileNav />
 				<div className="flex flex-1 items-center justify-between space-x-2 justify-end">
-					<nav className="flex items-center ">
+					<nav className="flex items-center gap-2">
+						<Link
+							href="https://pro.cult-ui.com/pricing"
+							target="_blank"
+							rel="noreferrer"
+							className={cn(
+								buttonVariants({ size: "sm" }),
+								"inline-flex shrink-0 font-semibold",
+							)}
+						>
+							Get Cult Pro
+						</Link>
 						{githubLink ?? (
 							<Link
 								href={siteConfig.links.github}
@@ -77,7 +88,7 @@ export function SiteHeader({ githubLink }: SiteHeaderProps) {
 			</div>
 
 			{!pathname?.includes("/docs") ? (
-				<div className="hidden lg:block lg:w-full -mt-[17px]">
+				<div className="relative z-0 hidden lg:block lg:w-full -mt-[17px]">
 					<DistortedGlass></DistortedGlass>
 				</div>
 			) : null}
