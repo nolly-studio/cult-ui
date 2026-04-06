@@ -133,7 +133,7 @@ export function LatestComponent() {
 
 export function LatestComponentVertical() {
 	return (
-		<div className="group relative mx-auto flex w-full flex-col border border-border bg-background transition-all duration-150 hover:border-foreground/10 ">
+		<div className="group relative mx-auto rounded-lg flex w-full flex-col border border-border bg-background transition-all duration-150 hover:border-foreground/10 ">
 			{/* Corner accents */}
 			{/* <div className="-top-px -left-px pointer-events-none absolute h-3 w-3 border-primary/50 border-t-2 border-l-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
 			<div className="-top-px -right-px pointer-events-none absolute h-3 w-3 border-primary/50 border-t-2 border-r-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
@@ -142,9 +142,12 @@ export function LatestComponentVertical() {
 
 			{/* Header */}
 			<div className="flex flex-col items-center border-border border-b px-4 pb-4 pt-5 text-center">
-				<div className="mb-3 border border-border bg-background px-2 py-1">
+				<div className="mb-3 rounded-md border border-border bg-background px-2 py-1 flex items-center gap-1">
+					<span className="font-pixel-square text-[10px] font-bold px-1 py-0.5 rounded-xs  bg-[#ADFA1B] uppercase">
+						Highlighted
+					</span>
 					<span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-						Highlighted Component
+						Component
 					</span>
 				</div>
 				<h3 className="mb-1.5 font-medium text-lg leading-tight tracking-tight">

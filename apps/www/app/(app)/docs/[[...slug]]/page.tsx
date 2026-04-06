@@ -10,7 +10,10 @@ import { absoluteUrl } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { DocsCopyPage } from "@/components/docs-copy-page";
 import { DocsTableOfContents } from "@/components/docs-toc";
-import { GetAISDKAgentsCta } from "@/components/get-cult-pro-cta";
+import {
+	GetAISDKAgentsCta,
+	GetCultProCta,
+} from "@/components/get-cult-pro-cta";
 
 export const revalidate = false;
 export const dynamic = "force-static";
@@ -190,14 +193,15 @@ export default async function Page(props: {
 				<div className="h-(--top-spacing) shrink-0" />
 				{/* @ts-expect-error - revisit fumadocs types. */}
 				{doc.toc?.length ? (
-					<div className="no-scrollbar overflow-y-auto px-8">
+					<div className="no-scrollbar overflow-y-auto h-[20rem] px-8">
 						{/* @ts-expect-error - revisit fumadocs types. */}
 						<DocsTableOfContents toc={doc.toc} />
 						<div className="h-12" />
 					</div>
 				) : null}
-				<div className="flex flex-1 flex-col gap-12 px-6">
+				<div className="flex flex-1 flex-col gap-3 px-6">
 					<GetAISDKAgentsCta />
+					<GetCultProCta />
 				</div>
 			</div>
 		</div>

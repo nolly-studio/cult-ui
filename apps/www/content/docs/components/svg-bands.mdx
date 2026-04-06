@@ -1,0 +1,99 @@
+---
+title: SVG Bands
+description: Wide 2400-grid SVG section trims — battlements, zigzags, steep hero bands, wavy footers, and dual-notch frames for landing pages.
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="svg-bands-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[90%]"
+  description="Profile bands, panels, steep tops, pyramid steps, and BandShape helpers"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/svg-bands.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="svg-bands" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+Use preset components for common silhouettes, or **`BandShape`** with your own closed **`path`** and **`viewBox`**. Several exports expose **path builder functions** (`castleWallBandPath`, `zigzagSawtoothBandPath`) if you need different merlon or tooth counts without duplicating geometry.
+
+```tsx
+import {
+  TopBandSteepRightSvg,
+  BandShape,
+  castleWallBandPath,
+} from "@/components/ui/svg-bands"
+
+export function SectionDivider() {
+  return (
+    <div className="text-foreground/30 w-full">
+      <TopBandSteepRightSvg />
+    </div>
+  )
+}
+
+export function CustomBattlement() {
+  return (
+    <BandShape
+      viewBox="0 0 2400 180"
+      path={castleWallBandPath(8)}
+      title="Eight-tooth battlement"
+    />
+  )
+}
+```
+
+### `BandShape` props
+
+| Prop        | Type                                              | Default                         |
+| ----------- | ------------------------------------------------- | ------------------------------- |
+| `path`      | `string`                                          | (required)                      |
+| `viewBox`   | `string`                                          | (required)                      |
+| `flip`      | `"none"` \| `"vertical"` \| `"horizontal"` \| `"both"` | `"none"`                   |
+| `className` | `string`                                          | —                               |
+| `title`     | `string`                                          | `"Decorative section shape"` |
+
+Preset components are mostly **`className` only**; **`ZigzagSawtoothBandSvg`** accepts optional **`teeth`** (default `12`, must be ≥ 2).
+
+### Path helpers
+
+| Export                      | Notes                                      |
+| --------------------------- | ------------------------------------------ |
+| `castleWallBandPath(n)`     | `n` ≥ 1 merlons along the 2400-wide grid   |
+| `zigzagSawtoothBandPath(n)` | `n` ≥ 2 teeth; pairs with default zigzag viewBox height |
+
+## Notes
+
+- Ornamental exports (`DualSideNotchFrameSvg`, `WavyBottomEdgeSvg`, `CenterTabTopBandSvg`) bundle responsive Tailwind classes for small breakpoints; override with `className` if needed.
+- **`BottomBandSteepRightSvg`** already applies a vertical flip so the steep geometry reads as a footer trim.

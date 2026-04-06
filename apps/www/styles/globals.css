@@ -167,11 +167,18 @@
 	);
 	--background: oklch(1 0 0);
 	--foreground: oklch(0.145 0 0);
+
+	/* Semantic text (Nuxt UI–style names); override per theme if needed */
+	--text-dimmed: var(--muted-foreground);
+	--text-highlighted: var(--foreground);
 }
 
 .dark {
 	--background: oklch(0.145 0 0);
 	--foreground: oklch(0.985 0 0);
+
+	--text-dimmed: var(--muted-foreground);
+	--text-highlighted: var(--foreground);
 
 	--card: oklch(0.205 0 0);
 	--card-foreground: oklch(0.985 0 0);
@@ -227,6 +234,8 @@
 	/* Map tokens directly (OKLCH-ready) */
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
+	--color-dimmed: var(--text-dimmed);
+	--color-highlighted: var(--text-highlighted);
 
 	--color-card: var(--card);
 	--color-card-foreground: var(--card-foreground);
@@ -760,6 +769,25 @@
 	z-index: -1;
 	content: "";
 	inset: -1px;
+}
+
+.section-label {
+	@apply text-[10px] uppercase tracking-widest text-dimmed mb-4 flex items-center;
+}
+
+.section-label::before {
+	content: "";
+	display: inline-block;
+	width: 4px;
+	height: 4px;
+	background-color: var(--primary);
+	margin-right: 0.5rem;
+	box-shadow: 0 0 8px var(--primary);
+}
+
+.section-title {
+	@apply text-4xl md:text-5xl lg:text-6xl tracking-tight text-highlighted;
+	text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
 }
 
 @layer components {

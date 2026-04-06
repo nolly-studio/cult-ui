@@ -374,6 +374,17 @@
       "description": "WebGL shader component with lens blur effects and mouse interaction"
     },
     {
+      "name": "edge-blur",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/default/ui/edge-blur.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Stacked backdrop-blur layers with a gradient mask for soft top or bottom screen edges"
+    },
+    {
       "name": "popover-form",
       "type": "registry:ui",
       "dependencies": [
@@ -599,6 +610,42 @@
         }
       ],
       "description": "Stripe-style background guides component with animated patterns and effects"
+    },
+    {
+      "name": "svg-shapes",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/default/ui/svg-shapes.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Wide-aspect SVG shape and panel components for backgrounds and hero decorations"
+    },
+    {
+      "name": "svg-shapes-animated",
+      "type": "registry:ui",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/svg-shapes-animated.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Scroll-triggered stroke-draw animations for wide SVG shapes and panels using Motion"
+    },
+    {
+      "name": "svg-bands",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/default/ui/svg-bands.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Wide SVG section bands, battlement and zigzag trims, steep hero edges, and ornamental frames"
     },
     {
       "name": "youtube-video-player",
@@ -1318,6 +1365,19 @@
       ]
     },
     {
+      "name": "edge-blur-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "edge-blur"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/edge-blur-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "popover-form-demo",
       "type": "registry:component",
       "registryDependencies": [
@@ -1522,6 +1582,45 @@
       "files": [
         {
           "path": "registry/default/example/stripe-bg-guides-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "svg-shapes-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "svg-shapes"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/svg-shapes-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "svg-shapes-animated-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "svg-shapes-animated"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/svg-shapes-animated-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "svg-bands-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "svg-bands"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/svg-bands-demo.tsx",
           "type": "registry:component"
         }
       ]

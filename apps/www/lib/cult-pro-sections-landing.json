@@ -1,0 +1,1163 @@
+[
+  {
+    "name": "marketing-changelog-1",
+    "title": "Changelog 1",
+    "isFeatured": false,
+    "dateReleased": "2025-10-19",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-calculator-agent-roi",
+    "title": "Agent ROI Calculator",
+    "isFeatured": false,
+    "dateReleased": "2025-10-19",
+    "meta": {
+      "category": "marketing-pricing"
+    }
+  },
+  {
+    "name": "marketing-integrations-2",
+    "title": "AI Integrations Circle",
+    "isFeatured": false,
+    "dateReleased": "2025-10-19",
+    "meta": {
+      "category": "marketing-integrations"
+    }
+  },
+  {
+    "name": "marketing-integrations-1",
+    "title": "Integration Showcase 1",
+    "isFeatured": false,
+    "dateReleased": "2025-10-19",
+    "meta": {
+      "category": "marketing-integrations"
+    }
+  },
+  {
+    "name": "marketing-model-comparison-table-1",
+    "title": "Comparison Table 1",
+    "isFeatured": false,
+    "dateReleased": "2025-10-19",
+    "meta": {
+      "category": "marketing-comparison"
+    }
+  },
+  {
+    "name": "marketing-model-comparison-2-hover",
+    "title": "Model Comparison Hover",
+    "isFeatured": false,
+    "dateReleased": "2025-10-19",
+    "meta": {
+      "category": "marketing-comparison"
+    }
+  },
+  {
+    "name": "marketing-model-comparison-2-compact",
+    "title": "Model Comparison Compact",
+    "isFeatured": false,
+    "dateReleased": "2025-10-19",
+    "meta": {
+      "category": "marketing-comparison"
+    }
+  },
+  {
+    "name": "marketing-model-comparison-2",
+    "title": "Model Comparison",
+    "isFeatured": false,
+    "dateReleased": "2025-10-19",
+    "meta": {
+      "category": "marketing-comparison"
+    }
+  },
+  {
+    "name": "marketing-bento-sharp",
+    "title": "Bento Layout Sharp",
+    "isFeatured": false,
+    "dateReleased": "2025-10-19",
+    "meta": {
+      "category": "marketing-bento"
+    }
+  },
+  {
+    "name": "marketing-feature-grid-1",
+    "title": "Feature Grid 1",
+    "isFeatured": false,
+    "dateReleased": "2000-01-01",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-feature-code-block-3",
+    "title": "Code Block 3",
+    "isFeatured": false,
+    "dateReleased": "2025-10-19",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-feature-code-block-2",
+    "title": "Code Block 2",
+    "isFeatured": false,
+    "dateReleased": "2025-10-19",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-feature-code-block-1",
+    "title": "Code Block 1",
+    "isFeatured": false,
+    "dateReleased": "2025-10-19",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-404-vercel",
+    "title": "Marketing 404 Vercel",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-404"
+    }
+  },
+  {
+    "name": "marketing-blog-texture",
+    "title": "Marketing Blog Texture",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-blog"
+    }
+  },
+  {
+    "name": "marketing-blog-vercel",
+    "title": "Marketing Blog Vercel",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-blog"
+    }
+  },
+  {
+    "name": "marketing-teams-vercel",
+    "title": "Marketing Teams Vercel",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-team"
+    }
+  },
+  {
+    "name": "marketing-footer-vercel",
+    "title": "Marketing Footer Vercel",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-footer"
+    }
+  },
+  {
+    "name": "marketing-footer-apple",
+    "title": "Marketing Footer Apple",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-footer"
+    }
+  },
+  {
+    "name": "marketing-footer-vite",
+    "title": "Marketing Footer Vite",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-footer"
+    }
+  },
+  {
+    "name": "marketing-sticky-section",
+    "title": "Marketing Sticky Section",
+    "isFeatured": true,
+    "dateReleased": "2026-02-26",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-team-vite",
+    "title": "Marketing Team Vite",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-team"
+    }
+  },
+  {
+    "name": "marketing-team-animated",
+    "title": "Marketing Team Animated",
+    "isFeatured": true,
+    "dateReleased": "2025-05-07",
+    "meta": {
+      "category": "marketing-team"
+    }
+  },
+  {
+    "name": "marketing-team-minimal",
+    "title": "Marketing Team Minimal",
+    "isFeatured": true,
+    "dateReleased": "2025-05-07",
+    "meta": {
+      "category": "marketing-team"
+    }
+  },
+  {
+    "name": "marketing-roadmap-vite",
+    "title": "Marketing Roadmap Vite",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-roadmap"
+    }
+  },
+  {
+    "name": "marketing-roadmap-0",
+    "title": "Marketing Roadmap Section",
+    "isFeatured": true,
+    "dateReleased": "2025-05-06",
+    "meta": {
+      "category": "marketing-roadmap"
+    }
+  },
+  {
+    "name": "marketing-cta-particles-dark",
+    "title": "Marketing CTA Particles Dark",
+    "isFeatured": true,
+    "dateReleased": "2025-05-07",
+    "meta": {
+      "category": "marketing-cta"
+    }
+  },
+  {
+    "name": "marketing-cta-cosmic",
+    "title": "Marketing CTA Cosmic",
+    "isFeatured": true,
+    "dateReleased": "2025-05-07",
+    "meta": {
+      "category": "marketing-cta"
+    }
+  },
+  {
+    "name": "marketing-cta-particles",
+    "title": "Marketing CTA Particles",
+    "isFeatured": true,
+    "dateReleased": "2025-05-07",
+    "meta": {
+      "category": "marketing-cta"
+    }
+  },
+  {
+    "name": "marketing-cta-waves",
+    "title": "Marketing CTA Waves",
+    "isFeatured": true,
+    "dateReleased": "2025-05-07",
+    "meta": {
+      "category": "marketing-cta"
+    }
+  },
+  {
+    "name": "marketing-cta-immersive",
+    "title": "Marketing CTA Immersive",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-cta"
+    }
+  },
+  {
+    "name": "marketing-cta-interactive",
+    "title": "Marketing CTA Interactive",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-cta"
+    }
+  },
+  {
+    "name": "marketing-cta-animated",
+    "title": "Marketing CTA Animated",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-cta"
+    }
+  },
+  {
+    "name": "marketing-cta-vite",
+    "title": "Marketing CTA Vite",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-cta"
+    }
+  },
+  {
+    "name": "marketing-contact-apple",
+    "title": "Marketing Contact Apple",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "forms"
+    }
+  },
+  {
+    "name": "marketing-pricing-vercel",
+    "title": "Marketing Pricing Vercel",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-pricing"
+    }
+  },
+  {
+    "name": "marketing-pricing-apple",
+    "title": "Marketing Pricing Apple",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-pricing"
+    }
+  },
+  {
+    "name": "marketing-pricing-vite",
+    "title": "Marketing Pricing Vite",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-pricing"
+    }
+  },
+  {
+    "name": "marketing-faq-vite",
+    "title": "Marketing FAQ Vite",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-faq"
+    }
+  },
+  {
+    "name": "marketing-faq-apple",
+    "title": "Marketing FAQ Apple",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-faq"
+    }
+  },
+  {
+    "name": "marketing-faq-modern",
+    "title": "Marketing FAQ Modern",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-faq"
+    }
+  },
+  {
+    "name": "marketing-faq-accordion",
+    "title": "Marketing FAQ Accordion",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-faq"
+    }
+  },
+  {
+    "name": "marketing-bento-texture",
+    "title": "Marketing Bento Texture",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-bento"
+    }
+  },
+  {
+    "name": "marketing-bento-shadcn",
+    "title": "Marketing Bento Gradient",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-bento"
+    }
+  },
+  {
+    "name": "social-proof-vercel",
+    "title": "Social Proof Vercel",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-social-proof"
+    }
+  },
+  {
+    "name": "marketing-bento-vercel",
+    "title": "Marketing Bento Vercel",
+    "isFeatured": false,
+    "dateReleased": "2026-02-26",
+    "meta": {
+      "category": "marketing-bento"
+    }
+  },
+  {
+    "name": "marketing-bento-database",
+    "title": "Marketing Bento Database",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-bento"
+    }
+  },
+  {
+    "name": "marketing-bento-modern",
+    "title": "Marketing Bento Modern",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-bento"
+    }
+  },
+  {
+    "name": "marketing-bento-core-capabilities",
+    "title": "Marketing Bento Core Capabilities",
+    "isFeatured": false,
+    "dateReleased": "2026-03-20",
+    "meta": {
+      "category": "marketing-bento"
+    }
+  },
+  {
+    "name": "marketing-bento-vite",
+    "title": "Marketing Bento Vite",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-bento"
+    }
+  },
+  {
+    "name": "marketing-bento-animated",
+    "title": "Marketing Bento Animated",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-bento"
+    }
+  },
+  {
+    "name": "marketing-features-quote-wave",
+    "title": "Marketing Features Quote Wave",
+    "isFeatured": false,
+    "dateReleased": "2025-08-12",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-features-apple-style",
+    "title": "Marketing Features Apple Style",
+    "isFeatured": false,
+    "dateReleased": "2025-08-12",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-features-modern",
+    "title": "Marketing Features Modern",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-features-responsive",
+    "title": "Marketing Features Regal",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-features-dark",
+    "title": "Marketing Features Count",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-features-immersive",
+    "title": "Marketing Features Immersive",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-features-interactive",
+    "title": "Marketing Features Interactive",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-features-animated",
+    "title": "Marketing Features Animated",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-features-accordion-collapse",
+    "title": "Marketing Features — Scroll Accordion",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-features-vite",
+    "title": "Marketing Features Vite",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-feature-minimal",
+    "title": "Marketing Feature Minimal",
+    "isFeatured": false,
+    "dateReleased": "2026-03-20",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-hero-globe",
+    "title": "Marketing Hero Globe",
+    "isFeatured": false,
+    "dateReleased": "2026-03-20",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-stats-globe",
+    "title": "Marketing Stats Globe",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-stats"
+    }
+  },
+  {
+    "name": "marketing-stats-vite",
+    "title": "Marketing Stats Vite",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-stats"
+    }
+  },
+  {
+    "name": "social-proof-vite",
+    "title": "Social Proof Vite",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-social-proof"
+    }
+  },
+  {
+    "name": "marketing-comparison-texture",
+    "title": "Comparison Texture",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-comparison"
+    }
+  },
+  {
+    "name": "marketing-pricing-texture",
+    "title": "Pricing Texture",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-pricing"
+    }
+  },
+  {
+    "name": "marketing-features-texture",
+    "title": "Features Texture",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-auth-texture",
+    "title": "Auth Texture",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "auth"
+    }
+  },
+  {
+    "name": "marketing-auth-vite",
+    "title": "Auth Vite",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "auth"
+    }
+  },
+  {
+    "name": "marketing-nav-vercel",
+    "title": "Marketing Navigation Vercel",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-navigation"
+    }
+  },
+  {
+    "name": "marketing-navigation-apple",
+    "title": "Marketing Navigation Apple",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-navigation"
+    }
+  },
+  {
+    "name": "marketing-navigation-vite",
+    "title": "Marketing Navigation Vite",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-navigation"
+    }
+  },
+  {
+    "name": "marketing-comparison-vercel",
+    "title": "Marketing Comparison Vercel",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-comparison"
+    }
+  },
+  {
+    "name": "marketing-comparison-vite",
+    "title": "Marketing Comparison Vite",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-comparison"
+    }
+  },
+  {
+    "name": "marketing-hero-dither",
+    "title": "Marketing Hero Dithering",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-large-image",
+    "title": "Marketing Hero Large Image",
+    "isFeatured": false,
+    "dateReleased": "2026-03-20",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-liquid-metal",
+    "title": "Marketing Hero Liquid Metal",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-contact-texture",
+    "title": "Contact Texture",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "forms"
+    }
+  },
+  {
+    "name": "marketing-contact-vite",
+    "title": "Marketing Contact Vite",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-cta"
+    }
+  },
+  {
+    "name": "marketing-download-minimal",
+    "title": "Marketing Download Minimal",
+    "isFeatured": true,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-download"
+    }
+  },
+  {
+    "name": "marketing-waitlist-minimal",
+    "title": "Marketing Waitlist Minimal",
+    "isFeatured": true,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-waitlist"
+    }
+  },
+  {
+    "name": "marketing-about-minimal",
+    "title": "Marketing About Minimal",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-about"
+    }
+  },
+  {
+    "name": "marketing-about-vite",
+    "title": "Marketing About Vite",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-about"
+    }
+  },
+  {
+    "name": "marketing-hero-vite",
+    "title": "Marketing Hero Vite",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-nav-minimal",
+    "title": "Marketing Nav Minimal",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-navigation"
+    }
+  },
+  {
+    "name": "marketing-nav-floating",
+    "title": "Marketing Nav Floating",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-navigation"
+    }
+  },
+  {
+    "name": "marketing-auth-minimal",
+    "title": "Marketing Auth Minimal",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "auth"
+    }
+  },
+  {
+    "name": "marketing-auth-apple",
+    "title": "Marketing Auth Apple",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "auth"
+    }
+  },
+  {
+    "name": "social-proof-apple",
+    "title": "Social Proof Apple",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-social-proof"
+    }
+  },
+  {
+    "name": "marketing-hero-vercel",
+    "title": "Marketing Hero Vercel",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-ribbon",
+    "title": "Marketing Hero Ribbon",
+    "isFeatured": false,
+    "dateReleased": "2026-03-20",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-apple",
+    "title": "Marketing Hero Apple",
+    "isFeatured": false,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-cta-heerich",
+    "title": "Marketing CTA — Heerich",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-cta"
+    }
+  },
+  {
+    "name": "marketing-process-heerich",
+    "title": "Marketing Process — Heerich",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-roadmap"
+    }
+  },
+  {
+    "name": "marketing-features-heerich",
+    "title": "Marketing Features — Heerich",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-gallery-heerich",
+    "title": "Marketing Gallery — Heerich",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-bento"
+    }
+  },
+  {
+    "name": "marketing-hero-heerich",
+    "title": "Marketing Hero — Heerich",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-abstract-painting",
+    "title": "Abstract Painting",
+    "isFeatured": false,
+    "dateReleased": "2025-05-07",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-radial-gradient",
+    "title": "Radial Gradient Background",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-warp",
+    "title": "Marketing Hero with Warp Shader",
+    "isFeatured": false,
+    "dateReleased": "2026-04-04",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-dithering-simplex",
+    "title": "Marketing Hero with Simplex Dithering",
+    "isFeatured": false,
+    "dateReleased": "2026-04-04",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-neuro",
+    "title": "Marketing Hero with Neuro Noise",
+    "isFeatured": false,
+    "dateReleased": "2026-04-04",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-moss",
+    "title": "Marketing Hero with Moss",
+    "isFeatured": false,
+    "dateReleased": "2026-04-04",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-hyperspace",
+    "title": "Marketing Hero with Hyperspace",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-logo-cloud",
+    "title": "Marketing Hero Logo Cloud",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-input-simple",
+    "title": "Marketing Hero Input Simple",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-nav-menu",
+    "title": "Marketing Hero Nav Menu",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-input-focused",
+    "title": "Marketing Hero Input Focused",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-text-roll",
+    "title": "Marketing Hero Text Roll",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-input",
+    "title": "Marketing Hero Input",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-navigation",
+    "title": "Marketing Hero Navigation",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-simple",
+    "title": "Marketing Hero Simple",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-animated",
+    "title": "Marketing Hero Animated",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-integrations-hex",
+    "title": "Marketing Integrations Hex",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-integrations"
+    }
+  },
+  {
+    "name": "marketing-comparison-hex",
+    "title": "Marketing Comparison Hex",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-comparison"
+    }
+  },
+  {
+    "name": "marketing-stats-hex",
+    "title": "Marketing Stats Hex",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-stats"
+    }
+  },
+  {
+    "name": "marketing-testimonials-hex",
+    "title": "Marketing Testimonials Hex",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-social-proof"
+    }
+  },
+  {
+    "name": "marketing-faq-hex",
+    "title": "Marketing FAQ Hex",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-faq"
+    }
+  },
+  {
+    "name": "marketing-cta-hex",
+    "title": "Marketing CTA Hex",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-cta"
+    }
+  },
+  {
+    "name": "marketing-pricing-hex",
+    "title": "Marketing Pricing Hex",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-pricing"
+    }
+  },
+  {
+    "name": "marketing-features-hex",
+    "title": "Marketing Features Hex",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-features"
+    }
+  },
+  {
+    "name": "marketing-hero-hex",
+    "title": "Marketing Hero Hex",
+    "isFeatured": false,
+    "dateReleased": "2026-03-31",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "marketing-hero-gradient",
+    "title": "Marketing Hero Gradient",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "marketing-heroes"
+    }
+  },
+  {
+    "name": "app-profile-minimal",
+    "title": "App Profile Minimal",
+    "isFeatured": true,
+    "dateReleased": "2026-03-16",
+    "meta": {
+      "category": "app-ui"
+    }
+  },
+  {
+    "name": "app-ui-onboarding",
+    "title": "App UI Onboarding",
+    "isFeatured": false,
+    "dateReleased": "2026-02-26",
+    "meta": {
+      "category": "app-ui-grid-list"
+    }
+  },
+  {
+    "name": "app-ui-grid-list-animated",
+    "title": "App UI Grid List 1",
+    "isFeatured": false,
+    "dateReleased": "2025-05-07",
+    "meta": {
+      "category": "app-ui-grid-list"
+    }
+  },
+  {
+    "name": "app-ui-grid-list-hover",
+    "title": "App UI Grid List",
+    "isFeatured": false,
+    "dateReleased": "2025-01-01",
+    "meta": {
+      "category": "app-ui-grid-list"
+    }
+  }
+]

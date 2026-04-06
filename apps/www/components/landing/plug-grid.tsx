@@ -28,7 +28,7 @@ export function PlugCardGrid() {
 			<div className="mb-12 text-center">
 				<div className="mx-auto mb-6 flex max-w-2xl items-center justify-center gap-4">
 					<div className="h-px flex-1 bg-border" />
-					<div className="flex items-center gap-2 border border-border bg-background px-3 py-1.5">
+					<div className="flex items-center gap-2 rounded-md border border-border bg-background px-3 py-1.5">
 						<StickerIcon className="size-4  fill-pink-400/30" />
 						<span className="font-mono text-[11px] uppercase tracking-wider">
 							Additional Goods
@@ -46,14 +46,8 @@ export function PlugCardGrid() {
 						target="_blank"
 						rel="noopener noreferrer"
 						href={card.href}
-						className="group relative flex flex-col border border-border bg-background p-4 transition-all duration-150 hover:border-foreground/10 hover:shadow-lg hover:shadow-primary/5"
+						className="group relative flex flex-col rounded-xl border border-border bg-background p-4 transition-all duration-150 "
 					>
-						{/* Corner accents */}
-						<div className="-top-px -left-px pointer-events-none absolute h-3 w-3 border-primary/50 border-t-2 border-l-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
-						<div className="-top-px -right-px pointer-events-none absolute h-3 w-3 border-primary/50 border-t-2 border-r-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
-						<div className="-bottom-px -left-px pointer-events-none absolute h-3 w-3 border-primary/50 border-b-2 border-l-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
-						<div className="-bottom-px -right-px pointer-events-none absolute h-3 w-3 border-primary/50 border-r-2 border-b-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
-
 						{/* Title */}
 						<h3 className="mb-2 font-medium text-sm leading-tight tracking-tight">
 							{card.title}

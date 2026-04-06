@@ -1,0 +1,224 @@
+[
+  {
+    "demoName": "agent-suggest-card-stack-demo",
+    "primarySlug": "agent-suggest-card-stack",
+    "title": "Agent Suggest Card Stack",
+    "category": "components"
+  },
+  {
+    "demoName": "analytics-chart-demo",
+    "primarySlug": "analytics-chart",
+    "title": "Analytics Chart",
+    "category": "components"
+  },
+  {
+    "demoName": "apple-iphone-17-pro-demo",
+    "primarySlug": "apple-iphone-17-pro",
+    "title": "Apple iPhone 17 Pro Max",
+    "category": "components"
+  },
+  {
+    "demoName": "apple-keyboard-demo",
+    "primarySlug": "apple-keyboard",
+    "title": "Apple Keyboard",
+    "category": "components"
+  },
+  {
+    "demoName": "apple-pro-display-xdr-demo",
+    "primarySlug": "apple-pro-display-xdr",
+    "title": "Apple Pro Display XDR",
+    "category": "components"
+  },
+  {
+    "demoName": "apple-watch-ultra-demo",
+    "primarySlug": "apple-watch-ultra",
+    "title": "Apple Watch Ultra",
+    "category": "components"
+  },
+  {
+    "demoName": "circuit-board-demo",
+    "primarySlug": "circuit-board",
+    "title": "Circuit Board",
+    "category": "components"
+  },
+  {
+    "demoName": "collab-avatar-demo",
+    "primarySlug": "collab-avatar",
+    "title": "Collab Avatar",
+    "category": "components"
+  },
+  {
+    "demoName": "vercel-collab-toolbar-demo",
+    "primarySlug": "collab-avatar",
+    "title": "Collab Avatar",
+    "category": "components"
+  },
+  {
+    "demoName": "collab-toolbar-demo",
+    "primarySlug": "collab-toolbar",
+    "title": "Collab Toolbar",
+    "category": "components"
+  },
+  {
+    "demoName": "copy-button-demo",
+    "primarySlug": "copy-button",
+    "title": "Copy Button",
+    "category": "components"
+  },
+  {
+    "demoName": "feature-sticky-section-demo",
+    "primarySlug": "feature-sticky-section",
+    "title": "Feature Sticky Section",
+    "category": "components"
+  },
+  {
+    "demoName": "fluid-ai-workloads-demo",
+    "primarySlug": "fluid-ai-workloads",
+    "title": "Fluid AI Workloads",
+    "category": "components"
+  },
+  {
+    "demoName": "fluted-glass-demo",
+    "primarySlug": "fluted-glass",
+    "title": "Fluted Glass",
+    "category": "components"
+  },
+  {
+    "demoName": "folded-card-demo",
+    "primarySlug": "folded-card",
+    "title": "Folded Card",
+    "category": "components"
+  },
+  {
+    "demoName": "gateway-endpoint-illustration-demo",
+    "primarySlug": "gateway-endpoint-illustration",
+    "title": "Gateway Endpoint Illustration",
+    "category": "components"
+  },
+  {
+    "demoName": "gateway-route-illustration-demo",
+    "primarySlug": "gateway-route-illustration",
+    "title": "Gateway Route Illustration",
+    "category": "components"
+  },
+  {
+    "demoName": "gateway-svg-illustration-demo",
+    "primarySlug": "gateway-svg-illustration",
+    "title": "Gateway SVG Illustration",
+    "category": "components"
+  },
+  {
+    "demoName": "globe-demo",
+    "primarySlug": "globe",
+    "title": "Globe (COBE)",
+    "category": "components"
+  },
+  {
+    "demoName": "icons-demo",
+    "primarySlug": "icons",
+    "title": "Icons",
+    "category": "components"
+  },
+  {
+    "demoName": "illustration-card-grid-demo",
+    "primarySlug": "illustration-card-grid",
+    "title": "Illustration Card Grid",
+    "category": "components"
+  },
+  {
+    "demoName": "illustration-comment-bubble-demo",
+    "primarySlug": "illustration-comment-bubble",
+    "title": "Illustration Comment Bubble",
+    "category": "components"
+  },
+  {
+    "demoName": "illustration-cursor-demo",
+    "primarySlug": "illustration-cursor",
+    "title": "Illustration Cursor",
+    "category": "components"
+  },
+  {
+    "demoName": "illustration-fluid-rendering-demo",
+    "primarySlug": "illustration-fluid-rendering",
+    "title": "Illustration Fluid Rendering",
+    "category": "components"
+  },
+  {
+    "demoName": "illustration-form-demo",
+    "primarySlug": "illustration-form",
+    "title": "Illustration Form",
+    "category": "components"
+  },
+  {
+    "demoName": "illustration-globe-vercel-demo",
+    "primarySlug": "illustration-globe-vercel",
+    "title": "Illustration Globe Vercel",
+    "category": "components"
+  },
+  {
+    "demoName": "illustration-graph-demo",
+    "primarySlug": "illustration-graph",
+    "title": "Illustration Graph",
+    "category": "components"
+  },
+  {
+    "demoName": "illustration-icon-map-demo",
+    "primarySlug": "illustration-icon-map",
+    "title": "Illustration Icon Map",
+    "category": "components"
+  },
+  {
+    "demoName": "kanban-board-demo",
+    "primarySlug": "kanban-board",
+    "title": "Kanban Board",
+    "category": "components"
+  },
+  {
+    "demoName": "mac-screen-demo",
+    "primarySlug": "mac-screen",
+    "title": "Mac Screen",
+    "category": "components"
+  },
+  {
+    "demoName": "marketing-feature-code-demo",
+    "primarySlug": "marketing-feature-code",
+    "title": "Marketing Feature Code",
+    "category": "components"
+  },
+  {
+    "demoName": "marketing-hero-analytics-demo",
+    "primarySlug": "marketing-hero-analytics",
+    "title": "Marketing Hero Analytics",
+    "category": "components"
+  },
+  {
+    "demoName": "merging-bubbles-demo",
+    "primarySlug": "merging-bubbles",
+    "title": "Merging Bubbles",
+    "category": "components"
+  },
+  {
+    "demoName": "security-checkpoint-demo",
+    "primarySlug": "security-checkpoint",
+    "title": "Security Checkpoint",
+    "category": "components"
+  },
+  {
+    "demoName": "shadow-card-demo",
+    "primarySlug": "shadow-card",
+    "title": "Shadow Card",
+    "category": "components"
+  },
+  {
+    "demoName": "speech-bubble-demo",
+    "primarySlug": "speech-bubble",
+    "title": "Speech Bubble",
+    "category": "components"
+  },
+  {
+    "demoName": "tabs-illustration-vercel-demo",
+    "primarySlug": "tabs-illustration-vercel",
+    "title": "Tabs Illustration Vercel",
+    "category": "components"
+  }
+]

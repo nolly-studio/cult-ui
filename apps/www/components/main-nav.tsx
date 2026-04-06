@@ -45,13 +45,13 @@ export function MainNav() {
 							: "text-foreground/60",
 					)}
 				>
-					AI Blocks{" "}
+					Blocks
 					<span className="text-[10px] font-pixel-square shadow-inner text-black bg-[#ADFA1B] border px-1 border-black/20">
-						100 new
+						100+ new
 					</span>
 					<ExternalLink className="size-3" />
 				</a>
-				<a
+				{/* <a
 					href="https://pro.cult-ui.com/docs"
 					//  biome-ignore lint/security/noBlankTarget: we want to open the link in a new tab
 					target="_blank"
@@ -68,7 +68,7 @@ export function MainNav() {
 						124 new
 					</span>
 					<ExternalLink className="size-3" />
-				</a>
+				</a> */}
 				{/* <a
           href="https://aisdkagents.com/patterns"
           target="_blank"
@@ -126,7 +126,7 @@ export function MainNav() {
 				>
 					Templates{" "}
 					<span className="text-[10px] font-pixel-square text-black shadow-inner bg-[#ADFA1B] border px-1 border-black/20">
-						4 new
+						2 new
 					</span>
 					<ExternalLink className="size-3" />
 				</a>

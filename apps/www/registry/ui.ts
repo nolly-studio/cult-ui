@@ -379,6 +379,18 @@ export const ui: Registry["items"] = [
       "WebGL shader component with lens blur effects and mouse interaction",
   },
   {
+    name: "edge-blur",
+    type: "registry:ui",
+    files: [
+      {
+        path: "registry/default/ui/edge-blur.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Stacked backdrop-blur layers with a gradient mask for soft top or bottom screen edges",
+  },
+  {
     name: "popover-form",
     type: "registry:ui",
     dependencies: ["motion"],
@@ -591,6 +603,43 @@ export const ui: Registry["items"] = [
     ],
     description:
       "Stripe-style background guides component with animated patterns and effects",
+  },
+  {
+    name: "svg-shapes",
+    type: "registry:ui",
+    files: [
+      {
+        path: "registry/default/ui/svg-shapes.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Wide-aspect SVG shape and panel components for backgrounds and hero decorations",
+  },
+  {
+    name: "svg-shapes-animated",
+    type: "registry:ui",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/default/ui/svg-shapes-animated.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Scroll-triggered stroke-draw animations for wide SVG shapes and panels using Motion",
+  },
+  {
+    name: "svg-bands",
+    type: "registry:ui",
+    files: [
+      {
+        path: "registry/default/ui/svg-bands.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Wide SVG section bands, battlement and zigzag trims, steep hero edges, and ornamental frames",
   },
   {
     name: "youtube-video-player",

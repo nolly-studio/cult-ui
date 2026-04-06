@@ -1,161 +1,188 @@
 "use client";
 
-import { ArrowRight, Layers, Megaphone, Sparkles } from "lucide-react";
+import type { ComponentProps } from "react";
+
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowRight02Icon } from "@hugeicons/core-free-icons";
+import { Layers, Megaphone, Sparkles } from "lucide-react";
+
+import { BackgroundImageTexture } from "@/components/landing/bg-image-texture";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 
 import { Icons } from "./icons";
-import { PixelHeading } from "./landing/pixel-heading-word";
-import { PixelParagraphInverse } from "./landing/pixel-paragraph-words-inverse";
 
-export function GetCultProCta({ className }: React.ComponentProps<"div">) {
+const SURFACE_SHADOW =
+	"shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_2px_-1px_rgba(0,0,0,0.06),0px_2px_4px_0px_rgba(0,0,0,0.04)]";
+const SURFACE_SHADOW_DARK =
+	"dark:shadow-[0px_0px_0px_1px_rgba(255,255,255,0.06),0px_1px_2px_-1px_rgba(255,255,255,0.03),0px_2px_4px_0px_rgba(0,0,0,0.2)]";
+
+export function GetCultProCta({ className }: ComponentProps<"div">) {
 	return (
-		<div
+		<BackgroundImageTexture
 			className={cn(
-				"group relative rounded-xl bg-card border border-border transition-all duration-200 hover:shadow-lg hover:shadow-purple-500/5",
+				"overflow-hidden rounded-lg shadow-elevation-light dark:shadow-elevation-dark",
 				className,
 			)}
+			opacity={0.31}
+			variant="inflicted"
 		>
-			<div className="p-6 space-y-4">
-				{/* Header */}
-				<div className="flex items-center gap-3">
-					<div className="p-2 rounded-lg bg-gradient-to-br from-[oklch(0.7_0.25_320)]/10 to-blue-500/10 dark:from-[oklch(0.7_0.25_320)]/20 dark:to-[#B357C5]">
-						<Icons.cultLogoBasic className="size-6 fill-black dark:fill-white  h-4 w-4 text-[oklch(0.7_0.25_320)] dark:text-[oklch(0.8_0.25_320)]" />
-					</div>
-					<div className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
-						Cult Pro
-					</div>
-				</div>
-
-				{/* Description */}
-				<p className="text-sm  leading-snug max-w-[60ch] tracking-tight">
-					Premium full-stack blocks, templates, and sections.
-				</p>
-
-				{/* Features */}
-				<div className="space-y-2 text-foreground/80 leading-snug tracking-wide text-sm ">
-					<div className="flex items-center gap-3">
-						<Layers className="h-4 w-4 text-[oklch(0.7_0.25_320)] dark:text-[oklch(0.8_0.25_320)] flex-shrink-0" />
-						<span>Full-stack blocks with backend integrations</span>
-					</div>
-					<div className="flex items-center gap-3">
-						<Megaphone className="h-4 w-4 text-[oklch(0.7_0.25_320)] dark:text-[oklch(0.8_0.25_320)] flex-shrink-0" />
-						<span>Marketing sections animated with framer</span>
-					</div>
-					<div className="flex items-center gap-3">
-						<Sparkles className="h-4 w-4 text-[oklch(0.7_0.25_320)] dark:text-[oklch(0.8_0.25_320)] flex-shrink-0" />
-						<span>Premium full-stack SaaS templates + starter kits</span>
-					</div>
-				</div>
-
-				{/* CTA Button */}
-				<Button
-					size="sm"
+			<article
+				className={cn(
+					"relative flex h-full flex-col rounded-lg dark:bg-background/20 bg-background/10 p-3 transition-all duration-200",
+					SURFACE_SHADOW,
+					SURFACE_SHADOW_DARK,
+				)}
+			>
+				<div
 					className={cn(
-						"w-fit bg-gradient-to-r from-[oklch(0.7_0.25_320)]/85 to-[oklch(0.6_0.25_320)] text-white",
-						"shadow-[0px_1px_1px_0px_rgba(0,0,0,0.05),0px_1px_1px_0px_rgba(255,252,240,0.5)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.1)_inset,0px_0px_1px_0px_rgba(28,27,26,0.5)]",
-						"border border-zinc-950/35 dark:border-zinc-950/50",
-						"transition-[filter] duration-200 hover:brightness-110 active:brightness-95",
-						"dark:from-[oklch(0.7_0.25_320)]/75 dark:to-[oklch(0.6_0.25_320)]/75",
+						"mb-5 flex w-fit items-center gap-2 rounded-md  bg-background/90 px-3 py-2",
+						SURFACE_SHADOW,
+						SURFACE_SHADOW_DARK,
 					)}
 				>
-					Get Cult Pro
-					<ArrowRight className="ml-2 h-4 w-4" />
-				</Button>
-			</div>
+					<Icons.cultLogoBasic
+						className="size-4 fill-black/50 dark:fill-white/70"
+						aria-hidden
+					/>
+					<span className="font-pixel-square text-[11px] text-[#FF6BFF] dark:text-[#ffb5ff] uppercase tracking-wider font-bold">
+						Cult Pro
+					</span>
+				</div>
 
-			<a
-				href="https://pro.cult-ui.com"
-				target="_blank"
-				rel="noreferrer"
-				className="absolute inset-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-[oklch(0.7_0.25_320)]/20 focus:ring-offset-2 dark:focus:ring-offset-zinc-900"
-			>
-				<span className="sr-only">Get Cult Pro</span>
-			</a>
-		</div>
+				<h3 className="mb-2 font-pixel-square text-lg font-medium leading-tight tracking-tight text-[#FF6BFF]">
+					Marketing UI
+				</h3>
+
+				{/* <p className="mb-6 max-w-[60ch] text-pretty text-sm text-foreground/75 leading-relaxed">
+					Premium full-stack blocks, templates, and sections.
+				</p> */}
+
+				<div className="mb-6 space-y-2 border-border border-t pt-3">
+					<div className="flex items-center gap-2">
+						<Layers
+							className="size-3 shrink-0 text-muted-foreground"
+							aria-hidden
+						/>
+						<span className="font-pixel-square text-[10px] text-muted-foreground uppercase tracking-wider">
+							129 Premium Blocks
+						</span>
+					</div>
+					<div className="flex items-center gap-2">
+						<Megaphone
+							className="size-3 shrink-0 text-muted-foreground"
+							aria-hidden
+						/>
+						<span className="font-pixel-square text-[10px] text-muted-foreground uppercase tracking-wider">
+							36 Components
+						</span>
+					</div>
+					<div className="flex items-center gap-2">
+						<Sparkles
+							className="size-3 shrink-0 text-muted-foreground"
+							aria-hidden
+						/>
+						<span className="font-pixel-square text-[10px] text-muted-foreground uppercase tracking-wider">
+							10 Starter Templates
+						</span>
+					</div>
+				</div>
+
+				<a
+					className="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-md border border-[#d94fd9] bg-[#FF6BFF] px-4 py-2.5 font-pixel-square text-xs text-black uppercase tracking-[0.14em] transition-colors hover:bg-[#f056f0]"
+					href="https://pro.cult-ui.com"
+					rel="noopener noreferrer"
+					target="_blank"
+				>
+					Get Cult Pro
+					<HugeiconsIcon className="size-3.5" icon={ArrowRight02Icon} />
+				</a>
+			</article>
+		</BackgroundImageTexture>
 	);
 }
 
-export function GetAISDKAgentsCta({ className }: React.ComponentProps<"div">) {
+export function GetAISDKAgentsCta({ className }: ComponentProps<"div">) {
 	return (
-		<div
+		<BackgroundImageTexture
 			className={cn(
-				"group relative flex flex-col border border-black/5 bg-[#ADFA1B] transition-all duration-150 hover:border-black/40 hover:shadow-lg hover:shadow-primary/5",
+				"overflow-hidden rounded-xl shadow-elevation-light dark:shadow-elevation-dark",
 				className,
 			)}
+			opacity={0.99}
+			variant="debut-light"
 		>
-			{/* Corner accents */}
-			<div className="-top-px -left-px pointer-events-none absolute h-3 w-3 border-black/50 border-t-2 border-l-2 opacity-100 transition-all duration-200 group-hover:opacity-100" />
-			<div className="-top-px -right-px pointer-events-none absolute h-3 w-3 border-black/50 border-t-2 border-r-2 opacity-100 transition-all duration-200 group-hover:opacity-100" />
-			<div className="-bottom-px -left-px pointer-events-none absolute h-3 w-3 border-black/50 border-b-2 border-l-2 opacity-100 transition-all duration-200 group-hover:opacity-100" />
-			<div className="-bottom-px -right-px pointer-events-none absolute h-3 w-3 border-black/50 border-r-2 border-b-2 opacity-100 transition-all duration-200 group-hover:opacity-100" />
-
-			<div className="flex flex-col gap-4 p-5">
-				{/* Label */}
-				<div className="flex items-center gap-2">
-					<Icons.aisdkAgentsLogo className="size-3.5  fill-black/5" />
-					<span className="font-mono text-[10px] uppercase tracking-wider text-black">
+			<article
+				className={cn(
+					"relative flex h-full flex-col rounded-xl bg-background/10 p-3 transition-all duration-200",
+					SURFACE_SHADOW,
+					SURFACE_SHADOW_DARK,
+				)}
+			>
+				<div
+					className={cn(
+						"mb-5 flex w-fit items-center gap-2 rounded-md  bg-background/80 px-3 py-2",
+						SURFACE_SHADOW,
+						SURFACE_SHADOW_DARK,
+					)}
+				>
+					<Icons.aisdkAgentsLogo
+						className="size-4 fill-[#919191]"
+						aria-hidden
+					/>
+					<span className="font-pixel-square text-[11px] font-bold text-[#006BFF] uppercase">
 						AI SDK Agents
 					</span>
 				</div>
 
-				{/* Pixel Heading */}
-				<PixelHeading
-					as="h3"
-					initialFont="square"
-					hoverFont="line"
-					className="text-lg font-medium leading-tight tracking-tight text-black"
-				>
-					100+ AI Patterns
-				</PixelHeading>
+				<h3 className="mb-2 font-pixel-square text-lg font-medium leading-tight tracking-tight text-[#006BFF]">
+					Full Stack AI Patterns
+				</h3>
 
-				{/* Description */}
-				<PixelParagraphInverse
-					text="Real world AI SDK v6 patterns. Copy and paste."
-					plainWords={["and "]}
-					initialPlainFont="mono"
-					pixelFont="square"
-					className="text-xs leading-relaxed text-black"
-				/>
+				{/* <p className="mb-6 text-pretty text-sm text-foreground/75 leading-relaxed">
+					Real world AI SDK v6 patterns. Copy and paste.
+				</p> */}
 
-				{/* Feature list */}
-				<div className="space-y-2 border-t border-black pt-3">
+				<div className="mb-6 space-y-2 border-border border-t pt-3">
 					<div className="flex items-center gap-2">
-						<Layers className="size-3 flex-shrink-0 text-black" />
-						<span className="font-mono text-[10px] uppercase tracking-wider text-black">
+						<Layers
+							className="size-3 shrink-0 text-muted-foreground"
+							aria-hidden
+						/>
+						<span className="font-pixel-square text-[10px] text-muted-foreground uppercase tracking-wider">
 							Complex AI Agents
 						</span>
 					</div>
 					<div className="flex items-center gap-2">
-						<Sparkles className="size-3 flex-shrink-0 text-black" />
-						<span className="font-mono text-[10px] uppercase tracking-wider text-black">
+						<Sparkles
+							className="size-3 shrink-0 text-muted-foreground"
+							aria-hidden
+						/>
+						<span className="font-pixel-square text-[10px] text-muted-foreground uppercase tracking-wider">
 							Workflow Patterns
 						</span>
 					</div>
 					<div className="flex items-center gap-2">
-						<Megaphone className="size-3 flex-shrink-0 text-black" />
-						<span className="font-mono text-[10px] uppercase tracking-wider text-black">
+						<Megaphone
+							className="size-3 shrink-0 text-muted-foreground"
+							aria-hidden
+						/>
+						<span className="font-pixel-square text-[10px] text-muted-foreground uppercase tracking-wider">
 							Tools + Artifacts
 						</span>
 					</div>
 				</div>
 
-				{/* CTA */}
-				<div className="flex items-center gap-1 border-t border-black pt-3 font-mono text-[10px] uppercase tracking-wider text-black transition-colors group-hover:text-black/90">
-					<span>Browse Patterns</span>
-					<ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
-				</div>
-			</div>
-
-			<a
-				href="https://www.aisdkagents.com/patterns"
-				target="_blank"
-				rel="noreferrer"
-				className="absolute inset-0 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:ring-offset-2"
-			>
-				<span className="sr-only">Browse AI SDK Agent Patterns</span>
-			</a>
-		</div>
+				<a
+					className="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-md border border-[#0058d4] bg-[#006BFF] px-4 py-2.5 font-pixel-square text-xs text-background uppercase tracking-[0.14em] transition-colors hover:bg-[#0058d4]"
+					href="https://aisdkagents.com/patterns"
+					rel="noopener noreferrer"
+					target="_blank"
+				>
+					Browse agents
+					<HugeiconsIcon className="size-3.5" icon={ArrowRight02Icon} />
+				</a>
+			</article>
+		</BackgroundImageTexture>
 	);
 }

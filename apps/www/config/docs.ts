@@ -438,6 +438,30 @@ export const docsConfig: DocsConfig = {
 							items: [],
 						},
 						{
+							title: "Edge Blur",
+							href: "/docs/components/edge-blur",
+							items: [],
+							label: "new",
+						},
+						{
+							title: "SVG Shapes",
+							href: "/docs/components/svg-shapes",
+							items: [],
+							label: "new",
+						},
+						{
+							title: "SVG Shapes Animated",
+							href: "/docs/components/svg-shapes-animated",
+							items: [],
+							label: "new",
+						},
+						{
+							title: "SVG Bands",
+							href: "/docs/components/svg-bands",
+							items: [],
+							label: "new",
+						},
+						{
 							title: "Stripe Bg Guides",
 							href: "/docs/components/stripe-bg-guides",
 							items: [],

@@ -1,0 +1,94 @@
+---
+title: Edge Blur
+description: Stacked backdrop-blur layers with a linear gradient mask for a soft fade at the top or bottom of the viewport (or a transformed container).
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="edge-blur-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="Scrollable panel with top and bottom fades, plus compact examples"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/edge-blur.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="edge-blur" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { BottomBlur, EdgeBlur, TopBlur } from "@/components/ui/edge-blur"
+```
+
+### Full viewport (typical)
+
+Place near the root of your page or layout. The component uses `position: fixed` and spans the width of the viewport.
+
+```tsx
+export function PageChrome() {
+  return (
+    <>
+      <main>{/* … */}</main>
+      <BottomBlur height={80} />
+    </>
+  )
+}
+```
+
+### Inside a card, modal, or preview
+
+If an ancestor has a `transform`, `filter`, or `perspective` (other than `none`), `fixed` descendants are positioned relative to that ancestor instead of the viewport. Use that to contain the blur inside a rounded panel.
+
+Put **`EdgeBlur` outside the scrolling element**. If scroll lives on the same parent as the blur, the blur becomes part of the scrollable overflow and will move with the content.
+
+```tsx
+<div className="relative isolate h-96 transform-gpu overflow-hidden rounded-xl border">
+  <div className="absolute inset-0 overflow-y-auto">
+    <div className="min-h-[800px] p-4">{/* long content */}</div>
+  </div>
+  <EdgeBlur position="bottom" height={72} />
+</div>
+```
+
+### API
+
+| Export      | Description                                      |
+| ----------- | ------------------------------------------------ |
+| `EdgeBlur`  | `position` `"top"` \| `"bottom"`, `height` (px) |
+| `TopBlur`   | Top edge; optional `height`                      |
+| `BottomBlur`| Bottom edge; optional `height`                   |
+
+## Notes
+
+- Uses repeated `backdrop-filter` layers with increasing blur radius and a CSS mask for a smooth falloff.
+- Does not block pointer events (`pointer-events-none`).

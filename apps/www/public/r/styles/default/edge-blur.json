@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "edge-blur",
+  "description": "Stacked backdrop-blur layers with a gradient mask for soft top or bottom screen edges",
+  "files": [
+    {
+      "path": "registry/default/ui/edge-blur.tsx",
+      "content": "\"use client\"\n\ninterface EdgeBlurProps {\n  position?: \"top\" | \"bottom\"\n  height?: number\n}\n\nexport function EdgeBlur({ position = \"bottom\", height = 75 }: EdgeBlurProps) {\n  const blurLayers = [1, 2, 3, 6, 12]\n\n  const isTop = position === \"top\"\n\n  return (\n    <div\n      className={`fixed inset-x-0 isolate z-40 pointer-events-none ${isTop ? \"top-0\" : \"bottom-0\"}`}\n      style={{ height }}\n    >\n      {blurLayers.map((blur) => (\n        <div\n          key={blur}\n          className=\"absolute inset-0\"\n          style={{\n            backdropFilter: `blur(${blur}px)`,\n            WebkitBackdropFilter: `blur(${blur}px)`,\n            maskImage: `linear-gradient(to ${isTop ? \"bottom\" : \"top\"}, black, transparent)`,\n            WebkitMaskImage: `linear-gradient(to ${isTop ? \"bottom\" : \"top\"}, black, transparent)`,\n          }}\n        />\n      ))}\n    </div>\n  )\n}\n\n// Convenience exports for specific positions\nexport function TopBlur({ height = 75 }: { height?: number }) {\n  return <EdgeBlur position=\"top\" height={height} />\n}\n\nexport function BottomBlur({ height = 75 }: { height?: number }) {\n  return <EdgeBlur position=\"bottom\" height={height} />\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

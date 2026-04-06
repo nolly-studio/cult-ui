@@ -1,0 +1,80 @@
+---
+title: SVG Shapes Animated
+description: Wide viewBox SVG shapes with scroll-triggered stroke drawing via Motion, plus extra primitives and panels beyond the static svg-shapes set.
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="svg-shapes-animated-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[90%]"
+  description="Scroll the preview to trigger path drawing; includes panels and wireframe solids"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/svg-shapes-animated.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="svg-shapes-animated" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+Each export is a client component (`"use client"`) that wraps stroked paths in `motion` elements. Animations use `whileInView` with `pathLength` from 0 → 1 so lines draw when the SVG enters the viewport. `useReducedMotion()` skips the animation and shows finished paths immediately.
+
+```tsx
+import { GothicArchPanelSvg } from "@/components/ui/svg-shapes-animated"
+
+export function Hero() {
+  return (
+    <div className="text-foreground/50 w-full max-w-4xl">
+      <GothicArchPanelSvg />
+    </div>
+  )
+}
+```
+
+### Props
+
+| Prop        | Type                                              | Default   |
+| ----------- | ------------------------------------------------- | --------- |
+| `className` | `string`                                          | —         |
+| `flip`      | `"none"` \| `"vertical"` \| `"horizontal"` \| `"both"` | `"none"` |
+
+Requires the **motion** package (`motion/react`), declared as a registry dependency when installing via CLI.
+
+### Compared to SVG Shapes
+
+- **Animated**: scroll-draw strokes, slightly different default stroke emphasis, extra shapes (diamond, trapezoid, octagon, ribbon panels, wireframe naming `*WireframeSvg`, etc.).
+- **Static** (`svg-shapes`): no Motion dependency, passive SVGs suitable anywhere including server components.
+
+## Notes
+
+- Sacred-geometry and multi-path shapes stagger short delays per sub-path for a sequential draw feel.
+- Ensure the preview or page scrolls enough for elements to cross the in-view threshold; embed in a tall section or scroll container as needed.

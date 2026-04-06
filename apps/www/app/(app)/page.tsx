@@ -2,23 +2,21 @@ import Link from "next/link";
 
 import { GitHubButton } from "@/components/github-link";
 import { Icons, ReactIcon, TailwindCSSIcon } from "@/components/icons";
-import { MiniBlocksGrid } from "@/components/landing/blocks-grid";
-import { LatestComponentVertical } from "@/components/landing/featured-component";
-import { PlugCardGrid } from "@/components/landing/plug-grid";
-import { TemplateGrid } from "@/components/landing/template-grid";
-import { WhatsIncluded } from "@/components/landing/ai-sdk-agents-patterns";
+import {
+	HomeBelowHeroLayoutAlternate,
+	HomeBelowHeroLayoutDefault,
+} from "@/components/landing/home-below-hero-layouts";
 import { ui } from "@/registry/ui";
 import { PixelHeading } from "@/components/landing/pixel-heading-character";
 
 import { PixelParagraphInverse } from "@/components/landing/pixel-paragraph-words-inverse";
 import { Footer } from "@/components/landing/footer";
-import { Suspense } from "react";
 
 export default function IndexPage() {
 	const componentCount = ui.length;
 	return (
 		<div className="isolate min-h-screen overflow-hidden pb-8 sm:pb-12 md:pb-0">
-			<div className="container relative py-12 md:pt-0">
+			<div className=" relative py-12 md:pt-0">
 				{/* ─── Hero ─── */}
 				<section className="mx-auto flex max-w-[980px] flex-col items-center gap-2 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-14">
 					{/* Index marker */}
@@ -90,7 +88,7 @@ export default function IndexPage() {
 					<div className="flex w-full items-center justify-center gap-4 py-6">
 						<Link
 							href="/docs/components/hero-color-panels"
-							className="border border-foreground bg-foreground px-6 py-3  text-sm uppercase tracking-wider text-white transition-all hover:bg-foreground/90 "
+							className="rounded-md border border-foreground bg-foreground px-6 py-3 text-sm uppercase tracking-wider text-white transition-all hover:bg-foreground/90"
 						>
 							<PixelParagraphInverse
 								text={`Browse ${componentCount} Components`}
@@ -102,7 +100,7 @@ export default function IndexPage() {
 
 					{/* Tech Stack Pills */}
 					<div className="flex flex-wrap items-center justify-center gap-2">
-						<div className="flex items-center gap-1.5 border border-border px-2 py-0.5">
+						<div className="flex items-center gap-1.5 rounded-md border border-border px-2 py-0.5">
 							<ReactIcon
 								className="size-3.5 text-[#61DAFB]"
 								aria-hidden="true"
@@ -111,13 +109,13 @@ export default function IndexPage() {
 								React
 							</span>
 						</div>
-						<div className="flex items-center gap-1.5 border border-border px-2 py-0.5">
+						<div className="flex items-center gap-1.5 rounded-md border border-border px-2 py-0.5">
 							<Icons.logo className="size-3" />
 							<span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
 								Shadcn/ui
 							</span>
 						</div>
-						<div className="flex items-center gap-1.5 border border-border px-2 py-0.5">
+						<div className="flex items-center gap-1.5 rounded-md border border-border px-2 py-0.5">
 							<TailwindCSSIcon
 								className="size-3.5 text-[#06B6D4]"
 								aria-hidden="true"
@@ -129,27 +127,8 @@ export default function IndexPage() {
 					</div>
 				</section>
 
-				<section className="w-full space-y-4 md:block">
-					<div className="mx-auto w-full max-w-4xl">
-						<LatestComponentVertical />
-					</div>
-
-					<div className="mx-auto max-w-4xl">
-						<WhatsIncluded />
-					</div>
-
-					<div className="mx-auto max-w-4xl">
-						<MiniBlocksGrid />
-					</div>
-
-					<div className="mx-auto max-w-4xl">
-						<TemplateGrid />
-					</div>
-
-					<div className="mx-auto max-w-4xl">
-						<PlugCardGrid />
-					</div>
-				</section>
+				{/* <HomeBelowHeroLayoutDefault /> */}
+				<HomeBelowHeroLayoutAlternate />
 				<Footer />
 			</div>
 		</div>

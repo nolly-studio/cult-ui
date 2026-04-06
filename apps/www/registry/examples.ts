@@ -321,6 +321,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "edge-blur-demo",
+    type: "registry:component",
+    registryDependencies: ["edge-blur"],
+    files: [
+      {
+        path: "registry/default/example/edge-blur-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
     name: "popover-form-demo",
     type: "registry:component",
     registryDependencies: ["popover-form"],
@@ -492,6 +503,39 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "registry/default/example/stripe-bg-guides-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "svg-shapes-demo",
+    type: "registry:component",
+    registryDependencies: ["svg-shapes"],
+    files: [
+      {
+        path: "registry/default/example/svg-shapes-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "svg-shapes-animated-demo",
+    type: "registry:component",
+    registryDependencies: ["svg-shapes-animated"],
+    files: [
+      {
+        path: "registry/default/example/svg-shapes-animated-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "svg-bands-demo",
+    type: "registry:component",
+    registryDependencies: ["svg-bands"],
+    files: [
+      {
+        path: "registry/default/example/svg-bands-demo.tsx",
         type: "registry:component",
       },
     ],

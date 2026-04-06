@@ -19,6 +19,8 @@ import {
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { PixelHeading } from "./pixel-heading-word";
+import { Icons } from "../icons";
+import { GlowHeading } from "./glow-heading";
 
 // ---------------------------------------------------------------------------
 // Inline SVG Icon Components (only the icons used by the 6 featured blocks)
@@ -734,21 +736,15 @@ function TemplateCard({
 
 	return (
 		<a
-			className="group relative flex flex-col overflow-hidden border border-border bg-background transition-all duration-150 hover:border-foreground/40 hover:shadow-lg hover:shadow-primary/5"
+			className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-background transition-all duration-150 "
 			target="_blank"
 			rel="noopener noreferrer"
 			href={`https://aisdkagents.com/templates/${slug}`}
 		>
-			{/* Corner accents */}
-			<div className="-top-px -left-px pointer-events-none absolute h-3 w-3 border-primary/50 border-t-2 border-l-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
-			<div className="-top-px -right-px pointer-events-none absolute h-3 w-3 border-primary/50 border-t-2 border-r-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
-			<div className="-bottom-px -left-px pointer-events-none absolute h-3 w-3 border-primary/50 border-b-2 border-l-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
-			<div className="-bottom-px -right-px pointer-events-none absolute h-3 w-3 border-primary/50 border-r-2 border-b-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
-
 			{/* Image Preview */}
 			<div className="relative aspect-[16/10] w-full overflow-hidden border-border border-b bg-muted/20">
 				{imgError || !previewImage ? (
-					<div className="flex h-full items-center justify-center font-mono text-[10px] text-muted-foreground uppercase tracking-wider">
+					<div className="flex h-full items-center justify-center font-pixel-square text-[10px] text-muted-foreground uppercase tracking-wider">
 						<span>Template Preview</span>
 					</div>
 				) : (
@@ -764,8 +760,8 @@ function TemplateCard({
 
 				{/* NEW badge */}
 				{isNew && (
-					<div className="absolute top-0 left-0 border-border border-r border-b bg-primary px-2 py-1">
-						<span className="font-medium font-mono text-[10px] text-primary-foreground uppercase tracking-wider">
+					<div className="absolute top-0 left-0 rounded-br-md border-border border-r border-b bg-primary px-2 py-1">
+						<span className="font-medium font-pixel-square text-[10px] text-primary-foreground uppercase tracking-wider">
 							New
 						</span>
 					</div>
@@ -788,14 +784,14 @@ function TemplateCard({
 				<div className="mb-3 flex flex-wrap gap-1.5">
 					{stack.slice(0, 4).map((tech) => (
 						<span
-							className="border border-border bg-muted/30 px-2 py-0.5 font-mono text-[10px] text-muted-foreground lowercase transition-colors group-hover:border-foreground/20"
+							className="rounded-md border border-border bg-muted/30 px-2 py-0.5 font-pixel-square text-[10px] text-muted-foreground lowercase transition-colors group-hover:border-foreground/20"
 							key={tech}
 						>
 							{tech}
 						</span>
 					))}
 					{stack.length > 4 && (
-						<span className="px-1 font-mono text-[10px] text-muted-foreground/60">
+						<span className="px-1 font-pixel-square text-[10px] text-muted-foreground/60">
 							+{stack.length - 4}
 						</span>
 					)}
@@ -803,12 +799,12 @@ function TemplateCard({
 
 				{/* Footer */}
 				<div className="flex items-center justify-between border-border border-t pt-3">
-					<span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">
+					<span className="font-pixel-square text-[10px] text-muted-foreground uppercase tracking-wider">
 						Full-Stack Template
 					</span>
 
 					{/* View link */}
-					<span className="flex items-center gap-1 font-mono text-[10px] text-muted-foreground uppercase tracking-wider transition-colors group-hover:text-primary">
+					<span className="flex items-center gap-1 font-pixel-square text-[10px] text-muted-foreground uppercase tracking-wider transition-colors group-hover:text-primary">
 						View
 						<HugeiconsIcon
 							className="size-3 transition-transform group-hover:translate-x-0.5"
@@ -896,21 +892,17 @@ function FeaturedPatternCard({
 
 	return (
 		<a
-			className="group relative flex flex-col border border-border bg-background transition-all duration-150 hover:border-foreground/10 hover:shadow-lg hover:shadow-primary/5"
+			className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-background transition-all duration-150 "
 			target="_blank"
 			rel="noopener noreferrer"
 			href={`https://aisdkagents.com${href}`}
 		>
 			{/* Corner accents */}
-			<div className="-top-px -left-px pointer-events-none absolute h-3 w-3 border-primary/50 border-t-2 border-l-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
-			<div className="-top-px -right-px pointer-events-none absolute h-3 w-3 border-primary/50 border-t-2 border-r-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
-			<div className="-bottom-px -left-px pointer-events-none absolute h-3 w-3 border-primary/50 border-b-2 border-l-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
-			<div className="-bottom-px -right-px pointer-events-none absolute h-3 w-3 border-primary/50 border-r-2 border-b-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
 
 			{/* Image Preview */}
 			<div className="relative aspect-[16/10] w-full overflow-hidden border-border border-b bg-muted/20">
 				{imgError ? (
-					<div className="flex h-full items-center justify-center font-mono text-[10px] text-muted-foreground uppercase tracking-wider">
+					<div className="flex h-full items-center justify-center font-pixel-square text-[10px] text-muted-foreground uppercase tracking-wider">
 						<span>Preview</span>
 					</div>
 				) : (
@@ -936,10 +928,10 @@ function FeaturedPatternCard({
 
 				{/* Complexity badge */}
 				{complexityInfo && (
-					<div className="absolute top-0 right-0 border-border border-b border-l bg-background/95 px-2 py-1 backdrop-blur-sm">
+					<div className="absolute top-0 right-0 rounded-bl-md border-border border-b border-l bg-background/95 px-2 py-1 backdrop-blur-sm">
 						<span
 							className={cn(
-								"font-medium font-mono text-[10px] uppercase tracking-wider",
+								"font-medium font-pixel-square text-[10px] uppercase tracking-wider",
 								complexityInfo.color,
 							)}
 						>
@@ -966,14 +958,14 @@ function FeaturedPatternCard({
 					<div className="mb-3 flex flex-wrap gap-1">
 						{tags.slice(0, 2).map((tag) => (
 							<span
-								className="border border-border px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground lowercase transition-colors group-hover:border-foreground/20"
+								className="rounded-md border border-border px-1.5 py-0.5 font-pixel-square text-[10px] text-muted-foreground lowercase transition-colors group-hover:border-foreground/20"
 								key={tag}
 							>
 								{tag}
 							</span>
 						))}
 						{tags.length > 2 && (
-							<span className="px-1 font-mono text-[10px] text-muted-foreground/60">
+							<span className="px-1 font-pixel-square text-[10px] text-muted-foreground/60">
 								+{tags.length - 2}
 							</span>
 						)}
@@ -988,26 +980,26 @@ function FeaturedPatternCard({
 							uniqueIcons.map(({ key, name: iconName, icon: Icon }) => (
 								<Tooltip key={key}>
 									<TooltipTrigger asChild>
-										<div className="flex size-5 items-center justify-center border border-transparent text-muted-foreground transition-all hover:border-border hover:text-foreground">
+										<div className="flex size-5 items-center justify-center rounded-md border border-transparent text-muted-foreground transition-all hover:border-border hover:text-foreground">
 											<Icon className="size-3" />
 										</div>
 									</TooltipTrigger>
 									<TooltipContent side="bottom">
-										<p className="font-mono text-[10px] uppercase tracking-wider">
+										<p className="font-pixel-square text-[10px] uppercase tracking-wider">
 											{iconName}
 										</p>
 									</TooltipContent>
 								</Tooltip>
 							))
 						) : (
-							<span className="font-mono text-[10px] text-muted-foreground/60 uppercase tracking-wider">
+							<span className="font-pixel-square text-[10px] text-muted-foreground/60 uppercase tracking-wider">
 								—
 							</span>
 						)}
 					</div>
 
 					{/* View link */}
-					<span className="flex items-center gap-1 font-mono text-[10px] text-muted-foreground uppercase tracking-wider transition-colors group-hover:text-primary">
+					<span className="flex items-center gap-1 font-pixel-square text-[10px] text-muted-foreground uppercase tracking-wider transition-colors group-hover:text-primary">
 						View
 						<HugeiconsIcon
 							className="size-3 transition-transform group-hover:translate-x-0.5"
@@ -1033,18 +1025,15 @@ export function WhatsIncluded() {
 
 	return (
 		<TooltipProvider>
-			<section className="mx-auto max-w-6xl md:px-4 py-16 md:py-24">
+			<section className="mx-auto max-w-6xl md:px-4 py-16 md:py-24 ">
 				{/* Section Header */}
 				<div className="mb-12 text-center">
 					{/* Section divider */}
 					<div className="mx-auto mb-8 flex max-w-2xl items-center justify-center gap-4">
 						<div className="h-px flex-1 bg-gradient-to-r from-transparent to-border" />
-						<div className="flex items-center gap-2 border border-border bg-background px-4 py-2">
-							<HugeiconsIcon
-								className="size-3.5 md:size-4 fill-[#ADFA1B]/60"
-								icon={ShapeCollectionIcon}
-							/>
-							<span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+						<div className="flex items-center gap-2 rounded-md border border-border bg-background px-4 py-2">
+							<Icons.aisdkAgentsLogo className="size-3.5 md:size-4 fill-[#919191]" />
+							<span className="font-pixel-square text-[11px] uppercase  font-bold text-[#006BFF]">
 								AI SDK AGENTS
 							</span>
 						</div>
@@ -1055,11 +1044,10 @@ export function WhatsIncluded() {
 						as="h2"
 						className="mx-auto mb-4 max-w-3xl font-medium text-3xl tracking-tight md:text-4xl lg:text-5xl"
 						initialFont="square"
-						hoverFont="line"
 						disableCycling
 						disableHover
 					>
-						{TOTAL_PATTERN_COUNT}+ AI Patterns
+						{TOTAL_PATTERN_COUNT}+ AI Blocks
 					</PixelHeading>
 
 					<p className="mx-auto max-w-md px-4 md:px-0 font-light text-base text-foreground/70 leading-relaxed md:text-lg">
@@ -1069,7 +1057,7 @@ export function WhatsIncluded() {
 				</div>
 
 				{/* Featured Patterns Grid */}
-				<div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+				<div className=" grid gap-4 rounded-xl m-2 sm:m-0 bg-muted p-2 shadow-elevation-light sm:grid-cols-2 lg:grid-cols-3">
 					{FEATURED_BLOCKS.map((block) => (
 						<FeaturedPatternCard
 							aiSdkApis={block.aiSdkApis}
@@ -1087,9 +1075,9 @@ export function WhatsIncluded() {
 				</div>
 
 				{/* View All Link */}
-				<div className="flex justify-center">
+				<div className="flex justify-center mt-8">
 					<a
-						className="group flex items-center gap-2 border border-border bg-background px-6 py-3 font-mono text-sm uppercase tracking-wider transition-all hover:border-foreground/40 hover:bg-foreground hover:text-background"
+						className="group flex items-center gap-2 rounded-md border border-border bg-background px-6 py-3 font-pixel-square text-sm uppercase tracking-wider transition-all hover:border-foreground/40 hover:bg-foreground hover:text-background"
 						href="https://aisdkagents.com/directory"
 						target="_blank"
 						rel="noopener noreferrer"
@@ -1108,13 +1096,10 @@ export function WhatsIncluded() {
 					<div className="mb-12 text-center">
 						{/* Index marker */}
 						<div className="mx-auto mb-6 flex max-w-2xl items-center justify-center gap-4">
-							<div className="flex items-center gap-2 border border-primary/30  px-3 py-1.5">
-								<HugeiconsIcon
-									className="size-3.5 md:size-4 fill-[#ADFA1B]/40"
-									icon={Layers01Icon}
-								/>
-								<span className="font-mono text-[11px] text-primary uppercase tracking-wider">
-									AI SDK AGENT TEMPLATES
+							<div className="flex items-center gap-2 rounded-md border border-primary/30  px-3 py-1.5">
+								<Icons.aisdkAgentsLogo className="size-3.5 md:size-4 fill-[#919191]" />
+								<span className="font-pixel-square text-[11px] uppercase  font-bold text-[#006BFF]">
+									AI SDK AGENTS
 								</span>
 							</div>
 						</div>
@@ -1137,7 +1122,7 @@ export function WhatsIncluded() {
 					</div>
 
 					{/* Templates Grid - 2 columns */}
-					<div className="mb-8 grid gap-4 md:grid-cols-2">
+					<div className=" grid gap-4 rounded-xl bg-muted m-2 sm:m-0 p-2 shadow-elevation-light md:grid-cols-2">
 						{sortedTemplates.map((template) => (
 							<TemplateCard
 								description={template.description}
@@ -1152,9 +1137,9 @@ export function WhatsIncluded() {
 					</div>
 
 					{/* View All Templates Link */}
-					<div className="flex justify-center">
+					<div className="flex justify-center mt-8">
 						<a
-							className="group flex items-center gap-2 border border-primary/30 bg-primary/5 px-6 py-3 font-mono text-sm uppercase tracking-wider transition-all hover:border-primary/60 hover:bg-primary hover:text-primary-foreground"
+							className="group flex items-center gap-2 rounded-md border border-border bg-background px-6 py-3 font-pixel-square text-sm uppercase tracking-wider transition-all hover:border-foreground/40 hover:bg-foreground hover:text-background"
 							target="_blank"
 							rel="noopener noreferrer"
 							href="https://aisdkagents.com/templates"

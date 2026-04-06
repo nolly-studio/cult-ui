@@ -10,6 +10,7 @@ import manifestBottomLeft from "@/components/landing/assets/manifest-library.png
 import runeHero from "@/components/landing/assets/rune-hero.png";
 import travelStash4 from "@/components/landing/assets/travel-stash.png";
 import { PixelHeading } from "./pixel-heading-word";
+import { Icons } from "../icons";
 
 export function TemplateGrid() {
 	return (
@@ -19,10 +20,10 @@ export function TemplateGrid() {
 				{/* Sub-section marker */}
 				<div className="mx-auto mb-8 flex max-w-xl items-center justify-center gap-4">
 					<div className="h-px flex-1 bg-border/60" />
-					<div className="flex items-center gap-2 border border-border/60 bg-background px-3 py-1.5">
-						<IceCream className="size-3.5 md:size-4 fill-[#ADFA1B]/50" />
-						<span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-							TEMPLATES
+					<div className="flex items-center gap-2 rounded-md border border-border/60 bg-background px-3 py-1.5">
+						<Icons.cultLogoBasic className="size-3.5 md:size-4 fill-black/50" />
+						<span className="font-pixel-square text-[11px] font-bold text-[#FF6BFF] uppercase">
+							CULT PRO
 						</span>
 					</div>
 					<div className="h-px flex-1 bg-border/60" />
@@ -45,7 +46,7 @@ export function TemplateGrid() {
 			</div>
 
 			{/* Templates Grid */}
-			<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+			<div className="grid gap-4 sm:grid-cols-2 m-2 sm:m-0 lg:grid-cols-3 bg-muted rounded-lg p-2 shadow-elevation-light">
 				{TEMPLATES_GRID.map((card) => (
 					<ProTemplateCard key={card.slug} card={card} />
 				))}
@@ -63,18 +64,12 @@ function ProTemplateCard({ card }: { card: (typeof TEMPLATES_GRID)[number] }) {
 			target="_blank"
 			rel="noopener noreferrer"
 			href={card.slug}
-			className="group relative flex flex-col overflow-hidden border border-border bg-background transition-all duration-150 hover:border-foreground/40 hover:shadow-lg hover:shadow-primary/5"
+			className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-background transition-all duration-150 "
 		>
-			{/* Corner accents */}
-			<div className="-top-px -left-px pointer-events-none absolute h-3 w-3 border-primary/50 border-t-2 border-l-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
-			<div className="-top-px -right-px pointer-events-none absolute h-3 w-3 border-primary/50 border-t-2 border-r-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
-			<div className="-bottom-px -left-px pointer-events-none absolute h-3 w-3 border-primary/50 border-b-2 border-l-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
-			<div className="-bottom-px -right-px pointer-events-none absolute h-3 w-3 border-primary/50 border-r-2 border-b-2 opacity-0 transition-all duration-200 group-hover:opacity-100" />
-
 			{/* Image Preview */}
 			<div className="relative aspect-[16/10] w-full overflow-hidden border-border border-b bg-muted/20">
 				{imgError || !previewImage ? (
-					<div className="flex h-full items-center justify-center font-mono text-[10px] text-muted-foreground uppercase tracking-wider">
+					<div className="flex h-full items-center justify-center font-pixel-square text-[10px] text-muted-foreground uppercase tracking-wider">
 						<span>Template Preview</span>
 					</div>
 				) : (
@@ -91,7 +86,7 @@ function ProTemplateCard({ card }: { card: (typeof TEMPLATES_GRID)[number] }) {
 				{/* NEW badge */}
 				{/* {card.new && (
           <div className="absolute top-0 left-0 border-border border-r border-b bg-primary px-2 py-1">
-            <span className="font-medium font-mono text-[10px] text-primary-foreground uppercase tracking-wider">
+            <span className="font-medium font-pixel-square text-[10px] text-primary-foreground uppercase tracking-wider">
               New
             </span>
           </div>
@@ -114,14 +109,14 @@ function ProTemplateCard({ card }: { card: (typeof TEMPLATES_GRID)[number] }) {
 				<div className="mb-3 flex flex-wrap gap-1.5">
 					{card.stack.slice(0, 4).map((tech) => (
 						<span
-							className="border border-border bg-muted/30 px-2 py-0.5 font-mono text-[10px] text-muted-foreground lowercase transition-colors group-hover:border-foreground/20"
+							className="rounded-md border border-border bg-muted/30 px-2 py-0.5 font-pixel-square text-[10px] text-muted-foreground lowercase transition-colors group-hover:border-foreground/20"
 							key={tech}
 						>
 							{tech}
 						</span>
 					))}
 					{card.stack.length > 4 && (
-						<span className="px-1 font-mono text-[10px] text-muted-foreground/60">
+						<span className="px-1 font-pixel-square text-[10px] text-muted-foreground/60">
 							+{card.stack.length - 4}
 						</span>
 					)}
@@ -129,11 +124,11 @@ function ProTemplateCard({ card }: { card: (typeof TEMPLATES_GRID)[number] }) {
 
 				{/* Footer */}
 				<div className="flex items-center justify-between border-border border-t pt-3">
-					<span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">
+					<span className="font-pixel-square text-[10px] text-muted-foreground uppercase tracking-wider">
 						Full-Stack Template
 					</span>
 
-					<span className="flex items-center gap-1 font-mono text-[10px] text-muted-foreground uppercase tracking-wider transition-colors group-hover:text-primary">
+					<span className="flex items-center gap-1 font-pixel-square text-[10px] text-muted-foreground uppercase tracking-wider transition-colors group-hover:text-primary">
 						View
 						<ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
 					</span>

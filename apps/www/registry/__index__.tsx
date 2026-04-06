@@ -733,6 +733,31 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "edge-blur": {
+    name: "edge-blur",
+    description:
+      "Stacked backdrop-blur layers with a gradient mask for soft top or bottom screen edges",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/edge-blur.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/edge-blur.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "popover-form": {
     name: "popover-form",
     description:
@@ -1123,6 +1148,81 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/default/ui/stripe-bg-guides.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "svg-shapes": {
+    name: "svg-shapes",
+    description:
+      "Wide-aspect SVG shape and panel components for backgrounds and hero decorations",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/svg-shapes.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/svg-shapes.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "svg-shapes-animated": {
+    name: "svg-shapes-animated",
+    description:
+      "Scroll-triggered stroke-draw animations for wide SVG shapes and panels using Motion",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/svg-shapes-animated.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/svg-shapes-animated.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "svg-bands": {
+    name: "svg-bands",
+    description:
+      "Wide SVG section bands, battlement and zigzag trims, steep hero edges, and ornamental frames",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/default/ui/svg-bands.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/ui/svg-bands.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -2429,6 +2529,30 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "edge-blur-demo": {
+    name: "edge-blur-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["edge-blur"],
+    files: [
+      {
+        path: "registry/default/example/edge-blur-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/example/edge-blur-demo.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "popover-form-demo": {
     name: "popover-form-demo",
     description: "",
@@ -2829,6 +2953,80 @@ export const Index: Record<string, any> = {
       const mod = await import(
         "@/registry/default/example/stripe-bg-guides-demo.tsx"
       )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "svg-shapes-demo": {
+    name: "svg-shapes-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["svg-shapes"],
+    files: [
+      {
+        path: "registry/default/example/svg-shapes-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/example/svg-shapes-demo.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "svg-shapes-animated-demo": {
+    name: "svg-shapes-animated-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["svg-shapes-animated"],
+    files: [
+      {
+        path: "registry/default/example/svg-shapes-animated-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/default/example/svg-shapes-animated-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "svg-bands-demo": {
+    name: "svg-bands-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["svg-bands"],
+    files: [
+      {
+        path: "registry/default/example/svg-bands-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/example/svg-bands-demo.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
