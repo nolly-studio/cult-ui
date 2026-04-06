@@ -6,8 +6,16 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  // Docs MDX and the registry JSON route need the full registry tree in the trace;
+  // avoid applying this to every route (reduces serverless bundle surface).
   outputFileTracingIncludes: {
-    "/*": ["./registry/**/*"],
+    "/docs/[[...slug]]": ["./registry/**/*"],
+    "/registry/[name]": ["./registry/**/*"],
+  },
+  // `public/` holds large block preview PNGs; tracing them into the docs Lambda
+  // exceeds Vercel's 250MB limit. Static files are still deployed separately.
+  outputFileTracingExcludes: {
+    "*": ["./public/**/*"],
   },
   images: {
     remotePatterns: [

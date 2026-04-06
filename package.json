@@ -37,6 +37,12 @@
     "registry:build": "pnpm --filter=www registry:build"
   },
   "packageManager": "pnpm@9.0.4",
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.2.2",
+      "@types/react-dom": "19.2.2"
+    }
+  },
   "dependencies": {
     "@babel/core": "^7.22.1",
     "@changesets/changelog-github": "^0.4.8",
