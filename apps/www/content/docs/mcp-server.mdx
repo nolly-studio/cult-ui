@@ -28,6 +28,7 @@ Select your MCP client and follow the instructions to configure the shadcn MCP s
     <TabsTrigger value="claude">Claude Code</TabsTrigger>
     <TabsTrigger value="cursor">Cursor</TabsTrigger>
     <TabsTrigger value="vscode">VS Code</TabsTrigger>
+    <TabsTrigger value="opencode">OpenCode</TabsTrigger>
   </TabsList>
   <TabsContent value="claude" className="mt-4">
     **Run the following command** in your project:
@@ -69,6 +70,20 @@ Select your MCP client and follow the instructions to configure the shadcn MCP s
        - Create a contact form using components from the shadcn registry
 
   </TabsContent>
+
+  <TabsContent value="opencode" className="mt-4">
+    **Run the following command** in your project:
+       ```bash
+       npx shadcn@latest mcp init --client opencode
+       ```
+
+    **Restart OpenCode** and try the following prompts:
+       - Show me all available components in the shadcn registry
+       - Add the button, dialog and card components to my project
+       - Create a contact form using components from the shadcn registry
+
+  </TabsContent>
+
 </Tabs>
 
 ---
@@ -168,6 +183,29 @@ To configure MCP in VS Code with GitHub Copilot, add the shadcn server to your p
 After adding the configuration, open `.vscode/mcp.json` and click **Start** next to the shadcn server.
 
 See the [VS Code MCP documentation](https://code.visualstudio.com/docs/copilot/chat/mcp-servers) for more details.
+
+### OpenCode
+
+To configure MCP in OpenCode, add the shadcn server to your project's `opencode.jsonc` configuration file:
+
+```jsonc title="opencode.jsonc" showLineNumbers
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "shadcn": {
+      "type": "local",
+      "command": ["npx", "-y", "shadcn@latest", "mcp"],
+      "enabled": true
+    }
+  }
+}
+```
+
+After adding the configuration, restart OpenCode.
+
+You can verify the server is available with `opencode mcp list`.
+
+See the [OpenCode MCP documentation](https://opencode.ai/docs/mcp-servers/) for more details.
 
 ---
 
@@ -278,4 +316,5 @@ If you see the `No tools or prompts` message, try the following:
 - [Registry Documentation](/docs/registry) - Complete guide to shadcn registries
 - [Namespaces](/docs/registry/namespace) - Configure multiple registry sources
 - [Authentication](/docs/registry/authentication) - Secure your private registries
+- [OpenCode MCP documentation](https://opencode.ai/docs/mcp-servers/) - Configure MCP servers in OpenCode
 - [MCP Specification](https://modelcontextprotocol.io) - Learn about Model Context Protocol
