@@ -11,6 +11,7 @@ import {
   PopoverFormSeparator,
   PopoverFormSuccess,
 } from "@/registry/default/ui/popover-form"
+import { useTheme } from "next-themes"
 
 type FormState = "idle" | "loading" | "success"
 
@@ -107,34 +108,9 @@ export function NewsletterSignupExample() {
 type Theme = "light" | "dark" | "system"
 
 export function ColorThemeSwitcherExample() {
-  const [theme, setTheme] = useState<Theme>("system")
-  const [systemTheme, setSystemTheme] = useState<"light" | "dark">("light")
+  const { theme, setTheme, resolvedTheme } = useTheme()
   const [open, setOpen] = useState(false)
   const themes: Theme[] = ["light", "dark", "system"]
-
-  useEffect(() => {
-    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)")
-    const updateSystemTheme = () => {
-      setSystemTheme(systemPrefersDark.matches ? "dark" : "light")
-    }
-
-    updateSystemTheme()
-    systemPrefersDark.addEventListener("change", updateSystemTheme)
-
-    return () => {
-      systemPrefersDark.removeEventListener("change", updateSystemTheme)
-    }
-  }, [])
-
-  useEffect(() => {
-    const root = window.document.documentElement
-    root.classList.remove("light", "dark")
-    if (theme === "system") {
-      root.classList.add(systemTheme)
-    } else {
-      root.classList.add(theme)
-    }
-  }, [theme, systemTheme])
 
   return (
     <div className="flex w-full items-center justify-center">
@@ -151,11 +127,11 @@ export function ColorThemeSwitcherExample() {
             <h3 className="text-sm tracking-tight text-muted-foreground">
               Theme
             </h3>
-
             <div className="pt-2 space-y-2">
               {themes.map((t) => {
                 const isSelected = theme === t
-                const effectiveTheme = t === "system" ? systemTheme : t
+                const effectiveTheme =
+                  t === "system" ? resolvedTheme : t
                 return (
                   <button
                     key={t}
