@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { Check, ChevronDown } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
 
@@ -77,15 +77,16 @@ const trimColorString = (color: string, maxLength: number = 20): string => {
 }
 
 export function ColorPicker({
-  color,
+  color = "#000000",
   onChange,
 }: {
-  color: string
-  onChange: (color: string) => void
-}) {
+  color?: string
+  onChange?: (color: string) => void
+} = {}) {
   const [hsl, setHsl] = useState<[number, number, number]>([0, 0, 0])
   const [colorInput, setColorInput] = useState(color)
   const [isOpen, setIsOpen] = useState(false)
+  const paletteRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     handleColorChange(color)
@@ -105,7 +106,9 @@ export function ColorPicker({
     }
 
     setHsl([h, s, l])
-    onChange(`hsl(${h.toFixed(1)}, ${s.toFixed(1)}%, ${l.toFixed(1)}%)`)
+    if (onChange) {
+      onChange(`hsl(${h.toFixed(1)}, ${s.toFixed(1)}%, ${l.toFixed(1)}%)`)
+    }
   }
 
   const handleHueChange = (hue: number) => {
@@ -114,17 +117,29 @@ export function ColorPicker({
     handleColorChange(`hsl(${newHsl[0]}, ${newHsl[1]}%, ${newHsl[2]}%)`)
   }
 
-  const handleSaturationLightnessChange = (
-    event: React.MouseEvent<HTMLDivElement>
-  ) => {
-    const rect = event.currentTarget.getBoundingClientRect()
-    const x = event.clientX - rect.left
-    const y = event.clientY - rect.top
+  const updateColorFromMouse = (clientX: number, clientY: number) => {
+    if (!paletteRef.current) return
+
+    const rect = paletteRef.current.getBoundingClientRect()
+    const x = Math.max(0, Math.min(clientX - rect.left, rect.width))
+    const y = Math.max(0, Math.min(clientY - rect.top, rect.height))
+
     const s = Math.round((x / rect.width) * 100)
     const l = Math.round(100 - (y / rect.height) * 100)
+
     const newHsl: [number, number, number] = [hsl[0], s, l]
     setHsl(newHsl)
     handleColorChange(`hsl(${newHsl[0]}, ${newHsl[1]}%, ${newHsl[2]}%)`)
+  }
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    e.currentTarget.setPointerCapture(e.pointerId)
+    updateColorFromMouse(e.clientX, e.clientY)
+  }
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.buttons !== 1) return
+    updateColorFromMouse(e.clientX, e.clientY)
   }
 
   const handleColorInputChange = (
@@ -179,18 +194,20 @@ export function ColorPicker({
           className="space-y-3"
         >
           <motion.div
-            className="w-full h-40 rounded-lg cursor-crosshair relative overflow-hidden"
+            ref={paletteRef}
+            className="w-full h-40 rounded-lg cursor-crosshair relative overflow-hidden touch-none"
             style={{
               background: `
-                linear-gradient(to top, rgba(0, 0, 0, 1), transparent),
-                linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 0, 0, 0)),
-                hsl(${hsl[0]}, 100%, 50%)
-              `,
+      linear-gradient(to top, rgba(0, 0, 0, 1), transparent),
+      linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 0, 0, 0)),
+      hsl(${hsl[0]}, 100%, 50%)
+    `,
             }}
-            onClick={handleSaturationLightnessChange}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
           >
             <motion.div
-              className="w-4 h-4 rounded-full border-2 border-white absolute shadow-md"
+              className="w-4 h-4 border-2 rounded-full border-white absolute shadow-md -translate-x-1/2 -translate-y-1/2"
               style={{
                 left: `${hsl[1]}%`,
                 top: `${100 - hsl[2]}%`,
