@@ -9,7 +9,7 @@ try {
   const pkg = JSON.parse(fs.readFileSync(pkgJsonPath))
   exec("git rev-parse --short HEAD", (err, stdout) => {
     if (err) {
-      console.log(err)
+      console.error(err)
       process.exit(1)
     }
     pkg.version = "0.0.0-next." + stdout.trim()
