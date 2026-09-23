@@ -30,7 +30,7 @@ export function MainNav() {
         </Link>
 
         <a
-          href="https://aisdkagents.com/patterns"
+          href="https://aisdkagents.com/patterns/spreadsheet-agent"
           //  biome-ignore lint/security/noBlankTarget: we want to open the link in a new tab
           target="_blank"
           // rel="noopener noreferrer"

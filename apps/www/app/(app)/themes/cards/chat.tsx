@@ -20,12 +20,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import {
   TextureCard,
@@ -129,7 +124,7 @@ export function CardsChat() {
                   "flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm",
                   message.role === "user"
                     ? "bg-primary text-primary-foreground ml-auto"
-                    : "bg-muted"
+                    : "bg-muted",
                 )}
               >
                 {message.content}
@@ -173,8 +168,7 @@ export function CardsChat() {
           <DialogHeader className="px-4 pt-5 pb-4">
             <DialogTitle>New message</DialogTitle>
             <DialogDescription>
-              Invite a user to this thread. This will create a new group
-              message.
+              Invite a user to this thread. This will create a new group message.
             </DialogDescription>
           </DialogHeader>
           <Command className="overflow-hidden rounded-t-none border-t">
@@ -189,16 +183,12 @@ export function CardsChat() {
                     onSelect={() => {
                       if (selectedUsers.includes(user)) {
                         return setSelectedUsers(
-                          selectedUsers.filter(
-                            (selectedUser) => selectedUser !== user
-                          )
+                          selectedUsers.filter((selectedUser) => selectedUser !== user),
                         );
                       }
 
                       return setSelectedUsers(
-                        [...users].filter((u) =>
-                          [...selectedUsers, user].includes(u)
-                        )
+                        [...users].filter((u) => [...selectedUsers, user].includes(u)),
                       );
                     }}
                   >
@@ -207,12 +197,8 @@ export function CardsChat() {
                       <AvatarFallback>{user.name[0]}</AvatarFallback>
                     </Avatar>
                     <div className="ml-2">
-                      <p className="text-sm leading-none font-medium">
-                        {user.name}
-                      </p>
-                      <p className="text-muted-foreground text-sm">
-                        {user.email}
-                      </p>
+                      <p className="text-sm leading-none font-medium">{user.name}</p>
+                      <p className="text-muted-foreground text-sm">{user.email}</p>
                     </div>
                     {selectedUsers.includes(user) ? (
                       <Check className="text-primary ml-auto flex size-5" />
@@ -226,19 +212,14 @@ export function CardsChat() {
             {selectedUsers.length > 0 ? (
               <div className="flex -space-x-2 overflow-hidden">
                 {selectedUsers.map((user) => (
-                  <Avatar
-                    key={user.email}
-                    className="border-background inline-block border-2"
-                  >
+                  <Avatar key={user.email} className="border-background inline-block border-2">
                     <AvatarImage src={user.avatar} />
                     <AvatarFallback>{user.name[0]}</AvatarFallback>
                   </Avatar>
                 ))}
               </div>
             ) : (
-              <p className="text-muted-foreground text-sm">
-                Select users to add to this thread.
-              </p>
+              <p className="text-muted-foreground text-sm">Select users to add to this thread.</p>
             )}
             <Button
               disabled={selectedUsers.length < 2}
