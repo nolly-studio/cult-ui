@@ -1,10 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "shift-card-demo",
-  "registryDependencies": [
-    "shift-card",
-    "texture-button"
-  ],
+  "registryDependencies": ["shift-card", "texture-button"],
   "files": [
     {
       "path": "registry/default/example/shift-card-demo.tsx",

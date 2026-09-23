@@ -36,16 +36,27 @@ npx shadcn@latest add https://cult-ui.com/r/cosmic-button.json
 
 <ComponentSource name="cosmic-button" />
 
-<Step>Add the required keyframes and utilities to your global CSS (e.g. globals.css):</Step>
+<Step>
+  Add the required keyframes and utilities to your global CSS (e.g.
+  globals.css):
+</Step>
 
 ```css
 @keyframes cosmic-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 @keyframes cosmic-spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(-360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
 }
 /* If using Tailwind v4 @theme: */
 /* --animate-cosmic-spin: cosmic-spin 3s linear infinite; */

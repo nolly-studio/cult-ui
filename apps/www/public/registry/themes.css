@@ -1,4 +1,3 @@
-
 .theme-zinc {
   --background: 0 0% 100%;
   --foreground: 240 10% 3.9%;
@@ -777,7 +776,7 @@
   --popover: 0 0% 100%;
   --popover-foreground: 140 25% 15%;
 
-  --card: linear-gradient(to bottom right, #FFFFFF, #E0E0E0);
+  --card: linear-gradient(to bottom right, #ffffff, #e0e0e0);
   --card-foreground: 140 25% 15%;
 
   --border: 140 25% 85%;

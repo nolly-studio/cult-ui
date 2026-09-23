@@ -1,8 +1,6 @@
 {
   "name": "progress",
-  "dependencies": [
-    "@radix-ui/react-progress"
-  ],
+  "dependencies": ["@radix-ui/react-progress"],
   "files": [
     {
       "name": "progress.tsx",

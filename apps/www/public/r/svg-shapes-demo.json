@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "svg-shapes-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "svg-shapes"
-  ],
+  "registryDependencies": ["svg-shapes"],
   "files": [
     {
       "path": "registry/default/example/svg-shapes-demo.tsx",

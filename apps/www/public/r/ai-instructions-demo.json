@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "ai-instructions-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "ai-instructions"
-  ],
+  "registryDependencies": ["ai-instructions"],
   "files": [
     {
       "path": "registry/default/example/ai-instructions-demo.tsx",

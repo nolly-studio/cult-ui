@@ -1,6 +1,5 @@
-"use client"
+"use client";
 
-import * as React from "react"
 import {
   CheckIcon,
   CopyIcon,
@@ -8,14 +7,15 @@ import {
   MoonIcon,
   ResetIcon,
   SunIcon,
-} from "@radix-ui/react-icons"
-import template from "lodash.template"
-import { Paintbrush } from "lucide-react"
-import { useTheme } from "next-themes"
+} from "@radix-ui/react-icons";
+import template from "lodash.template";
+import { Paintbrush } from "lucide-react";
+import { useTheme } from "next-themes";
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
-import { useConfig } from "@/hooks/use-config"
-import { Button } from "@/components/ui/button"
+import { copyToClipboardWithMeta } from "@/components/copy-button";
+import { ThemeWrapper } from "@/components/theme-wrapper";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -23,35 +23,35 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/dialog";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import { Label } from "@/components/ui/label";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
-import { Skeleton } from "@/components/ui/skeleton"
-import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { ThemeWrapper } from "@/components/theme-wrapper"
-import { Theme, themes } from "@/registry/themes"
-
-import "@/styles/mdx.css"
-
+} from "@/components/ui/popover";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
+import { useConfig } from "@/hooks/use-config";
+import { cn } from "@/lib/utils";
+
+import "@/styles/mdx.css";
+
+import { Theme, themes } from "@/registry/themes";
 
 export function ThemeCustomizer() {
-  const [config, setConfig] = useConfig()
-  const { resolvedTheme: mode } = useTheme()
-  const [mounted, setMounted] = React.useState(false)
+  const [config, setConfig] = useConfig();
+  const { resolvedTheme: mode } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   return (
     <div className="flex items-center space-x-2">
@@ -71,11 +71,11 @@ export function ThemeCustomizer() {
           {mounted ? (
             <>
               {["zinc", "rose", "blue", "green", "orange"].map((color) => {
-                const theme = themes.find((theme) => theme.name === color)
-                const isActive = config.theme === color
+                const theme = themes.find((theme) => theme.name === color);
+                const isActive = config.theme === color;
 
                 if (!theme) {
-                  return null
+                  return null;
                 }
 
                 return (
@@ -123,7 +123,7 @@ export function ThemeCustomizer() {
                       {theme.label}
                     </TooltipContent>
                   </Tooltip>
-                )
+                );
               })}
             </>
           ) : (
@@ -153,17 +153,17 @@ export function ThemeCustomizer() {
       </div>
       <CopyCodeButton />
     </div>
-  )
+  );
 }
 
 function Customizer() {
-  const [mounted, setMounted] = React.useState(false)
-  const { setTheme: setMode, resolvedTheme: mode } = useTheme()
-  const [config, setConfig] = useConfig()
+  const [mounted, setMounted] = React.useState(false);
+  const { setTheme: setMode, resolvedTheme: mode } = useTheme();
+  const [config, setConfig] = useConfig();
 
   React.useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   return (
     <ThemeWrapper
@@ -172,10 +172,10 @@ function Customizer() {
     >
       <div className="flex items-start pt-4 md:pt-0">
         <div className="space-y-1 pr-2">
-          <div className="font-semibold leading-none tracking-tight">
+          <div className="leading-none font-semibold tracking-tight">
             Customize
           </div>
-          <div className="text-xs text-muted-foreground">
+          <div className="text-muted-foreground text-xs">
             Pick a style and color for your components.
           </div>
         </div>
@@ -188,7 +188,7 @@ function Customizer() {
               ...config,
               theme: "zinc",
               radius: 0.5,
-            })
+            });
           }}
         >
           <ResetIcon />
@@ -200,7 +200,7 @@ function Customizer() {
           <Label className="text-xs">Color</Label>
           <div className="grid grid-cols-3 gap-2">
             {themes.map((theme) => {
-              const isActive = config.theme === theme.name
+              const isActive = config.theme === theme.name;
 
               return mounted ? (
                 <Button
@@ -211,11 +211,11 @@ function Customizer() {
                     setConfig({
                       ...config,
                       theme: theme.name,
-                    })
+                    });
                   }}
                   className={cn(
                     "justify-start",
-                    isActive && "border-2 border-primary"
+                    isActive && "border-primary border-2"
                   )}
                   style={
                     {
@@ -236,7 +236,7 @@ function Customizer() {
                 </Button>
               ) : (
                 <Skeleton className="h-8 w-full" key={theme.name} />
-              )
+              );
             })}
           </div>
         </div>
@@ -253,16 +253,16 @@ function Customizer() {
                     setConfig({
                       ...config,
                       radius: parseFloat(value),
-                    })
+                    });
                   }}
                   className={cn(
                     config.radius === parseFloat(value) &&
-                      "border-2 border-primary"
+                      "border-primary border-2"
                   )}
                 >
                   {value}
                 </Button>
-              )
+              );
             })}
           </div>
         </div>
@@ -275,7 +275,7 @@ function Customizer() {
                   variant={"outline"}
                   size="sm"
                   onClick={() => setMode("light")}
-                  className={cn(mode === "light" && "border-2 border-primary")}
+                  className={cn(mode === "light" && "border-primary border-2")}
                 >
                   <SunIcon className="mr-1 -translate-x-1" />
                   Light
@@ -284,7 +284,7 @@ function Customizer() {
                   variant={"outline"}
                   size="sm"
                   onClick={() => setMode("dark")}
-                  className={cn(mode === "dark" && "border-2 border-primary")}
+                  className={cn(mode === "dark" && "border-primary border-2")}
                 >
                   <MoonIcon className="mr-1 -translate-x-1" />
                   Dark
@@ -300,19 +300,19 @@ function Customizer() {
         </div>
       </div>
     </ThemeWrapper>
-  )
+  );
 }
 
 function CopyCodeButton() {
-  const [config] = useConfig()
-  const activeTheme = themes.find((theme) => theme.name === config.theme)
-  const [hasCopied, setHasCopied] = React.useState(false)
+  const [config] = useConfig();
+  const activeTheme = themes.find((theme) => theme.name === config.theme);
+  const [hasCopied, setHasCopied] = React.useState(false);
 
   React.useEffect(() => {
     setTimeout(() => {
-      setHasCopied(false)
-    }, 2000)
-  }, [hasCopied])
+      setHasCopied(false);
+    }, 2000);
+  }, [hasCopied]);
 
   return (
     <>
@@ -325,8 +325,8 @@ function CopyCodeButton() {
                 theme: activeTheme.name,
                 radius: config.radius,
               },
-            })
-            setHasCopied(true)
+            });
+            setHasCopied(true);
           }}
           className="md:hidden"
         >
@@ -364,10 +364,10 @@ function CopyCodeButton() {
                         radius: config.radius,
                       },
                     }
-                  )
-                  setHasCopied(true)
+                  );
+                  setHasCopied(true);
                 }}
-                className="absolute right-4 top-4 bg-muted text-muted-foreground hover:bg-muted hover:text-muted-foreground"
+                className="bg-muted text-muted-foreground hover:bg-muted hover:text-muted-foreground absolute top-4 right-4"
               >
                 {hasCopied ? (
                   <CheckIcon className="mr-2 size-4" />
@@ -381,18 +381,18 @@ function CopyCodeButton() {
         </DialogContent>
       </Dialog>
     </>
-  )
+  );
 }
 
 function CustomizerCode() {
-  const [config] = useConfig()
-  const activeTheme = themes.find((theme) => theme.name === config.theme)
+  const [config] = useConfig();
+  const activeTheme = themes.find((theme) => theme.name === config.theme);
 
   return (
     <ThemeWrapper defaultTheme="zinc" className="relative space-y-4">
       <div data-rehype-pretty-code-fragment="">
         <pre className="max-h-[450px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900">
-          <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
+          <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm">
             <span className="line text-white">@layer base &#123;</span>
             <span className="line text-white">&nbsp;&nbsp;:root &#123;</span>
             <span className="line text-white">
@@ -507,18 +507,18 @@ function CustomizerCode() {
         </pre>
       </div>
     </ThemeWrapper>
-  )
+  );
 }
 
 function getThemeCode(theme: Theme, radius: number) {
   if (!theme) {
-    return ""
+    return "";
   }
 
   return template(BASE_STYLES_WITH_VARIABLES)({
     colors: theme.cssVars,
     radius,
-  })
+  });
 }
 
 const BASE_STYLES_WITH_VARIABLES = `
@@ -568,4 +568,4 @@ const BASE_STYLES_WITH_VARIABLES = `
     --ring: <%- colors.dark["ring"] %>;
   }
 }
-`
+`;

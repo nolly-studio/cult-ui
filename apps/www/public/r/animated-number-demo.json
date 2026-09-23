@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-number-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "animated-number"
-  ],
+  "registryDependencies": ["animated-number"],
   "files": [
     {
       "path": "registry/default/example/animated-number-demo.tsx",

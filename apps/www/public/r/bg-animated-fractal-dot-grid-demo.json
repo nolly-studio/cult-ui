@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "bg-animated-fractal-dot-grid-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "bg-animated-fractal-dot-grid"
-  ],
+  "registryDependencies": ["bg-animated-fractal-dot-grid"],
   "files": [
     {
       "path": "registry/default/example/bg-animated-fractal-dot-grid-demo.tsx",

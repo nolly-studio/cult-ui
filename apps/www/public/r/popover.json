@@ -3,9 +3,7 @@
   "name": "popover",
   "type": "registry:ui",
   "description": "Animated popover component with form support and smooth transitions",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/popover.tsx",

@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "gradient-button-group-demo",
-  "registryDependencies": [
-    "gradient-button-group"
-  ],
+  "registryDependencies": ["gradient-button-group"],
   "files": [
     {
       "path": "registry/default/example/gradient-button-group-demo.tsx",

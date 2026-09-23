@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "bg-animated-gradient-demo",
-  "registryDependencies": [
-    "bg-animated-gradient"
-  ],
+  "registryDependencies": ["bg-animated-gradient"],
   "files": [
     {
       "path": "registry/default/example/bg-animated-gradient-demo.tsx",

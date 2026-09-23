@@ -1,11 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/eslintrc",
   "root": true,
-  "extends": [
-    "next/core-web-vitals",
-    "turbo",
-    "prettier"
-  ],
+  "extends": ["next/core-web-vitals", "turbo", "prettier"],
   "rules": {
     "@next/next/no-html-link-for-pages": "off"
   },

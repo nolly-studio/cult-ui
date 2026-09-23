@@ -18,8 +18,8 @@ const Dialog = ({ className, ...props }: DialogProps) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div
-      data-state={isOpen ? 'open' : 'closed'}
-      className={cn('transition-all', className)}
+      data-state={isOpen ? "open" : "closed"}
+      className={cn("transition-all", className)}
       {...props}
     />
   );
@@ -59,9 +59,9 @@ const Dialog = ({ className, ...props }: DialogProps) => {
 ```tsx
 <Dialog
   className={cn(
-    'rounded-lg border p-4',
-    'data-[state=open]:animate-in data-[state=open]:fade-in',
-    'data-[state=closed]:animate-out data-[state=closed]:fade-out'
+    "rounded-lg border p-4",
+    "data-[state=open]:animate-in data-[state=open]:fade-in",
+    "data-[state=closed]:animate-out data-[state=closed]:fade-out"
   )}
 />
 ```
@@ -125,16 +125,23 @@ data-slot="submit-button"
 
 ### When to Use Each
 
-| Pattern | Use For |
-|---------|---------|
-| `data-state` | Visual states (open/closed, active, loading) |
-| `data-slot` | Component identification, parent-child targeting |
-| `props` | Variants (primary, secondary), sizes, event handlers |
+| Pattern      | Use For                                              |
+| ------------ | ---------------------------------------------------- |
+| `data-state` | Visual states (open/closed, active, loading)         |
+| `data-slot`  | Component identification, parent-child targeting     |
+| `props`      | Variants (primary, secondary), sizes, event handlers |
 
 ### Combined Example
 
 ```tsx
-const Button = ({ variant = 'primary', size = 'md', loading, disabled, className, ...props }: ButtonProps) => {
+const Button = ({
+  variant = "primary",
+  size = "md",
+  loading,
+  disabled,
+  className,
+  ...props
+}: ButtonProps) => {
   return (
     <button
       data-slot="button"
@@ -149,8 +156,10 @@ const Button = ({ variant = 'primary', size = 'md', loading, disabled, className
 
 // Usage
 <form className="[&_[data-slot=button]]:w-full">
-  <Button loading={isLoading} className="data-[loading=true]:opacity-50">Submit</Button>
-</form>
+  <Button loading={isLoading} className="data-[loading=true]:opacity-50">
+    Submit
+  </Button>
+</form>;
 ```
 
 ### Rules

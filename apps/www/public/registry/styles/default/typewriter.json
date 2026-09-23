@@ -1,9 +1,7 @@
 {
   "name": "typewriter",
   "description": "Typewriter effect component with customizable typing speed and cursor animation",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "name": "typewriter.tsx",

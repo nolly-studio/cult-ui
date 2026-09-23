@@ -50,7 +50,7 @@ Use `PromptLibrary` with `prompts`, `onPromptsChange`, and `onSelect`. Compose `
 ### Basic example
 
 ```tsx
-import { useState } from "react"
+import { useState } from "react";
 import {
   PromptLibrary,
   PromptLibraryTrigger,
@@ -64,7 +64,7 @@ import {
   PromptLibraryCreateTrigger,
   PromptLibraryCreateDialog,
   type Prompt,
-} from "@/registry/default/ui/prompt-library"
+} from "@/registry/default/ui/prompt-library";
 
 const prompts: Prompt[] = [
   {
@@ -74,11 +74,11 @@ const prompts: Prompt[] = [
     prompt: "Please review this code for best practices and potential issues.",
     category: "Development",
   },
-]
+];
 
 export default function Example() {
-  const [promptsState, setPromptsState] = useState(prompts)
-  const [lastSelected, setLastSelected] = useState<Prompt | null>(null)
+  const [promptsState, setPromptsState] = useState(prompts);
+  const [lastSelected, setLastSelected] = useState<Prompt | null>(null);
 
   return (
     <PromptLibrary
@@ -105,7 +105,7 @@ export default function Example() {
       </PromptLibraryContent>
       <PromptLibraryCreateDialog />
     </PromptLibrary>
-  )
+  );
 }
 ```
 

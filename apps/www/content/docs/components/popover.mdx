@@ -74,18 +74,20 @@ import {
   PopoverSubmitButton,
   PopoverTextarea,
   PopoverTrigger,
-} from "@/components/Popover"
+} from "@/components/Popover";
 ```
 
 ```typescriptreact
 export default function PopoverDemo() {
   const handleSubmit = (note: string) => {
-    console.log('Submitted note:', note)
-  }
+    console.log("Submitted note:", note);
+  };
 
   return (
     <div className="p-8">
-      <h1 className="mb-4 text-2xl font-bold">Headless Composable Popover Demo</h1>
+      <h1 className="mb-4 text-2xl font-bold">
+        Headless Composable Popover Demo
+      </h1>
       <PopoverRoot>
         <PopoverTrigger>Add Note</PopoverTrigger>
         <PopoverContent>
@@ -100,7 +102,7 @@ export default function PopoverDemo() {
         </PopoverContent>
       </PopoverRoot>
     </div>
-  )
+  );
 }
 ```
 
@@ -113,9 +115,7 @@ The Popover component is a headless, composable component that provides a flexib
 The `PopoverRoot` component is the main wrapper for the Popover. It provides the context and configuration for all child components.
 
 ```typescriptreact
-<PopoverRoot>
-  {/* Other Popover components */}
-</PopoverRoot>
+<PopoverRoot>{/* Other Popover components */}</PopoverRoot>
 ```
 
 ### PopoverTrigger
@@ -131,9 +131,7 @@ The `PopoverTrigger` component is used to trigger the opening of the popover. It
 The `PopoverContent` component contains the main content of the popover. It handles the animation and positioning of the popover.
 
 ```typescriptreact
-<PopoverContent>
-  {/* Popover content */}
-</PopoverContent>
+<PopoverContent>{/* Popover content */}</PopoverContent>
 ```
 
 ### PopoverForm
@@ -141,9 +139,7 @@ The `PopoverContent` component contains the main content of the popover. It hand
 The `PopoverForm` component is used to create a form within the popover. It handles form submission and provides an `onSubmit` prop for custom submission logic.
 
 ```typescriptreact
-<PopoverForm onSubmit={handleSubmit}>
-  {/* Form fields */}
-</PopoverForm>
+<PopoverForm onSubmit={handleSubmit}>{/* Form fields */}</PopoverForm>
 ```
 
 ### PopoverLabel
@@ -167,9 +163,7 @@ The `PopoverTextarea` component provides a textarea input for the popover form.
 The `PopoverFooter` component is used to create a footer section in the popover, typically containing action buttons.
 
 ```typescriptreact
-<PopoverFooter>
-  {/* Footer content */}
-</PopoverFooter>
+<PopoverFooter>{/* Footer content */}</PopoverFooter>
 ```
 
 ### PopoverCloseButton

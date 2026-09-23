@@ -1,29 +1,29 @@
-"use client"
+"use client";
 
-import { IconCheck, IconChevronDown, IconCopy } from "@tabler/icons-react"
+import { IconCheck, IconChevronDown, IconCopy } from "@tabler/icons-react";
 
-import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   Popover,
   PopoverAnchor,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
-import { Separator } from "@/components/ui/separator"
+} from "@/components/ui/popover";
+import { Separator } from "@/components/ui/separator";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 
 function getPromptUrl(baseURL: string, url: string) {
   return `${baseURL}?q=${encodeURIComponent(
     `I’m looking at this shadcn/ui compatible registry documentation: ${url}.
 Help me understand how to use it. Be ready to explain concepts, give examples, or help debug based on it.
   `
-  )}`
+  )}`;
 }
 
 const menuItems = {
@@ -87,10 +87,10 @@ const menuItems = {
       Open in Claude
     </a>
   ),
-}
+};
 
 export function DocsCopyPage({ page, url }: { page: string; url: string }) {
-  const { copyToClipboard, isCopied } = useCopyToClipboard()
+  const { copyToClipboard, isCopied } = useCopyToClipboard();
 
   const trigger = (
     <Button
@@ -100,7 +100,7 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
     >
       <IconChevronDown className="rotate-180 sm:rotate-0" />
     </Button>
-  )
+  );
 
   return (
     <Popover>
@@ -152,5 +152,5 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
         </PopoverContent>
       </div>
     </Popover>
-  )
+  );
 }

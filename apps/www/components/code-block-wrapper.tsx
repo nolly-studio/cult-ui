@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+} from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
 
 interface CodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
-  expandButtonTitle?: string
+  expandButtonTitle?: string;
 }
 
 export function CodeBlockWrapper({
@@ -20,7 +20,7 @@ export function CodeBlockWrapper({
   children,
   ...props
 }: CodeBlockProps) {
-  const [isOpened, setIsOpened] = React.useState(false)
+  const [isOpened, setIsOpened] = React.useState(false);
 
   return (
     <Collapsible open={isOpened} onOpenChange={setIsOpened}>
@@ -52,5 +52,5 @@ export function CodeBlockWrapper({
         </div>
       </div>
     </Collapsible>
-  )
+  );
 }

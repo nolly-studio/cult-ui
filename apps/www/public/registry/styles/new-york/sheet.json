@@ -1,8 +1,6 @@
 {
   "name": "sheet",
-  "dependencies": [
-    "@radix-ui/react-dialog"
-  ],
+  "dependencies": ["@radix-ui/react-dialog"],
   "files": [
     {
       "name": "sheet.tsx",

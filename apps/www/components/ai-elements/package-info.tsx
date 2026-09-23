@@ -1,11 +1,11 @@
 "use client";
 
+import { ArrowRightIcon, MinusIcon, PackageIcon, PlusIcon } from "lucide-react";
 import type { HTMLAttributes } from "react";
+import { createContext, useContext } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { ArrowRightIcon, MinusIcon, PackageIcon, PlusIcon } from "lucide-react";
-import { createContext, useContext } from "react";
 
 type ChangeType = "major" | "minor" | "patch" | "added" | "removed";
 
@@ -40,7 +40,7 @@ export const PackageInfo = ({
     value={{ changeType, currentVersion, name, newVersion }}
   >
     <div
-      className={cn("rounded-lg border bg-background p-4", className)}
+      className={cn("bg-background rounded-lg border p-4", className)}
       {...props}
     >
       {children ?? (
@@ -82,8 +82,8 @@ export const PackageInfoName = ({
 
   return (
     <div className={cn("flex items-center gap-2", className)} {...props}>
-      <PackageIcon className="size-4 text-muted-foreground" />
-      <span className="font-medium font-mono text-sm">{children ?? name}</span>
+      <PackageIcon className="text-muted-foreground size-4" />
+      <span className="font-mono text-sm font-medium">{children ?? name}</span>
     </div>
   );
 };
@@ -150,7 +150,7 @@ export const PackageInfoVersion = ({
   return (
     <div
       className={cn(
-        "mt-2 flex items-center gap-2 font-mono text-muted-foreground text-sm",
+        "text-muted-foreground mt-2 flex items-center gap-2 font-mono text-sm",
         className
       )}
       {...props}
@@ -162,7 +162,7 @@ export const PackageInfoVersion = ({
             <ArrowRightIcon className="size-3" />
           )}
           {newVersion && (
-            <span className="font-medium text-foreground">{newVersion}</span>
+            <span className="text-foreground font-medium">{newVersion}</span>
           )}
         </>
       )}
@@ -177,7 +177,7 @@ export const PackageInfoDescription = ({
   children,
   ...props
 }: PackageInfoDescriptionProps) => (
-  <p className={cn("mt-2 text-muted-foreground text-sm", className)} {...props}>
+  <p className={cn("text-muted-foreground mt-2 text-sm", className)} {...props}>
     {children}
   </p>
 );
@@ -202,7 +202,7 @@ export const PackageInfoDependencies = ({
   ...props
 }: PackageInfoDependenciesProps) => (
   <div className={cn("space-y-2", className)} {...props}>
-    <span className="font-medium text-muted-foreground text-xs uppercase tracking-wide">
+    <span className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
       Dependencies
     </span>
     <div className="space-y-1">{children}</div>
@@ -227,7 +227,7 @@ export const PackageInfoDependency = ({
   >
     {children ?? (
       <>
-        <span className="font-mono text-muted-foreground">{name}</span>
+        <span className="text-muted-foreground font-mono">{name}</span>
         {version && <span className="font-mono text-xs">{version}</span>}
       </>
     )}

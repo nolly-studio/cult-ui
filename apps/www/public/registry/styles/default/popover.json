@@ -1,9 +1,7 @@
 {
   "name": "popover",
   "description": "Animated popover component with form support and smooth transitions",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "name": "popover.tsx",

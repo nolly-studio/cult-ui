@@ -1,4 +1,4 @@
-import type { Registry } from "@/registry/schema"
+import type { Registry } from "@/registry/schema";
 
 export const examples: Registry["items"] = [
   {
@@ -890,4 +890,4 @@ export const examples: Registry["items"] = [
       },
     ],
   },
-]
+];

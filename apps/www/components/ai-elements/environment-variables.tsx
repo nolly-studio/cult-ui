@@ -1,12 +1,7 @@
 "use client";
 
-import type { ComponentProps, HTMLAttributes } from "react";
-
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
-import { cn } from "@/lib/utils";
 import { CheckIcon, CopyIcon, EyeIcon, EyeOffIcon } from "lucide-react";
+import type { ComponentProps, HTMLAttributes } from "react";
 import {
   createContext,
   useCallback,
@@ -16,6 +11,11 @@ import {
   useRef,
   useState,
 } from "react";
+
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
+import { cn } from "@/lib/utils";
 
 interface EnvironmentVariablesContextType {
   showValues: boolean;
@@ -66,7 +66,7 @@ export const EnvironmentVariables = ({
   return (
     <EnvironmentVariablesContext.Provider value={contextValue}>
       <div
-        className={cn("rounded-lg border bg-background", className)}
+        className={cn("bg-background rounded-lg border", className)}
         {...props}
       >
         {children}
@@ -100,7 +100,7 @@ export const EnvironmentVariablesTitle = ({
   children,
   ...props
 }: EnvironmentVariablesTitleProps) => (
-  <h3 className={cn("font-medium text-sm", className)} {...props}>
+  <h3 className={cn("text-sm font-medium", className)} {...props}>
     {children ?? "Environment Variables"}
   </h3>
 );
@@ -232,7 +232,7 @@ export const EnvironmentVariableValue = ({
   return (
     <span
       className={cn(
-        "font-mono text-muted-foreground text-sm",
+        "text-muted-foreground font-mono text-sm",
         !showValues && "select-none",
         className
       )}

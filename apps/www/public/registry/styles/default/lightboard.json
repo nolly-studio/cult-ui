@@ -1,9 +1,7 @@
 {
   "name": "lightboard",
   "description": "Interactive lightboard component with customizable grid and lighting effects",
-  "dependencies": [
-    ""
-  ],
+  "dependencies": [""],
   "files": [
     {
       "name": "lightboard.tsx",

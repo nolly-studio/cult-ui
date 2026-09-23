@@ -1,14 +1,8 @@
 {
   "name": "intro-disclosure",
   "description": "Intro disclosure component with expandable content and smooth animations",
-  "dependencies": [
-    "motion",
-    "react-use-measure"
-  ],
-  "registryDependencies": [
-    "button",
-    "aspect-ratio"
-  ],
+  "dependencies": ["motion", "react-use-measure"],
+  "registryDependencies": ["button", "aspect-ratio"],
   "files": [
     {
       "name": "intro-disclosure.tsx",

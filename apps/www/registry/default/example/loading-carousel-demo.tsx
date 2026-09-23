@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import React from "react"
+import React from "react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { LoadingCarousel } from "../ui/loading-carousel"
+import { LoadingCarousel } from "../ui/loading-carousel";
 
 export default function LoadingCarouselDemo() {
   return (
-    <div className="space-y-8 p-4 w-full">
+    <div className="w-full space-y-8 p-4">
       <div className="w-full">
         <CardHeader>
           <CardTitle>Default LoadingCarousel</CardTitle>
@@ -79,5 +79,5 @@ export default function LoadingCarouselDemo() {
         </CardContent>
       </div>
     </div>
-  )
+  );
 }

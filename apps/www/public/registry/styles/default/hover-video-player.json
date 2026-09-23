@@ -1,9 +1,7 @@
 {
   "name": "hover-video-player",
   "description": "Video player component that plays on hover with smooth animations",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "name": "hover-video-player.tsx",

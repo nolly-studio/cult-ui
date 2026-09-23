@@ -47,7 +47,7 @@ npx shadcn@latest add https://cult-ui.com/r/edge-blur.json
 ## Usage
 
 ```tsx
-import { BottomBlur, EdgeBlur, TopBlur } from "@/components/ui/edge-blur"
+import { BottomBlur, EdgeBlur, TopBlur } from "@/components/ui/edge-blur";
 ```
 
 ### Full viewport (typical)
@@ -61,7 +61,7 @@ export function PageChrome() {
       <main>{/* … */}</main>
       <BottomBlur height={80} />
     </>
-  )
+  );
 }
 ```
 
@@ -82,11 +82,11 @@ Put **`EdgeBlur` outside the scrolling element**. If scroll lives on the same pa
 
 ### API
 
-| Export      | Description                                      |
-| ----------- | ------------------------------------------------ |
-| `EdgeBlur`  | `position` `"top"` \| `"bottom"`, `height` (px) |
-| `TopBlur`   | Top edge; optional `height`                      |
-| `BottomBlur`| Bottom edge; optional `height`                   |
+| Export       | Description                                     |
+| ------------ | ----------------------------------------------- |
+| `EdgeBlur`   | `position` `"top"` \| `"bottom"`, `height` (px) |
+| `TopBlur`    | Top edge; optional `height`                     |
+| `BottomBlur` | Bottom edge; optional `height`                  |
 
 ## Notes
 

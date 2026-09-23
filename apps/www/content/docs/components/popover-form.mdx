@@ -71,32 +71,32 @@ import {
   PopoverFormCutOutRightIcon,
   PopoverFormSeparator,
   PopoverFormSuccess,
-} from "@/registry/default/ui/popover-form"
+} from "@/registry/default/ui/popover-form";
 ```
 
 ```typescriptreact
 export default function PopoverFormFeedbackExample() {
-  const [formState, setFormState] = useState<FormState>("idle")
-  const [open, setOpen] = useState(false)
-  const [feedback, setFeedback] = useState("")
+  const [formState, setFormState] = useState<FormState>("idle");
+  const [open, setOpen] = useState(false);
+  const [feedback, setFeedback] = useState("");
 
   function submit() {
-    setFormState("loading")
+    setFormState("loading");
     setTimeout(() => {
-      setFormState("success")
-    }, 1500)
+      setFormState("success");
+    }, 1500);
 
     setTimeout(() => {
-      setOpen(false)
-      setFormState("idle")
-      setFeedback("")
-    }, 3300)
+      setOpen(false);
+      setFormState("idle");
+      setFeedback("");
+    }, 3300);
   }
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setOpen(false)
+        setOpen(false);
       }
 
       if (
@@ -105,13 +105,13 @@ export default function PopoverFormFeedbackExample() {
         open &&
         formState === "idle"
       ) {
-        submit()
+        submit();
       }
-    }
+    };
 
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [open, formState])
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [open, formState]);
 
   return (
     <div className="flex w-full items-center justify-center">
@@ -126,9 +126,9 @@ export default function PopoverFormFeedbackExample() {
         openChild={
           <form
             onSubmit={(e) => {
-              e.preventDefault()
-              if (!feedback) return
-              submit()
+              e.preventDefault();
+              if (!feedback) return;
+              submit();
             }}
           >
             <div className="relative">
@@ -161,6 +161,6 @@ export default function PopoverFormFeedbackExample() {
         }
       />
     </div>
-  )
+  );
 }
 ```

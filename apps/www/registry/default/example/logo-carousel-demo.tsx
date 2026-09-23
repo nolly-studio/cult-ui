@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import React from "react"
+import React from "react";
 
-import { GradientHeading } from "../ui/gradient-heading"
-import LogoCarousel from "../ui/logo-carousel"
+import { GradientHeading } from "../ui/gradient-heading";
+import LogoCarousel from "../ui/logo-carousel";
 
 export default function LogoCarouselDemo() {
   return (
-    <div className="space-y-8  py-24">
-      <div className="w-full max-w-screen-lg mx-auto flex flex-col items-center space-y-8">
+    <div className="space-y-8 py-24">
+      <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center space-y-8">
         <div className="text-center">
           <GradientHeading variant="secondary">
             The best are already here
@@ -21,5 +21,5 @@ export default function LogoCarouselDemo() {
         <LogoCarousel columnCount={3} />
       </div>
     </div>
-  )
+  );
 }

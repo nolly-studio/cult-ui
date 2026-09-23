@@ -1,14 +1,6 @@
-"use client"
+"use client";
 
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  type RefObject,
-} from "react"
-import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area"
+import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 import {
   CheckCircle,
   Code,
@@ -18,41 +10,49 @@ import {
   Rocket,
   Settings,
   Upload,
-} from "lucide-react"
-import { AnimatePresence, motion, MotionConfig } from "motion/react"
+} from "lucide-react";
+import { AnimatePresence, motion, MotionConfig } from "motion/react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type RefObject,
+} from "react";
 
-import { cn } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 
 const transition = {
   type: "spring" as const,
   bounce: 0.1,
   duration: 0.25,
-}
+};
 
 interface DynamicStep {
-  id: string
-  title: string
-  description: string
+  id: string;
+  title: string;
+  description: string;
   icon:
     | React.ComponentType<{ className?: string }>
-    | React.ReactElement<{ className?: string }>
-  content: React.ReactNode
+    | React.ReactElement<{ className?: string }>;
+  content: React.ReactNode;
 }
 
 interface DynamicToolbarExpandableProps {
-  steps: DynamicStep[]
-  badgeText?: string
+  steps: DynamicStep[];
+  badgeText?: string;
 
-  className?: string
-  expanded?: boolean
-  onExpandedChange?: (expanded: boolean) => void
-  activeStep?: string | null
-  onActiveStepChange?: (stepId: string | null) => void
+  className?: string;
+  expanded?: boolean;
+  onExpandedChange?: (expanded: boolean) => void;
+  activeStep?: string | null;
+  onActiveStepChange?: (stepId: string | null) => void;
 }
 
 const DynamicToolbarExpandable = React.memo<DynamicToolbarExpandableProps>(
@@ -66,114 +66,116 @@ const DynamicToolbarExpandable = React.memo<DynamicToolbarExpandableProps>(
     activeStep: controlledActiveStep,
     onActiveStepChange,
   }) {
-    const [internalActive, setInternalActive] = useState<string | null>(null)
-    const [internalIsOpen, setInternalIsOpen] = useState(false)
+    const [internalActive, setInternalActive] = useState<string | null>(null);
+    const [internalIsOpen, setInternalIsOpen] = useState(false);
 
     const active =
-      controlledActiveStep !== undefined ? controlledActiveStep : internalActive
+      controlledActiveStep !== undefined
+        ? controlledActiveStep
+        : internalActive;
     const isOpen =
-      controlledExpanded !== undefined ? controlledExpanded : internalIsOpen
+      controlledExpanded !== undefined ? controlledExpanded : internalIsOpen;
 
     const setActive = useCallback(
       (value: string | null) => {
         if (onActiveStepChange) {
-          onActiveStepChange(value)
+          onActiveStepChange(value);
         } else {
-          setInternalActive(value)
+          setInternalActive(value);
         }
       },
       [onActiveStepChange]
-    )
+    );
 
     const setIsOpen = useCallback(
       (value: boolean) => {
         if (onExpandedChange) {
-          onExpandedChange(value)
+          onExpandedChange(value);
         } else {
-          setInternalIsOpen(value)
+          setInternalIsOpen(value);
         }
       },
       [onExpandedChange]
-    )
+    );
 
-    const [previousIndex, setPreviousIndex] = useState<number | null>(null)
-    const [contentRef, contentBounds] = useMeasure()
-    const [menuRef, menuBounds] = useMeasure()
-    const menuContainerRef = useRef<any>(null)
-    const ref = useRef<HTMLDivElement>(null)
-    const [maxWidth, setMaxWidth] = useState(0)
+    const [previousIndex, setPreviousIndex] = useState<number | null>(null);
+    const [contentRef, contentBounds] = useMeasure();
+    const [menuRef, menuBounds] = useMeasure();
+    const menuContainerRef = useRef<any>(null);
+    const ref = useRef<HTMLDivElement>(null);
+    const [maxWidth, setMaxWidth] = useState(0);
 
-    const heightContent = contentBounds.height
-    const widthContainer = menuBounds.width
+    const heightContent = contentBounds.height;
+    const widthContainer = menuBounds.width;
 
     const handleClickOutside = useCallback(() => {
-      setIsOpen(false)
-      setActive(null)
-    }, [setIsOpen, setActive])
+      setIsOpen(false);
+      setActive(null);
+    }, [setIsOpen, setActive]);
 
-    useClickOutside(ref, handleClickOutside)
+    useClickOutside(ref, handleClickOutside);
 
     useEffect(() => {
-      if (!widthContainer || maxWidth > 0) return
-      setMaxWidth(widthContainer)
-    }, [widthContainer, maxWidth])
+      if (!widthContainer || maxWidth > 0) return;
+      setMaxWidth(widthContainer);
+    }, [widthContainer, maxWidth]);
 
     const scrollButtonIntoView = useCallback(
       (currentIndex: number, previousIndex: number | null) => {
-        if (!menuContainerRef.current) return
+        if (!menuContainerRef.current) return;
 
         const isMovingForward =
-          previousIndex !== null && currentIndex > previousIndex
+          previousIndex !== null && currentIndex > previousIndex;
         const isMovingBackward =
-          previousIndex !== null && currentIndex < previousIndex
+          previousIndex !== null && currentIndex < previousIndex;
 
-        let targetIndex = currentIndex
+        let targetIndex = currentIndex;
 
         if (isMovingForward) {
-          const nextIndex = currentIndex + 1
+          const nextIndex = currentIndex + 1;
           if (nextIndex < steps.length) {
-            targetIndex = nextIndex
+            targetIndex = nextIndex;
           }
         } else if (isMovingBackward) {
-          const prevIndex = currentIndex - 1
+          const prevIndex = currentIndex - 1;
           if (prevIndex >= 0) {
-            targetIndex = prevIndex
+            targetIndex = prevIndex;
           }
         }
 
         const targetButton = menuContainerRef.current.querySelector(
           `[data-step-index="${targetIndex}"]`
-        ) as HTMLElement
+        ) as HTMLElement;
 
         if (targetButton) {
           targetButton.scrollIntoView({
             behavior: "smooth",
             block: "nearest",
             inline: "center",
-          })
+          });
         }
       },
       [steps.length]
-    )
+    );
 
     const handleNavClick = useCallback(
       (item: string) => {
         if (active === item && isOpen) {
-          setIsOpen(false)
-          setActive(null)
-          return
+          setIsOpen(false);
+          setActive(null);
+          return;
         }
 
-        const currentIndex = steps.findIndex((step) => step.id === item)
-        setActive(item)
-        setIsOpen(true)
+        const currentIndex = steps.findIndex((step) => step.id === item);
+        setActive(item);
+        setIsOpen(true);
 
         if (currentIndex >= 0) {
           setTimeout(() => {
-            scrollButtonIntoView(currentIndex, previousIndex)
-          }, 100)
+            scrollButtonIntoView(currentIndex, previousIndex);
+          }, 100);
 
-          setPreviousIndex(currentIndex)
+          setPreviousIndex(currentIndex);
         }
       },
       [
@@ -185,32 +187,32 @@ const DynamicToolbarExpandable = React.memo<DynamicToolbarExpandableProps>(
         setActive,
         setIsOpen,
       ]
-    )
+    );
 
     const renderContent = useCallback(() => {
-      if (!active) return null
+      if (!active) return null;
 
-      const step = steps.find((s) => s.id === active)
-      if (!step) return null
+      const step = steps.find((s) => s.id === active);
+      if (!step) return null;
 
       return (
         <div className="space-y-4 pb-3">
           <div className="space-y-2">
-            <h3 className="text-lg font-medium text-foreground">
+            <h3 className="text-foreground text-lg font-medium">
               {step.title}
             </h3>
-            <p className="text-sm text-muted-foreground">{step.description}</p>
+            <p className="text-muted-foreground text-sm">{step.description}</p>
           </div>
           {step.content}
         </div>
-      )
-    }, [active, steps])
+      );
+    }, [active, steps]);
 
     const activeTitle = useMemo(() => {
-      if (!active) return ""
-      const step = steps.find((s) => s.id === active)
-      return step?.title || ""
-    }, [active, steps])
+      if (!active) return "";
+      const step = steps.find((s) => s.id === active);
+      return step?.title || "";
+    }, [active, steps]);
 
     const navigationButtons = useMemo(
       () =>
@@ -224,7 +226,7 @@ const DynamicToolbarExpandable = React.memo<DynamicToolbarExpandableProps>(
           isLast: index === steps.length - 1,
         })),
       [steps, active, handleNavClick]
-    )
+    );
 
     return (
       <div
@@ -244,7 +246,7 @@ const DynamicToolbarExpandable = React.memo<DynamicToolbarExpandableProps>(
 
         <MotionConfig transition={transition}>
           <div
-            className="w-full overflow-hidden rounded-2xl bg-background shadow-[0_0_0_1px_rgba(0,0,0,0.08),0px_2px_2px_rgba(0,0,0,0.04),0px_8px_16px_-4px_rgba(0,0,0,0.04)] dark:shadow-[0_0_0_1px_rgba(255,252,240,0.08),0px_2px_2px_rgba(0,0,0,0.2),0px_8px_16px_-4px_rgba(0,0,0,0.3)]"
+            className="bg-background w-full overflow-hidden rounded-2xl shadow-[0_0_0_1px_rgba(0,0,0,0.08),0px_2px_2px_rgba(0,0,0,0.04),0px_8px_16px_-4px_rgba(0,0,0,0.04)] dark:shadow-[0_0_0_1px_rgba(255,252,240,0.08),0px_2px_2px_rgba(0,0,0,0.2),0px_8px_16px_-4px_rgba(0,0,0,0.3)]"
             ref={ref}
           >
             <div className="rounded-2xl">
@@ -259,12 +261,12 @@ const DynamicToolbarExpandable = React.memo<DynamicToolbarExpandableProps>(
                       className=""
                     >
                       <div ref={contentRef} className="px-2 pt-2 sm:px-2">
-                        <h4 className="px-2 text-sm font-medium text-foreground">
+                        <h4 className="text-foreground px-2 text-sm font-medium">
                           {activeTitle}
                         </h4>
 
                         <div className="pb-1">
-                          <div className="mb-2 mt-3 rounded-[0.8rem] bg-muted/50 px-3 py-4 shadow-[0px_1px_1px_0px_rgba(0,0,0,0.05),0px_1px_1px_0px_rgba(255,252,240,0.5)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.1)_inset,0px_0px_1px_0px_rgba(28,27,26,0.5)] dark:shadow-[0px_1px_1px_0px_rgba(0,0,0,0.2),0px_1px_1px_0px_rgba(255,255,255,0.05)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.05)_inset,0px_0px_1px_0px_rgba(0,0,0,0.8)]">
+                          <div className="bg-muted/50 mt-3 mb-2 rounded-[0.8rem] px-3 py-4 shadow-[0px_1px_1px_0px_rgba(0,0,0,0.05),0px_1px_1px_0px_rgba(255,252,240,0.5)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.1)_inset,0px_0px_1px_0px_rgba(28,27,26,0.5)] dark:shadow-[0px_1px_1px_0px_rgba(0,0,0,0.2),0px_1px_1px_0px_rgba(255,255,255,0.05)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.05)_inset,0px_0px_1px_0px_rgba(0,0,0,0.8)]">
                             {renderContent()}
                           </div>
                         </div>
@@ -282,8 +284,8 @@ const DynamicToolbarExpandable = React.memo<DynamicToolbarExpandableProps>(
                   maskHeight={16}
                   ref={(element) => {
                     if (element) {
-                      menuContainerRef.current = element
-                      menuRef(element)
+                      menuContainerRef.current = element;
+                      menuRef(element);
                     }
                   }}
                 >
@@ -294,13 +296,13 @@ const DynamicToolbarExpandable = React.memo<DynamicToolbarExpandableProps>(
                         data-step-index={index}
                         onClick={button.onClick}
                         className={cn(
-                          "flex min-h-[44px] shrink-0 items-center gap-2 whitespace-nowrap p-3 text-sm text-muted-foreground transition-colors sm:min-h-0 sm:p-4",
+                          "text-muted-foreground flex min-h-[44px] shrink-0 items-center gap-2 p-3 text-sm whitespace-nowrap transition-colors sm:min-h-0 sm:p-4",
                           button.isActive
-                            ? "bg-muted/50 font-medium text-foreground"
+                            ? "bg-muted/50 text-foreground font-medium"
                             : "hover:bg-muted/60 active:bg-muted/70"
                         )}
                       >
-                        <div className="flex size-5 items-center justify-center rounded-md text-[10px] font-bold shadow-[0px_1px_1px_0px_hsla(0,0%,0%,0.02)_inset,0px_1px_1px_0px_hsla(0,0%,0%,0.02)_inset,0px_0px_0px_1px_rgba(255,255,255,0.25)] transition-all duration-300 dark:shadow-[0px_1px_1px_0px_hsla(0,0%,100%,0.02)_inset,0px_1px_1px_0px_rgba(255,255,255,0.05)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.05)_inset,0px_0px_1px_0px_rgba(0,0,0,0.25)] sm:size-5">
+                        <div className="flex size-5 items-center justify-center rounded-md text-[10px] font-bold shadow-[0px_1px_1px_0px_hsla(0,0%,0%,0.02)_inset,0px_1px_1px_0px_hsla(0,0%,0%,0.02)_inset,0px_0px_0px_1px_rgba(255,255,255,0.25)] transition-all duration-300 sm:size-5 dark:shadow-[0px_1px_1px_0px_hsla(0,0%,100%,0.02)_inset,0px_1px_1px_0px_rgba(255,255,255,0.05)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.05)_inset,0px_0px_1px_0px_rgba(0,0,0,0.25)]">
                           <span
                             className={cn(
                               "w-full rounded-md",
@@ -312,7 +314,7 @@ const DynamicToolbarExpandable = React.memo<DynamicToolbarExpandableProps>(
                             {button.step}
                           </span>
                         </div>
-                        <span className="text-xs font-medium text-foreground sm:text-sm">
+                        <span className="text-foreground text-xs font-medium sm:text-sm">
                           {button.label}
                         </span>
                       </button>
@@ -324,18 +326,18 @@ const DynamicToolbarExpandable = React.memo<DynamicToolbarExpandableProps>(
           </div>
         </MotionConfig>
       </div>
-    )
+    );
   }
-)
+);
 
-DynamicToolbarExpandable.displayName = "DynamicToolbarExpandable"
+DynamicToolbarExpandable.displayName = "DynamicToolbarExpandable";
 
 // ________________________ HOOKS ________________________
 interface Bounds {
-  left: number
-  top: number
-  width: number
-  height: number
+  left: number;
+  top: number;
+  width: number;
+  height: number;
 }
 
 function useMeasure(): [
@@ -348,45 +350,45 @@ function useMeasure(): [
     top: 0,
     width: 0,
     height: 0,
-  })
+  });
 
-  const [node, setNode] = useState<HTMLElement | null>(null)
-  const observer = useRef<ResizeObserver | null>(null)
+  const [node, setNode] = useState<HTMLElement | null>(null);
+  const observer = useRef<ResizeObserver | null>(null);
 
   const disconnect = useCallback(() => {
     if (observer.current) {
-      observer.current.disconnect()
+      observer.current.disconnect();
     }
-  }, [])
+  }, []);
 
   const ref = useCallback((node: HTMLElement | null) => {
-    setNode(node)
-  }, [])
+    setNode(node);
+  }, []);
 
   useEffect(() => {
-    if (!node) return
+    if (!node) return;
 
     if (observer.current) {
-      observer.current.disconnect()
+      observer.current.disconnect();
     }
 
     observer.current = new ResizeObserver(([entry]) => {
       if (entry && entry.contentRect) {
-        const { left, top, width, height } = entry.contentRect
-        setBounds({ left, top, width, height })
+        const { left, top, width, height } = entry.contentRect;
+        setBounds({ left, top, width, height });
       }
-    })
+    });
 
-    observer.current.observe(node)
+    observer.current.observe(node);
 
     return () => {
       if (observer.current) {
-        observer.current.disconnect()
+        observer.current.disconnect();
       }
-    }
-  }, [node])
+    };
+  }, [node]);
 
-  return [ref, bounds, disconnect]
+  return [ref, bounds, disconnect];
 }
 
 function useClickOutside<T extends HTMLElement = HTMLElement>(
@@ -395,73 +397,73 @@ function useClickOutside<T extends HTMLElement = HTMLElement>(
 ) {
   useEffect(() => {
     const listener = (event: MouseEvent | TouchEvent) => {
-      const el = ref?.current
+      const el = ref?.current;
       if (!el || el.contains((event?.target as Node) || null)) {
-        return
+        return;
       }
 
-      handler(event)
-    }
+      handler(event);
+    };
 
-    document.addEventListener("mousedown", listener)
-    document.addEventListener("touchstart", listener)
+    document.addEventListener("mousedown", listener);
+    document.addEventListener("touchstart", listener);
 
     return () => {
-      document.removeEventListener("mousedown", listener)
-      document.removeEventListener("touchstart", listener)
-    }
-  }, [ref, handler])
+      document.removeEventListener("mousedown", listener);
+      document.removeEventListener("touchstart", listener);
+    };
+  }, [ref, handler]);
 }
 
 function useTouchPrimary() {
-  const [isTouchPrimary, setIsTouchPrimary] = useState(false)
+  const [isTouchPrimary, setIsTouchPrimary] = useState(false);
 
   useEffect(() => {
-    if (typeof window === "undefined") return
+    if (typeof window === "undefined") return;
 
-    const controller = new AbortController()
-    const { signal } = controller
+    const controller = new AbortController();
+    const { signal } = controller;
 
     const handleTouch = () => {
-      const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0
-      const prefersTouch = window.matchMedia("(pointer: coarse)").matches
-      setIsTouchPrimary(hasTouch && prefersTouch)
-    }
+      const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+      const prefersTouch = window.matchMedia("(pointer: coarse)").matches;
+      setIsTouchPrimary(hasTouch && prefersTouch);
+    };
 
-    const mq = window.matchMedia("(pointer: coarse)")
-    mq.addEventListener("change", handleTouch, { signal })
-    window.addEventListener("pointerdown", handleTouch, { signal })
+    const mq = window.matchMedia("(pointer: coarse)");
+    mq.addEventListener("change", handleTouch, { signal });
+    window.addEventListener("pointerdown", handleTouch, { signal });
 
-    handleTouch()
+    handleTouch();
 
-    return () => controller.abort()
-  }, [])
+    return () => controller.abort();
+  }, []);
 
-  return isTouchPrimary
+  return isTouchPrimary;
 }
 
 // ________________________ MODIFIED SCROLL AREA ________________________
 // https://lina.sameer.sh/
 
-const ScrollAreaContext = React.createContext<boolean>(false)
+const ScrollAreaContext = React.createContext<boolean>(false);
 type Mask = {
-  top: boolean
-  bottom: boolean
-  left: boolean
-  right: boolean
-}
+  top: boolean;
+  bottom: boolean;
+  left: boolean;
+  right: boolean;
+};
 
 const ScrollArea = React.forwardRef<
   React.ComponentRef<typeof ScrollAreaPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root> & {
-    viewportClassName?: string
+    viewportClassName?: string;
     /**
      * `maskHeight` is the height of the mask in pixels.
      * pass `0` to disable the mask
      * @default 30
      */
-    maskHeight?: number
-    maskClassName?: string
+    maskHeight?: number;
+    maskClassName?: string;
   }
 >(
   (
@@ -481,13 +483,13 @@ const ScrollArea = React.forwardRef<
       bottom: false,
       left: false,
       right: false,
-    })
-    const viewportRef = React.useRef<HTMLDivElement>(null)
-    const isTouch = useTouchPrimary()
+    });
+    const viewportRef = React.useRef<HTMLDivElement>(null);
+    const isTouch = useTouchPrimary();
 
     const checkScrollability = React.useCallback(() => {
-      const element = viewportRef.current
-      if (!element) return
+      const element = viewportRef.current;
+      if (!element) return;
 
       const {
         scrollTop,
@@ -496,38 +498,38 @@ const ScrollArea = React.forwardRef<
         clientWidth,
         scrollHeight,
         clientHeight,
-      } = element
+      } = element;
       setShowMask((prev) => ({
         ...prev,
         top: scrollTop > 0,
         bottom: scrollTop + clientHeight < scrollHeight - 1,
         left: scrollLeft > 0,
         right: scrollLeft + clientWidth < scrollWidth - 1,
-      }))
-    }, [])
+      }));
+    }, []);
 
     React.useEffect(() => {
-      if (typeof window === "undefined") return
+      if (typeof window === "undefined") return;
 
-      const element = viewportRef.current
-      if (!element) return
+      const element = viewportRef.current;
+      if (!element) return;
 
-      const controller = new AbortController()
-      const { signal } = controller
+      const controller = new AbortController();
+      const { signal } = controller;
 
-      const resizeObserver = new ResizeObserver(checkScrollability)
-      resizeObserver.observe(element)
+      const resizeObserver = new ResizeObserver(checkScrollability);
+      resizeObserver.observe(element);
 
-      element.addEventListener("scroll", checkScrollability, { signal })
-      window.addEventListener("resize", checkScrollability, { signal })
+      element.addEventListener("scroll", checkScrollability, { signal });
+      window.addEventListener("resize", checkScrollability, { signal });
 
-      checkScrollability()
+      checkScrollability();
 
       return () => {
-        controller.abort()
-        resizeObserver.disconnect()
-      }
-    }, [checkScrollability, isTouch])
+        controller.abort();
+        resizeObserver.disconnect();
+      };
+    }, [checkScrollability, isTouch]);
 
     return (
       <ScrollAreaContext.Provider value={isTouch}>
@@ -588,19 +590,19 @@ const ScrollArea = React.forwardRef<
           </ScrollAreaPrimitive.Root>
         )}
       </ScrollAreaContext.Provider>
-    )
+    );
   }
-)
+);
 
-ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName
+ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName;
 
 const ScrollBar = React.forwardRef<
   React.ComponentRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>
 >(({ className, orientation = "vertical", ...props }, ref) => {
-  const isTouch = React.useContext(ScrollAreaContext)
+  const isTouch = React.useContext(ScrollAreaContext);
 
-  if (isTouch) return null
+  if (isTouch) return null;
 
   return (
     <ScrollAreaPrimitive.ScrollAreaScrollbar
@@ -608,11 +610,11 @@ const ScrollBar = React.forwardRef<
       orientation={orientation}
       data-slot="scroll-area-scrollbar"
       className={cn(
-        "flex touch-none select-none p-px transition-[colors] duration-150 hover:bg-muted data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out-0 data-[state=visible]:fade-in-0 dark:hover:bg-muted/50",
+        "hover:bg-muted data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out-0 data-[state=visible]:fade-in-0 dark:hover:bg-muted/50 flex touch-none p-px transition-[colors] duration-150 select-none",
         orientation === "vertical" &&
           "h-full w-2.5 border-l border-l-transparent",
         orientation === "horizontal" &&
-          "pr-1.25 h-2.5 flex-col border-t border-t-transparent px-1",
+          "h-2.5 flex-col border-t border-t-transparent px-1 pr-1.25",
         className
       )}
       {...props}
@@ -620,16 +622,16 @@ const ScrollBar = React.forwardRef<
       <ScrollAreaPrimitive.ScrollAreaThumb
         data-slot="scroll-area-thumb"
         className={cn(
-          "relative flex-1 origin-center rounded-full bg-border transition-[scale]",
+          "bg-border relative flex-1 origin-center rounded-full transition-[scale]",
           orientation === "vertical" && "my-1 active:scale-y-95",
           orientation === "horizontal" && "active:scale-x-98"
         )}
       />
     </ScrollAreaPrimitive.ScrollAreaScrollbar>
-  )
-})
+  );
+});
 
-ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName
+ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName;
 
 const ScrollMask = ({
   showMask,
@@ -637,8 +639,8 @@ const ScrollMask = ({
   className,
   ...props
 }: React.ComponentProps<"div"> & {
-  showMask: Mask
-  maskHeight: number
+  showMask: Mask;
+  maskHeight: number;
 }) => {
   return (
     <>
@@ -658,8 +660,8 @@ const ScrollMask = ({
           "before:h-(--top-fade-height) after:h-(--bottom-fade-height)",
           showMask.top ? "before:opacity-100" : "before:opacity-0",
           showMask.bottom ? "after:opacity-100" : "after:opacity-0",
-          "before:bg-gradient-to-b before:from-background before:to-transparent",
-          "after:bg-gradient-to-t after:from-background after:to-transparent",
+          "before:from-background before:bg-gradient-to-b before:to-transparent",
+          "after:from-background after:bg-gradient-to-t after:to-transparent",
           className
         )}
       />
@@ -679,19 +681,19 @@ const ScrollMask = ({
           "before:w-(--left-fade-width) after:w-(--right-fade-width)",
           showMask.left ? "before:opacity-100" : "before:opacity-0",
           showMask.right ? "after:opacity-100" : "after:opacity-0",
-          "before:bg-gradient-to-r before:from-background before:to-transparent",
-          "after:bg-gradient-to-l after:from-background after:to-transparent",
+          "before:from-background before:bg-gradient-to-r before:to-transparent",
+          "after:from-background after:bg-gradient-to-l after:to-transparent",
           className
         )}
       />
     </>
-  )
-}
+  );
+};
 
 export default function ToolbarExpandable(
   props: DynamicToolbarExpandableProps
 ) {
-  return <DynamicToolbarExpandable {...props} />
+  return <DynamicToolbarExpandable {...props} />;
 }
 
 export const deploymentSteps = [
@@ -858,4 +860,4 @@ export const deploymentSteps = [
       </div>
     ),
   },
-]
+];

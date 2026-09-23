@@ -1,10 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "shader-lens-blur-demo",
-  "registryDependencies": [
-    "shader-lens-blur",
-    "color-picker"
-  ],
+  "registryDependencies": ["shader-lens-blur", "color-picker"],
   "files": [
     {
       "path": "registry/default/example/shader-lens-blur-demo.tsx",

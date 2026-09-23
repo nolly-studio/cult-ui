@@ -1,11 +1,8 @@
 "use client";
 
-import type { ComponentProps, HTMLAttributes } from "react";
-
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import Ansi from "ansi-to-react";
 import { CheckIcon, CopyIcon, TerminalIcon, Trash2Icon } from "lucide-react";
+import type { ComponentProps, HTMLAttributes } from "react";
 import {
   createContext,
   useCallback,
@@ -15,6 +12,9 @@ import {
   useRef,
   useState,
 } from "react";
+
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 import { Shimmer } from "./shimmer";
 
@@ -90,7 +90,7 @@ export const TerminalHeader = ({
 }: TerminalHeaderProps) => (
   <div
     className={cn(
-      "flex items-center justify-between border-zinc-800 border-b px-4 py-2",
+      "flex items-center justify-between border-b border-zinc-800 px-4 py-2",
       className
     )}
     {...props}
@@ -265,7 +265,7 @@ export const TerminalContent = ({
       {...props}
     >
       {children ?? (
-        <pre className="whitespace-pre-wrap break-words">
+        <pre className="break-words whitespace-pre-wrap">
           <Ansi>{output}</Ansi>
           {isStreaming && (
             <span className="ml-0.5 inline-block h-4 w-2 animate-pulse bg-zinc-100" />

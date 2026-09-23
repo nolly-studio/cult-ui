@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { BgAnimateButton } from "../ui/bg-animate-button"
-import { DirectionAwareTabs } from "../ui/direction-aware-tabs"
+import { BgAnimateButton } from "../ui/bg-animate-button";
+import { DirectionAwareTabs } from "../ui/direction-aware-tabs";
 
 const DirectionAwareTabsDemo = ({}) => {
   const tabs = [
@@ -9,7 +9,7 @@ const DirectionAwareTabsDemo = ({}) => {
       id: 0,
       label: "ocean",
       content: (
-        <div className="border border-border/50 w-full flex flex-col items-center p-4 rounded-lg gap-3">
+        <div className="border-border/50 flex w-full flex-col items-center gap-3 rounded-lg border p-4">
           <BgAnimateButton animation="spin-fast" gradient="ocean">
             Button
           </BgAnimateButton>
@@ -26,7 +26,7 @@ const DirectionAwareTabsDemo = ({}) => {
       id: 1,
       label: "forest",
       content: (
-        <div className="border border-border/50 w-full flex flex-col items-center p-4 rounded-lg gap-3">
+        <div className="border-border/50 flex w-full flex-col items-center gap-3 rounded-lg border p-4">
           <BgAnimateButton animation="spin-fast" gradient="forest">
             Button
           </BgAnimateButton>
@@ -43,7 +43,7 @@ const DirectionAwareTabsDemo = ({}) => {
       id: 2,
       label: "default",
       content: (
-        <div className="border border-border/50 w-full flex flex-col items-center gap-3 p-4">
+        <div className="border-border/50 flex w-full flex-col items-center gap-3 border p-4">
           <BgAnimateButton animation="spin-fast" gradient="default">
             Button
           </BgAnimateButton>
@@ -60,7 +60,7 @@ const DirectionAwareTabsDemo = ({}) => {
       id: 3,
       label: "sunset",
       content: (
-        <div className="border border-border/50 w-full flex flex-col items-center p-4 rounded-lg gap-3">
+        <div className="border-border/50 flex w-full flex-col items-center gap-3 rounded-lg border p-4">
           <BgAnimateButton animation="spin-fast" gradient="sunset">
             Button
           </BgAnimateButton>
@@ -73,13 +73,13 @@ const DirectionAwareTabsDemo = ({}) => {
         </div>
       ),
     },
-  ]
+  ];
 
   return (
     <div className="">
       <DirectionAwareTabs tabs={tabs} />
     </div>
-  )
-}
+  );
+};
 
-export default DirectionAwareTabsDemo
+export default DirectionAwareTabsDemo;

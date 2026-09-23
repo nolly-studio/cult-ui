@@ -1,8 +1,8 @@
-import React, { ReactNode } from "react"
+import React, { ReactNode } from "react";
 
 interface BackgroundWrapperProps {
-  children: ReactNode
-  url: string
+  children: ReactNode;
+  url: string;
 }
 
 const BgNoiseWrapper: React.FC<BackgroundWrapperProps> = ({
@@ -17,7 +17,7 @@ const BgNoiseWrapper: React.FC<BackgroundWrapperProps> = ({
       ></div>
       <div className="relative">{children}</div>
     </div>
-  )
-}
+  );
+};
 
-export default BgNoiseWrapper
+export default BgNoiseWrapper;

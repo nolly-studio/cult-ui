@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-const shapeSvgClass = "w-full fill-background text-foreground"
+const shapeSvgClass = "w-full fill-background text-foreground";
 
 const flipClasses = {
   none: "",
@@ -8,17 +8,17 @@ const flipClasses = {
   vertical: "origin-center -scale-y-100",
   horizontal: "origin-center -scale-x-100",
   both: "origin-center -scale-x-100 -scale-y-100",
-} as const
+} as const;
 
-export type BandShapeFlip = keyof typeof flipClasses
+export type BandShapeFlip = keyof typeof flipClasses;
 
 export interface BandShapeProps {
-  path: string
-  viewBox: string
-  flip?: BandShapeFlip
-  className?: string
+  path: string;
+  viewBox: string;
+  flip?: BandShapeFlip;
+  className?: string;
   /** Accessible name; defaults to a generic label when omitted. */
-  title?: string
+  title?: string;
 }
 
 /**
@@ -42,7 +42,7 @@ export function BandShape({
       <title>{title}</title>
       <path d={path} stroke="currentColor" />
     </svg>
-  )
+  );
 }
 
 /** Band: flat top with a single downward angle on the right. Flip vertical for a bottom trim. */
@@ -60,44 +60,44 @@ export function FlatSingleAngleBandSvg({ className }: { className?: string }) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
-const CASTLE_WALL_TEETH = 12
-const CASTLE_WALL_BOTTOM_Y = 179
-const CASTLE_WALL_TOP_Y = 46
-const CASTLE_WALL_CRENE_Y = 106
-const CASTLE_WALL_X_MIN = 1
-const CASTLE_WALL_X_MAX = 2399
+const CASTLE_WALL_TEETH = 12;
+const CASTLE_WALL_BOTTOM_Y = 179;
+const CASTLE_WALL_TOP_Y = 46;
+const CASTLE_WALL_CRENE_Y = 106;
+const CASTLE_WALL_X_MIN = 1;
+const CASTLE_WALL_X_MAX = 2399;
 
 function fmtPathX(x: number): string {
-  const r = Math.round(x * 1000) / 1000
-  return Number.isInteger(r) ? String(r) : r.toFixed(3)
+  const r = Math.round(x * 1000) / 1000;
+  return Number.isInteger(r) ? String(r) : r.toFixed(3);
 }
 
 /** Even battlement: `toothCount` merlons, equal merlon and crene run in x (span 1–2399). */
 export function castleWallBandPath(toothCount: number): string {
   if (toothCount < 1) {
-    throw new RangeError("castleWallBandPath: toothCount must be >= 1")
+    throw new RangeError("castleWallBandPath: toothCount must be >= 1");
   }
-  const span = CASTLE_WALL_X_MAX - CASTLE_WALL_X_MIN
+  const span = CASTLE_WALL_X_MAX - CASTLE_WALL_X_MIN;
   const parts = [
     `M${CASTLE_WALL_X_MIN} ${CASTLE_WALL_BOTTOM_Y}H${CASTLE_WALL_X_MAX}V${CASTLE_WALL_TOP_Y}`,
-  ]
+  ];
   for (let i = 0; i < toothCount; i++) {
     const xMerlonEnd =
-      CASTLE_WALL_X_MAX - ((2 * i + 1) * span) / (2 * toothCount)
+      CASTLE_WALL_X_MAX - ((2 * i + 1) * span) / (2 * toothCount);
     const xCreneEnd =
-      CASTLE_WALL_X_MAX - ((2 * i + 2) * span) / (2 * toothCount)
+      CASTLE_WALL_X_MAX - ((2 * i + 2) * span) / (2 * toothCount);
     parts.push(
       `H${fmtPathX(xMerlonEnd)}`,
       `V${CASTLE_WALL_CRENE_Y}`,
       `H${fmtPathX(xCreneEnd)}`,
       `V${CASTLE_WALL_TOP_Y}`
-    )
+    );
   }
-  parts.push(`V${CASTLE_WALL_BOTTOM_Y}Z`)
-  return parts.join("")
+  parts.push(`V${CASTLE_WALL_BOTTOM_Y}Z`);
+  return parts.join("");
 }
 
 /**
@@ -115,7 +115,7 @@ export function CastleWallBandSvg({ className }: { className?: string }) {
       <title>Castle wall battlement band</title>
       <path d={castleWallBandPath(CASTLE_WALL_TEETH)} stroke="currentColor" />
     </svg>
-  )
+  );
 }
 
 /** Band: symmetric shallow “V” on top; mirror vertically for an inverted profile. */
@@ -133,7 +133,7 @@ export function SymmetricVBandSvg({ className }: { className?: string }) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /**
@@ -154,36 +154,36 @@ export function NotchedTopBandSvg({ className }: { className?: string }) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
-const ZIGZAG_X_MIN = 1
-const ZIGZAG_X_MAX = 2399
-const ZIGZAG_BOTTOM_Y = 199
-const ZIGZAG_PEAK_Y = 2
-const ZIGZAG_VALLEY_Y = 100
+const ZIGZAG_X_MIN = 1;
+const ZIGZAG_X_MAX = 2399;
+const ZIGZAG_BOTTOM_Y = 199;
+const ZIGZAG_PEAK_Y = 2;
+const ZIGZAG_VALLEY_Y = 100;
 
 /** Clockwise sawtooth top / flat bottom; period = 2400 / `teeth` on the wide grid (8 / 12 / 16 / 24 typical). */
 export function zigzagSawtoothBandPath(teeth: number): string {
   if (teeth < 2) {
-    throw new RangeError("zigzagSawtoothBandPath: teeth must be >= 2")
+    throw new RangeError("zigzagSawtoothBandPath: teeth must be >= 2");
   }
-  const period = 2400 / teeth
-  const parts = [`M${ZIGZAG_X_MIN} ${ZIGZAG_BOTTOM_Y}`, `V${ZIGZAG_VALLEY_Y}`]
+  const period = 2400 / teeth;
+  const parts = [`M${ZIGZAG_X_MIN} ${ZIGZAG_BOTTOM_Y}`, `V${ZIGZAG_VALLEY_Y}`];
   for (let i = 0; i < teeth - 1; i++) {
-    const peakX = Math.round((i + 0.5) * period)
-    const valleyX = Math.round((i + 1) * period)
-    parts.push(`L${peakX} ${ZIGZAG_PEAK_Y}`, `L${valleyX} ${ZIGZAG_VALLEY_Y}`)
+    const peakX = Math.round((i + 0.5) * period);
+    const valleyX = Math.round((i + 1) * period);
+    parts.push(`L${peakX} ${ZIGZAG_PEAK_Y}`, `L${valleyX} ${ZIGZAG_VALLEY_Y}`);
   }
-  const lastPeak = Math.round((teeth - 0.5) * period)
+  const lastPeak = Math.round((teeth - 0.5) * period);
   parts.push(
     `L${lastPeak} ${ZIGZAG_PEAK_Y}`,
     `L${ZIGZAG_X_MAX} ${ZIGZAG_VALLEY_Y}`,
     `V${ZIGZAG_BOTTOM_Y}`,
     `H${ZIGZAG_X_MIN}`,
     "Z"
-  )
-  return parts.join("")
+  );
+  return parts.join("");
 }
 
 /**
@@ -194,8 +194,8 @@ export function ZigzagSawtoothBandSvg({
   className,
   teeth = 12,
 }: {
-  className?: string
-  teeth?: number
+  className?: string;
+  teeth?: number;
 }) {
   return (
     <svg
@@ -207,7 +207,7 @@ export function ZigzagSawtoothBandSvg({
       <title>Zigzag sawtooth section band</title>
       <path d={zigzagSawtoothBandPath(teeth)} stroke="currentColor" />
     </svg>
-  )
+  );
 }
 
 /**
@@ -227,7 +227,7 @@ export function CenterTabBandSvg({ className }: { className?: string }) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /** Band: parallelogram slash — diagonal left edge, flat top, vertical right. */
@@ -245,7 +245,7 @@ export function DiagonalSlashBandSvg({ className }: { className?: string }) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /** Band: right-pointing arrow / chevron (flat top & bottom, tip at right center). */
@@ -263,7 +263,7 @@ export function ArrowChevronBandSvg({ className }: { className?: string }) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /** Band: five equal steps descending along the top edge (480px treads, 60px risers). */
@@ -281,7 +281,7 @@ export function StaircaseBandSvg({ className }: { className?: string }) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /**
@@ -291,7 +291,7 @@ export function StaircaseBandSvg({ className }: { className?: string }) {
 export function SteppedLeftSteepRightBandSvg({
   className,
 }: {
-  className?: string
+  className?: string;
 }) {
   return (
     <svg
@@ -306,7 +306,7 @@ export function SteppedLeftSteepRightBandSvg({
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /**
@@ -327,7 +327,7 @@ export function SteppedInsetFrameSvg({ className }: { className?: string }) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /** Panel: chamfered rectangle — equal angled cuts on all four corners; good for hero or card frames. */
@@ -345,11 +345,11 @@ export function AngledCornerPanelSvg({ className }: { className?: string }) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 const ornamentResponsiveClass =
-  "origin-top-right max-md:translate-x-3 max-md:scale-x-250 max-md:scale-y-125"
+  "origin-top-right max-md:translate-x-3 max-md:scale-x-250 max-md:scale-y-125";
 
 /** Full ornamental frame with matching notches on both sides (dual side tabs). */
 export function DualSideNotchFrameSvg({ className }: { className?: string }) {
@@ -366,7 +366,7 @@ export function DualSideNotchFrameSvg({ className }: { className?: string }) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /**
@@ -387,7 +387,7 @@ export function TopBandSteepRightSvg({ className }: { className?: string }) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /**
@@ -408,7 +408,7 @@ export function TopBandSteepBothSvg({ className }: { className?: string }) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /**
@@ -431,7 +431,7 @@ export function TopBandSteepLeftSvg({ className }: { className?: string }) {
         />
       </g>
     </svg>
-  )
+  );
 }
 
 /** Bottom edge band — vertical flip of TopBandSteepRightSvg for section footers. */
@@ -449,7 +449,7 @@ export function BottomBandSteepRightSvg({ className }: { className?: string }) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /** Low undulating strip along the bottom edge (smooth repeating wave). */
@@ -467,7 +467,7 @@ export function WavyBottomEdgeSvg({ className }: { className?: string }) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /**
@@ -488,7 +488,7 @@ export function CenterTabTopBandSvg({ className }: { className?: string }) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /** Tall panel with angled header and vertical sides — hero / feature backdrop. */
@@ -506,7 +506,7 @@ export function TallAngledHeroPanelSvg({ className }: { className?: string }) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /**
@@ -533,7 +533,7 @@ export function PyramidStepBandSvg({ className }: { className?: string }) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /**
@@ -543,7 +543,7 @@ export function PyramidStepBandSvg({ className }: { className?: string }) {
 export function PyramidStepBandLotsOfStepsSvg({
   className,
 }: {
-  className?: string
+  className?: string;
 }) {
   return (
     <svg
@@ -564,5 +564,5 @@ export function PyramidStepBandLotsOfStepsSvg({
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }

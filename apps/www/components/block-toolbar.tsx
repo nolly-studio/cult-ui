@@ -1,37 +1,37 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { CircleHelp, Monitor, Smartphone, Tablet } from "lucide-react"
-import { ImperativePanelHandle } from "react-resizable-panels"
+import { CircleHelp, Monitor, Smartphone, Tablet } from "lucide-react";
+import * as React from "react";
+import { ImperativePanelHandle } from "react-resizable-panels";
 
-import { trackEvent } from "@/lib/events"
-import { cn } from "@/lib/utils"
-import { useLiftMode } from "@/hooks/use-lift-mode"
-import { Badge } from "@/components/ui/badge"
-import { Label } from "@/components/ui/label"
+import { BlockCopyButton } from "@/components/block-copy-button";
+import { StyleSwitcher } from "@/components/style-switcher";
+import { Badge } from "@/components/ui/badge";
+import { Label } from "@/components/ui/label";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
-import { Separator } from "@/components/ui/separator"
-import { Switch } from "@/components/ui/switch"
-import { TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { BlockCopyButton } from "@/components/block-copy-button"
-import { StyleSwitcher } from "@/components/style-switcher"
-import { Block } from "@/registry/schema"
+} from "@/components/ui/popover";
+import { Separator } from "@/components/ui/separator";
+import { Switch } from "@/components/ui/switch";
+import { TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { useLiftMode } from "@/hooks/use-lift-mode";
+import { trackEvent } from "@/lib/events";
+import { cn } from "@/lib/utils";
+import { Block } from "@/registry/schema";
 
-import { InstallationCli } from "./cli-install-button"
+import { InstallationCli } from "./cli-install-button";
 
 export function BlockToolbar({
   block,
   resizablePanelRef,
 }: {
-  block: Block & { hasLiftMode: boolean }
-  resizablePanelRef: React.RefObject<ImperativePanelHandle | null>
+  block: Block & { hasLiftMode: boolean };
+  resizablePanelRef: React.RefObject<ImperativePanelHandle | null>;
 }) {
-  const { isLiftMode, toggleLiftMode } = useLiftMode(block.name)
+  const { isLiftMode, toggleLiftMode } = useLiftMode(block.name);
 
   return (
     <div className="flex flex-col items-center gap-4 sm:flex-row">
@@ -61,7 +61,7 @@ export function BlockToolbar({
         <Popover>
           <PopoverTrigger
             disabled={isLiftMode}
-            className="hidden text-muted-foreground hover:text-foreground disabled:opacity-50 sm:flex"
+            className="text-muted-foreground hover:text-foreground hidden disabled:opacity-50 sm:flex"
           >
             <CircleHelp className="size-3.5" />
             <span className="sr-only">Block description</span>
@@ -119,8 +119,8 @@ export function BlockToolbar({
                   id={`lift-mode-${block.name}`}
                   checked={isLiftMode}
                   onCheckedChange={(value) => {
-                    resizablePanelRef.current?.resize(100)
-                    toggleLiftMode(block.name)
+                    resizablePanelRef.current?.resize(100);
+                    toggleLiftMode(block.name);
 
                     if (value) {
                       trackEvent({
@@ -128,7 +128,7 @@ export function BlockToolbar({
                         properties: {
                           name: block.name,
                         },
-                      })
+                      });
                     }
                   }}
                 />
@@ -146,7 +146,7 @@ export function BlockToolbar({
               defaultValue="100"
               onValueChange={(value) => {
                 if (resizablePanelRef.current) {
-                  resizablePanelRef.current.resize(parseInt(value))
+                  resizablePanelRef.current.resize(parseInt(value));
                 }
               }}
             >
@@ -183,5 +183,5 @@ export function BlockToolbar({
         </div>
       )}
     </div>
-  )
+  );
 }

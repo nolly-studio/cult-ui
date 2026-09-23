@@ -1,9 +1,8 @@
-import * as React from "react"
-import { Check, Plus, Send } from "lucide-react"
+import { Check, Plus, Send } from "lucide-react";
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -11,7 +10,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command"
+} from "@/components/ui/command";
 import {
   Dialog,
   DialogContent,
@@ -19,20 +18,21 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 import {
   TextureCard,
   TextureCardContent,
   TextureCardFooter,
   TextureCardHeader,
-} from "@/registry/default/ui/texture-card"
+} from "@/registry/default/ui/texture-card";
 
 const users = [
   {
@@ -60,13 +60,13 @@ const users = [
     email: "will@email.com",
     avatar: "/avatars/04.png",
   },
-] as const
+] as const;
 
-type User = (typeof users)[number]
+type User = (typeof users)[number];
 
 export function CardsChat() {
-  const [open, setOpen] = React.useState(false)
-  const [selectedUsers, setSelectedUsers] = React.useState<User[]>([])
+  const [open, setOpen] = React.useState(false);
+  const [selectedUsers, setSelectedUsers] = React.useState<User[]>([]);
 
   const [messages, setMessages] = React.useState([
     {
@@ -85,9 +85,9 @@ export function CardsChat() {
       role: "user",
       content: "I can't log in.",
     },
-  ])
-  const [input, setInput] = React.useState("")
-  const inputLength = input.trim().length
+  ]);
+  const [input, setInput] = React.useState("");
+  const inputLength = input.trim().length;
 
   return (
     <>
@@ -99,8 +99,8 @@ export function CardsChat() {
               <AvatarFallback>OM</AvatarFallback>
             </Avatar>
             <div>
-              <p className="text-sm font-medium leading-none">Sofia Davis</p>
-              <p className="text-sm text-muted-foreground">m@example.com</p>
+              <p className="text-sm leading-none font-medium">Sofia Davis</p>
+              <p className="text-muted-foreground text-sm">m@example.com</p>
             </div>
           </div>
           <TooltipProvider delayDuration={0}>
@@ -128,7 +128,7 @@ export function CardsChat() {
                 className={cn(
                   "flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm",
                   message.role === "user"
-                    ? "ml-auto bg-primary text-primary-foreground"
+                    ? "bg-primary text-primary-foreground ml-auto"
                     : "bg-muted"
                 )}
               >
@@ -140,16 +140,16 @@ export function CardsChat() {
         <TextureCardFooter>
           <form
             onSubmit={(event) => {
-              event.preventDefault()
-              if (inputLength === 0) return
+              event.preventDefault();
+              if (inputLength === 0) return;
               setMessages([
                 ...messages,
                 {
                   role: "user",
                   content: input,
                 },
-              ])
-              setInput("")
+              ]);
+              setInput("");
             }}
             className="flex w-full items-center space-x-2"
           >
@@ -170,7 +170,7 @@ export function CardsChat() {
       </TextureCard>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="gap-0 p-0 outline-none">
-          <DialogHeader className="px-4 pb-4 pt-5">
+          <DialogHeader className="px-4 pt-5 pb-4">
             <DialogTitle>New message</DialogTitle>
             <DialogDescription>
               Invite a user to this thread. This will create a new group
@@ -192,14 +192,14 @@ export function CardsChat() {
                           selectedUsers.filter(
                             (selectedUser) => selectedUser !== user
                           )
-                        )
+                        );
                       }
 
                       return setSelectedUsers(
                         [...users].filter((u) =>
                           [...selectedUsers, user].includes(u)
                         )
-                      )
+                      );
                     }}
                   >
                     <Avatar>
@@ -207,15 +207,15 @@ export function CardsChat() {
                       <AvatarFallback>{user.name[0]}</AvatarFallback>
                     </Avatar>
                     <div className="ml-2">
-                      <p className="text-sm font-medium leading-none">
+                      <p className="text-sm leading-none font-medium">
                         {user.name}
                       </p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         {user.email}
                       </p>
                     </div>
                     {selectedUsers.includes(user) ? (
-                      <Check className="ml-auto flex size-5 text-primary" />
+                      <Check className="text-primary ml-auto flex size-5" />
                     ) : null}
                   </CommandItem>
                 ))}
@@ -228,7 +228,7 @@ export function CardsChat() {
                 {selectedUsers.map((user) => (
                   <Avatar
                     key={user.email}
-                    className="inline-block border-2 border-background"
+                    className="border-background inline-block border-2"
                   >
                     <AvatarImage src={user.avatar} />
                     <AvatarFallback>{user.name[0]}</AvatarFallback>
@@ -236,14 +236,14 @@ export function CardsChat() {
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-muted-foreground">
+              <p className="text-muted-foreground text-sm">
                 Select users to add to this thread.
               </p>
             )}
             <Button
               disabled={selectedUsers.length < 2}
               onClick={() => {
-                setOpen(false)
+                setOpen(false);
               }}
             >
               Continue
@@ -252,5 +252,5 @@ export function CardsChat() {
         </DialogContent>
       </Dialog>
     </>
-  )
+  );
 }

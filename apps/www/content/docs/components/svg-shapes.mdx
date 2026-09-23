@@ -53,23 +53,23 @@ import {
   TriangleShapeSvg,
   GothicArchPanelSvg,
   FlowerOfLifeSvg,
-} from "@/components/ui/svg-shapes"
+} from "@/components/ui/svg-shapes";
 
 export function HeroStrip() {
   return (
     <div className="text-foreground/20 w-full max-w-4xl">
       <GothicArchPanelSvg />
     </div>
-  )
+  );
 }
 ```
 
 ### Props
 
-| Prop        | Type                                              | Default   |
-| ----------- | ------------------------------------------------- | --------- |
-| `className` | `string`                                          | —         |
-| `flip`      | `"none"` \| `"vertical"` \| `"horizontal"` \| `"both"` | `"none"` |
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+| `flip` | `"none"` \| `"vertical"` \| `"horizontal"` \| `"both"` | `"none"` |
 
 Stroke and fill use `currentColor` (and tinted fills on filled shapes) so you control appearance with Tailwind classes on a wrapper.
 

@@ -1508,7 +1508,7 @@ export const colors = {
       hsl: "hsl(343.1,87.7%,15.9%)",
     },
   ],
-}
+};
 
 export const colorMapping = {
   light: {
@@ -1553,4 +1553,4 @@ export const colorMapping = {
     input: "{{base}}-800",
     ring: "{{base}}-300",
   },
-} as const
+} as const;

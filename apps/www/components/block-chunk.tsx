@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { AnimatePresence, motion } from "motion/react"
+import { AnimatePresence, motion } from "motion/react";
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
-import { useLiftMode } from "@/hooks/use-lift-mode"
-import { BlockCopyButton } from "@/components/block-copy-button"
-import { Block, type BlockChunk } from "@/registry/schema"
+import { BlockCopyButton } from "@/components/block-copy-button";
+import { useLiftMode } from "@/hooks/use-lift-mode";
+import { cn } from "@/lib/utils";
+import { Block, type BlockChunk } from "@/registry/schema";
 
 export function BlockChunk({
   block,
@@ -14,10 +14,10 @@ export function BlockChunk({
   children,
   ...props
 }: React.PropsWithChildren<{ block: Block; chunk?: BlockChunk }>) {
-  const { isLiftMode } = useLiftMode(block.name)
+  const { isLiftMode } = useLiftMode(block.name);
 
   if (!chunk) {
-    return null
+    return null;
   }
 
   return (
@@ -31,7 +31,7 @@ export function BlockChunk({
           exit={{ opacity: 0, transition: { ease: "easeOut", duration: 0.2 } }}
           transition={{ ease: "easeIn", duration: 0.2 }}
           className={cn(
-            "group rounded-xl bg-background shadow-xl transition",
+            "group bg-background rounded-xl shadow-xl transition",
             chunk.container?.className
           )}
           {...props}
@@ -51,5 +51,5 @@ export function BlockChunk({
         </motion.div>
       )}
     </AnimatePresence>
-  )
+  );
 }

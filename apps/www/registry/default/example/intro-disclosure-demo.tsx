@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
-import { ChevronDownIcon, ResetIcon } from "@radix-ui/react-icons"
-import { DatabaseIcon } from "lucide-react"
-import { toast } from "sonner"
+import { ChevronDownIcon, ResetIcon } from "@radix-ui/react-icons";
+import { DatabaseIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+} from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
 
-import { IntroDisclosure } from "../ui/intro-disclosure"
+import { IntroDisclosure } from "../ui/intro-disclosure";
 
 const steps = [
   {
@@ -65,82 +65,82 @@ const steps = [
       href: "/docs/components",
     },
   },
-]
+];
 
 type StorageState = {
-  desktop: string | null
-  mobile: string | null
-}
+  desktop: string | null;
+  mobile: string | null;
+};
 
 export default function IntroDisclosureDemo() {
-  const router = useRouter()
-  const [open, setOpen] = useState(true)
-  const [openMobile, setOpenMobile] = useState(true)
-  const [debugOpen, setDebugOpen] = useState(false)
+  const router = useRouter();
+  const [open, setOpen] = useState(true);
+  const [openMobile, setOpenMobile] = useState(true);
+  const [debugOpen, setDebugOpen] = useState(false);
   const [storageState, setStorageState] = useState<StorageState>({
     desktop: null,
     mobile: null,
-  })
+  });
 
   const updateStorageState = () => {
     setStorageState({
       desktop: localStorage.getItem("feature_intro-demo_desktop"),
       mobile: localStorage.getItem("feature_intro-demo_mobile"),
-    })
-  }
+    });
+  };
 
   // Update storage state whenever localStorage changes
   useEffect(() => {
-    updateStorageState()
-    window.addEventListener("storage", updateStorageState)
-    return () => window.removeEventListener("storage", updateStorageState)
-  }, [])
+    updateStorageState();
+    window.addEventListener("storage", updateStorageState);
+    return () => window.removeEventListener("storage", updateStorageState);
+  }, []);
 
   // Update storage state after reset
   const handleReset = () => {
     // localStorage.removeItem("feature_intro-demo")
-    setOpen(true)
+    setOpen(true);
     if (storageState.desktop === "false") {
-      toast.info("Clear the local storage to trigger the feature again")
-      setDebugOpen(true)
+      toast.info("Clear the local storage to trigger the feature again");
+      setDebugOpen(true);
     }
     if (storageState.desktop === null) {
-      updateStorageState()
+      updateStorageState();
     }
-  }
+  };
 
   const handleResetMobile = () => {
     // localStorage.removeItem("feature_intro-demo-mobile")
-    setOpenMobile(true)
-    updateStorageState()
-  }
+    setOpenMobile(true);
+    updateStorageState();
+  };
 
   const handleClearDesktop = () => {
-    localStorage.removeItem("feature_intro-demo_desktop")
-    updateStorageState()
-    router.refresh()
-    toast.success("Desktop storage cleared")
-  }
+    localStorage.removeItem("feature_intro-demo_desktop");
+    updateStorageState();
+    router.refresh();
+    toast.success("Desktop storage cleared");
+  };
 
   const handleClearMobile = () => {
-    localStorage.removeItem("feature_intro-demo_mobile")
-    updateStorageState()
-    router.refresh()
-    toast.success("Mobile storage cleared")
-  }
+    localStorage.removeItem("feature_intro-demo_mobile");
+    updateStorageState();
+    router.refresh();
+    toast.success("Mobile storage cleared");
+  };
 
   const handleDebugOpenChange = (open: boolean) => {
     if (open) {
-      updateStorageState()
+      updateStorageState();
     }
-    setDebugOpen(open)
-  }
+    setDebugOpen(open);
+  };
 
   return (
     <div className="w-full space-y-8">
-      <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
+      <div className="bg-card text-card-foreground rounded-lg border shadow-sm">
         <div className="p-6">
-          <h2 className="text-2xl font-semibold leading-none tracking-tight mb-4">
+          <h2 className="mb-4 text-2xl leading-none font-semibold tracking-tight">
             IntroDisclosure Demo
           </h2>
           <p className="text-muted-foreground mb-6">
@@ -149,7 +149,7 @@ export default function IntroDisclosureDemo() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 pt-0">
+        <div className="grid grid-cols-1 gap-8 p-6 pt-0 md:grid-cols-2">
           <div className="flex flex-col">
             <div
               className={cn(
@@ -158,16 +158,16 @@ export default function IntroDisclosureDemo() {
                 open && "border-primary"
               )}
             >
-              <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-                <div className="flex   flex-col">
-                  <p className="text-sm text-muted-foreground text-left">
+              <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+                <div className="flex flex-col">
+                  <p className="text-muted-foreground text-left text-sm">
                     (Disclosure)
                   </p>
                   <h3 className="text-xl font-semibold">Desktop View</h3>
                 </div>
                 <button
                   onClick={handleReset}
-                  className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-ring inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
                 >
                   <ResetIcon className="mr-2 h-4 w-4" />
                   Start Demo
@@ -182,7 +182,7 @@ export default function IntroDisclosureDemo() {
                 onComplete={() => toast.success("Tour completed")}
                 onSkip={() => toast.info("Tour skipped")}
               />
-              <div className="text-sm text-muted-foreground">
+              <div className="text-muted-foreground text-sm">
                 Status: {open ? "Active" : "Completed/Skipped"}
               </div>
             </div>
@@ -196,16 +196,16 @@ export default function IntroDisclosureDemo() {
                 openMobile && "border-primary"
               )}
             >
-              <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-                <div className="flex  flex-col">
-                  <p className="text-sm text-muted-foreground">
+              <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+                <div className="flex flex-col">
+                  <p className="text-muted-foreground text-sm">
                     (Drawer + Swipe)
                   </p>
                   <h3 className="text-xl font-semibold">Mobile View</h3>
                 </div>
                 <button
                   onClick={handleResetMobile}
-                  className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-ring inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
                 >
                   <ResetIcon className="mr-2 h-4 w-4" />
                   Start Demo
@@ -220,7 +220,7 @@ export default function IntroDisclosureDemo() {
                 onSkip={() => toast.info("Mobile tour skipped")}
                 forceVariant="mobile"
               />
-              <div className="text-sm text-muted-foreground">
+              <div className="text-muted-foreground text-sm">
                 Status: {openMobile ? "Active" : "Completed/Skipped"}
               </div>
             </div>
@@ -233,7 +233,7 @@ export default function IntroDisclosureDemo() {
             onOpenChange={handleDebugOpenChange}
             className="w-full"
           >
-            <CollapsibleTrigger className="flex w-full items-center justify-between rounded-lg p-2  text-sm hover:bg-muted/50">
+            <CollapsibleTrigger className="hover:bg-muted/50 flex w-full items-center justify-between rounded-lg p-2 text-sm">
               <div className="flex flex-col items-start text-left">
                 <h4 className="flex items-center gap-2 text-sm font-semibold">
                   <DatabaseIcon className="size-4" />{" "}
@@ -241,7 +241,7 @@ export default function IntroDisclosureDemo() {
                     Browser Local Storage State
                   </span>
                 </h4>
-                <p className="text-sm text-muted-foreground mb-4 max-w-xl">
+                <p className="text-muted-foreground mb-4 max-w-xl text-sm">
                   These values represent the "Don't show again" checkbox state.
                   <br />- When set to{" "}
                   <code className="bg-background px-1">true</code>, the intro
@@ -258,14 +258,14 @@ export default function IntroDisclosureDemo() {
               />
             </CollapsibleTrigger>
             <CollapsibleContent className="space-y-2">
-              <div className="rounded-md bg-muted p-4 text-sm">
+              <div className="bg-muted rounded-md p-4 text-sm">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between gap-4">
                     <div className="flex-1">
                       <span className="text-muted-foreground">
                         Desktop State:{" "}
                       </span>
-                      <code className="rounded bg-background px-2 py-1">
+                      <code className="bg-background rounded px-2 py-1">
                         {storageState.desktop === null
                           ? "null"
                           : storageState.desktop}
@@ -280,7 +280,7 @@ export default function IntroDisclosureDemo() {
                       <span className="text-muted-foreground">
                         Mobile State:{" "}
                       </span>
-                      <code className="rounded bg-background px-2 py-1">
+                      <code className="bg-background rounded px-2 py-1">
                         {storageState.mobile === null
                           ? "null"
                           : storageState.mobile}
@@ -297,5 +297,5 @@ export default function IntroDisclosureDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

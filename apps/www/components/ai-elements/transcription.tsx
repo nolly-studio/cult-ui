@@ -1,11 +1,11 @@
 "use client";
 
+import { useControllableState } from "@radix-ui/react-use-controllable-state";
 import type { Experimental_TranscriptionResult as TranscriptionResult } from "ai";
 import type { ComponentProps, ReactNode } from "react";
-
-import { useControllableState } from "@radix-ui/react-use-controllable-state";
-import { cn } from "@/lib/utils";
 import { createContext, useCallback, useContext, useMemo } from "react";
+
+import { cn } from "@/lib/utils";
 
 type TranscriptionSegment = TranscriptionResult["segments"][number];
 
@@ -109,7 +109,7 @@ export const TranscriptionSegment = ({
         isActive && "text-primary",
         isPast && "text-muted-foreground",
         !(isActive || isPast) && "text-muted-foreground/60",
-        onSeek && "cursor-pointer hover:text-foreground",
+        onSeek && "hover:text-foreground cursor-pointer",
         !onSeek && "cursor-default",
         className
       )}

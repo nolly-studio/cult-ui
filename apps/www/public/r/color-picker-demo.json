@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "color-picker-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "color-picker"
-  ],
+  "registryDependencies": ["color-picker"],
   "files": [
     {
       "path": "registry/default/example/color-picker-demo.tsx",

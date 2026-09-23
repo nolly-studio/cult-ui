@@ -53,7 +53,7 @@ import {
   TimerIcon,
   TimerRoot,
   useTimer,
-} from "@/components/ui/timer"
+} from "@/components/ui/timer";
 ```
 
 ### Basic Timer
@@ -82,11 +82,11 @@ For more flexibility, you can use the individual components:
 ### Timer with Callback
 
 ```tsx
-const [isLoading, setIsLoading] = useState(false)
+const [isLoading, setIsLoading] = useState(false);
 
 const handleTick = (seconds: number, milliseconds: number) => {
-  console.log(`Elapsed: ${seconds}.${milliseconds}s`)
-}
+  console.log(`Elapsed: ${seconds}.${milliseconds}s`);
+};
 
 return (
   <div>
@@ -100,7 +100,7 @@ return (
       {isLoading ? "Stop" : "Start"}
     </button>
   </div>
-)
+);
 ```
 
 ### Different Formats
@@ -120,42 +120,42 @@ return (
 
 ### Timer Props
 
-| Prop                   | Type                                                 | Default     | Description                                 |
-| ---------------------- | ---------------------------------------------------- | ----------- | ------------------------------------------- |
-| `loading`              | `boolean`                                            | `false`     | Whether the timer is running/loading        |
-| `onTick`               | `(seconds: number, milliseconds: number) => void`    | -           | Callback called on each timer tick          |
-| `resetOnLoadingChange` | `boolean`                                            | `true`      | Whether to reset timer when loading changes |
-| `format`               | `"SS.MS" \| "MM:SS" \| "HH:MM:SS"`                   | `"SS.MS"`   | Time display format                         |
-| `variant`              | `"default" \| "outline" \| "ghost" \| "destructive"` | `"default"` | Timer variant                               |
-| `size`                 | `"sm" \| "md" \| "lg"`                               | `"md"`      | Timer size                                  |
-| `className`            | `string`                                             | -           | Additional CSS classes                      |
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `loading` | `boolean` | `false` | Whether the timer is running/loading |
+| `onTick` | `(seconds: number, milliseconds: number) => void` | - | Callback called on each timer tick |
+| `resetOnLoadingChange` | `boolean` | `true` | Whether to reset timer when loading changes |
+| `format` | `"SS.MS" \| "MM:SS" \| "HH:MM:SS"` | `"SS.MS"` | Time display format |
+| `variant` | `"default" \| "outline" \| "ghost" \| "destructive"` | `"default"` | Timer variant |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Timer size |
+| `className` | `string` | - | Additional CSS classes |
 
 ### TimerRoot Props
 
-| Prop        | Type                                                 | Default     | Description                  |
-| ----------- | ---------------------------------------------------- | ----------- | ---------------------------- |
-| `variant`   | `"default" \| "outline" \| "ghost" \| "destructive"` | `"default"` | Timer container variant      |
-| `size`      | `"sm" \| "md" \| "lg"`                               | `"md"`      | Timer size                   |
-| `loading`   | `boolean`                                            | `false`     | Whether the timer is running |
-| `className` | `string`                                             | -           | Additional CSS classes       |
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `variant` | `"default" \| "outline" \| "ghost" \| "destructive"` | `"default"` | Timer container variant |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Timer size |
+| `loading` | `boolean` | `false` | Whether the timer is running |
+| `className` | `string` | - | Additional CSS classes |
 
 ### TimerIcon Props
 
-| Prop        | Type                                          | Default | Description                   |
-| ----------- | --------------------------------------------- | ------- | ----------------------------- |
-| `size`      | `"sm" \| "md" \| "lg"`                        | `"md"`  | Icon size                     |
-| `loading`   | `boolean`                                     | `false` | Whether to show loading state |
-| `icon`      | `React.ComponentType<{ className?: string }>` | `Clock` | Custom icon component         |
-| `className` | `string`                                      | -       | Additional CSS classes        |
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Icon size |
+| `loading` | `boolean` | `false` | Whether to show loading state |
+| `icon` | `React.ComponentType<{ className?: string }>` | `Clock` | Custom icon component |
+| `className` | `string` | - | Additional CSS classes |
 
 ### TimerDisplay Props
 
-| Prop        | Type                   | Default | Description                      |
-| ----------- | ---------------------- | ------- | -------------------------------- |
-| `time`      | `string`               | -       | Time value to display            |
-| `label`     | `string`               | -       | Optional label for accessibility |
-| `size`      | `"sm" \| "md" \| "lg"` | `"md"`  | Display size                     |
-| `className` | `string`               | -       | Additional CSS classes           |
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `time` | `string` | - | Time value to display |
+| `label` | `string` | - | Optional label for accessibility |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Display size |
+| `className` | `string` | - | Additional CSS classes |
 
 ### useTimer Hook
 
@@ -174,17 +174,17 @@ const {
   loading: true,
   onTick: (seconds, ms) => console.log(`${seconds}.${ms}s`),
   format: "SS.MS",
-})
+});
 ```
 
 #### useTimer Options
 
-| Option                 | Type                                              | Default   | Description                                 |
-| ---------------------- | ------------------------------------------------- | --------- | ------------------------------------------- |
-| `loading`              | `boolean`                                         | `false`   | Whether the timer is running                |
-| `onTick`               | `(seconds: number, milliseconds: number) => void` | -         | Callback called on each timer tick          |
-| `resetOnLoadingChange` | `boolean`                                         | `true`    | Whether to reset timer when loading changes |
-| `format`               | `"SS.MS" \| "MM:SS" \| "HH:MM:SS"`                | `"SS.MS"` | Time display format                         |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `loading` | `boolean` | `false` | Whether the timer is running |
+| `onTick` | `(seconds: number, milliseconds: number) => void` | - | Callback called on each timer tick |
+| `resetOnLoadingChange` | `boolean` | `true` | Whether to reset timer when loading changes |
+| `format` | `"SS.MS" \| "MM:SS" \| "HH:MM:SS"` | `"SS.MS"` | Time display format |
 
 #### useTimer Return
 
@@ -203,7 +203,7 @@ const {
 ### Loading State Timer
 
 ```tsx
-const [isLoading, setIsLoading] = useState(false)
+const [isLoading, setIsLoading] = useState(false);
 
 return (
   <div className="flex items-center gap-4">
@@ -212,19 +212,19 @@ return (
       {isLoading ? "Stop" : "Start"}
     </button>
   </div>
-)
+);
 ```
 
 ### Timer with Progress Tracking
 
 ```tsx
-const [isLoading, setIsLoading] = useState(false)
-const [elapsedTime, setElapsedTime] = useState(0)
+const [isLoading, setIsLoading] = useState(false);
+const [elapsedTime, setElapsedTime] = useState(0);
 
 const handleTick = (seconds: number, milliseconds: number) => {
-  setElapsedTime(seconds)
+  setElapsedTime(seconds);
   // Update progress bar, send analytics, etc.
-}
+};
 
 return (
   <div className="space-y-4">
@@ -242,7 +242,7 @@ return (
       {isLoading ? "Stop" : "Start"}
     </button>
   </div>
-)
+);
 ```
 
 ### Different Time Formats
@@ -264,7 +264,7 @@ return (
 function CustomTimer() {
   const { formattedTime, isRunning, start, stop, reset } = useTimer({
     format: "MM:SS",
-  })
+  });
 
   return (
     <div className="flex items-center gap-4">
@@ -286,7 +286,7 @@ function CustomTimer() {
         </button>
       </div>
     </div>
-  )
+  );
 }
 ```
 
@@ -307,7 +307,7 @@ function CustomTimer() {
     useTimer({
       loading: false,
       format: "MM:SS",
-    })
+    });
 
   return (
     <div className="space-y-4">
@@ -319,6 +319,6 @@ function CustomTimer() {
         <button onClick={reset}>Reset</button>
       </div>
     </div>
-  )
+  );
 }
 ```

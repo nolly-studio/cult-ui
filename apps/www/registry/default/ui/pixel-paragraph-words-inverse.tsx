@@ -66,19 +66,19 @@
  * />
  */
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ */
 /* Font constants                                                      */
 /* ------------------------------------------------------------------ */
 
-type PlainFont = "sans" | "mono"
-type PixelFont = "square" | "grid" | "circle" | "triangle" | "line"
+type PlainFont = "sans" | "mono";
+type PixelFont = "square" | "grid" | "circle" | "triangle" | "line";
 
 const PLAIN_FONT_MAP: Record<PlainFont, string> = {
   sans: "font-sans",
   mono: "font-mono",
-}
+};
 
 const PIXEL_FONT_MAP: Record<PixelFont, string> = {
   square: "font-pixel-square",
@@ -86,13 +86,15 @@ const PIXEL_FONT_MAP: Record<PixelFont, string> = {
   circle: "font-pixel-circle",
   triangle: "font-pixel-triangle",
   line: "font-pixel-line",
-}
+};
 
 /* ------------------------------------------------------------------ */
 /* Text-splitting helper                                               */
 /* ------------------------------------------------------------------ */
 
-type Segment = { type: "pixel"; text: string } | { type: "plain"; text: string }
+type Segment =
+  | { type: "pixel"; text: string }
+  | { type: "plain"; text: string };
 
 /**
  * Splits `text` into alternating pixel / plain segments based on the
@@ -100,33 +102,33 @@ type Segment = { type: "pixel"; text: string } | { type: "plain"; text: string }
  * "shadcn/ui" wins over a hypothetical "ui" match.
  */
 function splitTextByPlainWords(text: string, plainWords: string[]): Segment[] {
-  if (plainWords.length === 0) return [{ type: "pixel", text }]
+  if (plainWords.length === 0) return [{ type: "pixel", text }];
 
   // Sort by length descending so longer matches take priority
-  const sorted = [...plainWords].sort((a, b) => b.length - a.length)
+  const sorted = [...plainWords].sort((a, b) => b.length - a.length);
 
   // Escape regex-special characters in each word
-  const escaped = sorted.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+  const escaped = sorted.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
 
-  const pattern = new RegExp(`(${escaped.join("|")})`, "g")
+  const pattern = new RegExp(`(${escaped.join("|")})`, "g");
 
-  const segments: Segment[] = []
-  let lastIndex = 0
+  const segments: Segment[] = [];
+  let lastIndex = 0;
 
   for (const match of text.matchAll(pattern)) {
-    const matchStart = match.index ?? 0
+    const matchStart = match.index ?? 0;
     if (matchStart > lastIndex) {
-      segments.push({ type: "pixel", text: text.slice(lastIndex, matchStart) })
+      segments.push({ type: "pixel", text: text.slice(lastIndex, matchStart) });
     }
-    segments.push({ type: "plain", text: match[0] })
-    lastIndex = matchStart + match[0].length
+    segments.push({ type: "plain", text: match[0] });
+    lastIndex = matchStart + match[0].length;
   }
 
   if (lastIndex < text.length) {
-    segments.push({ type: "pixel", text: text.slice(lastIndex) })
+    segments.push({ type: "pixel", text: text.slice(lastIndex) });
   }
 
-  return segments
+  return segments;
 }
 
 /* ------------------------------------------------------------------ */
@@ -135,21 +137,21 @@ function splitTextByPlainWords(text: string, plainWords: string[]): Segment[] {
 
 export interface PixelParagraphInverseProps extends React.ComponentProps<"p"> {
   /** The paragraph text to render. */
-  text: string
+  text: string;
   /**
    * Words or phrases within `text` to render in a plain (sans/mono) font.
    * Everything else renders in the pixel font.
    * Matching is case-sensitive and longest-match-first.
    */
-  plainWords?: string[]
+  plainWords?: string[];
   /** The wrapper element to render. @default "p" */
-  as?: "p" | "span" | "div"
+  as?: "p" | "span" | "div";
   /** The pixel font used for the base text. @default "square" */
-  pixelFont?: PixelFont
+  pixelFont?: PixelFont;
   /** The plain font for highlighted words. @default "sans" */
-  plainFont?: PlainFont
+  plainFont?: PlainFont;
   /** Extra className applied to each plain-word span. */
-  plainWordClassName?: string
+  plainWordClassName?: string;
 }
 
 /**
@@ -175,9 +177,9 @@ export function PixelParagraphInverse({
   plainWordClassName,
   ...props
 }: PixelParagraphInverseProps) {
-  const segments = splitTextByPlainWords(text, plainWords)
-  const pixelFontClass = PIXEL_FONT_MAP[pixelFont]
-  const plainFontClass = PLAIN_FONT_MAP[plainFont]
+  const segments = splitTextByPlainWords(text, plainWords);
+  const pixelFontClass = PIXEL_FONT_MAP[pixelFont];
+  const plainFontClass = PLAIN_FONT_MAP[plainFont];
 
   return (
     <Tag
@@ -186,7 +188,7 @@ export function PixelParagraphInverse({
       {...props}
     >
       {segments.map((segment, index) => {
-        const key = `${segment.type}-${segment.text}-${index}`
+        const key = `${segment.type}-${segment.text}-${index}`;
         return segment.type === "plain" ? (
           <span
             key={key}
@@ -197,8 +199,8 @@ export function PixelParagraphInverse({
           </span>
         ) : (
           <span key={key}>{segment.text}</span>
-        )
+        );
       })}
     </Tag>
-  )
+  );
 }

@@ -2,13 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "toolbar-expandable",
   "description": "Expandable toolbar component with step-based navigation, smooth animations, and enhanced scrolling",
-  "dependencies": [
-    "motion",
-    "@radix-ui/react-scroll-area"
-  ],
-  "registryDependencies": [
-    "badge"
-  ],
+  "dependencies": ["motion", "@radix-ui/react-scroll-area"],
+  "registryDependencies": ["badge"],
   "files": [
     {
       "path": "registry/default/ui/toolbar-expandable.tsx",

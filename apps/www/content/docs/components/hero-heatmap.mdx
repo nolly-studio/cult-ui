@@ -38,7 +38,10 @@ npx shadcn@latest add https://cult-ui.com/r/hero-heatmap.json
 npm install @paper-design/shaders-react
 ```
 
-<Step>Install required registry dependencies if they are not already in your project.</Step>
+<Step>
+  Install required registry dependencies if they are not already in your
+  project.
+</Step>
 
 ```bash
 npx shadcn@latest add button badge
@@ -67,7 +70,7 @@ npx shadcn@latest add button badge
 Pass shader props directly on `HeroHeatmap` for a one-line hero:
 
 ```tsx
-import { HeroHeatmap } from "@/components/ui/hero-heatmap"
+import { HeroHeatmap } from "@/components/ui/hero-heatmap";
 
 export default function Page() {
   return (
@@ -95,7 +98,7 @@ export default function Page() {
         scale={0.75}
       />
     </main>
-  )
+  );
 }
 ```
 
@@ -114,7 +117,7 @@ import {
   HeroHeatmapBadges,
   HeroHeatmapVisual,
   HeroHeatmapMobileVisual,
-} from "@/components/ui/hero-heatmap"
+} from "@/components/ui/hero-heatmap";
 ```
 
 ```tsx
@@ -139,7 +142,7 @@ export default function Page() {
         <HeroHeatmapMobileVisual />
       </HeroHeatmapRoot>
     </main>
-  )
+  );
 }
 ```
 
@@ -220,7 +223,15 @@ Use the composite component and pass shader props directly:
 ```tsx
 <HeroHeatmap
   image="https://shaders.paper.design/images/logos/diamond.svg"
-  colors={["#112069", "#1f3ca3", "#367c66", "#adfa1e", "#ffe77a", "#ff9a1f", "#ed40b3"]}
+  colors={[
+    "#112069",
+    "#1f3ca3",
+    "#367c66",
+    "#adfa1e",
+    "#ffe77a",
+    "#ff9a1f",
+    "#ed40b3",
+  ]}
   colorBack="#0a0a0a"
   contour={0.6}
   angle={45}

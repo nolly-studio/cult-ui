@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   useCallback,
@@ -9,13 +9,13 @@ import {
   type ChangeEvent,
   type DragEvent,
   type ReactNode,
-} from "react"
+} from "react";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { cn } from "@/lib/utils";
 import {
   DitherImage,
   DitherImageContent,
@@ -24,43 +24,43 @@ import {
   DitherImageReveal,
   type DitherRevealDirection,
   type DitherSize,
-} from "@/registry/default/ui/dither-image"
+} from "@/registry/default/ui/dither-image";
 
 /** Layered edge + lift (SKILL-DESIGN) — replaces flat card borders. */
 const PANEL_SURFACE = cn(
-  "rounded-2xl bg-card/65 p-4 md:p-5",
+  "bg-card/65 rounded-2xl p-4 md:p-5",
   "shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_2px_-1px_rgba(0,0,0,0.06),0px_2px_4px_0px_rgba(0,0,0,0.04)]",
   "dark:shadow-[0px_0px_0px_1px_rgba(255,255,255,0.06),0px_1px_2px_-1px_rgba(255,255,255,0.03),0px_2px_4px_0px_rgba(0,0,0,0.2)]",
   "transition-shadow duration-200",
   "hover:shadow-[0px_0px_0px_1px_rgba(0,0,0,0.08),0px_1px_2px_-1px_rgba(0,0,0,0.08),0px_2px_4px_0px_rgba(0,0,0,0.06)]",
   "dark:hover:shadow-[0px_0px_0px_1px_rgba(255,255,255,0.1),0px_1px_2px_-1px_rgba(255,255,255,0.05),0px_2px_4px_0px_rgba(0,0,0,0.25)]"
-)
+);
 
 const BTN_PRESS =
-  "active:scale-[0.96] transition-transform duration-150 ease-[cubic-bezier(0.2,0,0,1)]"
+  "active:scale-[0.96] transition-transform duration-150 ease-[cubic-bezier(0.2,0,0,1)]";
 
 const SELECT_SURFACE = cn(
-  "h-10 w-full rounded-[calc(var(--radius)-2px)] border border-input/80 bg-input/15 px-2.5 text-sm outline-none",
-  "focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/30"
-)
+  "border-input/80 bg-input/15 h-10 w-full rounded-[calc(var(--radius)-2px)] border px-2.5 text-sm outline-none",
+  "focus-visible:border-ring focus-visible:ring-ring/30 focus-visible:ring-2"
+);
 
-const FALLBACK_SRC = "/images/gibli/gibli-1.jpg"
-const FALLBACK_ALT = "Sample wallpaper — upload or paste a URL to preview"
+const FALLBACK_SRC = "/images/gibli/gibli-1.jpg";
+const FALLBACK_ALT = "Sample wallpaper — upload or paste a URL to preview";
 
-const REMOTE_HTTP_RE = /^https?:\/\//i
+const REMOTE_HTTP_RE = /^https?:\/\//i;
 
 function labelFromRemoteUrl(href: string): string {
   if (href.startsWith("/")) {
-    const file = href.split("/").pop()
-    return file ?? href
+    const file = href.split("/").pop();
+    return file ?? href;
   }
   try {
-    const u = new URL(href)
+    const u = new URL(href);
     const path =
-      u.pathname.length > 48 ? `${u.pathname.slice(0, 48)}…` : u.pathname
-    return `${u.hostname}${path}`
+      u.pathname.length > 48 ? `${u.pathname.slice(0, 48)}…` : u.pathname;
+    return `${u.hostname}${path}`;
   } catch {
-    return "Remote image"
+    return "Remote image";
   }
 }
 
@@ -70,7 +70,7 @@ function needsUnoptimizedImage(src: string): boolean {
     src.startsWith("blob:") ||
     src.startsWith("data:") ||
     REMOTE_HTTP_RE.test(src)
-  )
+  );
 }
 
 const SIZE_OPTIONS: { value: DitherSize; label: string }[] = [
@@ -80,18 +80,18 @@ const SIZE_OPTIONS: { value: DitherSize; label: string }[] = [
   { value: "lg", label: "lg (20px)" },
   { value: "xl", label: "xl (28px)" },
   { value: "2xl", label: "2xl (40px)" },
-]
+];
 
 const ASPECT_OPTIONS = [
   { value: "square" as const, label: "1:1" },
   { value: "video" as const, label: "16:9" },
   { value: "portrait" as const, label: "3:4" },
   { value: "wide" as const, label: "21:9" },
-]
+];
 
 const REVEAL_DIRECTION_OPTIONS: {
-  value: DitherRevealDirection
-  label: string
+  value: DitherRevealDirection;
+  label: string;
 }[] = [
   { value: "r", label: "Right fade (clean left)" },
   { value: "l", label: "Left fade (clean right)" },
@@ -102,7 +102,7 @@ const REVEAL_DIRECTION_OPTIONS: {
   { value: "bl-tr", label: "Diagonal ↗ (clean bottom-left)" },
   { value: "br-tl", label: "Diagonal ↖ (clean bottom-right)" },
   { value: "radial", label: "Radial" },
-]
+];
 
 const QUICK_GIFS = [
   {
@@ -125,19 +125,19 @@ const QUICK_GIFS = [
     href: "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGxmaTUybzN3ZmVqMDV4aHd6eXBwcDhuMWNicWZueTk4eWppNmQ2ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LUl2tRY5oVlBu/giphy.gif",
     label: "GIF 4",
   },
-] as const
+] as const;
 
 /** Local stills: `public/images/gibli/gibli-1.jpg` … `gibli-9.jpg` → `/images/gibli/...`. */
 const QUICK_GHIBLI: { href: string; label: string }[] = Array.from(
   { length: 9 },
   (_, i) => {
-    const n = i + 1
+    const n = i + 1;
     return {
       href: `/images/gibli/gibli-${n}.jpg`,
       label: String(n),
-    }
+    };
   }
-)
+);
 
 function RangeField({
   id,
@@ -149,14 +149,14 @@ function RangeField({
   step,
   suffix,
 }: {
-  id: string
-  label: string
-  value: number
-  onChange: (v: number) => void
-  min: number
-  max: number
-  step: number
-  suffix?: string
+  id: string;
+  label: string;
+  value: number;
+  onChange: (v: number) => void;
+  min: number;
+  max: number;
+  step: number;
+  suffix?: string;
 }) {
   return (
     <div className="flex flex-col gap-1.5">
@@ -164,15 +164,15 @@ function RangeField({
         <Label className="text-foreground text-xs" htmlFor={id}>
           {label}
         </Label>
-        <span className="font-mono text-[0.65rem] text-muted-foreground tabular-nums">
+        <span className="text-muted-foreground font-mono text-[0.65rem] tabular-nums">
           {value}
           {suffix ?? ""}
         </span>
       </div>
       <input
         className={cn(
-          "h-2 w-full cursor-pointer appearance-none rounded-full bg-muted accent-primary",
-          "[&::-webkit-slider-thumb]:size-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary"
+          "bg-muted accent-primary h-2 w-full cursor-pointer appearance-none rounded-full",
+          "[&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:size-3.5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full"
         )}
         id={id}
         max={max}
@@ -183,7 +183,7 @@ function RangeField({
         value={value}
       />
     </div>
-  )
+  );
 }
 
 /** Single stat pill — wraps as one unit so lines never break mid-value (e.g. “reveal r”). */
@@ -191,26 +191,26 @@ function CaptionMetaChip({
   kicker,
   children,
 }: {
-  kicker: string
-  children: ReactNode
+  kicker: string;
+  children: ReactNode;
 }) {
   return (
     <span
       className={cn(
-        "inline-flex min-w-0 max-w-full items-center gap-1.5 whitespace-nowrap rounded-md",
-        "border border-border/45 bg-muted/40 px-2 py-1",
+        "inline-flex max-w-full min-w-0 items-center gap-1.5 rounded-md whitespace-nowrap",
+        "border-border/45 bg-muted/40 border px-2 py-1",
         "text-[0.7rem] leading-none tracking-tight",
-        "shadow-[0_1px_0_0_rgba(0,0,0,0.05)] dark:bg-muted/25 dark:shadow-[0_1px_0_0_rgba(255,255,255,0.06)]"
+        "dark:bg-muted/25 shadow-[0_1px_0_0_rgba(0,0,0,0.05)] dark:shadow-[0_1px_0_0_rgba(255,255,255,0.06)]"
       )}
     >
-      <span className="shrink-0 font-medium text-[0.6rem] text-muted-foreground uppercase tracking-[0.1em]">
+      <span className="text-muted-foreground shrink-0 text-[0.6rem] font-medium tracking-[0.1em] uppercase">
         {kicker}
       </span>
-      <span className="min-w-0 font-medium text-foreground tabular-nums">
+      <span className="text-foreground min-w-0 font-medium tabular-nums">
         {children}
       </span>
     </span>
-  )
+  );
 }
 
 function PanelSection({
@@ -220,248 +220,250 @@ function PanelSection({
   children,
   className,
 }: {
-  eyebrow: string
-  title: string
-  description?: string
-  children: ReactNode
-  className?: string
+  eyebrow: string;
+  title: string;
+  description?: string;
+  children: ReactNode;
+  className?: string;
 }) {
   return (
     <div className={cn("flex flex-col gap-4", className)}>
       <div className="flex flex-col gap-1">
-        <p className="font-medium text-[0.65rem] text-muted-foreground uppercase tracking-[0.14em]">
+        <p className="text-muted-foreground text-[0.65rem] font-medium tracking-[0.14em] uppercase">
           {eyebrow}
         </p>
-        <h2 className="text-balance font-semibold text-foreground text-lg tracking-tight">
+        <h2 className="text-foreground text-lg font-semibold tracking-tight text-balance">
           {title}
         </h2>
         {description ? (
-          <p className="text-pretty text-muted-foreground text-xs leading-relaxed">
+          <p className="text-muted-foreground text-xs leading-relaxed text-pretty">
             {description}
           </p>
         ) : null}
       </div>
       {children}
     </div>
-  )
+  );
 }
 
 export interface DitherImageDemoUploadProps {
   /** Starting image: same-origin path (e.g. `/images/foo.jpg`) or `https://…` image / GIF. */
-  initialSrc?: string
+  initialSrc?: string;
   /** Caption label when `initialSrc` is set; if omitted and `initialSrc` is remote, a short URL label is derived. */
-  initialLabel?: string
+  initialLabel?: string;
 }
 
 export default function DitherImageDemoUpload({
   initialSrc,
   initialLabel,
 }: DitherImageDemoUploadProps = {}) {
-  const baseId = useId()
-  const blobUrlRef = useRef<string | null>(null)
+  const baseId = useId();
+  const blobUrlRef = useRef<string | null>(null);
 
-  const [previewSrc, setPreviewSrc] = useState(() => initialSrc ?? FALLBACK_SRC)
+  const [previewSrc, setPreviewSrc] = useState(
+    () => initialSrc ?? FALLBACK_SRC
+  );
   const [fileLabel, setFileLabel] = useState<string | null>(() => {
     if (initialLabel) {
-      return initialLabel
+      return initialLabel;
     }
     if (initialSrc && REMOTE_HTTP_RE.test(initialSrc)) {
-      return labelFromRemoteUrl(initialSrc)
+      return labelFromRemoteUrl(initialSrc);
     }
     if (initialSrc?.startsWith("data:")) {
-      return "Data URL"
+      return "Data URL";
     }
-    return null
-  })
+    return null;
+  });
   const [urlDraft, setUrlDraft] = useState(() => {
     if (initialSrc && REMOTE_HTTP_RE.test(initialSrc)) {
-      return initialSrc
+      return initialSrc;
     }
-    return ""
-  })
+    return "";
+  });
 
-  const [size, setSize] = useState<DitherSize>("md")
+  const [size, setSize] = useState<DitherSize>("md");
   const [aspect, setAspect] =
-    useState<(typeof ASPECT_OPTIONS)[number]["value"]>("square")
-  const [grayscale, setGrayscale] = useState(1)
-  const [contrast, setContrast] = useState(120)
-  const [brightness, setBrightness] = useState(1)
-  const [blurPx, setBlurPx] = useState(0)
-  const [opacity, setOpacity] = useState(1)
+    useState<(typeof ASPECT_OPTIONS)[number]["value"]>("square");
+  const [grayscale, setGrayscale] = useState(1);
+  const [contrast, setContrast] = useState(120);
+  const [brightness, setBrightness] = useState(1);
+  const [blurPx, setBlurPx] = useState(0);
+  const [opacity, setOpacity] = useState(1);
 
-  const [revealEnabled, setRevealEnabled] = useState(true)
-  const [revealDir, setRevealDir] = useState<DitherRevealDirection>("r")
-  const [revealFrom, setRevealFrom] = useState(0)
-  const [revealTo, setRevealTo] = useState(65)
-  const [fileDragging, setFileDragging] = useState(false)
-  const fileDropDepth = useRef(0)
+  const [revealEnabled, setRevealEnabled] = useState(true);
+  const [revealDir, setRevealDir] = useState<DitherRevealDirection>("r");
+  const [revealFrom, setRevealFrom] = useState(0);
+  const [revealTo, setRevealTo] = useState(65);
+  const [fileDragging, setFileDragging] = useState(false);
+  const fileDropDepth = useRef(0);
 
   const revokeBlob = useCallback(() => {
     if (blobUrlRef.current) {
-      URL.revokeObjectURL(blobUrlRef.current)
-      blobUrlRef.current = null
+      URL.revokeObjectURL(blobUrlRef.current);
+      blobUrlRef.current = null;
     }
-  }, [])
+  }, []);
 
-  useEffect(() => () => revokeBlob(), [revokeBlob])
+  useEffect(() => () => revokeBlob(), [revokeBlob]);
 
   const applyFile = useCallback(
     (file: File) => {
       if (!file.type.startsWith("image/")) {
-        return
+        return;
       }
-      revokeBlob()
-      const url = URL.createObjectURL(file)
-      blobUrlRef.current = url
-      setPreviewSrc(url)
-      setFileLabel(file.name)
-      setUrlDraft("")
+      revokeBlob();
+      const url = URL.createObjectURL(file);
+      blobUrlRef.current = url;
+      setPreviewSrc(url);
+      setFileLabel(file.name);
+      setUrlDraft("");
     },
     [revokeBlob]
-  )
+  );
 
   const onFileChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
-      const file = e.target.files?.[0]
+      const file = e.target.files?.[0];
       if (file) {
-        applyFile(file)
+        applyFile(file);
       }
-      e.target.value = ""
+      e.target.value = "";
     },
     [applyFile]
-  )
+  );
 
   const onFileDragEnter = useCallback((e: DragEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    fileDropDepth.current += 1
+    e.preventDefault();
+    e.stopPropagation();
+    fileDropDepth.current += 1;
     if (e.dataTransfer.types.includes("Files")) {
-      setFileDragging(true)
+      setFileDragging(true);
     }
-  }, [])
+  }, []);
 
   const onFileDragLeave = useCallback((e: DragEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    fileDropDepth.current -= 1
+    e.preventDefault();
+    e.stopPropagation();
+    fileDropDepth.current -= 1;
     if (fileDropDepth.current <= 0) {
-      fileDropDepth.current = 0
-      setFileDragging(false)
+      fileDropDepth.current = 0;
+      setFileDragging(false);
     }
-  }, [])
+  }, []);
 
   const onFileDragOver = useCallback((e: DragEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    e.dataTransfer.dropEffect = "copy"
-  }, [])
+    e.preventDefault();
+    e.stopPropagation();
+    e.dataTransfer.dropEffect = "copy";
+  }, []);
 
   const onFileDrop = useCallback(
     (e: DragEvent) => {
-      e.preventDefault()
-      e.stopPropagation()
-      fileDropDepth.current = 0
-      setFileDragging(false)
-      const file = e.dataTransfer.files?.[0]
+      e.preventDefault();
+      e.stopPropagation();
+      fileDropDepth.current = 0;
+      setFileDragging(false);
+      const file = e.dataTransfer.files?.[0];
       if (file) {
-        applyFile(file)
+        applyFile(file);
       }
     },
     [applyFile]
-  )
+  );
 
   const loadRemoteImage = useCallback(
     (href: string) => {
-      revokeBlob()
-      setPreviewSrc(href)
-      setFileLabel(labelFromRemoteUrl(href))
-      setUrlDraft(href)
+      revokeBlob();
+      setPreviewSrc(href);
+      setFileLabel(labelFromRemoteUrl(href));
+      setUrlDraft(href);
     },
     [revokeBlob]
-  )
+  );
 
   const applyImageUrl = useCallback(() => {
-    const raw = urlDraft.trim()
+    const raw = urlDraft.trim();
     if (!raw) {
-      return
+      return;
     }
     if (raw.startsWith("data:")) {
-      revokeBlob()
-      setPreviewSrc(raw)
-      setFileLabel("Pasted data URL")
-      return
+      revokeBlob();
+      setPreviewSrc(raw);
+      setFileLabel("Pasted data URL");
+      return;
     }
-    let href: string
+    let href: string;
     try {
-      const u = new URL(raw)
+      const u = new URL(raw);
       if (u.protocol === "http:" || u.protocol === "https:") {
-        href = u.href
+        href = u.href;
       } else {
-        return
+        return;
       }
     } catch {
       try {
-        const u = new URL(`https://${raw}`)
-        href = u.href
+        const u = new URL(`https://${raw}`);
+        href = u.href;
       } catch {
-        return
+        return;
       }
     }
-    loadRemoteImage(href)
-  }, [loadRemoteImage, urlDraft, revokeBlob])
+    loadRemoteImage(href);
+  }, [loadRemoteImage, urlDraft, revokeBlob]);
 
   const resetToSample = useCallback(() => {
-    revokeBlob()
-    setPreviewSrc(FALLBACK_SRC)
-    setFileLabel(null)
-    setUrlDraft("")
-  }, [revokeBlob])
+    revokeBlob();
+    setPreviewSrc(FALLBACK_SRC);
+    setFileLabel(null);
+    setUrlDraft("");
+  }, [revokeBlob]);
 
   const resetSliders = useCallback(() => {
-    setSize("md")
-    setAspect("square")
-    setGrayscale(1)
-    setContrast(120)
-    setBrightness(1)
-    setBlurPx(0)
-    setOpacity(1)
-    setRevealEnabled(true)
-    setRevealDir("r")
-    setRevealFrom(0)
-    setRevealTo(65)
-  }, [])
+    setSize("md");
+    setAspect("square");
+    setGrayscale(1);
+    setContrast(120);
+    setBrightness(1);
+    setBlurPx(0);
+    setOpacity(1);
+    setRevealEnabled(true);
+    setRevealDir("r");
+    setRevealFrom(0);
+    setRevealTo(65);
+  }, []);
 
-  const unoptimized = needsUnoptimizedImage(previewSrc)
+  const unoptimized = needsUnoptimizedImage(previewSrc);
 
   return (
-    <main className="min-h-screen bg-background antialiased">
+    <main className="bg-background min-h-screen antialiased">
       <div className="mx-auto max-w-7xl px-4 py-8 md:px-6 md:py-10">
         <header className="mb-8 flex max-w-3xl flex-col gap-2 md:mb-10">
-          <p className="font-medium text-[0.65rem] text-muted-foreground uppercase tracking-[0.14em]">
+          <p className="text-muted-foreground text-[0.65rem] font-medium tracking-[0.14em] uppercase">
             Cult UI · sandbox
           </p>
-          <h1 className="text-balance font-semibold text-2xl text-foreground tracking-tight md:text-3xl">
+          <h1 className="text-foreground text-2xl font-semibold tracking-tight text-balance md:text-3xl">
             DitherImage — upload
           </h1>
-          <p className="text-pretty text-muted-foreground text-sm leading-relaxed">
+          <p className="text-muted-foreground text-sm leading-relaxed text-pretty">
             Upload a file, paste an image or GIF URL, or use the sample. Tune{" "}
-            <code className="rounded-md bg-muted/80 px-1.5 py-0.5 font-mono text-[0.75rem]">
+            <code className="bg-muted/80 rounded-md px-1.5 py-0.5 font-mono text-[0.75rem]">
               dither-plugin
             </code>{" "}
             live. Remote URLs, blobs, and{" "}
-            <code className="rounded-md bg-muted/80 px-1.5 py-0.5 font-mono text-[0.75rem]">
+            <code className="bg-muted/80 rounded-md px-1.5 py-0.5 font-mono text-[0.75rem]">
               data:
             </code>{" "}
             use{" "}
-            <code className="rounded-md bg-muted/80 px-1.5 py-0.5 font-mono text-[0.75rem]">
+            <code className="bg-muted/80 rounded-md px-1.5 py-0.5 font-mono text-[0.75rem]">
               next/image
             </code>{" "}
             with{" "}
-            <code className="rounded-md bg-muted/80 px-1.5 py-0.5 font-mono text-[0.75rem]">
+            <code className="bg-muted/80 rounded-md px-1.5 py-0.5 font-mono text-[0.75rem]">
               unoptimized
             </code>{" "}
             so any host works without changing{" "}
-            <code className="rounded-md bg-muted/80 px-1.5 py-0.5 font-mono text-[0.75rem]">
+            <code className="bg-muted/80 rounded-md px-1.5 py-0.5 font-mono text-[0.75rem]">
               next.config
             </code>
             .
@@ -489,7 +491,7 @@ export default function DitherImageDemoUpload({
               title="Source"
             >
               <div className="flex min-h-0 flex-1 flex-col gap-3">
-                <div className="shrink-0 flex flex-col gap-1.5">
+                <div className="flex shrink-0 flex-col gap-1.5">
                   <Label
                     className="text-foreground text-xs"
                     htmlFor={`${baseId}-url`}
@@ -503,8 +505,8 @@ export default function DitherImageDemoUpload({
                       onChange={(e) => setUrlDraft(e.target.value)}
                       onKeyDown={(e) => {
                         if (e.key === "Enter") {
-                          e.preventDefault()
-                          applyImageUrl()
+                          e.preventDefault();
+                          applyImageUrl();
                         }
                       }}
                       placeholder="https://example.com/photo.jpg or animated.gif"
@@ -522,7 +524,7 @@ export default function DitherImageDemoUpload({
                   </div>
                 </div>
 
-                <div className="shrink-0 flex flex-col gap-1.5">
+                <div className="flex shrink-0 flex-col gap-1.5">
                   <span className="text-foreground text-xs">Quick GIFs</span>
                   <div className="flex flex-wrap gap-2">
                     {QUICK_GIFS.map((g) => (
@@ -540,7 +542,7 @@ export default function DitherImageDemoUpload({
                   </div>
                 </div>
 
-                <div className="shrink-0 flex flex-col gap-1.5">
+                <div className="flex shrink-0 flex-col gap-1.5">
                   <span className="text-foreground text-xs">
                     Ghibli stills (local)
                   </span>
@@ -560,15 +562,15 @@ export default function DitherImageDemoUpload({
                   </div>
                 </div>
 
-                <div className="flex min-h-0 flex-1 flex-col gap-2 border-border/60 border-t pt-3">
-                  <p className="shrink-0 font-medium text-foreground text-xs">
+                <div className="border-border/60 flex min-h-0 flex-1 flex-col gap-2 border-t pt-3">
+                  <p className="text-foreground shrink-0 text-xs font-medium">
                     Upload image or GIF
                   </p>
                   <label
                     className={cn(
                       "flex min-h-32 flex-1 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-xl border-2 border-dashed px-4 py-10 text-center transition-colors",
                       "border-border/55 bg-muted/15 hover:border-border hover:bg-muted/30",
-                      "focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/25",
+                      "focus-within:border-ring focus-within:ring-ring/25 focus-within:ring-2",
                       fileDragging &&
                         "border-primary bg-primary/8 hover:border-primary"
                     )}
@@ -586,10 +588,10 @@ export default function DitherImageDemoUpload({
                       onChange={onFileChange}
                       type="file"
                     />
-                    <span className="font-medium text-foreground text-sm">
+                    <span className="text-foreground text-sm font-medium">
                       {fileDragging ? "Drop to load" : "Drop image or GIF here"}
                     </span>
-                    <span className="max-w-[14rem] text-muted-foreground text-xs leading-snug">
+                    <span className="text-muted-foreground max-w-[14rem] text-xs leading-snug">
                       or click to choose — same formats as URL presets
                     </span>
                   </label>
@@ -616,7 +618,7 @@ export default function DitherImageDemoUpload({
           >
             <div
               className={cn(
-                "rounded-[calc(var(--radius)+6px)] bg-muted/20 p-1.5",
+                "bg-muted/20 rounded-[calc(var(--radius)+6px)] p-1.5",
                 "shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_2px_8px_-2px_rgba(0,0,0,0.08)]",
                 "dark:shadow-[0px_0px_0px_1px_rgba(255,255,255,0.08),0px_2px_12px_-2px_rgba(0,0,0,0.45)]",
                 "ring-1 ring-black/10 ring-inset dark:ring-white/10"
@@ -742,7 +744,7 @@ export default function DitherImageDemoUpload({
                 title="Reveal (partial dither)"
               >
                 <div className="flex flex-col gap-4">
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-border/60 border-b pb-4">
+                  <div className="border-border/60 flex flex-wrap items-center justify-between gap-3 border-b pb-4">
                     <div className="flex flex-col gap-0.5">
                       <Label
                         className="text-foreground text-xs"
@@ -750,7 +752,7 @@ export default function DitherImageDemoUpload({
                       >
                         Partial reveal
                       </Label>
-                      <p className="text-[0.65rem] text-muted-foreground leading-snug">
+                      <p className="text-muted-foreground text-[0.65rem] leading-snug">
                         Show dither on one side and the original photo on the
                         other via a CSS mask.
                       </p>
@@ -932,5 +934,5 @@ export default function DitherImageDemoUpload({
         </div>
       </div>
     </main>
-  )
+  );
 }

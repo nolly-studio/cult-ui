@@ -81,7 +81,7 @@ import {
   ExpandableScreen,
   ExpandableScreenContent,
   ExpandableScreenTrigger,
-} from "@/components/ui/expandable-screen"
+} from "@/components/ui/expandable-screen";
 
 export default function ExpandableScreenDemo() {
   return (
@@ -106,7 +106,7 @@ export default function ExpandableScreenDemo() {
         </div>
       </ExpandableScreenContent>
     </ExpandableScreen>
-  )
+  );
 }
 ```
 
@@ -192,7 +192,7 @@ Hook to access the expandable screen context and control the expanded state.
 
 ```typescriptreact
 function CustomComponent() {
-  const { isExpanded, expand, collapse, layoutId } = useExpandableScreen()
+  const { isExpanded, expand, collapse, layoutId } = useExpandableScreen();
 
   return (
     <div>
@@ -200,7 +200,7 @@ function CustomComponent() {
       <button onClick={expand}>Expand</button>
       <button onClick={collapse}>Collapse</button>
     </div>
-  )
+  );
 }
 ```
 
@@ -251,10 +251,7 @@ const [isExpanded, setIsExpanded] = useState(false)
 Customize or hide the close button:
 
 ```typescriptreact
-<ExpandableScreenContent
-  showCloseButton={false}
-  className="bg-primary"
->
+<ExpandableScreenContent showCloseButton={false} className="bg-primary">
   <div className="flex h-full items-center justify-center">
     <button onClick={() => collapse()}>Custom Close</button>
   </div>

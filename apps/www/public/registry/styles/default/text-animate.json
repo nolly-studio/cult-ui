@@ -1,9 +1,7 @@
 {
   "name": "text-animate",
   "description": "Animated text component with customizable reveal effects and timing",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "name": "text-animate.tsx",

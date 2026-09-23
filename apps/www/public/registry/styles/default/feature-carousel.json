@@ -1,9 +1,7 @@
 {
   "name": "feature-carousel",
   "description": "Feature carousel component with smooth transitions and customizable layouts",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "name": "feature-carousel.tsx",

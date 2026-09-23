@@ -1,8 +1,6 @@
 {
   "name": "collapsible",
-  "dependencies": [
-    "@radix-ui/react-collapsible"
-  ],
+  "dependencies": ["@radix-ui/react-collapsible"],
   "files": [
     {
       "name": "collapsible.tsx",

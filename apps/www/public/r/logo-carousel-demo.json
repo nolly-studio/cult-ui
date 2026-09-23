@@ -2,10 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "logo-carousel-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "logo-carousel",
-    "gradient-heading"
-  ],
+  "registryDependencies": ["logo-carousel", "gradient-heading"],
   "files": [
     {
       "path": "registry/default/example/logo-carousel-demo.tsx",

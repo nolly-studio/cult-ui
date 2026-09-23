@@ -1,49 +1,49 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 
-import { PixelParagraphInverse } from "@/registry/default/ui/pixel-paragraph-words-inverse"
+import { PixelParagraphInverse } from "@/registry/default/ui/pixel-paragraph-words-inverse";
 
 /* ─── Constants ─── */
 
-const PIXEL_FONTS = ["square", "grid", "circle", "triangle", "line"] as const
-type PixelFont = (typeof PIXEL_FONTS)[number]
+const PIXEL_FONTS = ["square", "grid", "circle", "triangle", "line"] as const;
+type PixelFont = (typeof PIXEL_FONTS)[number];
 
-const PLAIN_FONTS = ["sans", "mono"] as const
-type PlainFont = (typeof PLAIN_FONTS)[number]
+const PLAIN_FONTS = ["sans", "mono"] as const;
+type PlainFont = (typeof PLAIN_FONTS)[number];
 
-const WRAPPER_TAGS = ["p", "span", "div"] as const
+const WRAPPER_TAGS = ["p", "span", "div"] as const;
 
 const DEFAULT_TEXT =
-  "54+ animated components and effects. Free, open source, and built to drop into any shadcn/ui project."
-const DEFAULT_PLAIN_WORDS = "animated,shadcn/ui"
+  "54+ animated components and effects. Free, open source, and built to drop into any shadcn/ui project.";
+const DEFAULT_PLAIN_WORDS = "animated,shadcn/ui";
 
 /* ─── Demo ─── */
 
 export default function PixelParagraphWordsInverseDemo() {
-  const [text, setText] = useState(DEFAULT_TEXT)
-  const [plainWordsInput, setPlainWordsInput] = useState(DEFAULT_PLAIN_WORDS)
-  const [pixelFont, setPixelFont] = useState<PixelFont>("square")
-  const [plainFont, setPlainFont] = useState<PlainFont>("sans")
+  const [text, setText] = useState(DEFAULT_TEXT);
+  const [plainWordsInput, setPlainWordsInput] = useState(DEFAULT_PLAIN_WORDS);
+  const [pixelFont, setPixelFont] = useState<PixelFont>("square");
+  const [plainFont, setPlainFont] = useState<PlainFont>("sans");
   const [wrapperTag, setWrapperTag] =
-    useState<(typeof WRAPPER_TAGS)[number]>("p")
+    useState<(typeof WRAPPER_TAGS)[number]>("p");
 
   const plainWords = plainWordsInput
     .split(",")
     .map((w) => w.trim())
-    .filter(Boolean)
+    .filter(Boolean);
 
   return (
     <div className="w-full space-y-8 py-4">
       {/* ── Preview ── */}
-      <div className="flex min-h-[120px] items-center justify-center rounded-lg border border-border/40 bg-background p-8">
+      <div className="border-border/40 bg-background flex min-h-[120px] items-center justify-center rounded-lg border p-8">
         <PixelParagraphInverse
           text={text}
           plainWords={plainWords}
           as={wrapperTag}
           pixelFont={pixelFont}
           plainFont={plainFont}
-          className="max-w-xl text-lg leading-relaxed text-muted-foreground"
+          className="text-muted-foreground max-w-xl text-lg leading-relaxed"
           plainWordClassName="text-foreground font-medium"
         />
       </div>
@@ -59,7 +59,7 @@ export default function PixelParagraphWordsInverseDemo() {
             value={text}
             onChange={(e) => setText(e.target.value)}
             rows={3}
-            className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="border-input placeholder:text-muted-foreground focus-visible:ring-ring w-full rounded-md border bg-transparent px-3 py-2 text-sm shadow-sm focus-visible:ring-1 focus-visible:outline-none"
             placeholder="Enter paragraph text"
           />
         </ControlGroup>
@@ -73,10 +73,10 @@ export default function PixelParagraphWordsInverseDemo() {
             type="text"
             value={plainWordsInput}
             onChange={(e) => setPlainWordsInput(e.target.value)}
-            className="h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="border-input placeholder:text-muted-foreground focus-visible:ring-ring h-9 w-full rounded-md border bg-transparent px-3 text-sm shadow-sm focus-visible:ring-1 focus-visible:outline-none"
             placeholder="e.g. animated,shadcn/ui,open source"
           />
-          <p className="text-xs text-muted-foreground">
+          <p className="text-muted-foreground text-xs">
             These words escape the pixel font and render in sans/mono
           </p>
         </ControlGroup>
@@ -128,7 +128,7 @@ export default function PixelParagraphWordsInverseDemo() {
             onChange={(e) =>
               setWrapperTag(e.target.value as (typeof WRAPPER_TAGS)[number])
             }
-            className="h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="border-input focus-visible:ring-ring h-9 w-full rounded-md border bg-transparent px-3 text-sm shadow-sm focus-visible:ring-1 focus-visible:outline-none"
           >
             {WRAPPER_TAGS.map((t) => (
               <option key={t} value={t}>
@@ -139,7 +139,7 @@ export default function PixelParagraphWordsInverseDemo() {
         </ControlGroup>
       </div>
     </div>
-  )
+  );
 }
 
 /* ─── Shared control primitives ─── */
@@ -149,16 +149,16 @@ function ControlGroup({
   children,
   className,
 }: {
-  label: string
-  children: React.ReactNode
-  className?: string
+  label: string;
+  children: React.ReactNode;
+  className?: string;
 }) {
   return (
     <div className={`space-y-2 ${className ?? ""}`}>
-      <span className="block text-xs font-medium uppercase tracking-wider text-muted-foreground">
+      <span className="text-muted-foreground block text-xs font-medium tracking-wider uppercase">
         {label}
       </span>
       {children}
     </div>
-  )
+  );
 }

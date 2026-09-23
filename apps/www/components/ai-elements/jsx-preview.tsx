@@ -1,10 +1,7 @@
 "use client";
 
-import type { ComponentProps, ReactNode } from "react";
-import type { TProps as JsxParserProps } from "react-jsx-parser";
-
-import { cn } from "@/lib/utils";
 import { AlertCircle } from "lucide-react";
+import type { ComponentProps, ReactNode } from "react";
 import {
   createContext,
   memo,
@@ -15,7 +12,10 @@ import {
   useRef,
   useState,
 } from "react";
+import type { TProps as JsxParserProps } from "react-jsx-parser";
 import JsxParser from "react-jsx-parser";
+
+import { cn } from "@/lib/utils";
 
 interface JSXPreviewContextValue {
   jsx: string;
@@ -229,7 +229,7 @@ export const JSXPreviewError = memo(
     return (
       <div
         className={cn(
-          "flex items-center gap-2 rounded-md border border-destructive/50 bg-destructive/10 p-3 text-destructive text-sm",
+          "border-destructive/50 bg-destructive/10 text-destructive flex items-center gap-2 rounded-md border p-3 text-sm",
           className
         )}
         {...props}

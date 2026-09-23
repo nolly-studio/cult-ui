@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { cn } from "@/lib/utils"
-import { useConfig } from "@/hooks/use-config"
+import { useConfig } from "@/hooks/use-config";
+import { cn } from "@/lib/utils";
 
 interface ThemeWrapperProps extends React.ComponentProps<"div"> {
-  defaultTheme?: string
+  defaultTheme?: string;
 }
 
 export function ThemeWrapper({
@@ -12,7 +12,7 @@ export function ThemeWrapper({
   children,
   className,
 }: ThemeWrapperProps) {
-  const [config] = useConfig()
+  const [config] = useConfig();
 
   return (
     <div
@@ -29,5 +29,5 @@ export function ThemeWrapper({
     >
       {children}
     </div>
-  )
+  );
 }

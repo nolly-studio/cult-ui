@@ -3,10 +3,7 @@
   "name": "expandable-screen",
   "type": "registry:ui",
   "description": "A full-screen expandable component with morphing animations using shared layout IDs for smooth transitions",
-  "dependencies": [
-    "motion",
-    "lucide-react"
-  ],
+  "dependencies": ["motion", "lucide-react"],
   "files": [
     {
       "path": "registry/default/ui/expandable-screen.tsx",

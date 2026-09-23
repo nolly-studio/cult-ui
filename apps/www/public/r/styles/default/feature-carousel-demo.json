@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "feature-carousel-demo",
-  "registryDependencies": [
-    "feature-carousel"
-  ],
+  "registryDependencies": ["feature-carousel"],
   "files": [
     {
       "path": "registry/default/example/feature-carousel-demo.tsx",

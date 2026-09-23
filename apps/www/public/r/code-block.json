@@ -3,9 +3,7 @@
   "name": "code-block",
   "type": "registry:ui",
   "description": "A beautiful code block component with tabs, copy functionality, and smooth animations",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/code-block.tsx",

@@ -1,5 +1,6 @@
-"use client"
+"use client";
 
+import Image, { type ImageProps } from "next/image";
 /**
  * `DitherImage` — compound figure that applies a CSS-only Bayer dither effect
  * to an image via the `dither-plugin` Tailwind utility. Safari-compatible (no
@@ -70,15 +71,14 @@ import {
   type ComponentProps,
   type CSSProperties,
   type HTMLAttributes,
-} from "react"
-import Image, { type ImageProps } from "next/image"
+} from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 /** Cell size of the underlying dither matrix — maps to plugin `--dither-cell-*` theme tokens. */
-export type DitherSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl"
+export type DitherSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
-const NUMERIC_SIZE_RE = /^\d+$/
+const NUMERIC_SIZE_RE = /^\d+$/;
 
 const DITHER_SIZE_CLASS: Record<DitherSize, string> = {
   xs: "dither-xs",
@@ -87,7 +87,7 @@ const DITHER_SIZE_CLASS: Record<DitherSize, string> = {
   lg: "dither-lg",
   xl: "dither-xl",
   "2xl": "dither-2xl",
-}
+};
 
 /** Shorthand aspect-ratio values; pass any valid `aspect-ratio` string for custom. */
 export type DitherAspectRatio =
@@ -96,47 +96,47 @@ export type DitherAspectRatio =
   | "portrait"
   | "wide"
   | (string & {})
-  | number
+  | number;
 
 function resolveAspectRatio(ratio: DitherAspectRatio): string {
   if (typeof ratio === "number") {
-    return String(ratio)
+    return String(ratio);
   }
   if (ratio === "square") {
-    return "1 / 1"
+    return "1 / 1";
   }
   if (ratio === "video") {
-    return "16 / 9"
+    return "16 / 9";
   }
   if (ratio === "portrait") {
-    return "3 / 4"
+    return "3 / 4";
   }
   if (ratio === "wide") {
-    return "21 / 9"
+    return "21 / 9";
   }
-  return ratio
+  return ratio;
 }
 
 /** CSS custom properties exposed by `dither-plugin`. Numbers are used directly by the plugin's `filter`. */
 interface DitherVars {
-  "--dither-gray"?: number | string
-  "--dither-contrast"?: number | string
-  "--dither-bright"?: number | string
-  "--dither-blur"?: string
-  "--dither-cell"?: string
-  "--dither-opacity"?: number | string
-  "--dither-image"?: string
+  "--dither-gray"?: number | string;
+  "--dither-contrast"?: number | string;
+  "--dither-bright"?: number | string;
+  "--dither-blur"?: string;
+  "--dither-cell"?: string;
+  "--dither-opacity"?: number | string;
+  "--dither-image"?: string;
 }
 
 /* ─── Frame context (invert on dark) ───────────────────────────────────── */
 
 const DitherImageFrameContext = createContext<{ invertOnDark: boolean } | null>(
   null
-)
+);
 
 /* ─── Root figure ──────────────────────────────────────────────────────── */
 
-export type DitherImageProps = ComponentProps<"figure">
+export type DitherImageProps = ComponentProps<"figure">;
 
 /**
  * `<figure>` wrapper grouping a dithered frame with its caption. Stays
@@ -151,38 +151,40 @@ const DitherImage = forwardRef<HTMLElement, DitherImageProps>(
         ref={ref}
         {...props}
       />
-    )
+    );
   }
-)
-DitherImage.displayName = "DitherImage"
+);
+DitherImage.displayName = "DitherImage";
 
 /* ─── Frame (the dither surface) ───────────────────────────────────────── */
 
-export interface DitherImageFrameProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, "style"> {
+export interface DitherImageFrameProps extends Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "style"
+> {
   /** Cell size — maps to `dither-{size}` utility. Defaults to `lg` (matches the plugin's bare `dither` class). */
-  size?: DitherSize
+  size?: DitherSize;
   /** Shorthand: `"square" | "video" | "portrait" | "wide"` or any valid `aspect-ratio` string. */
-  aspectRatio?: DitherAspectRatio
+  aspectRatio?: DitherAspectRatio;
   /** `--dither-gray` (0 = color, 1 = grayscale). Default `1`. */
-  grayscale?: number
+  grayscale?: number;
   /** `--dither-contrast` — unitless CSS `contrast()` value. Plugin default `120` (crushes to 1-bit). */
-  contrast?: number
+  contrast?: number;
   /** `--dither-bright` — unitless CSS `brightness()` value. Default `1`. */
-  brightness?: number
+  brightness?: number;
   /** `--dither-blur` — accepts a number (px) or any CSS length. Default `0`. */
-  blur?: number | string
+  blur?: number | string;
   /** `--dither-opacity` — dot-pattern overlay opacity (0–1). Default `1`. */
-  opacity?: number
+  opacity?: number;
   /** Round the frame corners. `true` uses `rounded-xl`; pass a string for a custom class. */
-  rounded?: boolean | string
+  rounded?: boolean | string;
   /**
    * Wrap the dither surface in `dark:invert` and counter-invert the image in
    * dark mode so the dither dots read correctly while photo colors stay true.
    */
-  invertOnDark?: boolean
+  invertOnDark?: boolean;
   /** Merged with generated CSS variables; your values take precedence. */
-  style?: CSSProperties & DitherVars
+  style?: CSSProperties & DitherVars;
 }
 
 /**
@@ -208,32 +210,32 @@ const DitherImageFrame = forwardRef<HTMLDivElement, DitherImageFrameProps>(
     },
     ref
   ) {
-    const vars: CSSProperties & DitherVars = { ...style }
+    const vars: CSSProperties & DitherVars = { ...style };
 
     if (grayscale !== undefined) {
-      vars["--dither-gray"] = grayscale
+      vars["--dither-gray"] = grayscale;
     }
     if (contrast !== undefined) {
-      vars["--dither-contrast"] = contrast
+      vars["--dither-contrast"] = contrast;
     }
     if (brightness !== undefined) {
-      vars["--dither-bright"] = brightness
+      vars["--dither-bright"] = brightness;
     }
     if (blur !== undefined) {
-      vars["--dither-blur"] = typeof blur === "number" ? `${blur}px` : blur
+      vars["--dither-blur"] = typeof blur === "number" ? `${blur}px` : blur;
     }
     if (opacity !== undefined) {
-      vars["--dither-opacity"] = opacity
+      vars["--dither-opacity"] = opacity;
     }
     if (aspectRatio !== undefined && vars.aspectRatio === undefined) {
-      vars.aspectRatio = resolveAspectRatio(aspectRatio)
+      vars.aspectRatio = resolveAspectRatio(aspectRatio);
     }
 
-    let roundedClass: string | undefined
+    let roundedClass: string | undefined;
     if (rounded === true) {
-      roundedClass = "rounded-xl"
+      roundedClass = "rounded-xl";
     } else if (typeof rounded === "string") {
-      roundedClass = rounded
+      roundedClass = rounded;
     }
 
     const frame = (
@@ -250,23 +252,23 @@ const DitherImageFrame = forwardRef<HTMLDivElement, DitherImageFrameProps>(
         style={vars}
         {...props}
       />
-    )
+    );
 
     return (
       <DitherImageFrameContext.Provider value={{ invertOnDark }}>
         {invertOnDark ? <div className="dark:invert">{frame}</div> : frame}
       </DitherImageFrameContext.Provider>
-    )
+    );
   }
-)
-DitherImageFrame.displayName = "DitherImageFrame"
+);
+DitherImageFrame.displayName = "DitherImageFrame";
 
 /* ─── Reveal stage ─────────────────────────────────────────────────────── */
 
 export type DitherImageRevealProps = ComponentProps<"div"> & {
   /** Tailwind size shorthand (`72` → `size-72`). Non-numeric strings are applied as extra classes. */
-  size?: number | string
-}
+  size?: number | string;
+};
 
 /**
  * Positioning stage for partial dither: stacks the dithered frame with a
@@ -274,14 +276,14 @@ export type DitherImageRevealProps = ComponentProps<"div"> & {
  */
 const DitherImageReveal = forwardRef<HTMLDivElement, DitherImageRevealProps>(
   function DitherImageReveal({ className, size, ...props }, ref) {
-    let sizeClass: string | undefined
+    let sizeClass: string | undefined;
     if (size !== undefined) {
       if (typeof size === "number") {
-        sizeClass = `size-${size}`
+        sizeClass = `size-${size}`;
       } else if (NUMERIC_SIZE_RE.test(size)) {
-        sizeClass = `size-${size}`
+        sizeClass = `size-${size}`;
       } else {
-        sizeClass = size
+        sizeClass = size;
       }
     }
 
@@ -292,10 +294,10 @@ const DitherImageReveal = forwardRef<HTMLDivElement, DitherImageRevealProps>(
         ref={ref}
         {...props}
       />
-    )
+    );
   }
-)
-DitherImageReveal.displayName = "DitherImageReveal"
+);
+DitherImageReveal.displayName = "DitherImageReveal";
 
 /* ─── Overlay (masked clean copy) ─────────────────────────────────────── */
 
@@ -312,7 +314,7 @@ export type DitherRevealDirection =
   | "bl-tr"
   /** Bottom-right → top-left diagonal (clean bottom-right). */
   | "br-tl"
-  | "radial"
+  | "radial";
 
 export type DitherImageOverlayProps = Omit<ImageProps, "style"> & {
   /**
@@ -320,45 +322,45 @@ export type DitherImageOverlayProps = Omit<ImageProps, "style"> & {
    * Axis-aligned: `l` | `r` | `t` | `b`; diagonals: `tl-br` | `tr-bl` | `bl-tr` | `br-tl`; `radial`.
    * Default `"r"` (clean left → dither right).
    */
-  direction?: DitherRevealDirection
+  direction?: DitherRevealDirection;
   /** Mask start % (0–100). Default `0`. */
-  from?: number
+  from?: number;
   /** Mask end % (0–100). Default `65`. */
-  to?: number
+  to?: number;
   /** Overrides typed mask utilities — use Tailwind `mask-*` classes or arbitrary values. */
-  maskClassName?: string
-  style?: CSSProperties
-}
+  maskClassName?: string;
+  style?: CSSProperties;
+};
 
 function revealMaskImage(
   direction: DitherRevealDirection,
   from: number,
   to: number
 ): string {
-  const a = Math.min(from, to)
-  const b = Math.max(from, to)
+  const a = Math.min(from, to);
+  const b = Math.max(from, to);
   switch (direction) {
     case "r":
-      return `linear-gradient(to right, black ${a}%, transparent ${b}%)`
+      return `linear-gradient(to right, black ${a}%, transparent ${b}%)`;
     case "l":
-      return `linear-gradient(to left, black ${a}%, transparent ${b}%)`
+      return `linear-gradient(to left, black ${a}%, transparent ${b}%)`;
     case "t":
-      return `linear-gradient(to bottom, black ${a}%, transparent ${b}%)`
+      return `linear-gradient(to bottom, black ${a}%, transparent ${b}%)`;
     case "b":
-      return `linear-gradient(to top, black ${a}%, transparent ${b}%)`
+      return `linear-gradient(to top, black ${a}%, transparent ${b}%)`;
     case "tl-br":
-      return `linear-gradient(to bottom right, black ${a}%, transparent ${b}%)`
+      return `linear-gradient(to bottom right, black ${a}%, transparent ${b}%)`;
     case "tr-bl":
-      return `linear-gradient(to bottom left, black ${a}%, transparent ${b}%)`
+      return `linear-gradient(to bottom left, black ${a}%, transparent ${b}%)`;
     case "bl-tr":
-      return `linear-gradient(to top right, black ${a}%, transparent ${b}%)`
+      return `linear-gradient(to top right, black ${a}%, transparent ${b}%)`;
     case "br-tl":
-      return `linear-gradient(to top left, black ${a}%, transparent ${b}%)`
+      return `linear-gradient(to top left, black ${a}%, transparent ${b}%)`;
     case "radial":
-      return `radial-gradient(circle at center, black ${a}%, transparent ${b}%)`
+      return `radial-gradient(circle at center, black ${a}%, transparent ${b}%)`;
     default: {
-      const _never: never = direction
-      return _never
+      const _never: never = direction;
+      return _never;
     }
   }
 }
@@ -368,7 +370,7 @@ function revealMaskStyle(
   from: number,
   to: number
 ): CSSProperties {
-  const img = revealMaskImage(direction, from, to)
+  const img = revealMaskImage(direction, from, to);
   return {
     WebkitMaskImage: img,
     maskImage: img,
@@ -376,7 +378,7 @@ function revealMaskStyle(
     maskSize: "100% 100%",
     WebkitMaskRepeat: "no-repeat",
     maskRepeat: "no-repeat",
-  }
+  };
 }
 
 /**
@@ -399,7 +401,7 @@ const DitherImageOverlay = forwardRef<
   ref
 ) {
   const typedMaskStyle =
-    maskClassName === undefined ? revealMaskStyle(direction, from, to) : {}
+    maskClassName === undefined ? revealMaskStyle(direction, from, to) : {};
 
   return (
     <Image
@@ -414,13 +416,13 @@ const DitherImageOverlay = forwardRef<
       style={{ ...typedMaskStyle, ...style }}
       {...props}
     />
-  )
-})
-DitherImageOverlay.displayName = "DitherImageOverlay"
+  );
+});
+DitherImageOverlay.displayName = "DitherImageOverlay";
 
 /* ─── Image content ────────────────────────────────────────────────────── */
 
-export type DitherImageContentProps = ImageProps
+export type DitherImageContentProps = ImageProps;
 
 /**
  * `next/image` tuned for a `DitherImageFrame`. Fills the frame by default; pass
@@ -430,8 +432,8 @@ const DitherImageContent = forwardRef<
   HTMLImageElement,
   DitherImageContentProps
 >(function DitherImageContent({ className, alt, ...props }, ref) {
-  const ctx = useContext(DitherImageFrameContext)
-  const counterInvert = ctx?.invertOnDark === true ? "dark:invert" : undefined
+  const ctx = useContext(DitherImageFrameContext);
+  const counterInvert = ctx?.invertOnDark === true ? "dark:invert" : undefined;
 
   return (
     <Image
@@ -445,13 +447,13 @@ const DitherImageContent = forwardRef<
       ref={ref}
       {...props}
     />
-  )
-})
-DitherImageContent.displayName = "DitherImageContent"
+  );
+});
+DitherImageContent.displayName = "DitherImageContent";
 
 /* ─── Caption ──────────────────────────────────────────────────────────── */
 
-export type DitherImageCaptionProps = ComponentProps<"figcaption">
+export type DitherImageCaptionProps = ComponentProps<"figcaption">;
 
 /**
  * `<figcaption>` sibling to the frame. Renders **outside** the filtered
@@ -462,17 +464,17 @@ const DitherImageCaption = forwardRef<HTMLElement, DitherImageCaptionProps>(
     return (
       <figcaption
         className={cn(
-          "text-pretty text-muted-foreground text-sm leading-relaxed",
+          "text-muted-foreground text-sm leading-relaxed text-pretty",
           className
         )}
         data-slot="dither-image-caption"
         ref={ref}
         {...props}
       />
-    )
+    );
   }
-)
-DitherImageCaption.displayName = "DitherImageCaption"
+);
+DitherImageCaption.displayName = "DitherImageCaption";
 
 export {
   DitherImage,
@@ -481,4 +483,4 @@ export {
   DitherImageFrame,
   DitherImageOverlay,
   DitherImageReveal,
-}
+};

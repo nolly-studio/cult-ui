@@ -1,9 +1,7 @@
 {
   "name": "bg-media",
   "description": "Background media component with video/image support and overlay effects",
-  "dependencies": [
-    ""
-  ],
+  "dependencies": [""],
   "files": [
     {
       "name": "bg-media.tsx",

@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hero-heatmap-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "hero-heatmap"
-  ],
+  "registryDependencies": ["hero-heatmap"],
   "files": [
     {
       "path": "registry/default/example/hero-heatmap-demo.tsx",

@@ -1,8 +1,6 @@
 {
   "name": "context-menu",
-  "dependencies": [
-    "@radix-ui/react-context-menu"
-  ],
+  "dependencies": ["@radix-ui/react-context-menu"],
   "files": [
     {
       "name": "context-menu.tsx",

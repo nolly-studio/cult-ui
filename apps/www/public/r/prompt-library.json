@@ -3,10 +3,7 @@
   "name": "prompt-library",
   "type": "registry:ui",
   "description": "Browse, insert, and manage prompt templates with categories and custom prompts",
-  "dependencies": [
-    "@hugeicons/core-free-icons",
-    "@hugeicons/react"
-  ],
+  "dependencies": ["@hugeicons/core-free-icons", "@hugeicons/react"],
   "files": [
     {
       "path": "registry/default/ui/prompt-library.tsx",

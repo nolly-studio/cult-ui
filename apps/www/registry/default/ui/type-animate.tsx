@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { animate, motion, useMotionValue, useTransform } from "motion/react"
+import { animate, motion, useMotionValue, useTransform } from "motion/react";
+import { useEffect, useState } from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const containerVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -17,7 +17,7 @@ const containerVariants = {
       staggerChildren: 0.1,
     },
   },
-}
+};
 
 const itemVariants = {
   hidden: { opacity: 0, y: 15 },
@@ -29,17 +29,17 @@ const itemVariants = {
       ease: [0, 0, 0.58, 1] as const,
     },
   },
-}
+};
 
 export function AnimatedContainer() {
   return (
-    <motion.div className="flex w-full select-none items-center bg-black rounded-full h-[53px] md:h-[80px] justify-center">
+    <motion.div className="flex h-[53px] w-full items-center justify-center rounded-full bg-black select-none md:h-[80px]">
       <motion.div
         variants={containerVariants}
         animate="visible"
         initial="hidden"
         className={cn(
-          "relative h-[53px] md:h-[68px] py-3 px-2 md:py-5 w-[34rem] md:w-[53rem]",
+          "relative h-[53px] w-[34rem] px-2 py-3 md:h-[68px] md:w-[53rem] md:py-5",
           "before:absolute before:-inset-1 before:rounded-[9991px] before:border before:border-neutral-100/20 before:opacity-0 before:ring-2 before:ring-neutral-100/40 before:transition",
           "dark:before:border-orange-400/40 dark:before:ring-2 dark:before:ring-orange-900/40",
           "input-shadow-glow after:pointer-events-none after:absolute after:inset-px after:rounded-[9987px] after:shadow-white/5 after:transition",
@@ -53,9 +53,9 @@ export function AnimatedContainer() {
             "dark:border dark:border-black/40",
             "input-shadow rounded-[9988px] !outline-none",
             "disabled:cursor-not-allowed disabled:opacity-50 sm:leading-6",
-            "focus:outline-none focus:ring-2 focus:ring-inset focus:ring-stone-900 dark:focus:ring-orange-900",
-            "relative border border-black/5 bg-black/90 pl-3 py-5 md:pl-8 md:pr-7 shadow-black/5 placeholder:text-stone-400 focus:bg-black",
-            "text-white font-bold bg-black dark:text-neutral-100 dark:shadow-black/10 dark:placeholder:text-stone-500",
+            "focus:ring-2 focus:ring-stone-900 focus:outline-none focus:ring-inset dark:focus:ring-orange-900",
+            "relative border border-black/5 bg-black/90 py-5 pl-3 shadow-black/5 placeholder:text-stone-400 focus:bg-black md:pr-7 md:pl-8",
+            "bg-black font-bold text-white dark:text-neutral-100 dark:shadow-black/10 dark:placeholder:text-stone-500",
             "dark:focus:bg-neutral-900"
           )}
         >
@@ -63,21 +63,21 @@ export function AnimatedContainer() {
         </motion.span>
       </motion.div>
     </motion.div>
-  )
+  );
 }
 
 export interface ITextAnimationProps {
-  delay: number
+  delay: number;
 }
 
 function TextAnimation({ delay }: ITextAnimationProps) {
-  const [animationComplete, setAnimationComplete] = useState(false)
-  const baseText = "Create a "
-  const count = useMotionValue(0)
-  const rounded = useTransform(count, (latest) => Math.round(latest))
+  const [animationComplete, setAnimationComplete] = useState(false);
+  const baseText = "Create a ";
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
   const displayText = useTransform(rounded, (latest) =>
     baseText.slice(0, latest)
-  )
+  );
 
   useEffect(() => {
     const controls = animate(count, baseText.length, {
@@ -86,9 +86,9 @@ function TextAnimation({ delay }: ITextAnimationProps) {
       duration: 1,
       ease: [0.42, 0, 0.58, 1] as const,
       onComplete: () => setAnimationComplete(true),
-    })
-    return controls.stop
-  }, [count, baseText.length, delay])
+    });
+    return controls.stop;
+  }, [count, baseText.length, delay]);
 
   return (
     <span>
@@ -96,15 +96,15 @@ function TextAnimation({ delay }: ITextAnimationProps) {
       {animationComplete && <RepeatedTextAnimation delay={delay + 1} />}
       <BlinkingCursor />
     </span>
-  )
+  );
 }
 
 export interface IRepeatedTextAnimationProps {
-  delay: number
+  delay: number;
 }
 
 function RepeatedTextAnimation({ delay }: IRepeatedTextAnimationProps) {
-  const textIndex = useMotionValue(0)
+  const textIndex = useMotionValue(0);
   const texts = [
     "quiz page with questions and answers",
     "blog Article Details Page Layout",
@@ -116,15 +116,15 @@ function RepeatedTextAnimation({ delay }: IRepeatedTextAnimationProps) {
     "list of product categories with image, name and description.",
     "landing page hero section with a heading, leading text and an opt-in form.",
     "contact form with first name, last name, email, and message fields.",
-  ]
+  ];
 
-  const baseText = useTransform(textIndex, (latest) => texts[latest] || "")
-  const count = useMotionValue(0)
-  const rounded = useTransform(count, (latest) => Math.round(latest))
+  const baseText = useTransform(textIndex, (latest) => texts[latest] || "");
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
   const displayText = useTransform(rounded, (latest) =>
     baseText.get().slice(0, latest)
-  )
-  const updatedThisRound = useMotionValue(true)
+  );
+  const updatedThisRound = useMotionValue(true);
 
   useEffect(() => {
     const animation = animate(count, 60, {
@@ -137,17 +137,17 @@ function RepeatedTextAnimation({ delay }: IRepeatedTextAnimationProps) {
       repeatDelay: 1,
       onUpdate(latest) {
         if (updatedThisRound.get() && latest > 0) {
-          updatedThisRound.set(false)
+          updatedThisRound.set(false);
         } else if (!updatedThisRound.get() && latest === 0) {
-          textIndex.set((textIndex.get() + 1) % texts.length)
-          updatedThisRound.set(true)
+          textIndex.set((textIndex.get() + 1) % texts.length);
+          updatedThisRound.set(true);
         }
       },
-    })
-    return () => animation.stop()
-  }, [count, delay, textIndex, texts, updatedThisRound])
+    });
+    return () => animation.stop();
+  }, [count, delay, textIndex, texts, updatedThisRound]);
 
-  return <motion.span className="inline">{displayText}</motion.span>
+  return <motion.span className="inline">{displayText}</motion.span>;
 }
 
 const cursorVariants = {
@@ -161,7 +161,7 @@ const cursorVariants = {
       times: [0, 0.5, 0.5, 1],
     },
   },
-}
+};
 
 function BlinkingCursor() {
   return (
@@ -170,5 +170,5 @@ function BlinkingCursor() {
       animate="blinking"
       className="inline-block h-5 w-[1px] translate-y-1 bg-neutral-900"
     />
-  )
+  );
 }

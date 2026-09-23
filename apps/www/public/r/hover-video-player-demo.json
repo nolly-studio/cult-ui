@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hover-video-player-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "hover-video-player"
-  ],
+  "registryDependencies": ["hover-video-player"],
   "files": [
     {
       "path": "registry/default/example/hover-video-player-demo.tsx",

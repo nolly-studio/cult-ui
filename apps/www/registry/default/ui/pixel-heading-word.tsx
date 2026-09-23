@@ -51,13 +51,13 @@
  * component will resolve correctly.
  */
 
-"use client"
+"use client";
 
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-type PixelFont = "square" | "grid" | "circle" | "triangle" | "line"
+type PixelFont = "square" | "grid" | "circle" | "triangle" | "line";
 
 const PIXEL_FONT_MAP: Record<PixelFont, string> = {
   square: "font-pixel-square",
@@ -65,10 +65,10 @@ const PIXEL_FONT_MAP: Record<PixelFont, string> = {
   circle: "font-pixel-circle",
   triangle: "font-pixel-triangle",
   line: "font-pixel-line",
-}
+};
 
-const PIXEL_FONTS = Object.values(PIXEL_FONT_MAP)
-const PIXEL_FONT_KEYS = Object.keys(PIXEL_FONT_MAP) as PixelFont[]
+const PIXEL_FONTS = Object.values(PIXEL_FONT_MAP);
+const PIXEL_FONT_KEYS = Object.keys(PIXEL_FONT_MAP) as PixelFont[];
 
 /**
  * Props for the PixelHeading component.
@@ -81,51 +81,51 @@ export interface PixelHeadingProps extends React.ComponentProps<"h1"> {
    * The heading level to render.
    * @default "h1"
    */
-  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   /**
    * The resting pixel font displayed by default.
    * @default "square"
    */
-  initialFont?: PixelFont
+  initialFont?: PixelFont;
   /**
    * The pixel font to show on hover / focus.
    * When set the component swaps between `initialFont` and `hoverFont`
    * instead of cycling through every font.
    */
-  hoverFont?: PixelFont
+  hoverFont?: PixelFont;
   /**
    * Interval in milliseconds between font cycles on hover.
    * Only used when `hoverFont` is **not** set (cycling mode).
    * @default 300
    */
-  cycleInterval?: number
+  cycleInterval?: number;
   /**
    * Initial font index (0–4) for the starting pixel font.
    * Ignored when `initialFont` is set.
    * @default 0
    */
-  defaultFontIndex?: number
+  defaultFontIndex?: number;
   /**
    * Callback fired when the active font index changes.
    */
-  onFontIndexChange?: (index: number) => void
+  onFontIndexChange?: (index: number) => void;
   /**
    * Whether to show the font name label beneath the heading.
    * @default true
    */
-  showLabel?: boolean
+  showLabel?: boolean;
   /**
    * Disable all hover / focus interactions.
    * The heading stays locked to `initialFont` (or `defaultFontIndex`).
    * @default false
    */
-  disableHover?: boolean
+  disableHover?: boolean;
   /**
    * Disable the auto-cycling interval in cycle mode.
    * Swap mode (`hoverFont`) still works unless `disableHover` is also set.
    * @default false
    */
-  disableCycling?: boolean
+  disableCycling?: boolean;
 }
 
 /**
@@ -175,70 +175,70 @@ export function PixelHeading({
   /* ------------------------------------------------------------------ */
   const resolvedDefaultIndex = initialFont
     ? PIXEL_FONT_KEYS.indexOf(initialFont)
-    : defaultFontIndex
+    : defaultFontIndex;
 
-  const hoverIndex = hoverFont ? PIXEL_FONT_KEYS.indexOf(hoverFont) : null
-  const isSwapMode = hoverIndex !== null
+  const hoverIndex = hoverFont ? PIXEL_FONT_KEYS.indexOf(hoverFont) : null;
+  const isSwapMode = hoverIndex !== null;
 
-  const [fontIndex, setFontIndex] = useState(resolvedDefaultIndex)
-  const [isActive, setIsActive] = useState(false)
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const [fontIndex, setFontIndex] = useState(resolvedDefaultIndex);
+  const [isActive, setIsActive] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     return () => {
       if (intervalRef.current) {
-        clearInterval(intervalRef.current)
+        clearInterval(intervalRef.current);
       }
-    }
-  }, [])
+    };
+  }, []);
 
   /* ---- Cycling helpers (cycle mode only) ---- */
   const advanceFont = useCallback(() => {
     setFontIndex((prev) => {
-      const next = (prev + 1) % PIXEL_FONTS.length
-      onFontIndexChange?.(next)
-      return next
-    })
-  }, [onFontIndexChange])
+      const next = (prev + 1) % PIXEL_FONTS.length;
+      onFontIndexChange?.(next);
+      return next;
+    });
+  }, [onFontIndexChange]);
 
   const startCycling = useCallback(() => {
-    setIsActive(true)
-    intervalRef.current = setInterval(advanceFont, cycleInterval)
-  }, [advanceFont, cycleInterval])
+    setIsActive(true);
+    intervalRef.current = setInterval(advanceFont, cycleInterval);
+  }, [advanceFont, cycleInterval]);
 
   const stopCycling = useCallback(() => {
-    setIsActive(false)
+    setIsActive(false);
     if (intervalRef.current) {
-      clearInterval(intervalRef.current)
-      intervalRef.current = null
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
     }
-  }, [])
+  }, []);
 
   /* ---- Swap helpers ---- */
   const swapToHover = useCallback(() => {
-    if (hoverIndex === null) return
-    setIsActive(true)
-    setFontIndex(hoverIndex)
-    onFontIndexChange?.(hoverIndex)
-  }, [hoverIndex, onFontIndexChange])
+    if (hoverIndex === null) return;
+    setIsActive(true);
+    setFontIndex(hoverIndex);
+    onFontIndexChange?.(hoverIndex);
+  }, [hoverIndex, onFontIndexChange]);
 
   const swapToInitial = useCallback(() => {
-    setIsActive(false)
-    setFontIndex(resolvedDefaultIndex)
-    onFontIndexChange?.(resolvedDefaultIndex)
-  }, [resolvedDefaultIndex, onFontIndexChange])
+    setIsActive(false);
+    setFontIndex(resolvedDefaultIndex);
+    onFontIndexChange?.(resolvedDefaultIndex);
+  }, [resolvedDefaultIndex, onFontIndexChange]);
 
   /* ---- Event handlers ---- */
   const handleMouseEnter = useCallback(
     (e: React.MouseEvent<HTMLHeadingElement>) => {
       if (!disableHover) {
         if (isSwapMode) {
-          swapToHover()
+          swapToHover();
         } else if (!disableCycling) {
-          startCycling()
+          startCycling();
         }
       }
-      onMouseEnter?.(e)
+      onMouseEnter?.(e);
     },
     [
       disableHover,
@@ -248,52 +248,52 @@ export function PixelHeading({
       startCycling,
       onMouseEnter,
     ]
-  )
+  );
 
   const handleMouseLeave = useCallback(
     (e: React.MouseEvent<HTMLHeadingElement>) => {
       if (!disableHover) {
-        isSwapMode ? swapToInitial() : stopCycling()
+        isSwapMode ? swapToInitial() : stopCycling();
       }
-      onMouseLeave?.(e)
+      onMouseLeave?.(e);
     },
     [disableHover, isSwapMode, swapToInitial, stopCycling, onMouseLeave]
-  )
+  );
 
   const handleFocus = useCallback(
     (e: React.FocusEvent<HTMLHeadingElement>) => {
       if (!disableHover) {
-        isSwapMode ? swapToHover() : setIsActive(true)
+        isSwapMode ? swapToHover() : setIsActive(true);
       }
-      onFocus?.(e)
+      onFocus?.(e);
     },
     [disableHover, isSwapMode, swapToHover, onFocus]
-  )
+  );
 
   const handleBlur = useCallback(
     (e: React.FocusEvent<HTMLHeadingElement>) => {
       if (!disableHover) {
-        isSwapMode ? swapToInitial() : setIsActive(false)
+        isSwapMode ? swapToInitial() : setIsActive(false);
       }
-      onBlur?.(e)
+      onBlur?.(e);
     },
     [disableHover, isSwapMode, swapToInitial, onBlur]
-  )
+  );
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLHeadingElement>) => {
       if (!disableHover && !disableCycling) {
         if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault()
-          if (!isSwapMode) advanceFont()
+          e.preventDefault();
+          if (!isSwapMode) advanceFont();
         }
       }
-      onKeyDown?.(e)
+      onKeyDown?.(e);
     },
     [disableHover, disableCycling, isSwapMode, advanceFont, onKeyDown]
-  )
+  );
 
-  const currentFontLabel = PIXEL_FONT_KEYS[fontIndex]
+  const currentFontLabel = PIXEL_FONT_KEYS[fontIndex];
 
   return (
     <div
@@ -305,8 +305,8 @@ export function PixelHeading({
         data-font={currentFontLabel}
         tabIndex={0}
         className={cn(
-          "cursor-default select-none transition-all duration-150",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+          "cursor-default transition-all duration-150 select-none",
+          "focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
           PIXEL_FONTS[fontIndex],
           className
         )}
@@ -324,7 +324,7 @@ export function PixelHeading({
           data-slot="pixel-heading-label"
           aria-live="polite"
           className={cn(
-            "text-xs uppercase tracking-widest text-muted-foreground transition-opacity duration-200",
+            "text-muted-foreground text-xs tracking-widest uppercase transition-opacity duration-200",
             isActive ? "opacity-100" : "opacity-0"
           )}
         >
@@ -332,5 +332,5 @@ export function PixelHeading({
         </output>
       )}
     </div>
-  )
+  );
 }

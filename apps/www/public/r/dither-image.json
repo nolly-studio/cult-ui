@@ -3,9 +3,7 @@
   "name": "dither-image",
   "type": "registry:ui",
   "description": "Compound Next.js image figure with CSS Bayer dither via dither-plugin, partial reveal overlays, and typed tuning props",
-  "dependencies": [
-    "dither-plugin"
-  ],
+  "dependencies": ["dither-plugin"],
   "files": [
     {
       "path": "registry/default/ui/dither-image.tsx",

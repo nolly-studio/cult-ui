@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "bg-animated-fractal-dot-grid",
   "description": "Background animated fractal dot grid with performance optimization and responsive design",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/bg-animated-fractal-dot-grid.tsx",

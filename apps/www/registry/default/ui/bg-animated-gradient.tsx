@@ -1,23 +1,23 @@
-"use client"
+"use client";
 
-import React, { useEffect } from "react"
-import { motion, useAnimation } from "motion/react"
+import { motion, useAnimation } from "motion/react";
+import React, { useEffect } from "react";
 
 interface GradientStop {
-  color: string
-  position: number
+  color: string;
+  position: number;
 }
 
 interface GradientType {
-  stops: GradientStop[]
-  centerX: number
-  centerY: number
+  stops: GradientStop[];
+  centerX: number;
+  centerY: number;
 }
 
 interface GradientAnimationProps {
-  gradients: GradientType[]
-  animationDuration: number
-  className?: string
+  gradients: GradientType[];
+  animationDuration: number;
+  className?: string;
 }
 
 export const GradientAnimation: React.FC<GradientAnimationProps> = ({
@@ -25,7 +25,7 @@ export const GradientAnimation: React.FC<GradientAnimationProps> = ({
   animationDuration,
   className = "",
 }) => {
-  const controls = useAnimation()
+  const controls = useAnimation();
 
   useEffect(() => {
     controls.start({
@@ -41,15 +41,15 @@ export const GradientAnimation: React.FC<GradientAnimationProps> = ({
         repeatType: "reverse",
         ease: "linear",
       },
-    })
-  }, [controls, gradients, animationDuration])
+    });
+  }, [controls, gradients, animationDuration]);
 
   return (
     <motion.div
       className={`absolute inset-0 h-full w-full ${className}`}
       animate={controls}
     />
-  )
-}
+  );
+};
 
-export default React.memo(GradientAnimation)
+export default React.memo(GradientAnimation);

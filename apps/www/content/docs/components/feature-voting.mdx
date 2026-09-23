@@ -50,25 +50,29 @@ Use `FeatureVoting.Root` with `FeatureVoting.Item` for each feature; each item c
 ### Basic list
 
 ```tsx
-import { FeatureVoting } from "@/registry/default/ui/feature-voting"
+import { FeatureVoting } from "@/registry/default/ui/feature-voting";
 
 export default function Example() {
   return (
     <FeatureVoting.Root>
       <FeatureVoting.Item value="dark-mode">
         <FeatureVoting.Title>Dark mode</FeatureVoting.Title>
-        <FeatureVoting.Description>System-aware dark theme</FeatureVoting.Description>
+        <FeatureVoting.Description>
+          System-aware dark theme
+        </FeatureVoting.Description>
         <FeatureVoting.Count />
         <FeatureVoting.Trigger>Vote</FeatureVoting.Trigger>
       </FeatureVoting.Item>
       <FeatureVoting.Item value="keyboard-shortcuts">
         <FeatureVoting.Title>Keyboard shortcuts</FeatureVoting.Title>
-        <FeatureVoting.Description>Customizable hotkeys</FeatureVoting.Description>
+        <FeatureVoting.Description>
+          Customizable hotkeys
+        </FeatureVoting.Description>
         <FeatureVoting.Count />
         <FeatureVoting.Trigger>Vote</FeatureVoting.Trigger>
       </FeatureVoting.Item>
     </FeatureVoting.Root>
-  )
+  );
 }
 ```
 
@@ -77,12 +81,15 @@ export default function Example() {
 Wire `value` / `onValueChange` and `votedFeatures` / `onVotedFeaturesChange` to sync with your backend or state.
 
 ```tsx
-import { useState } from "react"
-import { FeatureVoting } from "@/registry/default/ui/feature-voting"
+import { useState } from "react";
+import { FeatureVoting } from "@/registry/default/ui/feature-voting";
 
 export default function Example() {
-  const [votes, setVotes] = useState({ "dark-mode": 10, "keyboard-shortcuts": 5 })
-  const [voted, setVoted] = useState(new Set<string>())
+  const [votes, setVotes] = useState({
+    "dark-mode": 10,
+    "keyboard-shortcuts": 5,
+  });
+  const [voted, setVoted] = useState(new Set<string>());
 
   return (
     <FeatureVoting.Root
@@ -102,7 +109,7 @@ export default function Example() {
         <FeatureVoting.Trigger>Vote</FeatureVoting.Trigger>
       </FeatureVoting.Item>
     </FeatureVoting.Root>
-  )
+  );
 }
 ```
 
@@ -111,7 +118,7 @@ export default function Example() {
 Wrap items in `FeatureVoting.Group` with `sortBy="votes-desc"` or `sortBy="votes-asc"` to reorder by vote count.
 
 ```tsx
-import { FeatureVoting } from "@/registry/default/ui/feature-voting"
+import { FeatureVoting } from "@/registry/default/ui/feature-voting";
 
 export default function Example() {
   return (
@@ -134,7 +141,7 @@ export default function Example() {
         </FeatureVoting.Item>
       </FeatureVoting.Group>
     </FeatureVoting.Root>
-  )
+  );
 }
 ```
 

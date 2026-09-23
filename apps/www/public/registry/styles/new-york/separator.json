@@ -1,8 +1,6 @@
 {
   "name": "separator",
-  "dependencies": [
-    "@radix-ui/react-separator"
-  ],
+  "dependencies": ["@radix-ui/react-separator"],
   "files": [
     {
       "name": "separator.tsx",

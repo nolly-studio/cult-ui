@@ -3,12 +3,8 @@
   "name": "youtube-video-player",
   "type": "registry:ui",
   "description": "YouTube video player component with custom controls and smooth animations",
-  "dependencies": [
-    "motion"
-  ],
-  "registryDependencies": [
-    "button"
-  ],
+  "dependencies": ["motion"],
+  "registryDependencies": ["button"],
   "files": [
     {
       "path": "registry/default/ui/youtube-video-player.tsx",

@@ -1,12 +1,12 @@
 "use client";
 
+import { MicIcon, SquareIcon } from "lucide-react";
 import type { ComponentProps } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/utils";
-import { MicIcon, SquareIcon } from "lucide-react";
-import { useCallback, useEffect, useRef, useState } from "react";
 
 interface SpeechRecognition extends EventTarget {
   continuous: boolean;
@@ -307,7 +307,7 @@ export const SpeechInput = ({
         className={cn(
           "relative z-10 rounded-full transition-all duration-300",
           isListening
-            ? "bg-destructive text-white hover:bg-destructive/80 hover:text-white"
+            ? "bg-destructive hover:bg-destructive/80 text-white hover:text-white"
             : "bg-primary text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground",
           className
         )}

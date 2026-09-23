@@ -1,45 +1,45 @@
-"use client"
+"use client";
 
-// https://blog.maximeheckel.com/posts/framer-motion-layout-animations/
-import React, { useCallback, useState } from "react"
-import { CogIcon, Plus, RepeatIcon, Trash, XIcon } from "lucide-react"
+import { CogIcon, Plus, RepeatIcon, Trash, XIcon } from "lucide-react";
 import {
   AnimatePresence,
   LayoutGroup,
   motion,
   Reorder,
   useDragControls,
-} from "motion/react"
-import useMeasure from "react-use-measure"
-import { toast } from "sonner"
+} from "motion/react";
+// https://blog.maximeheckel.com/posts/framer-motion-layout-animations/
+import React, { useCallback, useState } from "react";
+import useMeasure from "react-use-measure";
+import { toast } from "sonner";
 
-import { cn } from "@/lib/utils"
-import { DirectionAwareTabs } from "@/registry/default/ui/direction-aware-tabs"
+import { cn } from "@/lib/utils";
+import { DirectionAwareTabs } from "@/registry/default/ui/direction-aware-tabs";
 
-import { Button } from "../ui/button"
-import { Checkbox } from "../ui/checkbox"
+import { Button } from "../ui/button";
+import { Checkbox } from "../ui/checkbox";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "../ui/collapsible"
-import { Slider } from "../ui/slider"
+} from "../ui/collapsible";
+import { Slider } from "../ui/slider";
 
 type Item = {
-  text: string
-  checked: boolean
-  id: number
-  description: string
-}
+  text: string;
+  checked: boolean;
+  id: number;
+  description: string;
+};
 
 interface ListItemProps {
-  item: Item
-  onCompleteItem: (id: number) => void
-  onRemoveItem: (id: number) => void
-  renderExtra?: (item: Item) => React.ReactNode
-  isExpanded?: boolean
-  className?: string
-  handleDrag: () => void
+  item: Item;
+  onCompleteItem: (id: number) => void;
+  onRemoveItem: (id: number) => void;
+  renderExtra?: (item: Item) => React.ReactNode;
+  isExpanded?: boolean;
+  className?: string;
+  handleDrag: () => void;
 }
 
 const ListItem: React.FC<ListItemProps> = ({
@@ -51,20 +51,20 @@ const ListItem: React.FC<ListItemProps> = ({
   isExpanded,
   className,
 }) => {
-  let [ref, bounds] = useMeasure()
-  const [isDragging, setIsDragging] = useState(false)
-  const [isDraggable, setIsDraggable] = useState(true)
-  const dragControls = useDragControls()
+  let [ref, bounds] = useMeasure();
+  const [isDragging, setIsDragging] = useState(false);
+  const [isDraggable, setIsDraggable] = useState(true);
+  const dragControls = useDragControls();
 
   const handleDragStart = (event: any) => {
-    setIsDragging(true)
-    dragControls.start(event, { snapToCursor: true })
-    handleDrag()
-  }
+    setIsDragging(true);
+    dragControls.start(event, { snapToCursor: true });
+    handleDrag();
+  };
 
   const handleDragEnd = () => {
-    setIsDragging(false)
-  }
+    setIsDragging(false);
+  };
 
   return (
     <motion.div
@@ -122,7 +122,7 @@ const ListItem: React.FC<ListItemProps> = ({
           whileDrag={{ zIndex: 9999 }}
         >
           <div ref={ref} className="z-20">
-            <motion.div layout="position" className="flex items-center gap-4 ">
+            <motion.div layout="position" className="flex items-center gap-4">
               <AnimatePresence>
                 {!isExpanded ? (
                   <motion.div
@@ -137,7 +137,7 @@ const ListItem: React.FC<ListItemProps> = ({
                       id={`checkbox-${item.id}`}
                       aria-label="Mark as done"
                       onCheckedChange={() => onCompleteItem(item.id)}
-                      className="ml-3 size-5 rounded-md border-neutral-400/80 bg-black "
+                      className="ml-3 size-5 rounded-md border-neutral-400/80 bg-black"
                     />
                     <motion.span className="w-full px-1 text-lg tracking-tight text-neutral-300/90">
                       {item.text}
@@ -179,7 +179,7 @@ const ListItem: React.FC<ListItemProps> = ({
                   bounce: 0,
                 },
               }}
-              className="-ml-2 h-[3.1rem] w-4 rounded-l-sm  rounded-r-md border-y border-r border-y-white/10 border-r-white/10 bg-[#141712]   shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(0,0,0,0.1),0_2px_2px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.1),0_8px_8px_0_rgba(0,0,0,0.1)]"
+              className="-ml-2 h-[3.1rem] w-4 rounded-l-sm rounded-r-md border-y border-r border-y-white/10 border-r-white/10 bg-[#141712] shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(0,0,0,0.1),0_2px_2px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.1),0_8px_8px_0_rgba(0,0,0,0.1)]"
             />
           ) : null}
         </AnimatePresence>
@@ -205,10 +205,10 @@ const ListItem: React.FC<ListItemProps> = ({
                 x: -10,
                 transition: { delay: 0, duration: 0.12 },
               }}
-              className="inset-0 z-0 border-spacing-1  rounded-r-xl border-y border-r-2 border-y-white/10 border-r-red-300 bg-[#141712]/80 shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(0,0,0,0.1),0_2px_2px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.1),0_8px_8px_0_rgba(0,0,0,0.1)] dark:bg-[#141712]/50"
+              className="inset-0 z-0 border-spacing-1 rounded-r-xl border-y border-r-2 border-y-white/10 border-r-red-300 bg-[#141712]/80 shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(0,0,0,0.1),0_2px_2px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.1),0_8px_8px_0_rgba(0,0,0,0.1)] dark:bg-[#141712]/50"
             >
               <button
-                className=" group inline-flex  h-9 items-center justify-center whitespace-nowrap rounded-md px-3 text-sm font-medium ring-offset-background transition-colors duration-150 hover:bg-[#141712] hover:text-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                className="group ring-offset-background focus-visible:ring-ring inline-flex h-9 items-center justify-center rounded-md px-3 text-sm font-medium whitespace-nowrap transition-colors duration-150 hover:bg-[#141712] hover:text-red-500 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
                 onClick={() => onRemoveItem(item.id)}
               >
                 <Trash className="size-4 text-red-400 transition-colors duration-150 group-hover:fill-red-400/60" />
@@ -218,20 +218,20 @@ const ListItem: React.FC<ListItemProps> = ({
         </AnimatePresence>
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
 interface ListProps {
-  items: Item[]
-  setItems: React.Dispatch<React.SetStateAction<Item[]>>
-  onAddItem: () => void
-  onResetItems: () => void
-  onCompleteItem: (id: number) => void
+  items: Item[];
+  setItems: React.Dispatch<React.SetStateAction<Item[]>>;
+  onAddItem: () => void;
+  onResetItems: () => void;
+  onCompleteItem: (id: number) => void;
   renderItem: (
     item: Item,
     onCompleteItem: (id: number) => void,
     onRemoveItem: (id: number) => void
-  ) => React.ReactNode
+  ) => React.ReactNode;
 }
 
 const List: React.FC<ListProps> = ({
@@ -243,12 +243,12 @@ const List: React.FC<ListProps> = ({
   renderItem,
 }) => {
   return (
-    <div className="mb-9  ">
-      <div className=" overflow-auto  p-4">
+    <div className="mb-9">
+      <div className="overflow-auto p-4">
         <div className="flex flex-col space-y-2">
           <div className="flex items-center justify-between gap-4">
             <button
-              className="flex items-center  gap-1 rounded-md border border-black/10 p-2 disabled:opacity-50"
+              className="flex items-center gap-1 rounded-md border border-black/10 p-2 disabled:opacity-50"
               disabled={items.length > 5}
               onClick={onAddItem}
             >
@@ -280,8 +280,8 @@ const List: React.FC<ListProps> = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const initialState = [
   {
@@ -309,23 +309,23 @@ const initialState = [
     id: 5,
     description: "Deploying the trained model for real-world use.",
   },
-]
+];
 
 const AIAgentListDemo: React.FC = () => {
-  const [items, setItems] = useState<Item[]>(initialState)
-  const [openItemId, setOpenItemId] = useState<number | null>(null)
-  const [isTabChanged, setIsTabChanged] = useState<boolean | null>(false)
-  const [topP, setTopP] = React.useState([10])
-  const [temp, setTemp] = React.useState([10])
-  const [tokens, setTokens] = React.useState([10])
+  const [items, setItems] = useState<Item[]>(initialState);
+  const [openItemId, setOpenItemId] = useState<number | null>(null);
+  const [isTabChanged, setIsTabChanged] = useState<boolean | null>(false);
+  const [topP, setTopP] = React.useState([10]);
+  const [temp, setTemp] = React.useState([10]);
+  const [tokens, setTokens] = React.useState([10]);
 
   const handleCompleteItem = (id: number) => {
     setItems((prevItems) =>
       prevItems.map((item) =>
         item.id === id ? { ...item, checked: !item.checked } : item
       )
-    )
-  }
+    );
+  };
 
   const handleAddItem = () => {
     setItems((prevItems) => [
@@ -336,39 +336,39 @@ const AIAgentListDemo: React.FC = () => {
         id: Date.now(),
         description: "",
       },
-    ])
-  }
+    ]);
+  };
 
   const handleResetItems = () => {
-    setItems(initialState)
-  }
+    setItems(initialState);
+  };
 
   const handleCloseOnDrag = useCallback(() => {
     setItems((prevItems) => {
       const updatedItems = prevItems.map((item) =>
         item.checked ? { ...item, checked: false } : item
-      )
+      );
       return updatedItems.some(
         (item, index) => item.checked !== prevItems[index].checked
       )
         ? updatedItems
-        : prevItems
-    })
-  }, [])
+        : prevItems;
+    });
+  }, []);
 
   const renderListItem = (
     item: Item,
     onCompleteItem: (id: number) => void,
     onRemoveItem: (id: number) => void
   ) => {
-    const isOpen = item.id === openItemId
+    const isOpen = item.id === openItemId;
 
     const tabs = [
       {
         id: 0,
         label: "title",
         content: (
-          <div className="flex w-full flex-col pr-2 ">
+          <div className="flex w-full flex-col pr-2">
             <motion.div
               initial={{ opacity: 0, filter: "blur(4px)" }}
               animate={{ opacity: 1, filter: "blur(0px)" }}
@@ -380,12 +380,12 @@ const AIAgentListDemo: React.FC = () => {
                 value={item.text}
                 className="h-12 w-full rounded-lg border border-black/10 bg-neutral-800 px-1 text-sm text-white placeholder:text-white/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 dark:border-white/10"
                 onChange={(e) => {
-                  const text = e.target.value
+                  const text = e.target.value;
                   setItems((prevItems) =>
                     prevItems.map((i) =>
                       i.id === item.id ? { ...i, text } : i
                     )
-                  )
+                  );
                 }}
               />
             </motion.div>
@@ -404,16 +404,16 @@ const AIAgentListDemo: React.FC = () => {
             >
               <label className="text-xs text-neutral-400">Prompt</label>
               <textarea
-                className="h-[120px] w-full resize-none rounded-[6px]  bg-neutral-800 px-2 py-[6px] text-sm text-white placeholder:text-white/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+                className="h-[120px] w-full resize-none rounded-[6px] bg-neutral-800 px-2 py-[6px] text-sm text-white placeholder:text-white/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
                 value={item.description}
                 placeholder="update agent prompt"
                 onChange={(e) => {
-                  const description = e.target.value
+                  const description = e.target.value;
                   setItems((prevItems) =>
                     prevItems.map((i) =>
                       i.id === item.id ? { ...i, description } : i
                     )
-                  )
+                  );
                 }}
               />
             </motion.div>
@@ -424,7 +424,7 @@ const AIAgentListDemo: React.FC = () => {
         id: 2,
         label: "settings",
         content: (
-          <div className="flex flex-col py-2 pr-2 ">
+          <div className="flex flex-col py-2 pr-2">
             <motion.div
               initial={{ opacity: 0, filter: "blur(4px)" }}
               animate={{ opacity: 1, filter: "blur(0px)" }}
@@ -437,7 +437,7 @@ const AIAgentListDemo: React.FC = () => {
                     Top P
                   </label>
                   <div className="flex w-1/2 items-center gap-3">
-                    <span className="w-12 rounded-md border border-white/10 bg-black px-2 py-0.5 text-right text-sm text-muted-foreground">
+                    <span className="text-muted-foreground w-12 rounded-md border border-white/10 bg-black px-2 py-0.5 text-right text-sm">
                       {topP}
                     </span>
                     <Slider
@@ -446,7 +446,7 @@ const AIAgentListDemo: React.FC = () => {
                       defaultValue={topP}
                       step={0.1}
                       onValueChange={setTopP}
-                      className="[&_[role=slider]]:h-8 [&_[role=slider]]:w-5 [&_[role=slider]]:rounded-md [&_[role=slider]]:border-neutral-100/10 [&_[role=slider]]:bg-neutral-900 [&_[role=slider]]:hover:border-cyan-300/70 "
+                      className="[&_[role=slider]]:h-8 [&_[role=slider]]:w-5 [&_[role=slider]]:rounded-md [&_[role=slider]]:border-neutral-100/10 [&_[role=slider]]:bg-neutral-900 [&_[role=slider]]:hover:border-cyan-300/70"
                       aria-label="Top P"
                     />
                   </div>
@@ -458,7 +458,7 @@ const AIAgentListDemo: React.FC = () => {
                     Temperature
                   </label>
                   <div className="flex w-1/2 items-center gap-3">
-                    <span className="w-12 rounded-md border border-white/10 bg-black px-2 py-0.5 text-right text-sm text-muted-foreground">
+                    <span className="text-muted-foreground w-12 rounded-md border border-white/10 bg-black px-2 py-0.5 text-right text-sm">
                       {temp}
                     </span>
                     <Slider
@@ -479,7 +479,7 @@ const AIAgentListDemo: React.FC = () => {
                     Max Tokens
                   </label>
                   <div className="flex w-1/2 items-center gap-3">
-                    <span className="w-12 rounded-md border border-white/10 bg-black px-2 py-0.5 text-right text-sm text-muted-foreground">
+                    <span className="text-muted-foreground w-12 rounded-md border border-white/10 bg-black px-2 py-0.5 text-right text-sm">
                       {tokens}
                     </span>
                     <Slider
@@ -498,7 +498,7 @@ const AIAgentListDemo: React.FC = () => {
           </div>
         ),
       },
-    ]
+    ];
 
     return (
       <ListItem
@@ -508,7 +508,7 @@ const AIAgentListDemo: React.FC = () => {
         onCompleteItem={onCompleteItem}
         onRemoveItem={onRemoveItem}
         handleDrag={handleCloseOnDrag}
-        className="my-2 "
+        className="my-2"
         renderExtra={(item) => (
           <Collapsible
             open={isOpen}
@@ -524,8 +524,8 @@ const AIAgentListDemo: React.FC = () => {
                 key="collapse"
                 className={cn(
                   isOpen
-                    ? "absolute right-3 top-3 z-10 "
-                    : "relative z-10 ml-auto mr-3"
+                    ? "absolute top-3 right-3 z-10"
+                    : "relative z-10 mr-3 ml-auto"
                 )}
               >
                 {isOpen ? (
@@ -537,8 +537,8 @@ const AIAgentListDemo: React.FC = () => {
             </CollapsibleTrigger>
 
             <LayoutGroup id={`${item.id}`}>
-              <CollapsibleContent className="flex w-full flex-col ">
-                <div className=" w-full  ">
+              <CollapsibleContent className="flex w-full flex-col">
+                <div className="w-full">
                   <motion.div
                     initial={{
                       y: 0,
@@ -555,7 +555,7 @@ const AIAgentListDemo: React.FC = () => {
                       duration: 0.15,
                     }}
                     layout
-                    className="  w-full"
+                    className="w-full"
                   >
                     <DirectionAwareTabs
                       className="mr-auto bg-transparent pr-2"
@@ -579,13 +579,13 @@ const AIAgentListDemo: React.FC = () => {
                     <motion.div className="size-1.5 rounded-full bg-cyan-200" />
                     <span className="text-xs text-neutral-300/80">Changes</span>
                   </div>
-                  <div className="ml-auto mr-2 pt-2 ">
+                  <div className="mr-2 ml-auto pt-2">
                     <Button
                       size="sm"
                       variant="ghost"
                       onClick={() => {
-                        setOpenItemId(null)
-                        toast.info("Changes saved")
+                        setOpenItemId(null);
+                        toast.info("Changes saved");
                       }}
                       className="h-7 rounded-lg bg-cyan-300 text-black"
                     >
@@ -598,8 +598,8 @@ const AIAgentListDemo: React.FC = () => {
           </Collapsible>
         )}
       />
-    )
-  }
+    );
+  };
 
   return (
     <List
@@ -610,7 +610,7 @@ const AIAgentListDemo: React.FC = () => {
       onCompleteItem={handleCompleteItem}
       renderItem={renderListItem}
     />
-  )
-}
+  );
+};
 
-export default AIAgentListDemo
+export default AIAgentListDemo;

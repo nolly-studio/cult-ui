@@ -40,7 +40,12 @@ const AccordionContext = createContext<AccordionContextValue>({
   setOpen: () => {},
 });
 
-export const Root = ({ children, open, setOpen, ...props }: AccordionRootProps) => (
+export const Root = ({
+  children,
+  open,
+  setOpen,
+  ...props
+}: AccordionRootProps) => (
   <AccordionContext.Provider value={{ open, setOpen }}>
     <div {...props}>{children}</div>
   </AccordionContext.Provider>
@@ -93,7 +98,7 @@ export const Accordion = { Root, Item, Trigger, Content };
     <Accordion.Trigger>Title</Accordion.Trigger>
     <Accordion.Content>Content</Accordion.Content>
   </Accordion.Item>
-</Accordion.Root>
+</Accordion.Root>;
 ```
 
 ### Naming Conventions
@@ -116,6 +121,7 @@ export const Accordion = { Root, Item, Trigger, Content };
 ### When to Use Composition
 
 **Use composition when:**
+
 - A component has multiple responsibilities
 - Customization requires CSS overrides
 - You need flexible layouts or structures
@@ -123,6 +129,7 @@ export const Accordion = { Root, Item, Trigger, Content };
 - Components need to work together but remain independent
 
 **Avoid composition for:**
+
 - Simple, single-purpose components
 - Components that don't need customization
 - Over-engineering simple UI elements

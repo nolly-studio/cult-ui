@@ -3,9 +3,7 @@
   "name": "dynamic-island",
   "type": "registry:ui",
   "description": "iOS-style dynamic island component with expandable content and smooth animations",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/dynamic-island.tsx",

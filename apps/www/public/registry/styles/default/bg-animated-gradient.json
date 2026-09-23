@@ -1,9 +1,7 @@
 {
   "name": "bg-animated-gradient",
   "description": "Animated gradient background component with customizable color transitions",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "name": "bg-animated-gradient.tsx",

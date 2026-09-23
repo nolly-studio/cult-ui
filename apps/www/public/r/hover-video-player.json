@@ -3,9 +3,7 @@
   "name": "hover-video-player",
   "type": "registry:ui",
   "description": "Video player component that plays on hover with smooth animations",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/hover-video-player.tsx",

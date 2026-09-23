@@ -1,7 +1,7 @@
-import { useTheme } from "next-themes"
-import { Line, LineChart, ResponsiveContainer, Tooltip } from "recharts"
+import { useTheme } from "next-themes";
+import { Line, LineChart, ResponsiveContainer, Tooltip } from "recharts";
 
-import { useConfig } from "@/hooks/use-config"
+import { useConfig } from "@/hooks/use-config";
 import {
   TextureCard,
   TextureCardContent,
@@ -9,8 +9,8 @@ import {
   TextureCardFooter,
   TextureCardHeader,
   TextureCardTitle,
-} from "@/registry/default/ui/texture-card"
-import { themes } from "@/registry/themes"
+} from "@/registry/default/ui/texture-card";
+import { themes } from "@/registry/themes";
 
 const data = [
   {
@@ -41,13 +41,13 @@ const data = [
     average: 349,
     today: 430,
   },
-]
+];
 
 export function CardsMetric() {
-  const { theme: mode } = useTheme()
-  const [config] = useConfig()
+  const { theme: mode } = useTheme();
+  const [config] = useConfig();
 
-  const theme = themes.find((theme) => theme.name === config.theme)
+  const theme = themes.find((theme) => theme.name === config.theme);
 
   return (
     <TextureCard>
@@ -73,18 +73,18 @@ export function CardsMetric() {
                 content={({ active, payload }) => {
                   if (active && payload && payload.length) {
                     return (
-                      <div className="rounded-lg border bg-background p-2 shadow-sm">
+                      <div className="bg-background rounded-lg border p-2 shadow-sm">
                         <div className="grid grid-cols-2 gap-2">
                           <div className="flex flex-col">
-                            <span className="text-[0.70rem] uppercase text-muted-foreground">
+                            <span className="text-muted-foreground text-[0.70rem] uppercase">
                               Average
                             </span>
-                            <span className="font-bold text-muted-foreground">
+                            <span className="text-muted-foreground font-bold">
                               {payload[0].value}
                             </span>
                           </div>
                           <div className="flex flex-col">
-                            <span className="text-[0.70rem] uppercase text-muted-foreground">
+                            <span className="text-muted-foreground text-[0.70rem] uppercase">
                               Today
                             </span>
                             <span className="font-bold">
@@ -93,10 +93,10 @@ export function CardsMetric() {
                           </div>
                         </div>
                       </div>
-                    )
+                    );
                   }
 
-                  return null
+                  return null;
                 }}
               />
               <Line
@@ -139,5 +139,5 @@ export function CardsMetric() {
         </div>
       </TextureCardContent>
     </TextureCard>
-  )
+  );
 }

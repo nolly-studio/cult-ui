@@ -52,7 +52,7 @@ import {
   ChoiceGroup,
   TipsList,
   useOnboarding,
-} from "@/components/ui/onboarding"
+} from "@/components/ui/onboarding";
 ```
 
 ```tsx
@@ -60,10 +60,7 @@ import {
   <Onboarding.StepIndicator />
 
   <Onboarding.Step step={1}>
-    <Onboarding.Header
-      title="Welcome"
-      description="Here's what you can do"
-    />
+    <Onboarding.Header title="Welcome" description="Here's what you can do" />
   </Onboarding.Step>
 
   <Onboarding.Step step={2}>
@@ -105,19 +102,19 @@ The root component manages step state and provides context to all children.
 
 Renders children only when its `step` matches the current step.
 
-| Prop | Type | Description |
-| --- | --- | --- |
+| Prop   | Type     | Description          |
+| ------ | -------- | -------------------- |
 | `step` | `number` | Step index (1-based) |
 
 ### Onboarding.Header
 
 Renders a centered title and description with serif font styling.
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `title` | `string` | Step title |
-| `description` | `string` | Step description |
-| `children` | `ReactNode` | Custom content (overrides title/description) |
+| Prop          | Type        | Description                                  |
+| ------------- | ----------- | -------------------------------------------- |
+| `title`       | `string`    | Step title                                   |
+| `description` | `string`    | Step description                             |
+| `children`    | `ReactNode` | Custom content (overrides title/description) |
 
 ### Onboarding.Navigation
 
@@ -153,8 +150,8 @@ Tablist-style feature selector that syncs with `stepValue` in the onboarding con
 
 #### FeatureCarousel.Item
 
-| Prop | Type | Description |
-| --- | --- | --- |
+| Prop    | Type     | Description                  |
+| ------- | -------- | ---------------------------- |
 | `index` | `number` | Index of this item (0-based) |
 
 ### ChoiceGroup
@@ -171,22 +168,22 @@ Accessible radio group for single-select choices.
 
 #### ChoiceGroup.Item
 
-| Prop | Type | Description |
-| --- | --- | --- |
+| Prop    | Type     | Description                      |
+| ------- | -------- | -------------------------------- |
 | `value` | `string` | Value when this item is selected |
 
 ### TipsList
 
 Ordered tips list with optional visible title.
 
-| Prop | Type | Description |
-| --- | --- | --- |
+| Prop    | Type     | Description                                    |
+| ------- | -------- | ---------------------------------------------- |
 | `title` | `string` | Optional label (screen-reader only by default) |
 
 #### TipsList.Item
 
-| Prop | Type | Description |
-| --- | --- | --- |
+| Prop     | Type     | Description                       |
+| -------- | -------- | --------------------------------- |
 | `number` | `number` | Optional step number shown inline |
 
 ## Controlled Usage

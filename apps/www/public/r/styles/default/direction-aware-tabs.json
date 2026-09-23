@@ -2,10 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "direction-aware-tabs",
   "description": "Tab component with direction-aware animations and smooth transitions",
-  "dependencies": [
-    "motion",
-    "react-use-measure"
-  ],
+  "dependencies": ["motion", "react-use-measure"],
   "files": [
     {
       "path": "registry/default/ui/direction-aware-tabs.tsx",

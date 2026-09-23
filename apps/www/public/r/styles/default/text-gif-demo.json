@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "text-gif-demo",
-  "registryDependencies": [
-    "text-gif"
-  ],
+  "registryDependencies": ["text-gif"],
   "files": [
     {
       "path": "registry/default/example/text-gif-demo.tsx",

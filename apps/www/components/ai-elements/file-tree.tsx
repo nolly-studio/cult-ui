@@ -1,19 +1,12 @@
 "use client";
 
-import type { HTMLAttributes, ReactNode } from "react";
-
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { cn } from "@/lib/utils";
 import {
   ChevronRightIcon,
   FileIcon,
   FolderIcon,
   FolderOpenIcon,
 } from "lucide-react";
+import type { HTMLAttributes, ReactNode } from "react";
 import {
   createContext,
   useCallback,
@@ -21,6 +14,13 @@ import {
   useMemo,
   useState,
 } from "react";
+
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
 
 interface FileTreeContextType {
   expandedPaths: Set<string>;
@@ -83,7 +83,7 @@ export const FileTree = ({
     <FileTreeContext.Provider value={contextValue}>
       <div
         className={cn(
-          "rounded-lg border bg-background font-mono text-sm",
+          "bg-background rounded-lg border font-mono text-sm",
           className
         )}
         role="tree"
@@ -149,7 +149,7 @@ export const FileTreeFolder = ({
           <CollapsibleTrigger asChild>
             <button
               className={cn(
-                "flex w-full items-center gap-1 rounded px-2 py-1 text-left transition-colors hover:bg-muted/50",
+                "hover:bg-muted/50 flex w-full items-center gap-1 rounded px-2 py-1 text-left transition-colors",
                 isSelected && "bg-muted"
               )}
               onClick={handleSelect}
@@ -157,7 +157,7 @@ export const FileTreeFolder = ({
             >
               <ChevronRightIcon
                 className={cn(
-                  "size-4 shrink-0 text-muted-foreground transition-transform",
+                  "text-muted-foreground size-4 shrink-0 transition-transform",
                   isExpanded && "rotate-90"
                 )}
               />
@@ -226,7 +226,7 @@ export const FileTreeFile = ({
     <FileTreeFileContext.Provider value={fileContextValue}>
       <div
         className={cn(
-          "flex cursor-pointer items-center gap-1 rounded px-2 py-1 transition-colors hover:bg-muted/50",
+          "hover:bg-muted/50 flex cursor-pointer items-center gap-1 rounded px-2 py-1 transition-colors",
           isSelected && "bg-muted",
           className
         )}
@@ -241,7 +241,7 @@ export const FileTreeFile = ({
             {/* Spacer for alignment */}
             <span className="size-4" />
             <FileTreeIcon>
-              {icon ?? <FileIcon className="size-4 text-muted-foreground" />}
+              {icon ?? <FileIcon className="text-muted-foreground size-4" />}
             </FileTreeIcon>
             <FileTreeName>{name}</FileTreeName>
           </>

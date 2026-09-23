@@ -1,9 +1,7 @@
 {
   "name": "side-panel",
   "description": "Sliding side panel component with customizable positioning and animations",
-  "dependencies": [
-    ""
-  ],
+  "dependencies": [""],
   "files": [
     {
       "name": "side-panel.tsx",

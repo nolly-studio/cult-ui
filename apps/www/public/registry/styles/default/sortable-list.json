@@ -1,10 +1,7 @@
 {
   "name": "sortable-list",
   "description": "Drag-and-drop sortable list component with smooth animations and reordering",
-  "dependencies": [
-    "motion",
-    "react-use-measure"
-  ],
+  "dependencies": ["motion", "react-use-measure"],
   "files": [
     {
       "name": "sortable-list.tsx",

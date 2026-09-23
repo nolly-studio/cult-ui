@@ -59,17 +59,21 @@ This component requires the **Geist Pixel fonts**. Follow these steps to configu
 Import the pixel font variants from `geist/font/pixel` and apply their CSS variable classes to `<body>`:
 
 ```tsx title="app/layout.tsx"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import {
   GeistPixelSquare,
   GeistPixelGrid,
   GeistPixelCircle,
   GeistPixelTriangle,
   GeistPixelLine,
-} from "geist/font/pixel"
+} from "geist/font/pixel";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body
@@ -78,7 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
       </body>
     </html>
-  )
+  );
 }
 ```
 
@@ -113,13 +117,13 @@ export default {
       },
     },
   },
-}
+};
 ```
 
 ## Usage
 
 ```tsx
-import { PixelParagraph } from "@/components/ui/pixel-paragraph-words"
+import { PixelParagraph } from "@/components/ui/pixel-paragraph-words";
 ```
 
 ### Basic
@@ -179,24 +183,24 @@ Render as a `<span>` or `<div>` instead of `<p>`:
 
 ### PixelParagraph Props
 
-| Prop                | Type                                                         | Default     | Description                                                                           |
-| ------------------- | ------------------------------------------------------------ | ----------- | ------------------------------------------------------------------------------------- |
-| `text`              | `string`                                                     | —           | The paragraph text to render                                                           |
-| `pixelWords`        | `string[]`                                                   | `[]`        | Words/phrases to render in a pixel font. Matching is case-sensitive, longest-first     |
-| `as`                | `"p" \| "span" \| "div"`                                    | `"p"`       | The wrapper element to render                                                          |
-| `font`              | `"square" \| "grid" \| "circle" \| "triangle" \| "line"`    | `"square"`  | The pixel font for highlighted words                                                   |
-| `pixelWordClassName`| `string`                                                     | —           | Extra className applied to each pixel-word span                                        |
-| `className`         | `string`                                                     | —           | Additional CSS classes applied to the wrapper element                                   |
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `text` | `string` | — | The paragraph text to render |
+| `pixelWords` | `string[]` | `[]` | Words/phrases to render in a pixel font. Matching is case-sensitive, longest-first |
+| `as` | `"p" \| "span" \| "div"` | `"p"` | The wrapper element to render |
+| `font` | `"square" \| "grid" \| "circle" \| "triangle" \| "line"` | `"square"` | The pixel font for highlighted words |
+| `pixelWordClassName` | `string` | — | Extra className applied to each pixel-word span |
+| `className` | `string` | — | Additional CSS classes applied to the wrapper element |
 
 ### Available Pixel Fonts
 
-| Font Name  | Tailwind Class         | CSS Variable                    |
-| ---------- | ---------------------- | ------------------------------- |
-| `square`   | `font-pixel-square`    | `--font-geist-pixel-square`    |
-| `grid`     | `font-pixel-grid`      | `--font-geist-pixel-grid`      |
-| `circle`   | `font-pixel-circle`    | `--font-geist-pixel-circle`    |
-| `triangle` | `font-pixel-triangle`  | `--font-geist-pixel-triangle`  |
-| `line`     | `font-pixel-line`      | `--font-geist-pixel-line`      |
+| Font Name  | Tailwind Class        | CSS Variable                  |
+| ---------- | --------------------- | ----------------------------- |
+| `square`   | `font-pixel-square`   | `--font-geist-pixel-square`   |
+| `grid`     | `font-pixel-grid`     | `--font-geist-pixel-grid`     |
+| `circle`   | `font-pixel-circle`   | `--font-geist-pixel-circle`   |
+| `triangle` | `font-pixel-triangle` | `--font-geist-pixel-triangle` |
+| `line`     | `font-pixel-line`     | `--font-geist-pixel-line`     |
 
 ## How It Works
 
@@ -216,8 +220,8 @@ Render as a `<span>` or `<div>` instead of `<p>`:
 
 ## Pixel Paragraph vs Pixel Paragraph Inverse
 
-| Feature          | Pixel Paragraph                              | Pixel Paragraph Inverse                         |
-| ---------------- | -------------------------------------------- | ----------------------------------------------- |
-| Base text        | Normal font (sans)                           | Pixel font                                       |
-| Highlighted words| Pixel font                                   | Sans/mono font                                   |
-| Best for         | Accenting key words in normal body text      | Full pixel paragraphs with readable escapes      |
+| Feature | Pixel Paragraph | Pixel Paragraph Inverse |
+| --- | --- | --- |
+| Base text | Normal font (sans) | Pixel font |
+| Highlighted words | Pixel font | Sans/mono font |
+| Best for | Accenting key words in normal body text | Full pixel paragraphs with readable escapes |

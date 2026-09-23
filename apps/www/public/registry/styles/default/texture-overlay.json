@@ -1,9 +1,7 @@
 {
   "name": "texture-overlay",
   "description": "Texture overlay component with various CSS gradient patterns for adding visual texture to backgrounds",
-  "dependencies": [
-    ""
-  ],
+  "dependencies": [""],
   "files": [
     {
       "name": "texture-overlay.tsx",

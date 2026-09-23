@@ -1,44 +1,44 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 
-import { PixelParagraph } from "@/registry/default/ui/pixel-paragraph-words"
+import { PixelParagraph } from "@/registry/default/ui/pixel-paragraph-words";
 
 /* ─── Constants ─── */
 
-const PIXEL_FONTS = ["square", "grid", "circle", "triangle", "line"] as const
-type PixelFont = (typeof PIXEL_FONTS)[number]
+const PIXEL_FONTS = ["square", "grid", "circle", "triangle", "line"] as const;
+type PixelFont = (typeof PIXEL_FONTS)[number];
 
-const WRAPPER_TAGS = ["p", "span", "div"] as const
+const WRAPPER_TAGS = ["p", "span", "div"] as const;
 
 const DEFAULT_TEXT =
-  "54+ animated components and effects. Free, open source, and built to drop into any shadcn/ui project."
-const DEFAULT_PIXEL_WORDS = "animated,shadcn/ui"
+  "54+ animated components and effects. Free, open source, and built to drop into any shadcn/ui project.";
+const DEFAULT_PIXEL_WORDS = "animated,shadcn/ui";
 
 /* ─── Demo ─── */
 
 export default function PixelParagraphWordsDemo() {
-  const [text, setText] = useState(DEFAULT_TEXT)
-  const [pixelWordsInput, setPixelWordsInput] = useState(DEFAULT_PIXEL_WORDS)
-  const [font, setFont] = useState<PixelFont>("square")
+  const [text, setText] = useState(DEFAULT_TEXT);
+  const [pixelWordsInput, setPixelWordsInput] = useState(DEFAULT_PIXEL_WORDS);
+  const [font, setFont] = useState<PixelFont>("square");
   const [wrapperTag, setWrapperTag] =
-    useState<(typeof WRAPPER_TAGS)[number]>("p")
+    useState<(typeof WRAPPER_TAGS)[number]>("p");
 
   const pixelWords = pixelWordsInput
     .split(",")
     .map((w) => w.trim())
-    .filter(Boolean)
+    .filter(Boolean);
 
   return (
     <div className="w-full space-y-8 py-4">
       {/* ── Preview ── */}
-      <div className="flex min-h-[120px] items-center justify-center rounded-lg border border-border/40 bg-background p-8">
+      <div className="border-border/40 bg-background flex min-h-[120px] items-center justify-center rounded-lg border p-8">
         <PixelParagraph
           text={text}
           pixelWords={pixelWords}
           as={wrapperTag}
           font={font}
-          className="max-w-xl text-lg leading-relaxed text-muted-foreground"
+          className="text-muted-foreground max-w-xl text-lg leading-relaxed"
           pixelWordClassName="text-foreground font-medium"
         />
       </div>
@@ -54,7 +54,7 @@ export default function PixelParagraphWordsDemo() {
             value={text}
             onChange={(e) => setText(e.target.value)}
             rows={3}
-            className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="border-input placeholder:text-muted-foreground focus-visible:ring-ring w-full rounded-md border bg-transparent px-3 py-2 text-sm shadow-sm focus-visible:ring-1 focus-visible:outline-none"
             placeholder="Enter paragraph text"
           />
         </ControlGroup>
@@ -68,10 +68,10 @@ export default function PixelParagraphWordsDemo() {
             type="text"
             value={pixelWordsInput}
             onChange={(e) => setPixelWordsInput(e.target.value)}
-            className="h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="border-input placeholder:text-muted-foreground focus-visible:ring-ring h-9 w-full rounded-md border bg-transparent px-3 text-sm shadow-sm focus-visible:ring-1 focus-visible:outline-none"
             placeholder="e.g. animated,shadcn/ui,open source"
           />
-          <p className="text-xs text-muted-foreground">
+          <p className="text-muted-foreground text-xs">
             These words render in a pixel font while the rest stays in the
             normal typeface
           </p>
@@ -104,7 +104,7 @@ export default function PixelParagraphWordsDemo() {
             onChange={(e) =>
               setWrapperTag(e.target.value as (typeof WRAPPER_TAGS)[number])
             }
-            className="h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="border-input focus-visible:ring-ring h-9 w-full rounded-md border bg-transparent px-3 text-sm shadow-sm focus-visible:ring-1 focus-visible:outline-none"
           >
             {WRAPPER_TAGS.map((t) => (
               <option key={t} value={t}>
@@ -115,7 +115,7 @@ export default function PixelParagraphWordsDemo() {
         </ControlGroup>
       </div>
     </div>
-  )
+  );
 }
 
 /* ─── Shared control primitives ─── */
@@ -125,16 +125,16 @@ function ControlGroup({
   children,
   className,
 }: {
-  label: string
-  children: React.ReactNode
-  className?: string
+  label: string;
+  children: React.ReactNode;
+  className?: string;
 }) {
   return (
     <div className={`space-y-2 ${className ?? ""}`}>
-      <span className="block text-xs font-medium uppercase tracking-wider text-muted-foreground">
+      <span className="text-muted-foreground block text-xs font-medium tracking-wider uppercase">
         {label}
       </span>
       {children}
     </div>
-  )
+  );
 }

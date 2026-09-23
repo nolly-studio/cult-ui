@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "three-d-carousel-demo",
-  "registryDependencies": [
-    "three-d-carousel"
-  ],
+  "registryDependencies": ["three-d-carousel"],
   "files": [
     {
       "path": "registry/default/example/three-d-carousel-demo.tsx",

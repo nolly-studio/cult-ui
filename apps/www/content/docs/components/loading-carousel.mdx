@@ -58,25 +58,25 @@ npx shadcn@latest add carousel
 
 ```tsx
 export default function LoadingCarouselDemo() {
-  return <LoadingCarousel />
+  return <LoadingCarousel />;
 }
 ```
 
 ## Props
 
-| Prop               | Type                            | Default       | Description                              |
-| ------------------ | ------------------------------- | ------------- | ---------------------------------------- |
-| tips               | `Tip[]`                         | `defaultTips` | Array of tips to display in the carousel |
-| autoplayInterval   | `number`                        | `4000`        | Time in milliseconds between slides      |
-| showNavigation     | `boolean`                       | `false`       | Show previous/next navigation buttons    |
-| showIndicators     | `boolean`                       | `true`        | Show slide indicator dots                |
-| showProgress       | `boolean`                       | `true`        | Show progress bar for current slide      |
-| aspectRatio        | `"video" \| "square" \| "wide"` | `"video"`     | Aspect ratio of the carousel             |
-| textPosition       | `"top" \| "bottom"`             | `"bottom"`    | Position of the tip text                 |
-| onTipChange        | `(index: number) => void`       | -             | Callback function when tip changes       |
-| backgroundTips     | `boolean`                       | `false`       | Show tips on the image background        |
-| backgroundGradient | `boolean`                       | `false`       | Show gradient overlay on background      |
-| shuffleTips        | `boolean`                       | `false`       | Randomly shuffle the order of tips       |
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| tips | `Tip[]` | `defaultTips` | Array of tips to display in the carousel |
+| autoplayInterval | `number` | `4000` | Time in milliseconds between slides |
+| showNavigation | `boolean` | `false` | Show previous/next navigation buttons |
+| showIndicators | `boolean` | `true` | Show slide indicator dots |
+| showProgress | `boolean` | `true` | Show progress bar for current slide |
+| aspectRatio | `"video" \| "square" \| "wide"` | `"video"` | Aspect ratio of the carousel |
+| textPosition | `"top" \| "bottom"` | `"bottom"` | Position of the tip text |
+| onTipChange | `(index: number) => void` | - | Callback function when tip changes |
+| backgroundTips | `boolean` | `false` | Show tips on the image background |
+| backgroundGradient | `boolean` | `false` | Show gradient overlay on background |
+| shuffleTips | `boolean` | `false` | Randomly shuffle the order of tips |
 
 ## Examples
 

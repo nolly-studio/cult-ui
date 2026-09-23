@@ -3,9 +3,7 @@
   "name": "gradient-button-group",
   "type": "registry:ui",
   "description": "Premium layered button group with animated active state, gradient ring accents, and theme toggle underlay",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/gradient-button-group.tsx",

@@ -1,9 +1,7 @@
 {
   "name": "bg-animate-button",
   "description": "Button component with animated background effects and gradient transitions",
-  "dependencies": [
-    ""
-  ],
+  "dependencies": [""],
   "files": [
     {
       "name": "bg-animate-button.tsx",

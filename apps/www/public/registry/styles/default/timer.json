@@ -1,9 +1,7 @@
 {
   "name": "timer",
   "description": "Countdown timer component with customizable duration and visual styles",
-  "dependencies": [
-    ""
-  ],
+  "dependencies": [""],
   "files": [
     {
       "name": "timer.tsx",

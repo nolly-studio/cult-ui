@@ -1,8 +1,6 @@
 {
   "name": "slider",
-  "dependencies": [
-    "@radix-ui/react-slider"
-  ],
+  "dependencies": ["@radix-ui/react-slider"],
   "files": [
     {
       "name": "slider.tsx",

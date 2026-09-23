@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sortable-list-demo",
-  "registryDependencies": [
-    "sortable-list"
-  ],
+  "registryDependencies": ["sortable-list"],
   "files": [
     {
       "path": "registry/default/example/sortable-list-demo.tsx",

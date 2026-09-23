@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   AISDKIcon,
@@ -13,20 +13,20 @@ import {
   HeroHeatmapRoot,
   HeroHeatmapVisual,
   NextjsIcon,
-} from "../ui/hero-heatmap"
+} from "../ui/hero-heatmap";
 
 export default function HeroHeatmapDemo() {
   return (
     <div className="space-y-16">
       <div className="space-y-4">
-        <h3 className="font-medium text-lg flex items-center justify-center">
+        <h3 className="flex items-center justify-center text-lg font-medium">
           Default
         </h3>
         <HeroHeatmap />
       </div>
 
       <div className="space-y-4">
-        <h3 className="font-medium text-lg flex items-center justify-center">
+        <h3 className="flex items-center justify-center text-lg font-medium">
           Root-level shader props
         </h3>
         <HeroHeatmap
@@ -54,7 +54,7 @@ export default function HeroHeatmapDemo() {
       </div>
 
       <div className="space-y-4">
-        <h3 className="font-medium text-lg flex items-center justify-center">
+        <h3 className="flex items-center justify-center text-lg font-medium">
           Configured via props
         </h3>
         <HeroHeatmapRoot
@@ -88,7 +88,7 @@ export default function HeroHeatmapDemo() {
               <HeroHeatmapDescription />
               <HeroHeatmapActions />
               <div
-                className="hidden lg:flex justify-center lg:justify-start"
+                className="hidden justify-center lg:flex lg:justify-start"
                 data-slot="hero-heatmap-badges-wrap"
               >
                 <HeroHeatmapBadges
@@ -105,5 +105,5 @@ export default function HeroHeatmapDemo() {
         </HeroHeatmapRoot>
       </div>
     </div>
-  )
+  );
 }

@@ -12,11 +12,13 @@ The components.build specification is an open-source standard for building moder
 **What This Specification Is:**
 
 This spec is **not**:
+
 - A tutorial or course on React
 - A promotion for any specific component library or registry
 - A replacement for framework documentation
 
 This spec **is**:
+
 - A set of high-level guidelines and best practices
 - A common terminology for designing UI components
 - A standard for ensuring components meet modern expectations
@@ -25,6 +27,7 @@ This spec **is**:
 **Who This Is For:**
 
 This specification is written for:
+
 - **Open-source maintainers** building and distributing component libraries
 - **Senior front-end engineers** designing component APIs and design systems
 - **Developers** familiar with JavaScript/TypeScript and React
@@ -61,7 +64,9 @@ The following examples illustrate the difference between components that don't f
 // Hard-coded styles, no accessibility, not composable
 function Button() {
   return (
-    <button style={{ backgroundColor: '#007bff', color: 'white', padding: '10px' }}>
+    <button
+      style={{ backgroundColor: "#007bff", color: "white", padding: "10px" }}
+    >
       Click me
     </button>
   );
@@ -72,25 +77,25 @@ function Button() {
 
 ```tsx
 // Composable, accessible, customizable
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'outline';
+  variant?: "default" | "outline";
 }
 
-export function Button({ 
-  className, 
-  variant = 'default', 
-  children, 
-  ...props 
+export function Button({
+  className,
+  variant = "default",
+  children,
+  ...props
 }: ButtonProps) {
   return (
     <button
       className={cn(
-        'inline-flex items-center justify-center rounded-md px-4 py-2',
-        'focus-visible:outline-none focus-visible:ring-2',
-        variant === 'default' && 'bg-primary text-primary-foreground',
-        variant === 'outline' && 'border border-input bg-background',
+        "inline-flex items-center justify-center rounded-md px-4 py-2",
+        "focus-visible:outline-none focus-visible:ring-2",
+        variant === "default" && "bg-primary text-primary-foreground",
+        variant === "outline" && "border border-input bg-background",
         className
       )}
       {...props}
@@ -104,10 +109,12 @@ export function Button({
 **Specification Authors:**
 
 Co-authored by:
+
 - **Hayden Bleasel** ([@haydenbleasel](https://x.com/haydenbleasel))
 - **shadcn** ([@shadcn](https://x.com/shadcn))
 
 Adapted as an AI skill by:
+
 - **Jordan Gilliam** ([@nolansym](https://x.com/nolansym))
 
 Reference: [https://components.build](https://components.build)

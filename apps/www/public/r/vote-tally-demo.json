@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "vote-tally-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "vote-tally"
-  ],
+  "registryDependencies": ["vote-tally"],
   "files": [
     {
       "path": "registry/default/example/vote-tally-demo.tsx",

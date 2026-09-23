@@ -1,75 +1,75 @@
-"use client"
+"use client";
 
-import { useEffect, useId, useState, type ReactNode } from "react"
-import type { BorderBeamColorVariant } from "border-beam"
-import { ArrowRight, Pause, Play, Sparkles, Wand2, Zap } from "lucide-react"
+import type { BorderBeamColorVariant } from "border-beam";
+import { ArrowRight, Pause, Play, Sparkles, Wand2, Zap } from "lucide-react";
+import { useEffect, useId, useState, type ReactNode } from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import {
   BorderBeamButton,
   BorderBeamIconButton,
-} from "@/registry/default/ui/border-beam-button"
+} from "@/registry/default/ui/border-beam-button";
 
 const COLOR_ROW: { key: BorderBeamColorVariant; label: string }[] = [
   { key: "colorful", label: "Colorful" },
   { key: "ocean", label: "Ocean" },
   { key: "sunset", label: "Sunset" },
   { key: "mono", label: "Mono" },
-]
+];
 
-const BEAM_SIZES = ["sm", "md", "line"] as const
+const BEAM_SIZES = ["sm", "md", "line"] as const;
 
 function Section({
   title,
   description,
   children,
 }: {
-  title: string
-  description?: string
-  children: ReactNode
+  title: string;
+  description?: string;
+  children: ReactNode;
 }) {
   return (
     <section className="space-y-4">
       <div className="space-y-1">
-        <h3 className="font-semibold text-foreground text-sm tracking-tight">
+        <h3 className="text-foreground text-sm font-semibold tracking-tight">
           {title}
         </h3>
         {description ? (
-          <p className="text-pretty text-muted-foreground text-xs leading-relaxed">
+          <p className="text-muted-foreground text-xs leading-relaxed text-pretty">
             {description}
           </p>
         ) : null}
       </div>
       {children}
     </section>
-  )
+  );
 }
 
 export default function BorderBeamButtonDemo() {
-  const id = useId()
-  const [beamActive, setBeamActive] = useState(true)
-  const [respectsReducedMotion, setRespectsReducedMotion] = useState(false)
+  const id = useId();
+  const [beamActive, setBeamActive] = useState(true);
+  const [respectsReducedMotion, setRespectsReducedMotion] = useState(false);
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
-    const sync = () => setRespectsReducedMotion(mq.matches)
-    sync()
-    mq.addEventListener("change", sync)
-    return () => mq.removeEventListener("change", sync)
-  }, [])
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setRespectsReducedMotion(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
 
-  const effectiveActive = beamActive && !respectsReducedMotion
+  const effectiveActive = beamActive && !respectsReducedMotion;
 
   return (
     <div className="mx-auto w-full max-w-3xl space-y-10 px-4 py-8 md:px-6">
       <header className="space-y-2 text-center">
-        <p className="font-medium text-[11px] text-muted-foreground uppercase tracking-[0.2em]">
+        <p className="text-muted-foreground text-[11px] font-medium tracking-[0.2em] uppercase">
           Border beam
         </p>
-        <h2 className="font-semibold text-foreground text-xl tracking-tight md:text-2xl">
+        <h2 className="text-foreground text-xl font-semibold tracking-tight md:text-2xl">
           Button + traveling glow
         </h2>
-        <p className="mx-auto max-w-lg text-pretty text-muted-foreground text-sm leading-relaxed">
+        <p className="text-muted-foreground mx-auto max-w-lg text-sm leading-relaxed text-pretty">
           <span className="text-foreground/90">className</span> targets the
           shadcn <span className="text-foreground/90">Button</span>;{" "}
           <span className="text-foreground/90">borderBeamClassName</span> styles
@@ -228,5 +228,5 @@ export default function BorderBeamButtonDemo() {
         </Section>
       </div>
     </div>
-  )
+  );
 }

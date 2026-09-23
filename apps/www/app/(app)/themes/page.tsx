@@ -1,22 +1,22 @@
-import { Metadata } from "next"
+import { Metadata } from "next";
 
-import "public/registry/themes.css"
+import "public/registry/themes.css";
 
-import { Announcement } from "@/components/announcement"
+import { ThemesTabs } from "@/app/(app)/themes/tabs";
+import { Announcement } from "@/components/announcement";
 import {
   PageActions,
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
-} from "@/components/page-header"
-import { ThemeCustomizer } from "@/components/theme-customizer"
-import { ThemeWrapper } from "@/components/theme-wrapper"
-import { ThemesTabs } from "@/app/(app)/themes/tabs"
+} from "@/components/page-header";
+import { ThemeCustomizer } from "@/components/theme-customizer";
+import { ThemeWrapper } from "@/components/theme-wrapper";
 
 export const metadata: Metadata = {
   title: "Themes",
   description: "Hand-picked themes that you can copy and paste into your apps.",
-}
+};
 
 export default function ThemesPage() {
   return (
@@ -43,5 +43,5 @@ export default function ThemesPage() {
       </ThemeWrapper>
       <ThemesTabs />
     </div>
-  )
+  );
 }

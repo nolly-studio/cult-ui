@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hero-dithering-demo",
-  "registryDependencies": [
-    "hero-dithering"
-  ],
+  "registryDependencies": ["hero-dithering"],
   "files": [
     {
       "path": "registry/default/example/hero-dithering-demo.tsx",

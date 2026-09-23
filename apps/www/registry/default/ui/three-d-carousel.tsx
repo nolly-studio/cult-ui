@@ -1,23 +1,23 @@
-"use client"
+"use client";
 
-import { memo, useEffect, useLayoutEffect, useMemo, useState } from "react"
 import {
   AnimatePresence,
   motion,
   useAnimation,
   useMotionValue,
   useTransform,
-} from "motion/react"
+} from "motion/react";
+import { memo, useEffect, useLayoutEffect, useMemo, useState } from "react";
 
 export const useIsomorphicLayoutEffect =
-  typeof window !== "undefined" ? useLayoutEffect : useEffect
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 type UseMediaQueryOptions = {
-  defaultValue?: boolean
-  initializeWithValue?: boolean
-}
+  defaultValue?: boolean;
+  initializeWithValue?: boolean;
+};
 
-const IS_SERVER = typeof window === "undefined"
+const IS_SERVER = typeof window === "undefined";
 
 export function useMediaQuery(
   query: string,
@@ -28,34 +28,34 @@ export function useMediaQuery(
 ): boolean {
   const getMatches = (query: string): boolean => {
     if (IS_SERVER) {
-      return defaultValue
+      return defaultValue;
     }
-    return window.matchMedia(query).matches
-  }
+    return window.matchMedia(query).matches;
+  };
 
   const [matches, setMatches] = useState<boolean>(() => {
     if (initializeWithValue) {
-      return getMatches(query)
+      return getMatches(query);
     }
-    return defaultValue
-  })
+    return defaultValue;
+  });
 
   const handleChange = () => {
-    setMatches(getMatches(query))
-  }
+    setMatches(getMatches(query));
+  };
 
   useIsomorphicLayoutEffect(() => {
-    const matchMedia = window.matchMedia(query)
-    handleChange()
+    const matchMedia = window.matchMedia(query);
+    handleChange();
 
-    matchMedia.addEventListener("change", handleChange)
+    matchMedia.addEventListener("change", handleChange);
 
     return () => {
-      matchMedia.removeEventListener("change", handleChange)
-    }
-  }, [query])
+      matchMedia.removeEventListener("change", handleChange);
+    };
+  }, [query]);
 
-  return matches
+  return matches;
 }
 
 const keywords = [
@@ -73,15 +73,15 @@ const keywords = [
   "lights",
   "downtown",
   "bridge",
-]
+];
 
-const duration = 0.15
+const duration = 0.15;
 const transition = {
   duration,
   ease: [0.32, 0.72, 0, 1] as const,
   filter: "blur(4px)",
-}
-const transitionOverlay = { duration: 0.5, ease: [0.32, 0.72, 0, 1] as const }
+};
+const transitionOverlay = { duration: 0.5, ease: [0.32, 0.72, 0, 1] as const };
 
 const Carousel = memo(
   ({
@@ -90,25 +90,25 @@ const Carousel = memo(
     cards,
     isCarouselActive,
   }: {
-    handleClick: (imgUrl: string, index: number) => void
-    controls: any
-    cards: string[]
-    isCarouselActive: boolean
+    handleClick: (imgUrl: string, index: number) => void;
+    controls: any;
+    cards: string[];
+    isCarouselActive: boolean;
   }) => {
-    const isScreenSizeSm = useMediaQuery("(max-width: 640px)")
-    const cylinderWidth = isScreenSizeSm ? 1100 : 1800
-    const faceCount = cards.length
-    const faceWidth = cylinderWidth / faceCount
-    const radius = cylinderWidth / (2 * Math.PI)
-    const rotation = useMotionValue(0)
+    const isScreenSizeSm = useMediaQuery("(max-width: 640px)");
+    const cylinderWidth = isScreenSizeSm ? 1100 : 1800;
+    const faceCount = cards.length;
+    const faceWidth = cylinderWidth / faceCount;
+    const radius = cylinderWidth / (2 * Math.PI);
+    const rotation = useMotionValue(0);
     const transform = useTransform(
       rotation,
       (value) => `rotate3d(0, 1, 0, ${value}deg)`
-    )
+    );
 
     return (
       <div
-        className="flex h-full items-center justify-center bg-mauve-dark-2"
+        className="bg-mauve-dark-2 flex h-full items-center justify-center"
         style={{
           perspective: "1000px",
           transformStyle: "preserve-3d",
@@ -145,7 +145,7 @@ const Carousel = memo(
           {cards.map((imgUrl, i) => (
             <motion.div
               key={`key-${imgUrl}-${i}`}
-              className="absolute flex h-full origin-center items-center justify-center rounded-xl bg-mauve-dark-2 p-2"
+              className="bg-mauve-dark-2 absolute flex h-full origin-center items-center justify-center rounded-xl p-2"
               style={{
                 width: `${faceWidth}px`,
                 transform: `rotateY(${
@@ -158,7 +158,7 @@ const Carousel = memo(
                 src={imgUrl}
                 alt={`keyword_${i} ${imgUrl}`}
                 layoutId={`img-${imgUrl}`}
-                className="pointer-events-none  w-full rounded-xl object-cover aspect-square"
+                className="pointer-events-none aspect-square w-full rounded-xl object-cover"
                 initial={{ filter: "blur(4px)" }}
                 layout="position"
                 animate={{ filter: "blur(0px)" }}
@@ -168,35 +168,35 @@ const Carousel = memo(
           ))}
         </motion.div>
       </div>
-    )
+    );
   }
-)
+);
 
-const hiddenMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 30px, rgba(0,0,0,1) 30px, rgba(0,0,0,1) 30px)`
-const visibleMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 0px, rgba(0,0,0,1) 0px, rgba(0,0,0,1) 30px)`
+const hiddenMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 30px, rgba(0,0,0,1) 30px, rgba(0,0,0,1) 30px)`;
+const visibleMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 0px, rgba(0,0,0,1) 0px, rgba(0,0,0,1) 30px)`;
 function ThreeDPhotoCarousel() {
-  const [activeImg, setActiveImg] = useState<string | null>(null)
-  const [isCarouselActive, setIsCarouselActive] = useState(true)
-  const controls = useAnimation()
+  const [activeImg, setActiveImg] = useState<string | null>(null);
+  const [isCarouselActive, setIsCarouselActive] = useState(true);
+  const controls = useAnimation();
   const cards = useMemo(
     () => keywords.map((keyword) => `https://picsum.photos/200/300?${keyword}`),
     []
-  )
+  );
 
   useEffect(() => {
-    console.log("Cards loaded:", cards)
-  }, [cards])
+    console.log("Cards loaded:", cards);
+  }, [cards]);
 
   const handleClick = (imgUrl: string) => {
-    setActiveImg(imgUrl)
-    setIsCarouselActive(false)
-    controls.stop()
-  }
+    setActiveImg(imgUrl);
+    setIsCarouselActive(false);
+    controls.stop();
+  };
 
   const handleClose = () => {
-    setActiveImg(null)
-    setIsCarouselActive(true)
-  }
+    setActiveImg(null);
+    setIsCarouselActive(true);
+  };
 
   return (
     <motion.div layout className="relative">
@@ -209,14 +209,14 @@ function ThreeDPhotoCarousel() {
             layoutId={`img-container-${activeImg}`}
             layout="position"
             onClick={handleClose}
-            className="fixed inset-0 bg-black bg-opacity-10 flex items-center justify-center z-50 m-5 md:m-36 lg:mx-[19rem] rounded-3xl"
+            className="bg-opacity-10 fixed inset-0 z-50 m-5 flex items-center justify-center rounded-3xl bg-black md:m-36 lg:mx-[19rem]"
             style={{ willChange: "opacity" }}
             transition={transitionOverlay}
           >
             <motion.img
               layoutId={`img-${activeImg}`}
               src={activeImg}
-              className="max-w-full max-h-full rounded-lg shadow-lg"
+              className="max-h-full max-w-full rounded-lg shadow-lg"
               initial={{ scale: 0.5 }} // Start with a smaller scale
               animate={{ scale: 1 }} // Animate to full scale
               transition={{
@@ -240,7 +240,7 @@ function ThreeDPhotoCarousel() {
         />
       </div>
     </motion.div>
-  )
+  );
 }
 
-export default ThreeDPhotoCarousel
+export default ThreeDPhotoCarousel;

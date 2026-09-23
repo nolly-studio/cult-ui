@@ -1,9 +1,7 @@
 {
   "name": "loading-carousel",
   "description": "Loading carousel component with smooth transitions and customizable content",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "name": "loading-carousel.tsx",

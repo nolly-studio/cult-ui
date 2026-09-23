@@ -1,4 +1,4 @@
-import type { Registry } from "@/registry/schema"
+import type { Registry } from "@/registry/schema";
 
 export const ui: Registry["items"] = [
   {
@@ -1040,4 +1040,4 @@ export const ui: Registry["items"] = [
     description:
       "Split-layout hero section with responsive LiquidMetal shader visuals, CTA, and tech stack badges",
   },
-]
+];

@@ -1,9 +1,6 @@
 {
   "name": "sonner",
-  "dependencies": [
-    "sonner",
-    "next-themes"
-  ],
+  "dependencies": ["sonner", "next-themes"],
   "files": [
     {
       "name": "sonner.tsx",

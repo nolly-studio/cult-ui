@@ -1,9 +1,7 @@
 {
   "name": "neumorph-button",
   "description": "Neumorphic button component with soft shadows and tactile interaction effects",
-  "dependencies": [
-    ""
-  ],
+  "dependencies": [""],
   "files": [
     {
       "name": "neumorph-button.tsx",

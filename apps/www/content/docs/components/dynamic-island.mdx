@@ -80,60 +80,70 @@ import {
   DynamicDescription,
   DynamicTitle,
   useDynamicIslandSize,
-} from "@/components/ui/dynamic-island"
+} from "@/components/ui/dynamic-island";
 ```
 
 ```tsx
-const STATES = ["compact", "large", "tall", "long", "medium"] as const
+const STATES = ["compact", "large", "tall", "long", "medium"] as const;
 
 function DynamicIslandContent() {
-  const { state, setSize } = useDynamicIslandSize()
+  const { state, setSize } = useDynamicIslandSize();
 
   const cycleState = () => {
-    const currentIndex = STATES.indexOf(state.size as (typeof STATES)[number])
-    const nextIndex = (currentIndex + 1) % STATES.length
-    setSize(STATES[nextIndex])
-  }
+    const currentIndex = STATES.indexOf(state.size as (typeof STATES)[number]);
+    const nextIndex = (currentIndex + 1) % STATES.length;
+    setSize(STATES[nextIndex]);
+  };
 
   const renderState = () => {
     switch (state.size) {
       case "compact":
         return (
           <DynamicContainer className="flex h-full w-full items-center justify-between px-4 text-white">
-            <DynamicDescription className="text-sm opacity-80">Now playing</DynamicDescription>
-            <DynamicTitle className="text-sm font-semibold">Cult FM</DynamicTitle>
+            <DynamicDescription className="text-sm opacity-80">
+              Now playing
+            </DynamicDescription>
+            <DynamicTitle className="text-sm font-semibold">
+              Cult FM
+            </DynamicTitle>
           </DynamicContainer>
-        )
+        );
       case "large":
         return (
           <DynamicContainer className="flex h-full w-full items-center justify-center">
-            <DynamicTitle className="text-2xl font-black text-white">Syncing...</DynamicTitle>
+            <DynamicTitle className="text-2xl font-black text-white">
+              Syncing...
+            </DynamicTitle>
           </DynamicContainer>
-        )
+        );
       case "tall":
         return (
           <DynamicContainer className="flex h-full w-full flex-col items-start gap-2 p-5 text-white">
-            <DynamicTitle className="text-xl font-bold">New message</DynamicTitle>
+            <DynamicTitle className="text-xl font-bold">
+              New message
+            </DynamicTitle>
             <DynamicDescription className="text-sm text-neutral-300">
               Your team invited you to review the latest release.
             </DynamicDescription>
           </DynamicContainer>
-        )
+        );
       default:
         return (
           <DynamicContainer className="flex h-full w-full items-center justify-center">
-            <DynamicDiv className="text-sm text-white/90">Tap to cycle states</DynamicDiv>
+            <DynamicDiv className="text-sm text-white/90">
+              Tap to cycle states
+            </DynamicDiv>
           </DynamicContainer>
-        )
+        );
     }
-  }
+  };
 
   return (
     <>
       <button onClick={cycleState}>Cycle</button>
       <DynamicIsland id="example-island">{renderState()}</DynamicIsland>
     </>
-  )
+  );
 }
 
 export default function Example() {
@@ -141,7 +151,7 @@ export default function Example() {
     <DynamicIslandProvider initialSize="default">
       <DynamicIslandContent />
     </DynamicIslandProvider>
-  )
+  );
 }
 ```
 
@@ -159,32 +169,32 @@ The Dynamic Island is built from small primitives you compose together:
 
 Use these built-in shape presets with `setSize(...)` or `initialSize`.
 
-| Preset | Intended use |
-| --- | --- |
-| `default` | Idle base state |
-| `compact` | Small status indicator |
-| `compactLong` | Compact but wider row |
-| `compactMedium` | Medium compact card |
-| `large` | Prominent status/action |
-| `long` | Horizontal content row |
-| `medium` | Multi-line panel |
-| `tall` | Stacked content |
-| `ultra` | Large immersive panel |
-| `massive` | Full, oversized layout |
-| `minimalLeading` | Tiny leading indicator |
+| Preset            | Intended use            |
+| ----------------- | ----------------------- |
+| `default`         | Idle base state         |
+| `compact`         | Small status indicator  |
+| `compactLong`     | Compact but wider row   |
+| `compactMedium`   | Medium compact card     |
+| `large`           | Prominent status/action |
+| `long`            | Horizontal content row  |
+| `medium`          | Multi-line panel        |
+| `tall`            | Stacked content         |
+| `ultra`           | Large immersive panel   |
+| `massive`         | Full, oversized layout  |
+| `minimalLeading`  | Tiny leading indicator  |
 | `minimalTrailing` | Tiny trailing indicator |
-| `reset` | Internal reset shape |
-| `empty` | Hidden/zero layout |
+| `reset`           | Internal reset shape    |
+| `empty`           | Hidden/zero layout      |
 
 ## Controlled State Transitions
 
 Switch island layouts directly from app events:
 
 ```tsx
-const { setSize } = useDynamicIslandSize()
+const { setSize } = useDynamicIslandSize();
 
-setSize("compact")
-setSize("medium")
+setSize("compact");
+setSize("medium");
 ```
 
 Use the current and previous state to render context-aware UI:
@@ -201,7 +211,7 @@ const { state } = useDynamicIslandSize()
 Queue a sequence of size transitions for guided flows:
 
 ```tsx
-import { useScheduledAnimations } from "@/components/ui/dynamic-island"
+import { useScheduledAnimations } from "@/components/ui/dynamic-island";
 
 function IntroSequence() {
   useScheduledAnimations([
@@ -209,9 +219,9 @@ function IntroSequence() {
     { size: "large", delay: 1200 },
     { size: "tall", delay: 1400 },
     { size: "medium", delay: 1000 },
-  ])
+  ]);
 
-  return null
+  return null;
 }
 ```
 
@@ -244,10 +254,10 @@ function IntroSequence() {
 
 ### `DynamicTitle`, `DynamicDescription`, `DynamicDiv`
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `className` | `string` | — | Styling classes |
-| `children` | `ReactNode` | — | Animated content |
+| Prop        | Type        | Default | Description      |
+| ----------- | ----------- | ------- | ---------------- |
+| `className` | `string`    | —       | Styling classes  |
+| `children`  | `ReactNode` | —       | Animated content |
 
 ### `useDynamicIslandSize()`
 

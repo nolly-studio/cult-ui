@@ -1,5 +1,11 @@
-"use client"
+"use client";
 
+import {
+  CheckmarkSquare02Icon,
+  PlusSignIcon,
+  SettingsIcon,
+} from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import {
   createContext,
   useCallback,
@@ -9,16 +15,9 @@ import {
   type ComponentProps,
   type PropsWithChildren,
   type ReactNode,
-} from "react"
-import {
-  CheckmarkSquare02Icon,
-  PlusSignIcon,
-  SettingsIcon,
-} from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
+} from "react";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -27,7 +26,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/components/ui/command"
+} from "@/components/ui/command";
 import {
   Dialog,
   DialogClose,
@@ -38,19 +37,20 @@ import {
   DialogTitle,
   type DialogDescriptionProps,
   type DialogTitleProps,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/ui/hover-card"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/hover-card";
+import { Input } from "@/components/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
-import { Textarea } from "@/components/ui/textarea"
+} from "@/components/ui/popover";
+import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 
 // ============================================================================
 // Types
@@ -58,59 +58,61 @@ import { Textarea } from "@/components/ui/textarea"
 
 export interface Instruction {
   /** Unique identifier for the instruction */
-  id: string
+  id: string;
   /** Display title for the instruction */
-  title: string
+  title: string;
   /** Short description shown in the list */
-  description: string
+  description: string;
   /** Full instruction content shown in hover preview */
-  content?: string
+  content?: string;
   /** Whether this is a user-created instruction */
-  isCustom?: boolean
+  isCustom?: boolean;
 }
 
 export interface InstructionsContextValue {
   /** Currently active instruction IDs */
-  activeIds: string[]
+  activeIds: string[];
   /** Toggle an instruction's active state */
-  toggle: (id: string) => void
+  toggle: (id: string) => void;
   /** Check if an instruction is active */
-  isActive: (id: string) => boolean
+  isActive: (id: string) => boolean;
   /** All available instructions */
-  instructions: Instruction[]
+  instructions: Instruction[];
   /** Add a custom instruction */
-  addCustom: (instruction: Omit<Instruction, "id" | "isCustom">) => void
+  addCustom: (instruction: Omit<Instruction, "id" | "isCustom">) => void;
   /** Remove a custom instruction */
-  removeCustom: (id: string) => void
+  removeCustom: (id: string) => void;
   /** Open state for the popover */
-  open: boolean
+  open: boolean;
   /** Set open state for the popover */
-  setOpen: (open: boolean) => void
+  setOpen: (open: boolean) => void;
   /** Open state for the create dialog */
-  createDialogOpen: boolean
+  createDialogOpen: boolean;
   /** Set open state for the create dialog */
-  setCreateDialogOpen: (open: boolean) => void
+  setCreateDialogOpen: (open: boolean) => void;
 }
 
 // ============================================================================
 // Context
 // ============================================================================
 
-const InstructionsContext = createContext<InstructionsContextValue | null>(null)
+const InstructionsContext = createContext<InstructionsContextValue | null>(
+  null
+);
 
 /**
  * Hook to access the Instructions context
  * @throws Error if used outside of Instructions provider
  */
 export const useInstructions = () => {
-  const ctx = useContext(InstructionsContext)
+  const ctx = useContext(InstructionsContext);
   if (!ctx) {
     throw new Error(
       "useInstructions must be used within an Instructions provider"
-    )
+    );
   }
-  return ctx
-}
+  return ctx;
+};
 
 // ============================================================================
 // Controllable State Hook
@@ -121,26 +123,26 @@ function useControllableState<T>(
   defaultValue: T,
   onChange?: (value: T) => void
 ): [T, (value: T | ((prev: T) => T)) => void] {
-  const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue)
-  const isControlled = controlledValue !== undefined
-  const value = isControlled ? controlledValue : uncontrolledValue
+  const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue);
+  const isControlled = controlledValue !== undefined;
+  const value = isControlled ? controlledValue : uncontrolledValue;
 
   const setValue = useCallback(
     (nextValue: T | ((prev: T) => T)) => {
       const resolvedValue =
         typeof nextValue === "function"
           ? (nextValue as (prev: T) => T)(value)
-          : nextValue
+          : nextValue;
 
       if (!isControlled) {
-        setUncontrolledValue(resolvedValue)
+        setUncontrolledValue(resolvedValue);
       }
-      onChange?.(resolvedValue)
+      onChange?.(resolvedValue);
     },
     [isControlled, onChange, value]
-  )
+  );
 
-  return [value, setValue]
+  return [value, setValue];
 }
 
 // ============================================================================
@@ -149,20 +151,20 @@ function useControllableState<T>(
 
 export type InstructionsProps = PropsWithChildren<{
   /** Controlled active instruction IDs */
-  value?: string[]
+  value?: string[];
   /** Callback when active instructions change */
-  onValueChange?: (value: string[]) => void
+  onValueChange?: (value: string[]) => void;
   /** Default active instruction IDs (uncontrolled) */
-  defaultValue?: string[]
+  defaultValue?: string[];
   /** Initial set of instructions */
-  instructions?: Instruction[]
+  instructions?: Instruction[];
   /** Callback when instructions change (for custom instructions) */
-  onInstructionsChange?: (instructions: Instruction[]) => void
+  onInstructionsChange?: (instructions: Instruction[]) => void;
   /** Controlled open state for popover */
-  open?: boolean
+  open?: boolean;
   /** Callback when open state changes */
-  onOpenChange?: (open: boolean) => void
-}>
+  onOpenChange?: (open: boolean) => void;
+}>;
 
 /**
  * Root component for the Instructions widget.
@@ -182,34 +184,34 @@ export function Instructions({
     value,
     defaultValue,
     onValueChange
-  )
+  );
 
   const [internalInstructions, setInternalInstructions] = useState<
     Instruction[]
-  >(controlledInstructions ?? [])
+  >(controlledInstructions ?? []);
 
-  const instructions = controlledInstructions ?? internalInstructions
+  const instructions = controlledInstructions ?? internalInstructions;
 
   const [open, setOpen] = useControllableState(
     controlledOpen,
     false,
     onOpenChange
-  )
-  const [createDialogOpen, setCreateDialogOpen] = useState(false)
+  );
+  const [createDialogOpen, setCreateDialogOpen] = useState(false);
 
   const toggle = useCallback(
     (id: string) => {
       setActiveIds((prev) =>
         prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
-      )
+      );
     },
     [setActiveIds]
-  )
+  );
 
   const isActive = useCallback(
     (id: string) => activeIds.includes(id),
     [activeIds]
-  )
+  );
 
   const addCustom = useCallback(
     (instruction: Omit<Instruction, "id" | "isCustom">) => {
@@ -217,32 +219,32 @@ export function Instructions({
         ...instruction,
         id: `custom-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
         isCustom: true,
-      }
+      };
 
       if (controlledInstructions) {
-        onInstructionsChange?.([...controlledInstructions, newInstruction])
+        onInstructionsChange?.([...controlledInstructions, newInstruction]);
       } else {
-        setInternalInstructions((prev) => [...prev, newInstruction])
+        setInternalInstructions((prev) => [...prev, newInstruction]);
       }
     },
     [controlledInstructions, onInstructionsChange]
-  )
+  );
 
   const removeCustom = useCallback(
     (id: string) => {
       // Also remove from active if it was active
-      setActiveIds((prev) => prev.filter((i) => i !== id))
+      setActiveIds((prev) => prev.filter((i) => i !== id));
 
       if (controlledInstructions) {
         onInstructionsChange?.(
           controlledInstructions.filter((i) => i.id !== id)
-        )
+        );
       } else {
-        setInternalInstructions((prev) => prev.filter((i) => i.id !== id))
+        setInternalInstructions((prev) => prev.filter((i) => i.id !== id));
       }
     },
     [controlledInstructions, onInstructionsChange, setActiveIds]
-  )
+  );
 
   const contextValue = useMemo<InstructionsContextValue>(
     () => ({
@@ -268,7 +270,7 @@ export function Instructions({
       setOpen,
       createDialogOpen,
     ]
-  )
+  );
 
   return (
     <InstructionsContext.Provider value={contextValue}>
@@ -276,7 +278,7 @@ export function Instructions({
         {children}
       </Popover>
     </InstructionsContext.Provider>
-  )
+  );
 }
 
 // ============================================================================
@@ -285,8 +287,8 @@ export function Instructions({
 
 export type InstructionsTriggerProps = ComponentProps<typeof Button> & {
   /** Custom label for the trigger button */
-  label?: ReactNode
-}
+  label?: ReactNode;
+};
 
 /**
  * Button that opens the instructions popover.
@@ -298,8 +300,8 @@ export function InstructionsTrigger({
   children,
   ...props
 }: InstructionsTriggerProps) {
-  const { activeIds } = useInstructions()
-  const activeCount = activeIds.length
+  const { activeIds } = useInstructions();
+  const activeCount = activeIds.length;
 
   return (
     <PopoverTrigger asChild>
@@ -324,7 +326,7 @@ export function InstructionsTrigger({
             {label ?? "Instructions"}
             {activeCount > 0 && (
               <span
-                className="inline-flex size-4 items-center justify-center rounded-full bg-primary text-[0.625rem] text-primary-foreground"
+                className="bg-primary text-primary-foreground inline-flex size-4 items-center justify-center rounded-full text-[0.625rem]"
                 data-slot="instructions-count"
               >
                 {activeCount}
@@ -334,14 +336,14 @@ export function InstructionsTrigger({
         )}
       </Button>
     </PopoverTrigger>
-  )
+  );
 }
 
 // ============================================================================
 // Content Component
 // ============================================================================
 
-export type InstructionsContentProps = ComponentProps<typeof PopoverContent>
+export type InstructionsContentProps = ComponentProps<typeof PopoverContent>;
 
 /**
  * Popover content container for the instructions list.
@@ -363,14 +365,14 @@ export function InstructionsContent({
         {children}
       </Command>
     </PopoverContent>
-  )
+  );
 }
 
 // ============================================================================
 // Search Component
 // ============================================================================
 
-export type InstructionsSearchProps = ComponentProps<typeof CommandInput>
+export type InstructionsSearchProps = ComponentProps<typeof CommandInput>;
 
 /**
  * Search input for filtering instructions.
@@ -387,14 +389,14 @@ export function InstructionsSearch({
       placeholder={placeholder}
       {...props}
     />
-  )
+  );
 }
 
 // ============================================================================
 // List Component
 // ============================================================================
 
-export type InstructionsListProps = ComponentProps<typeof CommandList>
+export type InstructionsListProps = ComponentProps<typeof CommandList>;
 
 /**
  * Scrollable list container for instructions.
@@ -412,14 +414,14 @@ export function InstructionsList({
     >
       {children}
     </CommandList>
-  )
+  );
 }
 
 // ============================================================================
 // Empty Component
 // ============================================================================
 
-export type InstructionsEmptyProps = ComponentProps<typeof CommandEmpty>
+export type InstructionsEmptyProps = ComponentProps<typeof CommandEmpty>;
 
 /**
  * Empty state shown when no instructions match the search.
@@ -437,14 +439,14 @@ export function InstructionsEmpty({
     >
       {children}
     </CommandEmpty>
-  )
+  );
 }
 
 // ============================================================================
 // Group Component
 // ============================================================================
 
-export type InstructionsGroupProps = ComponentProps<typeof CommandGroup>
+export type InstructionsGroupProps = ComponentProps<typeof CommandGroup>;
 
 /**
  * Group container for categorizing instructions.
@@ -468,14 +470,16 @@ export function InstructionsGroup({
       data-slot="instructions-group"
       {...props}
     />
-  )
+  );
 }
 
 // ============================================================================
 // Separator Component
 // ============================================================================
 
-export type InstructionsSeparatorProps = ComponentProps<typeof CommandSeparator>
+export type InstructionsSeparatorProps = ComponentProps<
+  typeof CommandSeparator
+>;
 
 /**
  * Visual separator between instruction groups.
@@ -490,7 +494,7 @@ export function InstructionsSeparator({
       data-slot="instructions-separator"
       {...props}
     />
-  )
+  );
 }
 
 // ============================================================================
@@ -502,10 +506,10 @@ export type InstructionsItemProps = Omit<
   "value" | "onSelect"
 > & {
   /** The instruction data */
-  instruction: Instruction
+  instruction: Instruction;
   /** Disable hover card preview */
-  disablePreview?: boolean
-}
+  disablePreview?: boolean;
+};
 
 /**
  * Individual instruction item with toggle state and optional hover preview.
@@ -517,12 +521,12 @@ export function InstructionsItem({
   children,
   ...props
 }: InstructionsItemProps) {
-  const { toggle, isActive } = useInstructions()
-  const active = isActive(instruction.id)
+  const { toggle, isActive } = useInstructions();
+  const active = isActive(instruction.id);
 
   const handleSelect = () => {
-    toggle(instruction.id)
-  }
+    toggle(instruction.id);
+  };
 
   const itemContent = (
     <CommandItem
@@ -566,24 +570,24 @@ export function InstructionsItem({
         )}
       </div>
     </CommandItem>
-  )
+  );
 
   if (disablePreview || !instruction.content) {
-    return itemContent
+    return itemContent;
   }
 
   return (
     <InstructionsHoverCard instruction={instruction}>
       {itemContent}
     </InstructionsHoverCard>
-  )
+  );
 }
 
 // ============================================================================
 // Item Title Component
 // ============================================================================
 
-export type InstructionsItemTitleProps = ComponentProps<"span">
+export type InstructionsItemTitleProps = ComponentProps<"span">;
 
 /**
  * Title text for an instruction item.
@@ -594,18 +598,18 @@ export function InstructionsItemTitle({
 }: InstructionsItemTitleProps) {
   return (
     <span
-      className={cn("font-medium text-foreground text-xs", className)}
+      className={cn("text-foreground text-xs font-medium", className)}
       data-slot="instructions-item-title"
       {...props}
     />
-  )
+  );
 }
 
 // ============================================================================
 // Item Description Component
 // ============================================================================
 
-export type InstructionsItemDescriptionProps = ComponentProps<"span">
+export type InstructionsItemDescriptionProps = ComponentProps<"span">;
 
 /**
  * Description text for an instruction item.
@@ -616,11 +620,11 @@ export function InstructionsItemDescription({
 }: InstructionsItemDescriptionProps) {
   return (
     <span
-      className={cn("line-clamp-2 text-muted-foreground text-xs", className)}
+      className={cn("text-muted-foreground line-clamp-2 text-xs", className)}
       data-slot="instructions-item-description"
       {...props}
     />
-  )
+  );
 }
 
 // ============================================================================
@@ -629,9 +633,9 @@ export function InstructionsItemDescription({
 
 export interface InstructionsHoverCardProps {
   /** The instruction to preview */
-  instruction: Instruction
+  instruction: Instruction;
   /** The trigger element (instruction item) */
-  children: ReactNode
+  children: ReactNode;
 }
 
 /**
@@ -653,34 +657,34 @@ export function InstructionsHoverCard({
       >
         <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-1">
-            <span className="font-medium text-sm">{instruction.title}</span>
+            <span className="text-sm font-medium">{instruction.title}</span>
             <span className="text-muted-foreground text-xs">
               {instruction.description}
             </span>
           </div>
           {instruction.content && (
-            <div className="rounded-md bg-muted/50 p-2">
-              <p className="whitespace-pre-wrap text-muted-foreground text-xs">
+            <div className="bg-muted/50 rounded-md p-2">
+              <p className="text-muted-foreground text-xs whitespace-pre-wrap">
                 {instruction.content}
               </p>
             </div>
           )}
           {instruction.isCustom && (
-            <span className="text-[0.625rem] text-muted-foreground">
+            <span className="text-muted-foreground text-[0.625rem]">
               Custom instruction
             </span>
           )}
         </div>
       </HoverCardContent>
     </HoverCard>
-  )
+  );
 }
 
 // ============================================================================
 // Footer Component
 // ============================================================================
 
-export type InstructionsFooterProps = ComponentProps<"div">
+export type InstructionsFooterProps = ComponentProps<"div">;
 
 /**
  * Footer container that stays fixed at the bottom of the popover.
@@ -699,7 +703,7 @@ export function InstructionsFooter({
     >
       {children}
     </div>
-  )
+  );
 }
 
 // ============================================================================
@@ -711,8 +715,8 @@ export type InstructionsCreateTriggerProps = Omit<
   "onSelect"
 > & {
   /** Custom label for the create button */
-  label?: ReactNode
-}
+  label?: ReactNode;
+};
 
 /**
  * Button that opens the create instruction dialog.
@@ -723,17 +727,17 @@ export function InstructionsCreateTrigger({
   children,
   ...props
 }: InstructionsCreateTriggerProps) {
-  const { setCreateDialogOpen, setOpen } = useInstructions()
+  const { setCreateDialogOpen, setOpen } = useInstructions();
 
   const handleSelect = () => {
-    setOpen(false)
-    setCreateDialogOpen(true)
-  }
+    setOpen(false);
+    setCreateDialogOpen(true);
+  };
 
   return (
     <CommandItem
       className={cn(
-        "flex cursor-pointer items-center gap-2 text-muted-foreground",
+        "text-muted-foreground flex cursor-pointer items-center gap-2",
         className
       )}
       data-slot="instructions-create-trigger"
@@ -752,7 +756,7 @@ export function InstructionsCreateTrigger({
         </>
       )}
     </CommandItem>
-  )
+  );
 }
 
 // ============================================================================
@@ -764,12 +768,12 @@ export type InstructionsCreateDialogProps = Omit<
   "open" | "onOpenChange" | "children"
 > & {
   /** Dialog title */
-  title?: DialogTitleProps["children"]
+  title?: DialogTitleProps["children"];
   /** Dialog description */
-  description?: DialogDescriptionProps["children"]
+  description?: DialogDescriptionProps["children"];
   /** Custom form content to replace the default form */
-  children?: ReactNode
-}
+  children?: ReactNode;
+};
 
 /**
  * Modal dialog for creating custom instructions.
@@ -780,40 +784,41 @@ export function InstructionsCreateDialog({
   children,
   ...props
 }: InstructionsCreateDialogProps) {
-  const { createDialogOpen, setCreateDialogOpen, addCustom } = useInstructions()
-  const [formTitle, setFormTitle] = useState("")
-  const [formDescription, setFormDescription] = useState("")
-  const [formContent, setFormContent] = useState("")
+  const { createDialogOpen, setCreateDialogOpen, addCustom } =
+    useInstructions();
+  const [formTitle, setFormTitle] = useState("");
+  const [formDescription, setFormDescription] = useState("");
+  const [formContent, setFormContent] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!(formTitle.trim() && formDescription.trim())) {
-      return
+      return;
     }
 
     addCustom({
       title: formTitle.trim(),
       description: formDescription.trim(),
       content: formContent.trim() || undefined,
-    })
+    });
 
     // Reset form
-    setFormTitle("")
-    setFormDescription("")
-    setFormContent("")
-    setCreateDialogOpen(false)
-  }
+    setFormTitle("");
+    setFormDescription("");
+    setFormContent("");
+    setCreateDialogOpen(false);
+  };
 
   const handleOpenChange = (open: boolean) => {
-    setCreateDialogOpen(open)
+    setCreateDialogOpen(open);
     if (!open) {
       // Reset form when closing
-      setFormTitle("")
-      setFormDescription("")
-      setFormContent("")
+      setFormTitle("");
+      setFormDescription("");
+      setFormContent("");
     }
-  }
+  };
 
   return (
     <Dialog
@@ -831,7 +836,7 @@ export function InstructionsCreateDialog({
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-2">
               <label
-                className="font-medium text-xs"
+                className="text-xs font-medium"
                 htmlFor="instruction-title"
               >
                 Title
@@ -846,7 +851,7 @@ export function InstructionsCreateDialog({
             </div>
             <div className="flex flex-col gap-2">
               <label
-                className="font-medium text-xs"
+                className="text-xs font-medium"
                 htmlFor="instruction-description"
               >
                 Description
@@ -861,7 +866,7 @@ export function InstructionsCreateDialog({
             </div>
             <div className="flex flex-col gap-2">
               <label
-                className="font-medium text-xs"
+                className="text-xs font-medium"
                 htmlFor="instruction-content"
               >
                 Full Instruction (optional)
@@ -886,7 +891,7 @@ export function InstructionsCreateDialog({
         )}
       </DialogContent>
     </Dialog>
-  )
+  );
 }
 
 // ============================================================================
@@ -908,4 +913,4 @@ export const InstructionsWidget = Object.assign(Instructions, {
   Footer: InstructionsFooter,
   CreateTrigger: InstructionsCreateTrigger,
   CreateDialog: InstructionsCreateDialog,
-})
+});

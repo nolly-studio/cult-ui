@@ -1,39 +1,39 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 
-import { PixelHeading } from "@/registry/default/ui/pixel-heading-word"
+import { PixelHeading } from "@/registry/default/ui/pixel-heading-word";
 
 /* ─── Constants ─── */
 
-const PIXEL_FONTS = ["square", "grid", "circle", "triangle", "line"] as const
-type PixelFont = (typeof PIXEL_FONTS)[number]
+const PIXEL_FONTS = ["square", "grid", "circle", "triangle", "line"] as const;
+type PixelFont = (typeof PIXEL_FONTS)[number];
 
-const HEADING_LEVELS = ["h1", "h2", "h3", "h4", "h5", "h6"] as const
+const HEADING_LEVELS = ["h1", "h2", "h3", "h4", "h5", "h6"] as const;
 
 /* ─── Demo ─── */
 
 export default function PixelHeadingWordDemo() {
-  const [text, setText] = useState("Pixel Fonts")
-  const [initialFont, setInitialFont] = useState<PixelFont>("square")
-  const [hoverFont, setHoverFont] = useState<PixelFont | "cycle">("triangle")
+  const [text, setText] = useState("Pixel Fonts");
+  const [initialFont, setInitialFont] = useState<PixelFont>("square");
+  const [hoverFont, setHoverFont] = useState<PixelFont | "cycle">("triangle");
 
-  const [showLabel, setShowLabel] = useState(true)
+  const [showLabel, setShowLabel] = useState(true);
   const [headingLevel, setHeadingLevel] =
-    useState<(typeof HEADING_LEVELS)[number]>("h1")
+    useState<(typeof HEADING_LEVELS)[number]>("h1");
 
-  const isSwapMode = hoverFont !== "cycle"
+  const isSwapMode = hoverFont !== "cycle";
 
   return (
     <div className="w-full space-y-8 py-4">
       {/* ── Preview ── */}
-      <div className="flex min-h-[160px] items-center justify-center rounded-lg border border-border/40 bg-background p-8">
+      <div className="border-border/40 bg-background flex min-h-[160px] items-center justify-center rounded-lg border p-8">
         <PixelHeading
           as={headingLevel}
           initialFont={initialFont}
           hoverFont={isSwapMode ? (hoverFont as PixelFont) : undefined}
           showLabel={showLabel}
-          className="text-5xl md:text-7xl tracking-tight"
+          className="text-5xl tracking-tight md:text-7xl"
         >
           {text}
         </PixelHeading>
@@ -47,7 +47,7 @@ export default function PixelHeadingWordDemo() {
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className="h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="border-input placeholder:text-muted-foreground focus-visible:ring-ring h-9 w-full rounded-md border bg-transparent px-3 text-sm shadow-sm focus-visible:ring-1 focus-visible:outline-none"
             placeholder="Enter heading text"
           />
         </ControlGroup>
@@ -110,7 +110,7 @@ export default function PixelHeadingWordDemo() {
             onChange={(e) =>
               setHeadingLevel(e.target.value as (typeof HEADING_LEVELS)[number])
             }
-            className="h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="border-input focus-visible:ring-ring h-9 w-full rounded-md border bg-transparent px-3 text-sm shadow-sm focus-visible:ring-1 focus-visible:outline-none"
           >
             {HEADING_LEVELS.map((h) => (
               <option key={h} value={h}>
@@ -126,7 +126,7 @@ export default function PixelHeadingWordDemo() {
         </ControlGroup>
       </div>
     </div>
-  )
+  );
 }
 
 /* ─── Shared control primitives ─── */
@@ -135,25 +135,25 @@ function ControlGroup({
   label,
   children,
 }: {
-  label: string
-  children: React.ReactNode
+  label: string;
+  children: React.ReactNode;
 }) {
   return (
     <div className="space-y-2">
-      <span className="block text-xs font-medium uppercase tracking-wider text-muted-foreground">
+      <span className="text-muted-foreground block text-xs font-medium tracking-wider uppercase">
         {label}
       </span>
       {children}
     </div>
-  )
+  );
 }
 
 function Toggle({
   checked,
   onChange,
 }: {
-  checked: boolean
-  onChange: (v: boolean) => void
+  checked: boolean;
+  onChange: (v: boolean) => void;
 }) {
   return (
     <button
@@ -166,10 +166,10 @@ function Toggle({
       }`}
     >
       <span
-        className={`pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 transition-transform ${
+        className={`bg-background pointer-events-none block h-5 w-5 rounded-full shadow-lg ring-0 transition-transform ${
           checked ? "translate-x-5" : "translate-x-0"
         }`}
       />
     </button>
-  )
+  );
 }

@@ -1,21 +1,13 @@
 "use client";
 
-import type { ComponentProps } from "react";
-
 import { useControllableState } from "@radix-ui/react-use-controllable-state";
-import { Button } from "@/components/ui/button";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { cn } from "@/lib/utils";
 import {
   AlertTriangleIcon,
   CheckIcon,
   ChevronDownIcon,
   CopyIcon,
 } from "lucide-react";
+import type { ComponentProps } from "react";
 import {
   createContext,
   memo,
@@ -26,6 +18,14 @@ import {
   useRef,
   useState,
 } from "react";
+
+import { Button } from "@/components/ui/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
 
 // Regex patterns for parsing stack traces
 const STACK_FRAME_WITH_PARENS_REGEX = /^at\s+(.+?)\s+\((.+):(\d+):(\d+)\)$/;
@@ -197,7 +197,7 @@ export const StackTrace = memo(
       <StackTraceContext.Provider value={contextValue}>
         <div
           className={cn(
-            "not-prose w-full overflow-hidden rounded-lg border bg-background font-mono text-sm",
+            "not-prose bg-background w-full overflow-hidden rounded-lg border font-mono text-sm",
             className
           )}
           {...props}
@@ -220,7 +220,7 @@ export const StackTraceHeader = memo(
         <CollapsibleTrigger asChild {...props}>
           <div
             className={cn(
-              "flex w-full cursor-pointer items-center gap-3 p-3 text-left transition-colors hover:bg-muted/50",
+              "hover:bg-muted/50 flex w-full cursor-pointer items-center gap-3 p-3 text-left transition-colors",
               className
             )}
           >
@@ -243,7 +243,7 @@ export const StackTraceError = memo(
       )}
       {...props}
     >
-      <AlertTriangleIcon className="size-4 shrink-0 text-destructive" />
+      <AlertTriangleIcon className="text-destructive size-4 shrink-0" />
       {children}
     </div>
   )
@@ -257,7 +257,7 @@ export const StackTraceErrorType = memo(
 
     return (
       <span
-        className={cn("shrink-0 font-semibold text-destructive", className)}
+        className={cn("text-destructive shrink-0 font-semibold", className)}
         {...props}
       >
         {children ?? trace.errorType}
@@ -273,7 +273,7 @@ export const StackTraceErrorMessage = memo(
     const { trace } = useStackTrace();
 
     return (
-      <span className={cn("truncate text-foreground", className)} {...props}>
+      <span className={cn("text-foreground truncate", className)} {...props}>
         {children ?? trace.errorMessage}
       </span>
     );
@@ -379,7 +379,7 @@ export const StackTraceExpandButton = memo(
       >
         <ChevronDownIcon
           className={cn(
-            "size-4 text-muted-foreground transition-transform",
+            "text-muted-foreground size-4 transition-transform",
             isOpen ? "rotate-180" : "rotate-0"
           )}
         />
@@ -407,7 +407,7 @@ export const StackTraceContent = memo(
       <Collapsible open={isOpen}>
         <CollapsibleContent
           className={cn(
-            "overflow-auto border-t bg-muted/30",
+            "bg-muted/30 overflow-auto border-t",
             "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=open]:animate-in",
             className
           )}
@@ -449,7 +449,7 @@ const FilePathButton = memo(
     return (
       <button
         className={cn(
-          "underline decoration-dotted hover:text-primary",
+          "hover:text-primary underline decoration-dotted",
           onFilePathClick && "cursor-pointer"
         )}
         disabled={!onFilePathClick}

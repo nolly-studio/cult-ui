@@ -38,7 +38,10 @@ npx shadcn@latest add https://cult-ui.com/r/hero-static-radial-gradient.json
 npm install @paper-design/shaders-react
 ```
 
-<Step>Install required registry dependencies if they are not already in your project.</Step>
+<Step>
+  Install required registry dependencies if they are not already in your
+  project.
+</Step>
 
 ```bash
 npx shadcn@latest add button badge
@@ -73,7 +76,7 @@ import {
   HeroStaticRadialGradientBadges,
   HeroStaticRadialGradientVisual,
   HeroStaticRadialGradientMobileVisual,
-} from "@/components/ui/hero-static-radial-gradient"
+} from "@/components/ui/hero-static-radial-gradient";
 ```
 
 ```tsx
@@ -98,7 +101,7 @@ export default function Page() {
         <HeroStaticRadialGradientMobileVisual />
       </HeroStaticRadialGradientRoot>
     </main>
-  )
+  );
 }
 ```
 
@@ -237,7 +240,9 @@ Use primitive exports for custom layout composition:
       <HeroStaticRadialGradientActions />
       <HeroStaticRadialGradientBadges />
     </HeroStaticRadialGradientContent>
-    <HeroStaticRadialGradientVisual desktopShaderProps={{ colors: ["#006CFF", "#00d2ff", "#7c3aed"] }} />
+    <HeroStaticRadialGradientVisual
+      desktopShaderProps={{ colors: ["#006CFF", "#00d2ff", "#7c3aed"] }}
+    />
   </HeroStaticRadialGradientContainer>
   <HeroStaticRadialGradientMobileVisual />
 </HeroStaticRadialGradientRoot>

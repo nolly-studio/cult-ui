@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { CheckIcon, ClipboardIcon } from "lucide-react"
+import { CheckIcon, ClipboardIcon } from "lucide-react";
+import * as React from "react";
 
-import { Event, trackEvent } from "@/lib/events"
-import { Button, ButtonProps } from "@/components/ui/button"
+import { Button, ButtonProps } from "@/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
+import { Event, trackEvent } from "@/lib/events";
 
 export function BlockCopyButton({
   event,
@@ -17,17 +17,17 @@ export function BlockCopyButton({
   code,
   ...props
 }: {
-  event: Event["name"]
-  name: string
-  code: string
+  event: Event["name"];
+  name: string;
+  code: string;
 } & ButtonProps) {
-  const [hasCopied, setHasCopied] = React.useState(false)
+  const [hasCopied, setHasCopied] = React.useState(false);
 
   React.useEffect(() => {
     setTimeout(() => {
-      setHasCopied(false)
-    }, 2000)
-  }, [hasCopied])
+      setHasCopied(false);
+    }, 2000);
+  }, [hasCopied]);
 
   return (
     <Tooltip>
@@ -37,14 +37,14 @@ export function BlockCopyButton({
           variant="outline"
           className="size-7 rounded-[6px] [&_svg]:size-3.5"
           onClick={() => {
-            navigator.clipboard.writeText(code)
+            navigator.clipboard.writeText(code);
             trackEvent({
               name: event,
               properties: {
                 name,
               },
-            })
-            setHasCopied(true)
+            });
+            setHasCopied(true);
           }}
           {...props}
         >
@@ -54,5 +54,5 @@ export function BlockCopyButton({
       </TooltipTrigger>
       <TooltipContent>Copy code</TooltipContent>
     </Tooltip>
-  )
+  );
 }

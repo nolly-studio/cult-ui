@@ -1,7 +1,5 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
 import {
   ArrowLeft,
   BookOpen,
@@ -14,17 +12,19 @@ import {
   Palette,
   Rocket,
   TrendingUp,
-} from "lucide-react"
+} from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
 
 import {
   ChoiceGroup,
@@ -32,7 +32,7 @@ import {
   Onboarding,
   TipsList,
   useOnboarding,
-} from "../ui/onboarding"
+} from "../ui/onboarding";
 
 const STEP_CONFIG = [
   {
@@ -47,7 +47,7 @@ const STEP_CONFIG = [
     title: "You're ready to go!",
     description: "A few tips to get the most out of AI SDK Agents",
   },
-]
+];
 
 export const FEATURES = [
   {
@@ -74,7 +74,7 @@ export const FEATURES = [
       "Download any pattern as a fully working Next.js application, ready to run locally.",
     image: "/component-images/onboarding/onboarding-nextjs.png",
   },
-] as const
+] as const;
 
 export const ROLES = [
   { id: "designer", label: "Designer", icon: Palette },
@@ -85,7 +85,7 @@ export const ROLES = [
   { id: "developer", label: "Developer", icon: Code2 },
   { id: "agency", label: "Agency", icon: Building },
   { id: "other", label: "Other", icon: CircleDashed },
-] as const
+] as const;
 
 export const GOALS = [
   { id: "ai-agents", label: "Building AI agents" },
@@ -94,7 +94,7 @@ export const GOALS = [
   { id: "rag", label: "RAG & search" },
   { id: "prototyping", label: "Rapid prototyping" },
   { id: "other", label: "Something else" },
-] as const
+] as const;
 
 export const TIPS = [
   {
@@ -109,23 +109,23 @@ export const TIPS = [
     number: 3,
     text: "Copy skills and critical files to quickly skill up claude code and cursor.",
   },
-] as const
+] as const;
 
-export const TOTAL_STEPS = 3
-export const MAX_STEP_VALUE = FEATURES.length - 1
+export const TOTAL_STEPS = 3;
+export const MAX_STEP_VALUE = FEATURES.length - 1;
 
 // ============================================================================
 // Headless Primitives Demo (composable, uses shadcn tokens)
 // ============================================================================
 
 export default function OnboardingDemo() {
-  return <HeadlessOnboardingDemo />
+  return <HeadlessOnboardingDemo />;
 }
 
 export function HeadlessOnboardingDemo() {
-  const [open, setOpen] = useState(false)
-  const [selectedRole, setSelectedRole] = useState<string | null>(null)
-  const [selectedGoal, setSelectedGoal] = useState<string | null>(null)
+  const [open, setOpen] = useState(false);
+  const [selectedRole, setSelectedRole] = useState<string | null>(null);
+  const [selectedGoal, setSelectedGoal] = useState<string | null>(null);
 
   return (
     <div className="flex flex-col items-center gap-4">
@@ -137,7 +137,7 @@ export function HeadlessOnboardingDemo() {
           className="w-full max-w-[calc(100dvw-2rem)] border-none bg-transparent p-0 shadow-none sm:max-w-3xl"
           showCloseButton={false}
         >
-          <div className="w-full rounded-2xl bg-muted p-[2px] md:p-2">
+          <div className="bg-muted w-full rounded-2xl p-[2px] md:p-2">
             <Onboarding
               canGoNext={(step) =>
                 step === 1 ||
@@ -172,31 +172,31 @@ export function HeadlessOnboardingDemo() {
         </DialogContent>
       </Dialog>
     </div>
-  )
+  );
 }
 
 function HeadlessOnboardingHeader() {
-  const { currentStep } = useOnboarding()
-  const config = STEP_CONFIG[currentStep - 1]
+  const { currentStep } = useOnboarding();
+  const config = STEP_CONFIG[currentStep - 1];
 
   return (
     <DialogHeader className="!text-center">
       {/* <DialogTitle className="font-normal font-pixel-square text-3xl text-foreground"> */}
-      <DialogTitle className="font-semibold  md:text-3xl tracking-tighter text-foreground">
+      <DialogTitle className="text-foreground font-semibold tracking-tighter md:text-3xl">
         {config.title}
       </DialogTitle>
-      <DialogDescription className="md:text-base text-muted-foreground">
+      <DialogDescription className="text-muted-foreground md:text-base">
         {config.description}
       </DialogDescription>
       <div className="pt-3">
         <Onboarding.StepIndicator />
       </div>
     </DialogHeader>
-  )
+  );
 }
 
 function HeadlessFeatureStep() {
-  const { stepValue, setStepValue } = useOnboarding()
+  const { stepValue, setStepValue } = useOnboarding();
 
   return (
     <div className="flex flex-col gap-4 md:flex-row md:gap-6">
@@ -207,8 +207,8 @@ function HeadlessFeatureStep() {
         value={stepValue}
       >
         {FEATURES.map((feature, index) => {
-          const Icon = feature.icon
-          const isActive = stepValue === index
+          const Icon = feature.icon;
+          const isActive = stepValue === index;
           return (
             <FeatureCarousel.Item index={index} key={feature.id}>
               <div
@@ -216,7 +216,7 @@ function HeadlessFeatureStep() {
                   "flex items-start gap-3 rounded-xl border p-4 text-left transition-all duration-200",
                   isActive
                     ? "border-primary/30 bg-primary/10"
-                    : "border-transparent hover:bg-muted"
+                    : "hover:bg-muted border-transparent"
                 )}
               >
                 <Icon
@@ -226,22 +226,22 @@ function HeadlessFeatureStep() {
                   )}
                 />
                 <div>
-                  <p className="font-medium text-foreground text-sm">
+                  <p className="text-foreground text-sm font-medium">
                     {feature.title}
                   </p>
                   {isActive && (
-                    <p className="mt-1 text-muted-foreground text-sm leading-relaxed">
+                    <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
                       {feature.description}
                     </p>
                   )}
                 </div>
               </div>
             </FeatureCarousel.Item>
-          )
+          );
         })}
       </FeatureCarousel>
       <div className="order-1 w-full md:order-2 md:w-1/2">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-xl border bg-muted">
+        <div className="bg-muted relative aspect-[4/3] overflow-hidden rounded-xl border">
           <Image
             alt={FEATURES[stepValue].title}
             className="object-cover transition-opacity duration-300"
@@ -252,7 +252,7 @@ function HeadlessFeatureStep() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function HeadlessRoleStep({
@@ -261,23 +261,23 @@ function HeadlessRoleStep({
   selectedGoal,
   onGoalSelect,
 }: {
-  selectedRole: string | null
-  onRoleSelect: (v: string) => void
-  selectedGoal: string | null
-  onGoalSelect: (v: string) => void
+  selectedRole: string | null;
+  onRoleSelect: (v: string) => void;
+  selectedGoal: string | null;
+  onGoalSelect: (v: string) => void;
 }) {
-  const { handleNext } = useOnboarding()
-  const [question, setQuestion] = useState(selectedGoal ? 2 : 1)
+  const { handleNext } = useOnboarding();
+  const [question, setQuestion] = useState(selectedGoal ? 2 : 1);
 
   return (
     <div className="flex flex-col gap-4">
       {question === 1 ? (
         <div className="flex flex-col gap-4" key="q1">
           <div className="flex items-center gap-2">
-            <span className="inline-flex size-6 items-center justify-center rounded-lg bg-muted text-muted-foreground text-sm">
+            <span className="bg-muted text-muted-foreground inline-flex size-6 items-center justify-center rounded-lg text-sm">
               1
             </span>
-            <span className="font-medium text-base text-foreground">
+            <span className="text-foreground text-base font-medium">
               What best describes you?
             </span>
           </div>
@@ -285,19 +285,19 @@ function HeadlessRoleStep({
             className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-3"
             name="Select your role"
             onValueChange={(v) => {
-              onRoleSelect(v)
-              setTimeout(() => setQuestion(2), 300)
+              onRoleSelect(v);
+              setTimeout(() => setQuestion(2), 300);
             }}
             orientation="grid"
             value={selectedRole}
           >
             {ROLES.map((role) => {
-              const Icon = role.icon
-              const isSelected = selectedRole === role.id
+              const Icon = role.icon;
+              const isSelected = selectedRole === role.id;
               return (
                 <ChoiceGroup.Item
                   className={cn(
-                    "flex items-center gap-2.5 cursor-pointer rounded-xl border px-4 py-3 text-left text-sm transition-all duration-200",
+                    "flex cursor-pointer items-center gap-2.5 rounded-xl border px-4 py-3 text-left text-sm transition-all duration-200",
                     isSelected
                       ? "border-primary/30 bg-primary/10 text-foreground"
                       : "border-border bg-background text-foreground hover:bg-muted"
@@ -305,10 +305,10 @@ function HeadlessRoleStep({
                   key={role.id}
                   value={role.id}
                 >
-                  <Icon className="size-4 shrink-0 text-muted-foreground" />
+                  <Icon className="text-muted-foreground size-4 shrink-0" />
                   <span>{role.label}</span>
                 </ChoiceGroup.Item>
-              )
+              );
             })}
           </ChoiceGroup>
           <p className="text-muted-foreground text-sm">Question 1 of 2</p>
@@ -316,10 +316,10 @@ function HeadlessRoleStep({
       ) : (
         <div className="flex flex-col gap-4" key="q2">
           <div className="flex items-center gap-2">
-            <span className="inline-flex size-6 items-center justify-center rounded-lg bg-muted text-muted-foreground text-sm">
+            <span className="bg-muted text-muted-foreground inline-flex size-6 items-center justify-center rounded-lg text-sm">
               2
             </span>
-            <span className="font-medium text-base text-foreground">
+            <span className="text-foreground text-base font-medium">
               What do you want to create?
             </span>
           </div>
@@ -327,18 +327,18 @@ function HeadlessRoleStep({
             className="grid grid-cols-2 gap-2 sm:gap-3"
             name="Select your goal"
             onValueChange={(v) => {
-              onGoalSelect(v)
-              setTimeout(() => handleNext(), 300)
+              onGoalSelect(v);
+              setTimeout(() => handleNext(), 300);
             }}
             orientation="grid"
             value={selectedGoal}
           >
             {GOALS.map((goal) => {
-              const isSelected = selectedGoal === goal.id
+              const isSelected = selectedGoal === goal.id;
               return (
                 <ChoiceGroup.Item
                   className={cn(
-                    "flex items-center cursor-pointer gap-2.5 rounded-xl border px-4 py-3 text-left text-sm transition-all duration-200",
+                    "flex cursor-pointer items-center gap-2.5 rounded-xl border px-4 py-3 text-left text-sm transition-all duration-200",
                     isSelected
                       ? "border-primary/30 bg-primary/10 text-foreground"
                       : "border-border bg-background text-foreground hover:bg-muted"
@@ -348,12 +348,12 @@ function HeadlessRoleStep({
                 >
                   <span>{goal.label}</span>
                 </ChoiceGroup.Item>
-              )
+              );
             })}
           </ChoiceGroup>
           <div className="flex items-center justify-between">
             <Button
-              className="text-muted-foreground text-sm transition-colors hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground text-sm transition-colors"
               onClick={() => setQuestion(1)}
               type="button"
               size="sm"
@@ -367,7 +367,7 @@ function HeadlessRoleStep({
         </div>
       )}
     </div>
-  )
+  );
 }
 
 function HeadlessTipsStep() {
@@ -375,12 +375,12 @@ function HeadlessTipsStep() {
     <div className="flex flex-col gap-4 md:flex-row md:items-stretch md:gap-6">
       <div className="order-2 w-full md:order-1 md:w-1/2">
         <TipsList
-          className="flex h-full flex-col [&_[data-slot=tips-list-title]]:not-sr-only [&_[data-slot=tips-list-title]]:mb-4 [&_[data-slot=tips-list-title]]:font-semibold [&_[data-slot=tips-list-title]]:text-muted-foreground [&_[data-slot=tips-list-title]]:text-xs [&_[data-slot=tips-list-title]]:uppercase [&_[data-slot=tips-list-title]]:tracking-wider [&_[data-slot=tips-list-items]]:flex [&_[data-slot=tips-list-items]]:h-full [&_[data-slot=tips-list-items]]:flex-col [&_[data-slot=tips-list-items]]:justify-between [&_[data-slot=tips-list-items]]:gap-4"
+          className="[&_[data-slot=tips-list-title]]:text-muted-foreground flex h-full flex-col [&_[data-slot=tips-list-items]]:flex [&_[data-slot=tips-list-items]]:h-full [&_[data-slot=tips-list-items]]:flex-col [&_[data-slot=tips-list-items]]:justify-between [&_[data-slot=tips-list-items]]:gap-4 [&_[data-slot=tips-list-title]]:not-sr-only [&_[data-slot=tips-list-title]]:mb-4 [&_[data-slot=tips-list-title]]:text-xs [&_[data-slot=tips-list-title]]:font-semibold [&_[data-slot=tips-list-title]]:tracking-wider [&_[data-slot=tips-list-title]]:uppercase"
           title="Tips"
         >
           {TIPS.map((tip) => (
             <TipsList.Item
-              className="flex items-start gap-3 [&_[data-slot=tips-list-item-number]]:inline-flex [&_[data-slot=tips-list-item-number]]:size-6 [&_[data-slot=tips-list-item-number]]:shrink-0 [&_[data-slot=tips-list-item-number]]:items-center [&_[data-slot=tips-list-item-number]]:justify-center [&_[data-slot=tips-list-item-number]]:rounded-lg [&_[data-slot=tips-list-item-number]]:bg-muted [&_[data-slot=tips-list-item-number]]:text-muted-foreground [&_[data-slot=tips-list-item-number]]:text-sm"
+              className="[&_[data-slot=tips-list-item-number]]:bg-muted [&_[data-slot=tips-list-item-number]]:text-muted-foreground flex items-start gap-3 [&_[data-slot=tips-list-item-number]]:inline-flex [&_[data-slot=tips-list-item-number]]:size-6 [&_[data-slot=tips-list-item-number]]:shrink-0 [&_[data-slot=tips-list-item-number]]:items-center [&_[data-slot=tips-list-item-number]]:justify-center [&_[data-slot=tips-list-item-number]]:rounded-lg [&_[data-slot=tips-list-item-number]]:text-sm"
               key={tip.number}
               number={tip.number}
             >
@@ -392,7 +392,7 @@ function HeadlessTipsStep() {
         </TipsList>
       </div>
       <div className="order-1 w-full md:order-2 md:w-1/2">
-        <div className="relative aspect-video w-full overflow-hidden rounded-xl border bg-background md:aspect-[4/3]">
+        <div className="bg-background relative aspect-video w-full overflow-hidden rounded-xl border md:aspect-[4/3]">
           <Image
             src="/component-images/onboarding/onboarding-tip1.png"
             alt="Onboarding"
@@ -403,5 +403,5 @@ function HeadlessTipsStep() {
         </div>
       </div>
     </div>
-  )
+  );
 }

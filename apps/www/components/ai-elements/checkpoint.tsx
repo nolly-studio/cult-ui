@@ -1,6 +1,7 @@
 "use client";
 
 import type { LucideProps } from "lucide-react";
+import { BookmarkIcon } from "lucide-react";
 import type { ComponentProps, HTMLAttributes } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
-import { BookmarkIcon } from "lucide-react";
 
 export type CheckpointProps = HTMLAttributes<HTMLDivElement>;
 
@@ -22,7 +22,7 @@ export const Checkpoint = ({
 }: CheckpointProps) => (
   <div
     className={cn(
-      "flex items-center gap-0.5 overflow-hidden text-muted-foreground",
+      "text-muted-foreground flex items-center gap-0.5 overflow-hidden",
       className
     )}
     {...props}

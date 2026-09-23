@@ -57,26 +57,26 @@ export default function Example() {
       videoSrc="/demo-video.mp4"
       thumbnailSrc="/demo-thumbnail.jpg"
     />
-  )
+  );
 }
 ```
 
 ## Props
 
-| Prop               | Type        | Default    | Description                              |
-| ------------------ | ----------- | ---------- | ---------------------------------------- |
-| videoSrc           | `string`    | `required` | URL of the video to play                 |
-| thumbnailSrc       | `string`    | -          | URL of the thumbnail image               |
-| hoverOverlay       | `ReactNode` | -          | Custom overlay shown while hovering      |
-| pausedOverlay      | `ReactNode` | -          | Custom overlay shown when paused         |
-| loadingOverlay     | `ReactNode` | -          | Custom overlay shown while loading       |
-| playbackStartDelay | `number`    | `0`        | Delay before playing video on hover (ms) |
-| restartOnPaused    | `boolean`   | `false`    | Reset video position when paused         |
-| enableControls     | `boolean`   | `false`    | Show playback controls                   |
-| muted              | `boolean`   | `true`     | Start video muted                        |
-| loop               | `boolean`   | `true`     | Loop video playback                      |
-| cropTop            | `number`    | `0`        | Percentage to crop from top              |
-| cropBottom         | `number`    | `0`        | Percentage to crop from bottom           |
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| videoSrc | `string` | `required` | URL of the video to play |
+| thumbnailSrc | `string` | - | URL of the thumbnail image |
+| hoverOverlay | `ReactNode` | - | Custom overlay shown while hovering |
+| pausedOverlay | `ReactNode` | - | Custom overlay shown when paused |
+| loadingOverlay | `ReactNode` | - | Custom overlay shown while loading |
+| playbackStartDelay | `number` | `0` | Delay before playing video on hover (ms) |
+| restartOnPaused | `boolean` | `false` | Reset video position when paused |
+| enableControls | `boolean` | `false` | Show playback controls |
+| muted | `boolean` | `true` | Start video muted |
+| loop | `boolean` | `true` | Loop video playback |
+| cropTop | `number` | `0` | Percentage to crop from top |
+| cropBottom | `number` | `0` | Percentage to crop from bottom |
 
 ## Examples
 
@@ -102,15 +102,15 @@ export default function Example() {
 ### With Custom Overlays
 
 ```tsx
-import { Spinner } from "@/components/ui/spinner"
+import { Spinner } from "@/components/ui/spinner";
 
-;<HoverVideoPlayer
+<HoverVideoPlayer
   videoSrc="/demo-video.mp4"
   thumbnailSrc="/demo-thumbnail.jpg"
   pausedOverlay={<PlayIcon className="h-12 w-12" />}
   loadingOverlay={<Spinner />}
   hoverOverlay={<div className="text-white">Now Playing</div>}
-/>
+/>;
 ```
 
 ### With Cropping

@@ -3,9 +3,7 @@
   "name": "gradient-heading",
   "type": "registry:ui",
   "description": "Heading component with gradient text effects and customizable styling",
-  "dependencies": [
-    "@radix-ui/react-slot"
-  ],
+  "dependencies": ["@radix-ui/react-slot"],
   "files": [
     {
       "path": "registry/default/ui/gradient-heading.tsx",

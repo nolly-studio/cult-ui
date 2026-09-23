@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Separator } from "@/components/ui/separator"
+} from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
 import {
   TextureCard,
   TextureCardContent,
@@ -19,7 +19,7 @@ import {
   TextureCardFooter,
   TextureCardHeader,
   TextureCardTitle,
-} from "@/registry/default/ui/texture-card"
+} from "@/registry/default/ui/texture-card";
 
 export function CardsShare() {
   return (
@@ -55,10 +55,10 @@ export function CardsShare() {
                   <AvatarFallback>OM</AvatarFallback>
                 </Avatar>
                 <div>
-                  <p className="text-sm font-medium leading-none">
+                  <p className="text-sm leading-none font-medium">
                     Olivia Martin
                   </p>
-                  <p className="text-sm text-muted-foreground">m@example.com</p>
+                  <p className="text-muted-foreground text-sm">m@example.com</p>
                 </div>
               </div>
               <Select defaultValue="edit">
@@ -78,10 +78,10 @@ export function CardsShare() {
                   <AvatarFallback>IN</AvatarFallback>
                 </Avatar>
                 <div>
-                  <p className="text-sm font-medium leading-none">
+                  <p className="text-sm leading-none font-medium">
                     Isabella Nguyen
                   </p>
-                  <p className="text-sm text-muted-foreground">b@example.com</p>
+                  <p className="text-muted-foreground text-sm">b@example.com</p>
                 </div>
               </div>
               <Select defaultValue="view">
@@ -101,10 +101,10 @@ export function CardsShare() {
                   <AvatarFallback>SD</AvatarFallback>
                 </Avatar>
                 <div>
-                  <p className="text-sm font-medium leading-none">
+                  <p className="text-sm leading-none font-medium">
                     Sofia Davis
                   </p>
-                  <p className="text-sm text-muted-foreground">p@example.com</p>
+                  <p className="text-muted-foreground text-sm">p@example.com</p>
                 </div>
               </div>
               <Select defaultValue="view">
@@ -121,5 +121,5 @@ export function CardsShare() {
         </div>
       </TextureCardContent>
     </TextureCard>
-  )
+  );
 }

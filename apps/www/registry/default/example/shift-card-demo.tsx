@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { motion } from "motion/react"
+import { motion } from "motion/react";
 
-import { ShiftCard } from "@/registry/default/ui/shift-card"
-import { TextureButton } from "@/registry/default/ui/texture-button"
+import { ShiftCard } from "@/registry/default/ui/shift-card";
+import { TextureButton } from "@/registry/default/ui/texture-button";
 
 export default function ShiftCardDemo() {
   // Content for the top part of the card
   const topContent = (
-    <div className="bg-accent/90 rounded-md text-primary shadow-[0px_1px_1px_0px_rgba(0,0,0,0.05),0px_1px_1px_0px_rgba(255,252,240,0.5)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.1)_inset,0px_0px_1px_0px_rgba(28,27,26,0.5)] dark:shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(0,0,0,0.1),0_2px_2px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.1),0_8px_8px_0_rgba(0,0,0,0.1)]">
-      <h3 className=" text-lg  p-4">
+    <div className="bg-accent/90 text-primary rounded-md shadow-[0px_1px_1px_0px_rgba(0,0,0,0.05),0px_1px_1px_0px_rgba(255,252,240,0.5)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.1)_inset,0px_0px_1px_0px_rgba(28,27,26,0.5)] dark:shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(0,0,0,0.1),0_2px_2px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.1),0_8px_8px_0_rgba(0,0,0,0.1)]">
+      <h3 className="p-4 text-lg">
         <svg
           width="1em"
           height="1em"
@@ -49,7 +49,7 @@ export default function ShiftCardDemo() {
         Screen Capture
       </h3>
     </div>
-  )
+  );
 
   // Content that animates into top from the middle
   const topAnimateContent = (
@@ -61,11 +61,11 @@ export default function ShiftCardDemo() {
         width={78}
         height={100}
         alt="Animated Top "
-        className="rounded-sm  absolute top-1.5 right-2 shadow-lg"
+        className="absolute top-1.5 right-2 rounded-sm shadow-lg"
       />
 
       <motion.div
-        className="h-[70px] w-[82px] absolute top-[4px] right-[6px] bg-transparent border-[2px] rounded-br-sm rounded-sm  border-neutral-800/80 dark:border-neutral-200/80 border-dashed  ml-auto  mb-[6px] dark:mb-[3px]"
+        className="absolute top-[4px] right-[6px] mb-[6px] ml-auto h-[70px] w-[82px] rounded-sm rounded-br-sm border-[2px] border-dashed border-neutral-800/80 bg-transparent dark:mb-[3px] dark:border-neutral-200/80"
         initial={{ opacity: 0, scale: 1.6, y: 0, filter: "blur(4px)" }}
         animate={{
           opacity: 1,
@@ -82,7 +82,7 @@ export default function ShiftCardDemo() {
         }}
       />
     </>
-  )
+  );
 
   // Content that animates from the top to the middle
   const middleContent = (
@@ -92,14 +92,14 @@ export default function ShiftCardDemo() {
       width={150}
       height={200}
       alt="Animated Middle"
-      className="rounded-lg  border-2 border-white dark:border-black"
+      className="rounded-lg border-2 border-white dark:border-black"
     />
-  )
+  );
 
   // Content for the bottom part of the card that shows more details on hover
   const bottomContent = (
-    <div className="flex w-full flex-col gap-1 bg-primary/90 border-t border-t-black/10 rounded-t-xs px-4 pb-6   ">
-      <div className="font-sans text-[14px] font-medium text-white dark:text-[#171717] flex gap-1 pt-1.5 items-center">
+    <div className="bg-primary/90 flex w-full flex-col gap-1 rounded-t-xs border-t border-t-black/10 px-4 pb-6">
+      <div className="flex items-center gap-1 pt-1.5 font-sans text-[14px] font-medium text-white dark:text-[#171717]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="-50 -50 430 390"
@@ -112,7 +112,7 @@ export default function ShiftCardDemo() {
         </svg>{" "}
         <p>Share your work</p>
       </div>
-      <div className="w-full text-pretty font-sans text-[13px] leading-4 text-neutral-200 dark:text-[#171717] pb-2  ">
+      <div className="w-full pb-2 font-sans text-[13px] leading-4 text-pretty text-neutral-200 dark:text-[#171717]">
         Share your image to build that audience. Inspired by{" "}
         <a
           target="_blank"
@@ -123,7 +123,7 @@ export default function ShiftCardDemo() {
         </a>
       </div>
 
-      <div className="bg-accent/80 dark:bg-accent px-1 py-1 rounded-xl flex flex-col gap-1">
+      <div className="bg-accent/80 dark:bg-accent flex flex-col gap-1 rounded-xl px-1 py-1">
         <TextureButton variant="primary">
           <svg
             viewBox="0 0 256 209"
@@ -159,17 +159,17 @@ export default function ShiftCardDemo() {
         </TextureButton>
       </div>
     </div>
-  )
+  );
 
   return (
-    <div className="flex justify-center items-center ">
+    <div className="flex items-center justify-center">
       <ShiftCard
-        className="bg-card dark:bg-[#1A1A1A] "
+        className="bg-card dark:bg-[#1A1A1A]"
         topContent={topContent}
         topAnimateContent={topAnimateContent}
         middleContent={middleContent}
         bottomContent={bottomContent}
       />
     </div>
-  )
+  );
 }

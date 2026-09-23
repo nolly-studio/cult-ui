@@ -1,15 +1,15 @@
-import { CardsActivityGoal } from "./activity-goal"
-import { CardsCalendar } from "./calendar"
-import { CardsChat } from "./chat"
-import { CardsCookieSettings } from "./cookie-settings"
-import { CardsCreateAccount } from "./create-account"
-import { CardsDataTable } from "./data-table"
-import { CardsMetric } from "./metric"
-import { CardsPaymentMethod } from "./payment-method"
-import { CardsReportIssue } from "./report-issue"
-import { CardsShare } from "./share"
-import { CardsStats } from "./stats"
-import { CardsTeamMembers } from "./team-members"
+import { CardsActivityGoal } from "./activity-goal";
+import { CardsCalendar } from "./calendar";
+import { CardsChat } from "./chat";
+import { CardsCookieSettings } from "./cookie-settings";
+import { CardsCreateAccount } from "./create-account";
+import { CardsDataTable } from "./data-table";
+import { CardsMetric } from "./metric";
+import { CardsPaymentMethod } from "./payment-method";
+import { CardsReportIssue } from "./report-issue";
+import { CardsShare } from "./share";
+import { CardsStats } from "./stats";
+import { CardsTeamMembers } from "./team-members";
 
 export default function CardsDemo() {
   return (
@@ -18,7 +18,7 @@ export default function CardsDemo() {
         <CardsStats />
         <div className="grid gap-1 sm:grid-cols-[280px_1fr] md:hidden">
           <CardsCalendar />
-          <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-4">
+          <div className="pt-3 sm:pt-0 sm:pl-2 xl:pl-4">
             <CardsActivityGoal />
           </div>
           <div className="pt-3 sm:col-span-2 xl:pt-4">
@@ -43,7 +43,7 @@ export default function CardsDemo() {
       <div className="space-y-4 lg:col-span-6 xl:col-span-5 xl:space-y-4">
         <div className="hidden gap-1 sm:grid-cols-[280px_1fr] md:grid">
           <CardsCalendar />
-          <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-3">
+          <div className="pt-3 sm:pt-0 sm:pl-2 xl:pl-3">
             <CardsActivityGoal />
           </div>
           <div className="pt-3 sm:col-span-2 xl:pt-3">
@@ -59,5 +59,5 @@ export default function CardsDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

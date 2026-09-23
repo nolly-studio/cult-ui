@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "neumorph-eyebrow-demo",
-  "registryDependencies": [
-    "neumorph-eyebrow"
-  ],
+  "registryDependencies": ["neumorph-eyebrow"],
   "files": [
     {
       "path": "registry/default/example/neumorph-eyebrow-demo.tsx",

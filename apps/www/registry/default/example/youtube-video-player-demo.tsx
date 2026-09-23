@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { YouTubePlayer } from "@/registry/default/ui/youtube-video-player"
+import { YouTubePlayer } from "@/registry/default/ui/youtube-video-player";
 
 export default function YouTubeVideoPlayerDemo() {
   return (
@@ -16,7 +16,7 @@ export default function YouTubeVideoPlayerDemo() {
       {/* Custom Thumbnail */}
       <section className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold mb-2">Custom Thumbnail</h2>
+          <h2 className="mb-2 text-2xl font-semibold">Custom Thumbnail</h2>
           <p className="text-muted-foreground">
             Player with a custom thumbnail image instead of the default YouTube
             thumbnail.
@@ -34,7 +34,7 @@ export default function YouTubeVideoPlayerDemo() {
       {/* Custom Styling */}
       <section className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold mb-2">Custom Styling</h2>
+          <h2 className="mb-2 text-2xl font-semibold">Custom Styling</h2>
           <p className="text-muted-foreground">
             Player with custom styling classes for different elements.
           </p>
@@ -57,12 +57,12 @@ export default function YouTubeVideoPlayerDemo() {
       {/* Multiple Players Grid */}
       <section className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold mb-2">Multiple Players</h2>
+          <h2 className="mb-2 text-2xl font-semibold">Multiple Players</h2>
           <p className="text-muted-foreground">
             A grid of multiple video players with different content.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           <YouTubePlayer
             videoId="9bZkp7q19f0"
             title="PSY - GANGNAM STYLE"
@@ -99,7 +99,7 @@ export default function YouTubeVideoPlayerDemo() {
       {/* Different Aspect Ratios */}
       <section className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold mb-2">Different Sizes</h2>
+          <h2 className="mb-2 text-2xl font-semibold">Different Sizes</h2>
           <p className="text-muted-foreground">
             Players in different container sizes to show responsive behavior.
           </p>
@@ -107,7 +107,7 @@ export default function YouTubeVideoPlayerDemo() {
         <div className="space-y-8">
           {/* Small */}
           <div>
-            <h3 className="text-lg font-medium mb-3">Small (300px)</h3>
+            <h3 className="mb-3 text-lg font-medium">Small (300px)</h3>
             <div className="w-[300px]">
               <YouTubePlayer
                 videoId="2yJgwwDcgV8"
@@ -118,7 +118,7 @@ export default function YouTubeVideoPlayerDemo() {
 
           {/* Medium */}
           <div>
-            <h3 className="text-lg font-medium mb-3">Medium (500px)</h3>
+            <h3 className="mb-3 text-lg font-medium">Medium (500px)</h3>
             <div className="w-[500px]">
               <YouTubePlayer videoId="oHg5SJYRHA0" title="RickRoll'D" />
             </div>
@@ -126,7 +126,7 @@ export default function YouTubeVideoPlayerDemo() {
 
           {/* Large */}
           <div>
-            <h3 className="text-lg font-medium mb-3">Large (800px)</h3>
+            <h3 className="mb-3 text-lg font-medium">Large (800px)</h3>
             <div className="w-[800px]">
               <YouTubePlayer videoId="y6120QOlsfU" title="Darude - Sandstorm" />
             </div>
@@ -137,15 +137,15 @@ export default function YouTubeVideoPlayerDemo() {
       {/* URL Formats */}
       <section className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold mb-2">Different URL Formats</h2>
+          <h2 className="mb-2 text-2xl font-semibold">Different URL Formats</h2>
           <p className="text-muted-foreground">
             The player can handle different YouTube URL formats automatically.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* Regular video ID */}
           <div>
-            <h3 className="text-sm font-medium mb-2">
+            <h3 className="mb-2 text-sm font-medium">
               Video ID: "dQw4w9WgXcQ"
             </h3>
             <YouTubePlayer videoId="dQw4w9WgXcQ" title="Using Video ID" />
@@ -153,7 +153,7 @@ export default function YouTubeVideoPlayerDemo() {
 
           {/* Full YouTube URL */}
           <div>
-            <h3 className="text-sm font-medium mb-2">
+            <h3 className="mb-2 text-sm font-medium">
               Full URL: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             </h3>
             <YouTubePlayer
@@ -164,7 +164,7 @@ export default function YouTubeVideoPlayerDemo() {
 
           {/* Short URL */}
           <div>
-            <h3 className="text-sm font-medium mb-2">
+            <h3 className="mb-2 text-sm font-medium">
               Short URL: "https://youtu.be/dQw4w9WgXcQ"
             </h3>
             <YouTubePlayer
@@ -178,11 +178,11 @@ export default function YouTubeVideoPlayerDemo() {
       {/* Feature Highlights */}
       <section className="space-y-4">
         <div>
-          <h2 className="text-2xl font-semibold mb-2">Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <h2 className="mb-2 text-2xl font-semibold">Features</h2>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="space-y-2">
               <h3 className="text-lg font-medium">✨ Key Features</h3>
-              <ul className="text-sm text-muted-foreground space-y-1">
+              <ul className="text-muted-foreground space-y-1 text-sm">
                 <li>• Expandable full-screen mode</li>
                 <li>• Custom thumbnails support</li>
                 <li>• Smooth animations with Framer Motion</li>
@@ -194,7 +194,7 @@ export default function YouTubeVideoPlayerDemo() {
             </div>
             <div className="space-y-2">
               <h3 className="text-lg font-medium">🎨 Customization</h3>
-              <ul className="text-sm text-muted-foreground space-y-1">
+              <ul className="text-muted-foreground space-y-1 text-sm">
                 <li>• Fully customizable styling</li>
                 <li>• Custom play button designs</li>
                 <li>• Thumbnail overlay effects</li>
@@ -207,5 +207,5 @@ export default function YouTubeVideoPlayerDemo() {
         </div>
       </section>
     </div>
-  )
+  );
 }

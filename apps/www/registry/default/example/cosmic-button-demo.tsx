@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { CosmicButton } from "@/registry/default/ui/cosmic-button"
+import { CosmicButton } from "@/registry/default/ui/cosmic-button";
 
 export default function CosmicButtonDemo() {
   return (
-    <div className=" p-6 rounded-3xl flex justify-center">
+    <div className="flex justify-center rounded-3xl p-6">
       <div>
         <div className="grid place-items-center">
           <CosmicButton as="button" type="button">
@@ -13,5 +13,5 @@ export default function CosmicButtonDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

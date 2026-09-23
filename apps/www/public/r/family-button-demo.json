@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "family-button-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "family-button"
-  ],
+  "registryDependencies": ["family-button"],
   "files": [
     {
       "path": "registry/default/example/family-button-demo.tsx",

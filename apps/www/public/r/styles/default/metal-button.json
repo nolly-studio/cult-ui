@@ -2,12 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "metal-button",
   "description": "Shadcn Button wrapped in MetalFx: animated liquid metal ring with text and icon variants",
-  "dependencies": [
-    "metal-fx"
-  ],
-  "registryDependencies": [
-    "button"
-  ],
+  "dependencies": ["metal-fx"],
+  "registryDependencies": ["button"],
   "files": [
     {
       "path": "registry/default/ui/metal-button.tsx",

@@ -1,15 +1,6 @@
 "use client";
 
 import type { FileUIPart, SourceDocumentUIPart } from "ai";
-import type { ComponentProps, HTMLAttributes, ReactNode } from "react";
-
-import { Button } from "@/components/ui/button";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
-import { cn } from "@/lib/utils";
 import {
   FileTextIcon,
   GlobeIcon,
@@ -19,7 +10,16 @@ import {
   VideoIcon,
   XIcon,
 } from "lucide-react";
+import type { ComponentProps, HTMLAttributes, ReactNode } from "react";
 import { createContext, useCallback, useContext, useMemo } from "react";
+
+import { Button } from "@/components/ui/button";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import { cn } from "@/lib/utils";
 
 // ============================================================================
 // Types
@@ -207,9 +207,9 @@ export const Attachment = ({
           "group relative",
           variant === "grid" && "size-24 overflow-hidden rounded-lg",
           variant === "inline" && [
-            "flex h-8 cursor-pointer select-none items-center gap-1.5",
-            "rounded-md border border-border px-1.5",
-            "font-medium text-sm transition-all",
+            "flex h-8 cursor-pointer items-center gap-1.5 select-none",
+            "border-border rounded-md border px-1.5",
+            "text-sm font-medium transition-all",
             "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
           ],
           variant === "list" && [
@@ -264,9 +264,9 @@ export const AttachmentPreview = ({
     <div
       className={cn(
         "flex shrink-0 items-center justify-center overflow-hidden",
-        variant === "grid" && "size-full bg-muted",
-        variant === "inline" && "size-5 rounded bg-background",
-        variant === "list" && "size-12 rounded bg-muted",
+        variant === "grid" && "bg-muted size-full",
+        variant === "inline" && "bg-background size-5 rounded",
+        variant === "list" && "bg-muted size-12 rounded",
         className
       )}
       {...props}
@@ -300,7 +300,7 @@ export const AttachmentInfo = ({
     <div className={cn("min-w-0 flex-1", className)} {...props}>
       <span className="block truncate">{label}</span>
       {showMediaType && data.mediaType && (
-        <span className="block truncate text-muted-foreground text-xs">
+        <span className="text-muted-foreground block truncate text-xs">
           {data.mediaType}
         </span>
       )}
@@ -417,7 +417,7 @@ export const AttachmentEmpty = ({
 }: AttachmentEmptyProps) => (
   <div
     className={cn(
-      "flex items-center justify-center p-4 text-muted-foreground text-sm",
+      "text-muted-foreground flex items-center justify-center p-4 text-sm",
       className
     )}
     {...props}

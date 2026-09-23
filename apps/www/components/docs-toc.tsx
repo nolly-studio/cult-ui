@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 interface DocsTableOfContentsProps {
   toc: Array<{
-    title: string
-    url: string
+    title: string;
+    url: string;
     children?: Array<{
-      title: string
-      url: string
-    }>
-  }>
+      title: string;
+      url: string;
+    }>;
+  }>;
 }
 
 export function DocsTableOfContents({ toc }: DocsTableOfContentsProps) {
@@ -23,19 +23,19 @@ export function DocsTableOfContents({ toc }: DocsTableOfContentsProps) {
             <a
               href={item.url}
               className={cn(
-                "block text-sm text-muted-foreground hover:text-foreground transition-colors"
+                "text-muted-foreground hover:text-foreground block text-sm transition-colors"
               )}
             >
               {item.title}
             </a>
             {item.children && (
-              <ul className="ml-4 mt-1 space-y-1">
+              <ul className="mt-1 ml-4 space-y-1">
                 {item.children.map((child) => (
                   <li key={child.url}>
                     <a
                       href={child.url}
                       className={cn(
-                        "block text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        "text-muted-foreground hover:text-foreground block text-sm transition-colors"
                       )}
                     >
                       {child.title}
@@ -48,5 +48,5 @@ export function DocsTableOfContents({ toc }: DocsTableOfContentsProps) {
         ))}
       </ul>
     </div>
-  )
+  );
 }

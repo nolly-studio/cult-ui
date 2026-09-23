@@ -1,9 +1,7 @@
 {
   "name": "dynamic-island",
   "description": "iOS-style dynamic island component with expandable content and smooth animations",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "name": "dynamic-island.tsx",

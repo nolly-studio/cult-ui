@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   AISDKIcon,
@@ -13,20 +13,20 @@ import {
   HeroLiquidMetalRoot,
   HeroLiquidMetalVisual,
   NextjsIcon,
-} from "../ui/hero-liquid-metal"
+} from "../ui/hero-liquid-metal";
 
 export default function HeroLiquidMetalDemo() {
   return (
     <div className="space-y-16">
       <div className="space-y-4">
-        <h3 className="font-medium text-lg flex items-center justify-center">
+        <h3 className="flex items-center justify-center text-lg font-medium">
           Default
         </h3>
         <HeroLiquidMetal />
       </div>
 
       <div className="space-y-4">
-        <h3 className="font-medium text-lg flex items-center justify-center">
+        <h3 className="flex items-center justify-center text-lg font-medium">
           Root-level shader props
         </h3>
         <HeroLiquidMetal
@@ -50,7 +50,7 @@ export default function HeroLiquidMetalDemo() {
       </div>
 
       <div className="space-y-4">
-        <h3 className="font-medium text-lg flex items-center justify-center">
+        <h3 className="flex items-center justify-center text-lg font-medium">
           Configured via props
         </h3>
         <HeroLiquidMetalRoot
@@ -88,7 +88,7 @@ export default function HeroLiquidMetalDemo() {
               <HeroLiquidMetalDescription />
               <HeroLiquidMetalActions />
               <div
-                className="hidden lg:flex justify-center lg:justify-start"
+                className="hidden justify-center lg:flex lg:justify-start"
                 data-slot="hero-liquid-metal-badges-wrap"
               >
                 <HeroLiquidMetalBadges
@@ -105,5 +105,5 @@ export default function HeroLiquidMetalDemo() {
         </HeroLiquidMetalRoot>
       </div>
     </div>
-  )
+  );
 }

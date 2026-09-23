@@ -1,44 +1,44 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { CheckIcon, CopyIcon, Terminal } from "lucide-react"
-import { AnimatePresence, motion } from "motion/react"
+import { CheckIcon, CopyIcon, Terminal } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { useState } from "react";
 
-import { cn } from "@/lib/utils"
-import { useMediaQuery } from "@/hooks/use-media-query"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { cn } from "@/lib/utils";
 
-import { ShadcnLogo } from "./icons"
+import { ShadcnLogo } from "./icons";
 
 export type InstallationCliProps = {
-  value: string
-  className?: string
-}
+  value: string;
+  className?: string;
+};
 
 export function InstallationCli({ value, className }: InstallationCliProps) {
-  const [isCopied, setIsCopied] = useState(false)
-  const command = `npx shadcn@latest add "https://cult-ui.com/r/${value}.json"`
-  const isSmallScreen = useMediaQuery("(max-width: 640px)")
-  const isMediumScreen = useMediaQuery("(max-width: 768px)")
+  const [isCopied, setIsCopied] = useState(false);
+  const command = `npx shadcn@latest add "https://cult-ui.com/r/${value}.json"`;
+  const isSmallScreen = useMediaQuery("(max-width: 640px)");
+  const isMediumScreen = useMediaQuery("(max-width: 768px)");
 
   const onCopy = async () => {
     try {
-      await navigator.clipboard.writeText(command)
-      setIsCopied(true)
-      setTimeout(() => setIsCopied(false), 2000)
+      await navigator.clipboard.writeText(command);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
     } catch (err) {
-      console.error("Failed to copy:", err)
+      console.error("Failed to copy:", err);
     }
-  }
+  };
 
   // Responsive layout - stack vertically on very small screens
-  const isVerticalLayout = isSmallScreen && command.length > 30
+  const isVerticalLayout = isSmallScreen && command.length > 30;
 
   return (
     <div
@@ -128,7 +128,7 @@ export function InstallationCli({ value, className }: InstallationCliProps) {
         />
         <code
           className={cn(
-            "flex-1 whitespace-pre font-mono text-zinc-100",
+            "flex-1 font-mono whitespace-pre text-zinc-100",
             isSmallScreen ? "text-xs" : "text-sm"
           )}
         >
@@ -211,5 +211,5 @@ export function InstallationCli({ value, className }: InstallationCliProps) {
         </motion.div>
       )}
     </div>
-  )
+  );
 }

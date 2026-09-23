@@ -1,6 +1,6 @@
-import Balance from "react-wrap-balancer"
+import Balance from "react-wrap-balancer";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function PageHeader({
   className,
@@ -17,7 +17,7 @@ function PageHeader({
     >
       {children}
     </section>
-  )
+  );
 }
 
 function PageHeaderHeading({
@@ -27,12 +27,12 @@ function PageHeaderHeading({
   return (
     <h1
       className={cn(
-        "text-center text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]",
+        "text-center text-3xl leading-tight font-bold tracking-tighter md:text-5xl lg:leading-[1.1]",
         className
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PageHeaderDescription({
@@ -42,12 +42,12 @@ function PageHeaderDescription({
   return (
     <Balance
       className={cn(
-        "max-w-[750px] text-center text-lg font-light text-foreground",
+        "text-foreground max-w-[750px] text-center text-lg font-light",
         className
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PageActions({
@@ -62,7 +62,7 @@ function PageActions({
       )}
       {...props}
     />
-  )
+  );
 }
 
-export { PageHeader, PageHeaderHeading, PageHeaderDescription, PageActions }
+export { PageHeader, PageHeaderHeading, PageHeaderDescription, PageActions };

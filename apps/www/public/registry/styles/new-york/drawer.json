@@ -1,9 +1,6 @@
 {
   "name": "drawer",
-  "dependencies": [
-    "vaul",
-    "@radix-ui/react-dialog"
-  ],
+  "dependencies": ["vaul", "@radix-ui/react-dialog"],
   "files": [
     {
       "name": "drawer.tsx",

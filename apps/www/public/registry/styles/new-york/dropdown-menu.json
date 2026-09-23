@@ -1,8 +1,6 @@
 {
   "name": "dropdown-menu",
-  "dependencies": [
-    "@radix-ui/react-dropdown-menu"
-  ],
+  "dependencies": ["@radix-ui/react-dropdown-menu"],
   "files": [
     {
       "name": "dropdown-menu.tsx",

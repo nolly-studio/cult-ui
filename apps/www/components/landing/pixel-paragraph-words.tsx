@@ -76,6 +76,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
+
 import { cn } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ */
@@ -85,11 +86,11 @@ import { cn } from "@/lib/utils";
 type PixelFont = "square" | "grid" | "circle" | "triangle" | "line";
 
 const PIXEL_FONT_MAP: Record<PixelFont, string> = {
-	square: "font-pixel-square",
-	grid: "font-pixel-grid",
-	circle: "font-pixel-circle",
-	triangle: "font-pixel-triangle",
-	line: "font-pixel-line",
+  square: "font-pixel-square",
+  grid: "font-pixel-grid",
+  circle: "font-pixel-circle",
+  triangle: "font-pixel-triangle",
+  line: "font-pixel-line",
 };
 
 const PIXEL_FONTS = Object.values(PIXEL_FONT_MAP);
@@ -100,93 +101,93 @@ const PIXEL_FONT_KEYS = Object.keys(PIXEL_FONT_MAP) as PixelFont[];
 /* ------------------------------------------------------------------ */
 
 interface PixelWordProps {
-	children: React.ReactNode;
-	/** The resting pixel font. @default "square" */
-	initialFont?: PixelFont;
-	/** The pixel font on hover. When set, swaps instead of cycling. */
-	hoverFont?: PixelFont;
-	/** Interval in ms between font cycles on hover. @default 300 */
-	cycleInterval?: number;
-	className?: string;
+  children: React.ReactNode;
+  /** The resting pixel font. @default "square" */
+  initialFont?: PixelFont;
+  /** The pixel font on hover. When set, swaps instead of cycling. */
+  hoverFont?: PixelFont;
+  /** Interval in ms between font cycles on hover. @default 300 */
+  cycleInterval?: number;
+  className?: string;
 }
 
 function PixelWord({
-	children,
-	initialFont = "square",
-	hoverFont,
-	cycleInterval = 300,
-	className,
+  children,
+  initialFont = "square",
+  hoverFont,
+  cycleInterval = 300,
+  className,
 }: PixelWordProps) {
-	const resolvedDefaultIndex = PIXEL_FONT_KEYS.indexOf(initialFont);
-	const hoverIndex = hoverFont ? PIXEL_FONT_KEYS.indexOf(hoverFont) : null;
-	const isSwapMode = hoverIndex !== null;
+  const resolvedDefaultIndex = PIXEL_FONT_KEYS.indexOf(initialFont);
+  const hoverIndex = hoverFont ? PIXEL_FONT_KEYS.indexOf(hoverFont) : null;
+  const isSwapMode = hoverIndex !== null;
 
-	const [fontIndex, setFontIndex] = useState(resolvedDefaultIndex);
-	const [isActive, setIsActive] = useState(false);
-	const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [fontIndex, setFontIndex] = useState(resolvedDefaultIndex);
+  const [isActive, setIsActive] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-	useEffect(() => {
-		return () => {
-			if (intervalRef.current) clearInterval(intervalRef.current);
-		};
-	}, []);
+  useEffect(() => {
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, []);
 
-	/* ---- Cycling helpers ---- */
-	const advanceFont = useCallback(() => {
-		setFontIndex((prev) => (prev + 1) % PIXEL_FONTS.length);
-	}, []);
+  /* ---- Cycling helpers ---- */
+  const advanceFont = useCallback(() => {
+    setFontIndex((prev) => (prev + 1) % PIXEL_FONTS.length);
+  }, []);
 
-	const startCycling = useCallback(() => {
-		setIsActive(true);
-		intervalRef.current = setInterval(advanceFont, cycleInterval);
-	}, [advanceFont, cycleInterval]);
+  const startCycling = useCallback(() => {
+    setIsActive(true);
+    intervalRef.current = setInterval(advanceFont, cycleInterval);
+  }, [advanceFont, cycleInterval]);
 
-	const stopCycling = useCallback(() => {
-		setIsActive(false);
-		if (intervalRef.current) {
-			clearInterval(intervalRef.current);
-			intervalRef.current = null;
-		}
-	}, []);
+  const stopCycling = useCallback(() => {
+    setIsActive(false);
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, []);
 
-	/* ---- Swap helpers ---- */
-	const swapToHover = useCallback(() => {
-		if (hoverIndex === null) return;
-		setIsActive(true);
-		setFontIndex(hoverIndex);
-	}, [hoverIndex]);
+  /* ---- Swap helpers ---- */
+  const swapToHover = useCallback(() => {
+    if (hoverIndex === null) return;
+    setIsActive(true);
+    setFontIndex(hoverIndex);
+  }, [hoverIndex]);
 
-	const swapToInitial = useCallback(() => {
-		setIsActive(false);
-		setFontIndex(resolvedDefaultIndex);
-	}, [resolvedDefaultIndex]);
+  const swapToInitial = useCallback(() => {
+    setIsActive(false);
+    setFontIndex(resolvedDefaultIndex);
+  }, [resolvedDefaultIndex]);
 
-	/* ---- Event handlers ---- */
-	const handleMouseEnter = useCallback(() => {
-		isSwapMode ? swapToHover() : startCycling();
-	}, [isSwapMode, swapToHover, startCycling]);
+  /* ---- Event handlers ---- */
+  const handleMouseEnter = useCallback(() => {
+    isSwapMode ? swapToHover() : startCycling();
+  }, [isSwapMode, swapToHover, startCycling]);
 
-	const handleMouseLeave = useCallback(() => {
-		isSwapMode ? swapToInitial() : stopCycling();
-	}, [isSwapMode, swapToInitial, stopCycling]);
+  const handleMouseLeave = useCallback(() => {
+    isSwapMode ? swapToInitial() : stopCycling();
+  }, [isSwapMode, swapToInitial, stopCycling]);
 
-	return (
-		// biome-ignore lint/a11y/noStaticElementInteractions: decorative hover effect, not an interactive control
-		<span
-			data-slot="pixel-word"
-			data-state={isActive ? "active" : "idle"}
-			data-font={PIXEL_FONT_KEYS[fontIndex]}
-			className={cn(
-				"cursor-default transition-all duration-150",
-				PIXEL_FONTS[fontIndex],
-				className,
-			)}
-			onMouseEnter={handleMouseEnter}
-			onMouseLeave={handleMouseLeave}
-		>
-			{children}
-		</span>
-	);
+  return (
+    // biome-ignore lint/a11y/noStaticElementInteractions: decorative hover effect, not an interactive control
+    <span
+      data-slot="pixel-word"
+      data-state={isActive ? "active" : "idle"}
+      data-font={PIXEL_FONT_KEYS[fontIndex]}
+      className={cn(
+        "cursor-default transition-all duration-150",
+        PIXEL_FONTS[fontIndex],
+        className
+      )}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {children}
+    </span>
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -194,47 +195,42 @@ function PixelWord({
 /* ------------------------------------------------------------------ */
 
 type Segment =
-	| { type: "plain"; text: string }
-	| { type: "pixel"; text: string };
+  | { type: "plain"; text: string }
+  | { type: "pixel"; text: string };
 
 /**
  * Splits `text` into alternating plain / pixel segments based on the
  * provided `pixelWords`.  Longer phrases are matched first so that
  * "shadcn/ui" wins over a hypothetical "ui" match.
  */
-function splitTextByPixelWords(
-	text: string,
-	pixelWords: string[],
-): Segment[] {
-	if (pixelWords.length === 0) return [{ type: "plain", text }];
+function splitTextByPixelWords(text: string, pixelWords: string[]): Segment[] {
+  if (pixelWords.length === 0) return [{ type: "plain", text }];
 
-	// Sort by length descending so longer matches take priority
-	const sorted = [...pixelWords].sort((a, b) => b.length - a.length);
+  // Sort by length descending so longer matches take priority
+  const sorted = [...pixelWords].sort((a, b) => b.length - a.length);
 
-	// Escape regex-special characters in each word
-	const escaped = sorted.map((w) =>
-		w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
-	);
+  // Escape regex-special characters in each word
+  const escaped = sorted.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
 
-	const pattern = new RegExp(`(${escaped.join("|")})`, "g");
+  const pattern = new RegExp(`(${escaped.join("|")})`, "g");
 
-	const segments: Segment[] = [];
-	let lastIndex = 0;
+  const segments: Segment[] = [];
+  let lastIndex = 0;
 
-	for (const match of text.matchAll(pattern)) {
-		const matchStart = match.index ?? 0;
-		if (matchStart > lastIndex) {
-			segments.push({ type: "plain", text: text.slice(lastIndex, matchStart) });
-		}
-		segments.push({ type: "pixel", text: match[0] });
-		lastIndex = matchStart + match[0].length;
-	}
+  for (const match of text.matchAll(pattern)) {
+    const matchStart = match.index ?? 0;
+    if (matchStart > lastIndex) {
+      segments.push({ type: "plain", text: text.slice(lastIndex, matchStart) });
+    }
+    segments.push({ type: "pixel", text: match[0] });
+    lastIndex = matchStart + match[0].length;
+  }
 
-	if (lastIndex < text.length) {
-		segments.push({ type: "plain", text: text.slice(lastIndex) });
-	}
+  if (lastIndex < text.length) {
+    segments.push({ type: "plain", text: text.slice(lastIndex) });
+  }
 
-	return segments;
+  return segments;
 }
 
 /* ------------------------------------------------------------------ */
@@ -242,23 +238,23 @@ function splitTextByPixelWords(
 /* ------------------------------------------------------------------ */
 
 export interface PixelParagraphProps extends React.ComponentProps<"p"> {
-	/** The paragraph text to render. */
-	text: string;
-	/**
-	 * Words or phrases within `text` to render in a pixel font.
-	 * Matching is case-sensitive and longest-match-first.
-	 */
-	pixelWords?: string[];
-	/** The wrapper element to render. @default "p" */
-	as?: "p" | "span" | "div";
-	/** The resting pixel font for highlighted words. @default "square" */
-	initialFont?: PixelFont;
-	/** The pixel font on hover. When set, words swap instead of cycling. */
-	hoverFont?: PixelFont;
-	/** Interval in ms between font cycles on hover. @default 300 */
-	cycleInterval?: number;
-	/** Extra className applied to each pixel-word span. */
-	pixelWordClassName?: string;
+  /** The paragraph text to render. */
+  text: string;
+  /**
+   * Words or phrases within `text` to render in a pixel font.
+   * Matching is case-sensitive and longest-match-first.
+   */
+  pixelWords?: string[];
+  /** The wrapper element to render. @default "p" */
+  as?: "p" | "span" | "div";
+  /** The resting pixel font for highlighted words. @default "square" */
+  initialFont?: PixelFont;
+  /** The pixel font on hover. When set, words swap instead of cycling. */
+  hoverFont?: PixelFont;
+  /** Interval in ms between font cycles on hover. @default 300 */
+  cycleInterval?: number;
+  /** Extra className applied to each pixel-word span. */
+  pixelWordClassName?: string;
 }
 
 /**
@@ -275,36 +271,36 @@ export interface PixelParagraphProps extends React.ComponentProps<"p"> {
  * />
  */
 export function PixelParagraph({
-	text,
-	pixelWords = [],
-	as: Tag = "p",
-	className,
-	initialFont = "square",
-	hoverFont,
-	cycleInterval = 300,
-	pixelWordClassName,
-	...props
+  text,
+  pixelWords = [],
+  as: Tag = "p",
+  className,
+  initialFont = "square",
+  hoverFont,
+  cycleInterval = 300,
+  pixelWordClassName,
+  ...props
 }: PixelParagraphProps) {
-	const segments = splitTextByPixelWords(text, pixelWords);
+  const segments = splitTextByPixelWords(text, pixelWords);
 
-	return (
-		<Tag data-slot="pixel-paragraph" className={cn(className)} {...props}>
-		{segments.map((segment, index) => {
-			const key = `${segment.type}-${segment.text}-${index}`;
-				return segment.type === "pixel" ? (
-					<PixelWord
-						key={key}
-						initialFont={initialFont}
-						hoverFont={hoverFont}
-						cycleInterval={cycleInterval}
-						className={pixelWordClassName}
-					>
-						{segment.text}
-					</PixelWord>
-				) : (
-					<span key={key}>{segment.text}</span>
-				);
-			})}
-		</Tag>
-	);
+  return (
+    <Tag data-slot="pixel-paragraph" className={cn(className)} {...props}>
+      {segments.map((segment, index) => {
+        const key = `${segment.type}-${segment.text}-${index}`;
+        return segment.type === "pixel" ? (
+          <PixelWord
+            key={key}
+            initialFont={initialFont}
+            hoverFont={hoverFont}
+            cycleInterval={cycleInterval}
+            className={pixelWordClassName}
+          >
+            {segment.text}
+          </PixelWord>
+        ) : (
+          <span key={key}>{segment.text}</span>
+        );
+      })}
+    </Tag>
+  );
 }

@@ -1,27 +1,27 @@
-"use client"
+"use client";
 
+import { motion } from "motion/react";
 import React, {
   useCallback,
   useEffect,
   useReducer,
   useRef,
   useState,
-} from "react"
-import { motion } from "motion/react"
-import * as THREE from "three"
+} from "react";
+import * as THREE from "three";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Switch } from "@/components/ui/switch"
+} from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
 
 const fragmentShader = `
 varying vec2 v_texcoord;
@@ -131,42 +131,42 @@ void main() {
     
     gl_FragColor = vec4(shapeColor, sdf);
 }
-`
+`;
 
 interface ImprovedShaderAnimationProps {
-  initialVariation?: number
-  color1?: string
-  color2?: string
-  color3?: string
-  color4?: string
-  className?: string
-  enableHover?: boolean
-  invertMouse?: boolean
-  width?: string
-  height?: string
+  initialVariation?: number;
+  color1?: string;
+  color2?: string;
+  color3?: string;
+  color4?: string;
+  className?: string;
+  enableHover?: boolean;
+  invertMouse?: boolean;
+  width?: string;
+  height?: string;
 }
 
 interface ShaderConfig {
-  variation: number
-  color1: string
-  color2: string
-  color3: string
-  color4: string
-  enableHover: boolean
-  invertMouse: boolean
-  width: string
-  height: string
+  variation: number;
+  color1: string;
+  color2: string;
+  color3: string;
+  color4: string;
+  enableHover: boolean;
+  invertMouse: boolean;
+  width: string;
+  height: string;
 }
 
 export function ShaderAnimation({ config }: { config: ShaderConfig }) {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const rendererRef = useRef<THREE.WebGLRenderer | null>(null)
-  const sceneRef = useRef<THREE.Scene | null>(null)
-  const cameraRef = useRef<THREE.OrthographicCamera | null>(null)
-  const materialRef = useRef<THREE.ShaderMaterial | null>(null)
-  const rafRef = useRef<number | null>(null)
-  const [isInteracting, setIsInteracting] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+  const sceneRef = useRef<THREE.Scene | null>(null);
+  const cameraRef = useRef<THREE.OrthographicCamera | null>(null);
+  const materialRef = useRef<THREE.ShaderMaterial | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const [isInteracting, setIsInteracting] = useState(false);
 
   const updateSize = useCallback(() => {
     if (
@@ -176,31 +176,31 @@ export function ShaderAnimation({ config }: { config: ShaderConfig }) {
       !cameraRef.current ||
       !materialRef.current
     )
-      return
+      return;
 
-    const { clientWidth: w, clientHeight: h } = containerRef.current
-    const aspect = w / h
+    const { clientWidth: w, clientHeight: h } = containerRef.current;
+    const aspect = w / h;
 
-    cameraRef.current.left = -aspect
-    cameraRef.current.right = aspect
-    cameraRef.current.top = 1
-    cameraRef.current.bottom = -1
-    cameraRef.current.updateProjectionMatrix()
+    cameraRef.current.left = -aspect;
+    cameraRef.current.right = aspect;
+    cameraRef.current.top = 1;
+    cameraRef.current.bottom = -1;
+    cameraRef.current.updateProjectionMatrix();
 
-    rendererRef.current.setSize(w, h)
-    materialRef.current.uniforms.u_resolution.value.set(w, h)
-  }, [])
+    rendererRef.current.setSize(w, h);
+    materialRef.current.uniforms.u_resolution.value.set(w, h);
+  }, []);
 
   const updateMousePosition = useCallback(
     (x: number, y: number) => {
-      if (!containerRef.current || !materialRef.current) return
-      const { clientWidth: w, clientHeight: h } = containerRef.current
+      if (!containerRef.current || !materialRef.current) return;
+      const { clientWidth: w, clientHeight: h } = containerRef.current;
       if (isInteracting || config.enableHover) {
-        materialRef.current.uniforms.u_mouse.value.set(x, h - y)
+        materialRef.current.uniforms.u_mouse.value.set(x, h - y);
       }
     },
     [isInteracting, config.enableHover]
-  )
+  );
 
   const animate = useCallback(
     (time: number) => {
@@ -210,38 +210,38 @@ export function ShaderAnimation({ config }: { config: ShaderConfig }) {
         !cameraRef.current ||
         !materialRef.current
       )
-        return
+        return;
 
-      materialRef.current.uniforms.u_time.value = time * 0.001
+      materialRef.current.uniforms.u_time.value = time * 0.001;
       materialRef.current.uniforms.u_hoverStrength.value =
-        isInteracting || config.enableHover ? 0.3 : 0
+        isInteracting || config.enableHover ? 0.3 : 0;
 
-      rendererRef.current.render(sceneRef.current, cameraRef.current)
-      rafRef.current = requestAnimationFrame(animate)
+      rendererRef.current.render(sceneRef.current, cameraRef.current);
+      rafRef.current = requestAnimationFrame(animate);
     },
     [config.enableHover, isInteracting]
-  )
+  );
 
   useEffect(() => {
-    if (!containerRef.current || !canvasRef.current) return
+    if (!containerRef.current || !canvasRef.current) return;
 
-    const scene = new THREE.Scene()
-    sceneRef.current = scene
+    const scene = new THREE.Scene();
+    sceneRef.current = scene;
 
-    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 1000)
-    camera.position.z = 1
-    cameraRef.current = camera
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 1000);
+    camera.position.z = 1;
+    cameraRef.current = camera;
 
     const renderer = new THREE.WebGLRenderer({
       canvas: canvasRef.current,
       antialias: true,
       alpha: true,
-    })
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-    renderer.setClearColor(0x000000, 0)
-    rendererRef.current = renderer
+    });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+    rendererRef.current = renderer;
 
-    const geometry = new THREE.PlaneGeometry(2, 2)
+    const geometry = new THREE.PlaneGeometry(2, 2);
     const material = new THREE.ShaderMaterial({
       vertexShader: `
           varying vec2 v_texcoord;
@@ -268,66 +268,68 @@ export function ShaderAnimation({ config }: { config: ShaderConfig }) {
       },
       transparent: true,
       blending: THREE.NormalBlending,
-    })
-    materialRef.current = material
+    });
+    materialRef.current = material;
 
-    const mesh = new THREE.Mesh(geometry, material)
-    scene.add(mesh)
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
 
-    updateSize()
-    rafRef.current = requestAnimationFrame(animate)
+    updateSize();
+    rafRef.current = requestAnimationFrame(animate);
 
-    const resizeObserver = new ResizeObserver(updateSize)
-    resizeObserver.observe(containerRef.current)
+    const resizeObserver = new ResizeObserver(updateSize);
+    resizeObserver.observe(containerRef.current);
 
     return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current)
-      if (rendererRef.current) rendererRef.current.dispose()
-      if (containerRef.current) resizeObserver.unobserve(containerRef.current)
-    }
-  }, [config, updateSize, animate])
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (rendererRef.current) rendererRef.current.dispose();
+      if (containerRef.current) resizeObserver.unobserve(containerRef.current);
+    };
+  }, [config, updateSize, animate]);
 
   useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
+    const container = containerRef.current;
+    if (!container) return;
 
     const handlePointerMove = (event: PointerEvent) =>
-      updateMousePosition(event.clientX, event.clientY)
+      updateMousePosition(event.clientX, event.clientY);
     const handleTouchMove = (event: TouchEvent) => {
       if (event.touches.length > 0) {
-        const touch = event.touches[0]
-        updateMousePosition(touch.clientX, touch.clientY)
+        const touch = event.touches[0];
+        updateMousePosition(touch.clientX, touch.clientY);
       }
-    }
+    };
 
-    container.addEventListener("pointermove", handlePointerMove)
-    container.addEventListener("touchmove", handleTouchMove)
-    container.addEventListener("pointerdown", () => setIsInteracting(true))
-    container.addEventListener("pointerup", () => setIsInteracting(false))
-    container.addEventListener("touchstart", () => setIsInteracting(true))
-    container.addEventListener("touchend", () => setIsInteracting(false))
+    container.addEventListener("pointermove", handlePointerMove);
+    container.addEventListener("touchmove", handleTouchMove);
+    container.addEventListener("pointerdown", () => setIsInteracting(true));
+    container.addEventListener("pointerup", () => setIsInteracting(false));
+    container.addEventListener("touchstart", () => setIsInteracting(true));
+    container.addEventListener("touchend", () => setIsInteracting(false));
 
     return () => {
-      container.removeEventListener("pointermove", handlePointerMove)
-      container.removeEventListener("touchmove", handleTouchMove)
-      container.removeEventListener("pointerdown", () => setIsInteracting(true))
-      container.removeEventListener("pointerup", () => setIsInteracting(false))
-      container.removeEventListener("touchstart", () => setIsInteracting(true))
-      container.removeEventListener("touchend", () => setIsInteracting(false))
-    }
-  }, [updateMousePosition])
+      container.removeEventListener("pointermove", handlePointerMove);
+      container.removeEventListener("touchmove", handleTouchMove);
+      container.removeEventListener("pointerdown", () =>
+        setIsInteracting(true)
+      );
+      container.removeEventListener("pointerup", () => setIsInteracting(false));
+      container.removeEventListener("touchstart", () => setIsInteracting(true));
+      container.removeEventListener("touchend", () => setIsInteracting(false));
+    };
+  }, [updateMousePosition]);
 
   useEffect(() => {
     if (materialRef.current) {
-      materialRef.current.uniforms.u_color1.value.set(config.color1)
-      materialRef.current.uniforms.u_color2.value.set(config.color2)
-      materialRef.current.uniforms.u_color3.value.set(config.color3)
-      materialRef.current.uniforms.u_color4.value.set(config.color4)
-      materialRef.current.uniforms.u_invertMouse.value = config.invertMouse
-      materialRef.current.defines.VAR = config.variation
-      materialRef.current.needsUpdate = true
+      materialRef.current.uniforms.u_color1.value.set(config.color1);
+      materialRef.current.uniforms.u_color2.value.set(config.color2);
+      materialRef.current.uniforms.u_color3.value.set(config.color3);
+      materialRef.current.uniforms.u_color4.value.set(config.color4);
+      materialRef.current.uniforms.u_invertMouse.value = config.invertMouse;
+      materialRef.current.defines.VAR = config.variation;
+      materialRef.current.needsUpdate = true;
     }
-  }, [config])
+  }, [config]);
 
   return (
     <motion.div
@@ -342,8 +344,8 @@ export function ShaderAnimation({ config }: { config: ShaderConfig }) {
         backgroundColor: "black",
       }}
     >
-      <canvas ref={canvasRef} className="w-full h-full touch-none" />
-      <div className="absolute bottom-4 left-4 text-white text-sm">
+      <canvas ref={canvasRef} className="h-full w-full touch-none" />
+      <div className="absolute bottom-4 left-4 text-sm text-white">
         {config.enableHover
           ? `${
               config.invertMouse ? "Inverted mouse" : "Normal mouse"
@@ -352,33 +354,36 @@ export function ShaderAnimation({ config }: { config: ShaderConfig }) {
         using mouse or touch
       </div>
     </motion.div>
-  )
+  );
 }
 
 interface ShaderConfig {
-  variation: number
-  color1: string
-  color2: string
-  color3: string
-  color4: string
-  enableHover: boolean
-  invertMouse: boolean
-  width: string
-  height: string
+  variation: number;
+  color1: string;
+  color2: string;
+  color3: string;
+  color4: string;
+  enableHover: boolean;
+  invertMouse: boolean;
+  width: string;
+  height: string;
 }
 
 type Action =
   | { type: "SET_VARIATION"; payload: number }
   | {
-      type: "SET_COLOR"
-      payload: { key: "color1" | "color2" | "color3" | "color4"; value: string }
+      type: "SET_COLOR";
+      payload: {
+        key: "color1" | "color2" | "color3" | "color4";
+        value: string;
+      };
     }
   | { type: "TOGGLE_HOVER" }
   | { type: "TOGGLE_INVERT_MOUSE" }
   | {
-      type: "SET_DIMENSION"
-      payload: { key: "width" | "height"; value: string }
-    }
+      type: "SET_DIMENSION";
+      payload: { key: "width" | "height"; value: string };
+    };
 
 const initialState: ShaderConfig = {
   variation: 0,
@@ -390,50 +395,50 @@ const initialState: ShaderConfig = {
   invertMouse: true,
   width: "100%",
   height: "400px",
-}
+};
 
 function reducer(state: ShaderConfig, action: Action): ShaderConfig {
   switch (action.type) {
     case "SET_VARIATION":
-      return { ...state, variation: action.payload }
+      return { ...state, variation: action.payload };
     case "SET_COLOR":
-      return { ...state, [action.payload.key]: action.payload.value }
+      return { ...state, [action.payload.key]: action.payload.value };
     case "TOGGLE_HOVER":
-      return { ...state, enableHover: !state.enableHover }
+      return { ...state, enableHover: !state.enableHover };
     case "TOGGLE_INVERT_MOUSE":
-      return { ...state, invertMouse: !state.invertMouse }
+      return { ...state, invertMouse: !state.invertMouse };
     case "SET_DIMENSION":
-      return { ...state, [action.payload.key]: action.payload.value }
+      return { ...state, [action.payload.key]: action.payload.value };
     default:
-      return state
+      return state;
   }
 }
 
 export function ImprovedShaderAnimation() {
-  const [config, dispatch] = useReducer(reducer, initialState)
+  const [config, dispatch] = useReducer(reducer, initialState);
 
   const handleVariationChange = useCallback((value: string) => {
-    dispatch({ type: "SET_VARIATION", payload: parseInt(value) })
-  }, [])
+    dispatch({ type: "SET_VARIATION", payload: parseInt(value) });
+  }, []);
 
   const handleColorChange = useCallback(
     (key: "color1" | "color2" | "color3" | "color4", value: string) => {
-      dispatch({ type: "SET_COLOR", payload: { key, value } })
+      dispatch({ type: "SET_COLOR", payload: { key, value } });
     },
     []
-  )
+  );
 
   const handleDimensionChange = useCallback(
     (key: "width" | "height", value: string) => {
-      dispatch({ type: "SET_DIMENSION", payload: { key, value } })
+      dispatch({ type: "SET_DIMENSION", payload: { key, value } });
     },
     []
-  )
+  );
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Shader Animation Configurator</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <h1 className="mb-4 text-2xl font-bold">Shader Animation Configurator</h1>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <Card>
           <CardHeader>
             <CardTitle>Configuration</CardTitle>
@@ -467,7 +472,7 @@ export function ImprovedShaderAnimation() {
                       type="color"
                       value={config[color]}
                       onChange={(e) => handleColorChange(color, e.target.value)}
-                      className="w-12 h-12 p-1"
+                      className="h-12 w-12 p-1"
                     />
                     <Input
                       type="text"
@@ -527,10 +532,10 @@ export function ImprovedShaderAnimation() {
         </Card>
       </div>
     </div>
-  )
+  );
 }
 
-export default ImprovedShaderAnimation
+export default ImprovedShaderAnimation;
 // "use client"
 
 // import React, { useCallback, useEffect, useRef, useState } from "react"

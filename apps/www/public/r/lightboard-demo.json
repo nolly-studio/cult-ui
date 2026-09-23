@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "lightboard-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "lightboard"
-  ],
+  "registryDependencies": ["lightboard"],
   "files": [
     {
       "path": "registry/default/example/lightboard-demo.tsx",

@@ -3,9 +3,7 @@
   "name": "color-picker",
   "type": "registry:ui",
   "description": "Interactive color picker component with HSL support and preset colors",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/color-picker.tsx",

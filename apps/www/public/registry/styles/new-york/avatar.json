@@ -1,8 +1,6 @@
 {
   "name": "avatar",
-  "dependencies": [
-    "@radix-ui/react-avatar"
-  ],
+  "dependencies": ["@radix-ui/react-avatar"],
   "files": [
     {
       "name": "avatar.tsx",

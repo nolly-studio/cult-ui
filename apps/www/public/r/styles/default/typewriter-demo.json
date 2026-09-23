@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "typewriter-demo",
-  "registryDependencies": [
-    "typewriter"
-  ],
+  "registryDependencies": ["typewriter"],
   "files": [
     {
       "path": "registry/default/example/typewriter-demo.tsx",

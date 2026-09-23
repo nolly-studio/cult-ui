@@ -3,9 +3,7 @@
   "name": "bg-animated-fractal-dot-grid",
   "type": "registry:ui",
   "description": "Background animated fractal dot grid with performance optimization and responsive design",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/bg-animated-fractal-dot-grid.tsx",

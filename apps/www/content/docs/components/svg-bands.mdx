@@ -53,14 +53,14 @@ import {
   TopBandSteepRightSvg,
   BandShape,
   castleWallBandPath,
-} from "@/components/ui/svg-bands"
+} from "@/components/ui/svg-bands";
 
 export function SectionDivider() {
   return (
     <div className="text-foreground/30 w-full">
       <TopBandSteepRightSvg />
     </div>
-  )
+  );
 }
 
 export function CustomBattlement() {
@@ -70,27 +70,27 @@ export function CustomBattlement() {
       path={castleWallBandPath(8)}
       title="Eight-tooth battlement"
     />
-  )
+  );
 }
 ```
 
 ### `BandShape` props
 
-| Prop        | Type                                              | Default                         |
-| ----------- | ------------------------------------------------- | ------------------------------- |
-| `path`      | `string`                                          | (required)                      |
-| `viewBox`   | `string`                                          | (required)                      |
-| `flip`      | `"none"` \| `"vertical"` \| `"horizontal"` \| `"both"` | `"none"`                   |
-| `className` | `string`                                          | —                               |
-| `title`     | `string`                                          | `"Decorative section shape"` |
+| Prop | Type | Default |
+| --- | --- | --- |
+| `path` | `string` | (required) |
+| `viewBox` | `string` | (required) |
+| `flip` | `"none"` \| `"vertical"` \| `"horizontal"` \| `"both"` | `"none"` |
+| `className` | `string` | — |
+| `title` | `string` | `"Decorative section shape"` |
 
 Preset components are mostly **`className` only**; **`ZigzagSawtoothBandSvg`** accepts optional **`teeth`** (default `12`, must be ≥ 2).
 
 ### Path helpers
 
-| Export                      | Notes                                      |
-| --------------------------- | ------------------------------------------ |
-| `castleWallBandPath(n)`     | `n` ≥ 1 merlons along the 2400-wide grid   |
+| Export | Notes |
+| --- | --- |
+| `castleWallBandPath(n)` | `n` ≥ 1 merlons along the 2400-wide grid |
 | `zigzagSawtoothBandPath(n)` | `n` ≥ 2 teeth; pairs with default zigzag viewBox height |
 
 ## Notes

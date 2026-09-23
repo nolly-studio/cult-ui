@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "family-drawer-demo",
-  "registryDependencies": [
-    "family-drawer"
-  ],
+  "registryDependencies": ["family-drawer"],
   "files": [
     {
       "path": "registry/default/example/family-drawer-demo.tsx",

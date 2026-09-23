@@ -18,8 +18,7 @@ Brief introduction explaining what the component does:
 ```markdown
 # Button
 
-A versatile button component with multiple variants and sizes. Use for primary actions, 
-secondary actions, or destructive operations.
+A versatile button component with multiple variants and sizes. Use for primary actions, secondary actions, or destructive operations.
 ```
 
 #### 2. Demo and Source Code
@@ -27,7 +26,7 @@ secondary actions, or destructive operations.
 Include live demos with code:
 
 ```tsx
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export function ButtonDemo() {
   return (
@@ -36,7 +35,7 @@ export function ButtonDemo() {
       <Button variant="destructive">Destructive</Button>
       <Button variant="outline">Outline</Button>
     </div>
-  )
+  );
 }
 ```
 
@@ -90,7 +89,7 @@ Document all props:
 
 ```markdown
 | Prop | Type | Default | Description |
-|------|------|---------|-------------|
+| --- | --- | --- | --- |
 | `variant` | `"default" \| "secondary" \| "destructive"` | `"default"` | Visual style |
 | `size` | `"sm" \| "md" \| "lg"` | `"md"` | Size |
 | `disabled` | `boolean` | `false` | Disabled state |
@@ -118,9 +117,11 @@ Track versions:
 ## Changelog
 
 ### v2.0.0
+
 **Breaking:** `variant` uses `"default"` instead of `"primary"`
 
 ### v1.2.0
+
 - Added `isLoading` prop
 - Added `icon` prop
 ```
@@ -134,16 +135,18 @@ Track versions:
 function UserProfile({ user }) {
   return (
     <Card>
-      <CardHeader><CardTitle>{user.name}</CardTitle></CardHeader>
+      <CardHeader>
+        <CardTitle>{user.name}</CardTitle>
+      </CardHeader>
       <CardContent>
         <Button onClick={() => editUser(user.id)}>Edit Profile</Button>
       </CardContent>
     </Card>
-  )
+  );
 }
 
 // ❌ Too abstract
-<Button onClick={handleClick}>Button</Button>
+<Button onClick={handleClick}>Button</Button>;
 ```
 
 **Include Troubleshooting:**
@@ -152,6 +155,7 @@ function UserProfile({ user }) {
 ## Troubleshooting
 
 **Button not responding:**
+
 - Ensure `onClick` handler is provided
 - Check if `disabled` is set
 - Verify no parent is capturing events
@@ -170,12 +174,12 @@ function UserProfile({ user }) {
 
 ```tsx
 // ✅ Complete, runnable
-import { Button } from "@/components/ui/button"
-import { useState } from "react"
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export function CounterButton() {
-  const [count, setCount] = useState(0)
-  return <Button onClick={() => setCount(count + 1)}>Count: {count}</Button>
+  const [count, setCount] = useState(0);
+  return <Button onClick={() => setCount(count + 1)}>Count: {count}</Button>;
 }
 ```
 

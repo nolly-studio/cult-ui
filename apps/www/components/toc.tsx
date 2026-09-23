@@ -1,14 +1,14 @@
 // @ts-nocheck
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-import { TableOfContents } from "@/lib/toc"
-import { cn } from "@/lib/utils"
-import { useMounted } from "@/hooks/use-mounted"
+import { useMounted } from "@/hooks/use-mounted";
+import { TableOfContents } from "@/lib/toc";
+import { cn } from "@/lib/utils";
 
 interface TocProps {
-  toc: TableOfContents
+  toc: TableOfContents;
 }
 
 export function DashboardTableOfContents({ toc }: TocProps) {
@@ -22,12 +22,12 @@ export function DashboardTableOfContents({ toc }: TocProps) {
             .map((id) => id?.split("#")[1])
         : [],
     [toc]
-  )
-  const activeHeading = useActiveItem(itemIds)
-  const mounted = useMounted()
+  );
+  const activeHeading = useActiveItem(itemIds);
+  const mounted = useMounted();
 
   if (!toc?.items || !mounted) {
-    return null
+    return null;
   }
 
   return (
@@ -35,48 +35,48 @@ export function DashboardTableOfContents({ toc }: TocProps) {
       <p className="font-medium">On This Page</p>
       <Tree tree={toc} activeItem={activeHeading} />
     </div>
-  )
+  );
 }
 
 function useActiveItem(itemIds: string[]) {
-  const [activeId, setActiveId] = React.useState(null)
+  const [activeId, setActiveId] = React.useState(null);
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveId(entry.target.id)
+            setActiveId(entry.target.id);
           }
-        })
+        });
       },
       { rootMargin: `0% 0% -80% 0%` }
-    )
+    );
 
     itemIds?.forEach((id) => {
-      const element = document.getElementById(id)
+      const element = document.getElementById(id);
       if (element) {
-        observer.observe(element)
+        observer.observe(element);
       }
-    })
+    });
 
     return () => {
       itemIds?.forEach((id) => {
-        const element = document.getElementById(id)
+        const element = document.getElementById(id);
         if (element) {
-          observer.unobserve(element)
+          observer.unobserve(element);
         }
-      })
-    }
-  }, [itemIds])
+      });
+    };
+  }, [itemIds]);
 
-  return activeId
+  return activeId;
 }
 
 interface TreeProps {
-  tree: TableOfContents
-  level?: number
-  activeItem?: string
+  tree: TableOfContents;
+  level?: number;
+  activeItem?: string;
 }
 
 function Tree({ tree, level = 1, activeItem }: TreeProps) {
@@ -88,9 +88,9 @@ function Tree({ tree, level = 1, activeItem }: TreeProps) {
             <a
               href={item.url}
               className={cn(
-                "inline-block no-underline transition-colors hover:text-foreground",
+                "hover:text-foreground inline-block no-underline transition-colors",
                 item.url === `#${activeItem}`
-                  ? "font-medium text-foreground"
+                  ? "text-foreground font-medium"
                   : "text-muted-foreground"
               )}
             >
@@ -100,8 +100,8 @@ function Tree({ tree, level = 1, activeItem }: TreeProps) {
               <Tree tree={item} level={level + 1} activeItem={activeItem} />
             ) : null}
           </li>
-        )
+        );
       })}
     </ul>
-  ) : null
+  ) : null;
 }

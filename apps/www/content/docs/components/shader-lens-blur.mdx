@@ -53,7 +53,7 @@ npm install jotai three motion next-themes
 ## Usage
 
 ```tsx
-import ShaderLensBlur from "@/components/ui/shader-lens-blur"
+import ShaderLensBlur from "@/components/ui/shader-lens-blur";
 ```
 
 ### Basic
@@ -71,13 +71,13 @@ Render the default interactive lens blur canvas:
 `ShaderLensBlur` reads its configuration from the exported `configAtom`. This makes it easy to drive from your own controls, presets, or app state.
 
 ```tsx
-"use client"
+"use client";
 
-import { useAtom } from "jotai"
-import ShaderLensBlur, { configAtom } from "@/components/ui/shader-lens-blur"
+import { useAtom } from "jotai";
+import ShaderLensBlur, { configAtom } from "@/components/ui/shader-lens-blur";
 
 export function ShaderLensBlurControlled() {
-  const [config, setConfig] = useAtom(configAtom)
+  const [config, setConfig] = useAtom(configAtom);
 
   return (
     <div className="space-y-4">
@@ -98,7 +98,7 @@ export function ShaderLensBlurControlled() {
         Current variation: {config.variation}
       </p>
     </div>
-  )
+  );
 }
 ```
 
@@ -111,31 +111,31 @@ setConfig((prev) => ({
   ...prev,
   width: "100%",
   height: "520px",
-}))
+}));
 ```
 
 ## API Reference
 
 ### Exports
 
-| Export            | Type                             | Description |
-| ----------------- | -------------------------------- | ----------- |
-| `ShaderLensBlur`  | `React.ComponentType`            | Main interactive shader component |
-| `configAtom`      | `Atom<ShaderConfig>`             | Shared state for colors, variation, interaction mode, and dimensions |
+| Export | Type | Description |
+| --- | --- | --- |
+| `ShaderLensBlur` | `React.ComponentType` | Main interactive shader component |
+| `configAtom` | `Atom<ShaderConfig>` | Shared state for colors, variation, interaction mode, and dimensions |
 
 ### `ShaderConfig` Shape
 
-| Key            | Type      | Default     | Description |
-| -------------- | --------- | ----------- | ----------- |
-| `variation`    | `number`  | `3`         | Shape mode (`0` square-ish frame, `1` solid circle, `2` ring, `3` triangle) |
-| `color1`       | `string`  | `#D5F981`   | Gradient color stop 1 |
-| `color2`       | `string`  | `#A1BBE7`   | Gradient color stop 2 |
-| `color3`       | `string`  | `#F2BAE2`   | Gradient color stop 3 |
-| `color4`       | `string`  | `#68E8FA`   | Gradient color stop 4 |
-| `enableHover`  | `boolean` | `true`      | Enables pointer tracking without requiring press/drag |
-| `invertMouse`  | `boolean` | `true`      | Inverts the pointer influence mask |
-| `width`        | `string`  | `"100%"`    | Container width style |
-| `height`       | `string`  | `"400px"`   | Container height style |
+| Key | Type | Default | Description |
+| --- | --- | --- | --- |
+| `variation` | `number` | `3` | Shape mode (`0` square-ish frame, `1` solid circle, `2` ring, `3` triangle) |
+| `color1` | `string` | `#D5F981` | Gradient color stop 1 |
+| `color2` | `string` | `#A1BBE7` | Gradient color stop 2 |
+| `color3` | `string` | `#F2BAE2` | Gradient color stop 3 |
+| `color4` | `string` | `#68E8FA` | Gradient color stop 4 |
+| `enableHover` | `boolean` | `true` | Enables pointer tracking without requiring press/drag |
+| `invertMouse` | `boolean` | `true` | Inverts the pointer influence mask |
+| `width` | `string` | `"100%"` | Container width style |
+| `height` | `string` | `"400px"` | Container height style |
 
 ## Behavior Notes
 

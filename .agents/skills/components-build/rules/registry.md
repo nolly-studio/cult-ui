@@ -12,20 +12,23 @@ Registries distribute **source code**, not compiled packages. This enables true 
 ### Core Concept
 
 **Bad:**
+
 ```typescript
 // Traditional npm - compiled dependency
-import { Button } from 'some-ui-library';
+import { Button } from "some-ui-library";
 ```
 
 **Good:**
+
 ```typescript
 // Registry-based - source code in your project
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 ```
 
 ### Registry Metadata Format
 
 **Bad:**
+
 ```json
 {
   "name": "announcement",
@@ -36,6 +39,7 @@ import { Button } from '@/components/ui/button';
 ```
 
 **Good:**
+
 ```json
 {
   "name": "announcement",
@@ -68,6 +72,7 @@ my-component/
 **2. Configure headers (`vercel.json`):**
 
 **Example:**
+
 ```json
 {
   "headers": [
@@ -85,6 +90,7 @@ my-component/
 **3. Deploy:**
 
 **Example:**
+
 ```bash
 vercel --prod
 ```
@@ -92,6 +98,7 @@ vercel --prod
 **4. Users install via:**
 
 **Example:**
+
 ```bash
 npx shadcn@latest add https://your-project.vercel.app/metric-card.json
 ```
@@ -99,6 +106,7 @@ npx shadcn@latest add https://your-project.vercel.app/metric-card.json
 ### Component JSON Structure
 
 **Example:**
+
 ```json
 {
   "name": "metric-card",
@@ -119,17 +127,18 @@ npx shadcn@latest add https://your-project.vercel.app/metric-card.json
 
 ### Registry vs npm
 
-| Aspect | Registry | npm |
-|--------|----------|-----|
-| Distribution | Source code | Compiled |
-| Ownership | Full control | Dependency lock |
-| Customization | Modify freely | Fork/override |
-| Updates | Manual copy | `npm update` |
-| Bundle size | Only what you use | Full package |
+| Aspect        | Registry          | npm             |
+| ------------- | ----------------- | --------------- |
+| Distribution  | Source code       | Compiled        |
+| Ownership     | Full control      | Dependency lock |
+| Customization | Modify freely     | Fork/override   |
+| Updates       | Manual copy       | `npm update`    |
+| Bundle size   | Only what you use | Full package    |
 
 ### Best Practices
 
 **For Authors:**
+
 1. Document dependencies
 2. Version components
 3. Provide examples
@@ -137,6 +146,7 @@ npx shadcn@latest add https://your-project.vercel.app/metric-card.json
 5. Use semantic naming
 
 **For Consumers:**
+
 1. Review source code
 2. Check dependencies
 3. Customize freely
@@ -146,12 +156,14 @@ npx shadcn@latest add https://your-project.vercel.app/metric-card.json
 ### When to Use
 
 **Use registries when:**
+
 - Sharing with community
 - Users need source ownership
 - Building for specific frameworks
 - Quick distribution needed
 
 **Use npm when:**
+
 - Distributing compiled code
 - Need version management
 - Framework-agnostic libraries

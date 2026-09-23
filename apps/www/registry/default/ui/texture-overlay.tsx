@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 export type TextureType =
   | "dots"
@@ -13,12 +13,12 @@ export type TextureType =
   | "paperGrain"
   | "horizontalLines"
   | "verticalLines"
-  | "none"
+  | "none";
 
 interface TextureOverlayProps {
-  texture: TextureType
-  opacity?: number
-  className?: string
+  texture: TextureType;
+  opacity?: number;
+  className?: string;
 }
 
 const texturePatterns: Record<TextureType, string> = {
@@ -45,7 +45,7 @@ const texturePatterns: Record<TextureType, string> = {
   verticalLines:
     "bg-[repeating-linear-gradient(90deg,rgba(0,0,0,0.25)_0px,rgba(0,0,0,0.25)_1px,transparent_1px,transparent_4px)]",
   none: "",
-}
+};
 
 const defaultOpacities: Record<TextureType, number> = {
   dots: 1,
@@ -62,22 +62,22 @@ const defaultOpacities: Record<TextureType, number> = {
   horizontalLines: 1,
   verticalLines: 1,
   none: 0,
-}
+};
 
 export function TextureOverlay({
   texture,
   opacity,
   className,
 }: TextureOverlayProps) {
-  if (texture === "none") return null
+  if (texture === "none") return null;
 
-  const finalOpacity = opacity ?? defaultOpacities[texture]
-  const pattern = texturePatterns[texture]
+  const finalOpacity = opacity ?? defaultOpacities[texture];
+  const pattern = texturePatterns[texture];
 
   return (
     <div
-      className={cn("absolute inset-0 pointer-events-none", pattern, className)}
+      className={cn("pointer-events-none absolute inset-0", pattern, className)}
       style={{ opacity: finalOpacity }}
     />
-  )
+  );
 }

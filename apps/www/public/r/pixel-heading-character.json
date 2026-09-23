@@ -3,9 +3,7 @@
   "name": "pixel-heading-character",
   "type": "registry:ui",
   "description": "Per-character pixel-font heading with four animation modes using Geist pixel fonts",
-  "dependencies": [
-    "geist"
-  ],
+  "dependencies": ["geist"],
   "files": [
     {
       "path": "registry/default/ui/pixel-heading-character.tsx",

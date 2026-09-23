@@ -3,9 +3,7 @@
   "name": "feature-carousel",
   "type": "registry:ui",
   "description": "Feature carousel component with smooth transitions and customizable layouts",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/feature-carousel.tsx",

@@ -50,27 +50,27 @@ Use `PollWidget` with `question`, `options`, and `votes` / `hasVoted` / `onVote`
 ### Inline poll
 
 ```tsx
-import { useCallback, useMemo, useState } from "react"
-import { PollWidget } from "@/registry/default/ui/poll-widget"
+import { useCallback, useMemo, useState } from "react";
+import { PollWidget } from "@/registry/default/ui/poll-widget";
 
 const options = [
   { id: "speed", label: "Faster builds" },
   { id: "dx", label: "Better DX" },
   { id: "docs", label: "Clearer docs" },
-]
+];
 
 export default function Example() {
-  const [votes, setVotes] = useState({ speed: 0, dx: 0, docs: 0 })
-  const [hasVoted, setHasVoted] = useState(false)
+  const [votes, setVotes] = useState({ speed: 0, dx: 0, docs: 0 });
+  const [hasVoted, setHasVoted] = useState(false);
 
   const onVote = useCallback((selectedIds: string[]) => {
     setVotes((prev) => {
-      const next = { ...prev }
-      for (const id of selectedIds) next[id] = (next[id] ?? 0) + 1
-      return next
-    })
-    setHasVoted(true)
-  }, [])
+      const next = { ...prev };
+      for (const id of selectedIds) next[id] = (next[id] ?? 0) + 1;
+      return next;
+    });
+    setHasVoted(true);
+  }, []);
 
   return (
     <PollWidget
@@ -97,7 +97,7 @@ export default function Example() {
         <PollWidget.Submit />
       </PollWidget.Content>
     </PollWidget>
-  )
+  );
 }
 ```
 

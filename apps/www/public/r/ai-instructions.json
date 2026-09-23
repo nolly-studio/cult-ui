@@ -3,10 +3,7 @@
   "name": "ai-instructions",
   "type": "registry:ui",
   "description": "Manage and toggle AI instructions with a popover, search, and create-dialog",
-  "dependencies": [
-    "@hugeicons/core-free-icons",
-    "@hugeicons/react"
-  ],
+  "dependencies": ["@hugeicons/core-free-icons", "@hugeicons/react"],
   "files": [
     {
       "path": "registry/default/ui/ai-instructions.tsx",

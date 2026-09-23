@@ -2,10 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tweet-grid-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "tweet-grid",
-    "gradient-heading"
-  ],
+  "registryDependencies": ["tweet-grid", "gradient-heading"],
   "files": [
     {
       "path": "registry/default/example/tweet-grid-demo.tsx",

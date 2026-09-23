@@ -12,6 +12,7 @@ Distribute components as npm packages for stable, versioned dependencies with ce
 ### When to Use NPM
 
 Choose npm when:
+
 - Users need stable, versioned dependencies
 - Centralized control over updates
 - Automatic dependency resolution
@@ -20,6 +21,7 @@ Choose npm when:
 ### Package Configuration
 
 **Bad:**
+
 ```json
 {
   "name": "@acme/ui-components",
@@ -32,9 +34,11 @@ Choose npm when:
   }
 }
 ```
+
 Missing `exports` field, pointing to source files instead of built dist, and including React in dependencies instead of peerDependencies.
 
 **Correct:**
+
 ```json
 {
   "name": "@acme/ui-components",
@@ -68,6 +72,7 @@ Missing `exports` field, pointing to source files instead of built dist, and inc
 ```
 
 **Key points:**
+
 - Use `exports` for modern module resolution
 - Include ESM (`module`) and CommonJS (`main`)
 - Specify `types` for TypeScript
@@ -79,6 +84,7 @@ Missing `exports` field, pointing to source files instead of built dist, and inc
 **Critical:** Document this requirement for Tailwind-based components:
 
 **Example:**
+
 ```css
 @import "tailwindcss";
 
@@ -89,6 +95,7 @@ Missing `exports` field, pointing to source files instead of built dist, and inc
 ### Build and Publish
 
 **Example:**
+
 ```json
 {
   "scripts": {
@@ -99,6 +106,7 @@ Missing `exports` field, pointing to source files instead of built dist, and inc
 ```
 
 **Steps:**
+
 1. Build (`npm run build`)
 2. Verify `dist` contents
 3. Update version (`npm version patch|minor|major`)
@@ -107,27 +115,31 @@ Missing `exports` field, pointing to source files instead of built dist, and inc
 ### Trade-offs
 
 **Source Code:**
+
 - Users cannot modify directly
 - Bug fixes require package updates
 - Customization limited to exposed API
 
 **Bundle Size:**
+
 - All components included
 - Tree-shaking helps but imperfect
 
 **Customization:**
+
 - Work within exposed API only
 - Forking required for deep changes
 
 ### Usage
 
 **Example:**
+
 ```bash
 npm install @acme/ui-components
 ```
 
 ```tsx
-import { Button } from '@acme/ui-components'
+import { Button } from "@acme/ui-components";
 
 // Pre-built, versioned code from node_modules
 ```
@@ -135,11 +147,13 @@ import { Button } from '@acme/ui-components'
 ### Choosing Distribution
 
 **npm when:**
+
 - Stable, versioned dependencies needed
 - Centralized updates preferred
 - Source access not required
 
 **Registry when:**
+
 - Source code access needed
 - Customization beyond props important
 - Copy-paste workflow preferred

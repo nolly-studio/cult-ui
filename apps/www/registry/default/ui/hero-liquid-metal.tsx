@@ -1,32 +1,32 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import type { SVGProps } from "react"
-import { LiquidMetal } from "@paper-design/shaders-react"
+import { LiquidMetal } from "@paper-design/shaders-react";
+import * as React from "react";
+import type { SVGProps } from "react";
 
-import { cn } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-const MemoizedLiquidMetal = React.memo(LiquidMetal)
+const MemoizedLiquidMetal = React.memo(LiquidMetal);
 
-type LiquidMetalProps = React.ComponentProps<typeof LiquidMetal>
-type LiquidMetalIcon = React.ComponentType<SVGProps<SVGSVGElement>>
+type LiquidMetalProps = React.ComponentProps<typeof LiquidMetal>;
+type LiquidMetalIcon = React.ComponentType<SVGProps<SVGSVGElement>>;
 
 export interface HeroLiquidMetalTechItem {
-  name: string
-  version?: string
-  icon?: LiquidMetalIcon
+  name: string;
+  version?: string;
+  icon?: LiquidMetalIcon;
 }
 
 export interface HeroLiquidMetalCTAProps {
-  label: React.ReactNode
-  href: string
-  target?: React.HTMLAttributeAnchorTarget
-  rel?: string
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>
-  className?: string
-  buttonClassName?: string
+  label: React.ReactNode;
+  href: string;
+  target?: React.HTMLAttributeAnchorTarget;
+  rel?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  className?: string;
+  buttonClassName?: string;
 }
 
 /** LiquidMetal shader props that can be passed at the root for convenience */
@@ -58,97 +58,95 @@ export type HeroLiquidMetalShaderOverrides = Partial<
     | "minPixelRatio"
     | "maxPixelCount"
   >
->
+>;
 
 export interface HeroLiquidMetalRootProps
-  extends Omit<React.ComponentPropsWithoutRef<"section">, "title">,
+  extends
+    Omit<React.ComponentPropsWithoutRef<"section">, "title">,
     HeroLiquidMetalShaderOverrides {
-  srTitle?: string
-  title?: React.ReactNode
-  subtitle?: React.ReactNode
-  description?: React.ReactNode
-  showCta?: boolean
-  ctaProps?: Partial<HeroLiquidMetalCTAProps>
-  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode
-  showBadges?: boolean
-  techStack?: HeroLiquidMetalTechItem[]
+  srTitle?: string;
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
+  description?: React.ReactNode;
+  showCta?: boolean;
+  ctaProps?: Partial<HeroLiquidMetalCTAProps>;
+  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode;
+  showBadges?: boolean;
+  techStack?: HeroLiquidMetalTechItem[];
   renderBadge?: (
     tech: HeroLiquidMetalTechItem,
     index: number,
     defaultBadge: React.ReactNode
-  ) => React.ReactNode
-  desktopShaderProps?: Partial<LiquidMetalProps>
-  mobileShaderProps?: Partial<LiquidMetalProps>
+  ) => React.ReactNode;
+  desktopShaderProps?: Partial<LiquidMetalProps>;
+  mobileShaderProps?: Partial<LiquidMetalProps>;
 }
 
-export interface HeroLiquidMetalHeadingProps
-  extends Omit<React.ComponentPropsWithoutRef<"div">, "title"> {
-  title?: React.ReactNode
-  subtitle?: React.ReactNode
-  headingClassName?: string
+export interface HeroLiquidMetalHeadingProps extends Omit<
+  React.ComponentPropsWithoutRef<"div">,
+  "title"
+> {
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
+  headingClassName?: string;
 }
 
-export interface HeroLiquidMetalDescriptionProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  description?: React.ReactNode
-  descriptionClassName?: string
+export interface HeroLiquidMetalDescriptionProps extends React.ComponentPropsWithoutRef<"div"> {
+  description?: React.ReactNode;
+  descriptionClassName?: string;
 }
 
-export interface HeroLiquidMetalActionsProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  showCta?: boolean
-  ctaProps?: Partial<HeroLiquidMetalCTAProps>
-  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode
+export interface HeroLiquidMetalActionsProps extends React.ComponentPropsWithoutRef<"div"> {
+  showCta?: boolean;
+  ctaProps?: Partial<HeroLiquidMetalCTAProps>;
+  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode;
 }
 
-export interface HeroLiquidMetalBadgesProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  showBadges?: boolean
-  techStack?: HeroLiquidMetalTechItem[]
+export interface HeroLiquidMetalBadgesProps extends React.ComponentPropsWithoutRef<"div"> {
+  showBadges?: boolean;
+  techStack?: HeroLiquidMetalTechItem[];
   renderBadge?: (
     tech: HeroLiquidMetalTechItem,
     index: number,
     defaultBadge: React.ReactNode
-  ) => React.ReactNode
+  ) => React.ReactNode;
 }
 
-export interface HeroLiquidMetalVisualProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  desktopShaderProps?: Partial<LiquidMetalProps>
-  desktopClassName?: string
+export interface HeroLiquidMetalVisualProps extends React.ComponentPropsWithoutRef<"div"> {
+  desktopShaderProps?: Partial<LiquidMetalProps>;
+  desktopClassName?: string;
 }
 
-export interface HeroLiquidMetalMobileVisualProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  mobileShaderProps?: Partial<LiquidMetalProps>
+export interface HeroLiquidMetalMobileVisualProps extends React.ComponentPropsWithoutRef<"div"> {
+  mobileShaderProps?: Partial<LiquidMetalProps>;
 }
 
 export interface HeroLiquidMetalProps extends HeroLiquidMetalRootProps {
-  containerClassName?: string
-  contentClassName?: string
-  headingWrapClassName?: string
-  headingClassName?: string
-  descriptionWrapClassName?: string
-  descriptionClassName?: string
-  ctaWrapClassName?: string
-  badgesWrapClassName?: string
-  visualClassName?: string
-  mobileVisualClassName?: string
+  containerClassName?: string;
+  contentClassName?: string;
+  headingWrapClassName?: string;
+  headingClassName?: string;
+  descriptionWrapClassName?: string;
+  descriptionClassName?: string;
+  ctaWrapClassName?: string;
+  badgesWrapClassName?: string;
+  visualClassName?: string;
+  mobileVisualClassName?: string;
 }
 
 interface HeroLiquidMetalContextValue {
-  srTitle: string
-  title: React.ReactNode
-  subtitle: React.ReactNode
-  description: React.ReactNode
-  showCta: boolean
-  mergedCtaProps: HeroLiquidMetalCTAProps
-  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode
-  showBadges: boolean
-  techStack: HeroLiquidMetalTechItem[]
-  renderBadge?: HeroLiquidMetalBadgesProps["renderBadge"]
-  mergedDesktopShaderProps: Partial<LiquidMetalProps>
-  mergedMobileShaderProps: Partial<LiquidMetalProps>
+  srTitle: string;
+  title: React.ReactNode;
+  subtitle: React.ReactNode;
+  description: React.ReactNode;
+  showCta: boolean;
+  mergedCtaProps: HeroLiquidMetalCTAProps;
+  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode;
+  showBadges: boolean;
+  techStack: HeroLiquidMetalTechItem[];
+  renderBadge?: HeroLiquidMetalBadgesProps["renderBadge"];
+  mergedDesktopShaderProps: Partial<LiquidMetalProps>;
+  mergedMobileShaderProps: Partial<LiquidMetalProps>;
 }
 
 const defaultDesktopShaderProps: Partial<LiquidMetalProps> = {
@@ -168,7 +166,7 @@ const defaultDesktopShaderProps: Partial<LiquidMetalProps> = {
   speed: 1,
   scale: 0.6,
   fit: "contain",
-}
+};
 
 const defaultMobileShaderProps: Partial<LiquidMetalProps> = {
   image: "/cult-icon.svg",
@@ -186,14 +184,14 @@ const defaultMobileShaderProps: Partial<LiquidMetalProps> = {
   scale: 0.68,
   fit: "contain",
   style: { height: "100%", width: "100%" },
-}
+};
 
 const defaultCtaProps: HeroLiquidMetalCTAProps = {
   label: "Check it out today",
   href: "https://aisdkagents.com",
   target: "_blank",
   rel: "noopener noreferrer",
-}
+};
 
 const defaultDescription = (
   <>
@@ -203,7 +201,7 @@ const defaultDescription = (
     <span className="font-medium tracking-tight">shadcn/ui</span>.
     <span className="hidden sm:inline"> Headless, themable, practical.</span>
   </>
-)
+);
 
 const defaultTechStack: HeroLiquidMetalTechItem[] = [
   {
@@ -216,162 +214,205 @@ const defaultTechStack: HeroLiquidMetalTechItem[] = [
     version: "v6",
     icon: AISDKIcon,
   },
-]
+];
 
 const HeroLiquidMetalContext = React.createContext<
   HeroLiquidMetalContextValue | undefined
->(undefined)
+>(undefined);
 
 function useHeroLiquidMetalContext() {
-  const context = React.useContext(HeroLiquidMetalContext)
+  const context = React.useContext(HeroLiquidMetalContext);
   if (!context) {
     throw new Error(
       "HeroLiquidMetal components must be used within HeroLiquidMetalRoot"
-    )
+    );
   }
-  return context
+  return context;
 }
 
 export function useHeroLiquidMetal() {
-  return useHeroLiquidMetalContext()
+  return useHeroLiquidMetalContext();
 }
 
 export const HeroLiquidMetalRoot = React.forwardRef<
   HTMLElement,
   HeroLiquidMetalRootProps
->(({ className, children, srTitle = "AI SDK Agents", title = <span className="">
-      AI SDK Agents
-    </span>, subtitle = "Copy and Paste", description = defaultDescription, showCta = true, ctaProps, renderCta, showBadges = true, techStack = defaultTechStack, renderBadge, desktopShaderProps, mobileShaderProps, width, height, image, colorBack, colorTint, shape, repetition, softness, shiftRed, shiftBlue, distortion, contour, angle, speed, frame, scale, rotation, offsetX, offsetY, fit, originX, originY, minPixelRatio, maxPixelCount, ...props }, ref) => {
-  const mergedCtaProps = React.useMemo(
-    () => ({
-      ...defaultCtaProps,
-      ...ctaProps,
-    }),
-    [ctaProps]
-  )
-
-  const shaderOverrides = React.useMemo((): Partial<LiquidMetalProps> => {
-    const overrides: Partial<LiquidMetalProps> = {}
-    if (width !== undefined) overrides.width = width
-    if (height !== undefined) overrides.height = height
-    if (image !== undefined) overrides.image = image
-    if (colorBack !== undefined) overrides.colorBack = colorBack
-    if (colorTint !== undefined) overrides.colorTint = colorTint
-    if (shape !== undefined) overrides.shape = shape
-    if (repetition !== undefined) overrides.repetition = repetition
-    if (softness !== undefined) overrides.softness = softness
-    if (shiftRed !== undefined) overrides.shiftRed = shiftRed
-    if (shiftBlue !== undefined) overrides.shiftBlue = shiftBlue
-    if (distortion !== undefined) overrides.distortion = distortion
-    if (contour !== undefined) overrides.contour = contour
-    if (angle !== undefined) overrides.angle = angle
-    if (speed !== undefined) overrides.speed = speed
-    if (frame !== undefined) overrides.frame = frame
-    if (scale !== undefined) overrides.scale = scale
-    if (rotation !== undefined) overrides.rotation = rotation
-    if (offsetX !== undefined) overrides.offsetX = offsetX
-    if (offsetY !== undefined) overrides.offsetY = offsetY
-    if (fit !== undefined) overrides.fit = fit
-    if (originX !== undefined) overrides.originX = originX
-    if (originY !== undefined) overrides.originY = originY
-    if (minPixelRatio !== undefined) overrides.minPixelRatio = minPixelRatio
-    if (maxPixelCount !== undefined) overrides.maxPixelCount = maxPixelCount
-    return overrides
-  }, [
-    width,
-    height,
-    image,
-    colorBack,
-    colorTint,
-    shape,
-    repetition,
-    softness,
-    shiftRed,
-    shiftBlue,
-    distortion,
-    contour,
-    angle,
-    speed,
-    frame,
-    scale,
-    rotation,
-    offsetX,
-    offsetY,
-    fit,
-    originX,
-    originY,
-    minPixelRatio,
-    maxPixelCount,
-  ])
-
-  const mergedDesktopShaderProps = React.useMemo(
-    () => ({
-      ...defaultDesktopShaderProps,
-      ...shaderOverrides,
-      ...desktopShaderProps,
-    }),
-    [shaderOverrides, desktopShaderProps]
-  )
-
-  const mergedMobileShaderProps = React.useMemo(
-    () => ({
-      ...defaultMobileShaderProps,
-      ...shaderOverrides,
-      ...mobileShaderProps,
-      style: {
-        ...(defaultMobileShaderProps.style as React.CSSProperties),
-        ...(mobileShaderProps?.style as React.CSSProperties | undefined),
-      },
-    }),
-    [shaderOverrides, mobileShaderProps]
-  )
-
-  const contextValue = React.useMemo<HeroLiquidMetalContextValue>(
-    () => ({
-      srTitle,
-      title,
-      subtitle,
-      description,
-      showCta,
-      mergedCtaProps,
+>(
+  (
+    {
+      className,
+      children,
+      srTitle = "AI SDK Agents",
+      title = <span className="">AI SDK Agents</span>,
+      subtitle = "Copy and Paste",
+      description = defaultDescription,
+      showCta = true,
+      ctaProps,
       renderCta,
-      showBadges,
-      techStack,
+      showBadges = true,
+      techStack = defaultTechStack,
       renderBadge,
-      mergedDesktopShaderProps,
-      mergedMobileShaderProps,
-    }),
-    [
-      srTitle,
-      title,
-      subtitle,
-      description,
-      showCta,
-      mergedCtaProps,
-      renderCta,
-      showBadges,
-      techStack,
-      renderBadge,
-      mergedDesktopShaderProps,
-      mergedMobileShaderProps,
-    ]
-  )
+      desktopShaderProps,
+      mobileShaderProps,
+      width,
+      height,
+      image,
+      colorBack,
+      colorTint,
+      shape,
+      repetition,
+      softness,
+      shiftRed,
+      shiftBlue,
+      distortion,
+      contour,
+      angle,
+      speed,
+      frame,
+      scale,
+      rotation,
+      offsetX,
+      offsetY,
+      fit,
+      originX,
+      originY,
+      minPixelRatio,
+      maxPixelCount,
+      ...props
+    },
+    ref
+  ) => {
+    const mergedCtaProps = React.useMemo(
+      () => ({
+        ...defaultCtaProps,
+        ...ctaProps,
+      }),
+      [ctaProps]
+    );
 
-  return (
-    <HeroLiquidMetalContext.Provider value={contextValue}>
-      <section
-        className={cn("relative h-full w-full overflow-hidden", className)}
-        data-slot="hero-liquid-metal-root"
-        ref={ref}
-        {...props}
-      >
-        <h1 className="sr-only">{srTitle}</h1>
-        {children}
-      </section>
-    </HeroLiquidMetalContext.Provider>
-  )
-})
-HeroLiquidMetalRoot.displayName = "HeroLiquidMetalRoot"
+    const shaderOverrides = React.useMemo((): Partial<LiquidMetalProps> => {
+      const overrides: Partial<LiquidMetalProps> = {};
+      if (width !== undefined) overrides.width = width;
+      if (height !== undefined) overrides.height = height;
+      if (image !== undefined) overrides.image = image;
+      if (colorBack !== undefined) overrides.colorBack = colorBack;
+      if (colorTint !== undefined) overrides.colorTint = colorTint;
+      if (shape !== undefined) overrides.shape = shape;
+      if (repetition !== undefined) overrides.repetition = repetition;
+      if (softness !== undefined) overrides.softness = softness;
+      if (shiftRed !== undefined) overrides.shiftRed = shiftRed;
+      if (shiftBlue !== undefined) overrides.shiftBlue = shiftBlue;
+      if (distortion !== undefined) overrides.distortion = distortion;
+      if (contour !== undefined) overrides.contour = contour;
+      if (angle !== undefined) overrides.angle = angle;
+      if (speed !== undefined) overrides.speed = speed;
+      if (frame !== undefined) overrides.frame = frame;
+      if (scale !== undefined) overrides.scale = scale;
+      if (rotation !== undefined) overrides.rotation = rotation;
+      if (offsetX !== undefined) overrides.offsetX = offsetX;
+      if (offsetY !== undefined) overrides.offsetY = offsetY;
+      if (fit !== undefined) overrides.fit = fit;
+      if (originX !== undefined) overrides.originX = originX;
+      if (originY !== undefined) overrides.originY = originY;
+      if (minPixelRatio !== undefined) overrides.minPixelRatio = minPixelRatio;
+      if (maxPixelCount !== undefined) overrides.maxPixelCount = maxPixelCount;
+      return overrides;
+    }, [
+      width,
+      height,
+      image,
+      colorBack,
+      colorTint,
+      shape,
+      repetition,
+      softness,
+      shiftRed,
+      shiftBlue,
+      distortion,
+      contour,
+      angle,
+      speed,
+      frame,
+      scale,
+      rotation,
+      offsetX,
+      offsetY,
+      fit,
+      originX,
+      originY,
+      minPixelRatio,
+      maxPixelCount,
+    ]);
+
+    const mergedDesktopShaderProps = React.useMemo(
+      () => ({
+        ...defaultDesktopShaderProps,
+        ...shaderOverrides,
+        ...desktopShaderProps,
+      }),
+      [shaderOverrides, desktopShaderProps]
+    );
+
+    const mergedMobileShaderProps = React.useMemo(
+      () => ({
+        ...defaultMobileShaderProps,
+        ...shaderOverrides,
+        ...mobileShaderProps,
+        style: {
+          ...(defaultMobileShaderProps.style as React.CSSProperties),
+          ...(mobileShaderProps?.style as React.CSSProperties | undefined),
+        },
+      }),
+      [shaderOverrides, mobileShaderProps]
+    );
+
+    const contextValue = React.useMemo<HeroLiquidMetalContextValue>(
+      () => ({
+        srTitle,
+        title,
+        subtitle,
+        description,
+        showCta,
+        mergedCtaProps,
+        renderCta,
+        showBadges,
+        techStack,
+        renderBadge,
+        mergedDesktopShaderProps,
+        mergedMobileShaderProps,
+      }),
+      [
+        srTitle,
+        title,
+        subtitle,
+        description,
+        showCta,
+        mergedCtaProps,
+        renderCta,
+        showBadges,
+        techStack,
+        renderBadge,
+        mergedDesktopShaderProps,
+        mergedMobileShaderProps,
+      ]
+    );
+
+    return (
+      <HeroLiquidMetalContext.Provider value={contextValue}>
+        <section
+          className={cn("relative h-full w-full overflow-hidden", className)}
+          data-slot="hero-liquid-metal-root"
+          ref={ref}
+          {...props}
+        >
+          <h1 className="sr-only">{srTitle}</h1>
+          {children}
+        </section>
+      </HeroLiquidMetalContext.Provider>
+    );
+  }
+);
+HeroLiquidMetalRoot.displayName = "HeroLiquidMetalRoot";
 
 export function HeroLiquidMetalContainer({
   className,
@@ -380,13 +421,13 @@ export function HeroLiquidMetalContainer({
   return (
     <div
       className={cn(
-        "container relative z-10 grid gap-6 pb-16 sm:gap-8 sm:pb-20 lg:grid-cols-[1fr_minmax(300px,500px)] lg:items-center lg:gap-12 lg:pb-24 xl:grid-cols-[1fr_1fr]",
+        "relative z-10 container grid gap-6 pb-16 sm:gap-8 sm:pb-20 lg:grid-cols-[1fr_minmax(300px,500px)] lg:items-center lg:gap-12 lg:pb-24 xl:grid-cols-[1fr_1fr]",
         className
       )}
       data-slot="hero-liquid-metal-container"
       {...props}
     />
-  )
+  );
 }
 
 export function HeroLiquidMetalContent({
@@ -402,7 +443,7 @@ export function HeroLiquidMetalContent({
       data-slot="hero-liquid-metal-content"
       {...props}
     />
-  )
+  );
 }
 
 export function HeroLiquidMetalHeading({
@@ -413,9 +454,9 @@ export function HeroLiquidMetalHeading({
   children,
   ...props
 }: HeroLiquidMetalHeadingProps) {
-  const context = useHeroLiquidMetalContext()
-  const resolvedTitle = title ?? context.title
-  const resolvedSubtitle = subtitle ?? context.subtitle
+  const context = useHeroLiquidMetalContext();
+  const resolvedTitle = title ?? context.title;
+  const resolvedSubtitle = subtitle ?? context.subtitle;
 
   return (
     <div
@@ -427,7 +468,7 @@ export function HeroLiquidMetalHeading({
         <div className="relative">
           <h2
             className={cn(
-              "relative mb-0 text-balance font-medium  text-3xl tracking-[-0.04em] sm:text-4xl md:text-5xl lg:tracking-[-0.06em] xl:text-6xl 2xl:text-7xl",
+              "relative mb-0 text-3xl font-medium tracking-[-0.04em] text-balance sm:text-4xl md:text-5xl lg:tracking-[-0.06em] xl:text-6xl 2xl:text-7xl",
               headingClassName
             )}
             data-slot="hero-liquid-metal-heading"
@@ -438,7 +479,7 @@ export function HeroLiquidMetalHeading({
         </div>
       )}
     </div>
-  )
+  );
 }
 
 export function HeroLiquidMetalDescription({
@@ -448,8 +489,8 @@ export function HeroLiquidMetalDescription({
   children,
   ...props
 }: HeroLiquidMetalDescriptionProps) {
-  const context = useHeroLiquidMetalContext()
-  const resolvedDescription = description ?? context.description
+  const context = useHeroLiquidMetalContext();
+  const resolvedDescription = description ?? context.description;
 
   return (
     <div
@@ -463,7 +504,7 @@ export function HeroLiquidMetalDescription({
       {children ?? (
         <p
           className={cn(
-            "mt-0 mb-0 font-sans text-foreground/70 text-sm sm:text-base md:text-foreground/80 lg:text-lg xl:text-xl",
+            "text-foreground/70 md:text-foreground/80 mt-0 mb-0 font-sans text-sm sm:text-base lg:text-lg xl:text-xl",
             descriptionClassName
           )}
           data-slot="hero-liquid-metal-description"
@@ -472,7 +513,7 @@ export function HeroLiquidMetalDescription({
         </p>
       )}
     </div>
-  )
+  );
 }
 
 export function HeroLiquidMetalActions({
@@ -483,16 +524,16 @@ export function HeroLiquidMetalActions({
   children,
   ...props
 }: HeroLiquidMetalActionsProps) {
-  const context = useHeroLiquidMetalContext()
-  const shouldShowCta = showCta ?? context.showCta
-  const resolvedCtaProps = { ...context.mergedCtaProps, ...ctaProps }
-  const resolvedRenderCta = renderCta ?? context.renderCta
+  const context = useHeroLiquidMetalContext();
+  const shouldShowCta = showCta ?? context.showCta;
+  const resolvedCtaProps = { ...context.mergedCtaProps, ...ctaProps };
+  const resolvedRenderCta = renderCta ?? context.renderCta;
 
   if (!shouldShowCta) {
-    return null
+    return null;
   }
 
-  const defaultCta = <HeroLiquidMetalCTA {...resolvedCtaProps} />
+  const defaultCta = <HeroLiquidMetalCTA {...resolvedCtaProps} />;
 
   return (
     <div
@@ -503,7 +544,7 @@ export function HeroLiquidMetalActions({
       {children ??
         (resolvedRenderCta ? resolvedRenderCta(defaultCta) : defaultCta)}
     </div>
-  )
+  );
 }
 
 export function HeroLiquidMetalCTA({
@@ -529,7 +570,7 @@ export function HeroLiquidMetalCTA({
         </a>
       </Button>
     </div>
-  )
+  );
 }
 
 export function HeroLiquidMetalBadges({
@@ -539,13 +580,13 @@ export function HeroLiquidMetalBadges({
   renderBadge,
   ...props
 }: HeroLiquidMetalBadgesProps) {
-  const context = useHeroLiquidMetalContext()
-  const shouldShowBadges = showBadges ?? context.showBadges
-  const resolvedTechStack = techStack ?? context.techStack
-  const resolvedRenderBadge = renderBadge ?? context.renderBadge
+  const context = useHeroLiquidMetalContext();
+  const shouldShowBadges = showBadges ?? context.showBadges;
+  const resolvedTechStack = techStack ?? context.techStack;
+  const resolvedRenderBadge = renderBadge ?? context.renderBadge;
 
   if (!shouldShowBadges) {
-    return null
+    return null;
   }
 
   return (
@@ -558,12 +599,12 @@ export function HeroLiquidMetalBadges({
       {...props}
     >
       {resolvedTechStack.map((tech, index) => {
-        const Icon = tech.icon
+        const Icon = tech.icon;
         const defaultBadge = (
           <Badge
             className={cn(
               "group relative px-3.5 py-1.5 font-medium transition-all duration-150",
-              "border border-border/50 bg-card text-card-foreground",
+              "border-border/50 bg-card text-card-foreground border",
               "shadow-[0_1px_3px_rgba(0,0,0,0.08)] dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)]",
               "hover:-translate-y-px hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
             )}
@@ -571,7 +612,7 @@ export function HeroLiquidMetalBadges({
             key={tech.name}
             variant="outline"
           >
-            {Icon ? <Icon className="size-3.5 opacity-80 mr-1" /> : null}
+            {Icon ? <Icon className="mr-1 size-3.5 opacity-80" /> : null}
             <span className="font-semibold tracking-tight">{tech.name}</span>
             {tech.version ? (
               <span className="font-mono text-xs opacity-50">
@@ -579,20 +620,20 @@ export function HeroLiquidMetalBadges({
               </span>
             ) : null}
           </Badge>
-        )
+        );
 
         if (resolvedRenderBadge) {
           return (
             <React.Fragment key={tech.name}>
               {resolvedRenderBadge(tech, index, defaultBadge)}
             </React.Fragment>
-          )
+          );
         }
 
-        return defaultBadge
+        return defaultBadge;
       })}
     </div>
-  )
+  );
 }
 
 export function HeroLiquidMetalVisual({
@@ -601,11 +642,11 @@ export function HeroLiquidMetalVisual({
   desktopShaderProps,
   ...props
 }: HeroLiquidMetalVisualProps) {
-  const context = useHeroLiquidMetalContext()
+  const context = useHeroLiquidMetalContext();
   const resolvedDesktopShaderProps = {
     ...context.mergedDesktopShaderProps,
     ...desktopShaderProps,
-  }
+  };
 
   return (
     <div
@@ -632,7 +673,7 @@ export function HeroLiquidMetalVisual({
         />
       </div>
     </div>
-  )
+  );
 }
 
 export function HeroLiquidMetalMobileVisual({
@@ -640,7 +681,7 @@ export function HeroLiquidMetalMobileVisual({
   mobileShaderProps,
   ...props
 }: HeroLiquidMetalMobileVisualProps) {
-  const context = useHeroLiquidMetalContext()
+  const context = useHeroLiquidMetalContext();
   const resolvedMobileShaderProps = {
     ...context.mergedMobileShaderProps,
     ...mobileShaderProps,
@@ -648,7 +689,7 @@ export function HeroLiquidMetalMobileVisual({
       ...(context.mergedMobileShaderProps.style as React.CSSProperties),
       ...(mobileShaderProps?.style as React.CSSProperties | undefined),
     },
-  }
+  };
 
   return (
     <div
@@ -659,7 +700,7 @@ export function HeroLiquidMetalMobileVisual({
       data-slot="hero-liquid-metal-mobile"
       {...props}
     >
-      <div className="absolute inset-x-0 top-0 z-10 h-56 bg-gradient-to-b from-background via-background/95 to-transparent" />
+      <div className="from-background via-background/95 absolute inset-x-0 top-0 z-10 h-56 bg-gradient-to-b to-transparent" />
       <MemoizedLiquidMetal
         {...resolvedMobileShaderProps}
         image={
@@ -668,7 +709,7 @@ export function HeroLiquidMetalMobileVisual({
         }
       />
     </div>
-  )
+  );
 }
 
 export function HeroLiquidMetal({
@@ -699,7 +740,7 @@ export function HeroLiquidMetal({
           <HeroLiquidMetalActions className={ctaWrapClassName} />
           <div
             className={cn(
-              "hidden lg:flex justify-center lg:justify-start",
+              "hidden justify-center lg:flex lg:justify-start",
               badgesWrapClassName
             )}
             data-slot="hero-liquid-metal-badges-wrap"
@@ -711,7 +752,7 @@ export function HeroLiquidMetal({
       </HeroLiquidMetalContainer>
       <HeroLiquidMetalMobileVisual className={mobileVisualClassName} />
     </HeroLiquidMetalRoot>
-  )
+  );
 }
 
 export function AISDKIcon(props: SVGProps<SVGSVGElement>) {
@@ -731,14 +772,14 @@ export function AISDKIcon(props: SVGProps<SVGSVGElement>) {
         fill="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 export function NextjsIcon(props: SVGProps<SVGSVGElement>) {
-  const id = React.useId()
-  const maskId = `${id}-mask`
-  const paint0Id = `${id}-paint0`
-  const paint1Id = `${id}-paint1`
+  const id = React.useId();
+  const maskId = `${id}-mask`;
+  const paint0Id = `${id}-paint0`;
+  const paint1Id = `${id}-paint1`;
 
   return (
     <svg
@@ -809,7 +850,7 @@ export function NextjsIcon(props: SVGProps<SVGSVGElement>) {
         </linearGradient>
       </defs>
     </svg>
-  )
+  );
 }
 
-export default HeroLiquidMetal
+export default HeroLiquidMetal;

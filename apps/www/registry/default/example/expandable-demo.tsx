@@ -1,6 +1,5 @@
-"use client"
+"use client";
 
-import React, { useState } from "react"
 import {
   Battery,
   Bluetooth,
@@ -18,18 +17,19 @@ import {
   Users,
   Video,
   Wind,
-} from "lucide-react"
-import { AnimatePresence, motion, useReducedMotion } from "motion/react"
+} from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import React, { useState } from "react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
 import {
   Expandable,
   ExpandableCard,
@@ -38,7 +38,7 @@ import {
   ExpandableCardHeader,
   ExpandableContent,
   ExpandableTrigger,
-} from "@/registry/default/ui/expandable"
+} from "@/registry/default/ui/expandable";
 
 // _____________________EXAMPLES______________________
 function DesignSyncExample() {
@@ -53,7 +53,7 @@ function DesignSyncExample() {
       {({ isExpanded }) => (
         <ExpandableTrigger>
           <ExpandableCard
-            className="w-full relative"
+            className="relative w-full"
             collapsedSize={{ width: 320, height: 240 }}
             expandedSize={{ width: 420, height: 480 }}
             hoverToExpand={false}
@@ -61,15 +61,15 @@ function DesignSyncExample() {
             collapseDelay={500}
           >
             <ExpandableCardHeader>
-              <div className="flex justify-between items-start w-full">
-                <div className="flex items-start flex-col">
+              <div className="flex w-full items-start justify-between">
+                <div className="flex flex-col items-start">
                   <Badge
                     variant="secondary"
-                    className="bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-100 mb-2"
+                    className="mb-2 bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-100"
                   >
                     In 15 mins
                   </Badge>
-                  <h3 className="font-semibold text-xl text-gray-800 dark:text-white">
+                  <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
                     Design Sync
                   </h3>
                 </div>
@@ -89,27 +89,27 @@ function DesignSyncExample() {
             </ExpandableCardHeader>
 
             <ExpandableCardContent>
-              <div className="flex flex-col items-start justify-between mb-4">
+              <div className="mb-4 flex flex-col items-start justify-between">
                 <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                  <Clock className="h-4 w-4 mr-1" />
+                  <Clock className="mr-1 h-4 w-4" />
                   <span>1:30PM → 2:30PM</span>
                 </div>
 
                 <ExpandableContent preset="blur-md">
                   <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                    <MapPin className="h-4 w-4 mr-1" />
+                    <MapPin className="mr-1 h-4 w-4" />
                     <span>Conference Room A</span>
                   </div>
                 </ExpandableContent>
               </div>
               <ExpandableContent preset="blur-md" stagger staggerChildren={0.2}>
-                <p className="text-sm text-gray-700 dark:text-gray-200 mb-4">
+                <p className="mb-4 text-sm text-gray-700 dark:text-gray-200">
                   Weekly design sync to discuss ongoing projects, share updates,
                   and address any design-related challenges.
                 </p>
                 <div className="mb-4">
-                  <h4 className="font-medium text-sm text-gray-800 dark:text-gray-100 mb-2 flex items-center">
-                    <Users className="h-4 w-4 mr-2" />
+                  <h4 className="mb-2 flex items-center text-sm font-medium text-gray-800 dark:text-gray-100">
+                    <Users className="mr-2 h-4 w-4" />
                     Attendees:
                   </h4>
                   <div className="flex -space-x-2 overflow-hidden">
@@ -134,13 +134,13 @@ function DesignSyncExample() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Button className="w-full bg-red-600 hover:bg-red-700 text-white">
-                    <Video className="h-4 w-4 mr-2" />
+                  <Button className="w-full bg-red-600 text-white hover:bg-red-700">
+                    <Video className="mr-2 h-4 w-4" />
                     Join Meeting
                   </Button>
                   {isExpanded && (
                     <Button variant="outline" className="w-full">
-                      <MessageSquare className="h-4 w-4 mr-2" />
+                      <MessageSquare className="mr-2 h-4 w-4" />
                       Open Chat
                     </Button>
                   )}
@@ -149,7 +149,7 @@ function DesignSyncExample() {
             </ExpandableCardContent>
             <ExpandableContent preset="slide-up">
               <ExpandableCardFooter>
-                <div className="flex items-center justify-between w-full text-sm text-gray-600 dark:text-gray-300">
+                <div className="flex w-full items-center justify-between text-sm text-gray-600 dark:text-gray-300">
                   <span>Weekly</span>
                   <span>Next: Mon, 10:00 AM</span>
                 </div>
@@ -159,7 +159,7 @@ function DesignSyncExample() {
         </ExpandableTrigger>
       )}
     </Expandable>
-  )
+  );
 }
 
 export function ProductShowcaseCard() {
@@ -173,7 +173,7 @@ export function ProductShowcaseCard() {
       {({ isExpanded }) => (
         <ExpandableTrigger>
           <ExpandableCard
-            className="w-full relative"
+            className="relative w-full"
             collapsedSize={{ width: 330, height: 220 }}
             expandedSize={{ width: 500, height: 520 }}
             hoverToExpand={false}
@@ -181,7 +181,7 @@ export function ProductShowcaseCard() {
             collapseDelay={700}
           >
             <ExpandableCardHeader>
-              <div className="flex justify-between items-center">
+              <div className="flex items-center justify-between">
                 <Badge
                   variant="secondary"
                   className="bg-blue-100 text-blue-800"
@@ -195,11 +195,11 @@ export function ProductShowcaseCard() {
             </ExpandableCardHeader>
 
             <ExpandableCardContent>
-              <div className="flex items-start mb-4">
+              <div className="mb-4 flex items-start">
                 <img
                   src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6505/6505727_rd.jpg;maxHeight=640;maxWidth=550;format=webp"
                   alt="Product"
-                  className="object-cover rounded-md mr-4"
+                  className="mr-4 rounded-md object-cover"
                   style={{
                     width: isExpanded ? "120px" : "80px",
                     height: isExpanded ? "120px" : "80px",
@@ -208,7 +208,7 @@ export function ProductShowcaseCard() {
                 />
                 <div className="flex-1">
                   <h3
-                    className="font-medium text-gray-800 dark:text-white tracking-tight transition-all duration-300"
+                    className="font-medium tracking-tight text-gray-800 transition-all duration-300 dark:text-white"
                     style={{
                       fontSize: isExpanded ? "24px" : "18px",
                       fontWeight: isExpanded ? "700" : "400",
@@ -216,11 +216,11 @@ export function ProductShowcaseCard() {
                   >
                     Sony Headphones
                   </h3>
-                  <div className="flex items-center mt-1">
+                  <div className="mt-1 flex items-center">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <Star
                         key={star}
-                        className="w-4 h-4 text-yellow-400 fill-current"
+                        className="h-4 w-4 fill-current text-yellow-400"
                       />
                     ))}
                     <AnimatePresence mode="wait">
@@ -231,7 +231,7 @@ export function ProductShowcaseCard() {
                           animate={{ opacity: 1, width: "auto" }}
                           exit={{ opacity: 0, width: 0 }}
                           transition={{ duration: 0.2 }}
-                          className="ml-2 text-sm text-gray-600 dark:text-gray-400 overflow-hidden whitespace-nowrap"
+                          className="ml-2 overflow-hidden text-sm whitespace-nowrap text-gray-600 dark:text-gray-400"
                         >
                           (128 reviews)
                         </motion.span>
@@ -242,7 +242,7 @@ export function ProductShowcaseCard() {
                           animate={{ opacity: 1, width: "auto" }}
                           exit={{ opacity: 0, width: 0 }}
                           transition={{ duration: 0.2 }}
-                          className="ml-2 text-sm text-gray-600 dark:text-gray-400 overflow-hidden whitespace-nowrap"
+                          className="ml-2 overflow-hidden text-sm whitespace-nowrap text-gray-600 dark:text-gray-400"
                         >
                           (128)
                         </motion.span>
@@ -260,7 +260,7 @@ export function ProductShowcaseCard() {
                   transition: { type: "spring", stiffness: 300, damping: 20 },
                 }}
               >
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 max-w-xs">
+                <p className="mb-4 max-w-xs text-sm text-gray-600 dark:text-gray-400">
                   Experience crystal-clear audio with our latest
                   noise-cancelling technology. Perfect for work, travel, or
                   relaxation.
@@ -277,13 +277,13 @@ export function ProductShowcaseCard() {
                       key={index}
                       className="flex items-center text-sm text-gray-600 dark:text-gray-400"
                     >
-                      <feature.icon className="w-4 h-4 mr-2" />
+                      <feature.icon className="mr-2 h-4 w-4" />
                       <span>{feature.text}</span>
                     </div>
                   ))}
 
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                    <ShoppingCart className="w-4 h-4 mr-2" />
+                  <Button className="w-full bg-blue-600 text-white hover:bg-blue-700">
+                    <ShoppingCart className="mr-2 h-4 w-4" />
                     Add to Cart
                   </Button>
                 </div>
@@ -291,7 +291,7 @@ export function ProductShowcaseCard() {
             </ExpandableCardContent>
             <ExpandableContent preset="slide-up">
               <ExpandableCardFooter>
-                <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400 w-full">
+                <div className="flex w-full justify-between text-sm text-gray-600 dark:text-gray-400">
                   <span>Free shipping</span>
                   <span>30-day return policy</span>
                 </div>
@@ -301,7 +301,7 @@ export function ProductShowcaseCard() {
         </ExpandableTrigger>
       )}
     </Expandable>
-  )
+  );
 }
 
 export function WeatherForecastCard() {
@@ -318,9 +318,9 @@ export function WeatherForecastCard() {
           <ExpandableCardHeader>
             <div className="flex items-center justify-between">
               <div className="flex items-center">
-                <Sun className="w-8 h-8 text-yellow-400 mr-2" />
+                <Sun className="mr-2 h-8 w-8 text-yellow-400" />
                 <ExpandableContent preset="blur-sm" keepMounted={true}>
-                  <h3 className="font-medium text-lg">Today's Weather</h3>
+                  <h3 className="text-lg font-medium">Today's Weather</h3>
                   <Badge
                     variant="secondary"
                     className="bg-blue-100 text-blue-800"
@@ -333,7 +333,7 @@ export function WeatherForecastCard() {
           </ExpandableCardHeader>
 
           <ExpandableCardContent>
-            <div className="flex justify-between items-center mb-4">
+            <div className="mb-4 flex items-center justify-between">
               <div>
                 <p className="text-2xl font-bold">72°F</p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -370,24 +370,24 @@ export function WeatherForecastCard() {
                 transition: { type: "spring", stiffness: 300, damping: 20 },
               }}
             >
-              <div className="space-y-2 mb-4">
-                <div className="flex justify-between items-center">
+              <div className="mb-4 space-y-2">
+                <div className="flex items-center justify-between">
                   <div className="flex items-center">
-                    <Cloud className="w-5 h-5 mr-2 text-gray-400" />
+                    <Cloud className="mr-2 h-5 w-5 text-gray-400" />
                     <span>Humidity</span>
                   </div>
                   <span>45%</span>
                 </div>
-                <div className="flex justify-between items-center">
+                <div className="flex items-center justify-between">
                   <div className="flex items-center">
-                    <Wind className="w-5 h-5 mr-2 text-gray-400" />
+                    <Wind className="mr-2 h-5 w-5 text-gray-400" />
                     <span>Wind</span>
                   </div>
                   <span>8 mph</span>
                 </div>
-                <div className="flex justify-between items-center">
+                <div className="flex items-center justify-between">
                   <div className="flex items-center">
-                    <Droplets className="w-5 h-5 mr-2 text-gray-400" />
+                    <Droplets className="mr-2 h-5 w-5 text-gray-400" />
                     <span>Precipitation</span>
                   </div>
                   <span>0%</span>
@@ -396,10 +396,10 @@ export function WeatherForecastCard() {
               <div className="space-y-2">
                 <h4 className="font-medium">5-Day Forecast</h4>
                 {["Mon", "Tue", "Wed", "Thu", "Fri"].map((day, index) => (
-                  <div key={day} className="flex justify-between items-center">
+                  <div key={day} className="flex items-center justify-between">
                     <span>{day}</span>
                     <div className="flex items-center">
-                      <Sun className="w-4 h-4 text-yellow-400 mr-2" />
+                      <Sun className="mr-2 h-4 w-4 text-yellow-400" />
                       <span>{70 + index}°F</span>
                     </div>
                   </div>
@@ -415,19 +415,19 @@ export function WeatherForecastCard() {
         </ExpandableCard>
       </ExpandableTrigger>
     </Expandable>
-  )
+  );
 }
 
 export default function ExpandableCardExamples() {
   return (
-    <div className=" w-full max-w-7xl mx-auto space-y-12 ">
+    <div className="mx-auto w-full max-w-7xl space-y-12">
       <div className="flex flex-col items-center space-y-24 p-8">
         <DesignSyncExample />
         <ProductShowcaseCard />
         <WeatherForecastCard />
 
-        <div className="flex gap-24 min-h-[600px]"></div>
+        <div className="flex min-h-[600px] gap-24"></div>
       </div>
     </div>
-  )
+  );
 }

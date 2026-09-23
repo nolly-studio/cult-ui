@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "loading-carousel-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "loading-carousel"
-  ],
+  "registryDependencies": ["loading-carousel"],
   "files": [
     {
       "path": "registry/default/example/loading-carousel-demo.tsx",

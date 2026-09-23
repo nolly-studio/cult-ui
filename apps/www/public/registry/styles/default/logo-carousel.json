@@ -1,9 +1,7 @@
 {
   "name": "logo-carousel",
   "description": "Animated logo carousel with staggered animations and customizable columns",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "name": "logo-carousel.tsx",

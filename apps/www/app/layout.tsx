@@ -1,143 +1,138 @@
 import "@/styles/globals.css";
-
-import { Metadata, Viewport } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
-
-import { siteConfig } from "@/config/site";
-
+import { GeistMono } from "geist/font/mono";
+import {
+  GeistPixelSquare,
+  GeistPixelGrid,
+  GeistPixelCircle,
+  GeistPixelTriangle,
+  GeistPixelLine,
+} from "geist/font/pixel";
 import { GeistSans } from "geist/font/sans";
+import { Metadata, Viewport } from "next";
 
-import { cn } from "@/lib/utils";
+import { Analytics } from "@/components/analytics";
+import { ThemeProvider } from "@/components/providers";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Toaster as NewYorkSonner } from "@/components/ui/sonner";
 import {
-	Toaster as DefaultToaster,
-	Toaster as NewYorkToaster,
+  Toaster as DefaultToaster,
+  Toaster as NewYorkToaster,
 } from "@/components/ui/toaster";
-import { Analytics } from "@/components/analytics";
-
-import { ThemeProvider } from "@/components/providers";
-
-import { ThemeSwitcher } from "@/components/theme-switcher";
-import {
-	GeistPixelSquare,
-	GeistPixelGrid,
-	GeistPixelCircle,
-	GeistPixelTriangle,
-	GeistPixelLine,
-} from "geist/font/pixel";
-import { GeistMono } from "geist/font/mono";
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-	title: {
-		default: siteConfig.name,
-		template: `%s · Cult UI`,
-	},
-	metadataBase: new URL(siteConfig.url),
-	description: siteConfig.description,
+  title: {
+    default: siteConfig.name,
+    template: `%s · Cult UI`,
+  },
+  metadataBase: new URL(siteConfig.url),
+  description: siteConfig.description,
 
-	/* Google ignores meta-keywords for ranking, but others may use them. */
-	keywords: [
-		"shadcn",
-		"shadcn ui",
-		"shadcn components",
-		"shadcn blocks",
-		"shadcn templates",
-		"shadcn animate",
-		"tailwind css",
-		"next.js 15",
-		"typescript ui kit",
-	],
+  /* Google ignores meta-keywords for ranking, but others may use them. */
+  keywords: [
+    "shadcn",
+    "shadcn ui",
+    "shadcn components",
+    "shadcn blocks",
+    "shadcn templates",
+    "shadcn animate",
+    "tailwind css",
+    "next.js 15",
+    "typescript ui kit",
+  ],
 
-	authors: [{ name: "Jordan Gilliam", url: "https://cult-ui.com" }],
-	creator: "Jordan Gilliam",
+  authors: [{ name: "Jordan Gilliam", url: "https://cult-ui.com" }],
+  creator: "Jordan Gilliam",
 
-	openGraph: {
-		type: "website",
-		locale: "en_US",
-		url: siteConfig.url,
-		title: siteConfig.name,
-		description: siteConfig.description,
-		siteName: "Cult UI",
-		images: [
-			{
-				url: siteConfig.ogImage,
-				width: 1200,
-				height: 630,
-				alt: "Cult UI – Shadcn UI Components, Blocks & Templates",
-			},
-		],
-	},
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: "Cult UI",
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: "Cult UI – Shadcn UI Components, Blocks & Templates",
+      },
+    ],
+  },
 
-	twitter: {
-		card: "summary_large_image",
-		title: siteConfig.name,
-		description: siteConfig.description,
-		images: [siteConfig.ogImage],
-		creator: "@nolansym",
-	},
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+    creator: "@nolansym",
+  },
 
-	icons: {
-		icon: "/favicon.ico",
-		shortcut: "/favicon-16x16.png",
-		apple: "/apple-touch-icon.png",
-	},
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
 
-	manifest: `${siteConfig.url}/site.webmanifest`,
+  manifest: `${siteConfig.url}/site.webmanifest`,
 };
 
 export const viewport: Viewport = {
-	themeColor: [
-		{ media: "(prefers-color-scheme: light)", color: "white" },
-		{ media: "(prefers-color-scheme: dark)", color: "black" },
-	],
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
 };
 
 interface RootLayoutProps {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
-	return (
-		<html lang="en" suppressHydrationWarning>
-			<head />
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head />
 
-			<body
-				className={cn(
-					"relative min-h-screen bg-background font-sans antialiased",
-					"group/body overscroll-none [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
-					GeistPixelSquare.variable,
-					GeistPixelGrid.variable,
-					GeistPixelCircle.variable,
-					GeistPixelTriangle.variable,
-					GeistPixelLine.variable,
-					GeistSans.variable,
-					GeistMono.variable,
-				)}
-			>
-				{/* <AnimatedBackgroundGuides /> */}
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="system"
-					enableSystem
-					disableTransitionOnChange
-				>
-					<div vaul-drawer-wrapper="">
-						<div className="">{children}</div>
-						{/* <div className="relative z-10 flex min-h-screen flex-col ">
+      <body
+        className={cn(
+          "bg-background relative min-h-screen font-sans antialiased",
+          "group/body overscroll-none [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
+          GeistPixelSquare.variable,
+          GeistPixelGrid.variable,
+          GeistPixelCircle.variable,
+          GeistPixelTriangle.variable,
+          GeistPixelLine.variable,
+          GeistSans.variable,
+          GeistMono.variable
+        )}
+      >
+        {/* <AnimatedBackgroundGuides /> */}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div vaul-drawer-wrapper="">
+            <div className="">{children}</div>
+            {/* <div className="relative z-10 flex min-h-screen flex-col ">
 								{children}
 							</div> */}
-					</div>
-					{/* <TailwindIndicator /> */}
-					<ThemeSwitcher />
-					<Analytics />
+          </div>
+          {/* <TailwindIndicator /> */}
+          <ThemeSwitcher />
+          <Analytics />
 
-					<GoogleAnalytics gaId="G-5K1GVTD1JG" />
+          <GoogleAnalytics gaId="G-5K1GVTD1JG" />
 
-					<NewYorkToaster />
-					<DefaultToaster />
-					<NewYorkSonner />
-				</ThemeProvider>
-			</body>
-		</html>
-	);
+          <NewYorkToaster />
+          <DefaultToaster />
+          <NewYorkSonner />
+        </ThemeProvider>
+      </body>
+    </html>
+  );
 }

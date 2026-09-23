@@ -3,9 +3,7 @@
   "name": "typewriter",
   "type": "registry:ui",
   "description": "Typewriter effect component with customizable typing speed and cursor animation",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/typewriter.tsx",

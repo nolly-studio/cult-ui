@@ -50,7 +50,7 @@ Use `ChoicePoll.Root` with Header, Title, Description, Options (each Option with
 ### Basic poll
 
 ```tsx
-import { ChoicePoll } from "@/registry/default/ui/choice-poll"
+import { ChoicePoll } from "@/registry/default/ui/choice-poll";
 
 export default function Example() {
   return (
@@ -77,7 +77,7 @@ export default function Example() {
       </ChoicePoll.Options>
       <ChoicePoll.Footer />
     </ChoicePoll.Root>
-  )
+  );
 }
 ```
 
@@ -86,13 +86,13 @@ export default function Example() {
 Wire `value` / `onValueChange` and set `showResults`, `hasVoted`, and `votes` when the user submits to show results and "You voted".
 
 ```tsx
-import { useState } from "react"
-import { ChoicePoll } from "@/registry/default/ui/choice-poll"
+import { useState } from "react";
+import { ChoicePoll } from "@/registry/default/ui/choice-poll";
 
 export default function Example() {
-  const [value, setValue] = useState<string | undefined>()
-  const [hasVoted, setHasVoted] = useState(false)
-  const votes = { speed: 42, dx: 28, docs: 30 }
+  const [value, setValue] = useState<string | undefined>();
+  const [hasVoted, setHasVoted] = useState(false);
+  const votes = { speed: 42, dx: 28, docs: 30 };
 
   return (
     <ChoicePoll.Root
@@ -129,7 +129,7 @@ export default function Example() {
       <ChoicePoll.Footer />
       {/* In real usage, a submit button would set hasVoted to true */}
     </ChoicePoll.Root>
-  )
+  );
 }
 ```
 

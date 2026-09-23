@@ -3,9 +3,7 @@
   "name": "morph-surface",
   "type": "registry:ui",
   "description": "A morphing surface component with smooth animations, customizable dimensions, and configurable content",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/morph-surface.tsx",

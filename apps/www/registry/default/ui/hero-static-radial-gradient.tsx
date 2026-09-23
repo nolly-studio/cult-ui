@@ -1,125 +1,123 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import type { SVGProps } from "react"
-import { StaticRadialGradient } from "@paper-design/shaders-react"
+import { StaticRadialGradient } from "@paper-design/shaders-react";
+import * as React from "react";
+import type { SVGProps } from "react";
 
-import { cn } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-const MemoizedStaticRadialGradient = React.memo(StaticRadialGradient)
+const MemoizedStaticRadialGradient = React.memo(StaticRadialGradient);
 
 type StaticRadialGradientProps = React.ComponentProps<
   typeof StaticRadialGradient
->
-type StaticRadialGradientIcon = React.ComponentType<SVGProps<SVGSVGElement>>
+>;
+type StaticRadialGradientIcon = React.ComponentType<SVGProps<SVGSVGElement>>;
 
 export interface HeroStaticRadialGradientTechItem {
-  name: string
-  version?: string
-  icon?: StaticRadialGradientIcon
+  name: string;
+  version?: string;
+  icon?: StaticRadialGradientIcon;
 }
 
 export interface HeroStaticRadialGradientCTAProps {
-  label: React.ReactNode
-  href: string
-  target?: React.HTMLAttributeAnchorTarget
-  rel?: string
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>
-  className?: string
-  buttonClassName?: string
+  label: React.ReactNode;
+  href: string;
+  target?: React.HTMLAttributeAnchorTarget;
+  rel?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  className?: string;
+  buttonClassName?: string;
 }
 
-export interface HeroStaticRadialGradientRootProps
-  extends Omit<React.ComponentPropsWithoutRef<"section">, "title"> {
-  srTitle?: string
-  title?: React.ReactNode
-  subtitle?: React.ReactNode
-  description?: React.ReactNode
-  showCta?: boolean
-  ctaProps?: Partial<HeroStaticRadialGradientCTAProps>
-  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode
-  showBadges?: boolean
-  techStack?: HeroStaticRadialGradientTechItem[]
+export interface HeroStaticRadialGradientRootProps extends Omit<
+  React.ComponentPropsWithoutRef<"section">,
+  "title"
+> {
+  srTitle?: string;
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
+  description?: React.ReactNode;
+  showCta?: boolean;
+  ctaProps?: Partial<HeroStaticRadialGradientCTAProps>;
+  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode;
+  showBadges?: boolean;
+  techStack?: HeroStaticRadialGradientTechItem[];
   renderBadge?: (
     tech: HeroStaticRadialGradientTechItem,
     index: number,
     defaultBadge: React.ReactNode
-  ) => React.ReactNode
-  desktopShaderProps?: Partial<StaticRadialGradientProps>
-  mobileShaderProps?: Partial<StaticRadialGradientProps>
+  ) => React.ReactNode;
+  desktopShaderProps?: Partial<StaticRadialGradientProps>;
+  mobileShaderProps?: Partial<StaticRadialGradientProps>;
 }
 
-export interface HeroStaticRadialGradientHeadingProps
-  extends Omit<React.ComponentPropsWithoutRef<"div">, "title"> {
-  title?: React.ReactNode
-  subtitle?: React.ReactNode
-  headingClassName?: string
+export interface HeroStaticRadialGradientHeadingProps extends Omit<
+  React.ComponentPropsWithoutRef<"div">,
+  "title"
+> {
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
+  headingClassName?: string;
 }
 
-export interface HeroStaticRadialGradientDescriptionProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  description?: React.ReactNode
-  descriptionClassName?: string
+export interface HeroStaticRadialGradientDescriptionProps extends React.ComponentPropsWithoutRef<"div"> {
+  description?: React.ReactNode;
+  descriptionClassName?: string;
 }
 
-export interface HeroStaticRadialGradientActionsProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  showCta?: boolean
-  ctaProps?: Partial<HeroStaticRadialGradientCTAProps>
-  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode
+export interface HeroStaticRadialGradientActionsProps extends React.ComponentPropsWithoutRef<"div"> {
+  showCta?: boolean;
+  ctaProps?: Partial<HeroStaticRadialGradientCTAProps>;
+  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode;
 }
 
-export interface HeroStaticRadialGradientBadgesProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  showBadges?: boolean
-  techStack?: HeroStaticRadialGradientTechItem[]
+export interface HeroStaticRadialGradientBadgesProps extends React.ComponentPropsWithoutRef<"div"> {
+  showBadges?: boolean;
+  techStack?: HeroStaticRadialGradientTechItem[];
   renderBadge?: (
     tech: HeroStaticRadialGradientTechItem,
     index: number,
     defaultBadge: React.ReactNode
-  ) => React.ReactNode
+  ) => React.ReactNode;
 }
 
-export interface HeroStaticRadialGradientVisualProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  desktopShaderProps?: Partial<StaticRadialGradientProps>
-  desktopClassName?: string
+export interface HeroStaticRadialGradientVisualProps extends React.ComponentPropsWithoutRef<"div"> {
+  desktopShaderProps?: Partial<StaticRadialGradientProps>;
+  desktopClassName?: string;
 }
 
-export interface HeroStaticRadialGradientMobileVisualProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  mobileShaderProps?: Partial<StaticRadialGradientProps>
+export interface HeroStaticRadialGradientMobileVisualProps extends React.ComponentPropsWithoutRef<"div"> {
+  mobileShaderProps?: Partial<StaticRadialGradientProps>;
 }
 
-export interface HeroStaticRadialGradientProps
-  extends HeroStaticRadialGradientRootProps {
-  containerClassName?: string
-  contentClassName?: string
-  headingWrapClassName?: string
-  headingClassName?: string
-  descriptionWrapClassName?: string
-  descriptionClassName?: string
-  ctaWrapClassName?: string
-  badgesWrapClassName?: string
-  visualClassName?: string
-  mobileVisualClassName?: string
+export interface HeroStaticRadialGradientProps extends HeroStaticRadialGradientRootProps {
+  containerClassName?: string;
+  contentClassName?: string;
+  headingWrapClassName?: string;
+  headingClassName?: string;
+  descriptionWrapClassName?: string;
+  descriptionClassName?: string;
+  ctaWrapClassName?: string;
+  badgesWrapClassName?: string;
+  visualClassName?: string;
+  mobileVisualClassName?: string;
 }
 
 interface HeroStaticRadialGradientContextValue {
-  srTitle: string
-  title: React.ReactNode
-  subtitle: React.ReactNode
-  description: React.ReactNode
-  showCta: boolean
-  mergedCtaProps: HeroStaticRadialGradientCTAProps
-  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode
-  showBadges: boolean
-  techStack: HeroStaticRadialGradientTechItem[]
-  renderBadge?: HeroStaticRadialGradientBadgesProps["renderBadge"]
-  mergedDesktopShaderProps: Partial<StaticRadialGradientProps>
-  mergedMobileShaderProps: Partial<StaticRadialGradientProps>
+  srTitle: string;
+  title: React.ReactNode;
+  subtitle: React.ReactNode;
+  description: React.ReactNode;
+  showCta: boolean;
+  mergedCtaProps: HeroStaticRadialGradientCTAProps;
+  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode;
+  showBadges: boolean;
+  techStack: HeroStaticRadialGradientTechItem[];
+  renderBadge?: HeroStaticRadialGradientBadgesProps["renderBadge"];
+  mergedDesktopShaderProps: Partial<StaticRadialGradientProps>;
+  mergedMobileShaderProps: Partial<StaticRadialGradientProps>;
 }
 
 const defaultDesktopShaderProps: Partial<StaticRadialGradientProps> = {
@@ -137,7 +135,7 @@ const defaultDesktopShaderProps: Partial<StaticRadialGradientProps> = {
   distortionFreq: 12,
   grainMixer: 1,
   grainOverlay: 0.5,
-}
+};
 
 const defaultMobileShaderProps: Partial<StaticRadialGradientProps> = {
   colors: ["#ed40b3", "#adfa1e", "#6ef7cc"],
@@ -153,14 +151,14 @@ const defaultMobileShaderProps: Partial<StaticRadialGradientProps> = {
   grainMixer: 1,
   grainOverlay: 0.5,
   style: { height: "100%", width: "100%" },
-}
+};
 
 const defaultCtaProps: HeroStaticRadialGradientCTAProps = {
   label: "Check it out today ",
   href: "https://aisdkagents.com",
   target: "_blank",
   rel: "noopener noreferrer",
-}
+};
 
 const defaultDescription = (
   <>
@@ -170,7 +168,7 @@ const defaultDescription = (
     <span className="font-medium tracking-tight">shadcn/ui</span>.
     <span className="hidden sm:inline"> Headless, themable, practical.</span>
   </>
-)
+);
 
 const defaultTechStack: HeroStaticRadialGradientTechItem[] = [
   {
@@ -183,106 +181,125 @@ const defaultTechStack: HeroStaticRadialGradientTechItem[] = [
     version: "v6",
     icon: AISDKIcon,
   },
-]
+];
 
 const HeroStaticRadialGradientContext = React.createContext<
   HeroStaticRadialGradientContextValue | undefined
->(undefined)
+>(undefined);
 
 function useHeroStaticRadialGradientContext() {
-  const context = React.useContext(HeroStaticRadialGradientContext)
+  const context = React.useContext(HeroStaticRadialGradientContext);
   if (!context) {
     throw new Error(
       "HeroStaticRadialGradient components must be used within HeroStaticRadialGradientRoot"
-    )
+    );
   }
-  return context
+  return context;
 }
 
 export function useHeroStaticRadialGradient() {
-  return useHeroStaticRadialGradientContext()
+  return useHeroStaticRadialGradientContext();
 }
 
 export const HeroStaticRadialGradientRoot = React.forwardRef<
   HTMLElement,
   HeroStaticRadialGradientRootProps
->(({ className, children, srTitle = "AI SDK Agents", title = <span className="">
-      AI SDK Agents
-    </span>, subtitle = "Copy and Paste", description = defaultDescription, showCta = true, ctaProps, renderCta, showBadges = true, techStack = defaultTechStack, renderBadge, desktopShaderProps, mobileShaderProps, ...props }, ref) => {
-  const mergedCtaProps = React.useMemo(
-    () => ({
-      ...defaultCtaProps,
-      ...ctaProps,
-    }),
-    [ctaProps]
-  )
-
-  const mergedDesktopShaderProps = React.useMemo(
-    () => ({
-      ...defaultDesktopShaderProps,
-      ...desktopShaderProps,
-    }),
-    [desktopShaderProps]
-  )
-
-  const mergedMobileShaderProps = React.useMemo(
-    () => ({
-      ...defaultMobileShaderProps,
-      ...mobileShaderProps,
-      style: {
-        ...(defaultMobileShaderProps.style as React.CSSProperties),
-        ...(mobileShaderProps?.style as React.CSSProperties | undefined),
-      },
-    }),
-    [mobileShaderProps]
-  )
-
-  const contextValue = React.useMemo<HeroStaticRadialGradientContextValue>(
-    () => ({
-      srTitle,
-      title,
-      subtitle,
-      description,
-      showCta,
-      mergedCtaProps,
+>(
+  (
+    {
+      className,
+      children,
+      srTitle = "AI SDK Agents",
+      title = <span className="">AI SDK Agents</span>,
+      subtitle = "Copy and Paste",
+      description = defaultDescription,
+      showCta = true,
+      ctaProps,
       renderCta,
-      showBadges,
-      techStack,
+      showBadges = true,
+      techStack = defaultTechStack,
       renderBadge,
-      mergedDesktopShaderProps,
-      mergedMobileShaderProps,
-    }),
-    [
-      srTitle,
-      title,
-      subtitle,
-      description,
-      showCta,
-      mergedCtaProps,
-      renderCta,
-      showBadges,
-      techStack,
-      renderBadge,
-      mergedDesktopShaderProps,
-      mergedMobileShaderProps,
-    ]
-  )
+      desktopShaderProps,
+      mobileShaderProps,
+      ...props
+    },
+    ref
+  ) => {
+    const mergedCtaProps = React.useMemo(
+      () => ({
+        ...defaultCtaProps,
+        ...ctaProps,
+      }),
+      [ctaProps]
+    );
 
-  return (
-    <HeroStaticRadialGradientContext.Provider value={contextValue}>
-      <section
-        className={cn("relative h-full w-full overflow-hidden", className)}
-        data-slot="hero-static-radial-gradient-root"
-        ref={ref}
-        {...props}
-      >
-        <h1 className="sr-only">{srTitle}</h1>
-        {children}
-      </section>
-    </HeroStaticRadialGradientContext.Provider>
-  )
-})
-HeroStaticRadialGradientRoot.displayName = "HeroStaticRadialGradientRoot"
+    const mergedDesktopShaderProps = React.useMemo(
+      () => ({
+        ...defaultDesktopShaderProps,
+        ...desktopShaderProps,
+      }),
+      [desktopShaderProps]
+    );
+
+    const mergedMobileShaderProps = React.useMemo(
+      () => ({
+        ...defaultMobileShaderProps,
+        ...mobileShaderProps,
+        style: {
+          ...(defaultMobileShaderProps.style as React.CSSProperties),
+          ...(mobileShaderProps?.style as React.CSSProperties | undefined),
+        },
+      }),
+      [mobileShaderProps]
+    );
+
+    const contextValue = React.useMemo<HeroStaticRadialGradientContextValue>(
+      () => ({
+        srTitle,
+        title,
+        subtitle,
+        description,
+        showCta,
+        mergedCtaProps,
+        renderCta,
+        showBadges,
+        techStack,
+        renderBadge,
+        mergedDesktopShaderProps,
+        mergedMobileShaderProps,
+      }),
+      [
+        srTitle,
+        title,
+        subtitle,
+        description,
+        showCta,
+        mergedCtaProps,
+        renderCta,
+        showBadges,
+        techStack,
+        renderBadge,
+        mergedDesktopShaderProps,
+        mergedMobileShaderProps,
+      ]
+    );
+
+    return (
+      <HeroStaticRadialGradientContext.Provider value={contextValue}>
+        <section
+          className={cn("relative h-full w-full overflow-hidden", className)}
+          data-slot="hero-static-radial-gradient-root"
+          ref={ref}
+          {...props}
+        >
+          <h1 className="sr-only">{srTitle}</h1>
+          {children}
+        </section>
+      </HeroStaticRadialGradientContext.Provider>
+    );
+  }
+);
+HeroStaticRadialGradientRoot.displayName = "HeroStaticRadialGradientRoot";
 
 export function HeroStaticRadialGradientContainer({
   className,
@@ -291,13 +308,13 @@ export function HeroStaticRadialGradientContainer({
   return (
     <div
       className={cn(
-        "container relative z-10 grid gap-6 pb-16 sm:gap-8 sm:pb-20 lg:grid-cols-[1fr_minmax(300px,500px)] lg:items-center lg:gap-12 lg:pb-24 xl:grid-cols-[1fr_1fr]",
+        "relative z-10 container grid gap-6 pb-16 sm:gap-8 sm:pb-20 lg:grid-cols-[1fr_minmax(300px,500px)] lg:items-center lg:gap-12 lg:pb-24 xl:grid-cols-[1fr_1fr]",
         className
       )}
       data-slot="hero-static-radial-gradient-container"
       {...props}
     />
-  )
+  );
 }
 
 export function HeroStaticRadialGradientContent({
@@ -313,7 +330,7 @@ export function HeroStaticRadialGradientContent({
       data-slot="hero-static-radial-gradient-content"
       {...props}
     />
-  )
+  );
 }
 
 export function HeroStaticRadialGradientHeading({
@@ -324,9 +341,9 @@ export function HeroStaticRadialGradientHeading({
   children,
   ...props
 }: HeroStaticRadialGradientHeadingProps) {
-  const context = useHeroStaticRadialGradientContext()
-  const resolvedTitle = title ?? context.title
-  const resolvedSubtitle = subtitle ?? context.subtitle
+  const context = useHeroStaticRadialGradientContext();
+  const resolvedTitle = title ?? context.title;
+  const resolvedSubtitle = subtitle ?? context.subtitle;
 
   return (
     <div
@@ -338,7 +355,7 @@ export function HeroStaticRadialGradientHeading({
         <div className="relative">
           <h2
             className={cn(
-              "relative mb-0 text-balance font-medium text-3xl tracking-[-0.04em] sm:text-4xl md:text-5xl lg:tracking-[-0.06em] xl:text-6xl 2xl:text-7xl",
+              "relative mb-0 text-3xl font-medium tracking-[-0.04em] text-balance sm:text-4xl md:text-5xl lg:tracking-[-0.06em] xl:text-6xl 2xl:text-7xl",
               headingClassName
             )}
             data-slot="hero-static-radial-gradient-heading"
@@ -349,7 +366,7 @@ export function HeroStaticRadialGradientHeading({
         </div>
       )}
     </div>
-  )
+  );
 }
 
 export function HeroStaticRadialGradientDescription({
@@ -359,8 +376,8 @@ export function HeroStaticRadialGradientDescription({
   children,
   ...props
 }: HeroStaticRadialGradientDescriptionProps) {
-  const context = useHeroStaticRadialGradientContext()
-  const resolvedDescription = description ?? context.description
+  const context = useHeroStaticRadialGradientContext();
+  const resolvedDescription = description ?? context.description;
 
   return (
     <div
@@ -374,7 +391,7 @@ export function HeroStaticRadialGradientDescription({
       {children ?? (
         <p
           className={cn(
-            "mt-0 mb-0 font-sans text-foreground/70 text-sm sm:text-base md:text-foreground/80 lg:text-lg xl:text-xl",
+            "text-foreground/70 md:text-foreground/80 mt-0 mb-0 font-sans text-sm sm:text-base lg:text-lg xl:text-xl",
             descriptionClassName
           )}
           data-slot="hero-static-radial-gradient-description"
@@ -383,7 +400,7 @@ export function HeroStaticRadialGradientDescription({
         </p>
       )}
     </div>
-  )
+  );
 }
 
 export function HeroStaticRadialGradientActions({
@@ -394,16 +411,16 @@ export function HeroStaticRadialGradientActions({
   children,
   ...props
 }: HeroStaticRadialGradientActionsProps) {
-  const context = useHeroStaticRadialGradientContext()
-  const shouldShowCta = showCta ?? context.showCta
-  const resolvedCtaProps = { ...context.mergedCtaProps, ...ctaProps }
-  const resolvedRenderCta = renderCta ?? context.renderCta
+  const context = useHeroStaticRadialGradientContext();
+  const shouldShowCta = showCta ?? context.showCta;
+  const resolvedCtaProps = { ...context.mergedCtaProps, ...ctaProps };
+  const resolvedRenderCta = renderCta ?? context.renderCta;
 
   if (!shouldShowCta) {
-    return null
+    return null;
   }
 
-  const defaultCta = <HeroStaticRadialGradientCTA {...resolvedCtaProps} />
+  const defaultCta = <HeroStaticRadialGradientCTA {...resolvedCtaProps} />;
 
   return (
     <div
@@ -414,7 +431,7 @@ export function HeroStaticRadialGradientActions({
       {children ??
         (resolvedRenderCta ? resolvedRenderCta(defaultCta) : defaultCta)}
     </div>
-  )
+  );
 }
 
 export function HeroStaticRadialGradientCTA({
@@ -440,7 +457,7 @@ export function HeroStaticRadialGradientCTA({
         </a>
       </Button>
     </div>
-  )
+  );
 }
 
 export function HeroStaticRadialGradientBadges({
@@ -450,13 +467,13 @@ export function HeroStaticRadialGradientBadges({
   renderBadge,
   ...props
 }: HeroStaticRadialGradientBadgesProps) {
-  const context = useHeroStaticRadialGradientContext()
-  const shouldShowBadges = showBadges ?? context.showBadges
-  const resolvedTechStack = techStack ?? context.techStack
-  const resolvedRenderBadge = renderBadge ?? context.renderBadge
+  const context = useHeroStaticRadialGradientContext();
+  const shouldShowBadges = showBadges ?? context.showBadges;
+  const resolvedTechStack = techStack ?? context.techStack;
+  const resolvedRenderBadge = renderBadge ?? context.renderBadge;
 
   if (!shouldShowBadges) {
-    return null
+    return null;
   }
 
   return (
@@ -469,12 +486,12 @@ export function HeroStaticRadialGradientBadges({
       {...props}
     >
       {resolvedTechStack.map((tech, index) => {
-        const Icon = tech.icon
+        const Icon = tech.icon;
         const defaultBadge = (
           <Badge
             className={cn(
               "group relative px-3.5 py-1.5 font-medium transition-all duration-150",
-              "border border-border/50 bg-card text-card-foreground",
+              "border-border/50 bg-card text-card-foreground border",
               "shadow-[0_1px_3px_rgba(0,0,0,0.08)] dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)]",
               "hover:-translate-y-px hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
             )}
@@ -482,7 +499,7 @@ export function HeroStaticRadialGradientBadges({
             key={tech.name}
             variant="outline"
           >
-            {Icon ? <Icon className="size-3.5 opacity-80 mr-1" /> : null}
+            {Icon ? <Icon className="mr-1 size-3.5 opacity-80" /> : null}
             <span className="font-semibold tracking-tight">{tech.name}</span>
             {tech.version ? (
               <span className="font-mono text-xs opacity-50">
@@ -490,20 +507,20 @@ export function HeroStaticRadialGradientBadges({
               </span>
             ) : null}
           </Badge>
-        )
+        );
 
         if (resolvedRenderBadge) {
           return (
             <React.Fragment key={tech.name}>
               {resolvedRenderBadge(tech, index, defaultBadge)}
             </React.Fragment>
-          )
+          );
         }
 
-        return defaultBadge
+        return defaultBadge;
       })}
     </div>
-  )
+  );
 }
 
 export function HeroStaticRadialGradientVisual({
@@ -512,11 +529,11 @@ export function HeroStaticRadialGradientVisual({
   desktopShaderProps,
   ...props
 }: HeroStaticRadialGradientVisualProps) {
-  const context = useHeroStaticRadialGradientContext()
+  const context = useHeroStaticRadialGradientContext();
   const resolvedDesktopShaderProps = {
     ...context.mergedDesktopShaderProps,
     ...desktopShaderProps,
-  }
+  };
 
   return (
     <div
@@ -537,7 +554,7 @@ export function HeroStaticRadialGradientVisual({
         <MemoizedStaticRadialGradient {...resolvedDesktopShaderProps} />
       </div>
     </div>
-  )
+  );
 }
 
 export function HeroStaticRadialGradientMobileVisual({
@@ -545,7 +562,7 @@ export function HeroStaticRadialGradientMobileVisual({
   mobileShaderProps,
   ...props
 }: HeroStaticRadialGradientMobileVisualProps) {
-  const context = useHeroStaticRadialGradientContext()
+  const context = useHeroStaticRadialGradientContext();
   const resolvedMobileShaderProps = {
     ...context.mergedMobileShaderProps,
     ...mobileShaderProps,
@@ -553,7 +570,7 @@ export function HeroStaticRadialGradientMobileVisual({
       ...(context.mergedMobileShaderProps.style as React.CSSProperties),
       ...(mobileShaderProps?.style as React.CSSProperties | undefined),
     },
-  }
+  };
 
   return (
     <div
@@ -564,10 +581,10 @@ export function HeroStaticRadialGradientMobileVisual({
       data-slot="hero-static-radial-gradient-mobile"
       {...props}
     >
-      <div className="absolute inset-x-0 top-0 z-10 h-44 bg-gradient-to-b from-background via-background/90 to-transparent" />
+      <div className="from-background via-background/90 absolute inset-x-0 top-0 z-10 h-44 bg-gradient-to-b to-transparent" />
       <MemoizedStaticRadialGradient {...resolvedMobileShaderProps} />
     </div>
-  )
+  );
 }
 
 export function HeroStaticRadialGradient({
@@ -610,7 +627,7 @@ export function HeroStaticRadialGradient({
       </HeroStaticRadialGradientContainer>
       <HeroStaticRadialGradientMobileVisual className={mobileVisualClassName} />
     </HeroStaticRadialGradientRoot>
-  )
+  );
 }
 
 export function AISDKIcon(props: SVGProps<SVGSVGElement>) {
@@ -630,14 +647,14 @@ export function AISDKIcon(props: SVGProps<SVGSVGElement>) {
         fill="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 export function NextjsIcon(props: SVGProps<SVGSVGElement>) {
-  const id = React.useId()
-  const maskId = `${id}-mask`
-  const paint0Id = `${id}-paint0`
-  const paint1Id = `${id}-paint1`
+  const id = React.useId();
+  const maskId = `${id}-mask`;
+  const paint0Id = `${id}-paint0`;
+  const paint1Id = `${id}-paint1`;
 
   return (
     <svg
@@ -708,7 +725,7 @@ export function NextjsIcon(props: SVGProps<SVGSVGElement>) {
         </linearGradient>
       </defs>
     </svg>
-  )
+  );
 }
 
-export default HeroStaticRadialGradient
+export default HeroStaticRadialGradient;

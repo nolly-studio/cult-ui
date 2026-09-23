@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { motion } from "motion/react"
+import { motion } from "motion/react";
 
 import {
   CutoutCard,
@@ -15,17 +15,17 @@ import {
   cutoutCardSurfaceClassName,
   CutoutCorner,
   useCutoutContentStaggerVariants,
-} from "@/registry/default/ui/cutout-card"
+} from "@/registry/default/ui/cutout-card";
 
 // ============================================================================
 // Demo — full-page showcase matching the original single-component layout
 // ============================================================================
 
 function CutoutCardDemo() {
-  const stagger = useCutoutContentStaggerVariants()
+  const stagger = useCutoutContentStaggerVariants();
 
   return (
-    <div className="flex min-h-screen items-center justify-center ">
+    <div className="flex min-h-screen items-center justify-center">
       <div className="relative w-full max-w-md">
         <CutoutCard className={cutoutCardSurfaceClassName}>
           <CutoutCardMedia className="h-72">
@@ -35,21 +35,21 @@ function CutoutCardDemo() {
               src="/placeholders/apple-wallpaper.jpg"
             />
             <CutoutCardOverlay />
-            <CutoutCardInsetLabel className="bottom-0 left-0 rounded-tr-[20px] bg-card px-5 py-3">
-              <span className="font-semibold text-[11px] text-muted-foreground uppercase tracking-widest">
+            <CutoutCardInsetLabel className="bg-card bottom-0 left-0 rounded-tr-[20px] px-5 py-3">
+              <span className="text-muted-foreground text-[11px] font-semibold tracking-widest uppercase">
                 Featured
               </span>
-              <CutoutCorner className="absolute -right-[31px] -bottom-px rotate-90 text-card" />
-              <CutoutCorner className="absolute -top-[31px] -left-px rotate-90 text-card" />
+              <CutoutCorner className="text-card absolute -right-[31px] -bottom-px rotate-90" />
+              <CutoutCorner className="text-card absolute -top-[31px] -left-px rotate-90" />
             </CutoutCardInsetLabel>
-            <CutoutCardPin className="top-0 right-0 rounded-bl-[16px] bg-primary px-4 py-2 font-semibold text-primary-foreground text-sm shadow-foreground/10 shadow-md ring-1 ring-border/30">
+            <CutoutCardPin className="bg-primary text-primary-foreground shadow-foreground/10 ring-border/30 top-0 right-0 rounded-bl-[16px] px-4 py-2 text-sm font-semibold shadow-md ring-1">
               New
               <CutoutCorner
-                className="absolute top-0 -left-[23px] -rotate-90 text-primary"
+                className="text-primary absolute top-0 -left-[23px] -rotate-90"
                 size={24}
               />
               <CutoutCorner
-                className="absolute right-0 -bottom-[23px] -rotate-90 text-primary"
+                className="text-primary absolute right-0 -bottom-[23px] -rotate-90"
                 size={24}
               />
             </CutoutCardPin>
@@ -62,13 +62,13 @@ function CutoutCardDemo() {
               variants={stagger.container}
             >
               <motion.h2
-                className="mb-2 text-balance font-semibold text-card-foreground text-xl leading-snug"
+                className="text-card-foreground mb-2 text-xl leading-snug font-semibold text-balance"
                 variants={stagger.item}
               >
                 Alpine Adventures
               </motion.h2>
               <motion.p
-                className="mb-4 text-pretty text-muted-foreground text-sm leading-relaxed"
+                className="text-muted-foreground mb-4 text-sm leading-relaxed text-pretty"
                 variants={stagger.item}
               >
                 Discover breathtaking mountain landscapes and experience the
@@ -77,8 +77,8 @@ function CutoutCardDemo() {
               <motion.div variants={stagger.item}>
                 <CutoutCardFooter className="border-border/80 border-t pt-4">
                   <div className="flex items-center gap-3">
-                    <div className="h-8 w-8 rounded-full bg-linear-to-br from-chart-4 to-chart-5 shadow-sm ring-2 ring-card" />
-                    <span className="font-medium text-card-foreground text-sm">
+                    <div className="from-chart-4 to-chart-5 ring-card h-8 w-8 rounded-full bg-linear-to-br shadow-sm ring-2" />
+                    <span className="text-card-foreground text-sm font-medium">
                       Sarah Chen
                     </span>
                   </div>
@@ -91,7 +91,7 @@ function CutoutCardDemo() {
           </CutoutCardContent>
           <CutoutCardAction className="right-5 bottom-5">
             <button
-              className="rounded-full bg-primary px-4 py-2 font-medium text-primary-foreground text-sm shadow-md transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97]"
+              className="bg-primary text-primary-foreground rounded-full px-4 py-2 text-sm font-medium shadow-md transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97]"
               type="button"
             >
               Read More
@@ -100,7 +100,7 @@ function CutoutCardDemo() {
         </CutoutCard>
       </div>
     </div>
-  )
+  );
 }
 
-export default CutoutCardDemo
+export default CutoutCardDemo;

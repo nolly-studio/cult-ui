@@ -64,7 +64,7 @@ npx shadcn@latest add https://cult-ui.com/r/toolbar-expandable.json
 ## Usage
 
 ```tsx
-import ToolbarExpandable from "@/components/ui/toolbar-expandable"
+import ToolbarExpandable from "@/components/ui/toolbar-expandable";
 ```
 
 ### Basic Usage
@@ -105,37 +105,37 @@ const [activeStep, setActiveStep] = useState<string | null>(null)
 
 ### Props
 
-| Prop                 | Type                               | Default | Description                                        |
-| -------------------- | ---------------------------------- | ------- | -------------------------------------------------- |
-| `steps`              | `DynamicStep[]`                    | -       | Array of step objects defining the toolbar content |
-| `badgeText`          | `string`                           | -       | Text displayed in the badge                        |
-| `className`          | `string`                           | -       | Additional CSS classes                             |
-| `expanded`           | `boolean`                          | -       | Controlled expanded state                          |
-| `onExpandedChange`   | `(expanded: boolean) => void`      | -       | Callback for expanded state changes                |
-| `activeStep`         | `string \| null`                   | -       | Controlled active step ID                          |
-| `onActiveStepChange` | `(stepId: string \| null) => void` | -       | Callback for active step changes                   |
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `steps` | `DynamicStep[]` | - | Array of step objects defining the toolbar content |
+| `badgeText` | `string` | - | Text displayed in the badge |
+| `className` | `string` | - | Additional CSS classes |
+| `expanded` | `boolean` | - | Controlled expanded state |
+| `onExpandedChange` | `(expanded: boolean) => void` | - | Callback for expanded state changes |
+| `activeStep` | `string \| null` | - | Controlled active step ID |
+| `onActiveStepChange` | `(stepId: string \| null) => void` | - | Callback for active step changes |
 
 ### DynamicStep Interface
 
 ```tsx
 interface DynamicStep {
-  id: string
-  title: string
-  description: string
+  id: string;
+  title: string;
+  description: string;
   icon:
     | React.ComponentType<{ className?: string }>
-    | React.ReactElement<{ className?: string }>
-  content: React.ReactNode
+    | React.ReactElement<{ className?: string }>;
+  content: React.ReactNode;
 }
 ```
 
-| Property      | Type                                          | Description                            |
-| ------------- | --------------------------------------------- | -------------------------------------- |
-| `id`          | `string`                                      | Unique identifier for the step         |
-| `title`       | `string`                                      | Display title for the step             |
-| `description` | `string`                                      | Description text for the step          |
-| `icon`        | `React.ComponentType` or `React.ReactElement` | Icon component or element              |
-| `content`     | `React.ReactNode`                             | Content to display when step is active |
+| Property | Type | Description |
+| --- | --- | --- |
+| `id` | `string` | Unique identifier for the step |
+| `title` | `string` | Display title for the step |
+| `description` | `string` | Description text for the step |
+| `icon` | `React.ComponentType` or `React.ReactElement` | Icon component or element |
+| `content` | `React.ReactNode` | Content to display when step is active |
 
 ## Examples
 

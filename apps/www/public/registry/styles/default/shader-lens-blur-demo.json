@@ -1,10 +1,6 @@
 {
   "name": "shader-lens-blur-demo",
-  "dependencies": [
-    "motion",
-    "three",
-    "jotai"
-  ],
+  "dependencies": ["motion", "three", "jotai"],
   "files": [
     {
       "name": "shader-lens-blur.tsx",

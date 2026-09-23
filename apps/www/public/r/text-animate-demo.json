@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "text-animate-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "text-animate"
-  ],
+  "registryDependencies": ["text-animate"],
   "files": [
     {
       "path": "registry/default/example/text-animate-demo.tsx",

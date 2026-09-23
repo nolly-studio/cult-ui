@@ -3,11 +3,7 @@
   "name": "shader-lens-blur",
   "type": "registry:ui",
   "description": "WebGL shader component with lens blur effects and mouse interaction",
-  "dependencies": [
-    "motion",
-    "three",
-    "jotai"
-  ],
+  "dependencies": ["motion", "three", "jotai"],
   "files": [
     {
       "path": "registry/default/ui/shader-lens-blur.tsx",

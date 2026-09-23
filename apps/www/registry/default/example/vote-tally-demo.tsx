@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { ArrowUp } from "lucide-react"
+import { ArrowUp } from "lucide-react";
+import { useState } from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-import { VoteTally, type VoteTallyValue } from "../ui/vote-tally"
+import { VoteTally, type VoteTallyValue } from "../ui/vote-tally";
 
 /* -----------------------------------------------------------------------------
  * Example: Styled Vote Tally Widget
@@ -38,7 +38,7 @@ const FEATURES = [
     title: "Mobile App",
     description: "Native iOS and Android applications",
   },
-] as const
+] as const;
 
 export function VoteTallyExample() {
   const [votes, setVotes] = useState<VoteTallyValue>({
@@ -47,11 +47,11 @@ export function VoteTallyExample() {
     "export-pdf": 67,
     "api-access": 203,
     "mobile-app": 156,
-  })
+  });
 
   const [votedItems, setVotedItems] = useState<Set<string>>(
     new Set(["dark-mode"])
-  )
+  );
 
   return (
     <div className="w-full max-w-md">
@@ -66,7 +66,7 @@ export function VoteTallyExample() {
           {FEATURES.map((feature) => (
             <VoteTally.Item
               className={cn(
-                "flex items-start gap-3 rounded-lg border border-border bg-background p-3",
+                "border-border bg-background flex items-start gap-3 rounded-lg border p-3",
                 "data-voted:bg-muted",
                 "data-disabled:cursor-not-allowed data-disabled:opacity-50"
               )}
@@ -78,20 +78,20 @@ export function VoteTallyExample() {
                   "flex shrink-0 flex-col items-center gap-0.5 rounded-md border px-2 py-1.5",
                   "border-border bg-background text-muted-foreground",
                   "hover:bg-muted hover:text-foreground",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                  "focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
                   "data-[state=voted]:bg-muted data-[state=voted]:text-foreground",
                   "disabled:pointer-events-none disabled:opacity-50"
                 )}
               >
                 <ArrowUp aria-hidden className="size-4" />
-                <VoteTally.Count className="font-medium text-xs tabular-nums" />
+                <VoteTally.Count className="text-xs font-medium tabular-nums" />
               </VoteTally.Trigger>
 
               <div className="flex min-w-0 flex-col gap-0.5">
-                <VoteTally.Title className="text-balance font-medium text-foreground text-sm">
+                <VoteTally.Title className="text-foreground text-sm font-medium text-balance">
                   {feature.title}
                 </VoteTally.Title>
-                <VoteTally.Description className="text-pretty text-muted-foreground text-sm">
+                <VoteTally.Description className="text-muted-foreground text-sm text-pretty">
                   {feature.description}
                 </VoteTally.Description>
               </div>
@@ -100,7 +100,7 @@ export function VoteTallyExample() {
         </VoteTally.Group>
       </VoteTally.Root>
     </div>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -140,7 +140,7 @@ export function VoteTallyCompact() {
               className={cn(
                 "flex items-center gap-1 rounded px-1.5 py-0.5 text-xs",
                 "text-muted-foreground hover:text-foreground",
-                "data-[state=voted]:font-medium data-[state=voted]:text-foreground"
+                "data-[state=voted]:text-foreground data-[state=voted]:font-medium"
               )}
             >
               <ArrowUp aria-hidden className="size-3" />
@@ -150,18 +150,18 @@ export function VoteTallyCompact() {
         ))}
       </VoteTally.Root>
     </div>
-  )
+  );
 }
 
 export default function VoteTallyDemo() {
   return (
     <div className="flex w-full max-w-lg flex-col gap-10 py-6">
-      <div className="rounded-lg border border-border bg-card p-4">
+      <div className="border-border bg-card rounded-lg border p-4">
         <VoteTallyExample />
       </div>
-      <div className="rounded-lg border border-border bg-card p-4">
+      <div className="border-border bg-card rounded-lg border p-4">
         <VoteTallyCompact />
       </div>
     </div>
-  )
+  );
 }

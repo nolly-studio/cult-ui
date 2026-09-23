@@ -52,7 +52,7 @@ export const Stepper = ({ value, setValue }: StepperProps) => (
 Use `@radix-ui/react-use-controllable-state` to support both:
 
 ```tsx
-import { useControllableState } from '@radix-ui/react-use-controllable-state';
+import { useControllableState } from "@radix-ui/react-use-controllable-state";
 
 type StepperProps = {
   value?: number;
@@ -60,7 +60,11 @@ type StepperProps = {
   onValueChange?: (value: number) => void;
 };
 
-export const Stepper = ({ value: controlledValue, defaultValue, onValueChange }: StepperProps) => {
+export const Stepper = ({
+  value: controlledValue,
+  defaultValue,
+  onValueChange,
+}: StepperProps) => {
   const [value, setValue] = useControllableState({
     prop: controlledValue,
     defaultProp: defaultValue,
@@ -80,26 +84,26 @@ export const Stepper = ({ value: controlledValue, defaultValue, onValueChange }:
 
 ```tsx
 // Uncontrolled
-<Stepper defaultValue={0} />
+<Stepper defaultValue={0} />;
 
 // Controlled
 const [count, setCount] = useState(5);
-<Stepper value={count} onValueChange={setCount} />
+<Stepper value={count} onValueChange={setCount} />;
 ```
 
 ### Prop Naming Conventions
 
-| State Type | Value Prop | Default Prop | Change Callback |
-|------------|------------|--------------|-----------------|
-| Generic | `value` | `defaultValue` | `onValueChange` |
-| Boolean | `checked` | `defaultChecked` | `onCheckedChange` |
-| Open/Close | `open` | `defaultOpen` | `onOpenChange` |
-| Selection | `selected` | `defaultSelected` | `onSelectedChange` |
+| State Type | Value Prop | Default Prop      | Change Callback    |
+| ---------- | ---------- | ----------------- | ------------------ |
+| Generic    | `value`    | `defaultValue`    | `onValueChange`    |
+| Boolean    | `checked`  | `defaultChecked`  | `onCheckedChange`  |
+| Open/Close | `open`     | `defaultOpen`     | `onOpenChange`     |
+| Selection  | `selected` | `defaultSelected` | `onSelectedChange` |
 
 ### Complete Example: Toggle
 
 ```tsx
-import { useControllableState } from '@radix-ui/react-use-controllable-state';
+import { useControllableState } from "@radix-ui/react-use-controllable-state";
 
 type ToggleProps = {
   checked?: boolean;
@@ -108,7 +112,12 @@ type ToggleProps = {
   disabled?: boolean;
 };
 
-export const Toggle = ({ checked: controlledChecked, defaultChecked, onCheckedChange, disabled }: ToggleProps) => {
+export const Toggle = ({
+  checked: controlledChecked,
+  defaultChecked,
+  onCheckedChange,
+  disabled,
+}: ToggleProps) => {
   const [checked, setChecked] = useControllableState({
     prop: controlledChecked,
     defaultProp: defaultChecked ?? false,
@@ -123,7 +132,7 @@ export const Toggle = ({ checked: controlledChecked, defaultChecked, onCheckedCh
       disabled={disabled}
       onClick={() => !disabled && setChecked(!checked)}
     >
-      {checked ? 'On' : 'Off'}
+      {checked ? "On" : "Off"}
     </button>
   );
 };

@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "intro-disclosure-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "intro-disclosure"
-  ],
+  "registryDependencies": ["intro-disclosure"],
   "files": [
     {
       "path": "registry/default/example/intro-disclosure-demo.tsx",

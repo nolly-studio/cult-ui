@@ -1,37 +1,37 @@
-"use client"
+"use client";
 
-// npx shadcn-ui@latest add checkbox
-// npm  i react-use-measure
-import { Dispatch, ReactNode, SetStateAction, useState } from "react"
-import { Trash } from "lucide-react"
+import { Trash } from "lucide-react";
 import {
   AnimatePresence,
   LayoutGroup,
   motion,
   Reorder,
   useDragControls,
-} from "motion/react"
-import useMeasure from "react-use-measure"
+} from "motion/react";
+// npx shadcn-ui@latest add checkbox
+// npm  i react-use-measure
+import { Dispatch, ReactNode, SetStateAction, useState } from "react";
+import useMeasure from "react-use-measure";
 
-import { cn } from "@/lib/utils"
-import { Checkbox } from "@/components/ui/checkbox"
+import { Checkbox } from "@/components/ui/checkbox";
+import { cn } from "@/lib/utils";
 
 export type Item = {
-  text: string
-  checked: boolean
-  id: number
-  description: string
-}
+  text: string;
+  checked: boolean;
+  id: number;
+  description: string;
+};
 
 interface SortableListItemProps {
-  item: Item
-  order: number
-  onCompleteItem: (id: number) => void
-  onRemoveItem: (id: number) => void
-  renderExtra?: (item: Item) => React.ReactNode
-  isExpanded?: boolean
-  className?: string
-  handleDrag: () => void
+  item: Item;
+  order: number;
+  onCompleteItem: (id: number) => void;
+  onRemoveItem: (id: number) => void;
+  renderExtra?: (item: Item) => React.ReactNode;
+  isExpanded?: boolean;
+  className?: string;
+  handleDrag: () => void;
 }
 
 function SortableListItem({
@@ -44,20 +44,20 @@ function SortableListItem({
   isExpanded,
   className,
 }: SortableListItemProps) {
-  let [ref, bounds] = useMeasure()
-  const [isDragging, setIsDragging] = useState(false)
+  let [ref, bounds] = useMeasure();
+  const [isDragging, setIsDragging] = useState(false);
   // const [isDraggable, setIsDraggable] = useState(true)
-  const dragControls = useDragControls()
+  const dragControls = useDragControls();
 
   const handleDragStart = (event: any) => {
-    setIsDragging(true)
-    dragControls.start(event, { snapToCursor: true })
-    handleDrag()
-  }
+    setIsDragging(true);
+    dragControls.start(event, { snapToCursor: true });
+    handleDrag();
+  };
 
   const handleDragEnd = () => {
-    setIsDragging(false)
-  }
+    setIsDragging(false);
+  };
 
   return (
     <motion.div className={cn("", className)} key={item.id}>
@@ -66,7 +66,7 @@ function SortableListItem({
           value={item}
           className={cn(
             "relative z-auto grow",
-            "h-full rounded-xl bg-primary dark:bg-primary-foreground",
+            "bg-primary dark:bg-primary-foreground h-full rounded-xl",
             "shadow-[0px_1px_0px_0px_hsla(0,0%,100%,.03)_inset,0px_0px_0px_1px_hsla(0,0%,100%,.03)_inset,0px_0px_0px_1px_rgba(0,0,0,.1),0px_2px_2px_0px_rgba(0,0,0,.1),0px_4px_4px_0px_rgba(0,0,0,.1),0px_8px_8px_0px_rgba(0,0,0,.1)]",
             item.checked ? "cursor-not-allowed" : "cursor-grab",
             item.checked && !isDragging ? "w-7/10" : "w-full"
@@ -111,10 +111,10 @@ function SortableListItem({
           }
           whileDrag={{ zIndex: 9999 }}
         >
-          <div ref={ref} className={cn(isExpanded ? "" : "", "z-20 ")}>
+          <div ref={ref} className={cn(isExpanded ? "" : "", "z-20")}>
             <motion.div
               layout="position"
-              className="flex items-center justify-center "
+              className="flex items-center justify-center"
             >
               <AnimatePresence>
                 {!isExpanded ? (
@@ -123,27 +123,27 @@ function SortableListItem({
                     animate={{ opacity: 1, filter: "blur(0px)" }}
                     exit={{ opacity: 0, filter: "blur(4px)" }}
                     transition={{ duration: 0.001 }}
-                    className="flex  items-center space-x-2 "
+                    className="flex items-center space-x-2"
                   >
                     {/* List Remove Actions */}
-                    <div className="pl-3 pt-1">
+                    <div className="pt-1 pl-3">
                       <Checkbox
                         checked={item.checked}
                         id={`checkbox-${item.id}`}
                         aria-label="Mark to delete"
                         onCheckedChange={() => onCompleteItem(item.id)}
-                        className="  h-5 w-5 rounded-md border-white/20 bg-black/30 data-[state=checked]:bg-black data-[state=checked]:text-red-200"
+                        className="h-5 w-5 rounded-md border-white/20 bg-black/30 data-[state=checked]:bg-black data-[state=checked]:text-red-200"
                       />
                     </div>
                     {/* List Order */}
-                    <p className="font-mono text-xs pl-1 text-white/50">
+                    <p className="pl-1 font-mono text-xs text-white/50">
                       {order + 1}
                     </p>
 
                     {/* List Title */}
                     <motion.div
                       key={`${item.checked}`}
-                      className=" px-1 min-w-[150px]"
+                      className="min-w-[150px] px-1"
                       initial={{
                         opacity: 0,
                         filter: "blur(4px)",
@@ -157,7 +157,7 @@ function SortableListItem({
                     >
                       <h4
                         className={cn(
-                          "tracking-tighter text-base md:text-lg ",
+                          "text-base tracking-tighter md:text-lg",
                           item.checked ? "text-red-400" : "text-white/70"
                         )}
                       >
@@ -204,7 +204,7 @@ function SortableListItem({
                   bounce: 0,
                 },
               }}
-              className="-ml-[1px] h-[1.5rem] w-3 rounded-l-none  rounded-r-none border-y  border-y-white/5 border-r-white/10 bg-[#161716] "
+              className="-ml-[1px] h-[1.5rem] w-3 rounded-l-none rounded-r-none border-y border-y-white/5 border-r-white/10 bg-[#161716]"
             />
           ) : null}
         </AnimatePresence>
@@ -230,35 +230,35 @@ function SortableListItem({
                 x: -10,
                 transition: { delay: 0, duration: 0.12 },
               }}
-              className="inset-0 z-0 border-spacing-1  rounded-r-xl rounded-l-sm border-r-2   border-r-red-300/60 bg-[#161716]/80 shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(0,0,0,0.1),0_2px_2px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.1),0_8px_8px_0_rgba(0,0,0,0.1)] dark:bg-[#161716]/50"
+              className="inset-0 z-0 border-spacing-1 rounded-l-sm rounded-r-xl border-r-2 border-r-red-300/60 bg-[#161716]/80 shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(255,255,255,0.03)_inset,0_0_0_1px_rgba(0,0,0,0.1),0_2px_2px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.1),0_8px_8px_0_rgba(0,0,0,0.1)] dark:bg-[#161716]/50"
             >
               <button
                 type="button"
-                className="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-md px-3 text-sm font-medium  transition-colors duration-150   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                className="focus-visible:ring-ring inline-flex h-10 items-center justify-center rounded-md px-3 text-sm font-medium whitespace-nowrap transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
                 onClick={() => onRemoveItem(item.id)}
               >
-                <Trash className="h-4 w-4 text-red-400 transition-colors duration-150 fill-red-400/60 " />
+                <Trash className="h-4 w-4 fill-red-400/60 text-red-400 transition-colors duration-150" />
               </button>
             </motion.div>
           ) : null}
         </AnimatePresence>
       </div>
     </motion.div>
-  )
+  );
 }
 
-SortableListItem.displayName = "SortableListItem"
+SortableListItem.displayName = "SortableListItem";
 
 interface SortableListProps {
-  items: Item[]
-  setItems: Dispatch<SetStateAction<Item[]>>
-  onCompleteItem: (id: number) => void
+  items: Item[];
+  setItems: Dispatch<SetStateAction<Item[]>>;
+  onCompleteItem: (id: number) => void;
   renderItem: (
     item: Item,
     order: number,
     onCompleteItem: (id: number) => void,
     onRemoveItem: (id: number) => void
-  ) => ReactNode
+  ) => ReactNode;
 }
 
 function SortableList({
@@ -285,12 +285,12 @@ function SortableList({
           </AnimatePresence>
         </Reorder.Group>
       </LayoutGroup>
-    )
+    );
   }
-  return null
+  return null;
 }
 
-SortableList.displayName = "SortableList"
+SortableList.displayName = "SortableList";
 
-export { SortableList, SortableListItem }
-export default SortableList
+export { SortableList, SortableListItem };
+export default SortableList;

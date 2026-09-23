@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "direction-aware-tabs-demo",
-  "registryDependencies": [
-    "direction-aware-tabs"
-  ],
+  "registryDependencies": ["direction-aware-tabs"],
   "files": [
     {
       "path": "registry/default/example/direction-aware-tabs-demo.tsx",

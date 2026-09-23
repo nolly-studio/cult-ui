@@ -12,8 +12,8 @@ Use Tailwind CSS with intelligent class merging (`tailwind-merge`), conditional 
 ### The `cn` Utility Function
 
 ```tsx
-import { type ClassValue, clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -25,17 +25,19 @@ export function cn(...inputs: ClassValue[]) {
 ### Class Merging
 
 **Incorrect:**
+
 ```tsx
 // Without tailwind-merge, conflicting classes both apply
-className="bg-red-500 bg-blue-500" // Both classes apply, causing conflicts
-className="px-4 py-2 px-8" // Both px-4 and px-8 apply
+className = "bg-red-500 bg-blue-500"; // Both classes apply, causing conflicts
+className = "px-4 py-2 px-8"; // Both px-4 and px-8 apply
 ```
 
 **Correct:**
+
 ```tsx
-twMerge('bg-red-500', 'bg-blue-500'); // "bg-blue-500"
-twMerge('px-4 py-2', 'px-8'); // "py-2 px-8"
-twMerge('text-sm', 'text-lg'); // "text-lg"
+twMerge("bg-red-500", "bg-blue-500"); // "bg-blue-500"
+twMerge("px-4 py-2", "px-8"); // "py-2 px-8"
+twMerge("text-sm", "text-lg"); // "text-lg"
 ```
 
 ### Component Pattern: Order Matters
@@ -48,21 +50,28 @@ Apply classes in this order:
 4. **User overrides** (className prop)
 
 **Incorrect:**
+
 ```tsx
 // Wrong order: user className comes before variants, preventing overrides
 className={cn(className, variant === 'primary' && 'bg-blue-500')}
 ```
 
 **Correct:**
+
 ```tsx
-const Component = ({ className, variant, isActive, ...props }: ComponentProps) => {
+const Component = ({
+  className,
+  variant,
+  isActive,
+  ...props
+}: ComponentProps) => {
   return (
     <div
       className={cn(
-        'rounded-lg border bg-white shadow-sm',  // 1. Base
-        variant === 'primary' && 'bg-blue-500',  // 2. Variants
-        isActive && 'ring-2 ring-blue-500',       // 3. Conditionals
-        className                                  // 4. User overrides
+        "rounded-lg border bg-white shadow-sm", // 1. Base
+        variant === "primary" && "bg-blue-500", // 2. Variants
+        isActive && "ring-2 ring-blue-500", // 3. Conditionals
+        className // 4. User overrides
       )}
       {...props}
     />
@@ -73,9 +82,9 @@ const Component = ({ className, variant, isActive, ...props }: ComponentProps) =
 ### Conditional Classes with `clsx`
 
 ```tsx
-cn('base', isActive && 'active');
-cn('base', { 'active': isActive, 'disabled': isDisabled });
-cn(['base', isLarge ? 'text-lg' : 'text-sm']);
+cn("base", isActive && "active");
+cn("base", { active: isActive, disabled: isDisabled });
+cn(["base", isLarge ? "text-lg" : "text-sm"]);
 ```
 
 ### Class Variance Authority (CVA)
@@ -83,7 +92,7 @@ cn(['base', isLarge ? 'text-lg' : 'text-sm']);
 For components with multiple variants:
 
 ```tsx
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva, type VariantProps } from "class-variance-authority";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-all",
@@ -109,16 +118,21 @@ const buttonVariants = cva(
   }
 );
 
-type ButtonProps = React.ComponentProps<'button'> & VariantProps<typeof buttonVariants>;
+type ButtonProps = React.ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants>;
 
 export const Button = ({ className, variant, size, ...props }: ButtonProps) => {
   return (
-    <button className={cn(buttonVariants({ variant, size }), className)} {...props} />
+    <button
+      className={cn(buttonVariants({ variant, size }), className)}
+      {...props}
+    />
   );
 };
 ```
 
 **Key points:**
+
 - Define CVA variants **outside** the component
 - Use `VariantProps<typeof variants>` for TypeScript types
 - Always merge with `className` prop using `cn`
@@ -137,15 +151,20 @@ className={cn(focusRing, disabled, className)}
 **2. Use CSS Variables for Dynamic Values:**
 
 **Incorrect:**
+
 ```tsx
 // Dynamic class generation (not detected by Tailwind)
 <div className={`bg-[${dynamicColor}]`} />
 ```
 
 **Correct:**
+
 ```tsx
 // CSS variables
-<div className="bg-[var(--color)]" style={{ '--color': dynamicColor } as React.CSSProperties} />
+<div
+  className="bg-[var(--color)]"
+  style={{ "--color": dynamicColor } as React.CSSProperties}
+/>
 ```
 
 **3. Document Variants:**
@@ -153,9 +172,9 @@ className={cn(focusRing, disabled, className)}
 ```tsx
 type ButtonProps = {
   /** The visual style @default "default" */
-  variant?: 'default' | 'destructive' | 'outline' | 'ghost';
+  variant?: "default" | "destructive" | "outline" | "ghost";
   /** The size @default "default" */
-  size?: 'sm' | 'default' | 'lg' | 'icon';
+  size?: "sm" | "default" | "lg" | "icon";
 };
 ```
 
@@ -164,19 +183,23 @@ type ButtonProps = {
 **State-Based Styling:**
 
 ```tsx
-<div className={cn(
-  'transition-all',
-  isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-)} />
+<div
+  className={cn(
+    "transition-all",
+    isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+  )}
+/>
 ```
 
 **CVA with Additional Conditionals:**
 
 ```tsx
-<div className={cn(
-  baseVariants({ variant, size }),
-  isActive && 'ring-2 ring-blue-500',
-  isDisabled && 'opacity-50 cursor-not-allowed',
-  className
-)} />
+<div
+  className={cn(
+    baseVariants({ variant, size }),
+    isActive && "ring-2 ring-blue-500",
+    isDisabled && "opacity-50 cursor-not-allowed",
+    className
+  )}
+/>
 ```

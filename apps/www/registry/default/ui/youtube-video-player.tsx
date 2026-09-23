@@ -1,43 +1,43 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { Maximize2, Minimize2, Play } from "lucide-react"
-import { AnimatePresence, motion } from "motion/react"
+import { Maximize2, Minimize2, Play } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 interface YouTubePlayerProps {
-  videoId: string
-  title?: string
-  defaultExpanded?: boolean
-  customThumbnail?: string
+  videoId: string;
+  title?: string;
+  defaultExpanded?: boolean;
+  customThumbnail?: string;
 
   // Container & Layout
-  className?: string
-  containerClassName?: string
-  expandedClassName?: string
+  className?: string;
+  containerClassName?: string;
+  expandedClassName?: string;
 
   // Thumbnail & Media
-  thumbnailClassName?: string
-  thumbnailImageClassName?: string
+  thumbnailClassName?: string;
+  thumbnailImageClassName?: string;
 
   // Play Button
-  playButtonClassName?: string
-  playIconClassName?: string
+  playButtonClassName?: string;
+  playIconClassName?: string;
 
   // Title
-  titleClassName?: string
+  titleClassName?: string;
 
   // Controls
-  controlsClassName?: string
-  expandButtonClassName?: string
+  controlsClassName?: string;
+  expandButtonClassName?: string;
 
   // Backdrop
-  backdropClassName?: string
+  backdropClassName?: string;
 
   // Player
-  playerClassName?: string
+  playerClassName?: string;
 }
 
 export function YouTubePlayer({
@@ -60,59 +60,59 @@ export function YouTubePlayer({
   backdropClassName,
   playerClassName,
 }: YouTubePlayerProps) {
-  const [expanded, setExpanded] = useState(defaultExpanded)
-  const [playing, setPlaying] = useState(false)
-  const [isHovered, setIsHovered] = useState(false)
+  const [expanded, setExpanded] = useState(defaultExpanded);
+  const [playing, setPlaying] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   // Extract video ID from full URL if needed
   const extractVideoId = (id: string) => {
     if (id.includes("youtube.com") || id.includes("youtu.be")) {
       try {
-        const url = new URL(id)
+        const url = new URL(id);
         if (id.includes("youtube.com")) {
-          return url.searchParams.get("v") || ""
+          return url.searchParams.get("v") || "";
         } else {
-          return url.pathname.substring(1)
+          return url.pathname.substring(1);
         }
       } catch (error) {
-        console.error("Invalid YouTube URL:", error)
-        return id
+        console.error("Invalid YouTube URL:", error);
+        return id;
       }
     }
-    return id
-  }
+    return id;
+  };
 
-  const actualVideoId = extractVideoId(videoId)
+  const actualVideoId = extractVideoId(videoId);
 
   const handlePlay = () => {
-    setPlaying(true)
-  }
+    setPlaying(true);
+  };
 
   const toggleExpand = () => {
-    setExpanded(!expanded)
-  }
+    setExpanded(!expanded);
+  };
 
   // Handle Escape key to minimize when expanded
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape" && expanded) {
-        setExpanded(false)
+        setExpanded(false);
       }
-    }
+    };
     if (expanded) {
-      document.addEventListener("keydown", handleKeyDown)
+      document.addEventListener("keydown", handleKeyDown);
     }
     return () => {
-      document.removeEventListener("keydown", handleKeyDown)
-    }
-  }, [expanded])
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [expanded]);
 
   const getThumbnailUrl = () => {
-    if (customThumbnail) return customThumbnail
+    if (customThumbnail) return customThumbnail;
     return actualVideoId
       ? `https://i.ytimg.com/vi/${actualVideoId}/hqdefault.jpg`
-      : ""
-  }
+      : "";
+  };
 
   return (
     <>
@@ -127,20 +127,20 @@ export function YouTubePlayer({
         <motion.div
           layoutId={`youtube-player-${videoId}`}
           className={cn(
-            "overflow-hidden border bg-card text-card-foreground shadow-lg rounded-xl",
+            "bg-card text-card-foreground overflow-hidden rounded-xl border shadow-lg",
             containerClassName
           )}
         >
           <motion.div
             layoutId={`youtube-player-content-${videoId}`}
-            className={cn("relative aspect-video bg-muted", playerClassName)}
+            className={cn("bg-muted relative aspect-video", playerClassName)}
           >
             {!playing && (
               <>
                 <motion.div
                   layoutId={`youtube-player-thumbnail-container-${videoId}`}
                   className={cn(
-                    "absolute inset-0 bg-gradient-to-br from-muted to-muted/80",
+                    "from-muted to-muted/80 absolute inset-0 bg-gradient-to-br",
                     thumbnailClassName
                   )}
                 >
@@ -159,14 +159,14 @@ export function YouTubePlayer({
 
                 <motion.div
                   layoutId={`youtube-player-content-overlay-${videoId}`}
-                  className="absolute inset-0 flex flex-col items-center justify-center z-10"
+                  className="absolute inset-0 z-10 flex flex-col items-center justify-center"
                 >
                   <Button
                     size="lg"
                     variant="secondary"
                     className={cn(
-                      "relative h-16 w-16 rounded-full border border-border/20 bg-background/80 backdrop-blur-sm md:h-20 md:w-20 p-0",
-                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                      "border-border/20 bg-background/80 relative h-16 w-16 rounded-full border p-0 backdrop-blur-sm md:h-20 md:w-20",
+                      "focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
                       playButtonClassName
                     )}
                     onClick={handlePlay}
@@ -174,7 +174,7 @@ export function YouTubePlayer({
                   >
                     <Play
                       className={cn(
-                        "h-6 w-6 translate-x-[2px] fill-primary text-primary md:h-8 md:w-8",
+                        "fill-primary text-primary h-6 w-6 translate-x-[2px] md:h-8 md:w-8",
                         playIconClassName
                       )}
                     />
@@ -184,7 +184,7 @@ export function YouTubePlayer({
                     <motion.h3
                       layoutId={`youtube-player-title-${videoId}`}
                       className={cn(
-                        "mt-4 max-w-xs text-center text-sm font-medium text-secondary/90 md:max-w-md md:text-base",
+                        "text-secondary/90 mt-4 max-w-xs text-center text-sm font-medium md:max-w-md md:text-base",
                         titleClassName
                       )}
                     >
@@ -229,26 +229,26 @@ export function YouTubePlayer({
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               className={cn(
-                "fixed inset-0 z-40 bg-background/80 backdrop-blur-sm",
+                "bg-background/80 fixed inset-0 z-40 backdrop-blur-sm",
                 backdropClassName
               )}
               onClick={toggleExpand}
               aria-label="Close expanded video"
             />
 
-            <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
+            <div className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center">
               <motion.div
                 layoutId={`youtube-player-${videoId}`}
                 className={cn(
-                  "overflow-hidden border bg-card text-card-foreground shadow-xl rounded-lg pointer-events-auto",
-                  "w-[90vw] max-w-[1200px] max-h-[90vh] aspect-video",
+                  "bg-card text-card-foreground pointer-events-auto overflow-hidden rounded-lg border shadow-xl",
+                  "aspect-video max-h-[90vh] w-[90vw] max-w-[1200px]",
                   expandedClassName
                 )}
               >
                 <motion.div
                   layoutId={`youtube-player-content-${videoId}`}
                   className={cn(
-                    "relative aspect-video bg-muted",
+                    "bg-muted relative aspect-video",
                     playerClassName
                   )}
                 >
@@ -257,7 +257,7 @@ export function YouTubePlayer({
                       <motion.div
                         layoutId={`youtube-player-thumbnail-container-${videoId}`}
                         className={cn(
-                          "absolute inset-0 bg-gradient-to-br from-muted to-muted/80",
+                          "from-muted to-muted/80 absolute inset-0 bg-gradient-to-br",
                           thumbnailClassName
                         )}
                       >
@@ -276,14 +276,14 @@ export function YouTubePlayer({
 
                       <motion.div
                         layoutId={`youtube-player-content-overlay-${videoId}`}
-                        className="absolute inset-0 flex flex-col items-center justify-center z-10"
+                        className="absolute inset-0 z-10 flex flex-col items-center justify-center"
                       >
                         <Button
                           size="lg"
                           variant="secondary"
                           className={cn(
-                            "relative h-16 w-16 rounded-full border border-border/20 bg-background/80 backdrop-blur-sm md:h-20 md:w-20 p-0",
-                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                            "border-border/20 bg-background/80 relative h-16 w-16 rounded-full border p-0 backdrop-blur-sm md:h-20 md:w-20",
+                            "focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
                             playButtonClassName
                           )}
                           onClick={handlePlay}
@@ -291,7 +291,7 @@ export function YouTubePlayer({
                         >
                           <Play
                             className={cn(
-                              "h-6 w-6 translate-x-[2px] fill-primary text-primary md:h-8 md:w-8",
+                              "fill-primary text-primary h-6 w-6 translate-x-[2px] md:h-8 md:w-8",
                               playIconClassName
                             )}
                           />
@@ -301,7 +301,7 @@ export function YouTubePlayer({
                           <motion.h3
                             layoutId={`youtube-player-title-${videoId}`}
                             className={cn(
-                              "mt-4 max-w-xs text-center text-sm font-medium text-foreground/90 md:max-w-md md:text-base",
+                              "text-foreground/90 mt-4 max-w-xs text-center text-sm font-medium md:max-w-md md:text-base",
                               titleClassName
                             )}
                           >
@@ -339,18 +339,18 @@ export function YouTubePlayer({
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }
 
 // Controls Component
 interface YouTubePlayerControlsProps {
-  videoId: string
-  expanded: boolean
-  playing: boolean
-  isHovered: boolean
-  onToggleExpand: () => void
-  controlsClassName?: string
-  expandButtonClassName?: string
+  videoId: string;
+  expanded: boolean;
+  playing: boolean;
+  isHovered: boolean;
+  onToggleExpand: () => void;
+  controlsClassName?: string;
+  expandButtonClassName?: string;
 }
 
 function YouTubePlayerControls({
@@ -362,7 +362,7 @@ function YouTubePlayerControls({
   controlsClassName,
   expandButtonClassName,
 }: YouTubePlayerControlsProps) {
-  const shouldShow = !playing || isHovered || expanded
+  const shouldShow = !playing || isHovered || expanded;
 
   return (
     <AnimatePresence>
@@ -373,7 +373,7 @@ function YouTubePlayerControls({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className={cn("absolute right-2 top-2 z-20", controlsClassName)}
+          className={cn("absolute top-2 right-2 z-20", controlsClassName)}
         >
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button
@@ -381,7 +381,7 @@ function YouTubePlayerControls({
               size="icon"
               onClick={onToggleExpand}
               className={cn(
-                "h-8 w-8 rounded-full bg-background/40 backdrop-blur-sm hover:bg-background/60 focus-visible:ring-ring/50 md:h-9 md:w-9",
+                "bg-background/40 hover:bg-background/60 focus-visible:ring-ring/50 h-8 w-8 rounded-full backdrop-blur-sm md:h-9 md:w-9",
                 expandButtonClassName
               )}
               aria-label={expanded ? "Minimize video" : "Maximize video"}
@@ -401,8 +401,8 @@ function YouTubePlayerControls({
         </motion.div>
       )}
     </AnimatePresence>
-  )
+  );
 }
 
 // Export sub-components for advanced customization
-export { YouTubePlayerControls }
+export { YouTubePlayerControls };

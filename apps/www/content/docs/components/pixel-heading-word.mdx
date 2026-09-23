@@ -59,17 +59,21 @@ This component requires the **Geist Pixel fonts**. Follow these steps to configu
 Import the pixel font variants from `geist/font/pixel` and apply their CSS variable classes to `<body>`:
 
 ```tsx title="app/layout.tsx"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import {
   GeistPixelSquare,
   GeistPixelGrid,
   GeistPixelCircle,
   GeistPixelTriangle,
   GeistPixelLine,
-} from "geist/font/pixel"
+} from "geist/font/pixel";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body
@@ -78,21 +82,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
       </body>
     </html>
-  )
+  );
 }
 ```
 
 Each import exposes a `.variable` property that injects a CSS custom property:
 
-| Import                | CSS Variable                    |
-| --------------------- | ------------------------------- |
-| `GeistSans`           | `--font-geist-sans`            |
-| `GeistMono`           | `--font-geist-mono`            |
-| `GeistPixelSquare`    | `--font-geist-pixel-square`    |
-| `GeistPixelGrid`      | `--font-geist-pixel-grid`      |
-| `GeistPixelCircle`    | `--font-geist-pixel-circle`    |
-| `GeistPixelTriangle`  | `--font-geist-pixel-triangle`  |
-| `GeistPixelLine`      | `--font-geist-pixel-line`      |
+| Import               | CSS Variable                  |
+| -------------------- | ----------------------------- |
+| `GeistSans`          | `--font-geist-sans`           |
+| `GeistMono`          | `--font-geist-mono`           |
+| `GeistPixelSquare`   | `--font-geist-pixel-square`   |
+| `GeistPixelGrid`     | `--font-geist-pixel-grid`     |
+| `GeistPixelCircle`   | `--font-geist-pixel-circle`   |
+| `GeistPixelTriangle` | `--font-geist-pixel-triangle` |
+| `GeistPixelLine`     | `--font-geist-pixel-line`     |
 
 ### 2. Map CSS variables in your Tailwind CSS theme
 
@@ -127,13 +131,13 @@ export default {
       },
     },
   },
-}
+};
 ```
 
 ## Usage
 
 ```tsx
-import { PixelHeading } from "@/components/ui/pixel-heading-word"
+import { PixelHeading } from "@/components/ui/pixel-heading-word";
 ```
 
 ### Swap Mode
@@ -203,35 +207,35 @@ Listen for font index changes:
 
 ### PixelHeading Props
 
-| Prop                | Type                                              | Default     | Description                                                             |
-| ------------------- | ------------------------------------------------- | ----------- | ----------------------------------------------------------------------- |
-| `as`                | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"h1"`      | HTML heading level to render                                             |
-| `initialFont`       | `"square" \| "grid" \| "circle" \| "triangle" \| "line"` | `"square"` | The resting pixel font displayed by default                       |
-| `hoverFont`         | `"square" \| "grid" \| "circle" \| "triangle" \| "line"` | —          | Font to show on hover. When set, swaps instead of cycling          |
-| `cycleInterval`     | `number`                                          | `300`       | Interval in ms between font cycles on hover (cycle mode only)            |
-| `defaultFontIndex`  | `number`                                          | `0`         | Initial font index (0–4). Ignored when `initialFont` is set             |
-| `showLabel`         | `boolean`                                         | `false`     | Show the active font name label beneath the heading                      |
-| `onFontIndexChange` | `(index: number) => void`                         | —           | Callback fired when the active font changes                              |
-| `className`         | `string`                                          | —           | Additional CSS classes applied to the heading element                     |
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `as` | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"h1"` | HTML heading level to render |
+| `initialFont` | `"square" \| "grid" \| "circle" \| "triangle" \| "line"` | `"square"` | The resting pixel font displayed by default |
+| `hoverFont` | `"square" \| "grid" \| "circle" \| "triangle" \| "line"` | — | Font to show on hover. When set, swaps instead of cycling |
+| `cycleInterval` | `number` | `300` | Interval in ms between font cycles on hover (cycle mode only) |
+| `defaultFontIndex` | `number` | `0` | Initial font index (0–4). Ignored when `initialFont` is set |
+| `showLabel` | `boolean` | `false` | Show the active font name label beneath the heading |
+| `onFontIndexChange` | `(index: number) => void` | — | Callback fired when the active font changes |
+| `className` | `string` | — | Additional CSS classes applied to the heading element |
 
 ### Swap Mode vs Cycle Mode
 
-| Behavior       | Swap Mode                                    | Cycle Mode                                           |
-| -------------- | -------------------------------------------- | ---------------------------------------------------- |
-| Configuration  | Set both `initialFont` and `hoverFont`       | Set `initialFont` only (omit `hoverFont`)            |
-| On hover       | Instantly swaps to `hoverFont`               | Cycles through all 5 fonts at `cycleInterval` speed  |
-| On leave       | Returns to `initialFont`                     | Stops cycling, stays on last font                    |
-| Keyboard       | No keyboard step (instant swap)              | Enter/Space advances one font                        |
+| Behavior | Swap Mode | Cycle Mode |
+| --- | --- | --- |
+| Configuration | Set both `initialFont` and `hoverFont` | Set `initialFont` only (omit `hoverFont`) |
+| On hover | Instantly swaps to `hoverFont` | Cycles through all 5 fonts at `cycleInterval` speed |
+| On leave | Returns to `initialFont` | Stops cycling, stays on last font |
+| Keyboard | No keyboard step (instant swap) | Enter/Space advances one font |
 
 ### Available Pixel Fonts
 
-| Font Name  | Tailwind Class         | CSS Variable                    |
-| ---------- | ---------------------- | ------------------------------- |
-| `square`   | `font-pixel-square`    | `--font-geist-pixel-square`    |
-| `grid`     | `font-pixel-grid`      | `--font-geist-pixel-grid`      |
-| `circle`   | `font-pixel-circle`    | `--font-geist-pixel-circle`    |
-| `triangle` | `font-pixel-triangle`  | `--font-geist-pixel-triangle`  |
-| `line`     | `font-pixel-line`      | `--font-geist-pixel-line`      |
+| Font Name  | Tailwind Class        | CSS Variable                  |
+| ---------- | --------------------- | ----------------------------- |
+| `square`   | `font-pixel-square`   | `--font-geist-pixel-square`   |
+| `grid`     | `font-pixel-grid`     | `--font-geist-pixel-grid`     |
+| `circle`   | `font-pixel-circle`   | `--font-geist-pixel-circle`   |
+| `triangle` | `font-pixel-triangle` | `--font-geist-pixel-triangle` |
+| `line`     | `font-pixel-line`     | `--font-geist-pixel-line`     |
 
 ## Features
 
@@ -243,15 +247,15 @@ Listen for font index changes:
 
 ## Pixel Heading (Character) vs Pixel Heading (Word)
 
-| Feature                | Character variant                          | Word variant                       |
-| ---------------------- | ------------------------------------------ | ---------------------------------- |
-| Animation granularity  | Each character animates independently      | Whole heading changes at once      |
-| Modes                  | uniform, multi, wave, random               | swap, cycle                        |
-| Auto-play              | Yes                                        | No (hover/focus only)              |
-| Prefix support         | Yes                                        | No                                 |
-| Character isolation    | Yes                                        | No                                 |
-| Stagger control        | Yes                                        | N/A                                |
-| Best for               | Hero text, large display headings          | Buttons, labels, smaller headings  |
+| Feature | Character variant | Word variant |
+| --- | --- | --- |
+| Animation granularity | Each character animates independently | Whole heading changes at once |
+| Modes | uniform, multi, wave, random | swap, cycle |
+| Auto-play | Yes | No (hover/focus only) |
+| Prefix support | Yes | No |
+| Character isolation | Yes | No |
+| Stagger control | Yes | N/A |
+| Best for | Hero text, large display headings | Buttons, labels, smaller headings |
 
 ## Notes
 

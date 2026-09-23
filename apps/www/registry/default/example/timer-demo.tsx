@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { Pause, Play, RotateCcw } from "lucide-react"
+import { Pause, Play, RotateCcw } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Timer,
   TimerDisplay,
   TimerIcon,
   TimerRoot,
   useTimer,
-} from "@/registry/default/ui/timer"
+} from "@/registry/default/ui/timer";
 
 export default function TimerExamples() {
   return (
@@ -24,7 +24,7 @@ export default function TimerExamples() {
         {/* Variants */}
         <div className="space-y-2">
           <h3 className="text-lg font-semibold">Variants</h3>
-          <div className="flex gap-4 flex-wrap">
+          <div className="flex flex-wrap gap-4">
             <Timer variant="default" loading={true} />
             <Timer variant="outline" loading={true} />
             <Timer variant="ghost" loading={true} />
@@ -35,7 +35,7 @@ export default function TimerExamples() {
         {/* Sizes */}
         <div className="space-y-2">
           <h3 className="text-lg font-semibold">Sizes</h3>
-          <div className="flex gap-4 items-center flex-wrap">
+          <div className="flex flex-wrap items-center gap-4">
             <Timer size="sm" loading={true} />
             <Timer size="md" loading={true} />
             <Timer size="lg" loading={true} />
@@ -55,13 +55,13 @@ export default function TimerExamples() {
         <CustomTimerExample />
       </div>
     </div>
-  )
+  );
 }
 
 function CustomTimerExample() {
   const { formattedTime, isRunning, start, stop, reset } = useTimer({
     format: "MM:SS",
-  })
+  });
 
   return (
     <div className="space-y-2">
@@ -79,16 +79,16 @@ function CustomTimerExample() {
             onClick={isRunning ? stop : start}
           >
             {isRunning ? (
-              <Pause className="w-4 h-4" />
+              <Pause className="h-4 w-4" />
             ) : (
-              <Play className="w-4 h-4" />
+              <Play className="h-4 w-4" />
             )}
           </Button>
           <Button size="sm" variant="outline" onClick={reset}>
-            <RotateCcw className="w-4 h-4" />
+            <RotateCcw className="h-4 w-4" />
           </Button>
         </div>
       </div>
     </div>
-  )
+  );
 }

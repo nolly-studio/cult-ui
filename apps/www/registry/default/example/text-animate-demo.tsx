@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import { useRef, useState } from "react"
-import { motion, useInView } from "motion/react"
+import { motion, useInView } from "motion/react";
+import { useRef, useState } from "react";
 
-import { FadeIn } from "@/components/fade-in"
+import { FadeIn } from "@/components/fade-in";
 
-import TextAnimate from "../ui/text-animate"
+import TextAnimate from "../ui/text-animate";
 
 // @ts-ignore
 const AnimationDemo = ({ type, children }) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
-  const [count, setCount] = useState(0)
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const [count, setCount] = useState(0);
 
   return (
-    <div className="flex flex-col relative" ref={ref}>
+    <div className="relative flex flex-col" ref={ref}>
       <div className="mt-8">
         <FadeIn key={count}>{children}</FadeIn>
       </div>
@@ -25,24 +25,24 @@ const AnimationDemo = ({ type, children }) => {
         <Refresh onClick={() => setCount(count + 1)} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 const button = {
   rest: { scale: 1 },
   hover: { scale: 1.1 },
   pressed: { scale: 0.95 },
-}
+};
 const arrow = {
   rest: { rotate: 0 },
   hover: { rotate: 360, transition: { duration: 0.4 } },
-}
+};
 
 // @ts-ignore
 const Refresh = ({ onClick }) => {
   return (
     <motion.div
-      className="p-1 border border-dotted rounded w-7 h-7  flex justify-center items-center cursor-pointer"
+      className="flex h-7 w-7 cursor-pointer items-center justify-center rounded border border-dotted p-1"
       onClick={onClick}
       variants={button}
       initial="rest"
@@ -62,8 +62,8 @@ const Refresh = ({ onClick }) => {
         />
       </motion.svg>
     </motion.div>
-  )
-}
+  );
+};
 
 export default function TextAnimationDemo() {
   return (
@@ -135,5 +135,5 @@ export default function TextAnimationDemo() {
         </div>
       </div>
     </AnimationDemo>
-  )
+  );
 }

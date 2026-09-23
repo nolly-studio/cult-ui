@@ -11,6 +11,6 @@ export const siteConfig = {
     twitter: "https://x.com/nolansym",
     github: "https://github.com/nolly-studio/cult-ui",
   },
-} as const
+} as const;
 
-export type SiteConfig = typeof siteConfig
+export type SiteConfig = typeof siteConfig;

@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pixel-paragraph-words-demo",
-  "registryDependencies": [
-    "pixel-paragraph-words"
-  ],
+  "registryDependencies": ["pixel-paragraph-words"],
   "files": [
     {
       "path": "registry/default/example/pixel-paragraph-words-demo.tsx",

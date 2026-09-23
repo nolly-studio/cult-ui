@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "code-block-demo",
-  "registryDependencies": [
-    "code-block"
-  ],
+  "registryDependencies": ["code-block"],
   "files": [
     {
       "path": "registry/default/example/code-block-demo.tsx",

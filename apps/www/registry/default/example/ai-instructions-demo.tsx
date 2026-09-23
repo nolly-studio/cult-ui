@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 
 import {
   Instruction,
@@ -15,7 +15,7 @@ import {
   InstructionsList,
   InstructionsSearch,
   InstructionsTrigger,
-} from "../ui/ai-instructions"
+} from "../ui/ai-instructions";
 
 const SAMPLE_INSTRUCTIONS: Instruction[] = [
   {
@@ -53,19 +53,19 @@ const SAMPLE_INSTRUCTIONS: Instruction[] = [
     content:
       "Include ARIA attributes, semantic HTML, keyboard navigation support, and screen reader considerations in all UI-related code.",
   },
-]
+];
 
 export default function AiInstructionsDemo() {
   const [activeInstructions, setActiveInstructions] = useState<string[]>([
     "concise",
-  ])
+  ]);
   const [instructions, setInstructions] =
-    useState<Instruction[]>(SAMPLE_INSTRUCTIONS)
+    useState<Instruction[]>(SAMPLE_INSTRUCTIONS);
 
   return (
     <div className="flex w-full max-w-md flex-col gap-4">
-      <div className="rounded-lg border bg-card p-4">
-        <p className="mb-3 text-muted-foreground text-sm">
+      <div className="bg-card rounded-lg border p-4">
+        <p className="text-muted-foreground mb-3 text-sm">
           Configure AI behavior with custom instructions. Click the button below
           to manage your active instructions.
         </p>
@@ -97,25 +97,25 @@ export default function AiInstructionsDemo() {
         </Instructions>
       </div>
       {activeInstructions.length > 0 && (
-        <div className="rounded-lg border bg-muted/50 p-3">
-          <p className="mb-2 font-medium text-xs">
+        <div className="bg-muted/50 rounded-lg border p-3">
+          <p className="mb-2 text-xs font-medium">
             Active ({activeInstructions.length}):
           </p>
           <div className="flex flex-wrap gap-1.5">
             {activeInstructions.map((id) => {
-              const instruction = instructions.find((i) => i.id === id)
+              const instruction = instructions.find((i) => i.id === id);
               return instruction ? (
                 <span
-                  className="rounded-md bg-primary/10 px-2 py-0.5 text-primary text-xs"
+                  className="bg-primary/10 text-primary rounded-md px-2 py-0.5 text-xs"
                   key={id}
                 >
                   {instruction.title}
                 </span>
-              ) : null
+              ) : null;
             })}
           </div>
         </div>
       )}
     </div>
-  )
+  );
 }

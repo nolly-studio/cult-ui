@@ -3,9 +3,7 @@
   "name": "floating-panel",
   "type": "registry:ui",
   "description": "Floating panel component with backdrop blur and position-aware animations",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/floating-panel.tsx",

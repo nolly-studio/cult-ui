@@ -1,9 +1,7 @@
 {
   "name": "color-picker",
   "description": "Interactive color picker component with HSL support and preset colors",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "name": "color-picker.tsx",

@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "minimal-card-demo",
-  "registryDependencies": [
-    "minimal-card"
-  ],
+  "registryDependencies": ["minimal-card"],
   "files": [
     {
       "path": "registry/default/example/minimal-card-demo.tsx",

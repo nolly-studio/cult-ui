@@ -1,55 +1,55 @@
-"use client"
+"use client";
 
-import { useId } from "react"
-import Image from "next/image"
+import Image from "next/image";
+import { useId } from "react";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 import {
   ExpandableScreen,
   ExpandableScreenContent,
   ExpandableScreenTrigger,
-} from "@/registry/default/ui/expandable-screen"
+} from "@/registry/default/ui/expandable-screen";
 
 const formFieldClassName =
-  "w-full rounded-lg border-0 bg-primary-foreground px-4 text-primary shadow-none placeholder:text-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-sm"
+  "w-full rounded-lg border-0 bg-primary-foreground px-4 text-primary shadow-none placeholder:text-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-sm";
 
 function ExpandableScreenDemo() {
-  const nameId = useId()
-  const emailId = useId()
-  const websiteId = useId()
-  const companySizeId = useId()
-  const messageId = useId()
+  const nameId = useId();
+  const emailId = useId();
+  const websiteId = useId();
+  const companySizeId = useId();
+  const messageId = useId();
   return (
     <ExpandableScreen
       layoutId="cta-card"
       triggerRadius="100px"
       contentRadius="24px"
     >
-      <div className="relative flex min-h-screen flex-col items-center justify-center px-4 sm:px-6 py-12 sm:py-20">
-        <div className="relative z-10 flex flex-col items-center gap-4 sm:gap-6 text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[90%] tracking-[-0.03em] text-foreground mix-blend-exclusion max-w-2xl">
+      <div className="relative flex min-h-screen flex-col items-center justify-center px-4 py-12 sm:px-6 sm:py-20">
+        <div className="relative z-10 flex flex-col items-center gap-4 text-center sm:gap-6">
+          <h1 className="text-foreground max-w-2xl text-4xl leading-[90%] font-normal tracking-[-0.03em] mix-blend-exclusion sm:text-5xl md:text-6xl lg:text-7xl">
             Join the waitlist
           </h1>
 
-          <p className="text-base sm:text-lg md:text-xl leading-[160%] text-foreground max-w-2xl px-4">
+          <p className="text-foreground max-w-2xl px-4 text-base leading-[160%] sm:text-lg md:text-xl">
             Be among the first to experience our next-generation platform. Get
             early access to exclusive features and help shape the future of
             productivity.
           </p>
 
           <ExpandableScreenTrigger>
-            <div className="bg-primary h-15 px-6 sm:px-8 py-3 text-lg sm:text-xl font-regular text-primary-foreground tracking-[-0.01em]">
+            <div className="bg-primary font-regular text-primary-foreground h-15 px-6 py-3 text-lg tracking-[-0.01em] sm:px-8 sm:text-xl">
               Get early access
             </div>
           </ExpandableScreenTrigger>
@@ -57,17 +57,17 @@ function ExpandableScreenDemo() {
       </div>
 
       <ExpandableScreenContent className="bg-primary">
-        <div className="relative z-10 flex flex-col lg:flex-row h-full w-full max-w-[1100px] mx-auto items-center p-6 sm:p-10 lg:p-16 gap-8 lg:gap-16">
-          <div className="flex-1 flex flex-col justify-center space-y-3 w-full">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-primary-foreground leading-none tracking-[-0.03em]">
+        <div className="relative z-10 mx-auto flex h-full w-full max-w-[1100px] flex-col items-center gap-8 p-6 sm:p-10 lg:flex-row lg:gap-16 lg:p-16">
+          <div className="flex w-full flex-1 flex-col justify-center space-y-3">
+            <h2 className="text-primary-foreground text-3xl leading-none font-medium tracking-[-0.03em] sm:text-4xl lg:text-5xl">
               Reserve your spot
             </h2>
 
-            <div className="space-y-4 sm:space-y-6 pt-4">
+            <div className="space-y-4 pt-4 sm:space-y-6">
               <div className="flex gap-3 sm:gap-4">
-                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary-foreground/10 flex items-center justify-center">
+                <div className="bg-primary-foreground/10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg sm:h-12 sm:w-12">
                   <svg
-                    className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground"
+                    className="text-primary-foreground h-5 w-5 sm:h-6 sm:w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -82,16 +82,16 @@ function ExpandableScreenDemo() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm sm:text-base text-primary-foreground leading-[150%]">
+                  <p className="text-primary-foreground text-sm leading-[150%] sm:text-base">
                     Get priority access to new features and updates before
                     public release.
                   </p>
                 </div>
               </div>
               <div className="flex gap-3 sm:gap-4">
-                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary-foreground/10 flex items-center justify-center">
+                <div className="bg-primary-foreground/10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg sm:h-12 sm:w-12">
                   <svg
-                    className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground"
+                    className="text-primary-foreground h-5 w-5 sm:h-6 sm:w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -106,7 +106,7 @@ function ExpandableScreenDemo() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm sm:text-base text-primary-foreground leading-[150%]">
+                  <p className="text-primary-foreground text-sm leading-[150%] sm:text-base">
                     Join a community of early adopters and help influence our
                     product roadmap.
                   </p>
@@ -114,8 +114,8 @@ function ExpandableScreenDemo() {
               </div>
             </div>
 
-            <div className="pt-6 sm:pt-8 mt-6 sm:mt-8 border-t border-primary-foreground/20">
-              <p className="text-lg sm:text-xl lg:text-2xl text-primary-foreground leading-[150%] mb-4">
+            <div className="border-primary-foreground/20 mt-6 border-t pt-6 sm:mt-8 sm:pt-8">
+              <p className="text-primary-foreground mb-4 text-lg leading-[150%] sm:text-xl lg:text-2xl">
                 The waitlist has been a game-changer for our workflow. Highly
                 recommend joining early.
               </p>
@@ -125,13 +125,13 @@ function ExpandableScreenDemo() {
                   alt="Alex Rivera"
                   width={48}
                   height={48}
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"
+                  className="h-10 w-10 rounded-full object-cover sm:h-12 sm:w-12"
                 />
                 <div>
-                  <p className="text-base sm:text-lg lg:text-xl text-primary-foreground">
+                  <p className="text-primary-foreground text-base sm:text-lg lg:text-xl">
                     Alex Rivera
                   </p>
-                  <p className="text-sm sm:text-base text-primary-foreground/70">
+                  <p className="text-primary-foreground/70 text-sm sm:text-base">
                     Early Access Member
                   </p>
                 </div>
@@ -139,12 +139,12 @@ function ExpandableScreenDemo() {
             </div>
           </div>
 
-          <div className="flex-1 w-full">
+          <div className="w-full flex-1">
             <form className="space-y-4 sm:space-y-5">
               <div>
                 <Label
                   htmlFor={nameId}
-                  className="block text-[10px] font-mono font-normal text-primary-foreground mb-2 tracking-[0.5px] uppercase"
+                  className="text-primary-foreground mb-2 block font-mono text-[10px] font-normal tracking-[0.5px] uppercase"
                 >
                   FULL NAME *
                 </Label>
@@ -159,7 +159,7 @@ function ExpandableScreenDemo() {
               <div>
                 <Label
                   htmlFor={emailId}
-                  className="block text-[10px] font-mono font-normal text-primary-foreground mb-2 tracking-[0.5px] uppercase"
+                  className="text-primary-foreground mb-2 block font-mono text-[10px] font-normal tracking-[0.5px] uppercase"
                 >
                   EMAIL *
                 </Label>
@@ -171,11 +171,11 @@ function ExpandableScreenDemo() {
                 />
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col gap-4 sm:flex-row">
                 <div className="flex-1">
                   <Label
                     htmlFor={websiteId}
-                    className="block text-[10px] font-mono font-normal text-primary-foreground mb-2 tracking-[0.5px] uppercase"
+                    className="text-primary-foreground mb-2 block font-mono text-[10px] font-normal tracking-[0.5px] uppercase"
                   >
                     USE CASE
                   </Label>
@@ -187,10 +187,10 @@ function ExpandableScreenDemo() {
                     className={cn(formFieldClassName, "h-10 py-2.5")}
                   />
                 </div>
-                <div className="sm:w-32 w-full">
+                <div className="w-full sm:w-32">
                   <Label
                     htmlFor={companySizeId}
-                    className="block text-[10px] font-mono font-normal text-primary-foreground mb-2 tracking-[0.5px] uppercase"
+                    className="text-primary-foreground mb-2 block font-mono text-[10px] font-normal tracking-[0.5px] uppercase"
                   >
                     TEAM SIZE
                   </Label>
@@ -215,7 +215,7 @@ function ExpandableScreenDemo() {
               <div>
                 <Label
                   htmlFor={messageId}
-                  className="block text-[10px] font-mono font-normal text-primary-foreground mb-2 tracking-[0.5px] uppercase"
+                  className="text-primary-foreground mb-2 block font-mono text-[10px] font-normal tracking-[0.5px] uppercase"
                 >
                   WHAT ARE YOU MOST EXCITED ABOUT?
                 </Label>
@@ -230,7 +230,7 @@ function ExpandableScreenDemo() {
 
               <Button
                 type="submit"
-                className="w-full px-8 py-2.5 rounded-full bg-primary-foreground text-primary font-medium hover:bg-primary-foreground/90 transition-colors tracking-[-0.03em] h-10"
+                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 h-10 w-full rounded-full px-8 py-2.5 font-medium tracking-[-0.03em] transition-colors"
               >
                 Join waitlist
               </Button>
@@ -239,7 +239,7 @@ function ExpandableScreenDemo() {
         </div>
       </ExpandableScreenContent>
     </ExpandableScreen>
-  )
+  );
 }
 
-export default ExpandableScreenDemo
+export default ExpandableScreenDemo;

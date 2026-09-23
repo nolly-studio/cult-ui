@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { CopyButton, CopyWithClassNames } from "@/components/copy-button"
+import { CopyButton, CopyWithClassNames } from "@/components/copy-button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
 
 interface ComponentExampleProps extends React.HTMLAttributes<HTMLDivElement> {
-  extractClassname?: boolean
-  extractedClassNames?: string
-  align?: "center" | "start" | "end"
-  src?: string
+  extractClassname?: boolean;
+  extractedClassNames?: string;
+  align?: "center" | "start" | "end";
+  src?: string;
 }
 
 export function ComponentExample({
@@ -24,7 +24,7 @@ export function ComponentExample({
 }: ComponentExampleProps) {
   const [Example, Code, ...Children] = React.Children.toArray(
     children
-  ) as React.ReactElement[]
+  ) as React.ReactElement[];
 
   const codeString = React.useMemo(() => {
     if (
@@ -33,14 +33,14 @@ export function ComponentExample({
     ) {
       const [, Button] = React.Children.toArray(
         (Code?.props as any)?.children
-      ) as React.ReactElement[]
+      ) as React.ReactElement[];
       return (
         (Button?.props as any)?.value ||
         (Button?.props as any)?.__rawString__ ||
         null
-      )
+      );
     }
-  }, [Code])
+  }, [Code]);
 
   return (
     <div
@@ -52,13 +52,13 @@ export function ComponentExample({
           <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
             <TabsTrigger
               value="preview"
-              className="relative h-9 rounded-none rounded-tl-lg border border-b-2 border-b-transparent border-l-black/10 border-r-transparent border-t-black/10 bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none dark:border-l-white/10 dark:border-t-white/10"
+              className="text-muted-foreground data-[state=active]:border-b-primary data-[state=active]:text-foreground relative h-9 rounded-none rounded-tl-lg border border-b-2 border-t-black/10 border-r-transparent border-b-transparent border-l-black/10 bg-transparent px-4 pt-2 pb-3 font-semibold shadow-none transition-none data-[state=active]:shadow-none dark:border-t-white/10 dark:border-l-white/10"
             >
               Preview
             </TabsTrigger>
             <TabsTrigger
               value="code"
-              className="relative h-9 rounded-none rounded-tr-lg border border-b-2 border-b-transparent border-l-transparent border-r-black/10 border-t-black/10 bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none dark:border-r-white/10 dark:border-t-white/10"
+              className="text-muted-foreground data-[state=active]:border-b-primary data-[state=active]:text-foreground relative h-9 rounded-none rounded-tr-lg border border-b-2 border-t-black/10 border-r-black/10 border-b-transparent border-l-transparent bg-transparent px-4 pt-2 pb-3 font-semibold shadow-none transition-none data-[state=active]:shadow-none dark:border-t-white/10 dark:border-r-white/10"
             >
               Code
             </TabsTrigger>
@@ -67,13 +67,13 @@ export function ComponentExample({
             <CopyWithClassNames
               value={codeString}
               classNames={extractedClassNames}
-              className="absolute right-4 top-20"
+              className="absolute top-20 right-4"
             />
           ) : (
             codeString && (
               <CopyButton
                 value={codeString}
-                className="absolute right-4 top-20"
+                className="absolute top-20 right-4"
               />
             )
           )}
@@ -103,5 +103,5 @@ export function ComponentExample({
         </TabsContent>
       </Tabs>
     </div>
-  )
+  );
 }

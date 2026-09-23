@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "squiggle-arrow-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "squiggle-arrow"
-  ],
+  "registryDependencies": ["squiggle-arrow"],
   "files": [
     {
       "path": "registry/default/example/squiggle-arrow-demo.tsx",

@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-import { useConfig } from "@/hooks/use-config"
-import { Skeleton } from "@/components/ui/skeleton"
-import { ThemeWrapper } from "@/components/theme-wrapper"
+import { ThemeWrapper } from "@/components/theme-wrapper";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useConfig } from "@/hooks/use-config";
 
-import CardsDefault from "./cards"
+import CardsDefault from "./cards";
 
 export function ThemesTabs() {
-  const [mounted, setMounted] = React.useState(false)
-  const [config] = useConfig()
+  const [mounted, setMounted] = React.useState(false);
+  const [config] = useConfig();
 
   React.useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   return (
     <div className="space-y-8">
@@ -24,7 +24,7 @@ export function ThemesTabs() {
             <Skeleton className="h-[218px] w-full" />
             <div className="grid gap-1 sm:grid-cols-[260px_1fr] md:hidden">
               <Skeleton className="h-[218px] w-full" />
-              <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-4">
+              <div className="pt-3 sm:pt-0 sm:pl-2 xl:pl-4">
                 <Skeleton className="h-[218px] w-full" />
               </div>
               <div className="pt-3 sm:col-span-2 xl:pt-4">
@@ -49,7 +49,7 @@ export function ThemesTabs() {
           <div className="space-y-4 lg:col-span-6 xl:col-span-4 xl:space-y-6">
             <div className="hidden gap-1 sm:grid-cols-[260px_1fr] md:grid">
               <Skeleton className="h-[218px] w-full" />
-              <div className="pt-3 sm:pl-2 sm:pt-0 xl:pl-4">
+              <div className="pt-3 sm:pt-0 sm:pl-2 xl:pl-4">
                 <Skeleton className="h-[218px] w-full" />
               </div>
               <div className="pt-3 sm:col-span-2 xl:pt-4">
@@ -68,5 +68,5 @@ export function ThemesTabs() {
         </ThemeWrapper>
       )}
     </div>
-  )
+  );
 }

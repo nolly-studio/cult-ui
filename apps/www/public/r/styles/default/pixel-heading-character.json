@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pixel-heading-character",
   "description": "Per-character pixel-font heading with four animation modes using Geist pixel fonts",
-  "dependencies": [
-    "geist"
-  ],
+  "dependencies": ["geist"],
   "files": [
     {
       "path": "registry/default/ui/pixel-heading-character.tsx",

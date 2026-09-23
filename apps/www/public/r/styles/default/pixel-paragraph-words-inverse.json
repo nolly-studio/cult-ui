@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pixel-paragraph-words-inverse",
   "description": "Paragraph in pixel font where specific words escape into interactive sans/mono with hover swap or cycle",
-  "dependencies": [
-    "geist"
-  ],
+  "dependencies": ["geist"],
   "files": [
     {
       "path": "registry/default/ui/pixel-paragraph-words-inverse.tsx",

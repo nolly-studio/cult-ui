@@ -3,10 +3,7 @@
   "name": "sortable-list",
   "type": "registry:ui",
   "description": "Drag-and-drop sortable list component with smooth animations and reordering",
-  "dependencies": [
-    "motion",
-    "react-use-measure"
-  ],
+  "dependencies": ["motion", "react-use-measure"],
   "files": [
     {
       "path": "registry/default/ui/sortable-list.tsx",

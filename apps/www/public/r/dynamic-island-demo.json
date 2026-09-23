@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dynamic-island-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "dynamic-island"
-  ],
+  "registryDependencies": ["dynamic-island"],
   "files": [
     {
       "path": "registry/default/example/dynamic-island-demo.tsx",

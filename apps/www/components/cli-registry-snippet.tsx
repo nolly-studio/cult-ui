@@ -1,46 +1,46 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { useState } from "react"
 import {
   CheckIcon,
   ChevronDownIcon,
   ChevronRightIcon,
   CopyIcon,
-} from "lucide-react"
-import { AnimatePresence, motion } from "motion/react"
+} from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import * as React from "react";
+import { useState } from "react";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+} from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
 
 interface CliRegistrySnippetProps {
-  className?: string
+  className?: string;
 }
 
 export function CliRegistrySnippet({ className }: CliRegistrySnippetProps) {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isCopied, setIsCopied] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
   const registrySnippet = `{
   "registries": {
     "@cult-ui": "https://cult-ui.com/r/{name}.json"
   }
-}`
+}`;
 
   const onCopy = async () => {
     try {
-      await navigator.clipboard.writeText(registrySnippet)
-      setIsCopied(true)
-      setTimeout(() => setIsCopied(false), 2000)
+      await navigator.clipboard.writeText(registrySnippet);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
     } catch (err) {
-      console.error("Failed to copy:", err)
+      console.error("Failed to copy:", err);
     }
-  }
+  };
 
   return (
     <div className={cn("space-y-3", className)}>
@@ -48,7 +48,7 @@ export function CliRegistrySnippet({ className }: CliRegistrySnippetProps) {
         <CollapsibleTrigger asChild>
           <Button
             variant="ghost"
-            className="flex h-auto items-center gap-2 p-0 text-sm text-muted-foreground hover:text-foreground"
+            className="text-muted-foreground hover:text-foreground flex h-auto items-center gap-2 p-0 text-sm"
           >
             {isOpen ? (
               <ChevronDownIcon className="size-4" />
@@ -61,16 +61,16 @@ export function CliRegistrySnippet({ className }: CliRegistrySnippetProps) {
 
         <CollapsibleContent className="space-y-3">
           <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               Add this to your{" "}
-              <code className="rounded bg-muted px-1.5 py-0.5 text-xs">
+              <code className="bg-muted rounded px-1.5 py-0.5 text-xs">
                 components.json
               </code>{" "}
               file:
             </p>
 
             <div className="relative">
-              <pre className="overflow-x-auto rounded-md bg-muted p-3 text-sm">
+              <pre className="bg-muted overflow-x-auto rounded-md p-3 text-sm">
                 <code>{registrySnippet}</code>
               </pre>
 
@@ -79,7 +79,7 @@ export function CliRegistrySnippet({ className }: CliRegistrySnippetProps) {
                 size="icon"
                 onClick={onCopy}
                 className={cn(
-                  "absolute right-2 top-2 size-8 transition-all duration-200",
+                  "absolute top-2 right-2 size-8 transition-all duration-200",
                   isCopied
                     ? "bg-green-100 text-green-600 hover:bg-green-100"
                     : "hover:bg-background"
@@ -112,9 +112,9 @@ export function CliRegistrySnippet({ className }: CliRegistrySnippetProps) {
               </Button>
             </div>
 
-            <p className="text-xs text-muted-foreground">
+            <p className="text-muted-foreground text-xs">
               Then install with:{" "}
-              <code className="rounded bg-muted px-1.5 py-0.5 text-xs">
+              <code className="bg-muted rounded px-1.5 py-0.5 text-xs">
                 npx shadcn@beta add @cult-ui/component-name
               </code>
             </p>
@@ -122,5 +122,5 @@ export function CliRegistrySnippet({ className }: CliRegistrySnippetProps) {
         </CollapsibleContent>
       </Collapsible>
     </div>
-  )
+  );
 }

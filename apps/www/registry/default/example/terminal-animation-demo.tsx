@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 import {
   TerminalAnimationBackgroundGradient,
@@ -18,19 +18,19 @@ import {
   TerminalAnimationWindow,
   type TabContent,
   type TerminalLine,
-} from "../ui/terminal-animation"
+} from "../ui/terminal-animation";
 
 export interface TerminalAnimationDemoProps {
   /** Tab content for each command; defaults to defaultTerminalTabs */
-  tabs?: TabContent[]
+  tabs?: TabContent[];
   /** Background image URL; when unset, BackgroundGradient is used */
-  backgroundImage?: string
+  backgroundImage?: string;
   /** Force dark mode for the terminal regardless of page theme */
-  alwaysDark?: boolean
+  alwaysDark?: boolean;
 }
 
 const backgroundImage =
-  "/component-images/terminal-animation/terminal-animation-bg-2.png"
+  "/component-images/terminal-animation/terminal-animation-bg-2.png";
 
 const tabs: TabContent[] = [
   {
@@ -215,30 +215,30 @@ const tabs: TabContent[] = [
       { text: "  Time:        1.234 s", color: "text-slate-500", delay: 100 },
     ],
   },
-]
+];
 
 export function TerminalAnimationDemo() {
-  const [animationKey, setAnimationKey] = useState(0)
+  const [animationKey, setAnimationKey] = useState(0);
 
   return (
     <TerminalAnimationRoot
       key={animationKey}
       alwaysDark={true}
       backgroundImage={backgroundImage}
-      className="relative flex w-full justify-center overflow-clip bg-background"
+      className="bg-background relative flex w-full justify-center overflow-clip"
       defaultActiveTab={1}
       hideCursorOnComplete={false}
       tabs={tabs}
     >
       <button
-        className="absolute top-4 left-4 z-20 rounded-md border border-white/25 bg-black/45 px-3 py-1.5 font-mono text-[11px] text-white/90 uppercase tracking-wide transition hover:bg-black/65"
+        className="absolute top-4 left-4 z-20 rounded-md border border-white/25 bg-black/45 px-3 py-1.5 font-mono text-[11px] tracking-wide text-white/90 uppercase transition hover:bg-black/65"
         onClick={() => setAnimationKey((prev) => prev + 1)}
         type="button"
       >
         Refresh
       </button>
       <a
-        className="absolute top-4 right-4 z-20 rounded-md border border-white/25 bg-black/45 px-3 py-1.5 font-mono text-[11px] text-white/90 uppercase tracking-wide transition hover:bg-black/65"
+        className="absolute top-4 right-4 z-20 rounded-md border border-white/25 bg-black/45 px-3 py-1.5 font-mono text-[11px] tracking-wide text-white/90 uppercase transition hover:bg-black/65"
         download="terminal-animation-image-2.png"
         href={backgroundImage}
       >
@@ -246,14 +246,14 @@ export function TerminalAnimationDemo() {
       </a>
       {!backgroundImage && <TerminalAnimationBackgroundGradient />}
       <TerminalAnimationContainer className="max-w-[43rem]">
-        <TerminalAnimationWindow className="outline-1 outline-white/30 outline-offset-[2px]">
+        <TerminalAnimationWindow className="outline-1 outline-offset-[2px] outline-white/30">
           <TerminalAnimationContent className="min-h-[26rem]">
             <div className="flex items-center gap-2 leading-relaxed">
-              <span className="select-none font-mono text-muted-foreground text-[10px] md:text-sm">
+              <span className="text-muted-foreground font-mono text-[10px] select-none md:text-sm">
                 $
               </span>
               <TerminalAnimationCommandBar
-                className="font-mono text-foreground text-[10px] md:text-sm"
+                className="text-foreground font-mono text-[10px] md:text-sm"
                 cursor={<TerminalAnimationBlinkingCursor />}
               />
             </div>
@@ -266,7 +266,7 @@ export function TerminalAnimationDemo() {
                 visible: boolean
               ) => {
                 if (!visible) {
-                  return null
+                  return null;
                 }
                 return (
                   <div className="leading-relaxed">
@@ -279,11 +279,11 @@ export function TerminalAnimationDemo() {
                       {line.text || "\u00A0"}
                     </span>
                   </div>
-                )
+                );
               }}
             />
             <TerminalAnimationTrailingPrompt className="mt-1 flex items-center gap-2 leading-relaxed">
-              <span className="select-none font-mono text-muted-foreground text-sm">
+              <span className="text-muted-foreground font-mono text-sm select-none">
                 $
               </span>
               <TerminalAnimationBlinkingCursor />
@@ -291,12 +291,12 @@ export function TerminalAnimationDemo() {
           </TerminalAnimationContent>
 
           <div className="flex justify-center pb-6">
-            <TerminalAnimationTabList className="inline-flex items-center gap-0 rounded-lg border border-border bg-muted/50 px-1 py-1">
+            <TerminalAnimationTabList className="border-border bg-muted/50 inline-flex items-center gap-0 rounded-lg border px-1 py-1">
               {tabs.map((tab, i) => (
                 <TerminalAnimationTabTrigger
                   className={cn(
                     "cursor-pointer rounded-md px-3.5 py-1 font-mono text-sm transition-all duration-150",
-                    "data-[state=active]:bg-primary data-[state=active]:font-medium data-[state=active]:text-primary-foreground",
+                    "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:font-medium",
                     "data-[state=inactive]:text-muted-foreground data-[state=inactive]:hover:text-foreground"
                   )}
                   index={i}
@@ -310,5 +310,5 @@ export function TerminalAnimationDemo() {
         </TerminalAnimationWindow>
       </TerminalAnimationContainer>
     </TerminalAnimationRoot>
-  )
+  );
 }

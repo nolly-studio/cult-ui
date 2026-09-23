@@ -48,11 +48,11 @@ npx shadcn@latest add https://cult-ui.com/r/side-panel.json
 
 ```tsx
 export default function SidePanelExample() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleIsOpen = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   const renderOpenButton = (handleToggle: () => void) => (
     <div
@@ -74,7 +74,7 @@ export default function SidePanelExample() {
         {isOpen ? "close" : "open"}
       </Button>
     </div>
-  )
+  );
 
   return (
     <div className="w-full max-w-4xl">
@@ -90,6 +90,6 @@ export default function SidePanelExample() {
         </SidePanel>
       </div>
     </div>
-  )
+  );
 }
 ```

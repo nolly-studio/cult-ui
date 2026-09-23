@@ -44,11 +44,11 @@ const Card = ({ title, description, footer, ...props }) => (
 Every component should extend native HTML attributes:
 
 ```tsx
-export type CardRootProps = React.ComponentProps<'div'> & {
-  variant?: 'default' | 'outlined';
+export type CardRootProps = React.ComponentProps<"div"> & {
+  variant?: "default" | "outlined";
 };
 
-export const CardRoot = ({ variant = 'default', ...props }: CardRootProps) => (
+export const CardRoot = ({ variant = "default", ...props }: CardRootProps) => (
   <div {...props} />
 );
 ```
@@ -56,11 +56,11 @@ export const CardRoot = ({ variant = 'default', ...props }: CardRootProps) => (
 **Common HTML Attribute Types:**
 
 ```tsx
-type DivProps = React.ComponentProps<'div'>;
-type ButtonProps = React.ComponentProps<'button'>;
-type InputProps = React.ComponentProps<'input'>;
-type FormProps = React.ComponentProps<'form'>;
-type LinkProps = React.ComponentProps<'a'>;
+type DivProps = React.ComponentProps<"div">;
+type ButtonProps = React.ComponentProps<"button">;
+type InputProps = React.ComponentProps<"input">;
+type FormProps = React.ComponentProps<"form">;
+type LinkProps = React.ComponentProps<"a">;
 ```
 
 ### Exporting Types
@@ -69,15 +69,15 @@ Always export prop types for consumers:
 
 ```tsx
 // Enables type extraction
-import type { CardRootProps } from '@/components/ui/card';
-type Variant = CardRootProps['variant'];
+import type { CardRootProps } from "@/components/ui/card";
+type Variant = CardRootProps["variant"];
 
 // Enables extending
 export type ExtendedCardProps = CardRootProps & { isLoading?: boolean };
 
 // Enables wrapper components
 const MyCard = (props: CardRootProps) => (
-  <CardRoot {...props} className={cn('my-custom-class', props.className)} />
+  <CardRoot {...props} className={cn("my-custom-class", props.className)} />
 );
 ```
 
@@ -99,16 +99,16 @@ const MyCard = (props: CardRootProps) => (
 
 ```tsx
 // ❌ Conflicts with HTML title attribute
-type CardProps = React.ComponentProps<'div'> & { title: string };
+type CardProps = React.ComponentProps<"div"> & { title: string };
 
 // ✅ Use a different name
-type CardProps = React.ComponentProps<'div'> & { heading: string };
+type CardProps = React.ComponentProps<"div"> & { heading: string };
 ```
 
 **3. Document Custom Props:**
 
 ```tsx
-export type DialogProps = React.ComponentProps<'div'> & {
+export type DialogProps = React.ComponentProps<"div"> & {
   /** Whether the dialog is currently open */
   open: boolean;
   /** Callback when the dialog requests to be closed */
@@ -127,11 +127,11 @@ type PolymorphicProps<E extends React.ElementType> = {
   as?: E;
 } & React.ComponentPropsWithoutRef<E>;
 
-function Component<E extends React.ElementType = 'div'>({
+function Component<E extends React.ElementType = "div">({
   as,
   ...props
 }: PolymorphicProps<E>) {
-  const Element = as || 'div';
+  const Element = as || "div";
   return <Element {...props} />;
 }
 ```
@@ -139,7 +139,7 @@ function Component<E extends React.ElementType = 'div'>({
 ### Quick Reference
 
 | Pattern | Usage | Example |
-|---------|-------|---------|
+| --- | --- | --- |
 | Basic extension | Extend single HTML element | `React.ComponentProps<'div'>` |
 | Custom props | Add component-specific props | `React.ComponentProps<'button'> & { variant?: string }` |
 | Polymorphic | Render as different elements | `PolymorphicProps<T>` |

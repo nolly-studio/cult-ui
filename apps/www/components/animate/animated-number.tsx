@@ -1,29 +1,29 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { Minus, Plus } from "lucide-react"
-import { motion, MotionValue, useSpring, useTransform } from "motion/react"
-import { toast } from "sonner"
+import { Minus, Plus } from "lucide-react";
+import { motion, MotionValue, useSpring, useTransform } from "motion/react";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
-import { GradientHeading } from "@/registry/default/ui/gradient-heading"
+import { GradientHeading } from "@/registry/default/ui/gradient-heading";
 import TextureCard, {
   TextureCardContent,
   TextureCardHeader,
   TextureCardStyled,
-} from "@/registry/default/ui/texture-card"
+} from "@/registry/default/ui/texture-card";
 
-import { Button } from "../ui/button"
-import { Slider } from "../ui/slider"
+import { Button } from "../ui/button";
+import { Slider } from "../ui/slider";
 
 interface AnimatedNumberProps {
-  value: number
-  mass?: number
-  stiffness?: number
-  damping?: number
-  precision?: number
-  format?: (value: number) => string
-  onAnimationStart?: () => void
-  onAnimationComplete?: () => void
+  value: number;
+  mass?: number;
+  stiffness?: number;
+  damping?: number;
+  precision?: number;
+  format?: (value: number) => string;
+  onAnimationStart?: () => void;
+  onAnimationComplete?: () => void;
 }
 
 export function AnimatedNumber({
@@ -36,25 +36,25 @@ export function AnimatedNumber({
   onAnimationStart,
   onAnimationComplete,
 }: AnimatedNumberProps) {
-  const spring = useSpring(value, { mass, stiffness, damping })
+  const spring = useSpring(value, { mass, stiffness, damping });
   const display: MotionValue<string> = useTransform(spring, (current) =>
     format(parseFloat(current.toFixed(precision)))
-  )
+  );
 
   useEffect(() => {
-    spring.set(value)
-    if (onAnimationStart) onAnimationStart()
+    spring.set(value);
+    if (onAnimationStart) onAnimationStart();
     const unsubscribe = spring.onChange(() => {
-      if (spring.get() === value && onAnimationComplete) onAnimationComplete()
-    })
-    return () => unsubscribe()
-  }, [spring, value, onAnimationStart, onAnimationComplete])
+      if (spring.get() === value && onAnimationComplete) onAnimationComplete();
+    });
+    return () => unsubscribe();
+  }, [spring, value, onAnimationStart, onAnimationComplete]);
 
-  return <motion.span>{display}</motion.span>
+  return <motion.span>{display}</motion.span>;
 }
 
 export function BasicExample() {
-  const [value, setValue] = useState(1000)
+  const [value, setValue] = useState(1000);
 
   return (
     <div>
@@ -62,17 +62,17 @@ export function BasicExample() {
       <Button
         size="sm"
         variant="ghost"
-        className="rounded-full border border-primary/10 "
+        className="border-primary/10 rounded-full border"
         onClick={() => setValue(value + 1000)}
       >
         <Plus className="size-4" />
       </Button>
     </div>
-  )
+  );
 }
 
 export function PrecisionExample() {
-  const [value, setValue] = useState(1234.5678)
+  const [value, setValue] = useState(1234.5678);
 
   return (
     <TextureCardStyled>
@@ -87,7 +87,7 @@ export function PrecisionExample() {
           <Button
             size="sm"
             variant="ghost"
-            className="ml-auto rounded-full border border-primary/10 py-5"
+            className="border-primary/10 ml-auto rounded-full border py-5"
             onClick={() => setValue(value + 123.456)}
           >
             <Plus className="size-4" />
@@ -95,13 +95,13 @@ export function PrecisionExample() {
         </div>
       </TextureCardContent>
     </TextureCardStyled>
-  )
+  );
 }
 
 export function FormatExample() {
-  const [value, setValue] = useState(1000)
+  const [value, setValue] = useState(1000);
 
-  const customFormat = (num: number) => `$${num.toFixed(2)}`
+  const customFormat = (num: number) => `$${num.toFixed(2)}`;
 
   return (
     <TextureCardStyled>
@@ -116,7 +116,7 @@ export function FormatExample() {
           <Button
             size="sm"
             variant="ghost"
-            className="ml-auto rounded-full border border-primary/10 py-5"
+            className="border-primary/10 ml-auto rounded-full border py-5"
             onClick={() => setValue(value + 250)}
           >
             <Plus className="size-4" />
@@ -124,19 +124,19 @@ export function FormatExample() {
         </div>
       </TextureCardContent>
     </TextureCardStyled>
-  )
+  );
 }
 
 export function HooksExample() {
-  const [value, setValue] = useState(1000)
+  const [value, setValue] = useState(1000);
 
   const handleAnimationStart = () => {
-    toast("🏁 Animation started ")
-  }
+    toast("🏁 Animation started ");
+  };
 
   const handleAnimationComplete = () => {
-    toast("✅ Animation completed ")
-  }
+    toast("✅ Animation completed ");
+  };
 
   return (
     <TextureCardStyled>
@@ -155,7 +155,7 @@ export function HooksExample() {
           <Button
             size="sm"
             variant="ghost"
-            className="ml-auto rounded-full border border-primary/10 py-5"
+            className="border-primary/10 ml-auto rounded-full border py-5"
             onClick={() => setValue(value + 500)}
           >
             <Plus className="size-4" />
@@ -163,21 +163,21 @@ export function HooksExample() {
         </div>
       </TextureCardContent>
     </TextureCardStyled>
-  )
+  );
 }
 
 export function CustomSpringExample() {
-  const [value, setValue] = useState(1000)
-  const [mass, setMass] = useState(1)
-  const [stiffness, setStiffness] = useState(100)
-  const [damping, setDamping] = useState(40)
+  const [value, setValue] = useState(1000);
+  const [mass, setMass] = useState(1);
+  const [stiffness, setStiffness] = useState(100);
+  const [damping, setDamping] = useState(40);
 
   const handleValueChange =
     (setter: (value: number) => void, minValue: number) =>
     (values: number[]) => {
-      const newValue = Math.max(values[0], minValue)
-      setter(newValue)
-    }
+      const newValue = Math.max(values[0], minValue);
+      setter(newValue);
+    };
 
   return (
     <TextureCardStyled className="w-full">
@@ -199,14 +199,14 @@ export function CustomSpringExample() {
 
         <div className="flex flex-col gap-3 px-2">
           <Button
-            className="rounded-full border border-primary/10 py-5"
+            className="border-primary/10 rounded-full border py-5"
             onClick={() => setValue(value + 500)}
           >
             <Plus className="mr-2 size-4" />
             Increase
           </Button>
           <Button
-            className="rounded-full border border-primary/10 py-5"
+            className="border-primary/10 rounded-full border py-5"
             disabled={value <= 500}
             onClick={() => setValue(value - 300)}
           >
@@ -247,20 +247,20 @@ export function CustomSpringExample() {
         </div>
       </TextureCardContent>
     </TextureCardStyled>
-  )
+  );
 }
 
 export function AnimatedNumberExamples() {
   return (
-    <div className="  mx-auto max-w-xl gap-4 py-6 ">
+    <div className="mx-auto max-w-xl gap-4 py-6">
       <div className="flex w-full flex-col justify-between">
         <CustomSpringExample />
-        <div className="flex   flex-col sm:flex-row">
+        <div className="flex flex-col sm:flex-row">
           <PrecisionExample />
           <FormatExample />
           <HooksExample />
         </div>
       </div>
     </div>
-  )
+  );
 }

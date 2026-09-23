@@ -1,11 +1,11 @@
-import { NeumorphEyebrow } from "../ui/neumorph-eyebrow"
+import { NeumorphEyebrow } from "../ui/neumorph-eyebrow";
 
 export default function NeumorphEyebrowDemo() {
   return (
-    <div className="space-y-4 flex flex-col items-center justify-center w-full">
+    <div className="flex w-full flex-col items-center justify-center space-y-4">
       <NeumorphEyebrow>A milestone in scraping</NeumorphEyebrow>
       <NeumorphEyebrow intent="primary">Primary variant</NeumorphEyebrow>
       <NeumorphEyebrow intent="secondary">Secondary variant</NeumorphEyebrow>
     </div>
-  )
+  );
 }

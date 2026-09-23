@@ -3,9 +3,7 @@
   "name": "logo-carousel",
   "type": "registry:ui",
   "description": "Animated logo carousel with staggered animations and customizable columns",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/logo-carousel.tsx",

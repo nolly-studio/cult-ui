@@ -1,19 +1,12 @@
 "use client";
 
-import type { ComponentProps, ReactNode } from "react";
-
 import { useControllableState } from "@radix-ui/react-use-controllable-state";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { cn } from "@/lib/utils";
 import { cjk } from "@streamdown/cjk";
 import { code } from "@streamdown/code";
 import { math } from "@streamdown/math";
 import { mermaid } from "@streamdown/mermaid";
 import { BrainIcon, ChevronDownIcon } from "lucide-react";
+import type { ComponentProps, ReactNode } from "react";
 import {
   createContext,
   memo,
@@ -25,6 +18,13 @@ import {
   useState,
 } from "react";
 import { Streamdown } from "streamdown";
+
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
 
 import { Shimmer } from "./shimmer";
 
@@ -177,7 +177,7 @@ export const ReasoningTrigger = memo(
     return (
       <CollapsibleTrigger
         className={cn(
-          "flex w-full items-center gap-2 text-muted-foreground text-sm transition-colors hover:text-foreground",
+          "text-muted-foreground hover:text-foreground flex w-full items-center gap-2 text-sm transition-colors",
           className
         )}
         {...props}
@@ -212,12 +212,17 @@ export const ReasoningContent = memo(
     <CollapsibleContent
       className={cn(
         "mt-4 text-sm",
-        "data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top-2 data-[state=open]:slide-in-from-top-2 text-muted-foreground outline-none data-[state=closed]:animate-out data-[state=open]:animate-in",
+        "data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top-2 data-[state=open]:slide-in-from-top-2 text-muted-foreground data-[state=closed]:animate-out data-[state=open]:animate-in outline-none",
         className
       )}
       {...props}
     >
-      <Streamdown plugins={streamdownPlugins as ComponentProps<typeof Streamdown>["plugins"]} {...props}>
+      <Streamdown
+        plugins={
+          streamdownPlugins as ComponentProps<typeof Streamdown>["plugins"]
+        }
+        {...props}
+      >
         {children}
       </Streamdown>
     </CollapsibleContent>

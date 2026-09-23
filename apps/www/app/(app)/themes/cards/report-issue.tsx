@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import {
   TextureCard,
   TextureCardContent,
@@ -20,10 +20,10 @@ import {
   TextureCardFooter,
   TextureCardHeader,
   TextureCardTitle,
-} from "@/registry/default/ui/texture-card"
+} from "@/registry/default/ui/texture-card";
 
 export function CardsReportIssue() {
-  const id = React.useId()
+  const id = React.useId();
 
   return (
     <TextureCard>
@@ -86,5 +86,5 @@ export function CardsReportIssue() {
         <Button>Submit</Button>
       </TextureCardFooter>
     </TextureCard>
-  )
+  );
 }

@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pixel-paragraph-words",
   "description": "Paragraph where specific words render in an interactive pixel font that swaps or cycles on hover",
-  "dependencies": [
-    "geist"
-  ],
+  "dependencies": ["geist"],
   "files": [
     {
       "path": "registry/default/ui/pixel-paragraph-words.tsx",

@@ -1,4 +1,4 @@
-import { CodeBlock } from "@/registry/default/ui/code-block"
+import { CodeBlock } from "@/registry/default/ui/code-block";
 
 function CodeBlockDemo() {
   return (
@@ -77,7 +77,7 @@ API_SECRET_KEY=your-secret-key`,
         </div>
       </div>
     </main>
-  )
+  );
 }
 
-export default CodeBlockDemo
+export default CodeBlockDemo;

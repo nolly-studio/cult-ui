@@ -1,122 +1,121 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import type { SVGProps } from "react"
-import { Dithering } from "@paper-design/shaders-react"
+import { Dithering } from "@paper-design/shaders-react";
+import * as React from "react";
+import type { SVGProps } from "react";
 
-import { cn } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-const MemoizedDithering = React.memo(Dithering)
+const MemoizedDithering = React.memo(Dithering);
 
-type DitheringProps = React.ComponentProps<typeof Dithering>
-type DitheringIcon = React.ComponentType<SVGProps<SVGSVGElement>>
+type DitheringProps = React.ComponentProps<typeof Dithering>;
+type DitheringIcon = React.ComponentType<SVGProps<SVGSVGElement>>;
 
 export interface HeroDitheringTechItem {
-  name: string
-  version?: string
-  icon?: DitheringIcon
+  name: string;
+  version?: string;
+  icon?: DitheringIcon;
 }
 
 export interface HeroDitheringCTAProps {
-  label: React.ReactNode
-  href: string
-  target?: React.HTMLAttributeAnchorTarget
-  rel?: string
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>
-  className?: string
-  buttonClassName?: string
+  label: React.ReactNode;
+  href: string;
+  target?: React.HTMLAttributeAnchorTarget;
+  rel?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  className?: string;
+  buttonClassName?: string;
 }
 
-export interface HeroDitheringRootProps
-  extends Omit<React.ComponentPropsWithoutRef<"section">, "title"> {
-  srTitle?: string
-  title?: React.ReactNode
-  subtitle?: React.ReactNode
-  description?: React.ReactNode
-  showCta?: boolean
-  ctaProps?: Partial<HeroDitheringCTAProps>
-  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode
-  showBadges?: boolean
-  techStack?: HeroDitheringTechItem[]
+export interface HeroDitheringRootProps extends Omit<
+  React.ComponentPropsWithoutRef<"section">,
+  "title"
+> {
+  srTitle?: string;
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
+  description?: React.ReactNode;
+  showCta?: boolean;
+  ctaProps?: Partial<HeroDitheringCTAProps>;
+  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode;
+  showBadges?: boolean;
+  techStack?: HeroDitheringTechItem[];
   renderBadge?: (
     tech: HeroDitheringTechItem,
     index: number,
     defaultBadge: React.ReactNode
-  ) => React.ReactNode
-  desktopShaderProps?: Partial<DitheringProps>
-  mobileShaderProps?: Partial<DitheringProps>
+  ) => React.ReactNode;
+  desktopShaderProps?: Partial<DitheringProps>;
+  mobileShaderProps?: Partial<DitheringProps>;
 }
 
-export interface HeroDitheringHeadingProps
-  extends Omit<React.ComponentPropsWithoutRef<"div">, "title"> {
-  title?: React.ReactNode
-  subtitle?: React.ReactNode
-  headingClassName?: string
+export interface HeroDitheringHeadingProps extends Omit<
+  React.ComponentPropsWithoutRef<"div">,
+  "title"
+> {
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
+  headingClassName?: string;
 }
 
-export interface HeroDitheringDescriptionProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  description?: React.ReactNode
-  descriptionClassName?: string
+export interface HeroDitheringDescriptionProps extends React.ComponentPropsWithoutRef<"div"> {
+  description?: React.ReactNode;
+  descriptionClassName?: string;
 }
 
-export interface HeroDitheringActionsProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  showCta?: boolean
-  ctaProps?: Partial<HeroDitheringCTAProps>
-  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode
+export interface HeroDitheringActionsProps extends React.ComponentPropsWithoutRef<"div"> {
+  showCta?: boolean;
+  ctaProps?: Partial<HeroDitheringCTAProps>;
+  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode;
 }
 
-export interface HeroDitheringBadgesProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  showBadges?: boolean
-  techStack?: HeroDitheringTechItem[]
+export interface HeroDitheringBadgesProps extends React.ComponentPropsWithoutRef<"div"> {
+  showBadges?: boolean;
+  techStack?: HeroDitheringTechItem[];
   renderBadge?: (
     tech: HeroDitheringTechItem,
     index: number,
     defaultBadge: React.ReactNode
-  ) => React.ReactNode
+  ) => React.ReactNode;
 }
 
-export interface HeroDitheringVisualProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  desktopShaderProps?: Partial<DitheringProps>
-  desktopClassName?: string
+export interface HeroDitheringVisualProps extends React.ComponentPropsWithoutRef<"div"> {
+  desktopShaderProps?: Partial<DitheringProps>;
+  desktopClassName?: string;
 }
 
-export interface HeroDitheringMobileVisualProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  mobileShaderProps?: Partial<DitheringProps>
+export interface HeroDitheringMobileVisualProps extends React.ComponentPropsWithoutRef<"div"> {
+  mobileShaderProps?: Partial<DitheringProps>;
 }
 
 export interface HeroDitheringProps extends HeroDitheringRootProps {
-  containerClassName?: string
-  contentClassName?: string
-  headingWrapClassName?: string
-  headingClassName?: string
-  descriptionWrapClassName?: string
-  descriptionClassName?: string
-  ctaWrapClassName?: string
-  badgesWrapClassName?: string
-  visualClassName?: string
-  mobileVisualClassName?: string
+  containerClassName?: string;
+  contentClassName?: string;
+  headingWrapClassName?: string;
+  headingClassName?: string;
+  descriptionWrapClassName?: string;
+  descriptionClassName?: string;
+  ctaWrapClassName?: string;
+  badgesWrapClassName?: string;
+  visualClassName?: string;
+  mobileVisualClassName?: string;
 }
 
 interface HeroDitheringContextValue {
-  srTitle: string
-  title: React.ReactNode
-  subtitle: React.ReactNode
-  description: React.ReactNode
-  showCta: boolean
-  mergedCtaProps: HeroDitheringCTAProps
-  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode
-  showBadges: boolean
-  techStack: HeroDitheringTechItem[]
-  renderBadge?: HeroDitheringBadgesProps["renderBadge"]
-  mergedDesktopShaderProps: Partial<DitheringProps>
-  mergedMobileShaderProps: Partial<DitheringProps>
+  srTitle: string;
+  title: React.ReactNode;
+  subtitle: React.ReactNode;
+  description: React.ReactNode;
+  showCta: boolean;
+  mergedCtaProps: HeroDitheringCTAProps;
+  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode;
+  showBadges: boolean;
+  techStack: HeroDitheringTechItem[];
+  renderBadge?: HeroDitheringBadgesProps["renderBadge"];
+  mergedDesktopShaderProps: Partial<DitheringProps>;
+  mergedMobileShaderProps: Partial<DitheringProps>;
 }
 
 const defaultDesktopShaderProps: Partial<DitheringProps> = {
@@ -129,7 +128,7 @@ const defaultDesktopShaderProps: Partial<DitheringProps> = {
   size: 2,
   speed: 1,
   scale: 0.6,
-}
+};
 
 const defaultMobileShaderProps: Partial<DitheringProps> = {
   colorBack: "#00000000",
@@ -140,14 +139,14 @@ const defaultMobileShaderProps: Partial<DitheringProps> = {
   scale: 0.52,
   type: "4x4",
   style: { height: "100%", width: "100%" },
-}
+};
 
 const defaultCtaProps: HeroDitheringCTAProps = {
   label: "Check it out today ",
   href: "https://aisdkagents.com",
   target: "_blank",
   rel: "noopener noreferrer",
-}
+};
 
 const defaultDescription = (
   <>
@@ -157,7 +156,7 @@ const defaultDescription = (
     <span className="font-medium tracking-tight">shadcn/ui</span>.
     <span className="hidden sm:inline"> Headless, themable, practical.</span>
   </>
-)
+);
 
 const defaultTechStack: HeroDitheringTechItem[] = [
   {
@@ -170,24 +169,24 @@ const defaultTechStack: HeroDitheringTechItem[] = [
     version: "v6",
     icon: AISDKIcon,
   },
-]
+];
 
 const HeroDitheringContext = React.createContext<
   HeroDitheringContextValue | undefined
->(undefined)
+>(undefined);
 
 function useHeroDitheringContext() {
-  const context = React.useContext(HeroDitheringContext)
+  const context = React.useContext(HeroDitheringContext);
   if (!context) {
     throw new Error(
       "HeroDithering components must be used within HeroDitheringRoot"
-    )
+    );
   }
-  return context
+  return context;
 }
 
 export function useHeroDithering() {
-  return useHeroDitheringContext()
+  return useHeroDitheringContext();
 }
 
 export const HeroDitheringRoot = React.forwardRef<
@@ -220,7 +219,7 @@ export const HeroDitheringRoot = React.forwardRef<
         ...ctaProps,
       }),
       [ctaProps]
-    )
+    );
 
     const mergedDesktopShaderProps = React.useMemo(
       () => ({
@@ -228,7 +227,7 @@ export const HeroDitheringRoot = React.forwardRef<
         ...desktopShaderProps,
       }),
       [desktopShaderProps]
-    )
+    );
 
     const mergedMobileShaderProps = React.useMemo(
       () => ({
@@ -240,7 +239,7 @@ export const HeroDitheringRoot = React.forwardRef<
         },
       }),
       [mobileShaderProps]
-    )
+    );
 
     const contextValue = React.useMemo<HeroDitheringContextValue>(
       () => ({
@@ -271,7 +270,7 @@ export const HeroDitheringRoot = React.forwardRef<
         mergedDesktopShaderProps,
         mergedMobileShaderProps,
       ]
-    )
+    );
 
     return (
       <HeroDitheringContext.Provider value={contextValue}>
@@ -285,10 +284,10 @@ export const HeroDitheringRoot = React.forwardRef<
           {children}
         </section>
       </HeroDitheringContext.Provider>
-    )
+    );
   }
-)
-HeroDitheringRoot.displayName = "HeroDitheringRoot"
+);
+HeroDitheringRoot.displayName = "HeroDitheringRoot";
 
 export function HeroDitheringContainer({
   className,
@@ -297,13 +296,13 @@ export function HeroDitheringContainer({
   return (
     <div
       className={cn(
-        "container relative z-10 grid gap-6 pb-16 sm:gap-8 sm:pb-20 lg:grid-cols-[1fr_minmax(300px,500px)] lg:items-center lg:gap-12 lg:pb-24 xl:grid-cols-[1fr_1fr]",
+        "relative z-10 container grid gap-6 pb-16 sm:gap-8 sm:pb-20 lg:grid-cols-[1fr_minmax(300px,500px)] lg:items-center lg:gap-12 lg:pb-24 xl:grid-cols-[1fr_1fr]",
         className
       )}
       data-slot="hero-dithering-container"
       {...props}
     />
-  )
+  );
 }
 
 export function HeroDitheringContent({
@@ -319,7 +318,7 @@ export function HeroDitheringContent({
       data-slot="hero-dithering-content"
       {...props}
     />
-  )
+  );
 }
 
 export function HeroDitheringHeading({
@@ -330,9 +329,9 @@ export function HeroDitheringHeading({
   children,
   ...props
 }: HeroDitheringHeadingProps) {
-  const context = useHeroDitheringContext()
-  const resolvedTitle = title ?? context.title
-  const resolvedSubtitle = subtitle ?? context.subtitle
+  const context = useHeroDitheringContext();
+  const resolvedTitle = title ?? context.title;
+  const resolvedSubtitle = subtitle ?? context.subtitle;
 
   return (
     <div
@@ -344,7 +343,7 @@ export function HeroDitheringHeading({
         <div className="relative">
           <h2
             className={cn(
-              "relative mb-0 text-balance font-medium font-pixel-circle text-3xl tracking-[-0.04em] sm:text-4xl md:text-5xl lg:tracking-[-0.06em] xl:text-6xl 2xl:text-7xl",
+              "font-pixel-circle relative mb-0 text-3xl font-medium tracking-[-0.04em] text-balance sm:text-4xl md:text-5xl lg:tracking-[-0.06em] xl:text-6xl 2xl:text-7xl",
               headingClassName
             )}
             data-slot="hero-dithering-heading"
@@ -355,7 +354,7 @@ export function HeroDitheringHeading({
         </div>
       )}
     </div>
-  )
+  );
 }
 
 export function HeroDitheringDescription({
@@ -365,8 +364,8 @@ export function HeroDitheringDescription({
   children,
   ...props
 }: HeroDitheringDescriptionProps) {
-  const context = useHeroDitheringContext()
-  const resolvedDescription = description ?? context.description
+  const context = useHeroDitheringContext();
+  const resolvedDescription = description ?? context.description;
 
   return (
     <div
@@ -380,7 +379,7 @@ export function HeroDitheringDescription({
       {children ?? (
         <p
           className={cn(
-            "mt-0 mb-0 font-sans text-foreground/70 text-sm sm:text-base md:text-foreground/80 lg:text-lg xl:text-xl",
+            "text-foreground/70 md:text-foreground/80 mt-0 mb-0 font-sans text-sm sm:text-base lg:text-lg xl:text-xl",
             descriptionClassName
           )}
           data-slot="hero-dithering-description"
@@ -389,7 +388,7 @@ export function HeroDitheringDescription({
         </p>
       )}
     </div>
-  )
+  );
 }
 
 export function HeroDitheringActions({
@@ -400,16 +399,16 @@ export function HeroDitheringActions({
   children,
   ...props
 }: HeroDitheringActionsProps) {
-  const context = useHeroDitheringContext()
-  const shouldShowCta = showCta ?? context.showCta
-  const resolvedCtaProps = { ...context.mergedCtaProps, ...ctaProps }
-  const resolvedRenderCta = renderCta ?? context.renderCta
+  const context = useHeroDitheringContext();
+  const shouldShowCta = showCta ?? context.showCta;
+  const resolvedCtaProps = { ...context.mergedCtaProps, ...ctaProps };
+  const resolvedRenderCta = renderCta ?? context.renderCta;
 
   if (!shouldShowCta) {
-    return null
+    return null;
   }
 
-  const defaultCta = <HeroDitheringCTA {...resolvedCtaProps} />
+  const defaultCta = <HeroDitheringCTA {...resolvedCtaProps} />;
 
   return (
     <div
@@ -420,7 +419,7 @@ export function HeroDitheringActions({
       {children ??
         (resolvedRenderCta ? resolvedRenderCta(defaultCta) : defaultCta)}
     </div>
-  )
+  );
 }
 
 export function HeroDitheringCTA({
@@ -450,7 +449,7 @@ export function HeroDitheringCTA({
         </a>
       </Button>
     </div>
-  )
+  );
 }
 
 export function HeroDitheringBadges({
@@ -460,13 +459,13 @@ export function HeroDitheringBadges({
   renderBadge,
   ...props
 }: HeroDitheringBadgesProps) {
-  const context = useHeroDitheringContext()
-  const shouldShowBadges = showBadges ?? context.showBadges
-  const resolvedTechStack = techStack ?? context.techStack
-  const resolvedRenderBadge = renderBadge ?? context.renderBadge
+  const context = useHeroDitheringContext();
+  const shouldShowBadges = showBadges ?? context.showBadges;
+  const resolvedTechStack = techStack ?? context.techStack;
+  const resolvedRenderBadge = renderBadge ?? context.renderBadge;
 
   if (!shouldShowBadges) {
-    return null
+    return null;
   }
 
   return (
@@ -479,12 +478,12 @@ export function HeroDitheringBadges({
       {...props}
     >
       {resolvedTechStack.map((tech, index) => {
-        const Icon = tech.icon
+        const Icon = tech.icon;
         const defaultBadge = (
           <Badge
             className={cn(
               "group relative px-3.5 py-1.5 font-medium transition-all duration-150",
-              "border border-border/50 bg-card text-card-foreground",
+              "border-border/50 bg-card text-card-foreground border",
               "shadow-[0_1px_3px_rgba(0,0,0,0.08)] dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)]",
               "hover:-translate-y-px hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
             )}
@@ -492,7 +491,7 @@ export function HeroDitheringBadges({
             key={tech.name}
             variant="outline"
           >
-            {Icon ? <Icon className="size-3.5 opacity-80 mr-1" /> : null}
+            {Icon ? <Icon className="mr-1 size-3.5 opacity-80" /> : null}
             <span className="font-semibold tracking-tight">{tech.name}</span>
             {tech.version ? (
               <span className="font-mono text-xs opacity-50">
@@ -500,20 +499,20 @@ export function HeroDitheringBadges({
               </span>
             ) : null}
           </Badge>
-        )
+        );
 
         if (resolvedRenderBadge) {
           return (
             <React.Fragment key={tech.name}>
               {resolvedRenderBadge(tech, index, defaultBadge)}
             </React.Fragment>
-          )
+          );
         }
 
-        return defaultBadge
+        return defaultBadge;
       })}
     </div>
-  )
+  );
 }
 
 export function HeroDitheringVisual({
@@ -522,11 +521,11 @@ export function HeroDitheringVisual({
   desktopShaderProps,
   ...props
 }: HeroDitheringVisualProps) {
-  const context = useHeroDitheringContext()
+  const context = useHeroDitheringContext();
   const resolvedDesktopShaderProps = {
     ...context.mergedDesktopShaderProps,
     ...desktopShaderProps,
-  }
+  };
 
   return (
     <div
@@ -547,7 +546,7 @@ export function HeroDitheringVisual({
         <MemoizedDithering {...resolvedDesktopShaderProps} />
       </div>
     </div>
-  )
+  );
 }
 
 export function HeroDitheringMobileVisual({
@@ -555,7 +554,7 @@ export function HeroDitheringMobileVisual({
   mobileShaderProps,
   ...props
 }: HeroDitheringMobileVisualProps) {
-  const context = useHeroDitheringContext()
+  const context = useHeroDitheringContext();
   const resolvedMobileShaderProps = {
     ...context.mergedMobileShaderProps,
     ...mobileShaderProps,
@@ -563,7 +562,7 @@ export function HeroDitheringMobileVisual({
       ...(context.mergedMobileShaderProps.style as React.CSSProperties),
       ...(mobileShaderProps?.style as React.CSSProperties | undefined),
     },
-  }
+  };
 
   return (
     <div
@@ -574,10 +573,10 @@ export function HeroDitheringMobileVisual({
       data-slot="hero-dithering-mobile"
       {...props}
     >
-      <div className="absolute inset-x-0 top-0 z-10 h-56 bg-gradient-to-b from-background via-background/95 to-transparent" />
+      <div className="from-background via-background/95 absolute inset-x-0 top-0 z-10 h-56 bg-gradient-to-b to-transparent" />
       <MemoizedDithering {...resolvedMobileShaderProps} />
     </div>
-  )
+  );
 }
 
 export function HeroDithering({
@@ -620,7 +619,7 @@ export function HeroDithering({
       </HeroDitheringContainer>
       <HeroDitheringMobileVisual className={mobileVisualClassName} />
     </HeroDitheringRoot>
-  )
+  );
 }
 
 export function AISDKIcon(props: SVGProps<SVGSVGElement>) {
@@ -640,14 +639,14 @@ export function AISDKIcon(props: SVGProps<SVGSVGElement>) {
         fill="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 export function NextjsIcon(props: SVGProps<SVGSVGElement>) {
-  const id = React.useId()
-  const maskId = `${id}-mask`
-  const paint0Id = `${id}-paint0`
-  const paint1Id = `${id}-paint1`
+  const id = React.useId();
+  const maskId = `${id}-mask`;
+  const paint0Id = `${id}-paint0`;
+  const paint1Id = `${id}-paint1`;
 
   return (
     <svg
@@ -718,7 +717,7 @@ export function NextjsIcon(props: SVGProps<SVGSVGElement>) {
         </linearGradient>
       </defs>
     </svg>
-  )
+  );
 }
 
-export default HeroDithering
+export default HeroDithering;

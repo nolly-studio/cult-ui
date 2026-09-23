@@ -1,9 +1,7 @@
 {
   "name": "floating-panel",
   "description": "Floating panel component with backdrop blur and position-aware animations",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "name": "floating-panel.tsx",

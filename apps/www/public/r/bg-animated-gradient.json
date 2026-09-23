@@ -3,9 +3,7 @@
   "name": "bg-animated-gradient",
   "type": "registry:ui",
   "description": "Animated gradient background component with customizable color transitions",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/bg-animated-gradient.tsx",

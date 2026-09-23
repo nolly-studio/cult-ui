@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { ReactNode } from "react"
-import Image from "next/image"
+import Image from "next/image";
+import { ReactNode } from "react";
 
-import { TextAnimation } from "./type-animate"
+import { TextAnimation } from "./type-animate";
 
 interface OGAttr {
-  img: string
-  title?: string
-  desc?: string
-  url: string
+  img: string;
+  title?: string;
+  desc?: string;
+  url: string;
 }
 
 export function FacebookOGCard({ img, title, desc, url }: OGAttr) {
@@ -34,7 +34,7 @@ export function FacebookOGCard({ img, title, desc, url }: OGAttr) {
         </p>
       </div>
     </div>
-  )
+  );
 }
 
 export function TwitterOGCard({ img, title, url }: OGAttr) {
@@ -47,7 +47,7 @@ export function TwitterOGCard({ img, title, url }: OGAttr) {
         {url}
       </div>
     </div>
-  )
+  );
 }
 
 export function LinkedInOGCard({ img, title, url }: OGAttr) {
@@ -63,12 +63,12 @@ export function LinkedInOGCard({ img, title, url }: OGAttr) {
         <p className="truncate text-xs text-gray-500 md:text-sm">{url}</p>
       </div>
     </div>
-  )
+  );
 }
 
 export function SMSOgCard({ title, url, img }: OGAttr) {
   return (
-    <div className="flex max-w-full flex-col  overflow-hidden rounded-3xl border shadow-lg">
+    <div className="flex max-w-full flex-col overflow-hidden rounded-3xl border shadow-lg">
       <div className="relative h-56 w-full md:h-56">
         <Image
           src={img}
@@ -87,7 +87,7 @@ export function SMSOgCard({ title, url, img }: OGAttr) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export function IosOgShellCard({ children }: { children: ReactNode }) {
@@ -109,5 +109,5 @@ export function IosOgShellCard({ children }: { children: ReactNode }) {
         </div>
       </div>
     </div>
-  )
+  );
 }

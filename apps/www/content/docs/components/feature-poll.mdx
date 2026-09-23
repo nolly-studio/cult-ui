@@ -50,7 +50,7 @@ Use `FeaturePoll.Root` with Header, Title, Description, Options (each Option wit
 ### Basic poll
 
 ```tsx
-import { FeaturePoll } from "@/registry/default/ui/feature-poll"
+import { FeaturePoll } from "@/registry/default/ui/feature-poll";
 
 export default function Example() {
   return (
@@ -77,7 +77,7 @@ export default function Example() {
       </FeaturePoll.Options>
       <FeaturePoll.Footer />
     </FeaturePoll.Root>
-  )
+  );
 }
 ```
 
@@ -86,13 +86,13 @@ export default function Example() {
 Wire `value` / `onValueChange` and set `showResults`, `hasVoted`, and `votes` when the user submits to show results and “You voted”.
 
 ```tsx
-import { useState } from "react"
-import { FeaturePoll } from "@/registry/default/ui/feature-poll"
+import { useState } from "react";
+import { FeaturePoll } from "@/registry/default/ui/feature-poll";
 
 export default function Example() {
-  const [value, setValue] = useState<string | undefined>()
-  const [hasVoted, setHasVoted] = useState(false)
-  const votes = { speed: 42, dx: 28, docs: 30 }
+  const [value, setValue] = useState<string | undefined>();
+  const [hasVoted, setHasVoted] = useState(false);
+  const votes = { speed: 42, dx: 28, docs: 30 };
 
   return (
     <FeaturePoll.Root
@@ -104,7 +104,9 @@ export default function Example() {
     >
       <FeaturePoll.Header>
         <FeaturePoll.Title>Which feature matters most?</FeaturePoll.Title>
-        <FeaturePoll.Description>Pick one, then submit.</FeaturePoll.Description>
+        <FeaturePoll.Description>
+          Pick one, then submit.
+        </FeaturePoll.Description>
       </FeaturePoll.Header>
       <FeaturePoll.Options>
         <FeaturePoll.Option value="speed">
@@ -129,7 +131,7 @@ export default function Example() {
       <FeaturePoll.Footer />
       {/* In real usage, a submit button would set hasVoted to true */}
     </FeaturePoll.Root>
-  )
+  );
 }
 ```
 

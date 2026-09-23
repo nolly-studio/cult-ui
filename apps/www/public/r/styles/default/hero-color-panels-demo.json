@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hero-color-panels-demo",
-  "registryDependencies": [
-    "hero-color-panel"
-  ],
+  "registryDependencies": ["hero-color-panel"],
   "files": [
     {
       "path": "registry/default/example/hero-color-panels-demo.tsx",

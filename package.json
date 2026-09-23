@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "license": "MIT",
-  "type": "module",
   "author": {
     "name": "Jordan-Gilliam",
     "url": "https://twitter.com/Jordan-Gilliam"
@@ -13,6 +12,7 @@
     "packages/*",
     "templates/*"
   ],
+  "type": "module",
   "scripts": {
     "build": "turbo run build",
     "build:cli": "turbo --filter=cult-ui build",
@@ -35,13 +35,6 @@
     "pub:release": "cd packages/cli && pnpm pub:release",
     "test": "turbo run test --force",
     "registry:build": "pnpm --filter=www registry:build"
-  },
-  "packageManager": "pnpm@9.0.4",
-  "pnpm": {
-    "overrides": {
-      "@types/react": "19.2.2",
-      "@types/react-dom": "19.2.2"
-    }
   },
   "dependencies": {
     "@babel/core": "^7.22.1",
@@ -81,5 +74,12 @@
     "@types/react-dom": "^19.1.9",
     "eslint-plugin-tailwindcss": "^3.18.2",
     "typescript": "^5.9.2"
+  },
+  "packageManager": "pnpm@9.0.4",
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.2.2",
+      "@types/react-dom": "19.2.2"
+    }
   }
 }

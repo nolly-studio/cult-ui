@@ -3,9 +3,7 @@
   "name": "feature-voting",
   "type": "registry:ui",
   "description": "List of features with up-vote support, optional sorting by vote count, and controlled or uncontrolled state",
-  "dependencies": [
-    "@radix-ui/react-use-controllable-state"
-  ],
+  "dependencies": ["@radix-ui/react-use-controllable-state"],
   "files": [
     {
       "path": "registry/default/ui/feature-voting.tsx",

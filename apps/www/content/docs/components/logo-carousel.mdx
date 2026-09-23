@@ -52,7 +52,7 @@ npm install motion
 
 ```tsx
 export default function LogoCarouselDemo() {
-  return <LogoCarousel />
+  return <LogoCarousel />;
 }
 ```
 
@@ -84,16 +84,16 @@ To add custom logos to the carousel, modify the `allLogos` array in the componen
 const allLogos: Logo[] = [
   { name: "CustomLogo", id: 1, img: CustomLogoComponent },
   // Add more logos...
-]
+];
 ```
 
 Each logo should implement the `Logo` interface:
 
 ```tsx
 interface Logo {
-  name: string
-  id: number
-  img: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  name: string;
+  id: number;
+  img: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 }
 ```
 

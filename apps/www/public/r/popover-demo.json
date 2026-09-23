@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "popover-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "popover"
-  ],
+  "registryDependencies": ["popover"],
   "files": [
     {
       "path": "registry/default/example/popover-demo.tsx",

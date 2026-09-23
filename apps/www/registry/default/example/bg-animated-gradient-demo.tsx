@@ -1,34 +1,34 @@
-"use client"
+"use client";
 
-import React, { useState } from "react"
-import { Check, Copy, Minus, Plus, Trash2 } from "lucide-react"
+import { Check, Copy, Minus, Plus, Trash2 } from "lucide-react";
+import React, { useState } from "react";
 
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Slider } from "@/components/ui/slider"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useToast } from "@/components/ui/use-toast"
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Slider } from "@/components/ui/slider";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useToast } from "@/components/ui/use-toast";
 
-import { GradientAnimation } from "../ui/bg-animated-gradient"
+import { GradientAnimation } from "../ui/bg-animated-gradient";
 
 type GradientStop = {
-  color: string
-  position: number
-}
+  color: string;
+  position: number;
+};
 
 type Gradient = {
-  stops: GradientStop[]
-  centerX: number
-  centerY: number
-}
+  stops: GradientStop[];
+  centerX: number;
+  centerY: number;
+};
 
 const initialConfig = {
   animationDuration: 5,
@@ -54,22 +54,22 @@ const initialConfig = {
       centerY: 30,
     },
   ],
-}
+};
 
 export function ConfigurableGradientAnimation() {
-  const [config, setConfig] = useState(initialConfig)
-  const [isCopied, setIsCopied] = useState(false)
-  const { toast } = useToast()
+  const [config, setConfig] = useState(initialConfig);
+  const [isCopied, setIsCopied] = useState(false);
+  const { toast } = useToast();
 
   const updateConfig = (key: string, value: any) => {
-    setConfig((prev) => ({ ...prev, [key]: value }))
-  }
+    setConfig((prev) => ({ ...prev, [key]: value }));
+  };
 
   const updateGradient = (index: number, updatedGradient: Gradient) => {
-    const newGradients = [...config.gradients]
-    newGradients[index] = updatedGradient
-    updateConfig("gradients", newGradients)
-  }
+    const newGradients = [...config.gradients];
+    newGradients[index] = updatedGradient;
+    updateConfig("gradients", newGradients);
+  };
 
   const addGradient = () => {
     const newGradient: Gradient = {
@@ -79,14 +79,14 @@ export function ConfigurableGradientAnimation() {
       ],
       centerX: 50,
       centerY: 50,
-    }
-    updateConfig("gradients", [...config.gradients, newGradient])
-  }
+    };
+    updateConfig("gradients", [...config.gradients, newGradient]);
+  };
 
   const removeGradient = (index: number) => {
-    const newGradients = config.gradients.filter((_, i) => i !== index)
-    updateConfig("gradients", newGradients)
-  }
+    const newGradients = config.gradients.filter((_, i) => i !== index);
+    updateConfig("gradients", newGradients);
+  };
 
   const copyConfigToClipboard = () => {
     const configString = `
@@ -104,25 +104,25 @@ export function GradientAnimationExample() {
     </div>
   )
 }
-`
+`;
 
     navigator.clipboard.writeText(configString).then(() => {
-      setIsCopied(true)
+      setIsCopied(true);
       toast({
         title: "Configuration Copied",
         description:
           "The current configuration has been copied to your clipboard.",
-      })
-      setTimeout(() => setIsCopied(false), 2000)
-    })
-  }
+      });
+      setTimeout(() => setIsCopied(false), 2000);
+    });
+  };
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-6 text-center">
+      <h1 className="mb-6 text-center text-3xl font-bold">
         Configurable GradientAnimation
       </h1>
-      <div className="grid grid-cols-1 lg:grid-cols-1 gap-8">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-1">
         <Button
           variant="outline"
           size="sm"
@@ -130,18 +130,18 @@ export function GradientAnimationExample() {
           className="ml-2"
         >
           {isCopied ? (
-            <Check className="h-4 w-4 mr-2" />
+            <Check className="mr-2 h-4 w-4" />
           ) : (
-            <Copy className="h-4 w-4 mr-2" />
+            <Copy className="mr-2 h-4 w-4" />
           )}
           {isCopied ? "Copied!" : "Copy Config"}
         </Button>
-        <div className="overflow-hidden bg-white rounded-lg">
-          <div className="h-[500px] w-full relative">
+        <div className="overflow-hidden rounded-lg bg-white">
+          <div className="relative h-[500px] w-full">
             <GradientAnimation {...config} />
           </div>
         </div>
-        <Card className="overflow-hidden bg-gradient-to-b from-primary/5 to-primary/5">
+        <Card className="from-primary/5 to-primary/5 overflow-hidden bg-gradient-to-b">
           <CardHeader>
             <CardTitle>Configuration</CardTitle>
           </CardHeader>
@@ -182,7 +182,7 @@ export function GradientAnimationExample() {
                   {config.gradients.map((gradient, index) => (
                     <Card
                       key={index}
-                      className="bg-gradient-to-b from-primary/5 to-primary/10"
+                      className="from-primary/5 to-primary/10 bg-gradient-to-b"
                     >
                       <CardHeader>
                         <CardTitle className="text-lg">
@@ -238,17 +238,17 @@ export function GradientAnimationExample() {
                                 type="color"
                                 value={stop.color}
                                 onChange={(e) => {
-                                  const newStops = [...gradient.stops]
+                                  const newStops = [...gradient.stops];
                                   newStops[stopIndex] = {
                                     ...stop,
                                     color: e.target.value,
-                                  }
+                                  };
                                   updateGradient(index, {
                                     ...gradient,
                                     stops: newStops,
-                                  })
+                                  });
                                 }}
-                                className="w-16 h-10"
+                                className="h-10 w-16"
                               />
                               <Slider
                                 min={0}
@@ -256,15 +256,15 @@ export function GradientAnimationExample() {
                                 step={1}
                                 value={[stop.position]}
                                 onValueChange={([value]) => {
-                                  const newStops = [...gradient.stops]
+                                  const newStops = [...gradient.stops];
                                   newStops[stopIndex] = {
                                     ...stop,
                                     position: value,
-                                  }
+                                  };
                                   updateGradient(index, {
                                     ...gradient,
                                     stops: newStops,
-                                  })
+                                  });
                                 }}
                                 className="flex-grow"
                               />
@@ -274,11 +274,11 @@ export function GradientAnimationExample() {
                                 onClick={() => {
                                   const newStops = gradient.stops.filter(
                                     (_, i) => i !== stopIndex
-                                  )
+                                  );
                                   updateGradient(index, {
                                     ...gradient,
                                     stops: newStops,
-                                  })
+                                  });
                                 }}
                               >
                                 <Minus className="h-4 w-4" />
@@ -292,21 +292,21 @@ export function GradientAnimationExample() {
                                 const newStops = [
                                   ...gradient.stops,
                                   { color: "#000000", position: 100 },
-                                ]
+                                ];
                                 updateGradient(index, {
                                   ...gradient,
                                   stops: newStops,
-                                })
+                                });
                               }}
                             >
-                              <Plus className="h-4 w-4 mr-2" />
+                              <Plus className="mr-2 h-4 w-4" />
                               Add Stop
                             </Button>
                             <Button
                               variant="destructive"
                               onClick={() => removeGradient(index)}
                             >
-                              <Trash2 className="h-4 w-4 mr-2" />
+                              <Trash2 className="mr-2 h-4 w-4" />
                               Remove Gradient
                             </Button>
                           </div>
@@ -315,7 +315,7 @@ export function GradientAnimationExample() {
                     </Card>
                   ))}
                   <Button onClick={addGradient} className="w-full">
-                    <Plus className="h-4 w-4 mr-2" />
+                    <Plus className="mr-2 h-4 w-4" />
                     Add Gradient
                   </Button>
                 </div>
@@ -325,7 +325,7 @@ export function GradientAnimationExample() {
         </Card>
       </div>
     </div>
-  )
+  );
 }
 
-export default ConfigurableGradientAnimation
+export default ConfigurableGradientAnimation;

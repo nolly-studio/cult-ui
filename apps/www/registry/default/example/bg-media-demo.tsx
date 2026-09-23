@@ -1,9 +1,9 @@
-import BackgroundMedia from "../ui/bg-media"
+import BackgroundMedia from "../ui/bg-media";
 
 export default function BgMediaDemo() {
   return (
-    <div className="w-full ">
-      <div className="md:min-w-[20rem] ">
+    <div className="w-full">
+      <div className="md:min-w-[20rem]">
         <BackgroundMedia
           type="video"
           variant="light"
@@ -11,5 +11,5 @@ export default function BgMediaDemo() {
         />
       </div>
     </div>
-  )
+  );
 }

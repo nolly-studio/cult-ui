@@ -41,6 +41,7 @@ Use semantic design tokens instead of hardcoded colors. Design tokens separate w
 ### Token Naming
 
 **Base Tokens:**
+
 - `--background` - Main page background
 - `--foreground` - Primary text color
 - `--muted` - Subtle backgrounds
@@ -49,6 +50,7 @@ Use semantic design tokens instead of hardcoded colors. Design tokens separate w
 - `--ring` - Focus ring
 
 **Semantic Tokens:**
+
 - `--primary` / `--primary-foreground`
 - `--secondary` / `--secondary-foreground`
 - `--destructive` / `--destructive-foreground`
@@ -67,9 +69,7 @@ Use semantic design tokens instead of hardcoded colors. Design tokens separate w
 **Incorrect (hardcoded colors):**
 
 ```tsx
-<button className="bg-blue-600 text-white hover:bg-blue-700">
-  Click me
-</button>
+<button className="bg-blue-600 text-white hover:bg-blue-700">Click me</button>
 ```
 
 ### Component Examples
@@ -95,8 +95,14 @@ Use semantic design tokens instead of hardcoded colors. Design tokens separate w
 Override tokens in `.dark` class:
 
 ```css
-:root { --background: oklch(1 0 0); --foreground: oklch(0.145 0 0); }
-.dark { --background: oklch(0.145 0 0); --foreground: oklch(0.985 0 0); }
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+}
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+}
 ```
 
 Components automatically adapt because they reference tokens.
@@ -125,9 +131,15 @@ Use `oklch()` for better color manipulation:
 ### Theme Variants
 
 ```css
-:root { --primary: oklch(0.5 0.2 250); }
-[data-theme="brand-b"] { --primary: oklch(0.5 0.2 120); }
-[data-theme="brand-c"] { --primary: oklch(0.5 0.2 0); }
+:root {
+  --primary: oklch(0.5 0.2 250);
+}
+[data-theme="brand-b"] {
+  --primary: oklch(0.5 0.2 120);
+}
+[data-theme="brand-c"] {
+  --primary: oklch(0.5 0.2 0);
+}
 ```
 
 ### Migration

@@ -1,13 +1,8 @@
 {
   "name": "toolbar-expandable",
   "description": "Expandable toolbar component with step-based navigation, smooth animations, and enhanced scrolling",
-  "dependencies": [
-    "motion",
-    "@radix-ui/react-scroll-area"
-  ],
-  "registryDependencies": [
-    "badge"
-  ],
+  "dependencies": ["motion", "@radix-ui/react-scroll-area"],
+  "registryDependencies": ["badge"],
   "files": [
     {
       "name": "toolbar-expandable.tsx",

@@ -50,7 +50,7 @@ Use `Instructions` with `instructions`, `onInstructionsChange`, `value`, and `on
 ### Basic example
 
 ```tsx
-import { useState } from "react"
+import { useState } from "react";
 import {
   Instruction,
   Instructions,
@@ -64,7 +64,7 @@ import {
   InstructionsFooter,
   InstructionsCreateTrigger,
   InstructionsCreateDialog,
-} from "@/registry/default/ui/ai-instructions"
+} from "@/registry/default/ui/ai-instructions";
 
 const instructions: Instruction[] = [
   {
@@ -73,11 +73,11 @@ const instructions: Instruction[] = [
     description: "Keep responses short and to the point",
     content: "Provide brief, focused responses. Get to the point quickly.",
   },
-]
+];
 
 export default function Example() {
-  const [activeIds, setActiveIds] = useState<string[]>(["concise"])
-  const [instructionsState, setInstructionsState] = useState(instructions)
+  const [activeIds, setActiveIds] = useState<string[]>(["concise"]);
+  const [instructionsState, setInstructionsState] = useState(instructions);
 
   return (
     <Instructions
@@ -106,7 +106,7 @@ export default function Example() {
       </InstructionsContent>
       <InstructionsCreateDialog />
     </Instructions>
-  )
+  );
 }
 ```
 

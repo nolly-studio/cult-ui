@@ -1,5 +1,7 @@
-"use client"
+"use client";
 
+import { Slot } from "@radix-ui/react-slot";
+import { useControllableState } from "@radix-ui/react-use-controllable-state";
 import {
   createContext,
   useCallback,
@@ -8,72 +10,70 @@ import {
   useRef,
   useState,
   type ReactNode,
-} from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { useControllableState } from "@radix-ui/react-use-controllable-state"
+} from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 
 export interface TerminalLine {
-  text: string
-  color?: string
-  delay?: number
+  text: string;
+  color?: string;
+  delay?: number;
 }
 
 export interface TabContent {
-  label: string
-  command: string
-  lines: TerminalLine[]
+  label: string;
+  command: string;
+  lines: TerminalLine[];
 }
 
 export type TerminalAnimationRootProps = React.ComponentProps<"div"> & {
   /** Tab content for each command */
-  tabs: TabContent[]
+  tabs: TabContent[];
   /** Initial active tab index (uncontrolled) */
-  defaultActiveTab?: number
+  defaultActiveTab?: number;
   /** Active tab index (controlled) */
-  activeTab?: number
+  activeTab?: number;
   /** Callback when active tab changes */
-  onActiveTabChange?: (index: number) => void
+  onActiveTabChange?: (index: number) => void;
   /** Optional background image URL; renders a full-bleed layer when provided */
-  backgroundImage?: string
+  backgroundImage?: string;
   /** Force dark mode for the terminal regardless of page theme */
-  alwaysDark?: boolean
+  alwaysDark?: boolean;
   /** Hide cursor after output completes */
-  hideCursorOnComplete?: boolean
-}
+  hideCursorOnComplete?: boolean;
+};
 
 // ---------------------------------------------------------------------------
 // Context
 // ---------------------------------------------------------------------------
 
 interface TerminalAnimationContextValue {
-  activeTab: number
-  setActiveTab: (index: number) => void
-  commandTyped: string
-  isTypingCommand: boolean
-  showCursor: boolean
-  visibleLines: number
-  currentTab: TabContent
-  tabs: TabContent[]
+  activeTab: number;
+  setActiveTab: (index: number) => void;
+  commandTyped: string;
+  isTypingCommand: boolean;
+  showCursor: boolean;
+  visibleLines: number;
+  currentTab: TabContent;
+  tabs: TabContent[];
 }
 
 const TerminalAnimationContext = createContext<
   TerminalAnimationContextValue | undefined
->(undefined)
+>(undefined);
 
 function useTerminalAnimationContext() {
-  const ctx = useContext(TerminalAnimationContext)
+  const ctx = useContext(TerminalAnimationContext);
   if (!ctx) {
     throw new Error(
       "TerminalAnimation components must be used within TerminalAnimationRoot"
-    )
+    );
   }
-  return ctx
+  return ctx;
 }
 
 // ---------------------------------------------------------------------------
@@ -302,7 +302,7 @@ export const defaultTerminalTabs: TabContent[] = [
       { text: "  ✓ built in 218ms", color: "text-[#22ff73]", delay: 300 },
     ],
   },
-]
+];
 
 // ---------------------------------------------------------------------------
 // Root
@@ -324,77 +324,77 @@ export function TerminalAnimationRoot({
     prop: activeTabProp,
     defaultProp: defaultActiveTab,
     onChange: onActiveTabChange,
-  })
+  });
 
-  const [visibleLines, setVisibleLines] = useState(0)
-  const [commandTyped, setCommandTyped] = useState("")
-  const [isTypingCommand, setIsTypingCommand] = useState(true)
-  const [showCursor, setShowCursor] = useState(true)
-  const timeoutRef = useRef<ReturnType<typeof setTimeout>[]>([])
+  const [visibleLines, setVisibleLines] = useState(0);
+  const [commandTyped, setCommandTyped] = useState("");
+  const [isTypingCommand, setIsTypingCommand] = useState(true);
+  const [showCursor, setShowCursor] = useState(true);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   const clearTimeouts = useCallback(() => {
-    timeoutRef.current.forEach(clearTimeout)
-    timeoutRef.current = []
-  }, [])
+    timeoutRef.current.forEach(clearTimeout);
+    timeoutRef.current = [];
+  }, []);
 
   const animateTab = useCallback(
     (tabIndex: number) => {
-      clearTimeouts()
-      setVisibleLines(0)
-      setCommandTyped("")
-      setIsTypingCommand(true)
-      setShowCursor(true)
+      clearTimeouts();
+      setVisibleLines(0);
+      setCommandTyped("");
+      setIsTypingCommand(true);
+      setShowCursor(true);
 
-      const tab = tabs[tabIndex]
+      const tab = tabs[tabIndex];
       if (!tab) {
-        return
+        return;
       }
 
-      const command = tab.command
-      let charIndex = 0
+      const command = tab.command;
+      let charIndex = 0;
 
       const typeCommand = () => {
         if (charIndex <= command.length) {
-          setCommandTyped(command.slice(0, charIndex))
-          charIndex++
-          const t = setTimeout(typeCommand, 25 + Math.random() * 35)
-          timeoutRef.current.push(t)
+          setCommandTyped(command.slice(0, charIndex));
+          charIndex++;
+          const t = setTimeout(typeCommand, 25 + Math.random() * 35);
+          timeoutRef.current.push(t);
         } else {
           const t = setTimeout(() => {
-            setIsTypingCommand(false)
-            showLines(0)
-          }, 250)
-          timeoutRef.current.push(t)
+            setIsTypingCommand(false);
+            showLines(0);
+          }, 250);
+          timeoutRef.current.push(t);
         }
-      }
+      };
 
       const showLines = (lineIndex: number) => {
         if (lineIndex <= tab.lines.length) {
-          setVisibleLines(lineIndex)
+          setVisibleLines(lineIndex);
           if (lineIndex < tab.lines.length) {
-            const delay = tab.lines[lineIndex].delay ?? 100
-            const t = setTimeout(() => showLines(lineIndex + 1), delay)
-            timeoutRef.current.push(t)
+            const delay = tab.lines[lineIndex].delay ?? 100;
+            const t = setTimeout(() => showLines(lineIndex + 1), delay);
+            timeoutRef.current.push(t);
           } else if (hideCursorOnComplete) {
-            const t = setTimeout(() => setShowCursor(false), 600)
-            timeoutRef.current.push(t)
+            const t = setTimeout(() => setShowCursor(false), 600);
+            timeoutRef.current.push(t);
           }
         }
-      }
+      };
 
-      const t = setTimeout(typeCommand, 300)
-      timeoutRef.current.push(t)
+      const t = setTimeout(typeCommand, 300);
+      timeoutRef.current.push(t);
     },
     [clearTimeouts, hideCursorOnComplete, tabs]
-  )
+  );
 
   useEffect(() => {
-    animateTab(activeTab)
-    return clearTimeouts
-  }, [activeTab, animateTab, clearTimeouts])
+    animateTab(activeTab);
+    return clearTimeouts;
+  }, [activeTab, animateTab, clearTimeouts]);
 
-  const currentTab = tabs[activeTab] ?? tabs[0]
-  const safeActiveTab = Math.min(activeTab, tabs.length - 1)
+  const currentTab = tabs[activeTab] ?? tabs[0];
+  const safeActiveTab = Math.min(activeTab, tabs.length - 1);
 
   const value: TerminalAnimationContextValue = {
     activeTab: safeActiveTab,
@@ -405,7 +405,7 @@ export function TerminalAnimationRoot({
     visibleLines,
     currentTab,
     tabs,
-  }
+  };
 
   return (
     <TerminalAnimationContext.Provider value={value}>
@@ -417,7 +417,7 @@ export function TerminalAnimationRoot({
         {backgroundImage && (
           <div
             aria-hidden
-            className="absolute inset-0 bg-center bg-cover"
+            className="absolute inset-0 bg-cover bg-center"
             data-slot="terminal-animation-background"
             style={{ backgroundImage: `url(${backgroundImage})` }}
           />
@@ -425,7 +425,7 @@ export function TerminalAnimationRoot({
         {children}
       </div>
     </TerminalAnimationContext.Provider>
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -433,10 +433,10 @@ export function TerminalAnimationRoot({
 // ---------------------------------------------------------------------------
 
 export type TerminalAnimationBackgroundGradientProps =
-  React.ComponentProps<"div">
+  React.ComponentProps<"div">;
 
 const backgroundGradientClasses =
-  "absolute inset-0 bg-gradient-to-br from-violet-600/40 via-fuchsia-600/30 to-indigo-950"
+  "absolute inset-0 bg-gradient-to-br from-violet-600/40 via-fuchsia-600/30 to-indigo-950";
 
 export function TerminalAnimationBackgroundGradient({
   className,
@@ -449,17 +449,17 @@ export function TerminalAnimationBackgroundGradient({
       data-slot="terminal-animation-background-gradient"
       {...props}
     />
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
 // Container
 // ---------------------------------------------------------------------------
 
-export type TerminalAnimationContainerProps = React.ComponentProps<"div">
+export type TerminalAnimationContainerProps = React.ComponentProps<"div">;
 
 const containerClasses =
-  "relative w-full max-w-[62rem] px-3 pt-10 pb-0 md:px-0 md:pt-28"
+  "relative w-full max-w-[62rem] px-3 pt-10 pb-0 md:px-0 md:pt-28";
 
 export function TerminalAnimationContainer({
   className,
@@ -471,7 +471,7 @@ export function TerminalAnimationContainer({
       data-slot="terminal-animation-container"
       {...props}
     />
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -480,14 +480,14 @@ export function TerminalAnimationContainer({
 
 export type TerminalAnimationWindowProps = React.ComponentProps<"div"> & {
   /** Terminal window background color; defaults to bg-card when unset */
-  backgroundColor?: string
+  backgroundColor?: string;
   /** Minimum height of the terminal window */
-  minHeight?: string
+  minHeight?: string;
   /** Animate slide-up when element enters viewport */
-  animateOnVisible?: boolean
-}
+  animateOnVisible?: boolean;
+};
 
-const windowClasses = "relative flex flex-col overflow-hidden rounded-t-xl"
+const windowClasses = "relative flex flex-col overflow-hidden rounded-t-xl";
 
 export function TerminalAnimationWindow({
   className,
@@ -497,25 +497,25 @@ export function TerminalAnimationWindow({
   style,
   ...props
 }: TerminalAnimationWindowProps) {
-  const windowRef = useRef<HTMLDivElement>(null)
-  const [hasAnimated, setHasAnimated] = useState(false)
+  const windowRef = useRef<HTMLDivElement>(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
     if (!(animateOnVisible && windowRef.current)) {
-      return
+      return;
     }
-    const el = windowRef.current
+    const el = windowRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
-          setHasAnimated(true)
+          setHasAnimated(true);
         }
       },
       { threshold: 0.1 }
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [animateOnVisible])
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [animateOnVisible]);
 
   return (
     <div
@@ -537,16 +537,16 @@ export function TerminalAnimationWindow({
       }
       {...props}
     />
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
 // Content
 // ---------------------------------------------------------------------------
 
-export type TerminalAnimationContentProps = React.ComponentProps<"div">
+export type TerminalAnimationContentProps = React.ComponentProps<"div">;
 
-const contentClasses = "flex-1 px-6 py-6 sm:px-10 sm:py-8"
+const contentClasses = "flex-1 px-6 py-6 sm:px-10 sm:py-8";
 
 export function TerminalAnimationContent({
   className,
@@ -558,14 +558,14 @@ export function TerminalAnimationContent({
       data-slot="terminal-animation-content"
       {...props}
     />
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
 // BlinkingCursor
 // ---------------------------------------------------------------------------
 
-export type TerminalAnimationBlinkingCursorProps = React.ComponentProps<"span">
+export type TerminalAnimationBlinkingCursorProps = React.ComponentProps<"span">;
 
 export function TerminalAnimationBlinkingCursor({
   className,
@@ -576,13 +576,13 @@ export function TerminalAnimationBlinkingCursor({
     <span
       aria-hidden
       className={cn(
-        "ml-0.5 inline-block h-[18px] w-[7px] translate-y-[3px] animate-caret-blink bg-muted-foreground duration-1000",
+        "animate-caret-blink bg-muted-foreground ml-0.5 inline-block h-[18px] w-[7px] translate-y-[3px] duration-1000",
         className
       )}
       data-slot="terminal-animation-blinking-cursor"
       {...props}
     />
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -591,8 +591,8 @@ export function TerminalAnimationBlinkingCursor({
 
 export type TerminalAnimationCommandBarProps = React.ComponentProps<"div"> & {
   /** Custom cursor element when typing; defaults to unstyled block cursor */
-  cursor?: ReactNode
-}
+  cursor?: ReactNode;
+};
 
 export function TerminalAnimationCommandBar({
   className,
@@ -600,9 +600,9 @@ export function TerminalAnimationCommandBar({
   ...props
 }: TerminalAnimationCommandBarProps) {
   const { commandTyped, isTypingCommand, showCursor } =
-    useTerminalAnimationContext()
+    useTerminalAnimationContext();
 
-  const defaultCursor = <span aria-hidden="true">▌</span>
+  const defaultCursor = <span aria-hidden="true">▌</span>;
 
   return (
     <div
@@ -613,7 +613,7 @@ export function TerminalAnimationCommandBar({
       {commandTyped}
       {isTypingCommand && showCursor && (cursor ?? defaultCursor)}
     </div>
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -621,9 +621,9 @@ export function TerminalAnimationCommandBar({
 // ---------------------------------------------------------------------------
 
 export type TerminalAnimationOutputLineProps = React.ComponentProps<"div"> & {
-  line: TerminalLine
-  visible: boolean
-}
+  line: TerminalLine;
+  visible: boolean;
+};
 
 export function TerminalAnimationOutputLine({
   line,
@@ -632,7 +632,7 @@ export function TerminalAnimationOutputLine({
   ...props
 }: TerminalAnimationOutputLineProps) {
   if (!visible) {
-    return null
+    return null;
   }
   return (
     <div
@@ -642,7 +642,7 @@ export function TerminalAnimationOutputLine({
     >
       <span data-line-color={line.color}>{line.text || "\u00A0"}</span>
     </div>
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -655,8 +655,8 @@ export type TerminalAnimationOutputProps = React.ComponentProps<"div"> & {
     line: TerminalLine,
     index: number,
     visible: boolean
-  ) => ReactNode
-}
+  ) => ReactNode;
+};
 
 export function TerminalAnimationOutput({
   className,
@@ -664,10 +664,10 @@ export function TerminalAnimationOutput({
   ...props
 }: TerminalAnimationOutputProps) {
   const { isTypingCommand, visibleLines, currentTab, activeTab } =
-    useTerminalAnimationContext()
+    useTerminalAnimationContext();
 
   if (isTypingCommand) {
-    return null
+    return null;
   }
 
   return (
@@ -680,14 +680,14 @@ export function TerminalAnimationOutput({
       {...props}
     >
       {currentTab.lines.map((line, i) => {
-        const visible = i < visibleLines
-        const key = `${activeTab}-${i}`
+        const visible = i < visibleLines;
+        const key = `${activeTab}-${i}`;
         if (renderLine) {
-          const content = renderLine(line, i, visible)
+          const content = renderLine(line, i, visible);
           if (!(visible || content)) {
-            return null
+            return null;
           }
-          return <div key={key}>{content}</div>
+          return <div key={key}>{content}</div>;
         }
         return (
           <TerminalAnimationOutputLine
@@ -695,17 +695,17 @@ export function TerminalAnimationOutput({
             line={line}
             visible={visible}
           />
-        )
+        );
       })}
     </div>
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
 // TrailingPrompt
 // ---------------------------------------------------------------------------
 
-export type TerminalAnimationTrailingPromptProps = React.ComponentProps<"div">
+export type TerminalAnimationTrailingPromptProps = React.ComponentProps<"div">;
 
 export function TerminalAnimationTrailingPrompt({
   className,
@@ -713,13 +713,13 @@ export function TerminalAnimationTrailingPrompt({
   ...props
 }: TerminalAnimationTrailingPromptProps) {
   const { isTypingCommand, showCursor, visibleLines, currentTab } =
-    useTerminalAnimationContext()
+    useTerminalAnimationContext();
 
   const show =
-    !isTypingCommand && showCursor && visibleLines >= currentTab.lines.length
+    !isTypingCommand && showCursor && visibleLines >= currentTab.lines.length;
 
   if (!show) {
-    return null
+    return null;
   }
 
   return (
@@ -730,14 +730,14 @@ export function TerminalAnimationTrailingPrompt({
     >
       {children}
     </div>
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
 // TabList
 // ---------------------------------------------------------------------------
 
-export type TerminalAnimationTabListProps = React.ComponentProps<"div">
+export type TerminalAnimationTabListProps = React.ComponentProps<"div">;
 
 export function TerminalAnimationTabList({
   className,
@@ -751,7 +751,7 @@ export function TerminalAnimationTabList({
       role="tablist"
       {...props}
     />
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -761,10 +761,10 @@ export function TerminalAnimationTabList({
 export type TerminalAnimationTabTriggerProps =
   React.ComponentPropsWithoutRef<"button"> & {
     /** Tab index to activate when clicked */
-    index: number
+    index: number;
     /** Merge props onto child element instead of rendering a button */
-    asChild?: boolean
-  }
+    asChild?: boolean;
+  };
 
 export function TerminalAnimationTabTrigger({
   index,
@@ -773,8 +773,8 @@ export function TerminalAnimationTabTrigger({
   children,
   ...props
 }: TerminalAnimationTabTriggerProps) {
-  const { activeTab, setActiveTab } = useTerminalAnimationContext()
-  const isActive = activeTab === index
+  const { activeTab, setActiveTab } = useTerminalAnimationContext();
+  const isActive = activeTab === index;
 
   const triggerProps = {
     role: "tab" as const,
@@ -782,10 +782,10 @@ export function TerminalAnimationTabTrigger({
     "data-state": isActive ? "active" : "inactive",
     onClick: () => setActiveTab(index),
     children,
-  }
+  };
 
   if (asChild) {
-    return <Slot {...triggerProps} {...props} className={className} />
+    return <Slot {...triggerProps} {...props} className={className} />;
   }
 
   return (
@@ -796,7 +796,7 @@ export function TerminalAnimationTabTrigger({
       className={className}
       {...props}
     />
-  )
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -804,5 +804,5 @@ export function TerminalAnimationTabTrigger({
 // ---------------------------------------------------------------------------
 
 export function useTerminalAnimation() {
-  return useTerminalAnimationContext()
+  return useTerminalAnimationContext();
 }

@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useCallback, useEffect, useRef, useState } from "react"
-import { atom, useAtom } from "jotai"
-import { motion } from "motion/react"
-import { useTheme } from "next-themes"
-import * as THREE from "three"
+import { atom, useAtom } from "jotai";
+import { motion } from "motion/react";
+import { useTheme } from "next-themes";
+import { useCallback, useEffect, useRef, useState } from "react";
+import * as THREE from "three";
 
 const fragmentShader = `
 varying vec2 v_texcoord;
@@ -121,18 +121,18 @@ void main() {
     
     gl_FragColor = vec4(shapeColor, sdf);
 }
-`
+`;
 
 interface ShaderConfig {
-  variation: number
-  color1: string
-  color2: string
-  color3: string
-  color4: string
-  enableHover: boolean
-  invertMouse: boolean
-  width: string
-  height: string
+  variation: number;
+  color1: string;
+  color2: string;
+  color3: string;
+  color4: string;
+  enableHover: boolean;
+  invertMouse: boolean;
+  width: string;
+  height: string;
 }
 
 const initialState: ShaderConfig = {
@@ -145,22 +145,22 @@ const initialState: ShaderConfig = {
   invertMouse: true,
   width: "100%",
   height: "400px",
-}
+};
 
-export const configAtom = atom<ShaderConfig>(initialState)
+export const configAtom = atom<ShaderConfig>(initialState);
 
 export function ShaderLensBlur() {
-  const [config] = useAtom(configAtom)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const rendererRef = useRef<THREE.WebGLRenderer | null>(null)
-  const sceneRef = useRef<THREE.Scene | null>(null)
-  const cameraRef = useRef<THREE.OrthographicCamera | null>(null)
-  const materialRef = useRef<THREE.ShaderMaterial | null>(null)
-  const rafRef = useRef<number | null>(null)
-  const pixelRatioRef = useRef(1)
-  const [isInteracting, setIsInteracting] = useState(false)
-  const { theme } = useTheme()
+  const [config] = useAtom(configAtom);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+  const sceneRef = useRef<THREE.Scene | null>(null);
+  const cameraRef = useRef<THREE.OrthographicCamera | null>(null);
+  const materialRef = useRef<THREE.ShaderMaterial | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const pixelRatioRef = useRef(1);
+  const [isInteracting, setIsInteracting] = useState(false);
+  const { theme } = useTheme();
 
   const updateSize = useCallback(() => {
     if (
@@ -170,45 +170,45 @@ export function ShaderLensBlur() {
       !cameraRef.current ||
       !materialRef.current
     )
-      return
+      return;
 
-    const { clientWidth: w, clientHeight: h } = containerRef.current
-    const aspect = w / h
+    const { clientWidth: w, clientHeight: h } = containerRef.current;
+    const aspect = w / h;
 
-    cameraRef.current.left = -aspect
-    cameraRef.current.right = aspect
-    cameraRef.current.top = 1
-    cameraRef.current.bottom = -1
-    cameraRef.current.updateProjectionMatrix()
+    cameraRef.current.left = -aspect;
+    cameraRef.current.right = aspect;
+    cameraRef.current.top = 1;
+    cameraRef.current.bottom = -1;
+    cameraRef.current.updateProjectionMatrix();
 
-    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2)
-    pixelRatioRef.current = pixelRatio
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    pixelRatioRef.current = pixelRatio;
 
-    rendererRef.current.setPixelRatio(pixelRatio)
-    rendererRef.current.setSize(w, h)
+    rendererRef.current.setPixelRatio(pixelRatio);
+    rendererRef.current.setSize(w, h);
 
     const drawingBufferSize = rendererRef.current.getDrawingBufferSize(
       new THREE.Vector2()
-    )
-    materialRef.current.uniforms.u_resolution.value.copy(drawingBufferSize)
-    materialRef.current.uniforms.u_pixelRatio.value = pixelRatio
-  }, [])
+    );
+    materialRef.current.uniforms.u_resolution.value.copy(drawingBufferSize);
+    materialRef.current.uniforms.u_pixelRatio.value = pixelRatio;
+  }, []);
 
   const updateMousePosition = useCallback(
     (x: number, y: number) => {
-      if (!containerRef.current || !materialRef.current) return
-      const rect = containerRef.current.getBoundingClientRect()
-      const mouseX = x - rect.left
-      const mouseY = y - rect.top
+      if (!containerRef.current || !materialRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const mouseX = x - rect.left;
+      const mouseY = y - rect.top;
       if (isInteracting || config.enableHover) {
         materialRef.current.uniforms.u_mouse.value.set(
           mouseX,
           rect.height - mouseY
-        )
+        );
       }
     },
     [isInteracting, config.enableHover]
-  )
+  );
 
   const animate = useCallback(
     (time: number) => {
@@ -218,43 +218,43 @@ export function ShaderLensBlur() {
         !cameraRef.current ||
         !materialRef.current
       )
-        return
+        return;
 
-      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2)
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
       if (pixelRatio !== pixelRatioRef.current) {
-        updateSize()
+        updateSize();
       }
 
-      materialRef.current.uniforms.u_time.value = time * 0.001
+      materialRef.current.uniforms.u_time.value = time * 0.001;
       materialRef.current.uniforms.u_hoverStrength.value =
-        isInteracting || config.enableHover ? 0.3 : 0
+        isInteracting || config.enableHover ? 0.3 : 0;
 
-      rendererRef.current.render(sceneRef.current, cameraRef.current)
-      rafRef.current = requestAnimationFrame(animate)
+      rendererRef.current.render(sceneRef.current, cameraRef.current);
+      rafRef.current = requestAnimationFrame(animate);
     },
     [config.enableHover, isInteracting, updateSize]
-  )
+  );
 
   useEffect(() => {
-    if (!containerRef.current || !canvasRef.current) return
+    if (!containerRef.current || !canvasRef.current) return;
 
-    const scene = new THREE.Scene()
-    sceneRef.current = scene
+    const scene = new THREE.Scene();
+    sceneRef.current = scene;
 
-    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 1000)
-    camera.position.z = 1
-    cameraRef.current = camera
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 1000);
+    camera.position.z = 1;
+    cameraRef.current = camera;
 
     const renderer = new THREE.WebGLRenderer({
       canvas: canvasRef.current,
       antialias: true,
       alpha: true,
-    })
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-    renderer.setClearColor(0x000000, 0)
-    rendererRef.current = renderer
+    });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+    rendererRef.current = renderer;
 
-    const geometry = new THREE.PlaneGeometry(2, 2)
+    const geometry = new THREE.PlaneGeometry(2, 2);
     const material = new THREE.ShaderMaterial({
       vertexShader: `
         varying vec2 v_texcoord;
@@ -282,71 +282,71 @@ export function ShaderLensBlur() {
       },
       transparent: true,
       blending: THREE.NormalBlending,
-    })
-    materialRef.current = material
+    });
+    materialRef.current = material;
 
-    const mesh = new THREE.Mesh(geometry, material)
-    scene.add(mesh)
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
 
-    updateSize()
-    rafRef.current = requestAnimationFrame(animate)
+    updateSize();
+    rafRef.current = requestAnimationFrame(animate);
 
-    const resizeObserver = new ResizeObserver(updateSize)
-    resizeObserver.observe(containerRef.current)
+    const resizeObserver = new ResizeObserver(updateSize);
+    resizeObserver.observe(containerRef.current);
 
     return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current)
-      if (rendererRef.current) rendererRef.current.dispose()
-      if (containerRef.current) resizeObserver.unobserve(containerRef.current)
-    }
-  }, [config, updateSize, animate, theme])
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (rendererRef.current) rendererRef.current.dispose();
+      if (containerRef.current) resizeObserver.unobserve(containerRef.current);
+    };
+  }, [config, updateSize, animate, theme]);
 
   useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
+    const container = containerRef.current;
+    if (!container) return;
 
     const handlePointerMove = (event: PointerEvent) =>
-      updateMousePosition(event.clientX, event.clientY)
+      updateMousePosition(event.clientX, event.clientY);
     const handleTouchMove = (event: TouchEvent) => {
       if (event.touches.length > 0) {
-        const touch = event.touches[0]
-        updateMousePosition(touch.clientX, touch.clientY)
+        const touch = event.touches[0];
+        updateMousePosition(touch.clientX, touch.clientY);
       }
-    }
-    const handlePointerDown = () => setIsInteracting(true)
-    const handlePointerUp = () => setIsInteracting(false)
-    const handleTouchStart = () => setIsInteracting(true)
-    const handleTouchEnd = () => setIsInteracting(false)
+    };
+    const handlePointerDown = () => setIsInteracting(true);
+    const handlePointerUp = () => setIsInteracting(false);
+    const handleTouchStart = () => setIsInteracting(true);
+    const handleTouchEnd = () => setIsInteracting(false);
 
-    container.addEventListener("pointermove", handlePointerMove)
-    container.addEventListener("touchmove", handleTouchMove)
-    container.addEventListener("pointerdown", handlePointerDown)
-    container.addEventListener("pointerup", handlePointerUp)
-    container.addEventListener("touchstart", handleTouchStart)
-    container.addEventListener("touchend", handleTouchEnd)
+    container.addEventListener("pointermove", handlePointerMove);
+    container.addEventListener("touchmove", handleTouchMove);
+    container.addEventListener("pointerdown", handlePointerDown);
+    container.addEventListener("pointerup", handlePointerUp);
+    container.addEventListener("touchstart", handleTouchStart);
+    container.addEventListener("touchend", handleTouchEnd);
 
     return () => {
-      container.removeEventListener("pointermove", handlePointerMove)
-      container.removeEventListener("touchmove", handleTouchMove)
-      container.removeEventListener("pointerdown", handlePointerDown)
-      container.removeEventListener("pointerup", handlePointerUp)
-      container.removeEventListener("touchstart", handleTouchStart)
-      container.removeEventListener("touchend", handleTouchEnd)
-    }
-  }, [updateMousePosition])
+      container.removeEventListener("pointermove", handlePointerMove);
+      container.removeEventListener("touchmove", handleTouchMove);
+      container.removeEventListener("pointerdown", handlePointerDown);
+      container.removeEventListener("pointerup", handlePointerUp);
+      container.removeEventListener("touchstart", handleTouchStart);
+      container.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [updateMousePosition]);
 
   useEffect(() => {
     if (materialRef.current) {
-      materialRef.current.uniforms.u_color1.value.set(config.color1)
-      materialRef.current.uniforms.u_color2.value.set(config.color2)
-      materialRef.current.uniforms.u_color3.value.set(config.color3)
-      materialRef.current.uniforms.u_color4.value.set(config.color4)
-      materialRef.current.uniforms.u_invertMouse.value = config.invertMouse
-      materialRef.current.uniforms.u_isDarkMode.value = theme === "dark"
-      materialRef.current.defines.VAR = config.variation
-      materialRef.current.needsUpdate = true
+      materialRef.current.uniforms.u_color1.value.set(config.color1);
+      materialRef.current.uniforms.u_color2.value.set(config.color2);
+      materialRef.current.uniforms.u_color3.value.set(config.color3);
+      materialRef.current.uniforms.u_color4.value.set(config.color4);
+      materialRef.current.uniforms.u_invertMouse.value = config.invertMouse;
+      materialRef.current.uniforms.u_isDarkMode.value = theme === "dark";
+      materialRef.current.defines.VAR = config.variation;
+      materialRef.current.needsUpdate = true;
     }
-  }, [config, theme])
+  }, [config, theme]);
 
   return (
     <motion.div
@@ -362,7 +362,7 @@ export function ShaderLensBlur() {
         borderRadius: "8px",
       }}
     >
-      <canvas ref={canvasRef} className="w-full h-full touch-none" />
+      <canvas ref={canvasRef} className="h-full w-full touch-none" />
       <div
         className={`absolute bottom-4 left-4 text-sm ${
           theme === "dark" ? "text-neutral-300" : "text-neutral-200"
@@ -376,10 +376,10 @@ export function ShaderLensBlur() {
         using mouse or touch
       </div>
     </motion.div>
-  )
+  );
 }
 
-export default ShaderLensBlur
+export default ShaderLensBlur;
 // "use client"
 
 // // npm install jotai three

@@ -2,12 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "border-beam-button",
   "description": "Shadcn Button wrapped in Border Beam: animated border glow with compact icon and text variants",
-  "dependencies": [
-    "border-beam"
-  ],
-  "registryDependencies": [
-    "button"
-  ],
+  "dependencies": ["border-beam"],
+  "registryDependencies": ["button"],
   "files": [
     {
       "path": "registry/default/ui/border-beam-button.tsx",

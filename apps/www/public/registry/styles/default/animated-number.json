@@ -1,9 +1,7 @@
 {
   "name": "animated-number",
   "description": "Number component with smooth counting animations and customizable formatting",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "name": "animated-number.tsx",

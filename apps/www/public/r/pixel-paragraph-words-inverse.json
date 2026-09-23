@@ -3,9 +3,7 @@
   "name": "pixel-paragraph-words-inverse",
   "type": "registry:ui",
   "description": "Paragraph in pixel font where specific words escape into interactive sans/mono with hover swap or cycle",
-  "dependencies": [
-    "geist"
-  ],
+  "dependencies": ["geist"],
   "files": [
     {
       "path": "registry/default/ui/pixel-paragraph-words-inverse.tsx",

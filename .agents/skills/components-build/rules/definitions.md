@@ -32,9 +32,12 @@ A **styled, reusable UI unit** that adds visual design to primitives or composes
 
 ```tsx
 // Component - styled and reusable
-function Button({ variant = 'primary', size = 'md', children, ...props }) {
+function Button({ variant = "primary", size = "md", children, ...props }) {
   return (
-    <button className={cn('base-button-styles', variants[variant], sizes[size])} {...props}>
+    <button
+      className={cn("base-button-styles", variants[variant], sizes[size])}
+      {...props}
+    >
       {children}
     </button>
   );
@@ -58,11 +61,17 @@ An **opinionated, production-ready composition** solving a concrete interface us
 function PricingTable({ plans, onSelectPlan }) {
   return (
     <div className="pricing-table">
-      {plans.map(plan => (
+      {plans.map((plan) => (
         <Card key={plan.id}>
-          <Card.Header><Card.Title>{plan.name}</Card.Title></Card.Header>
-          <Card.Content><div className="price">{plan.price}</div></Card.Content>
-          <Card.Footer><Button onClick={() => onSelectPlan(plan.id)}>Select Plan</Button></Card.Footer>
+          <Card.Header>
+            <Card.Title>{plan.name}</Card.Title>
+          </Card.Header>
+          <Card.Content>
+            <div className="price">{plan.price}</div>
+          </Card.Content>
+          <Card.Footer>
+            <Button onClick={() => onSelectPlan(plan.id)}>Select Plan</Button>
+          </Card.Footer>
         </Card>
       ))}
     </div>
@@ -155,7 +164,9 @@ function DialogPrimitive({ open, onOpenChange, children }) {
 function Dialog({ open, onOpenChange, children }) {
   return (
     <DialogPrimitive open={open} onOpenChange={onOpenChange}>
-      <Dialog.Content className={cn("rounded-lg border bg-white p-6 shadow-lg")}>
+      <Dialog.Content
+        className={cn("rounded-lg border bg-white p-6 shadow-lg")}
+      >
         {children}
       </Dialog.Content>
     </DialogPrimitive>

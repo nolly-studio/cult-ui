@@ -3,9 +3,7 @@
   "name": "pixel-heading-word",
   "type": "registry:ui",
   "description": "Whole-word pixel-font heading that swaps or cycles fonts on hover using Geist pixel fonts",
-  "dependencies": [
-    "geist"
-  ],
+  "dependencies": ["geist"],
   "files": [
     {
       "path": "registry/default/ui/pixel-heading-word.tsx",

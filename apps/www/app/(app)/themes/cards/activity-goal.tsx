@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Minus, Plus } from "lucide-react"
-import { useTheme } from "next-themes"
-import { Bar, BarChart, ResponsiveContainer } from "recharts"
+import { Minus, Plus } from "lucide-react";
+import { useTheme } from "next-themes";
+import * as React from "react";
+import { Bar, BarChart, ResponsiveContainer } from "recharts";
 
-import { useConfig } from "@/hooks/use-config"
-import { TextureButton } from "@/registry/default/ui/texture-button"
+import { useConfig } from "@/hooks/use-config";
+import { TextureButton } from "@/registry/default/ui/texture-button";
 import {
   TextureCard,
   TextureCardContent,
@@ -14,8 +14,8 @@ import {
   TextureCardFooter,
   TextureCardHeader,
   TextureCardTitle,
-} from "@/registry/default/ui/texture-card"
-import { themes } from "@/registry/themes"
+} from "@/registry/default/ui/texture-card";
+import { themes } from "@/registry/themes";
 
 const data = [
   {
@@ -57,17 +57,17 @@ const data = [
   {
     goal: 349,
   },
-]
+];
 
 export function CardsActivityGoal() {
-  const { theme: mode } = useTheme()
-  const [config] = useConfig()
+  const { theme: mode } = useTheme();
+  const [config] = useConfig();
 
-  const theme = themes.find((theme) => theme.name === config.theme)
-  const [goal, setGoal] = React.useState(350)
+  const theme = themes.find((theme) => theme.name === config.theme);
+  const [goal, setGoal] = React.useState(350);
 
   function onClick(adjustment: number) {
-    setGoal(Math.max(200, Math.min(400, goal + adjustment)))
+    setGoal(Math.max(200, Math.min(400, goal + adjustment)));
   }
 
   return (
@@ -92,7 +92,7 @@ export function CardsActivityGoal() {
           </TextureButton>
           <div className="flex-1 text-center">
             <div className="text-5xl font-bold tracking-tighter">{goal}</div>
-            <div className="text-[0.70rem] uppercase text-muted-foreground">
+            <div className="text-muted-foreground text-[0.70rem] uppercase">
               Calories/day
             </div>
           </div>
@@ -130,5 +130,5 @@ export function CardsActivityGoal() {
         <TextureButton className="w-full">Set Goal</TextureButton>
       </TextureCardFooter>
     </TextureCard>
-  )
+  );
 }

@@ -76,10 +76,10 @@ import {
   FamilyDrawerTrigger,
   FamilyDrawerViewContent,
   useFamilyDrawer,
-} from "@/components/ui/family-drawer"
+} from "@/components/ui/family-drawer";
 
 function DefaultView() {
-  const { setView } = useFamilyDrawer()
+  const { setView } = useFamilyDrawer();
 
   return (
     <>
@@ -91,25 +91,25 @@ function DefaultView() {
         <button onClick={() => setView("profile")}>Profile</button>
       </div>
     </>
-  )
+  );
 }
 
 function SettingsView() {
-  const { setView } = useFamilyDrawer()
+  const { setView } = useFamilyDrawer();
 
   return (
     <div>
       <h2>Settings</h2>
       <button onClick={() => setView("default")}>Back</button>
     </div>
-  )
+  );
 }
 
 export default function FamilyDrawerDemo() {
   const views = {
     default: DefaultView,
     settings: SettingsView,
-  }
+  };
 
   return (
     <FamilyDrawerRoot views={views}>
@@ -122,7 +122,7 @@ export default function FamilyDrawerDemo() {
         </FamilyDrawerAnimatedWrapper>
       </FamilyDrawerContent>
     </FamilyDrawerRoot>
-  )
+  );
 }
 ```
 
@@ -174,9 +174,7 @@ The trigger button that opens the drawer. Can be used with `asChild` to compose 
 The main content container for the drawer. Handles positioning and animations.
 
 ```typescriptreact
-<FamilyDrawerContent>
-  {/* Drawer content */}
-</FamilyDrawerContent>
+<FamilyDrawerContent>{/* Drawer content */}</FamilyDrawerContent>
 ```
 
 **Props:**
@@ -289,9 +287,7 @@ Portal component for rendering the drawer outside the DOM hierarchy.
 
 ```typescriptreact
 <FamilyDrawerPortal>
-  <FamilyDrawerContent>
-    {/* Content */}
-  </FamilyDrawerContent>
+  <FamilyDrawerContent>{/* Content */}</FamilyDrawerContent>
 </FamilyDrawerPortal>
 ```
 
@@ -314,14 +310,14 @@ Hook to access drawer context and control view navigation.
 
 ```typescriptreact
 function MyView() {
-  const { view, setView, isOpen } = useFamilyDrawer()
+  const { view, setView, isOpen } = useFamilyDrawer();
 
   return (
     <div>
       <p>Current view: {view}</p>
       <button onClick={() => setView("other")}>Switch View</button>
     </div>
-  )
+  );
 }
 ```
 
@@ -358,14 +354,14 @@ Navigate between views using the `setView` function from the hook:
 
 ```typescriptreact
 function DefaultView() {
-  const { setView } = useFamilyDrawer()
+  const { setView } = useFamilyDrawer();
 
   return (
     <div>
       <button onClick={() => setView("settings")}>Go to Settings</button>
       <button onClick={() => setView("profile")}>Go to Profile</button>
     </div>
-  )
+  );
 }
 ```
 

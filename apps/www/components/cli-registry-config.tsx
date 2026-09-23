@@ -1,73 +1,79 @@
-"use client"
+"use client";
 
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { AnimatePresence, motion, MotionConfig } from "motion/react"
-import useMeasure from "react-use-measure"
+import { AnimatePresence, motion, MotionConfig } from "motion/react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import useMeasure from "react-use-measure";
 
-import { cn } from "@/lib/utils"
-import useClickOutside from "@/hooks/use-click-outside"
+import useClickOutside from "@/hooks/use-click-outside";
+import { cn } from "@/lib/utils";
 
-import { TwoToneText } from "./two-tone-text"
-import { Badge } from "./ui/badge"
+import { TwoToneText } from "./two-tone-text";
+import { Badge } from "./ui/badge";
 
 const transition = {
   type: "spring" as const,
   bounce: 0.1,
   duration: 0.25,
-}
+};
 
 interface CliRegistryConfigProps {
-  docsChildren: React.ReactNode
-  installComponentsChildren: React.ReactNode
+  docsChildren: React.ReactNode;
+  installComponentsChildren: React.ReactNode;
 }
 
 const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
   function CliRegistryConfig({ docsChildren, installComponentsChildren }) {
-    const [active, setActive] = useState<string | null>(null)
-    const [contentRef, { height: heightContent }] = useMeasure()
-    const [menuRef, { width: widthContainer }] = useMeasure()
-    const ref = useRef<HTMLDivElement>(null)
-    const [isOpen, setIsOpen] = useState(false)
-    const [maxWidth, setMaxWidth] = useState(0)
+    const [active, setActive] = useState<string | null>(null);
+    const [contentRef, { height: heightContent }] = useMeasure();
+    const [menuRef, { width: widthContainer }] = useMeasure();
+    const ref = useRef<HTMLDivElement>(null);
+    const [isOpen, setIsOpen] = useState(false);
+    const [maxWidth, setMaxWidth] = useState(0);
 
     const [activeHelpSection, setActiveHelpSection] = useState<string | null>(
       null
-    )
+    );
 
     // Memoize the click outside handler
     const handleClickOutside = useCallback(() => {
-      setIsOpen(false)
-      setActive(null)
-    }, [])
+      setIsOpen(false);
+      setActive(null);
+    }, []);
 
-    useClickOutside(ref, handleClickOutside)
+    useClickOutside(ref, handleClickOutside);
 
     useEffect(() => {
-      if (!widthContainer || maxWidth > 0) return
-      setMaxWidth(widthContainer)
-    }, [widthContainer, maxWidth])
+      if (!widthContainer || maxWidth > 0) return;
+      setMaxWidth(widthContainer);
+    }, [widthContainer, maxWidth]);
 
     // Memoize the navigation click handler
     const handleNavClick = useCallback(
       (item: string) => {
         if (active === item && isOpen) {
-          setIsOpen(false)
-          setActive(null)
-          return
+          setIsOpen(false);
+          setActive(null);
+          return;
         }
-        setActive(item)
-        setIsOpen(true)
+        setActive(item);
+        setIsOpen(true);
       },
       [active, isOpen]
-    )
+    );
 
     // Memoize the help section toggle handler
     const handleHelpSectionToggle = useCallback(
       (section: string) => {
-        setActiveHelpSection(activeHelpSection === section ? null : section)
+        setActiveHelpSection(activeHelpSection === section ? null : section);
       },
       [activeHelpSection]
-    )
+    );
 
     // Memoize the content rendering function
     const renderContent = useCallback(() => {
@@ -87,14 +93,14 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
 
               {docsChildren}
             </div>
-          )
+          );
 
         case "install-components":
           return (
             <div className="space-y-4">
               <div className="space-y-4">{installComponentsChildren}</div>
             </div>
-          )
+          );
 
         case "help":
           return (
@@ -382,9 +388,9 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                 </div>
               </div>
             </div>
-          )
+          );
         default:
-          return null
+          return null;
       }
     }, [
       active,
@@ -392,13 +398,13 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
       installComponentsChildren,
       activeHelpSection,
       handleHelpSectionToggle,
-    ])
+    ]);
 
     // Memoize the active title display
     const activeTitle = useMemo(() => {
-      if (!active) return ""
-      return active.charAt(0).toUpperCase() + active.slice(1).replace("-", " ")
-    }, [active])
+      if (!active) return "";
+      return active.charAt(0).toUpperCase() + active.slice(1).replace("-", " ");
+    }, [active]);
 
     // Memoize the navigation buttons to prevent unnecessary re-renders
     const navigationButtons = useMemo(
@@ -429,7 +435,7 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
         },
       ],
       [active, handleNavClick]
-    )
+    );
 
     return (
       <div className="mx-auto hidden w-full max-w-lg space-y-2 md:block">
@@ -460,7 +466,7 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                       exit={{ height: 0 }}
                       className=""
                     >
-                      <div ref={contentRef} className=" px-2 pb-1 pt-2">
+                      <div ref={contentRef} className="px-2 pt-2 pb-1">
                         <h4 className="px-2 text-sm font-medium text-gray-900">
                           {activeTitle}
                         </h4>
@@ -485,7 +491,7 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                       key={button.id}
                       onClick={button.onClick}
                       className={cn(
-                        "flex-1 px-2 py-4 text-sm text-gray-600 transition-colors hover:text-gray-900 ",
+                        "flex-1 px-2 py-4 text-sm text-gray-600 transition-colors hover:text-gray-900",
                         button.isActive ? "font-medium text-gray-900" : "",
                         active === null ? "hover:bg-muted/50" : "",
                         button.isFirst && !isOpen ? "hover:rounded-l-2xl" : "",
@@ -493,12 +499,12 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
                       )}
                     >
                       <div className="flex items-center justify-center gap-2">
-                        <div className="shadow-inner-shadow flex  w-5 items-center justify-center rounded-md text-[10px]  font-bold  transition-all duration-300">
+                        <div className="shadow-inner-shadow flex w-5 items-center justify-center rounded-md text-[10px] font-bold transition-all duration-300">
                           <span
                             className={cn(
-                              "w-full rounded-md bg-muted",
+                              "bg-muted w-full rounded-md",
                               button.isActive
-                                ? "bg-blue-300/20 text-blue-700 "
+                                ? "bg-blue-300/20 text-blue-700"
                                 : "bg-muted/50 text-gray-500"
                             )}
                           >
@@ -517,10 +523,10 @@ const CliRegistryConfig = React.memo<CliRegistryConfigProps>(
           </div>
         </MotionConfig>
       </div>
-    )
+    );
   }
-)
+);
 
-CliRegistryConfig.displayName = "CliRegistryConfig"
+CliRegistryConfig.displayName = "CliRegistryConfig";
 
-export default CliRegistryConfig
+export default CliRegistryConfig;

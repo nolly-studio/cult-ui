@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { animate, useMotionValue } from "motion/react"
-import * as motion from "motion/react-client"
-import { useTheme } from "next-themes"
+import { animate, useMotionValue } from "motion/react";
+import * as motion from "motion/react-client";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 // Theme-aware color configurations
 const themes = {
@@ -37,12 +37,12 @@ const themes = {
     textInactive: "text-zinc-400 hover:text-zinc-600",
     iconColor: "text-zinc-700 hover:text-zinc-900",
   },
-}
+};
 
 interface NavItem {
-  id: string
-  icon: React.ReactNode
-  label: string
+  id: string;
+  icon: React.ReactNode;
+  label: string;
 }
 
 const navItems: NavItem[] = [
@@ -128,26 +128,26 @@ const navItems: NavItem[] = [
       </svg>
     ),
   },
-]
+];
 
 function InnerButtonOverlay({
   isOverlayActive,
   isDarkMode,
 }: {
-  isOverlayActive: boolean
-  isDarkMode: boolean
+  isOverlayActive: boolean;
+  isDarkMode: boolean;
 }) {
-  const overlayProgress = useMotionValue(isOverlayActive ? 1 : 0)
+  const overlayProgress = useMotionValue(isOverlayActive ? 1 : 0);
 
   useEffect(() => {
     const controls = animate(overlayProgress, isOverlayActive ? 1 : 0, {
       delay: isOverlayActive ? 0.02 : 0,
       duration: isOverlayActive ? 0.18 : 0.14,
       ease: "easeOut",
-    })
+    });
 
-    return () => controls.stop()
-  }, [isOverlayActive, overlayProgress])
+    return () => controls.stop();
+  }, [isOverlayActive, overlayProgress]);
 
   return (
     <motion.span
@@ -177,18 +177,18 @@ function InnerButtonOverlay({
         borderStyle: "solid",
       }}
     />
-  )
+  );
 }
 
 export function GradientButtonGroup() {
-  const [activeId, setActiveId] = useState("dashboard")
+  const [activeId, setActiveId] = useState("dashboard");
   const [overlayReadyId, setOverlayReadyId] = useState<string | null>(
     "dashboard"
-  )
-  const { resolvedTheme, setTheme } = useTheme()
-  const isDarkMode = resolvedTheme !== "light"
+  );
+  const { resolvedTheme, setTheme } = useTheme();
+  const isDarkMode = resolvedTheme !== "light";
 
-  const theme = isDarkMode ? themes.dark : themes.light
+  const theme = isDarkMode ? themes.dark : themes.light;
 
   return (
     <div className="flex w-full justify-center py-1">
@@ -196,7 +196,7 @@ export function GradientButtonGroup() {
         <div className="relative inline-flex items-center">
           {/* Background tray layer (recessed) - spans full width including theme toggle */}
           <div
-            className="absolute inset-0 z-0 rounded-[28px]  transition-colors duration-300"
+            className="absolute inset-0 z-0 rounded-[28px] transition-colors duration-300"
             style={{
               background: isDarkMode
                 ? "linear-gradient(180deg, #141416 0%, #111113 50%, #0e0e10 100%)"
@@ -208,10 +208,10 @@ export function GradientButtonGroup() {
           />
 
           {/* Foreground nav layer (raised) - sits on the left */}
-          <div className="relative flex z-10">
+          <div className="relative z-10 flex">
             {/* Outer rim/bezel */}
             <div
-              className="absolute -inset-[4px] rounded-[28px] border-[1px] bg-muted dark:bg-background transition-colors duration-300"
+              className="bg-muted dark:bg-background absolute -inset-[4px] rounded-[28px] border-[1px] transition-colors duration-300"
               style={{
                 borderColor: isDarkMode
                   ? "rgba(255,255,255,0.05)"
@@ -235,8 +235,8 @@ export function GradientButtonGroup() {
               }}
             >
               {navItems.map((item) => {
-                const isActive = activeId === item.id
-                const isOverlayActive = isActive && overlayReadyId === item.id
+                const isActive = activeId === item.id;
+                const isOverlayActive = isActive && overlayReadyId === item.id;
 
                 const wellStyle = isDarkMode
                   ? {
@@ -248,7 +248,7 @@ export function GradientButtonGroup() {
                   : {
                       boxShadow:
                         "inset 0 2px 6px rgba(0,0,0,0.12), inset 0 0 4px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.9)",
-                    }
+                    };
 
                 const innerGapStyle = isDarkMode
                   ? {
@@ -259,7 +259,7 @@ export function GradientButtonGroup() {
                   : {
                       boxShadow:
                         "inset 0 1px 3px rgba(0,0,0,0.18), inset 0 0 2px rgba(0,0,0,0.1)",
-                    }
+                    };
 
                 return (
                   <button
@@ -267,10 +267,10 @@ export function GradientButtonGroup() {
                     type="button"
                     onClick={() => {
                       if (item.id === activeId) {
-                        return
+                        return;
                       }
-                      setOverlayReadyId(null)
-                      setActiveId(item.id)
+                      setOverlayReadyId(null);
+                      setActiveId(item.id);
                     }}
                     className={cn(
                       "group/nav relative flex h-[76px] w-[76px] items-center justify-center rounded-[18px] transition-all duration-300",
@@ -285,7 +285,7 @@ export function GradientButtonGroup() {
                         {/* Inset well/channel - creates the recessed groove */}
                         <motion.span
                           layoutId="active-well"
-                          className="absolute inset-0  bg-muted rounded-[18px] transition-colors duration-300"
+                          className="bg-muted absolute inset-0 rounded-[18px] transition-colors duration-300"
                           style={wellStyle}
                           transition={{
                             type: "spring",
@@ -309,7 +309,7 @@ export function GradientButtonGroup() {
                         >
                           {/* Spinning gradient ring */}
                           <span
-                            className="absolute inset-[-60%] origin-center will-change-transform animate-gold-spin"
+                            className="animate-gold-spin absolute inset-[-60%] origin-center will-change-transform"
                             style={{
                               background:
                                 "conic-gradient(from 220deg, #6FF7CC 0%, #44EBCF 16%, #ADFA1F 33%, #C8FF5A 50%, #89F5A0 66%, #37D8C5 82%, #6FF7CC 100%)",
@@ -320,7 +320,7 @@ export function GradientButtonGroup() {
                         {/* Inner gap - thin dark channel between gold and button */}
                         <motion.span
                           layoutId="active-inner-ring"
-                          className="absolute inset-[6px] bg-muted rounded-[12px] transition-colors duration-300"
+                          className="bg-muted absolute inset-[6px] rounded-[12px] transition-colors duration-300"
                           style={innerGapStyle}
                           transition={{
                             type: "spring",
@@ -365,7 +365,7 @@ export function GradientButtonGroup() {
                       <span className="relative z-10">{item.icon}</span>
                     </motion.span>
                   </button>
-                )
+                );
               })}
             </nav>
             {/* Theme toggle - sits in the recessed tray on the right */}
@@ -423,5 +423,5 @@ export function GradientButtonGroup() {
       </div>
       <div className="h-0 lg:hidden" />
     </div>
-  )
+  );
 }

@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "neumorph-button-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "neumorph-button"
-  ],
+  "registryDependencies": ["neumorph-button"],
   "files": [
     {
       "path": "registry/default/example/neumorph-button-demo.tsx",

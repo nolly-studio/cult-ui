@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "onboarding-demo",
-  "registryDependencies": [
-    "onboarding"
-  ],
+  "registryDependencies": ["onboarding"],
   "files": [
     {
       "path": "registry/default/example/onboarding-demo.tsx",

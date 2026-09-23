@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "expandable-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "expandable"
-  ],
+  "registryDependencies": ["expandable"],
   "files": [
     {
       "path": "registry/default/example/expandable-demo.tsx",

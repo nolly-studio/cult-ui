@@ -1,6 +1,6 @@
-import type React from "react"
+import type React from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 export type TextureVariant =
   | "fabric-of-squares"
@@ -8,13 +8,13 @@ export type TextureVariant =
   | "inflicted"
   | "debut-light"
   | "groovepaper"
-  | "none"
+  | "none";
 
 interface BackgroundImageTextureProps {
-  variant?: TextureVariant
-  opacity?: number
-  className?: string
-  children?: React.ReactNode
+  variant?: TextureVariant;
+  opacity?: number;
+  className?: string;
+  children?: React.ReactNode;
 }
 
 const textureMap: Record<Exclude<TextureVariant, "none">, string> = {
@@ -23,7 +23,7 @@ const textureMap: Record<Exclude<TextureVariant, "none">, string> = {
   inflicted: "/textures/inflicted.png",
   "debut-light": "/textures/debut-light.png",
   groovepaper: "/textures/groovepaper.png",
-}
+};
 
 export function BackgroundImageTexture({
   variant = "fabric-of-squares",
@@ -31,7 +31,7 @@ export function BackgroundImageTexture({
   className,
   children,
 }: BackgroundImageTextureProps) {
-  const textureUrl = variant !== "none" ? textureMap[variant] : null
+  const textureUrl = variant !== "none" ? textureMap[variant] : null;
 
   return (
     <div className={cn("relative", className)}>
@@ -48,5 +48,5 @@ export function BackgroundImageTexture({
       )}
       {children && <div className="relative">{children}</div>}
     </div>
-  )
+  );
 }

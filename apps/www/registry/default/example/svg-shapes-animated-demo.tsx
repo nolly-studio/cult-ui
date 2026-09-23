@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useState, type ReactNode } from "react"
+import { useState, type ReactNode } from "react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   ArrowPentagonShapeSvg,
   ChevronShapeSvg,
@@ -43,14 +43,14 @@ import {
   TrapezoidShapeSvg,
   TriangleShapeSvg,
   VesicaPiscisSvg,
-} from "@/registry/default/ui/svg-shapes-animated"
+} from "@/registry/default/ui/svg-shapes-animated";
 
 function DemoSection({
   title,
   children,
 }: {
-  title: string
-  children: ReactNode
+  title: string;
+  children: ReactNode;
 }) {
   return (
     <section className="w-full space-y-4">
@@ -61,7 +61,7 @@ function DemoSection({
         {children}
       </div>
     </section>
-  )
+  );
 }
 
 function ShapeTile({
@@ -69,9 +69,9 @@ function ShapeTile({
   tall,
   children,
 }: {
-  label: string
-  tall?: boolean
-  children: ReactNode
+  label: string;
+  tall?: boolean;
+  children: ReactNode;
 }) {
   return (
     <div className="bg-muted/30 flex flex-col gap-2 rounded-lg border p-3">
@@ -84,14 +84,14 @@ function ShapeTile({
         {children}
       </div>
     </div>
-  )
+  );
 }
 
 export default function SvgShapesAnimatedDemo() {
-  const [replayKey, setReplayKey] = useState(0)
+  const [replayKey, setReplayKey] = useState(0);
 
   return (
-    <div className="dark:bg-stone-950 flex flex-col items-center gap-12 rounded-md px-4 py-6 md:px-0">
+    <div className="flex flex-col items-center gap-12 rounded-md px-4 py-6 md:px-0 dark:bg-stone-950">
       <div className="max-w-2xl space-y-4 text-center">
         <h2 className="text-foreground text-2xl font-bold tracking-tight">
           SVG shapes (animated)
@@ -331,5 +331,5 @@ export default function SvgShapesAnimatedDemo() {
         </section>
       </div>
     </div>
-  )
+  );
 }

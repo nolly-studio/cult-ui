@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   AISDKIcon,
@@ -13,18 +13,18 @@ import {
   HeroColorPanelsRoot,
   HeroColorPanelsVisual,
   NextjsIcon,
-} from "../ui/hero-color-panel"
+} from "../ui/hero-color-panel";
 
 export default function HeroColorPanelsDemo() {
   return (
     <div className="space-y-16">
       <div className="space-y-4">
-        <h3 className="font-medium text-lg">Default</h3>
+        <h3 className="text-lg font-medium">Default</h3>
         <HeroColorPanels />
       </div>
 
       <div className="space-y-4">
-        <h3 className="font-medium text-lg">Configured Via Props</h3>
+        <h3 className="text-lg font-medium">Configured Via Props</h3>
         <HeroColorPanelsRoot
           ctaProps={{
             href: "#",
@@ -97,5 +97,5 @@ export default function HeroColorPanelsDemo() {
         </HeroColorPanelsRoot>
       </div>
     </div>
-  )
+  );
 }

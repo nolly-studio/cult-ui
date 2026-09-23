@@ -2,10 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "ai-instructions",
   "description": "Manage and toggle AI instructions with a popover, search, and create-dialog",
-  "dependencies": [
-    "@hugeicons/core-free-icons",
-    "@hugeicons/react"
-  ],
+  "dependencies": ["@hugeicons/core-free-icons", "@hugeicons/react"],
   "files": [
     {
       "path": "registry/default/ui/ai-instructions.tsx",

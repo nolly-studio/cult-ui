@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dock-demo",
-  "registryDependencies": [
-    "dock"
-  ],
+  "registryDependencies": ["dock"],
   "files": [
     {
       "path": "registry/default/example/dock-demo.tsx",

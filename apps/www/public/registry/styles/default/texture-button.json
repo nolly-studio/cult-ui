@@ -1,9 +1,7 @@
 {
   "name": "texture-button",
   "description": "Button component with texture overlay effects and customizable variants",
-  "dependencies": [
-    "@radix-ui/react-slot"
-  ],
+  "dependencies": ["@radix-ui/react-slot"],
   "files": [
     {
       "name": "texture-button.tsx",

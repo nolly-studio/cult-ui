@@ -7,9 +7,7 @@
     "@radix-ui/react-use-controllable-state",
     "class-variance-authority"
   ],
-  "registryDependencies": [
-    "button"
-  ],
+  "registryDependencies": ["button"],
   "files": [
     {
       "path": "registry/default/ui/onboarding.tsx",

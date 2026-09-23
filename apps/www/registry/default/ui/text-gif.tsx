@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import React, { useEffect, useMemo, useState, type CSSProperties } from "react"
-import Image from "next/image"
-import { cva, type VariantProps } from "class-variance-authority"
+import { cva, type VariantProps } from "class-variance-authority";
+import Image from "next/image";
+import React, { useEffect, useMemo, useState, type CSSProperties } from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 // Define text style variants
 const textBaseVariants = cva("", {
@@ -19,7 +19,7 @@ const textBaseVariants = cva("", {
       xl: "text-4xl sm:text-5xl lg:text-6xl",
       xxl: "text-[2.5rem] sm:text-6xl lg:text-[6rem]",
       xll: "text-5xl sm:text-6xl lg:text-[7rem]",
-      xxxl: "text-[6rem] leading-5 lg:leading-8 sm:text-6xl lg:text-[8rem]",
+      xxxl: "text-[6rem] leading-5 sm:text-6xl lg:text-[8rem] lg:leading-8",
     },
     weight: {
       default: "font-bold",
@@ -40,14 +40,14 @@ const textBaseVariants = cva("", {
     weight: "bold",
     font: "default",
   },
-})
+});
 
 interface TextGifProps extends VariantProps<typeof textBaseVariants> {
-  gifUrl: string
-  text: string
-  className?: string
-  fallbackColor?: string
-  transitionDuration?: number
+  gifUrl: string;
+  text: string;
+  className?: string;
+  fallbackColor?: string;
+  transitionDuration?: number;
 }
 
 const TextGif = React.memo(function TextGifComponent({
@@ -60,26 +60,26 @@ const TextGif = React.memo(function TextGifComponent({
   fallbackColor = "black",
   transitionDuration = 300,
 }: TextGifProps) {
-  const [loaded, setLoaded] = useState(false)
-  const [error, setError] = useState(false)
+  const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
 
   // Reset states when gifUrl changes
   useEffect(() => {
-    setLoaded(false)
-    setError(false)
-  }, [gifUrl])
+    setLoaded(false);
+    setError(false);
+  }, [gifUrl]);
 
   // Memoize className for performance
   const textClassName = useMemo(
     () =>
       cn(
         textBaseVariants({ size, weight, font }),
-        loaded && !error ? "text-transparent bg-clip-text" : "",
+        loaded && !error ? "bg-clip-text text-transparent" : "",
         className,
         "pb-1.5 md:pb-4"
       ),
     [size, weight, font, className, loaded, error]
-  )
+  );
 
   // Memoize style for performance
   const textStyle = useMemo(() => {
@@ -93,16 +93,16 @@ const TextGif = React.memo(function TextGifComponent({
       color: fallbackColor, // Always set the fallback color initially
       WebkitTextFillColor: fallbackColor, // Safari fix
       transition: `background-image ${transitionDuration}ms ease-in-out, color ${transitionDuration}ms ease-in-out`,
-    }
+    };
 
     if (loaded && !error) {
-      style.backgroundImage = `url(${gifUrl})`
-      style.color = "transparent"
-      style.WebkitTextFillColor = "transparent" // Safari fix
+      style.backgroundImage = `url(${gifUrl})`;
+      style.color = "transparent";
+      style.WebkitTextFillColor = "transparent"; // Safari fix
     }
 
-    return style
-  }, [loaded, error, gifUrl, transitionDuration, fallbackColor])
+    return style;
+  }, [loaded, error, gifUrl, transitionDuration, fallbackColor]);
 
   return (
     <div className="relative inline-block">
@@ -113,14 +113,14 @@ const TextGif = React.memo(function TextGifComponent({
           alt=""
           width={1}
           height={1}
-          className="absolute opacity-0 pointer-events-none"
+          className="pointer-events-none absolute opacity-0"
           onLoad={() => {
-            setLoaded(true)
-            setError(false)
+            setLoaded(true);
+            setError(false);
           }}
           onError={() => {
-            setError(true)
-            setLoaded(false)
+            setError(true);
+            setLoaded(false);
           }}
           priority
           unoptimized
@@ -130,8 +130,8 @@ const TextGif = React.memo(function TextGifComponent({
         {text}
       </span>
     </div>
-  )
-})
+  );
+});
 
 // Export common GIF URLs
 const gifUrls = [
@@ -139,7 +139,7 @@ const gifUrls = [
   "https://media.giphy.com/media/fnglNFjBGiyAFtm6ke/giphy.gif",
   "https://media.giphy.com/media/9Pmfazv34l7aNIKK05/giphy.gif",
   "https://media.giphy.com/media/4bhs1boql4XVJgmm4H/giphy.gif",
-]
+];
 
 // Optional: Preloader component
 function PreloadGifs() {
@@ -157,8 +157,8 @@ function PreloadGifs() {
         />
       ))}
     </div>
-  )
+  );
 }
 
-export { TextGif }
-export default TextGif
+export { TextGif };
+export default TextGif;

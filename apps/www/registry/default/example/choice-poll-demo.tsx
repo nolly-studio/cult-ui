@@ -1,6 +1,5 @@
-"use client"
+"use client";
 
-import { useState } from "react"
 import {
   Database01Icon,
   DropboxIcon,
@@ -8,19 +7,20 @@ import {
   GoogleIcon,
   NotionIcon,
   SlackIcon,
-} from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
+} from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { useState } from "react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 
-import { ChoicePoll } from "../ui/choice-poll"
+import { ChoicePoll } from "../ui/choice-poll";
 
 /* -----------------------------------------------------------------------------
  * Integration options data
@@ -63,26 +63,26 @@ const integrations = [
     description: "Database and authentication",
     icon: Database01Icon,
   },
-]
+];
 
 /* -----------------------------------------------------------------------------
  * Basic Example - Single Selection
  * -------------------------------------------------------------------------- */
 
 function ChoicePollBasicExample() {
-  const [selected, setSelected] = useState<string>("")
-  const [hasVoted, setHasVoted] = useState(false)
+  const [selected, setSelected] = useState<string>("");
+  const [hasVoted, setHasVoted] = useState(false);
 
   const votes = {
     slack: 234,
     notion: 189,
     github: 156,
     "google-drive": 98,
-  }
+  };
 
   const handleVote = () => {
-    setHasVoted(true)
-  }
+    setHasVoted(true);
+  };
 
   return (
     <Card className="w-full max-w-lg">
@@ -107,7 +107,7 @@ function ChoicePollBasicExample() {
               <ChoicePoll.Option key={integration.id} value={integration.id}>
                 <ChoicePoll.Indicator />
                 <HugeiconsIcon
-                  className="h-5 w-5 text-muted-foreground"
+                  className="text-muted-foreground h-5 w-5"
                   icon={integration.icon}
                 />
                 <div className="flex flex-1 items-center justify-between gap-2">
@@ -134,7 +134,7 @@ function ChoicePollBasicExample() {
         </ChoicePoll.Root>
       </CardContent>
     </Card>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -142,19 +142,19 @@ function ChoicePollBasicExample() {
  * -------------------------------------------------------------------------- */
 
 function ChoicePollWithResultsExample() {
-  const [selected, setSelected] = useState<string>("")
-  const [hasVoted, setHasVoted] = useState(false)
+  const [selected, setSelected] = useState<string>("");
+  const [hasVoted, setHasVoted] = useState(false);
 
   const votes = {
     slack: 100,
     notion: 189,
     github: 256,
     "google-drive": 98,
-  }
+  };
 
   const handleVote = () => {
-    setHasVoted(true)
-  }
+    setHasVoted(true);
+  };
 
   return (
     <Card className="w-full max-w-lg">
@@ -179,7 +179,7 @@ function ChoicePollWithResultsExample() {
               <ChoicePoll.Option key={integration.id} value={integration.id}>
                 <ChoicePoll.Indicator />
                 <HugeiconsIcon
-                  className="h-5 w-5 text-muted-foreground"
+                  className="text-muted-foreground h-5 w-5"
                   icon={integration.icon}
                 />
                 <div className="flex flex-1 items-center justify-between gap-2">
@@ -206,7 +206,7 @@ function ChoicePollWithResultsExample() {
         </ChoicePoll.Root>
       </CardContent>
     </Card>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -214,8 +214,8 @@ function ChoicePollWithResultsExample() {
  * -------------------------------------------------------------------------- */
 
 function ChoicePollMultipleExample() {
-  const [selected, setSelected] = useState<string[]>([])
-  const [hasVoted, setHasVoted] = useState(false)
+  const [selected, setSelected] = useState<string[]>([]);
+  const [hasVoted, setHasVoted] = useState(false);
 
   const votes = {
     slack: 100,
@@ -224,11 +224,11 @@ function ChoicePollMultipleExample() {
     "google-drive": 198,
     dropbox: 98,
     supabase: 156,
-  }
+  };
 
   const handleVote = () => {
-    setHasVoted(true)
-  }
+    setHasVoted(true);
+  };
 
   return (
     <Card className="w-full max-w-lg">
@@ -260,7 +260,7 @@ function ChoicePollMultipleExample() {
               >
                 <ChoicePoll.Indicator />
                 <HugeiconsIcon
-                  className="h-5 w-5 text-muted-foreground"
+                  className="text-muted-foreground h-5 w-5"
                   icon={integration.icon}
                 />
                 <div className="flex flex-1 flex-col gap-0.5">
@@ -290,7 +290,7 @@ function ChoicePollMultipleExample() {
         </ChoicePoll.Root>
       </CardContent>
     </Card>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -298,7 +298,7 @@ function ChoicePollMultipleExample() {
  * -------------------------------------------------------------------------- */
 
 function ChoicePollCompactExample() {
-  const [selected, setSelected] = useState<string>("")
+  const [selected, setSelected] = useState<string>("");
 
   return (
     <div className="w-full max-w-sm">
@@ -329,7 +329,7 @@ function ChoicePollCompactExample() {
         </ChoicePoll.Options>
       </ChoicePoll.Root>
     </div>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -340,21 +340,21 @@ export default function ChoicePollDemo() {
   return (
     <div className="grid gap-8 md:grid-cols-1">
       <div className="space-y-4">
-        <h3 className="font-semibold text-lg">Single Selection</h3>
+        <h3 className="text-lg font-semibold">Single Selection</h3>
         <ChoicePollBasicExample />
       </div>
       <div className="space-y-4">
-        <h3 className="font-semibold text-lg">With Results</h3>
+        <h3 className="text-lg font-semibold">With Results</h3>
         <ChoicePollWithResultsExample />
       </div>
       <div className="space-y-4">
-        <h3 className="font-semibold text-lg">Multiple Selection</h3>
+        <h3 className="text-lg font-semibold">Multiple Selection</h3>
         <ChoicePollMultipleExample />
       </div>
       <div className="space-y-4">
-        <h3 className="font-semibold text-lg">Compact</h3>
+        <h3 className="text-lg font-semibold">Compact</h3>
         <ChoicePollCompactExample />
       </div>
     </div>
-  )
+  );
 }

@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "stripe-bg-guides",
   "description": "Stripe-style background guides component with animated patterns and effects",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/stripe-bg-guides.tsx",

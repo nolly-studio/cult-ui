@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "metal-button-demo",
-  "registryDependencies": [
-    "metal-button"
-  ],
+  "registryDependencies": ["metal-button"],
   "files": [
     {
       "path": "registry/default/example/metal-button-demo.tsx",

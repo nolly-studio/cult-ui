@@ -47,7 +47,7 @@ npx shadcn@latest add https://cult-ui.com/r/bg-image-texture.json
 ## Usage
 
 ```tsx
-import { BackgroundImageTexture } from "@/components/ui/bg-image-texture"
+import { BackgroundImageTexture } from "@/components/ui/bg-image-texture";
 ```
 
 ### Basic Usage
@@ -136,12 +136,12 @@ The component can be used without children for a pure background texture:
 
 ### BackgroundImageTexture Props
 
-| Prop        | Type              | Default               | Description                              |
-| ----------- | ----------------- | --------------------- | ---------------------------------------- |
-| `variant`   | `TextureVariant`  | `"fabric-of-squares"` | Texture pattern variant                  |
-| `opacity`   | `number`          | `0.5`                 | Opacity of the texture (0 to 1)          |
-| `className` | `string`          | -                     | Additional CSS classes for the container |
-| `children`  | `React.ReactNode` | -                     | Content to display on top of the texture |
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `variant` | `TextureVariant` | `"fabric-of-squares"` | Texture pattern variant |
+| `opacity` | `number` | `0.5` | Opacity of the texture (0 to 1) |
+| `className` | `string` | - | Additional CSS classes for the container |
+| `children` | `React.ReactNode` | - | Content to display on top of the texture |
 
 ### TextureVariant Type
 
@@ -152,7 +152,7 @@ type TextureVariant =
   | "inflicted"
   | "debut-light"
   | "groovepaper"
-  | "none"
+  | "none";
 ```
 
 ## Features
@@ -268,13 +268,13 @@ const opacities = [0.2, 0.5, 0.8]
 Use state to control opacity dynamically:
 
 ```tsx
-import { useState } from "react"
+import { useState } from "react";
 
-import { BackgroundImageTexture } from "@/components/ui/bg-image-texture"
-import { Slider } from "@/components/ui/slider"
+import { BackgroundImageTexture } from "@/components/ui/bg-image-texture";
+import { Slider } from "@/components/ui/slider";
 
 function DynamicTextureExample() {
-  const [opacity, setOpacity] = useState([0.5])
+  const [opacity, setOpacity] = useState([0.5]);
 
   return (
     <div className="space-y-4">
@@ -296,7 +296,7 @@ function DynamicTextureExample() {
         </div>
       </BackgroundImageTexture>
     </div>
-  )
+  );
 }
 ```
 

@@ -17,19 +17,9 @@
          inset: -1px;
        }
 */
-"use client"
+"use client";
 
-import {
-  forwardRef,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type MouseEvent,
-} from "react"
-import Image, { type StaticImageData } from "next/image"
-import cult from "@/assets/cults.png"
-import clsx from "clsx"
+import clsx from "clsx";
 import {
   AnimatePresence,
   motion,
@@ -38,64 +28,74 @@ import {
   type MotionStyle,
   type MotionValue,
   type Variants,
-} from "motion/react"
-import Balancer from "react-wrap-balancer"
+} from "motion/react";
+import Image, { type StaticImageData } from "next/image";
+import {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type MouseEvent,
+} from "react";
+import Balancer from "react-wrap-balancer";
 
-import { cn } from "@/lib/utils"
+import cult from "@/assets/cults.png";
+import { cn } from "@/lib/utils";
 
 // Types
 type WrapperStyle = MotionStyle & {
-  "--x": MotionValue<string>
-  "--y": MotionValue<string>
-}
+  "--x": MotionValue<string>;
+  "--y": MotionValue<string>;
+};
 
 interface CardProps {
-  title: string
-  description: string
-  bgClass?: string
+  title: string;
+  description: string;
+  bgClass?: string;
 }
 
 interface ImageSet {
-  step1dark1?: StaticImageData
-  step1dark2?: StaticImageData
-  step1light1: StaticImageData
-  step1light2: StaticImageData
-  step2dark1?: StaticImageData
-  step2dark2?: StaticImageData
-  step2light1: StaticImageData
-  step2light2: StaticImageData
-  step3dark?: StaticImageData
-  step3light: StaticImageData
-  step4light: StaticImageData
-  alt: string
+  step1dark1?: StaticImageData;
+  step1dark2?: StaticImageData;
+  step1light1: StaticImageData;
+  step1light2: StaticImageData;
+  step2dark1?: StaticImageData;
+  step2dark2?: StaticImageData;
+  step2light1: StaticImageData;
+  step2light2: StaticImageData;
+  step3dark?: StaticImageData;
+  step3light: StaticImageData;
+  step4light: StaticImageData;
+  alt: string;
 }
 
 interface FeatureCarouselProps extends CardProps {
-  step1img1Class?: string
-  step1img2Class?: string
-  step2img1Class?: string
-  step2img2Class?: string
-  step3imgClass?: string
-  step4imgClass?: string
-  image: ImageSet
+  step1img1Class?: string;
+  step1img2Class?: string;
+  step2img1Class?: string;
+  step2img2Class?: string;
+  step3imgClass?: string;
+  step4imgClass?: string;
+  image: ImageSet;
 }
 
 interface StepImageProps {
-  src: StaticImageData
-  alt: string
-  className?: string
-  style?: React.CSSProperties
+  src: StaticImageData;
+  alt: string;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 interface Step {
-  id: string
-  name: string
-  title: string
-  description: string
+  id: string;
+  name: string;
+  title: string;
+  description: string;
 }
 
 // Constants
-const TOTAL_STEPS = 4
+const TOTAL_STEPS = 4;
 
 const steps = [
   {
@@ -122,7 +122,7 @@ const steps = [
     title: "Feature 4",
     description: "Feature 4 description",
   },
-] as const
+] as const;
 
 /**
  * Animation presets for reusable motion configurations.
@@ -163,14 +163,14 @@ const ANIMATION_PRESETS = {
       mass: 0.5,
     },
   },
-} as const
+} as const;
 
-type AnimationPreset = keyof typeof ANIMATION_PRESETS
+type AnimationPreset = keyof typeof ANIMATION_PRESETS;
 
 interface AnimatedStepImageProps extends StepImageProps {
-  preset?: AnimationPreset
-  delay?: number
-  onAnimationComplete?: () => void
+  preset?: AnimationPreset;
+  delay?: number;
+  onAnimationComplete?: () => void;
 }
 
 /**
@@ -181,49 +181,49 @@ function useNumberCycler(
   totalSteps: number = TOTAL_STEPS,
   interval: number = 3000
 ) {
-  const [currentNumber, setCurrentNumber] = useState(0)
-  const [isManualInteraction, setIsManualInteraction] = useState(false)
-  const timerRef = useRef<NodeJS.Timeout | null>(null)
+  const [currentNumber, setCurrentNumber] = useState(0);
+  const [isManualInteraction, setIsManualInteraction] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Setup timer function
   const setupTimer = useCallback(() => {
-    console.log("Setting up timer")
+    console.log("Setting up timer");
     // Clear any existing timer
     if (timerRef.current) {
-      clearTimeout(timerRef.current)
+      clearTimeout(timerRef.current);
     }
 
     timerRef.current = setTimeout(() => {
-      console.log("Timer triggered, advancing to next step")
-      setCurrentNumber((prev) => (prev + 1) % totalSteps)
-      setIsManualInteraction(false)
+      console.log("Timer triggered, advancing to next step");
+      setCurrentNumber((prev) => (prev + 1) % totalSteps);
+      setIsManualInteraction(false);
       // Recursively setup next timer
-      setupTimer()
-    }, interval)
-  }, [interval, totalSteps])
+      setupTimer();
+    }, interval);
+  }, [interval, totalSteps]);
 
   // Handle manual increment
   const increment = useCallback(() => {
-    console.log("Manual increment triggered")
-    setIsManualInteraction(true)
-    setCurrentNumber((prev) => (prev + 1) % totalSteps)
+    console.log("Manual increment triggered");
+    setIsManualInteraction(true);
+    setCurrentNumber((prev) => (prev + 1) % totalSteps);
 
     // Reset timer on manual interaction
-    setupTimer()
-  }, [totalSteps, setupTimer])
+    setupTimer();
+  }, [totalSteps, setupTimer]);
 
   // Initial timer setup and cleanup
   useEffect(() => {
-    console.log("Initial timer setup")
-    setupTimer()
+    console.log("Initial timer setup");
+    setupTimer();
 
     return () => {
-      console.log("Cleaning up timer")
+      console.log("Cleaning up timer");
       if (timerRef.current) {
-        clearTimeout(timerRef.current)
+        clearTimeout(timerRef.current);
       }
-    }
-  }, [setupTimer])
+    };
+  }, [setupTimer]);
 
   // Debug logging
   useEffect(() => {
@@ -231,35 +231,35 @@ function useNumberCycler(
       currentNumber,
       isManualInteraction,
       hasTimer: !!timerRef.current,
-    })
-  }, [currentNumber, isManualInteraction])
+    });
+  }, [currentNumber, isManualInteraction]);
 
   return {
     currentNumber,
     increment,
     isManualInteraction,
-  }
+  };
 }
 
 function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const userAgent = navigator.userAgent
-    const isSmall = window.matchMedia("(max-width: 768px)").matches
+    const userAgent = navigator.userAgent;
+    const isSmall = window.matchMedia("(max-width: 768px)").matches;
     const isMobile = Boolean(
       /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.exec(
         userAgent
       )
-    )
+    );
 
-    const isDev = process.env.NODE_ENV !== "production"
-    if (isDev) setIsMobile(isSmall || isMobile)
+    const isDev = process.env.NODE_ENV !== "production";
+    if (isDev) setIsMobile(isSmall || isMobile);
 
-    setIsMobile(isSmall && isMobile)
-  }, [])
+    setIsMobile(isSmall && isMobile);
+  }, []);
 
-  return isMobile
+  return isMobile;
 }
 
 // Components
@@ -274,7 +274,7 @@ function IconCheck({ className, ...props }: React.ComponentProps<"svg">) {
     >
       <path d="m229.66 77.66-128 128a8 8 0 0 1-11.32 0l-56-56a8 8 0 0 1 11.32-11.32L96 188.69 218.34 66.34a8 8 0 0 1 11.32 11.32Z" />
     </svg>
-  )
+  );
 }
 
 const stepVariants: Variants = {
@@ -286,7 +286,7 @@ const stepVariants: Variants = {
     scale: 1,
     opacity: 1,
   },
-}
+};
 
 const StepImage = forwardRef<
   HTMLImageElement,
@@ -306,11 +306,11 @@ const StepImage = forwardRef<
       }}
       {...props}
     />
-  )
-})
-StepImage.displayName = "StepImage"
+  );
+});
+StepImage.displayName = "StepImage";
 
-const MotionStepImage = motion(StepImage)
+const MotionStepImage = motion(StepImage);
 
 /**
  * Wrapper component for StepImage that applies animation presets.
@@ -322,7 +322,7 @@ const AnimatedStepImage = ({
   onAnimationComplete,
   ...props
 }: AnimatedStepImageProps) => {
-  const presetConfig = ANIMATION_PRESETS[preset]
+  const presetConfig = ANIMATION_PRESETS[preset];
   return (
     <MotionStepImage
       {...props}
@@ -333,8 +333,8 @@ const AnimatedStepImage = ({
       }}
       onAnimationComplete={onAnimationComplete}
     />
-  )
-}
+  );
+};
 
 /**
  * Main card component that handles mouse tracking for gradient effect.
@@ -345,24 +345,24 @@ function FeatureCard({
   children,
   step,
 }: CardProps & {
-  children: React.ReactNode
-  step: number
+  children: React.ReactNode;
+  step: number;
 }) {
-  const [mounted, setMounted] = useState(false)
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-  const isMobile = useIsMobile()
+  const [mounted, setMounted] = useState(false);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const isMobile = useIsMobile();
 
   function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
-    if (isMobile) return
-    const { left, top } = currentTarget.getBoundingClientRect()
-    mouseX.set(clientX - left)
-    mouseY.set(clientY - top)
+    if (isMobile) return;
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
   }
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   return (
     <motion.div
@@ -416,7 +416,7 @@ function FeatureCard({
                   ease: [0.23, 1, 0.32, 1],
                 }}
               >
-                <p className="text-sm leading-5 text-neutral-300 dark:text-zinc-400 sm:text-base sm:leading-5">
+                <p className="text-sm leading-5 text-neutral-300 sm:text-base sm:leading-5 dark:text-zinc-400">
                   <Balancer>{steps[step].description}</Balancer>
                 </p>
               </motion.div>
@@ -426,7 +426,7 @@ function FeatureCard({
         </div>
       </div>
     </motion.div>
-  )
+  );
 }
 
 /**
@@ -438,9 +438,9 @@ function Steps({
   current,
   onChange,
 }: {
-  steps: readonly Step[]
-  current: number
-  onChange: (index: number) => void
+  steps: readonly Step[];
+  current: number;
+  onChange: (index: number) => void;
 }) {
   return (
     <nav aria-label="Progress" className="flex justify-center px-4">
@@ -450,9 +450,9 @@ function Steps({
       >
         {steps.map((step, stepIdx) => {
           // Calculate step states for styling and animations
-          const isCompleted = current > stepIdx
-          const isCurrent = current === stepIdx
-          const isFuture = !isCompleted && !isCurrent
+          const isCompleted = current > stepIdx;
+          const isCurrent = current === stepIdx;
+          const isFuture = !isCompleted && !isCurrent;
 
           return (
             <motion.li
@@ -526,11 +526,11 @@ function Steps({
                 </span>
               </div>
             </motion.li>
-          )
+          );
         })}
       </ol>
     </nav>
-  )
+  );
 }
 
 const defaultClasses = {
@@ -546,7 +546,7 @@ const defaultClasses = {
     "pointer-events-none w-[90%] border border-border-100/10 dark:border-border-700 rounded-2xl transition-all duration-500 overflow-hidden",
   step4img:
     "pointer-events-none w-[90%] border border-border-100/10 dark:border-border-700 rounded-2xl transition-all duration-500 overflow-hidden",
-} as const
+} as const;
 
 /**
  * Main component that orchestrates the multi-step animation sequence.
@@ -563,18 +563,18 @@ export function FeatureCarousel({
   step4imgClass = defaultClasses.step4img,
   ...props
 }: FeatureCarouselProps) {
-  const { currentNumber: step, increment } = useNumberCycler()
-  const [isAnimating, setIsAnimating] = useState(false)
+  const { currentNumber: step, increment } = useNumberCycler();
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const handleIncrement = () => {
-    if (isAnimating) return
-    setIsAnimating(true)
-    increment()
-  }
+    if (isAnimating) return;
+    setIsAnimating(true);
+    increment();
+  };
 
   const handleAnimationComplete = () => {
-    setIsAnimating(false)
-  }
+    setIsAnimating(false);
+  };
 
   const renderStepContent = () => {
     const content = () => {
@@ -608,7 +608,7 @@ export function FeatureCarousel({
                 delay={0.1}
               />
             </motion.div>
-          )
+          );
         case 1:
           /**
            * Layout: Two images with overlapping composition
@@ -638,7 +638,7 @@ export function FeatureCarousel({
                 delay={0.1}
               />
             </motion.div>
-          )
+          );
         case 2:
           /**
            * Layout: Single centered image
@@ -656,7 +656,7 @@ export function FeatureCarousel({
               preset="fadeInScale"
               onAnimationComplete={handleAnimationComplete}
             />
-          )
+          );
         case 3:
           /**
            * Layout: Final showcase layout
@@ -670,24 +670,24 @@ export function FeatureCarousel({
           return (
             <motion.div
               className={clsx(
-                "absolute left-2/4 top-1/3 flex w-[100%] -translate-x-1/2 -translate-y-[33%] flex-col gap-12 text-center text-2xl font-bold md:w-[60%]"
+                "absolute top-1/3 left-2/4 flex w-[100%] -translate-x-1/2 -translate-y-[33%] flex-col gap-12 text-center text-2xl font-bold md:w-[60%]"
               )}
               {...ANIMATION_PRESETS.fadeInScale}
               onAnimationComplete={handleAnimationComplete}
             >
               <AnimatedStepImage
                 alt={image.alt}
-                className="pointer-events-none top-[50%] w-[90%] overflow-hidden rounded-2xl border border-neutral-100/10 dark:border-zinc-700 md:left-[35px] md:top-[30%] md:w-full"
+                className="pointer-events-none top-[50%] w-[90%] overflow-hidden rounded-2xl border border-neutral-100/10 md:top-[30%] md:left-[35px] md:w-full dark:border-zinc-700"
                 src={cult}
                 preset="fadeInScale"
                 delay={0.1}
               />
             </motion.div>
-          )
+          );
         default:
-          return null
+          return null;
       }
-    }
+    };
 
     return (
       <AnimatePresence mode="wait">
@@ -699,8 +699,8 @@ export function FeatureCarousel({
           {content()}
         </motion.div>
       </AnimatePresence>
-    )
-  }
+    );
+  };
 
   return (
     <FeatureCard {...props} step={step}>
@@ -709,16 +709,16 @@ export function FeatureCarousel({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
-        className="absolute left-48 top-5 z-50 size-full cursor-pointer md:left-0"
+        className="absolute top-5 left-48 z-50 size-full cursor-pointer md:left-0"
       >
         <Steps current={step} onChange={() => {}} steps={steps} />
       </motion.div>
       <motion.div
-        className="absolute right-0 top-0 z-50 size-full cursor-pointer md:left-0"
+        className="absolute top-0 right-0 z-50 size-full cursor-pointer md:left-0"
         onClick={handleIncrement}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       />
     </FeatureCard>
-  )
+  );
 }

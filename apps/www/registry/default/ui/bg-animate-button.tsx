@@ -1,10 +1,10 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva } from "class-variance-authority"
+import { Slot } from "@radix-ui/react-slot";
+import { cva } from "class-variance-authority";
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-const outerDivVariants = cva("relative inline-block overflow-hidden ", {
+const outerDivVariants = cva("relative inline-block overflow-hidden", {
   variants: {
     size: {
       sm: "",
@@ -24,11 +24,11 @@ const outerDivVariants = cva("relative inline-block overflow-hidden ", {
   defaultVariants: {
     size: "default",
   },
-})
+});
 
 const innerSpanVariants = cva(
   [
-    "absolute inset-[-1000%] m-auto block ", // Base styles for positioning and display
+    "absolute inset-[-1000%] m-auto block", // Base styles for positioning and display
   ],
   {
     variants: {
@@ -40,19 +40,19 @@ const innerSpanVariants = cva(
         // Add more animations here
       },
       gradient: {
-        sunrise: "text-black font-bold",
+        sunrise: "font-bold text-black",
         ocean:
-          "bg-[conic-gradient(from_90deg_at_50%_50%,#a1c4fd_0%,#c2e9fb_50%,#a1c4fd_100%)] ",
+          "bg-[conic-gradient(from_90deg_at_50%_50%,#a1c4fd_0%,#c2e9fb_50%,#a1c4fd_100%)]",
         candy:
-          "bg-[conic-gradient(from_90deg_at_50%_50%,#ff9a9e_0%,#fad0c4_50%,#fad0c4_90%,#ff9a9e_100%)] ",
+          "bg-[conic-gradient(from_90deg_at_50%_50%,#ff9a9e_0%,#fad0c4_50%,#fad0c4_90%,#ff9a9e_100%)]",
         forest:
-          "bg-[conic-gradient(from_90deg_at_50%_50%,#85d797_0%,#1a806b_50%,#85d797_100%)] ",
+          "bg-[conic-gradient(from_90deg_at_50%_50%,#85d797_0%,#1a806b_50%,#85d797_100%)]",
         sunset:
-          "bg-[conic-gradient(from_90deg_at_50%_50%,#fe5d75_0%,#f5af19_50%,#fe5d75_100%)] ",
+          "bg-[conic-gradient(from_90deg_at_50%_50%,#fe5d75_0%,#f5af19_50%,#fe5d75_100%)]",
         nebula:
-          "bg-[conic-gradient(from_90deg_at_50%_50%,#A77BFE_0%,#8860D0_50%,#A77BFE_100%)] ",
+          "bg-[conic-gradient(from_90deg_at_50%_50%,#A77BFE_0%,#8860D0_50%,#A77BFE_100%)]",
         default:
-          "bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)] ",
+          "bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]",
       },
     },
     compoundVariants: [
@@ -67,16 +67,16 @@ const innerSpanVariants = cva(
       gradient: "forest",
     },
   }
-)
+);
 
 const buttonVariants = cva(
-  "relative px-6 py-2    transition-all duration-150 ease-in-out disabled:pointer-events-none disabled:opacity-50 text-sm  overflow-hidden",
+  "relative overflow-hidden px-6 py-2 text-sm transition-all duration-150 ease-in-out disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       size: {
-        sm: "text-xs px-4 py-1",
-        default: "text-sm px-6 py-2",
-        lg: "text-base px-8 py-3",
+        sm: "px-4 py-1 text-xs",
+        default: "px-6 py-2 text-sm",
+        lg: "px-8 py-3 text-base",
       },
       shadow: {
         flat: "",
@@ -87,13 +87,13 @@ const buttonVariants = cva(
           "shadow-[0_6px_8px_rgba(0,0,0,0.3),inset_0_2px_3px_rgba(255,255,255,0.25),inset_0_-3px_6px_rgba(0,0,0,0.6)] dark:shadow-[0_6px_8px_rgba(0,0,0,0.4),inset_0_2px_3px_rgba(0,0,0,0.35),inset_0_-3px_6px_rgba(0,0,0,0.8)]",
       },
       gradient: {
-        sunrise: "text-black font-bold",
-        ocean: "text-black font-bold",
-        candy: "text-black font-bold",
-        forest: "text-black font-bold",
-        sunset: "text-black font-bold",
-        nebula: "text-white font-bold",
-        default: "text-white font-bold",
+        sunrise: "font-bold text-black",
+        ocean: "font-bold text-black",
+        candy: "font-bold text-black",
+        forest: "font-bold text-black",
+        sunset: "font-bold text-black",
+        nebula: "font-bold text-white",
+        default: "font-bold text-white",
       },
       rounded: {
         full: "rounded-full before:rounded-full",
@@ -111,17 +111,16 @@ const buttonVariants = cva(
       rounded: "xl",
     },
   }
-)
+);
 
-export interface UnifiedButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "success" | "secondary" | "destructive" | "ghost"
-  size?: "sm" | "lg" | "default"
-  shadow?: "flat" | "soft" | "base" | "deep" | "deeper"
-  rounded?: "full" | "xl" | "2xl" | "3xl" | "sm" | "xs" | "base"
-  asChild?: boolean
-  showBackground?: boolean
-  animation?: "spin" | "pulse" | "spin-slow" | "spin-fast" | "spin"
+export interface UnifiedButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "primary" | "success" | "secondary" | "destructive" | "ghost";
+  size?: "sm" | "lg" | "default";
+  shadow?: "flat" | "soft" | "base" | "deep" | "deeper";
+  rounded?: "full" | "xl" | "2xl" | "3xl" | "sm" | "xs" | "base";
+  asChild?: boolean;
+  showBackground?: boolean;
+  animation?: "spin" | "pulse" | "spin-slow" | "spin-fast" | "spin";
   gradient?:
     | "sunrise"
     | "ocean"
@@ -129,7 +128,7 @@ export interface UnifiedButtonProps
     | "default"
     | "forest"
     | "sunset"
-    | "nebula"
+    | "nebula";
 }
 
 const BgAnimateButton = React.forwardRef<HTMLButtonElement, UnifiedButtonProps>(
@@ -148,7 +147,7 @@ const BgAnimateButton = React.forwardRef<HTMLButtonElement, UnifiedButtonProps>(
     },
     ref
   ) => {
-    const Comp = asChild ? Slot : "button"
+    const Comp = asChild ? Slot : "button";
 
     return (
       <Comp
@@ -166,11 +165,11 @@ const BgAnimateButton = React.forwardRef<HTMLButtonElement, UnifiedButtonProps>(
           {props.children || "Button"}
         </div>
       </Comp>
-    )
+    );
   }
-)
+);
 
-BgAnimateButton.displayName = "BgAnimateButton"
+BgAnimateButton.displayName = "BgAnimateButton";
 
-export { BgAnimateButton }
-export default BgAnimateButton
+export { BgAnimateButton };
+export default BgAnimateButton;

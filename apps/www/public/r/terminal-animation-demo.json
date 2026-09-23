@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "terminal-animation-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "terminal-animation"
-  ],
+  "registryDependencies": ["terminal-animation"],
   "files": [
     {
       "path": "registry/default/example/terminal-animation-demo.tsx",

@@ -1,8 +1,6 @@
 {
   "name": "popover",
-  "dependencies": [
-    "@radix-ui/react-popover"
-  ],
+  "dependencies": ["@radix-ui/react-popover"],
   "files": [
     {
       "name": "popover.tsx",

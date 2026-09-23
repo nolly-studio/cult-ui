@@ -5,9 +5,7 @@
     {
       "name": "text-animate",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/text-animate.tsx",
@@ -30,9 +28,7 @@
     {
       "name": "texture-button",
       "type": "registry:ui",
-      "dependencies": [
-        "@radix-ui/react-slot"
-      ],
+      "dependencies": ["@radix-ui/react-slot"],
       "files": [
         {
           "path": "registry/default/ui/texture-button.tsx",
@@ -88,10 +84,7 @@
     {
       "name": "cutout-card",
       "type": "registry:ui",
-      "dependencies": [
-        "motion",
-        "@radix-ui/react-use-controllable-state"
-      ],
+      "dependencies": ["motion", "@radix-ui/react-use-controllable-state"],
       "files": [
         {
           "path": "registry/default/ui/cutout-card.tsx",
@@ -103,9 +96,7 @@
     {
       "name": "dynamic-island",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/dynamic-island.tsx",
@@ -117,10 +108,7 @@
     {
       "name": "direction-aware-tabs",
       "type": "registry:ui",
-      "dependencies": [
-        "motion",
-        "react-use-measure"
-      ],
+      "dependencies": ["motion", "react-use-measure"],
       "files": [
         {
           "path": "registry/default/ui/direction-aware-tabs.tsx",
@@ -143,12 +131,8 @@
     {
       "name": "border-beam-button",
       "type": "registry:ui",
-      "dependencies": [
-        "border-beam"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["border-beam"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/default/ui/border-beam-button.tsx",
@@ -215,9 +199,7 @@
     {
       "name": "gradient-heading",
       "type": "registry:ui",
-      "dependencies": [
-        "@radix-ui/react-slot"
-      ],
+      "dependencies": ["@radix-ui/react-slot"],
       "files": [
         {
           "path": "registry/default/ui/gradient-heading.tsx",
@@ -229,9 +211,7 @@
     {
       "name": "typewriter",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/typewriter.tsx",
@@ -243,9 +223,7 @@
     {
       "name": "animated-number",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/animated-number.tsx",
@@ -257,10 +235,7 @@
     {
       "name": "sortable-list",
       "type": "registry:ui",
-      "dependencies": [
-        "motion",
-        "react-use-measure"
-      ],
+      "dependencies": ["motion", "react-use-measure"],
       "files": [
         {
           "path": "registry/default/ui/sortable-list.tsx",
@@ -272,9 +247,7 @@
     {
       "name": "dock",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/dock.tsx",
@@ -297,9 +270,7 @@
     {
       "name": "canvas-fractal-grid",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/canvas-fractal-grid.tsx",
@@ -311,9 +282,7 @@
     {
       "name": "bg-animated-fractal-dot-grid",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/bg-animated-fractal-dot-grid.tsx",
@@ -325,9 +294,7 @@
     {
       "name": "bg-animated-gradient",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/bg-animated-gradient.tsx",
@@ -350,9 +317,7 @@
     {
       "name": "popover",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/popover.tsx",
@@ -364,9 +329,7 @@
     {
       "name": "floating-panel",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/floating-panel.tsx",
@@ -378,9 +341,7 @@
     {
       "name": "color-picker",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/color-picker.tsx",
@@ -392,11 +353,7 @@
     {
       "name": "shader-lens-blur",
       "type": "registry:ui",
-      "dependencies": [
-        "motion",
-        "three",
-        "jotai"
-      ],
+      "dependencies": ["motion", "three", "jotai"],
       "files": [
         {
           "path": "registry/default/ui/shader-lens-blur.tsx",
@@ -419,9 +376,7 @@
     {
       "name": "dither-image",
       "type": "registry:ui",
-      "dependencies": [
-        "dither-plugin"
-      ],
+      "dependencies": ["dither-plugin"],
       "files": [
         {
           "path": "registry/default/ui/dither-image.tsx",
@@ -433,9 +388,7 @@
     {
       "name": "popover-form",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/popover-form.tsx",
@@ -447,9 +400,7 @@
     {
       "name": "expandable",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/expandable.tsx",
@@ -461,9 +412,7 @@
     {
       "name": "logo-carousel",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/logo-carousel.tsx",
@@ -475,14 +424,8 @@
     {
       "name": "loading-carousel",
       "type": "registry:ui",
-      "dependencies": [
-        "embla-carousel-autoplay",
-        "lucide-react",
-        "motion"
-      ],
-      "registryDependencies": [
-        "carousel"
-      ],
+      "dependencies": ["embla-carousel-autoplay", "lucide-react", "motion"],
+      "registryDependencies": ["carousel"],
       "files": [
         {
           "path": "registry/default/ui/loading-carousel.tsx",
@@ -494,9 +437,7 @@
     {
       "name": "hover-video-player",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/hover-video-player.tsx",
@@ -530,9 +471,7 @@
     {
       "name": "feature-carousel",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/feature-carousel.tsx",
@@ -574,9 +513,7 @@
     {
       "name": "feature-voting",
       "type": "registry:ui",
-      "dependencies": [
-        "@radix-ui/react-use-controllable-state"
-      ],
+      "dependencies": ["@radix-ui/react-use-controllable-state"],
       "files": [
         {
           "path": "registry/default/ui/feature-voting.tsx",
@@ -588,9 +525,7 @@
     {
       "name": "vote-tally",
       "type": "registry:ui",
-      "dependencies": [
-        "@radix-ui/react-use-controllable-state"
-      ],
+      "dependencies": ["@radix-ui/react-use-controllable-state"],
       "files": [
         {
           "path": "registry/default/ui/vote-tally.tsx",
@@ -619,10 +554,7 @@
     {
       "name": "prompt-library",
       "type": "registry:ui",
-      "dependencies": [
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
-      ],
+      "dependencies": ["@hugeicons/core-free-icons", "@hugeicons/react"],
       "files": [
         {
           "path": "registry/default/ui/prompt-library.tsx",
@@ -634,10 +566,7 @@
     {
       "name": "ai-instructions",
       "type": "registry:ui",
-      "dependencies": [
-        "@hugeicons/core-free-icons",
-        "@hugeicons/react"
-      ],
+      "dependencies": ["@hugeicons/core-free-icons", "@hugeicons/react"],
       "files": [
         {
           "path": "registry/default/ui/ai-instructions.tsx",
@@ -649,14 +578,8 @@
     {
       "name": "intro-disclosure",
       "type": "registry:ui",
-      "registryDependencies": [
-        "button",
-        "aspect-ratio"
-      ],
-      "dependencies": [
-        "motion",
-        "react-use-measure"
-      ],
+      "registryDependencies": ["button", "aspect-ratio"],
+      "dependencies": ["motion", "react-use-measure"],
       "files": [
         {
           "path": "registry/default/ui/intro-disclosure.tsx",
@@ -680,9 +603,7 @@
     {
       "name": "stripe-bg-guides",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/stripe-bg-guides.tsx",
@@ -705,9 +626,7 @@
     {
       "name": "svg-shapes-animated",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/svg-shapes-animated.tsx",
@@ -741,12 +660,8 @@
     {
       "name": "youtube-video-player",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["motion"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/default/ui/youtube-video-player.tsx",
@@ -758,13 +673,8 @@
     {
       "name": "toolbar-expandable",
       "type": "registry:ui",
-      "dependencies": [
-        "motion",
-        "@radix-ui/react-scroll-area"
-      ],
-      "registryDependencies": [
-        "badge"
-      ],
+      "dependencies": ["motion", "@radix-ui/react-scroll-area"],
+      "registryDependencies": ["badge"],
       "files": [
         {
           "path": "registry/default/ui/toolbar-expandable.tsx",
@@ -798,9 +708,7 @@
     {
       "name": "code-block",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/code-block.tsx",
@@ -812,9 +720,7 @@
     {
       "name": "mock-browser-window",
       "type": "registry:ui",
-      "registryDependencies": [
-        "texture-overlay"
-      ],
+      "registryDependencies": ["texture-overlay"],
       "files": [
         {
           "path": "registry/default/ui/mock-browser-window.tsx",
@@ -826,12 +732,8 @@
     {
       "name": "metal-button",
       "type": "registry:ui",
-      "dependencies": [
-        "metal-fx"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["metal-fx"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/default/ui/metal-button.tsx",
@@ -843,9 +745,7 @@
     {
       "name": "morph-surface",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/morph-surface.tsx",
@@ -885,10 +785,7 @@
     {
       "name": "expandable-screen",
       "type": "registry:ui",
-      "dependencies": [
-        "motion",
-        "lucide-react"
-      ],
+      "dependencies": ["motion", "lucide-react"],
       "files": [
         {
           "path": "registry/default/ui/expandable-screen.tsx",
@@ -900,9 +797,7 @@
     {
       "name": "pixel-heading-character",
       "type": "registry:ui",
-      "dependencies": [
-        "geist"
-      ],
+      "dependencies": ["geist"],
       "files": [
         {
           "path": "registry/default/ui/pixel-heading-character.tsx",
@@ -914,9 +809,7 @@
     {
       "name": "pixel-heading-word",
       "type": "registry:ui",
-      "dependencies": [
-        "geist"
-      ],
+      "dependencies": ["geist"],
       "files": [
         {
           "path": "registry/default/ui/pixel-heading-word.tsx",
@@ -928,9 +821,7 @@
     {
       "name": "pixel-paragraph-words-inverse",
       "type": "registry:ui",
-      "dependencies": [
-        "geist"
-      ],
+      "dependencies": ["geist"],
       "files": [
         {
           "path": "registry/default/ui/pixel-paragraph-words-inverse.tsx",
@@ -942,9 +833,7 @@
     {
       "name": "pixel-paragraph-words",
       "type": "registry:ui",
-      "dependencies": [
-        "geist"
-      ],
+      "dependencies": ["geist"],
       "files": [
         {
           "path": "registry/default/ui/pixel-paragraph-words.tsx",
@@ -960,9 +849,7 @@
         "@radix-ui/react-use-controllable-state",
         "class-variance-authority"
       ],
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/default/ui/onboarding.tsx",
@@ -974,9 +861,7 @@
     {
       "name": "gradient-button-group",
       "type": "registry:ui",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "files": [
         {
           "path": "registry/default/ui/gradient-button-group.tsx",
@@ -1003,13 +888,8 @@
     {
       "name": "hero-dithering",
       "type": "registry:ui",
-      "dependencies": [
-        "@paper-design/shaders-react"
-      ],
-      "registryDependencies": [
-        "badge",
-        "button"
-      ],
+      "dependencies": ["@paper-design/shaders-react"],
+      "registryDependencies": ["badge", "button"],
       "files": [
         {
           "path": "registry/default/ui/hero-dithering.tsx",
@@ -1021,13 +901,8 @@
     {
       "name": "hero-color-panel",
       "type": "registry:ui",
-      "dependencies": [
-        "@paper-design/shaders-react"
-      ],
-      "registryDependencies": [
-        "badge",
-        "button"
-      ],
+      "dependencies": ["@paper-design/shaders-react"],
+      "registryDependencies": ["badge", "button"],
       "files": [
         {
           "path": "registry/default/ui/hero-color-panel.tsx",
@@ -1039,13 +914,8 @@
     {
       "name": "hero-static-radial-gradient",
       "type": "registry:ui",
-      "dependencies": [
-        "@paper-design/shaders-react"
-      ],
-      "registryDependencies": [
-        "badge",
-        "button"
-      ],
+      "dependencies": ["@paper-design/shaders-react"],
+      "registryDependencies": ["badge", "button"],
       "files": [
         {
           "path": "registry/default/ui/hero-static-radial-gradient.tsx",
@@ -1057,13 +927,8 @@
     {
       "name": "hero-heatmap",
       "type": "registry:ui",
-      "dependencies": [
-        "@paper-design/shaders-react"
-      ],
-      "registryDependencies": [
-        "badge",
-        "button"
-      ],
+      "dependencies": ["@paper-design/shaders-react"],
+      "registryDependencies": ["badge", "button"],
       "files": [
         {
           "path": "registry/default/ui/hero-heatmap.tsx",
@@ -1075,13 +940,8 @@
     {
       "name": "hero-liquid-metal",
       "type": "registry:ui",
-      "dependencies": [
-        "@paper-design/shaders-react"
-      ],
-      "registryDependencies": [
-        "badge",
-        "button"
-      ],
+      "dependencies": ["@paper-design/shaders-react"],
+      "registryDependencies": ["badge", "button"],
       "files": [
         {
           "path": "registry/default/ui/hero-liquid-metal.tsx",
@@ -1093,9 +953,7 @@
     {
       "name": "text-animate-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "text-animate"
-      ],
+      "registryDependencies": ["text-animate"],
       "files": [
         {
           "path": "registry/default/example/text-animate-demo.tsx",
@@ -1106,9 +964,7 @@
     {
       "name": "cosmic-button-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "cosmic-button"
-      ],
+      "registryDependencies": ["cosmic-button"],
       "files": [
         {
           "path": "registry/default/example/cosmic-button-demo.tsx",
@@ -1119,9 +975,7 @@
     {
       "name": "texture-button-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "texture-button"
-      ],
+      "registryDependencies": ["texture-button"],
       "files": [
         {
           "path": "registry/default/example/texture-button-demo.tsx",
@@ -1132,10 +986,7 @@
     {
       "name": "texture-card-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "texture-card",
-        "texture-button"
-      ],
+      "registryDependencies": ["texture-card", "texture-button"],
       "files": [
         {
           "path": "registry/default/example/texture-card-demo.tsx",
@@ -1146,10 +997,7 @@
     {
       "name": "timer-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "timer",
-        "texture-button"
-      ],
+      "registryDependencies": ["timer", "texture-button"],
       "files": [
         {
           "path": "registry/default/example/timer-demo.tsx",
@@ -1160,10 +1008,7 @@
     {
       "name": "shift-card-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "shift-card",
-        "texture-button"
-      ],
+      "registryDependencies": ["shift-card", "texture-button"],
       "files": [
         {
           "path": "registry/default/example/shift-card-demo.tsx",
@@ -1174,9 +1019,7 @@
     {
       "name": "minimal-card-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "minimal-card"
-      ],
+      "registryDependencies": ["minimal-card"],
       "files": [
         {
           "path": "registry/default/example/minimal-card-demo.tsx",
@@ -1187,9 +1030,7 @@
     {
       "name": "cutout-card-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "cutout-card"
-      ],
+      "registryDependencies": ["cutout-card"],
       "files": [
         {
           "path": "registry/default/example/cutout-card-demo.tsx",
@@ -1200,9 +1041,7 @@
     {
       "name": "dynamic-island-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "dynamic-island"
-      ],
+      "registryDependencies": ["dynamic-island"],
       "files": [
         {
           "path": "registry/default/example/dynamic-island-demo.tsx",
@@ -1213,9 +1052,7 @@
     {
       "name": "direction-aware-tabs-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "direction-aware-tabs"
-      ],
+      "registryDependencies": ["direction-aware-tabs"],
       "files": [
         {
           "path": "registry/default/example/direction-aware-tabs-demo.tsx",
@@ -1226,9 +1063,7 @@
     {
       "name": "bg-animate-button-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "bg-animate-button"
-      ],
+      "registryDependencies": ["bg-animate-button"],
       "files": [
         {
           "path": "registry/default/example/bg-animate-button-demo.tsx",
@@ -1239,9 +1074,7 @@
     {
       "name": "border-beam-button-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "border-beam-button"
-      ],
+      "registryDependencies": ["border-beam-button"],
       "files": [
         {
           "path": "registry/default/example/border-beam-button-demo.tsx",
@@ -1252,9 +1085,7 @@
     {
       "name": "family-button-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "family-button"
-      ],
+      "registryDependencies": ["family-button"],
       "files": [
         {
           "path": "registry/default/example/family-button-demo.tsx",
@@ -1265,9 +1096,7 @@
     {
       "name": "side-panel-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "side-panel"
-      ],
+      "registryDependencies": ["side-panel"],
       "files": [
         {
           "path": "registry/default/example/side-panel-demo.tsx",
@@ -1278,9 +1107,7 @@
     {
       "name": "bg-media-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "bg-media"
-      ],
+      "registryDependencies": ["bg-media"],
       "files": [
         {
           "path": "registry/default/example/bg-media-demo.tsx",
@@ -1291,9 +1118,7 @@
     {
       "name": "bg-image-texture-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "bg-image-texture"
-      ],
+      "registryDependencies": ["bg-image-texture"],
       "files": [
         {
           "path": "registry/default/example/bg-image-texture-demo.tsx",
@@ -1304,9 +1129,7 @@
     {
       "name": "three-d-carousel-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "three-d-carousel"
-      ],
+      "registryDependencies": ["three-d-carousel"],
       "files": [
         {
           "path": "registry/default/example/three-d-carousel-demo.tsx",
@@ -1317,10 +1140,7 @@
     {
       "name": "tweet-grid-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "tweet-grid",
-        "gradient-heading"
-      ],
+      "registryDependencies": ["tweet-grid", "gradient-heading"],
       "files": [
         {
           "path": "registry/default/example/tweet-grid-demo.tsx",
@@ -1331,9 +1151,7 @@
     {
       "name": "gradient-heading-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "gradient-heading"
-      ],
+      "registryDependencies": ["gradient-heading"],
       "files": [
         {
           "path": "registry/default/example/gradient-heading-demo.tsx",
@@ -1344,9 +1162,7 @@
     {
       "name": "typewriter-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "typewriter"
-      ],
+      "registryDependencies": ["typewriter"],
       "files": [
         {
           "path": "registry/default/example/typewriter-demo.tsx",
@@ -1357,9 +1173,7 @@
     {
       "name": "animated-number-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "animated-number"
-      ],
+      "registryDependencies": ["animated-number"],
       "files": [
         {
           "path": "registry/default/example/animated-number-demo.tsx",
@@ -1370,9 +1184,7 @@
     {
       "name": "sortable-list-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "sortable-list"
-      ],
+      "registryDependencies": ["sortable-list"],
       "files": [
         {
           "path": "registry/default/example/sortable-list-demo.tsx",
@@ -1383,9 +1195,7 @@
     {
       "name": "dock-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "dock"
-      ],
+      "registryDependencies": ["dock"],
       "files": [
         {
           "path": "registry/default/example/dock-demo.tsx",
@@ -1396,9 +1206,7 @@
     {
       "name": "lightboard-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "lightboard"
-      ],
+      "registryDependencies": ["lightboard"],
       "files": [
         {
           "path": "registry/default/example/lightboard-demo.tsx",
@@ -1409,9 +1217,7 @@
     {
       "name": "canvas-fractal-grid-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "canvas-fractal-grid"
-      ],
+      "registryDependencies": ["canvas-fractal-grid"],
       "files": [
         {
           "path": "registry/default/example/canvas-fractal-grid-demo.tsx",
@@ -1422,9 +1228,7 @@
     {
       "name": "bg-animated-fractal-dot-grid-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "bg-animated-fractal-dot-grid"
-      ],
+      "registryDependencies": ["bg-animated-fractal-dot-grid"],
       "files": [
         {
           "path": "registry/default/example/bg-animated-fractal-dot-grid-demo.tsx",
@@ -1435,9 +1239,7 @@
     {
       "name": "bg-animated-gradient-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "bg-animated-gradient"
-      ],
+      "registryDependencies": ["bg-animated-gradient"],
       "files": [
         {
           "path": "registry/default/example/bg-animated-gradient-demo.tsx",
@@ -1448,9 +1250,7 @@
     {
       "name": "popover-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "popover"
-      ],
+      "registryDependencies": ["popover"],
       "files": [
         {
           "path": "registry/default/example/popover-demo.tsx",
@@ -1461,9 +1261,7 @@
     {
       "name": "floating-panel-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "floating-panel"
-      ],
+      "registryDependencies": ["floating-panel"],
       "files": [
         {
           "path": "registry/default/example/floating-panel-demo.tsx",
@@ -1474,9 +1272,7 @@
     {
       "name": "color-picker-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "color-picker"
-      ],
+      "registryDependencies": ["color-picker"],
       "files": [
         {
           "path": "registry/default/example/color-picker-demo.tsx",
@@ -1487,10 +1283,7 @@
     {
       "name": "shader-lens-blur-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "shader-lens-blur",
-        "color-picker"
-      ],
+      "registryDependencies": ["shader-lens-blur", "color-picker"],
       "files": [
         {
           "path": "registry/default/example/shader-lens-blur-demo.tsx",
@@ -1501,9 +1294,7 @@
     {
       "name": "edge-blur-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "edge-blur"
-      ],
+      "registryDependencies": ["edge-blur"],
       "files": [
         {
           "path": "registry/default/example/edge-blur-demo.tsx",
@@ -1514,9 +1305,7 @@
     {
       "name": "dither-image-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "dither-image"
-      ],
+      "registryDependencies": ["dither-image"],
       "files": [
         {
           "path": "registry/default/example/dither-image-demo.tsx",
@@ -1527,9 +1316,7 @@
     {
       "name": "dither-image-demo-upload",
       "type": "registry:component",
-      "registryDependencies": [
-        "dither-image"
-      ],
+      "registryDependencies": ["dither-image"],
       "files": [
         {
           "path": "registry/default/example/dither-image-demo-upload.tsx",
@@ -1540,9 +1327,7 @@
     {
       "name": "popover-form-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "popover-form"
-      ],
+      "registryDependencies": ["popover-form"],
       "files": [
         {
           "path": "registry/default/example/popover-form-demo.tsx",
@@ -1553,9 +1338,7 @@
     {
       "name": "expandable-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "expandable"
-      ],
+      "registryDependencies": ["expandable"],
       "files": [
         {
           "path": "registry/default/example/expandable-demo.tsx",
@@ -1566,10 +1349,7 @@
     {
       "name": "logo-carousel-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "logo-carousel",
-        "gradient-heading"
-      ],
+      "registryDependencies": ["logo-carousel", "gradient-heading"],
       "files": [
         {
           "path": "registry/default/example/logo-carousel-demo.tsx",
@@ -1580,9 +1360,7 @@
     {
       "name": "loading-carousel-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "loading-carousel"
-      ],
+      "registryDependencies": ["loading-carousel"],
       "files": [
         {
           "path": "registry/default/example/loading-carousel-demo.tsx",
@@ -1593,9 +1371,7 @@
     {
       "name": "hover-video-player-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "hover-video-player"
-      ],
+      "registryDependencies": ["hover-video-player"],
       "files": [
         {
           "path": "registry/default/example/hover-video-player-demo.tsx",
@@ -1606,9 +1382,7 @@
     {
       "name": "neumorph-eyebrow-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "neumorph-eyebrow"
-      ],
+      "registryDependencies": ["neumorph-eyebrow"],
       "files": [
         {
           "path": "registry/default/example/neumorph-eyebrow-demo.tsx",
@@ -1619,9 +1393,7 @@
     {
       "name": "neumorph-button-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "neumorph-button"
-      ],
+      "registryDependencies": ["neumorph-button"],
       "files": [
         {
           "path": "registry/default/example/neumorph-button-demo.tsx",
@@ -1632,9 +1404,7 @@
     {
       "name": "feature-carousel-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "feature-carousel"
-      ],
+      "registryDependencies": ["feature-carousel"],
       "files": [
         {
           "path": "registry/default/example/feature-carousel-demo.tsx",
@@ -1645,9 +1415,7 @@
     {
       "name": "choice-poll-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "choice-poll"
-      ],
+      "registryDependencies": ["choice-poll"],
       "files": [
         {
           "path": "registry/default/example/choice-poll-demo.tsx",
@@ -1658,9 +1426,7 @@
     {
       "name": "feature-poll-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "feature-poll"
-      ],
+      "registryDependencies": ["feature-poll"],
       "files": [
         {
           "path": "registry/default/example/feature-poll-demo.tsx",
@@ -1671,9 +1437,7 @@
     {
       "name": "feature-voting-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "feature-voting"
-      ],
+      "registryDependencies": ["feature-voting"],
       "files": [
         {
           "path": "registry/default/example/feature-voting-demo.tsx",
@@ -1684,9 +1448,7 @@
     {
       "name": "vote-tally-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "vote-tally"
-      ],
+      "registryDependencies": ["vote-tally"],
       "files": [
         {
           "path": "registry/default/example/vote-tally-demo.tsx",
@@ -1697,9 +1459,7 @@
     {
       "name": "poll-widget-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "poll-widget"
-      ],
+      "registryDependencies": ["poll-widget"],
       "files": [
         {
           "path": "registry/default/example/poll-widget-demo.tsx",
@@ -1710,9 +1470,7 @@
     {
       "name": "prompt-library-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "prompt-library"
-      ],
+      "registryDependencies": ["prompt-library"],
       "files": [
         {
           "path": "registry/default/example/prompt-library-demo.tsx",
@@ -1723,9 +1481,7 @@
     {
       "name": "ai-instructions-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "ai-instructions"
-      ],
+      "registryDependencies": ["ai-instructions"],
       "files": [
         {
           "path": "registry/default/example/ai-instructions-demo.tsx",
@@ -1736,9 +1492,7 @@
     {
       "name": "intro-disclosure-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "intro-disclosure"
-      ],
+      "registryDependencies": ["intro-disclosure"],
       "files": [
         {
           "path": "registry/default/example/intro-disclosure-demo.tsx",
@@ -1749,9 +1503,7 @@
     {
       "name": "text-gif-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "text-gif"
-      ],
+      "registryDependencies": ["text-gif"],
       "files": [
         {
           "path": "registry/default/example/text-gif-demo.tsx",
@@ -1762,9 +1514,7 @@
     {
       "name": "stripe-bg-guides-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "stripe-bg-guides"
-      ],
+      "registryDependencies": ["stripe-bg-guides"],
       "files": [
         {
           "path": "registry/default/example/stripe-bg-guides-demo.tsx",
@@ -1775,9 +1525,7 @@
     {
       "name": "svg-shapes-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "svg-shapes"
-      ],
+      "registryDependencies": ["svg-shapes"],
       "files": [
         {
           "path": "registry/default/example/svg-shapes-demo.tsx",
@@ -1788,9 +1536,7 @@
     {
       "name": "svg-shapes-animated-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "svg-shapes-animated"
-      ],
+      "registryDependencies": ["svg-shapes-animated"],
       "files": [
         {
           "path": "registry/default/example/svg-shapes-animated-demo.tsx",
@@ -1801,9 +1547,7 @@
     {
       "name": "svg-bands-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "svg-bands"
-      ],
+      "registryDependencies": ["svg-bands"],
       "files": [
         {
           "path": "registry/default/example/svg-bands-demo.tsx",
@@ -1814,9 +1558,7 @@
     {
       "name": "grid-beam-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "grid-beam"
-      ],
+      "registryDependencies": ["grid-beam"],
       "files": [
         {
           "path": "registry/default/example/grid-beam-demo.tsx",
@@ -1827,9 +1569,7 @@
     {
       "name": "youtube-video-player-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "youtube-video-player"
-      ],
+      "registryDependencies": ["youtube-video-player"],
       "files": [
         {
           "path": "registry/default/example/youtube-video-player-demo.tsx",
@@ -1857,9 +1597,7 @@
     {
       "name": "texture-overlay-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "texture-overlay"
-      ],
+      "registryDependencies": ["texture-overlay"],
       "files": [
         {
           "path": "registry/default/example/texture-overlay-demo.tsx",
@@ -1870,9 +1608,7 @@
     {
       "name": "squiggle-arrow-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "squiggle-arrow"
-      ],
+      "registryDependencies": ["squiggle-arrow"],
       "files": [
         {
           "path": "registry/default/example/squiggle-arrow-demo.tsx",
@@ -1883,9 +1619,7 @@
     {
       "name": "code-block-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "code-block"
-      ],
+      "registryDependencies": ["code-block"],
       "files": [
         {
           "path": "registry/default/example/code-block-demo.tsx",
@@ -1896,9 +1630,7 @@
     {
       "name": "metal-button-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "metal-button"
-      ],
+      "registryDependencies": ["metal-button"],
       "files": [
         {
           "path": "registry/default/example/metal-button-demo.tsx",
@@ -1927,9 +1659,7 @@
     {
       "name": "morph-surface-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "morph-surface"
-      ],
+      "registryDependencies": ["morph-surface"],
       "files": [
         {
           "path": "registry/default/example/morph-surface-demo.tsx",
@@ -1940,9 +1670,7 @@
     {
       "name": "distorted-glass-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "distorted-glass"
-      ],
+      "registryDependencies": ["distorted-glass"],
       "files": [
         {
           "path": "registry/default/example/distorted-glass-demo.tsx",
@@ -1953,9 +1681,7 @@
     {
       "name": "family-drawer-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "family-drawer"
-      ],
+      "registryDependencies": ["family-drawer"],
       "files": [
         {
           "path": "registry/default/example/family-drawer-demo.tsx",
@@ -1984,9 +1710,7 @@
     {
       "name": "pixel-heading-character-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "pixel-heading-character"
-      ],
+      "registryDependencies": ["pixel-heading-character"],
       "files": [
         {
           "path": "registry/default/example/pixel-heading-character-demo.tsx",
@@ -1997,9 +1721,7 @@
     {
       "name": "pixel-heading-word-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "pixel-heading-word"
-      ],
+      "registryDependencies": ["pixel-heading-word"],
       "files": [
         {
           "path": "registry/default/example/pixel-heading-word-demo.tsx",
@@ -2010,9 +1732,7 @@
     {
       "name": "pixel-paragraph-words-inverse-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "pixel-paragraph-words-inverse"
-      ],
+      "registryDependencies": ["pixel-paragraph-words-inverse"],
       "files": [
         {
           "path": "registry/default/example/pixel-paragraph-words-inverse-demo.tsx",
@@ -2023,9 +1743,7 @@
     {
       "name": "pixel-paragraph-words-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "pixel-paragraph-words"
-      ],
+      "registryDependencies": ["pixel-paragraph-words"],
       "files": [
         {
           "path": "registry/default/example/pixel-paragraph-words-demo.tsx",
@@ -2036,9 +1754,7 @@
     {
       "name": "onboarding-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "onboarding"
-      ],
+      "registryDependencies": ["onboarding"],
       "files": [
         {
           "path": "registry/default/example/onboarding-demo.tsx",
@@ -2049,9 +1765,7 @@
     {
       "name": "gradient-button-group-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "gradient-button-group"
-      ],
+      "registryDependencies": ["gradient-button-group"],
       "files": [
         {
           "path": "registry/default/example/gradient-button-group-demo.tsx",
@@ -2062,9 +1776,7 @@
     {
       "name": "terminal-animation-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "terminal-animation"
-      ],
+      "registryDependencies": ["terminal-animation"],
       "files": [
         {
           "path": "registry/default/example/terminal-animation-demo.tsx",
@@ -2075,9 +1787,7 @@
     {
       "name": "hero-dithering-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "hero-dithering"
-      ],
+      "registryDependencies": ["hero-dithering"],
       "files": [
         {
           "path": "registry/default/example/hero-dithering-demo.tsx",
@@ -2088,9 +1798,7 @@
     {
       "name": "hero-color-panels-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "hero-color-panel"
-      ],
+      "registryDependencies": ["hero-color-panel"],
       "files": [
         {
           "path": "registry/default/example/hero-color-panels-demo.tsx",
@@ -2101,9 +1809,7 @@
     {
       "name": "hero-static-radial-gradient-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "hero-static-radial-gradient"
-      ],
+      "registryDependencies": ["hero-static-radial-gradient"],
       "files": [
         {
           "path": "registry/default/example/hero-static-radial-gradient-demo.tsx",
@@ -2114,9 +1820,7 @@
     {
       "name": "hero-heatmap-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "hero-heatmap"
-      ],
+      "registryDependencies": ["hero-heatmap"],
       "files": [
         {
           "path": "registry/default/example/hero-heatmap-demo.tsx",
@@ -2127,9 +1831,7 @@
     {
       "name": "hero-liquid-metal-demo",
       "type": "registry:component",
-      "registryDependencies": [
-        "hero-liquid-metal"
-      ],
+      "registryDependencies": ["hero-liquid-metal"],
       "files": [
         {
           "path": "registry/default/example/hero-liquid-metal-demo.tsx",

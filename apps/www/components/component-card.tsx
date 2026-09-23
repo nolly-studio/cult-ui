@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 
-import { cn } from "@/lib/utils"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { cn } from "@/lib/utils";
 
 export function ComponentCard({
   className,
@@ -17,5 +17,5 @@ export function ComponentCard({
         {...props}
       />
     </AspectRatio>
-  )
+  );
 }

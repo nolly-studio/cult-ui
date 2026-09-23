@@ -3,9 +3,7 @@
   "name": "stripe-bg-guides",
   "type": "registry:ui",
   "description": "Stripe-style background guides component with animated patterns and effects",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/stripe-bg-guides.tsx",

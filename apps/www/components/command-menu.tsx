@@ -1,20 +1,18 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { ComponentProps } from "react"
-import { useRouter } from "next/navigation"
 import {
   CircleIcon,
   FileIcon,
   LaptopIcon,
   MoonIcon,
   SunIcon,
-} from "@radix-ui/react-icons"
-import { useTheme } from "next-themes"
+} from "@radix-ui/react-icons";
+import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
+import * as React from "react";
+import { ComponentProps } from "react";
 
-import { docsConfig } from "@/config/docs"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   CommandDialog,
   CommandEmpty,
@@ -23,12 +21,14 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/components/ui/command"
+} from "@/components/ui/command";
+import { docsConfig } from "@/config/docs";
+import { cn } from "@/lib/utils";
 
 export function CommandMenu({ ...props }: ComponentProps<typeof Button>) {
-  const router = useRouter()
-  const [open, setOpen] = React.useState(false)
-  const { setTheme } = useTheme()
+  const router = useRouter();
+  const [open, setOpen] = React.useState(false);
+  const { setTheme } = useTheme();
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -39,22 +39,22 @@ export function CommandMenu({ ...props }: ComponentProps<typeof Button>) {
           e.target instanceof HTMLTextAreaElement ||
           e.target instanceof HTMLSelectElement
         ) {
-          return
+          return;
         }
 
-        e.preventDefault()
-        setOpen((open) => !open)
+        e.preventDefault();
+        setOpen((open) => !open);
       }
-    }
+    };
 
-    document.addEventListener("keydown", down)
-    return () => document.removeEventListener("keydown", down)
-  }, [])
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
 
   const runCommand = React.useCallback((command: () => unknown) => {
-    setOpen(false)
-    command()
-  }, [])
+    setOpen(false);
+    command();
+  }, []);
 
   const renderItems = (items: any[]) => {
     return items.map((item) => {
@@ -64,7 +64,7 @@ export function CommandMenu({ ...props }: ComponentProps<typeof Button>) {
             key={item.href}
             value={item.title}
             onSelect={() => {
-              runCommand(() => router.push(item.href as string))
+              runCommand(() => router.push(item.href as string));
             }}
           >
             <div className="mr-2 flex size-4 items-center justify-center">
@@ -72,30 +72,30 @@ export function CommandMenu({ ...props }: ComponentProps<typeof Button>) {
             </div>
             {item.title}
           </CommandItem>
-        )
+        );
       } else if (item.items) {
         return (
           <CommandGroup key={item.title} heading={item.title}>
             {renderItems(item.items)}
           </CommandGroup>
-        )
+        );
       }
-    })
-  }
+    });
+  };
 
   return (
     <>
       <Button
         variant="outline"
         className={cn(
-          "relative h-8 w-full justify-start rounded-[0.5rem] bg-background text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-64"
+          "bg-background text-muted-foreground relative h-8 w-full justify-start rounded-[0.5rem] text-sm font-normal shadow-none sm:pr-12 md:w-40 lg:w-64"
         )}
         onClick={() => setOpen(true)}
         {...props}
       >
         <span className="hidden lg:inline-flex">Search documentation...</span>
         <span className="inline-flex lg:hidden">Search...</span>
-        <kbd className="pointer-events-none absolute right-[0.3rem] top-[0.3rem] hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+        <kbd className="bg-muted pointer-events-none absolute top-[0.3rem] right-[0.3rem] hidden h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none sm:flex">
           <span className="text-xs">⌘</span>K
         </kbd>
       </Button>
@@ -111,7 +111,7 @@ export function CommandMenu({ ...props }: ComponentProps<typeof Button>) {
                   key={navItem.href}
                   value={navItem.title}
                   onSelect={() => {
-                    runCommand(() => router.push(navItem.href as string))
+                    runCommand(() => router.push(navItem.href as string));
                   }}
                 >
                   <FileIcon className="mr-2 size-4" />
@@ -142,5 +142,5 @@ export function CommandMenu({ ...props }: ComponentProps<typeof Button>) {
         </CommandList>
       </CommandDialog>
     </>
-  )
+  );
 }

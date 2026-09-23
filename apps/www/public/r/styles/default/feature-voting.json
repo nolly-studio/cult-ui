@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "feature-voting",
   "description": "List of features with up-vote support, optional sorting by vote count, and controlled or uncontrolled state",
-  "dependencies": [
-    "@radix-ui/react-use-controllable-state"
-  ],
+  "dependencies": ["@radix-ui/react-use-controllable-state"],
   "files": [
     {
       "path": "registry/default/ui/feature-voting.tsx",

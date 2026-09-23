@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { ArrowRightIcon } from "@radix-ui/react-icons"
+import { ArrowRightIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-import { cn } from "@/lib/utils"
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { cn } from "@/lib/utils";
 
 const examples = [
   {
@@ -48,12 +48,12 @@ const examples = [
     href: "/examples/authentication",
     code: "https://github.com/Jordan-Gilliam/ui/tree/main/apps/www/app/(app)/examples/authentication",
   },
-]
+];
 
 interface ExamplesNavProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <div className="relative">
@@ -64,10 +64,10 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
               href={example.href}
               key={example.href}
               className={cn(
-                "flex h-7 items-center justify-center rounded-full px-4 text-center text-sm transition-colors hover:text-primary",
+                "hover:text-primary flex h-7 items-center justify-center rounded-full px-4 text-center text-sm transition-colors",
                 pathname?.startsWith(example.href) ||
                   (index === 0 && pathname === "/")
-                  ? "bg-muted font-medium text-primary"
+                  ? "bg-muted text-primary font-medium"
                   : "text-muted-foreground"
               )}
             >
@@ -78,18 +78,20 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
         <ScrollBar orientation="horizontal" className="invisible" />
       </ScrollArea>
     </div>
-  )
+  );
 }
 
 interface ExampleCodeLinkProps {
-  pathname: string | null
+  pathname: string | null;
 }
 
 export function ExampleCodeLink({ pathname }: ExampleCodeLinkProps) {
-  const example = examples.find((example) => pathname?.startsWith(example.href))
+  const example = examples.find((example) =>
+    pathname?.startsWith(example.href)
+  );
 
   if (!example?.code) {
-    return null
+    return null;
   }
 
   return (
@@ -97,10 +99,10 @@ export function ExampleCodeLink({ pathname }: ExampleCodeLinkProps) {
       href={example?.code}
       target="_blank"
       rel="nofollow"
-      className="absolute right-0 top-0 hidden items-center rounded-[0.5rem] text-sm font-medium md:flex"
+      className="absolute top-0 right-0 hidden items-center rounded-[0.5rem] text-sm font-medium md:flex"
     >
       View code
       <ArrowRightIcon className="ml-1 size-4" />
     </Link>
-  )
+  );
 }

@@ -1,5 +1,8 @@
-"use client"
+"use client";
 
+import { useControllableState } from "@radix-ui/react-use-controllable-state";
+import { cva } from "class-variance-authority";
+import { Check } from "lucide-react";
 import {
   createContext,
   useCallback,
@@ -11,63 +14,62 @@ import {
   type ComponentProps,
   type KeyboardEvent,
   type MouseEvent,
-} from "react"
-import { useControllableState } from "@radix-ui/react-use-controllable-state"
-import { cva } from "class-variance-authority"
-import { Check } from "lucide-react"
+} from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 /* -----------------------------------------------------------------------------
  * Types
  * -------------------------------------------------------------------------- */
 
-export interface ChoicePollRootProps
-  extends Omit<ComponentProps<"div">, "defaultValue"> {
+export interface ChoicePollRootProps extends Omit<
+  ComponentProps<"div">,
+  "defaultValue"
+> {
   /** Currently selected option(s) - controlled */
-  value?: string | string[]
+  value?: string | string[];
   /** Default selected option(s) - uncontrolled */
-  defaultValue?: string | string[]
+  defaultValue?: string | string[];
   /** Callback when selection changes */
-  onValueChange?: (value: string | string[]) => void
+  onValueChange?: (value: string | string[]) => void;
   /** Whether multiple selections are allowed */
-  multiple?: boolean
+  multiple?: boolean;
   /** Whether the poll is disabled */
-  disabled?: boolean
+  disabled?: boolean;
   /** Whether poll results should be visible after voting */
-  showResults?: boolean
+  showResults?: boolean;
   /** Vote counts per option (for showing results) */
-  votes?: Record<string, number>
+  votes?: Record<string, number>;
   /** Whether user has submitted their vote */
-  hasVoted?: boolean
+  hasVoted?: boolean;
 }
 
 export interface ChoicePollOptionProps extends ComponentProps<"button"> {
   /** Unique identifier for this option */
-  value: string
+  value: string;
   /** Whether this specific option is disabled */
-  disabled?: boolean
+  disabled?: boolean;
 }
 
-export type ChoicePollHeaderProps = ComponentProps<"div">
+export type ChoicePollHeaderProps = ComponentProps<"div">;
 
-export type ChoicePollTitleProps = ComponentProps<"h3">
+export type ChoicePollTitleProps = ComponentProps<"h3">;
 
-export type ChoicePollDescriptionProps = ComponentProps<"p">
+export type ChoicePollDescriptionProps = ComponentProps<"p">;
 
-export type ChoicePollOptionsProps = ComponentProps<"div">
+export type ChoicePollOptionsProps = ComponentProps<"div">;
 
-export type ChoicePollLabelProps = ComponentProps<"span">
+export type ChoicePollLabelProps = ComponentProps<"span">;
 
-export type ChoicePollIndicatorProps = ComponentProps<"span">
+export type ChoicePollIndicatorProps = ComponentProps<"span">;
 
-export type ChoicePollProgressProps = ComponentProps<"div">
+export type ChoicePollProgressProps = ComponentProps<"div">;
 
-export type ChoicePollPercentageProps = ComponentProps<"span">
+export type ChoicePollPercentageProps = ComponentProps<"span">;
 
 export interface ChoicePollFooterProps extends ComponentProps<"div"> {
   /** Total number of votes */
-  totalVotes?: number
+  totalVotes?: number;
 }
 
 /* -----------------------------------------------------------------------------
@@ -75,67 +77,69 @@ export interface ChoicePollFooterProps extends ComponentProps<"div"> {
  * -------------------------------------------------------------------------- */
 
 interface ChoicePollContextValue {
-  selected: string[]
-  multiple: boolean
-  disabled: boolean
-  showResults: boolean
-  votes: Record<string, number>
-  totalVotes: number
-  hasVoted: boolean
-  select: (optionId: string) => void
-  isSelected: (optionId: string) => boolean
-  getPercentage: (optionId: string) => number
+  selected: string[];
+  multiple: boolean;
+  disabled: boolean;
+  showResults: boolean;
+  votes: Record<string, number>;
+  totalVotes: number;
+  hasVoted: boolean;
+  select: (optionId: string) => void;
+  isSelected: (optionId: string) => boolean;
+  getPercentage: (optionId: string) => number;
 }
 
-const ChoicePollContext = createContext<ChoicePollContextValue | null>(null)
+const ChoicePollContext = createContext<ChoicePollContextValue | null>(null);
 
 function useChoicePollContext() {
-  const context = useContext(ChoicePollContext)
+  const context = useContext(ChoicePollContext);
   if (!context) {
-    throw new Error("ChoicePoll components must be used within ChoicePoll.Root")
+    throw new Error(
+      "ChoicePoll components must be used within ChoicePoll.Root"
+    );
   }
-  return context
+  return context;
 }
 
 interface ChoicePollOptionContextValue {
-  optionId: string
-  disabled: boolean
-  isSelected: boolean
-  percentage: number
+  optionId: string;
+  disabled: boolean;
+  isSelected: boolean;
+  percentage: number;
 }
 
 const ChoicePollOptionContext =
-  createContext<ChoicePollOptionContextValue | null>(null)
+  createContext<ChoicePollOptionContextValue | null>(null);
 
 function useChoicePollOptionContext() {
-  const context = useContext(ChoicePollOptionContext)
+  const context = useContext(ChoicePollOptionContext);
   if (!context) {
     throw new Error(
       "ChoicePoll.Option sub-components must be used within ChoicePoll.Option"
-    )
+    );
   }
-  return context
+  return context;
 }
 
 function useAnimatedPercentage(percentage: number, shouldShowResults: boolean) {
   const [animatedPercentage, setAnimatedPercentage] = useState(
     shouldShowResults ? percentage : 0
-  )
+  );
 
   useEffect(() => {
     if (!shouldShowResults) {
-      setAnimatedPercentage(0)
-      return
+      setAnimatedPercentage(0);
+      return;
     }
 
     const frame = requestAnimationFrame(() => {
-      setAnimatedPercentage(percentage)
-    })
+      setAnimatedPercentage(percentage);
+    });
 
-    return () => cancelAnimationFrame(frame)
-  }, [percentage, shouldShowResults])
+    return () => cancelAnimationFrame(frame);
+  }, [percentage, shouldShowResults]);
 
-  return animatedPercentage
+  return animatedPercentage;
 }
 
 /* -----------------------------------------------------------------------------
@@ -146,7 +150,7 @@ const optionVariants = cva(
   [
     "group relative flex w-full cursor-pointer items-center gap-3 rounded-xl border p-4 text-left",
     "transition-all duration-200 ease-out",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+    "focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
     "disabled:cursor-not-allowed disabled:opacity-50",
   ],
   {
@@ -159,14 +163,14 @@ const optionVariants = cva(
           "border-primary bg-primary/5 shadow-sm",
           "hover:border-primary hover:bg-primary/10",
         ],
-        voted: ["cursor-default border-border bg-muted/30"],
+        voted: ["border-border bg-muted/30 cursor-default"],
       },
     },
     defaultVariants: {
       state: "idle",
     },
   }
-)
+);
 
 const indicatorVariants = cva(
   [
@@ -190,7 +194,7 @@ const indicatorVariants = cva(
       multiple: false,
     },
   }
-)
+);
 
 const progressVariants = cva(
   [
@@ -209,7 +213,7 @@ const progressVariants = cva(
       state: "idle",
     },
   }
-)
+);
 
 /* -----------------------------------------------------------------------------
  * Root
@@ -230,67 +234,67 @@ function ChoicePollRoot({
 }: ChoicePollRootProps) {
   const normalizeValue = (val: string | string[] | undefined): string[] => {
     if (!val) {
-      return []
+      return [];
     }
-    return Array.isArray(val) ? val : [val]
-  }
+    return Array.isArray(val) ? val : [val];
+  };
 
   const [selectedArray, setSelectedArray] = useControllableState<string[]>({
     prop: controlledValue ? normalizeValue(controlledValue) : undefined,
     defaultProp: normalizeValue(defaultValue),
     onChange: (arr) => {
       if (onValueChange) {
-        onValueChange(multiple ? arr : (arr[0] ?? ""))
+        onValueChange(multiple ? arr : (arr[0] ?? ""));
       }
     },
-  })
+  });
 
-  const selected = selectedArray ?? []
+  const selected = selectedArray ?? [];
 
   const totalVotes = useMemo(
     () => Object.values(votes).reduce((sum, count) => sum + count, 0),
     [votes]
-  )
+  );
 
   const select = useCallback(
     (optionId: string) => {
       if (disabled || hasVoted) {
-        return
+        return;
       }
 
       setSelectedArray((prev) => {
-        const current = prev ?? []
-        const isCurrentlySelected = current.includes(optionId)
+        const current = prev ?? [];
+        const isCurrentlySelected = current.includes(optionId);
 
         if (multiple) {
           if (isCurrentlySelected) {
-            return current.filter((id) => id !== optionId)
+            return current.filter((id) => id !== optionId);
           }
-          return [...current, optionId]
+          return [...current, optionId];
         }
         if (isCurrentlySelected) {
-          return []
+          return [];
         }
-        return [optionId]
-      })
+        return [optionId];
+      });
     },
     [disabled, hasVoted, multiple, setSelectedArray]
-  )
+  );
 
   const isSelected = useCallback(
     (optionId: string) => selected.includes(optionId),
     [selected]
-  )
+  );
 
   const getPercentage = useCallback(
     (optionId: string) => {
       if (totalVotes === 0) {
-        return 0
+        return 0;
       }
-      return Math.round(((votes[optionId] ?? 0) / totalVotes) * 100)
+      return Math.round(((votes[optionId] ?? 0) / totalVotes) * 100);
     },
     [votes, totalVotes]
-  )
+  );
 
   const contextValue = useMemo(
     () => ({
@@ -317,7 +321,7 @@ function ChoicePollRoot({
       isSelected,
       getPercentage,
     ]
-  )
+  );
 
   return (
     <ChoicePollContext.Provider value={contextValue}>
@@ -332,7 +336,7 @@ function ChoicePollRoot({
         {children}
       </div>
     </ChoicePollContext.Provider>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -352,7 +356,7 @@ function ChoicePollHeader({
     >
       {children}
     </div>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -366,13 +370,13 @@ function ChoicePollTitle({
 }: ChoicePollTitleProps) {
   return (
     <h3
-      className={cn("font-semibold text-lg tracking-tight", className)}
+      className={cn("text-lg font-semibold tracking-tight", className)}
       data-slot="choice-poll-title"
       {...props}
     >
       {children}
     </h3>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -392,7 +396,7 @@ function ChoicePollDescription({
     >
       {children}
     </p>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -404,50 +408,50 @@ function ChoicePollOptions({
   className,
   ...props
 }: ChoicePollOptionsProps) {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const handleKeyDown = useCallback((event: KeyboardEvent<HTMLDivElement>) => {
-    const container = containerRef.current
+    const container = containerRef.current;
     if (!container) {
-      return
+      return;
     }
 
     const options = Array.from(
       container.querySelectorAll<HTMLButtonElement>(
         '[data-slot="choice-poll-option"]:not([disabled])'
       )
-    )
+    );
     const currentIndex = options.indexOf(
       document.activeElement as HTMLButtonElement
-    )
+    );
 
-    let nextIndex = currentIndex
+    let nextIndex = currentIndex;
 
     switch (event.key) {
       case "ArrowDown":
       case "ArrowRight":
-        event.preventDefault()
-        nextIndex = currentIndex < options.length - 1 ? currentIndex + 1 : 0
-        break
+        event.preventDefault();
+        nextIndex = currentIndex < options.length - 1 ? currentIndex + 1 : 0;
+        break;
       case "ArrowUp":
       case "ArrowLeft":
-        event.preventDefault()
-        nextIndex = currentIndex > 0 ? currentIndex - 1 : options.length - 1
-        break
+        event.preventDefault();
+        nextIndex = currentIndex > 0 ? currentIndex - 1 : options.length - 1;
+        break;
       case "Home":
-        event.preventDefault()
-        nextIndex = 0
-        break
+        event.preventDefault();
+        nextIndex = 0;
+        break;
       case "End":
-        event.preventDefault()
-        nextIndex = options.length - 1
-        break
+        event.preventDefault();
+        nextIndex = options.length - 1;
+        break;
       default:
-        break
+        break;
     }
 
-    options[nextIndex]?.focus()
-  }, [])
+    options[nextIndex]?.focus();
+  }, []);
 
   return (
     <div
@@ -460,7 +464,7 @@ function ChoicePollOptions({
     >
       {children}
     </div>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -482,33 +486,33 @@ function ChoicePollOption({
     isSelected,
     select,
     getPercentage,
-  } = useChoicePollContext()
+  } = useChoicePollContext();
 
-  const disabled = rootDisabled || optionDisabled
-  const selected = isSelected(value)
-  const percentage = getPercentage(value)
-  const animatedPercentage = useAnimatedPercentage(percentage, showResults)
+  const disabled = rootDisabled || optionDisabled;
+  const selected = isSelected(value);
+  const percentage = getPercentage(value);
+  const animatedPercentage = useAnimatedPercentage(percentage, showResults);
 
   const getState = (): "idle" | "selected" | "voted" => {
     if (hasVoted) {
-      return "voted"
+      return "voted";
     }
     if (selected) {
-      return "selected"
+      return "selected";
     }
-    return "idle"
-  }
-  const state = getState()
+    return "idle";
+  };
+  const state = getState();
 
   const handleClick = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
-      onClick?.(event)
+      onClick?.(event);
       if (!(event.defaultPrevented || disabled)) {
-        select(value)
+        select(value);
       }
     },
     [onClick, disabled, select, value]
-  )
+  );
 
   const optionContextValue = useMemo(
     () => ({
@@ -518,7 +522,7 @@ function ChoicePollOption({
       percentage,
     }),
     [value, disabled, selected, percentage]
-  )
+  );
 
   return (
     <ChoicePollOptionContext.Provider value={optionContextValue}>
@@ -555,7 +559,7 @@ function ChoicePollOption({
         </span>
       </button>
     </ChoicePollOptionContext.Provider>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -567,19 +571,19 @@ function ChoicePollIndicator({
   className,
   ...props
 }: ChoicePollIndicatorProps) {
-  const { multiple, hasVoted } = useChoicePollContext()
-  const { isSelected } = useChoicePollOptionContext()
+  const { multiple, hasVoted } = useChoicePollContext();
+  const { isSelected } = useChoicePollOptionContext();
 
   const getState = (): "idle" | "selected" | "voted" => {
     if (hasVoted) {
-      return "voted"
+      return "voted";
     }
     if (isSelected) {
-      return "selected"
+      return "selected";
     }
-    return "idle"
-  }
-  const state = getState()
+    return "idle";
+  };
+  const state = getState();
 
   return (
     <span
@@ -600,7 +604,7 @@ function ChoicePollIndicator({
       )}
       {children}
     </span>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -620,7 +624,7 @@ function ChoicePollLabel({
     >
       {children}
     </span>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -628,19 +632,19 @@ function ChoicePollLabel({
  * -------------------------------------------------------------------------- */
 
 function ChoicePollProgress({ className, ...props }: ChoicePollProgressProps) {
-  const { showResults } = useChoicePollContext()
-  const { percentage, isSelected } = useChoicePollOptionContext()
-  const animatedPercentage = useAnimatedPercentage(percentage, showResults)
+  const { showResults } = useChoicePollContext();
+  const { percentage, isSelected } = useChoicePollOptionContext();
+  const animatedPercentage = useAnimatedPercentage(percentage, showResults);
 
   if (!showResults) {
-    return null
+    return null;
   }
 
   return (
     <span
       aria-hidden="true"
       className={cn(
-        "h-1.5 w-16 overflow-hidden rounded-full bg-muted",
+        "bg-muted h-1.5 w-16 overflow-hidden rounded-full",
         className
       )}
       data-slot="choice-poll-progress"
@@ -654,7 +658,7 @@ function ChoicePollProgress({ className, ...props }: ChoicePollProgressProps) {
         style={{ width: `${animatedPercentage}%` }}
       />
     </span>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -666,18 +670,18 @@ function ChoicePollPercentage({
   className,
   ...props
 }: ChoicePollPercentageProps) {
-  const { showResults } = useChoicePollContext()
-  const { percentage } = useChoicePollOptionContext()
-  const animatedPercentage = useAnimatedPercentage(percentage, showResults)
+  const { showResults } = useChoicePollContext();
+  const { percentage } = useChoicePollOptionContext();
+  const animatedPercentage = useAnimatedPercentage(percentage, showResults);
 
   if (!showResults) {
-    return null
+    return null;
   }
 
   return (
     <span
       className={cn(
-        "min-w-[3ch] text-right font-medium text-muted-foreground text-sm tabular-nums",
+        "text-muted-foreground min-w-[3ch] text-right text-sm font-medium tabular-nums",
         className
       )}
       data-slot="choice-poll-percentage"
@@ -685,7 +689,7 @@ function ChoicePollPercentage({
     >
       {children ?? `${Math.round(animatedPercentage)}%`}
     </span>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -702,17 +706,17 @@ function ChoicePollFooter({
     totalVotes: contextTotalVotes,
     hasVoted,
     showResults,
-  } = useChoicePollContext()
-  const votes = totalVotes ?? contextTotalVotes
+  } = useChoicePollContext();
+  const votes = totalVotes ?? contextTotalVotes;
 
   if (!showResults && !children) {
-    return null
+    return null;
   }
 
   return (
     <div
       className={cn(
-        "flex items-center justify-between text-muted-foreground text-sm",
+        "text-muted-foreground flex items-center justify-between text-sm",
         className
       )}
       data-slot="choice-poll-footer"
@@ -724,7 +728,7 @@ function ChoicePollFooter({
             {votes.toLocaleString()} {votes === 1 ? "vote" : "votes"}
           </span>
           {hasVoted && (
-            <span className="flex items-center gap-1.5 text-primary">
+            <span className="text-primary flex items-center gap-1.5">
               <Check className="h-3.5 w-3.5" />
               <span>You voted</span>
             </span>
@@ -732,7 +736,7 @@ function ChoicePollFooter({
         </>
       )}
     </div>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -740,7 +744,7 @@ function ChoicePollFooter({
  * -------------------------------------------------------------------------- */
 
 export function useChoicePoll() {
-  return useChoicePollContext()
+  return useChoicePollContext();
 }
 
 /* -----------------------------------------------------------------------------
@@ -759,7 +763,7 @@ export const ChoicePoll = {
   Progress: ChoicePollProgress,
   Percentage: ChoicePollPercentage,
   Footer: ChoicePollFooter,
-}
+};
 
 export {
   ChoicePollRoot,
@@ -773,4 +777,4 @@ export {
   ChoicePollProgress,
   ChoicePollPercentage,
   ChoicePollFooter,
-}
+};

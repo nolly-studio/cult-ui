@@ -59,17 +59,21 @@ This component requires the **Geist Pixel fonts**. Follow these steps to configu
 Import the pixel font variants from `geist/font/pixel` and apply their CSS variable classes to `<body>`:
 
 ```tsx title="app/layout.tsx"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import {
   GeistPixelSquare,
   GeistPixelGrid,
   GeistPixelCircle,
   GeistPixelTriangle,
   GeistPixelLine,
-} from "geist/font/pixel"
+} from "geist/font/pixel";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body
@@ -78,21 +82,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
       </body>
     </html>
-  )
+  );
 }
 ```
 
 Each import exposes a `.variable` property that injects a CSS custom property:
 
-| Import                | CSS Variable                    |
-| --------------------- | ------------------------------- |
-| `GeistSans`           | `--font-geist-sans`            |
-| `GeistMono`           | `--font-geist-mono`            |
-| `GeistPixelSquare`    | `--font-geist-pixel-square`    |
-| `GeistPixelGrid`      | `--font-geist-pixel-grid`      |
-| `GeistPixelCircle`    | `--font-geist-pixel-circle`    |
-| `GeistPixelTriangle`  | `--font-geist-pixel-triangle`  |
-| `GeistPixelLine`      | `--font-geist-pixel-line`      |
+| Import               | CSS Variable                  |
+| -------------------- | ----------------------------- |
+| `GeistSans`          | `--font-geist-sans`           |
+| `GeistMono`          | `--font-geist-mono`           |
+| `GeistPixelSquare`   | `--font-geist-pixel-square`   |
+| `GeistPixelGrid`     | `--font-geist-pixel-grid`     |
+| `GeistPixelCircle`   | `--font-geist-pixel-circle`   |
+| `GeistPixelTriangle` | `--font-geist-pixel-triangle` |
+| `GeistPixelLine`     | `--font-geist-pixel-line`     |
 
 ### 2. Map CSS variables in your Tailwind CSS theme
 
@@ -127,13 +131,13 @@ export default {
       },
     },
   },
-}
+};
 ```
 
 ## Usage
 
 ```tsx
-import { PixelHeading } from "@/components/ui/pixel-heading-character"
+import { PixelHeading } from "@/components/ui/pixel-heading-character";
 ```
 
 ### Basic
@@ -147,25 +151,33 @@ import { PixelHeading } from "@/components/ui/pixel-heading-character"
 The `mode` prop controls how fonts are distributed and animated across characters:
 
 ```tsx
-{/* All characters share one font — cycles on hover */}
+{
+  /* All characters share one font — cycles on hover */
+}
 <PixelHeading mode="uniform" className="text-6xl">
   Uniform
-</PixelHeading>
+</PixelHeading>;
 
-{/* Golden-ratio distribution — staggered cascade on hover */}
+{
+  /* Golden-ratio distribution — staggered cascade on hover */
+}
 <PixelHeading mode="multi" className="text-6xl">
   Multi
-</PixelHeading>
+</PixelHeading>;
 
-{/* Fonts flow left-to-right in a continuous wave */}
+{
+  /* Fonts flow left-to-right in a continuous wave */
+}
 <PixelHeading mode="wave" className="text-6xl">
   Wave
-</PixelHeading>
+</PixelHeading>;
 
-{/* Each character scrambles independently */}
+{
+  /* Each character scrambles independently */
+}
 <PixelHeading mode="random" className="text-6xl">
   Random
-</PixelHeading>
+</PixelHeading>;
 ```
 
 ### Auto Play
@@ -249,33 +261,33 @@ Render as any heading element (`h1`–`h6`):
 
 ### PixelHeading Props
 
-| Prop                | Type                                                         | Default   | Description                                                                                                       |
-| ------------------- | ------------------------------------------------------------ | --------- | ----------------------------------------------------------------------------------------------------------------- |
-| `as`                | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"`            | `"h1"`    | HTML heading level to render                                                                                       |
-| `mode`              | `"uniform" \| "multi" \| "wave" \| "random"`                | `"multi"` | Controls how fonts are distributed across characters                                                               |
-| `autoPlay`          | `boolean`                                                    | `false`   | Run animation on mount without hover/focus                                                                         |
-| `cycleInterval`     | `number`                                                     | `150`     | Interval in ms between font changes per character                                                                  |
-| `staggerDelay`      | `number`                                                     | `50`      | Delay in ms between each successive character's animation start                                                    |
-| `defaultFontIndex`  | `number`                                                     | `0`       | Initial font index (0–4). Only meaningful in `uniform` mode                                                        |
-| `showLabel`         | `boolean`                                                    | `false`   | Show the active mode/font label beneath the heading                                                                |
-| `prefix`            | `string`                                                     | —         | Static text rendered before the animated children                                                                  |
-| `prefixFont`        | `"square" \| "grid" \| "circle" \| "triangle" \| "line" \| "none"` | `"none"` | Which pixel font to use for the prefix (or `"none"` for inherited)                                          |
-| `isolate`           | `Record<string, string>`                                     | —         | Map of characters to exclude from animation. Keys are characters, values are font names (`"sans"`, `"mono"`, etc.) |
-| `onFontIndexChange` | `(index: number) => void`                                    | —         | Callback fired when the active font changes (uniform mode only)                                                    |
-| `className`         | `string`                                                     | —         | Additional CSS classes applied to the heading element                                                               |
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `as` | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"h1"` | HTML heading level to render |
+| `mode` | `"uniform" \| "multi" \| "wave" \| "random"` | `"multi"` | Controls how fonts are distributed across characters |
+| `autoPlay` | `boolean` | `false` | Run animation on mount without hover/focus |
+| `cycleInterval` | `number` | `150` | Interval in ms between font changes per character |
+| `staggerDelay` | `number` | `50` | Delay in ms between each successive character's animation start |
+| `defaultFontIndex` | `number` | `0` | Initial font index (0–4). Only meaningful in `uniform` mode |
+| `showLabel` | `boolean` | `false` | Show the active mode/font label beneath the heading |
+| `prefix` | `string` | — | Static text rendered before the animated children |
+| `prefixFont` | `"square" \| "grid" \| "circle" \| "triangle" \| "line" \| "none"` | `"none"` | Which pixel font to use for the prefix (or `"none"` for inherited) |
+| `isolate` | `Record<string, string>` | — | Map of characters to exclude from animation. Keys are characters, values are font names (`"sans"`, `"mono"`, etc.) |
+| `onFontIndexChange` | `(index: number) => void` | — | Callback fired when the active font changes (uniform mode only) |
+| `className` | `string` | — | Additional CSS classes applied to the heading element |
 
 ### PixelHeadingMode Type
 
 ```tsx
-type PixelHeadingMode = "uniform" | "multi" | "wave" | "random"
+type PixelHeadingMode = "uniform" | "multi" | "wave" | "random";
 ```
 
-| Mode      | At Rest                   | On Hover / Auto-Play                           |
-| --------- | ------------------------- | ----------------------------------------------- |
-| `uniform` | Single font for all chars | Cycles one font across all characters            |
-| `multi`   | Golden-ratio distribution | Staggered cascade — each char cycles independently |
-| `wave`    | Position-based gradient   | Fonts flow left→right in a continuous wave       |
-| `random`  | Golden-ratio distribution | Each character scrambles independently            |
+| Mode | At Rest | On Hover / Auto-Play |
+| --- | --- | --- |
+| `uniform` | Single font for all chars | Cycles one font across all characters |
+| `multi` | Golden-ratio distribution | Staggered cascade — each char cycles independently |
+| `wave` | Position-based gradient | Fonts flow left→right in a continuous wave |
+| `random` | Golden-ratio distribution | Each character scrambles independently |
 
 ## Features
 

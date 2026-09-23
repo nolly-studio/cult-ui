@@ -1,6 +1,14 @@
 "use client";
 
+import {
+  CheckCircle2Icon,
+  ChevronRightIcon,
+  CircleDotIcon,
+  CircleIcon,
+  XCircleIcon,
+} from "lucide-react";
 import type { ComponentProps, HTMLAttributes } from "react";
+import { createContext, useContext, useMemo } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import {
@@ -9,14 +17,6 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
-import {
-  CheckCircle2Icon,
-  ChevronRightIcon,
-  CircleDotIcon,
-  CircleIcon,
-  XCircleIcon,
-} from "lucide-react";
-import { createContext, useContext, useMemo } from "react";
 
 type TestStatus = "passed" | "failed" | "skipped" | "running";
 
@@ -56,7 +56,7 @@ export const TestResults = ({
   return (
     <TestResultsContext.Provider value={contextValue}>
       <div
-        className={cn("rounded-lg border bg-background", className)}
+        className={cn("bg-background rounded-lg border", className)}
         {...props}
       >
         {children ??
@@ -177,7 +177,7 @@ export const TestResultsProgress = ({
     <div className={cn("space-y-2", className)} {...props}>
       {children ?? (
         <>
-          <div className="flex h-2 overflow-hidden rounded-full bg-muted">
+          <div className="bg-muted flex h-2 overflow-hidden rounded-full">
             <div
               className="bg-green-500 transition-all"
               style={{ width: `${passedPercent}%` }}
@@ -187,7 +187,7 @@ export const TestResultsProgress = ({
               style={{ width: `${failedPercent}%` }}
             />
           </div>
-          <div className="flex justify-between text-muted-foreground text-xs">
+          <div className="text-muted-foreground flex justify-between text-xs">
             <span>
               {summary.passed}/{summary.total} tests passed
             </span>
@@ -256,14 +256,14 @@ export const TestSuiteName = ({
   return (
     <CollapsibleTrigger
       className={cn(
-        "group flex w-full items-center gap-2 px-4 py-3 text-left transition-colors hover:bg-muted/50",
+        "group hover:bg-muted/50 flex w-full items-center gap-2 px-4 py-3 text-left transition-colors",
         className
       )}
       {...props}
     >
-      <ChevronRightIcon className="size-4 shrink-0 text-muted-foreground transition-transform group-data-[state=open]:rotate-90" />
+      <ChevronRightIcon className="text-muted-foreground size-4 shrink-0 transition-transform group-data-[state=open]:rotate-90" />
       <TestStatusIcon status={status} />
-      <span className="font-medium text-sm">{children ?? name}</span>
+      <span className="text-sm font-medium">{children ?? name}</span>
     </CollapsibleTrigger>
   );
 };
@@ -434,7 +434,7 @@ export const TestDuration = ({
 
   return (
     <span
-      className={cn("ml-auto text-muted-foreground text-xs", className)}
+      className={cn("text-muted-foreground ml-auto text-xs", className)}
       {...props}
     >
       {children ?? `${duration}ms`}
@@ -469,7 +469,7 @@ export const TestErrorMessage = ({
 }: TestErrorMessageProps) => (
   <p
     className={cn(
-      "font-medium text-red-700 text-sm dark:text-red-400",
+      "text-sm font-medium text-red-700 dark:text-red-400",
       className
     )}
     {...props}
@@ -487,7 +487,7 @@ export const TestErrorStack = ({
 }: TestErrorStackProps) => (
   <pre
     className={cn(
-      "mt-2 overflow-auto font-mono text-red-600 text-xs dark:text-red-400",
+      "mt-2 overflow-auto font-mono text-xs text-red-600 dark:text-red-400",
       className
     )}
     {...props}

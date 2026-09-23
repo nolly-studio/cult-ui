@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import type { ReactNode } from "react"
+import type { ReactNode } from "react";
 
 import {
   AngledCornerPanelSvg,
@@ -28,14 +28,14 @@ import {
   WavyBottomEdgeSvg,
   zigzagSawtoothBandPath,
   ZigzagSawtoothBandSvg,
-} from "@/registry/default/ui/svg-bands"
+} from "@/registry/default/ui/svg-bands";
 
 function DemoSection({
   title,
   children,
 }: {
-  title: string
-  children: ReactNode
+  title: string;
+  children: ReactNode;
 }) {
   return (
     <section className="w-full space-y-4">
@@ -46,7 +46,7 @@ function DemoSection({
         {children}
       </div>
     </section>
-  )
+  );
 }
 
 function BandTile({
@@ -54,9 +54,9 @@ function BandTile({
   tall,
   children,
 }: {
-  label: string
-  tall?: boolean
-  children: ReactNode
+  label: string;
+  tall?: boolean;
+  children: ReactNode;
 }) {
   return (
     <div className="bg-muted/30 flex flex-col gap-2 rounded-lg border p-3">
@@ -69,12 +69,12 @@ function BandTile({
         {children}
       </div>
     </div>
-  )
+  );
 }
 
 export default function SvgBandsDemo() {
   return (
-    <div className="dark:bg-stone-950 flex flex-col items-center gap-12 rounded-md px-4 py-6 md:px-0">
+    <div className="flex flex-col items-center gap-12 rounded-md px-4 py-6 md:px-0 dark:bg-stone-950">
       <div className="max-w-2xl space-y-2 text-center">
         <h2 className="text-foreground text-2xl font-bold tracking-tight">
           SVG bands
@@ -189,5 +189,5 @@ export default function SvgBandsDemo() {
         </DemoSection>
       </div>
     </div>
-  )
+  );
 }

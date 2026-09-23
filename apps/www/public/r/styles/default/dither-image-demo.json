@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dither-image-demo",
-  "registryDependencies": [
-    "dither-image"
-  ],
+  "registryDependencies": ["dither-image"],
   "files": [
     {
       "path": "registry/default/example/dither-image-demo.tsx",

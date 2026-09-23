@@ -38,7 +38,10 @@ npx shadcn@latest add https://cult-ui.com/r/hero-liquid-metal.json
 npm install @paper-design/shaders-react
 ```
 
-<Step>Install required registry dependencies if they are not already in your project.</Step>
+<Step>
+  Install required registry dependencies if they are not already in your
+  project.
+</Step>
 
 ```bash
 npx shadcn@latest add button badge
@@ -67,7 +70,7 @@ npx shadcn@latest add button badge
 Pass shader props directly on `HeroLiquidMetal` for a one-line hero:
 
 ```tsx
-import { HeroLiquidMetal } from "@/components/ui/hero-liquid-metal"
+import { HeroLiquidMetal } from "@/components/ui/hero-liquid-metal";
 
 export default function Page() {
   return (
@@ -91,7 +94,7 @@ export default function Page() {
         fit="contain"
       />
     </main>
-  )
+  );
 }
 ```
 
@@ -110,7 +113,7 @@ import {
   HeroLiquidMetalBadges,
   HeroLiquidMetalVisual,
   HeroLiquidMetalMobileVisual,
-} from "@/components/ui/hero-liquid-metal"
+} from "@/components/ui/hero-liquid-metal";
 ```
 
 ```tsx
@@ -135,7 +138,7 @@ export default function Page() {
         <HeroLiquidMetalMobileVisual />
       </HeroLiquidMetalRoot>
     </main>
-  )
+  );
 }
 ```
 
@@ -301,7 +304,9 @@ Use primitive exports for custom layout composition:
       <HeroLiquidMetalActions />
       <HeroLiquidMetalBadges />
     </HeroLiquidMetalContent>
-    <HeroLiquidMetalVisual desktopShaderProps={{ colorTint: "#0f766e", distortion: 0.28 }} />
+    <HeroLiquidMetalVisual
+      desktopShaderProps={{ colorTint: "#0f766e", distortion: 0.28 }}
+    />
   </HeroLiquidMetalContainer>
   <HeroLiquidMetalMobileVisual />
 </HeroLiquidMetalRoot>

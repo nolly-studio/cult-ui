@@ -1,36 +1,36 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 
-import { Input } from "@/components/ui/input"
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 
-import { TextGif } from "../ui/text-gif"
+import { TextGif } from "../ui/text-gif";
 
 export default function TextGifDemo() {
-  const [text, setText] = useState("TextGif")
-  const [size, setSize] = useState("xl")
-  const [weight, setWeight] = useState("bold")
+  const [text, setText] = useState("TextGif");
+  const [size, setSize] = useState("xl");
+  const [weight, setWeight] = useState("bold");
 
   const gifUrls = [
     "https://media.giphy.com/media/3zvbrvbRe7wxBofOBI/giphy.gif",
     "https://media.giphy.com/media/fnglNFjBGiyAFtm6ke/giphy.gif",
     "https://media.giphy.com/media/9Pmfazv34l7aNIKK05/giphy.gif",
     "https://media.giphy.com/media/4bhs1boql4XVJgmm4H/giphy.gif",
-  ]
+  ];
 
-  const [selectedGif, setSelectedGif] = useState(gifUrls[0])
+  const [selectedGif, setSelectedGif] = useState(gifUrls[0]);
 
   return (
-    <div className="max-w-3xl mx-auto space-y-8 p-6 bg-neutral-50 dark:bg-neutral-900 rounded-xl">
+    <div className="mx-auto max-w-3xl space-y-8 rounded-xl bg-neutral-50 p-6 dark:bg-neutral-900">
       {/* Preview */}
-      <div className="flex items-center justify-center p-12 bg-white dark:bg-black rounded-xl">
+      <div className="flex items-center justify-center rounded-xl bg-white p-12 dark:bg-black">
         <TextGif
           gifUrl={selectedGif}
           text={text}
@@ -102,8 +102,8 @@ export default function TextGifDemo() {
       {/* Examples */}
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Examples</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="flex flex-col items-center justify-center p-6 bg-white dark:bg-black rounded-xl">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="flex flex-col items-center justify-center rounded-xl bg-white p-6 dark:bg-black">
             <TextGif
               gifUrl={gifUrls[1]}
               text="Headings"
@@ -111,12 +111,12 @@ export default function TextGifDemo() {
               weight="bold"
             />
           </div>
-          <div className="flex flex-col items-center justify-center p-6 bg-white dark:bg-black rounded-xl">
+          <div className="flex flex-col items-center justify-center rounded-xl bg-white p-6 dark:bg-black">
             <TextGif gifUrl={gifUrls[2]} text="$49" size="xxl" weight="bold" />
-            <p className="text-sm mt-2">per month</p>
+            <p className="mt-2 text-sm">per month</p>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

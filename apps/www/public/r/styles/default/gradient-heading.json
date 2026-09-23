@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "gradient-heading",
   "description": "Heading component with gradient text effects and customizable styling",
-  "dependencies": [
-    "@radix-ui/react-slot"
-  ],
+  "dependencies": ["@radix-ui/react-slot"],
   "files": [
     {
       "path": "registry/default/ui/gradient-heading.tsx",

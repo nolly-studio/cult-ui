@@ -1,20 +1,20 @@
-import Link from "next/link"
-import { ArrowRightIcon } from "@radix-ui/react-icons"
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 import {
   ArrowRight,
   ExternalLink,
   SparklesIcon,
   YoutubeIcon,
-} from "lucide-react"
+} from "lucide-react";
+import Link from "next/link";
 
-import { Separator } from "@/components/ui/separator"
-import { NeumorphEyebrow } from "@/registry/default/ui/neumorph-eyebrow"
+import { Separator } from "@/components/ui/separator";
+import { NeumorphEyebrow } from "@/registry/default/ui/neumorph-eyebrow";
 
 export function Announcement() {
   return (
     <Link
       href="https://aisdkagents.com"
-      className="hidden md:block "
+      className="hidden md:block"
       target="_blank"
       rel="noreferrer"
     >
@@ -26,7 +26,7 @@ export function Announcement() {
           height={24}
           color={"#000000"}
           fill={"none"}
-          className="group-hover:rotate-6 group-hover:fill-cyan-300 size-4"
+          className="size-4 group-hover:rotate-6 group-hover:fill-cyan-300"
         >
           <title>Sparkles Icon</title>
           <path
@@ -48,10 +48,10 @@ export function Announcement() {
           />
         </svg>
         {/* <SparklesIcon className="size-4 group-hover:rotate-6 group-hover:fill-cyan-300" />{" "} */}
-        <Separator className="mx-2 h-4 bg-border/80" orientation="vertical" />{" "}
+        <Separator className="bg-border/80 mx-2 h-4" orientation="vertical" />{" "}
         <span>New! AI SDK agent patterns</span>
         <ExternalLink className="size-3" />
       </NeumorphEyebrow>
     </Link>
-  )
+  );
 }

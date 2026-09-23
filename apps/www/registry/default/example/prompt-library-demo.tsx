@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 
 import {
   PromptLibrary,
@@ -15,7 +15,7 @@ import {
   PromptLibrarySearch,
   PromptLibraryTrigger,
   type Prompt,
-} from "../ui/prompt-library"
+} from "../ui/prompt-library";
 
 const SAMPLE_PROMPTS: Prompt[] = [
   {
@@ -58,16 +58,16 @@ const SAMPLE_PROMPTS: Prompt[] = [
       "Please generate documentation for this code including:\n- Overview and purpose\n- Parameters and return values\n- Usage examples\n- Any important notes or caveats",
     category: "Documentation",
   },
-]
+];
 
 function PromptLibraryExample() {
-  const [prompts, setPrompts] = useState<Prompt[]>(SAMPLE_PROMPTS)
-  const [lastSelected, setLastSelected] = useState<Prompt | null>(null)
+  const [prompts, setPrompts] = useState<Prompt[]>(SAMPLE_PROMPTS);
+  const [lastSelected, setLastSelected] = useState<Prompt | null>(null);
 
   return (
     <div className="flex w-full max-w-md flex-col gap-4">
-      <div className="rounded-lg border bg-card p-4">
-        <p className="mb-3 text-muted-foreground text-sm">
+      <div className="bg-card rounded-lg border p-4">
+        <p className="text-muted-foreground mb-3 text-sm">
           Browse and insert prompt templates. Click a prompt to copy it to
           clipboard (or insert directly when used with PromptInput).
         </p>
@@ -118,16 +118,16 @@ function PromptLibraryExample() {
         </PromptLibrary>
       </div>
       {lastSelected && (
-        <div className="rounded-lg border bg-muted/50 p-3">
-          <p className="mb-2 font-medium text-xs">Last copied:</p>
-          <p className="font-medium text-sm">{lastSelected.title}</p>
-          <p className="mt-1 line-clamp-2 text-muted-foreground text-xs">
+        <div className="bg-muted/50 rounded-lg border p-3">
+          <p className="mb-2 text-xs font-medium">Last copied:</p>
+          <p className="text-sm font-medium">{lastSelected.title}</p>
+          <p className="text-muted-foreground mt-1 line-clamp-2 text-xs">
             {lastSelected.prompt}
           </p>
         </div>
       )}
     </div>
-  )
+  );
 }
 
-export default PromptLibraryExample
+export default PromptLibraryExample;

@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "distorted-glass-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "distorted-glass"
-  ],
+  "registryDependencies": ["distorted-glass"],
   "files": [
     {
       "path": "registry/default/example/distorted-glass-demo.tsx",

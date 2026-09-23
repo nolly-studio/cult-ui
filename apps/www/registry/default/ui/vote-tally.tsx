@@ -1,5 +1,6 @@
-"use client"
+"use client";
 
+import { useControllableState } from "@radix-ui/react-use-controllable-state";
 import {
   Children,
   createContext,
@@ -9,51 +10,52 @@ import {
   useMemo,
   type ComponentProps,
   type MouseEvent,
-} from "react"
-import { useControllableState } from "@radix-ui/react-use-controllable-state"
+} from "react";
 
 /* -----------------------------------------------------------------------------
  * Types
  * -------------------------------------------------------------------------- */
 
-export type VoteTallyValue = Record<string, number>
+export type VoteTallyValue = Record<string, number>;
 
-export interface VoteTallyRootProps
-  extends Omit<ComponentProps<"ul">, "defaultValue"> {
+export interface VoteTallyRootProps extends Omit<
+  ComponentProps<"ul">,
+  "defaultValue"
+> {
   /** Current vote counts (controlled) */
-  value?: VoteTallyValue
+  value?: VoteTallyValue;
   /** Initial vote counts (uncontrolled) */
-  defaultValue?: VoteTallyValue
+  defaultValue?: VoteTallyValue;
   /** Callback when votes change */
-  onValueChange?: (value: VoteTallyValue) => void
+  onValueChange?: (value: VoteTallyValue) => void;
   /** Set of item IDs the current user has voted for */
-  votedItems?: Set<string>
+  votedItems?: Set<string>;
   /** Default voted items (uncontrolled) */
-  defaultVotedItems?: Set<string>
+  defaultVotedItems?: Set<string>;
   /** Callback when user votes/unvotes */
-  onVotedItemsChange?: (votedItems: Set<string>) => void
+  onVotedItemsChange?: (votedItems: Set<string>) => void;
   /** Whether voting is disabled */
-  disabled?: boolean
+  disabled?: boolean;
 }
 
 export interface VoteTallyItemProps extends ComponentProps<"li"> {
   /** Unique identifier for this item */
-  value: string
+  value: string;
   /** Whether this specific item is disabled */
-  disabled?: boolean
+  disabled?: boolean;
 }
 
-export type VoteTallyTriggerProps = ComponentProps<"button">
+export type VoteTallyTriggerProps = ComponentProps<"button">;
 
-export type VoteTallyCountProps = ComponentProps<"span">
+export type VoteTallyCountProps = ComponentProps<"span">;
 
-export type VoteTallyTitleProps = ComponentProps<"span">
+export type VoteTallyTitleProps = ComponentProps<"span">;
 
-export type VoteTallyDescriptionProps = ComponentProps<"span">
+export type VoteTallyDescriptionProps = ComponentProps<"span">;
 
 export interface VoteTallyGroupProps extends ComponentProps<"div"> {
   /** Sort items by vote count */
-  sortBy?: "votes-asc" | "votes-desc" | "none"
+  sortBy?: "votes-asc" | "votes-desc" | "none";
 }
 
 /* -----------------------------------------------------------------------------
@@ -61,43 +63,43 @@ export interface VoteTallyGroupProps extends ComponentProps<"div"> {
  * -------------------------------------------------------------------------- */
 
 interface VoteTallyContextValue {
-  votes: VoteTallyValue
-  votedItems: Set<string>
-  disabled: boolean
-  vote: (itemId: string) => void
-  unvote: (itemId: string) => void
-  toggleVote: (itemId: string) => void
-  getVoteCount: (itemId: string) => number
-  hasVoted: (itemId: string) => boolean
+  votes: VoteTallyValue;
+  votedItems: Set<string>;
+  disabled: boolean;
+  vote: (itemId: string) => void;
+  unvote: (itemId: string) => void;
+  toggleVote: (itemId: string) => void;
+  getVoteCount: (itemId: string) => number;
+  hasVoted: (itemId: string) => boolean;
 }
 
-const VoteTallyContext = createContext<VoteTallyContextValue | null>(null)
+const VoteTallyContext = createContext<VoteTallyContextValue | null>(null);
 
 function useVoteTallyContext() {
-  const context = useContext(VoteTallyContext)
+  const context = useContext(VoteTallyContext);
   if (!context) {
-    throw new Error("VoteTally components must be used within VoteTally.Root")
+    throw new Error("VoteTally components must be used within VoteTally.Root");
   }
-  return context
+  return context;
 }
 
 interface VoteTallyItemContextValue {
-  itemId: string
-  disabled: boolean
+  itemId: string;
+  disabled: boolean;
 }
 
 const VoteTallyItemContext = createContext<VoteTallyItemContextValue | null>(
   null
-)
+);
 
 function useVoteTallyItemContext() {
-  const context = useContext(VoteTallyItemContext)
+  const context = useContext(VoteTallyItemContext);
   if (!context) {
     throw new Error(
       "VoteTally.Item sub-components must be used within VoteTally.Item"
-    )
+    );
   }
-  return context
+  return context;
 }
 
 /* -----------------------------------------------------------------------------
@@ -119,66 +121,66 @@ function VoteTallyRoot({
     prop: controlledValue,
     defaultProp: defaultValue,
     onChange: onValueChange,
-  })
+  });
 
   const [votedItemsArray, setVotedItemsArray] = useControllableState({
     prop: controlledVotedItems ? Array.from(controlledVotedItems) : undefined,
     defaultProp: defaultVotedItems ? Array.from(defaultVotedItems) : [],
     onChange: (arr) => onVotedItemsChange?.(new Set(arr)),
-  })
+  });
 
-  const votedItems = useMemo(() => new Set(votedItemsArray), [votedItemsArray])
+  const votedItems = useMemo(() => new Set(votedItemsArray), [votedItemsArray]);
 
   const vote = useCallback(
     (itemId: string) => {
       if (disabled || votedItems.has(itemId)) {
-        return
+        return;
       }
 
       setVotes((prev) => ({
         ...prev,
         [itemId]: (prev?.[itemId] ?? 0) + 1,
-      }))
-      setVotedItemsArray((prev) => [...(prev ?? []), itemId])
+      }));
+      setVotedItemsArray((prev) => [...(prev ?? []), itemId]);
     },
     [disabled, votedItems, setVotes, setVotedItemsArray]
-  )
+  );
 
   const unvote = useCallback(
     (itemId: string) => {
       if (disabled || !votedItems.has(itemId)) {
-        return
+        return;
       }
 
       setVotes((prev) => ({
         ...prev,
         [itemId]: Math.max((prev?.[itemId] ?? 0) - 1, 0),
-      }))
-      setVotedItemsArray((prev) => (prev ?? []).filter((id) => id !== itemId))
+      }));
+      setVotedItemsArray((prev) => (prev ?? []).filter((id) => id !== itemId));
     },
     [disabled, votedItems, setVotes, setVotedItemsArray]
-  )
+  );
 
   const toggleVote = useCallback(
     (itemId: string) => {
       if (votedItems.has(itemId)) {
-        unvote(itemId)
+        unvote(itemId);
       } else {
-        vote(itemId)
+        vote(itemId);
       }
     },
     [votedItems, vote, unvote]
-  )
+  );
 
   const getVoteCount = useCallback(
     (itemId: string) => votes?.[itemId] ?? 0,
     [votes]
-  )
+  );
 
   const hasVoted = useCallback(
     (itemId: string) => votedItems.has(itemId),
     [votedItems]
-  )
+  );
 
   const contextValue = useMemo(
     () => ({
@@ -201,7 +203,7 @@ function VoteTallyRoot({
       getVoteCount,
       hasVoted,
     ]
-  )
+  );
 
   return (
     <VoteTallyContext.Provider value={contextValue}>
@@ -213,7 +215,7 @@ function VoteTallyRoot({
         {children}
       </ul>
     </VoteTallyContext.Provider>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -225,30 +227,30 @@ function VoteTallyGroup({
   children,
   ...props
 }: VoteTallyGroupProps) {
-  const { votes } = useVoteTallyContext()
+  const { votes } = useVoteTallyContext();
 
   const sortedChildren = useMemo(() => {
     if (sortBy === "none") {
-      return children
+      return children;
     }
 
-    const childArray = Children.toArray(children)
+    const childArray = Children.toArray(children);
 
     return childArray.sort((a, b) => {
       if (!(isValidElement(a) && isValidElement(b))) {
-        return 0
+        return 0;
       }
 
-      const aValue = (a.props as VoteTallyItemProps).value
-      const bValue = (b.props as VoteTallyItemProps).value
-      const aVotes = votes[aValue] ?? 0
-      const bVotes = votes[bValue] ?? 0
+      const aValue = (a.props as VoteTallyItemProps).value;
+      const bValue = (b.props as VoteTallyItemProps).value;
+      const aVotes = votes[aValue] ?? 0;
+      const bVotes = votes[bValue] ?? 0;
 
-      return sortBy === "votes-desc" ? bVotes - aVotes : aVotes - bVotes
-    })
-  }, [children, sortBy, votes])
+      return sortBy === "votes-desc" ? bVotes - aVotes : aVotes - bVotes;
+    });
+  }, [children, sortBy, votes]);
 
-  return <div {...props}>{sortedChildren}</div>
+  return <div {...props}>{sortedChildren}</div>;
 }
 
 /* -----------------------------------------------------------------------------
@@ -265,15 +267,15 @@ function VoteTallyItem({
     disabled: rootDisabled,
     hasVoted,
     getVoteCount,
-  } = useVoteTallyContext()
-  const disabled = rootDisabled || itemDisabled
-  const voted = hasVoted(value)
-  const voteCount = getVoteCount(value)
+  } = useVoteTallyContext();
+  const disabled = rootDisabled || itemDisabled;
+  const voted = hasVoted(value);
+  const voteCount = getVoteCount(value);
 
   const itemContextValue = useMemo(
     () => ({ itemId: value, disabled }),
     [value, disabled]
-  )
+  );
 
   return (
     <VoteTallyItemContext.Provider value={itemContextValue}>
@@ -288,7 +290,7 @@ function VoteTallyItem({
         {children}
       </li>
     </VoteTallyItemContext.Provider>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -300,21 +302,25 @@ function VoteTallyTrigger({
   onClick,
   ...props
 }: VoteTallyTriggerProps) {
-  const { toggleVote, hasVoted, disabled: rootDisabled } = useVoteTallyContext()
-  const { itemId, disabled: itemDisabled } = useVoteTallyItemContext()
+  const {
+    toggleVote,
+    hasVoted,
+    disabled: rootDisabled,
+  } = useVoteTallyContext();
+  const { itemId, disabled: itemDisabled } = useVoteTallyItemContext();
 
-  const disabled = rootDisabled || itemDisabled
-  const voted = hasVoted(itemId)
+  const disabled = rootDisabled || itemDisabled;
+  const voted = hasVoted(itemId);
 
   const handleClick = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
-      onClick?.(event)
+      onClick?.(event);
       if (!(event.defaultPrevented || disabled)) {
-        toggleVote(itemId)
+        toggleVote(itemId);
       }
     },
     [onClick, disabled, toggleVote, itemId]
-  )
+  );
 
   return (
     <button
@@ -329,7 +335,7 @@ function VoteTallyTrigger({
     >
       {children}
     </button>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -337,16 +343,16 @@ function VoteTallyTrigger({
  * -------------------------------------------------------------------------- */
 
 function VoteTallyCount({ children, ...props }: VoteTallyCountProps) {
-  const { getVoteCount } = useVoteTallyContext()
-  const { itemId } = useVoteTallyItemContext()
+  const { getVoteCount } = useVoteTallyContext();
+  const { itemId } = useVoteTallyItemContext();
 
-  const count = getVoteCount(itemId)
+  const count = getVoteCount(itemId);
 
   return (
     <span data-slot="vote-tally-count" {...props}>
       {children ?? count}
     </span>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -358,7 +364,7 @@ function VoteTallyTitle({ children, ...props }: VoteTallyTitleProps) {
     <span data-slot="vote-tally-title" {...props}>
       {children}
     </span>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -373,7 +379,7 @@ function VoteTallyDescription({
     <span data-slot="vote-tally-description" {...props}>
       {children}
     </span>
-  )
+  );
 }
 
 /* -----------------------------------------------------------------------------
@@ -381,7 +387,7 @@ function VoteTallyDescription({
  * -------------------------------------------------------------------------- */
 
 export function useVoteTally() {
-  return useVoteTallyContext()
+  return useVoteTallyContext();
 }
 
 /* -----------------------------------------------------------------------------
@@ -396,7 +402,7 @@ export const VoteTally = {
   Count: VoteTallyCount,
   Title: VoteTallyTitle,
   Description: VoteTallyDescription,
-}
+};
 
 export {
   VoteTallyRoot,
@@ -406,4 +412,4 @@ export {
   VoteTallyCount,
   VoteTallyTitle,
   VoteTallyDescription,
-}
+};

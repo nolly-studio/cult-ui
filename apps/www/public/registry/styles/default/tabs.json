@@ -1,8 +1,6 @@
 {
   "name": "tabs",
-  "dependencies": [
-    "@radix-ui/react-tabs"
-  ],
+  "dependencies": ["@radix-ui/react-tabs"],
   "files": [
     {
       "name": "tabs.tsx",

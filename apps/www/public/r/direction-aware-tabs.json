@@ -3,10 +3,7 @@
   "name": "direction-aware-tabs",
   "type": "registry:ui",
   "description": "Tab component with direction-aware animations and smooth transitions",
-  "dependencies": [
-    "motion",
-    "react-use-measure"
-  ],
+  "dependencies": ["motion", "react-use-measure"],
   "files": [
     {
       "path": "registry/default/ui/direction-aware-tabs.tsx",

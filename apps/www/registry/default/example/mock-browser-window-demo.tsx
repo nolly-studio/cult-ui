@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Switch } from "@/components/ui/switch"
-import { BrowserWindow } from "@/registry/default/ui/mock-browser-window"
+} from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
+import { BrowserWindow } from "@/registry/default/ui/mock-browser-window";
 
 export default function DemoPage() {
   const [config, setConfig] = useState({
@@ -23,24 +23,24 @@ export default function DemoPage() {
     showSidebar: true,
     sidebarPosition: "left" as "left" | "right" | "top" | "bottom",
     url: "https://example.com/dashboard",
-  })
+  });
 
   const [sidebarItems] = useState([
     { label: "Overview", active: true },
     { label: "Users", badge: "12" },
     { label: "Analytics", badge: "new" },
     { label: "Settings" },
-  ])
+  ]);
 
   return (
-    <div className="min-h-screen ">
-      <main className="container ">
+    <div className="min-h-screen">
+      <main className="container">
         <div className="mx-auto max-w-7xl">
           <div className="space-y-12">
             <div className="space-y-8">
               <div>
-                <h2 className="text-lg font-semibold mb-6">Preview</h2>
-                <div className="flex justify-center p-8 bg-muted/30 rounded-xl border">
+                <h2 className="mb-6 text-lg font-semibold">Preview</h2>
+                <div className="bg-muted/30 flex justify-center rounded-xl border p-8">
                   <BrowserWindow
                     variant={config.variant}
                     headerStyle={config.headerStyle}
@@ -211,5 +211,5 @@ export default function DemoPage() {
         </div>
       </main>
     </div>
-  )
+  );
 }

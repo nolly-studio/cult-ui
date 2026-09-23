@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "texture-overlay-demo",
-  "registryDependencies": [
-    "texture-overlay"
-  ],
+  "registryDependencies": ["texture-overlay"],
   "files": [
     {
       "path": "registry/default/example/texture-overlay-demo.tsx",

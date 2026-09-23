@@ -1,25 +1,25 @@
-import type { HTMLAttributes } from "react"
-import Link from "next/link"
-import { cva } from "class-variance-authority"
+import { cva } from "class-variance-authority";
+import Link from "next/link";
+import type { HTMLAttributes } from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const gradientVariants = cva("bg-clip-text tracking-tight text-transparent", {
   variants: {
     variant: {
       default:
-        "bg-gradient-to-t from-primary to-primary/90 dark:from-primary-foreground dark:to-primary-foreground/90",
+        "from-primary to-primary/90 dark:from-primary-foreground dark:to-primary-foreground/90 bg-gradient-to-t",
       helper:
         // "bg-gradient-to-t from-muted-foreground via-[#8C8C8C] to-[#B4B4B8] dark:from-muted-foreground dark:to-[#D6D6D6]",
-        "bg-gradient-to-t from-muted-foreground to-muted-foreground/80 dark:from-muted-foreground dark:to-muted-foreground/70",
+        "from-muted-foreground to-muted-foreground/80 dark:from-muted-foreground dark:to-muted-foreground/70 bg-gradient-to-t",
       accent:
-        "bg-gradient-to-t from-accent to-accent/80 dark:from-accent dark:to-accent/90",
+        "from-accent to-accent/80 dark:from-accent dark:to-accent/90 bg-gradient-to-t",
       pink: "bg-gradient-to-t from-[#fb21ff] to-[#fd67ff] dark:from-[#fb21ff] dark:to-[#fd67ff]",
       blue: "bg-gradient-to-t from-[hsl(var(--chart-5))] to-[hsl(var(--chart-5))/80] dark:from-[hsl(var(--chart-5))] dark:to-[hsl(var(--chart-5))/90]",
       light:
         "bg-gradient-to-t from-neutral-200 to-neutral-300 dark:from-neutral-300 dark:to-neutral-400",
       secondary:
-        "bg-gradient-to-t from-secondary-foreground to-muted-foreground",
+        "from-secondary-foreground to-muted-foreground bg-gradient-to-t",
       none: "", // No gradient, use text color instead
     },
     weight: {
@@ -35,7 +35,7 @@ const gradientVariants = cva("bg-clip-text tracking-tight text-transparent", {
     variant: "none",
     weight: "default",
   },
-})
+});
 
 export type GradientVariant =
   | "default"
@@ -45,58 +45,64 @@ export type GradientVariant =
   | "blue"
   | "light"
   | "secondary"
-  | "none"
-export type FontWeight = "default" | "thin" | "base" | "semi" | "bold" | "black"
+  | "none";
+export type FontWeight =
+  | "default"
+  | "thin"
+  | "base"
+  | "semi"
+  | "bold"
+  | "black";
 
 // Interface for link data
 export interface TextLink {
-  text: string
-  href: string
+  text: string;
+  href: string;
 }
 
 export interface TwoToneTextProps extends HTMLAttributes<HTMLHeadingElement> {
-  primaryText: string
-  secondaryText: string
-  size?: "xs" | "ssm" | "sm" | "md" | "lg" | "xl" | "xxl" | "xxxl"
-  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p"
+  primaryText: string;
+  secondaryText: string;
+  size?: "xs" | "ssm" | "sm" | "md" | "lg" | "xl" | "xxl" | "xxxl";
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
   /**
    * Controls whether the primary and secondary text appear on the same line
    * @default false - secondary text appears on a new line
    */
-  allowWrap?: boolean
+  allowWrap?: boolean;
   /**
    * Controls the text alignment
    * @default "left"
    */
-  align?: "left" | "center" | "right"
+  align?: "left" | "center" | "right";
   /**
    * Gradient variant for primary text
    * @default "none" - uses text color instead of gradient
    */
-  primaryGradient?: GradientVariant
+  primaryGradient?: GradientVariant;
   /**
    * Gradient variant for secondary text
    * @default "none" - uses text color instead of gradient
    */
-  secondaryGradient?: GradientVariant
+  secondaryGradient?: GradientVariant;
   /**
    * Font weight for primary text
    * @default "bold"
    */
-  primaryWeight?: FontWeight
+  primaryWeight?: FontWeight;
   /**
    * Font weight for secondary text
    * @default "bold"
    */
-  secondaryWeight?: FontWeight
+  secondaryWeight?: FontWeight;
   /**
    * Links to be rendered within the primary text
    */
-  primaryLinks?: TextLink[]
+  primaryLinks?: TextLink[];
   /**
    * Links to be rendered within the secondary text
    */
-  secondaryLinks?: TextLink[]
+  secondaryLinks?: TextLink[];
 }
 
 export function TwoToneText({
@@ -125,13 +131,13 @@ export function TwoToneText({
     xl: "text-4xl md:text-6xl leading-[1.1] tracking-tight",
     xxl: "text-6xl md:text-7xl leading-[1.1] tracking-tight",
     xxxl: "text-7xl md:text-8xl leading-[1.1] tracking-tight",
-  }
+  };
 
   const alignmentClasses = {
     left: "text-left",
     center: "text-center",
     right: "text-right",
-  }
+  };
 
   // Function to render text with links
   const renderTextWithLinks = (
@@ -141,39 +147,39 @@ export function TwoToneText({
     weight: FontWeight
   ) => {
     if (!links.length) {
-      return text
+      return text;
     }
 
     // Create a map of link positions
-    const linkMap = new Map<number, TextLink & { endIndex: number }>()
+    const linkMap = new Map<number, TextLink & { endIndex: number }>();
 
     links.forEach((link) => {
-      const startIndex = text.indexOf(link.text)
+      const startIndex = text.indexOf(link.text);
       if (startIndex !== -1) {
         linkMap.set(startIndex, {
           ...link,
           endIndex: startIndex + link.text.length,
-        })
+        });
       }
-    })
+    });
 
     // Sort link positions
-    const positions = Array.from(linkMap.keys()).sort((a, b) => a - b)
+    const positions = Array.from(linkMap.keys()).sort((a, b) => a - b);
 
     if (!positions.length) {
-      return text
+      return text;
     }
 
     // Build the result
-    const result = []
-    let lastIndex = 0
+    const result = [];
+    let lastIndex = 0;
 
     positions.forEach((position) => {
-      const link = linkMap.get(position)!
+      const link = linkMap.get(position)!;
 
       // Add text before the link
       if (position > lastIndex) {
-        result.push(text.substring(lastIndex, position))
+        result.push(text.substring(lastIndex, position));
       }
 
       // Add the link with proper styling
@@ -197,18 +203,18 @@ export function TwoToneText({
         >
           {link.text}
         </Link>
-      )
+      );
 
-      lastIndex = link.endIndex
-    })
+      lastIndex = link.endIndex;
+    });
 
     // Add any remaining text
     if (lastIndex < text.length) {
-      result.push(text.substring(lastIndex))
+      result.push(text.substring(lastIndex));
     }
 
-    return result
-  }
+    return result;
+  };
 
   return (
     <Component
@@ -256,5 +262,5 @@ export function TwoToneText({
         )}
       </span>
     </Component>
-  )
+  );
 }

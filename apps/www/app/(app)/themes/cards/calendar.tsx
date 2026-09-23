@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { addDays } from "date-fns"
+import { addDays } from "date-fns";
 
-import { Calendar } from "@/components/ui/calendar"
+import { Calendar } from "@/components/ui/calendar";
 import {
   TextureCard,
   TextureCardContent,
-} from "@/registry/default/ui/texture-card"
+} from "@/registry/default/ui/texture-card";
 
-const start = new Date(2023, 5, 5)
+const start = new Date(2023, 5, 5);
 
 export function CardsCalendar() {
   return (
@@ -25,5 +25,5 @@ export function CardsCalendar() {
         />
       </TextureCardContent>
     </TextureCard>
-  )
+  );
 }

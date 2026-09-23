@@ -55,7 +55,7 @@ import {
   GridBeamContent,
   GridBeamDividers,
   useGridBeam,
-} from "@/components/ui/grid-beam"
+} from "@/components/ui/grid-beam";
 
 export function BeamTable() {
   return (
@@ -72,7 +72,7 @@ export function BeamTable() {
         {/* Your cells */}
       </div>
     </GridBeam>
-  )
+  );
 }
 ```
 
@@ -84,17 +84,15 @@ function HeadlessExample() {
     colorVariant: "ocean",
     theme: "light",
     active: true,
-  })
+  });
 
   return (
     <div className="relative overflow-hidden rounded-xl border">
       <GridBeamDividers cols={cols} rows={rows} />
       <GridBeamCanvas borderRadius={12} ref={canvasRef} />
-      <GridBeamContent>
-        {/* Your layout */}
-      </GridBeamContent>
+      <GridBeamContent>{/* Your layout */}</GridBeamContent>
     </div>
-  )
+  );
 }
 ```
 

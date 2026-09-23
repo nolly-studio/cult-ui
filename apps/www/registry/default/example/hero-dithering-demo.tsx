@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   AISDKIcon,
@@ -13,18 +13,18 @@ import {
   HeroDitheringRoot,
   HeroDitheringVisual,
   NextjsIcon,
-} from "../ui/hero-dithering"
+} from "../ui/hero-dithering";
 
 export default function HeroDitheringDemo() {
   return (
     <div className="space-y-16">
       <div className="space-y-4">
-        <h3 className="font-medium text-lg">Default</h3>
+        <h3 className="text-lg font-medium">Default</h3>
         <HeroDithering />
       </div>
 
       <div className="space-y-4">
-        <h3 className="font-medium text-lg">Configured Via Props</h3>
+        <h3 className="text-lg font-medium">Configured Via Props</h3>
         <HeroDitheringRoot
           ctaProps={{
             href: "#",
@@ -72,5 +72,5 @@ export default function HeroDitheringDemo() {
         </HeroDitheringRoot>
       </div>
     </div>
-  )
+  );
 }

@@ -1,29 +1,29 @@
-"use client"
+"use client";
 
-import React, { useCallback, useEffect, useMemo, useState } from "react"
-import { AnimatePresence, motion } from "motion/react"
+import { AnimatePresence, motion } from "motion/react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
-type AnimationDirection = "top-to-bottom" | "bottom-to-top" | "both" | "random"
-type AnimationEasing = "linear" | "easeIn" | "easeOut" | "easeInOut" | "spring"
+type AnimationDirection = "top-to-bottom" | "bottom-to-top" | "both" | "random";
+type AnimationEasing = "linear" | "easeIn" | "easeOut" | "easeInOut" | "spring";
 
 interface AnimatedBackgroundGuidesProps {
-  columnCount?: number
-  className?: string
-  solidLines?: number[]
-  animated?: boolean
-  animationDuration?: number
-  animationDelay?: number
-  glowColor?: string
-  glowSize?: string
-  glowOpacity?: number
-  randomize?: boolean
-  randomInterval?: number
-  direction?: AnimationDirection
-  easing?: AnimationEasing
-  responsive?: boolean
-  minColumnWidth?: string
-  maxActiveColumns?: number
-  darkMode?: boolean
+  columnCount?: number;
+  className?: string;
+  solidLines?: number[];
+  animated?: boolean;
+  animationDuration?: number;
+  animationDelay?: number;
+  glowColor?: string;
+  glowSize?: string;
+  glowOpacity?: number;
+  randomize?: boolean;
+  randomInterval?: number;
+  direction?: AnimationDirection;
+  easing?: AnimationEasing;
+  responsive?: boolean;
+  minColumnWidth?: string;
+  maxActiveColumns?: number;
+  darkMode?: boolean;
 }
 
 const easingFunctions = {
@@ -32,7 +32,7 @@ const easingFunctions = {
   easeOut: [0, 0, 0.58, 1] as const,
   easeInOut: [0.42, 0, 0.58, 1] as const,
   spring: [0.175, 0.885, 0.32, 1.275] as const,
-}
+};
 
 export function AnimatedBackgroundGuides({
   columnCount = 4,
@@ -56,57 +56,57 @@ export function AnimatedBackgroundGuides({
 }: AnimatedBackgroundGuidesProps) {
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 0
-  )
+  );
 
   const columns = useMemo(() => {
     const count = responsive
       ? Math.max(Math.floor(windowWidth / parseInt(minColumnWidth)), 1)
-      : columnCount
-    return [...Array(count)]
-  }, [columnCount, responsive, windowWidth, minColumnWidth])
+      : columnCount;
+    return [...Array(count)];
+  }, [columnCount, responsive, windowWidth, minColumnWidth]);
 
   const [activeColumns, setActiveColumns] = useState<boolean[]>(
     columns.map(() => true)
-  )
+  );
 
   const getRandomColumns = useCallback(() => {
-    const newActiveColumns = columns.map(() => Math.random() < 0.5)
-    const activeCount = newActiveColumns.filter(Boolean).length
+    const newActiveColumns = columns.map(() => Math.random() < 0.5);
+    const activeCount = newActiveColumns.filter(Boolean).length;
     if (activeCount > maxActiveColumns) {
       const indicesToDeactivate = newActiveColumns
         .map((isActive, index) => (isActive ? index : -1))
         .filter((index) => index !== -1)
         .sort(() => Math.random() - 0.5)
-        .slice(0, activeCount - maxActiveColumns)
+        .slice(0, activeCount - maxActiveColumns);
       indicesToDeactivate.forEach((index) => {
-        newActiveColumns[index] = false
-      })
+        newActiveColumns[index] = false;
+      });
     }
-    return newActiveColumns
-  }, [columns, maxActiveColumns])
+    return newActiveColumns;
+  }, [columns, maxActiveColumns]);
 
   useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth)
+    const handleResize = () => setWindowWidth(window.innerWidth);
     if (typeof window !== "undefined") {
-      window.addEventListener("resize", handleResize)
-      return () => window.removeEventListener("resize", handleResize)
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    setActiveColumns(columns.map(() => true))
-  }, [columns])
+    setActiveColumns(columns.map(() => true));
+  }, [columns]);
 
   useEffect(() => {
     if (randomize && animated) {
       const intervalId = setInterval(() => {
-        setActiveColumns(getRandomColumns())
-      }, randomInterval)
-      return () => clearInterval(intervalId)
+        setActiveColumns(getRandomColumns());
+      }, randomInterval);
+      return () => clearInterval(intervalId);
     } else {
-      setActiveColumns(columns.map(() => true))
+      setActiveColumns(columns.map(() => true));
     }
-  }, [randomize, animated, randomInterval, getRandomColumns, columns])
+  }, [randomize, animated, randomInterval, getRandomColumns, columns]);
 
   const getAnimationVariants = useCallback(() => {
     const variants = {
@@ -126,21 +126,21 @@ export function AnimatedBackgroundGuides({
         initial: () => ({ top: Math.random() < 0.5 ? "-100%" : "100%" }),
         animate: () => ({ top: Math.random() < 0.5 ? "-100%" : "100%" }),
       },
-    }
-    return variants[direction] || variants["top-to-bottom"]
-  }, [direction])
+    };
+    return variants[direction] || variants["top-to-bottom"];
+  }, [direction]);
 
   const animationVariants = useMemo(
     () => getAnimationVariants(),
     [getAnimationVariants]
-  )
+  );
 
   const lineColors = useMemo(() => {
     return {
       solid: darkMode ? "hsl(233 14% 13%)" : "hsl(233 14.1% 96.1%)",
       dashed: darkMode ? "hsl(233 14% 20%)" : "hsl(233 14% 93%)",
-    }
-  }, [darkMode])
+    };
+  }, [darkMode]);
 
   return (
     <div
@@ -224,5 +224,5 @@ export function AnimatedBackgroundGuides({
         </div>
       </div>
     </div>
-  )
+  );
 }

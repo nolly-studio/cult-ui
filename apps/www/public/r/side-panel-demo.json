@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "side-panel-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "side-panel"
-  ],
+  "registryDependencies": ["side-panel"],
   "files": [
     {
       "path": "registry/default/example/side-panel-demo.tsx",

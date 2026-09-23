@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "morph-surface-demo",
-  "registryDependencies": [
-    "morph-surface"
-  ],
+  "registryDependencies": ["morph-surface"],
   "files": [
     {
       "path": "registry/default/example/morph-surface-demo.tsx",

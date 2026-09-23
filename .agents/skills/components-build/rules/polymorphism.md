@@ -22,7 +22,7 @@ The `as` prop allows components to change their rendered element type:
 ### Basic Implementation
 
 ```tsx
-function Component({ as: Element = 'div', children, ...props }) {
+function Component({ as: Element = "div", children, ...props }) {
   return <Element {...props}>{children}</Element>;
 }
 ```
@@ -35,12 +35,12 @@ type PolymorphicProps<E extends React.ElementType> = {
   children?: React.ReactNode;
 } & React.ComponentPropsWithoutRef<E>;
 
-function Component<E extends React.ElementType = 'div'>({
+function Component<E extends React.ElementType = "div">({
   as,
   children,
   ...props
 }: PolymorphicProps<E>) {
-  const Element = as || 'div';
+  const Element = as || "div";
   return <Element {...props}>{children}</Element>;
 }
 ```
@@ -78,12 +78,12 @@ function Flex({ as: Element = 'div', ...props }) {
 **Interactive Elements:**
 
 ```tsx
-function Clickable({ as: Element = 'button', ...props }) {
-  const isButton = Element === 'button';
-  const isAnchor = Element === 'a';
+function Clickable({ as: Element = "button", ...props }) {
+  const isButton = Element === "button";
+  const isAnchor = Element === "a";
   return (
     <Element
-      role={!isButton && !isAnchor ? 'button' : undefined}
+      role={!isButton && !isAnchor ? "button" : undefined}
       tabIndex={!isButton && !isAnchor ? 0 : undefined}
       {...props}
     />
@@ -98,15 +98,15 @@ function Clickable({ as: Element = 'button', ...props }) {
 **Incorrect (too generic):**
 
 ```tsx
-function Component({ as: Element = 'div', ...props }) { }
+function Component({ as: Element = "div", ...props }) {}
 ```
 
 **Correct (semantic defaults):**
 
 ```tsx
-function Article({ as: Element = 'article', ...props }) { }
-function Navigation({ as: Element = 'nav', ...props }) { }
-function Heading({ as: Element = 'h2', ...props }) { }
+function Article({ as: Element = "article", ...props }) {}
+function Navigation({ as: Element = "nav", ...props }) {}
+function Heading({ as: Element = "h2", ...props }) {}
 ```
 
 **2. Document Valid Elements:**
@@ -117,23 +117,23 @@ interface BoxProps {
    * The HTML element to render as
    * @default 'div'
    */
-  as?: 'div' | 'section' | 'article' | 'aside' | 'main' | 'header' | 'footer';
+  as?: "div" | "section" | "article" | "aside" | "main" | "header" | "footer";
 }
 ```
 
 **3. Handle Event Handlers:**
 
 ```tsx
-function Interactive({ as: Element = 'button', onClick, ...props }) {
+function Interactive({ as: Element = "button", onClick, ...props }) {
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (Element !== 'button' && (e.key === 'Enter' || e.key === ' ')) {
+    if (Element !== "button" && (e.key === "Enter" || e.key === " ")) {
       onClick?.(e as any);
     }
   };
   return (
     <Element
       onClick={onClick}
-      onKeyDown={Element !== 'button' ? handleKeyDown : undefined}
+      onKeyDown={Element !== "button" ? handleKeyDown : undefined}
       {...props}
     />
   );

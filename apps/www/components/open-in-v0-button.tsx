@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import { ExternalLinkIcon } from "lucide-react"
-import { AnimatePresence, motion } from "motion/react"
+import { ExternalLinkIcon } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import type React from "react";
+import { useState } from "react";
 
-import { cn } from "@/lib/utils"
-import { useMediaQuery } from "@/hooks/use-media-query"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { cn } from "@/lib/utils";
 
 // V0 Logo component
 const V0Logo = (props: React.SVGProps<SVGSVGElement>) => (
@@ -31,12 +31,11 @@ const V0Logo = (props: React.SVGProps<SVGSVGElement>) => (
       fill="currentColor"
     ></path>
   </svg>
-)
+);
 
-export interface OpenInV0ButtonProps
-  extends React.HTMLAttributes<HTMLAnchorElement> {
-  name: string
-  className?: string
+export interface OpenInV0ButtonProps extends React.HTMLAttributes<HTMLAnchorElement> {
+  name: string;
+  className?: string;
 }
 
 export function OpenInV0Button({
@@ -44,9 +43,9 @@ export function OpenInV0Button({
   className,
   ...props
 }: OpenInV0ButtonProps) {
-  const [isHovered, setIsHovered] = useState(false)
-  const isSmallScreen = useMediaQuery("(max-width: 640px)")
-  const url = `https://v0.dev/chat/api/open?url=https://cult-ui.com/r/${name}.json`
+  const [isHovered, setIsHovered] = useState(false);
+  const isSmallScreen = useMediaQuery("(max-width: 640px)");
+  const url = `https://v0.dev/chat/api/open?url=https://cult-ui.com/r/${name}.json`;
 
   return (
     <TooltipProvider>
@@ -103,5 +102,5 @@ export function OpenInV0Button({
         <TooltipContent side="bottom">Open this component in v0</TooltipContent>
       </Tooltip>
     </TooltipProvider>
-  )
+  );
 }

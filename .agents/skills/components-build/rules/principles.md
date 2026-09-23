@@ -39,7 +39,9 @@ Components must be usable by all users. Accessibility is not optional—it's a b
 **Incorrect (generic div with click handler):**
 
 ```tsx
-<div onClick={handleClick} className="button">Click me</div>
+<div onClick={handleClick} className="button">
+  Click me
+</div>
 ```
 
 **Correct (semantic button element):**
@@ -49,6 +51,7 @@ Components must be usable by all users. Accessibility is not optional—it's a b
 ```
 
 Best practices:
+
 - Use semantic HTML (`<button>`, `<ul>/<li>`, `<nav>`, etc.)
 - Provide proper ARIA roles, states, and properties
 - Support keyboard navigation for all interactive elements
@@ -62,16 +65,12 @@ Components should be easy to restyle or adapt to different design requirements.
 
 ```tsx
 export function Button({ className, ...props }: ButtonProps) {
-  return (
-    <button
-      className={cn('base-button-styles', className)}
-      {...props}
-    />
-  );
+  return <button className={cn("base-button-styles", className)} {...props} />;
 }
 ```
 
 Best practices:
+
 - Use CSS variables (design tokens) for colors, spacing, typography
 - Always allow `className` prop for style overrides
 - Provide sensible default styling
@@ -84,7 +83,7 @@ Components should be lean in terms of assets and dependencies.
 **Incorrect (heavy dependency for simple task):**
 
 ```tsx
-import { entireDateLibrary } from 'heavy-date-lib';
+import { entireDateLibrary } from "heavy-date-lib";
 ```
 
 **Correct (native APIs or lightweight alternatives):**
@@ -94,6 +93,7 @@ const formatDate = (date: Date) => date.toLocaleDateString();
 ```
 
 Best practices:
+
 - Keep bundle size minimal
 - Use tree-shaking friendly imports
 - Lazy load heavy features when possible
@@ -130,10 +130,10 @@ Components should come with clear documentation and examples.
 ```tsx
 /**
  * Button component for primary actions.
- * 
+ *
  * @example
  * <Button variant="primary" onClick={handleClick}>Click me</Button>
- * 
+ *
  * @remarks
  * - Supports keyboard navigation (Enter/Space)
  * - Accessible by default with proper ARIA attributes

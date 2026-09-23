@@ -57,23 +57,27 @@ import {
   FloatingPanelSubmitButton,
   FloatingPanelTextarea,
   FloatingPanelTrigger,
-} from "@/components/FloatingPanel"
+} from "@/components/FloatingPanel";
 ```
 
 ```typescriptreact
 export default function FloatingPanelDemo() {
   const handleSubmit = (note: string) => {
-    console.log('Submitted note:', note)
-  }
+    console.log("Submitted note:", note);
+  };
 
   return (
     <div className="p-8">
-      <h1 className="mb-4 text-2xl font-bold">Headless Composable FloatingPanel Demo</h1>
+      <h1 className="mb-4 text-2xl font-bold">
+        Headless Composable FloatingPanel Demo
+      </h1>
       <FloatingPanelRoot>
         <FloatingPanelTrigger>Add Note</FloatingPanelTrigger>
         <FloatingPanelContent>
           <FloatingPanelForm onSubmit={handleSubmit}>
-            <FloatingPanelLabel htmlFor="note-input">Add Note</FloatingPanelLabel>
+            <FloatingPanelLabel htmlFor="note-input">
+              Add Note
+            </FloatingPanelLabel>
             <FloatingPanelTextarea id="note-input" />
             <FloatingPanelFooter>
               <FloatingPanelCloseButton />
@@ -83,7 +87,7 @@ export default function FloatingPanelDemo() {
         </FloatingPanelContent>
       </FloatingPanelRoot>
     </div>
-  )
+  );
 }
 ```
 
@@ -96,9 +100,7 @@ The FloatingPanel component is a headless, composable component that provides a 
 The `FloatingPanelRoot` component is the main wrapper for the FloatingPanel. It provides the context and configuration for all child components.
 
 ```typescriptreact
-<FloatingPanelRoot>
-  {/* Other FloatingPanel components */}
-</FloatingPanelRoot>
+<FloatingPanelRoot>{/* Other FloatingPanel components */}</FloatingPanelRoot>
 ```
 
 ### FloatingPanelTrigger
@@ -114,9 +116,7 @@ The `FloatingPanelTrigger` component is used to trigger the opening of the float
 The `FloatingPanelContent` component contains the main content of the floating panel. It handles the animation and positioning of the panel.
 
 ```typescriptreact
-<FloatingPanelContent>
-  {/* FloatingPanel content */}
-</FloatingPanelContent>
+<FloatingPanelContent>{/* FloatingPanel content */}</FloatingPanelContent>
 ```
 
 ### FloatingPanelForm
@@ -150,9 +150,7 @@ The `FloatingPanelTextarea` component provides a textarea input for the floating
 The `FloatingPanelFooter` component is used to create a footer section in the floating panel, typically containing action buttons.
 
 ```typescriptreact
-<FloatingPanelFooter>
-  {/* Footer content */}
-</FloatingPanelFooter>
+<FloatingPanelFooter>{/* Footer content */}</FloatingPanelFooter>
 ```
 
 ### FloatingPanelCloseButton

@@ -1,51 +1,51 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { AnimatePresence, motion } from "motion/react"
+import { AnimatePresence, motion } from "motion/react";
+import * as React from "react";
 
-import { useLiftMode } from "@/hooks/use-lift-mode"
-import { Block } from "@/registry/schema"
+import { useLiftMode } from "@/hooks/use-lift-mode";
+import { Block } from "@/registry/schema";
 
 export function BlockWrapper({
   block,
   children,
 }: React.PropsWithChildren<{ block: Block }>) {
-  const { isLiftMode } = useLiftMode(block.name)
+  const { isLiftMode } = useLiftMode(block.name);
 
   React.useEffect(() => {
-    const components = document.querySelectorAll("[x-chunk]")
+    const components = document.querySelectorAll("[x-chunk]");
     block.chunks?.map((chunk, index) => {
       const $chunk = document.querySelector<HTMLElement>(
         `[x-chunk="${chunk.name}"]`
-      )
+      );
       const $wrapper = document.querySelector<HTMLElement>(
         `[x-chunk-container="${chunk.name}"]`
-      )
+      );
 
-      const $component = components[index]
+      const $component = components[index];
 
       if (!$chunk || !$component) {
-        return
+        return;
       }
 
-      const position = $component.getBoundingClientRect()
-      $chunk.style.zIndex = "40"
+      const position = $component.getBoundingClientRect();
+      $chunk.style.zIndex = "40";
       // $chunk.style.position = "absolute"
       // $chunk.style.top = `${position.top}px`
       // $chunk.style.left = `${position.left}px`
-      $chunk.style.width = `${position.width}px`
-      $chunk.style.height = `${position.height}px`
+      $chunk.style.width = `${position.width}px`;
+      $chunk.style.height = `${position.height}px`;
 
       if ($wrapper) {
-        $wrapper.style.zIndex = "40"
-        $wrapper.style.position = "absolute"
-        $wrapper.style.top = `${position.top}px`
-        $wrapper.style.left = `${position.left}px`
-        $wrapper.style.width = `${position.width}px`
-        $wrapper.style.height = `${position.height}px`
+        $wrapper.style.zIndex = "40";
+        $wrapper.style.position = "absolute";
+        $wrapper.style.top = `${position.top}px`;
+        $wrapper.style.left = `${position.left}px`;
+        $wrapper.style.width = `${position.width}px`;
+        $wrapper.style.height = `${position.height}px`;
       }
-    })
-  }, [block.chunks, isLiftMode])
+    });
+  }, [block.chunks, isLiftMode]);
 
   return (
     <>
@@ -53,7 +53,7 @@ export function BlockWrapper({
       <AnimatePresence>
         {isLiftMode && (
           <motion.div
-            className="absolute inset-0 z-30 bg-background/90 fill-mode-backwards"
+            className="bg-background/90 fill-mode-backwards absolute inset-0 z-30"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{
@@ -65,5 +65,5 @@ export function BlockWrapper({
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }

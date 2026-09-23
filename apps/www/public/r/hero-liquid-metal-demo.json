@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hero-liquid-metal-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "hero-liquid-metal"
-  ],
+  "registryDependencies": ["hero-liquid-metal"],
   "files": [
     {
       "path": "registry/default/example/hero-liquid-metal-demo.tsx",

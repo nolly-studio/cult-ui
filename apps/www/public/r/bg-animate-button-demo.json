@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "bg-animate-button-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "bg-animate-button"
-  ],
+  "registryDependencies": ["bg-animate-button"],
   "files": [
     {
       "path": "registry/default/example/bg-animate-button-demo.tsx",

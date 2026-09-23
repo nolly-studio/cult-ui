@@ -12,6 +12,7 @@ The `asChild` prop allows components to merge their props, behaviors, and event 
 ### When to Use
 
 Implement `asChild` when:
+
 - Building trigger components (Dialog.Trigger, Tooltip.Trigger)
 - Creating composable components that wrap other elements
 - Allowing users to customize rendered element while preserving functionality
@@ -20,18 +21,26 @@ Implement `asChild` when:
 ### Implementation
 
 ```tsx
-import { Slot } from '@radix-ui/react-slot';
+import { Slot } from "@radix-ui/react-slot";
 
-interface TriggerProps extends React.ComponentPropsWithoutRef<'button'> {
+interface TriggerProps extends React.ComponentPropsWithoutRef<"button"> {
   asChild?: boolean;
 }
 
 export const Trigger = React.forwardRef<HTMLButtonElement, TriggerProps>(
   ({ asChild = false, children, ...props }, ref) => {
     if (asChild) {
-      return <Slot ref={ref} {...props}>{children}</Slot>;
+      return (
+        <Slot ref={ref} {...props}>
+          {children}
+        </Slot>
+      );
     }
-    return <button ref={ref} {...props}>{children}</button>;
+    return (
+      <button ref={ref} {...props}>
+        {children}
+      </button>
+    );
   }
 );
 ```
@@ -80,7 +89,9 @@ export const Trigger = React.forwardRef<HTMLButtonElement, TriggerProps>(
 
 ```tsx
 <NavigationMenu.Link asChild>
-  <Link href="/products" className="nav-link">Products</Link>
+  <Link href="/products" className="nav-link">
+    Products
+  </Link>
 </NavigationMenu.Link>
 ```
 
@@ -151,7 +162,9 @@ const GoodButton = ({ children, ...props }) => (
 ```tsx
 // Ensure proper ARIA when using non-semantic elements
 <Dialog.Trigger asChild>
-  <div role="button" tabIndex={0} aria-label="Open dialog">Open</div>
+  <div role="button" tabIndex={0} aria-label="Open dialog">
+    Open
+  </div>
 </Dialog.Trigger>
 ```
 
@@ -180,6 +193,7 @@ if (asChild) {
 ### Integration
 
 The `asChild` pattern is essential for:
+
 - **Composability** - Enables flexible component composition
 - **Customizable** - Allows users to control rendered elements
 - **Transparent** - No hidden wrapper elements in DOM

@@ -1,11 +1,7 @@
 {
   "name": "shader-lens-blur",
   "description": "WebGL shader component with lens blur effects and mouse interaction",
-  "dependencies": [
-    "motion",
-    "three",
-    "jotai"
-  ],
+  "dependencies": ["motion", "three", "jotai"],
   "files": [
     {
       "name": "shader-lens-blur.tsx",

@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "bg-image-texture-demo",
-  "registryDependencies": [
-    "bg-image-texture"
-  ],
+  "registryDependencies": ["bg-image-texture"],
   "files": [
     {
       "path": "registry/default/example/bg-image-texture-demo.tsx",

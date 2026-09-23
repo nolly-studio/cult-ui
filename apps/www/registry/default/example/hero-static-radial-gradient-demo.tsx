@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   AISDKIcon,
@@ -13,18 +13,18 @@ import {
   HeroStaticRadialGradientRoot,
   HeroStaticRadialGradientVisual,
   NextjsIcon,
-} from "../ui/hero-static-radial-gradient"
+} from "../ui/hero-static-radial-gradient";
 
 export default function HeroStaticRadialGradientDemo() {
   return (
     <div className="space-y-16">
       <div className="space-y-4">
-        <h3 className="font-medium text-lg">Default</h3>
+        <h3 className="text-lg font-medium">Default</h3>
         <HeroStaticRadialGradient />
       </div>
 
       <div className="space-y-4">
-        <h3 className="font-medium text-lg">Configured Via Props</h3>
+        <h3 className="text-lg font-medium">Configured Via Props</h3>
         <HeroStaticRadialGradientRoot
           ctaProps={{
             href: "#",
@@ -93,5 +93,5 @@ export default function HeroStaticRadialGradientDemo() {
         </HeroStaticRadialGradientRoot>
       </div>
     </div>
-  )
+  );
 }

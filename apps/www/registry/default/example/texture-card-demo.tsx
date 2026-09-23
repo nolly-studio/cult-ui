@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { ArrowRight, Merge } from "lucide-react"
+import { ArrowRight, Merge } from "lucide-react";
 
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { TextureButton } from "@/registry/default/ui/texture-button"
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { TextureButton } from "@/registry/default/ui/texture-button";
 import {
   TextureCardContent,
   TextureCardFooter,
@@ -12,18 +12,18 @@ import {
   TextureCardStyled,
   TextureCardTitle,
   TextureSeparator,
-} from "@/registry/default/ui/texture-card"
+} from "@/registry/default/ui/texture-card";
 
 export default function TextureCardDemo() {
   return (
     <div className="flex items-center justify-center py-4">
-      <div className="dark:bg-stone-950  h-full    rounded-md">
-        <div className=" items-start justify-center gap-6 rounded-lg p-2 md:p-8 grid grid-cols-1 ">
+      <div className="h-full rounded-md dark:bg-stone-950">
+        <div className="grid grid-cols-1 items-start justify-center gap-6 rounded-lg p-2 md:p-8">
           <div className="col-span-1 grid items-start gap-6 lg:col-span-1">
             <div>
               <TextureCardStyled>
-                <TextureCardHeader className="flex flex-col gap-1 items-center justify-center p-4">
-                  <div className="p-3 bg-neutral-950 rounded-full mb-3">
+                <TextureCardHeader className="flex flex-col items-center justify-center gap-1 p-4">
+                  <div className="mb-3 rounded-full bg-neutral-950 p-3">
                     <Merge className="h-7 w-7 stroke-neutral-200" />
                   </div>
                   <TextureCardTitle>Create your account</TextureCardTitle>
@@ -33,7 +33,7 @@ export default function TextureCardDemo() {
                 </TextureCardHeader>
                 <TextureSeparator />
                 <TextureCardContent>
-                  <div className="flex justify-center gap-2 mb-4">
+                  <div className="mb-4 flex justify-center gap-2">
                     <TextureButton variant="icon">
                       {/* Google Icon */}
                       <svg
@@ -82,7 +82,7 @@ export default function TextureCardDemo() {
                       <span className="pl-2">Github</span>
                     </TextureButton>
                   </div>
-                  <div className="text-center text-sm mb-4">or</div>
+                  <div className="mb-4 text-center text-sm">or</div>
 
                   <form className="flex flex-col gap-6">
                     <div className="flex justify-between gap-2">
@@ -92,7 +92,7 @@ export default function TextureCardDemo() {
                           id="first"
                           type="first"
                           required
-                          className="w-full px-4 py-2 rounded-md border border-neutral-300 dark:border-neutral-700 bg-white/80 dark:bg-neutral-800/80 placeholder-neutral-400 dark:placeholder-neutral-500"
+                          className="w-full rounded-md border border-neutral-300 bg-white/80 px-4 py-2 placeholder-neutral-400 dark:border-neutral-700 dark:bg-neutral-800/80 dark:placeholder-neutral-500"
                         />
                       </div>
                       <div>
@@ -101,7 +101,7 @@ export default function TextureCardDemo() {
                           id="last"
                           type="last"
                           required
-                          className="w-full px-4 py-2 rounded-md border border-neutral-300 dark:border-neutral-700 bg-white/80 dark:bg-neutral-800/80 placeholder-neutral-400 dark:placeholder-neutral-500"
+                          className="w-full rounded-md border border-neutral-300 bg-white/80 px-4 py-2 placeholder-neutral-400 dark:border-neutral-700 dark:bg-neutral-800/80 dark:placeholder-neutral-500"
                         />
                       </div>
                     </div>
@@ -112,7 +112,7 @@ export default function TextureCardDemo() {
                         id="username"
                         type="username"
                         required
-                        className="w-full px-4 py-2 rounded-md border border-neutral-300 dark:border-neutral-700 bg-white/80 dark:bg-neutral-800/80 placeholder-neutral-400 dark:placeholder-neutral-500"
+                        className="w-full rounded-md border border-neutral-300 bg-white/80 px-4 py-2 placeholder-neutral-400 dark:border-neutral-700 dark:bg-neutral-800/80 dark:placeholder-neutral-500"
                       />
                     </div>
                     <div>
@@ -121,7 +121,7 @@ export default function TextureCardDemo() {
                         id="email"
                         type="email"
                         required
-                        className="w-full px-4 py-2 rounded-md border border-neutral-300 dark:border-neutral-700 bg-white/80 dark:bg-neutral-800/80 placeholder-neutral-400 dark:placeholder-neutral-500"
+                        className="w-full rounded-md border border-neutral-300 bg-white/80 px-4 py-2 placeholder-neutral-400 dark:border-neutral-700 dark:bg-neutral-800/80 dark:placeholder-neutral-500"
                       />
                     </div>
                     <div>
@@ -130,24 +130,24 @@ export default function TextureCardDemo() {
                         id="password"
                         type="password"
                         required
-                        className="w-full px-4 py-2 rounded-md border border-neutral-300 dark:border-neutral-700 bg-white/80 dark:bg-neutral-800/80 placeholder-neutral-400 dark:placeholder-neutral-500"
+                        className="w-full rounded-md border border-neutral-300 bg-white/80 px-4 py-2 placeholder-neutral-400 dark:border-neutral-700 dark:bg-neutral-800/80 dark:placeholder-neutral-500"
                       />
                     </div>
                   </form>
                 </TextureCardContent>
                 <TextureSeparator />
-                <TextureCardFooter className="border-b rounded-b-sm">
+                <TextureCardFooter className="rounded-b-sm border-b">
                   <TextureButton variant="accent" className="w-full">
-                    <div className="flex gap-1 items-center justify-center">
+                    <div className="flex items-center justify-center gap-1">
                       Continue
-                      <ArrowRight className="h-4 w-4 text-neutral-50 mt-[1px]" />
+                      <ArrowRight className="mt-[1px] h-4 w-4 text-neutral-50" />
                     </div>
                   </TextureButton>
                 </TextureCardFooter>
 
-                <div className="dark:bg-neutral-800 bg-stone-100 pt-px rounded-b-[20px] overflow-hidden ">
+                <div className="overflow-hidden rounded-b-[20px] bg-stone-100 pt-px dark:bg-neutral-800">
                   <div className="flex flex-col items-center justify-center">
-                    <div className="py-2 px-2">
+                    <div className="px-2 py-2">
                       <div className="text-center text-sm">
                         Already have an account?{" "}
                         <span className="text-primary">Sign in</span>
@@ -155,9 +155,9 @@ export default function TextureCardDemo() {
                     </div>
                   </div>
                   <TextureSeparator />
-                  <div className="flex flex-col items-center justify-center ">
-                    <div className="py-2 px-2">
-                      <div className="text-center text-xs ">
+                  <div className="flex flex-col items-center justify-center">
+                    <div className="px-2 py-2">
+                      <div className="text-center text-xs">
                         Secured by Supabase
                       </div>
                     </div>
@@ -169,5 +169,5 @@ export default function TextureCardDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,7 +1,7 @@
 import type { ReactFlowProps } from "@xyflow/react";
+import { Background, ReactFlow } from "@xyflow/react";
 import type { ReactNode } from "react";
 
-import { Background, ReactFlow } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 
 type CanvasProps = ReactFlowProps & {

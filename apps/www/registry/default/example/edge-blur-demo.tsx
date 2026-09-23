@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { BottomBlur, EdgeBlur, TopBlur } from "@/registry/default/ui/edge-blur"
+import { BottomBlur, EdgeBlur, TopBlur } from "@/registry/default/ui/edge-blur";
 
 const SCROLL_PARAGRAPH_KEYS = [
   "s-a",
@@ -15,7 +15,7 @@ const SCROLL_PARAGRAPH_KEYS = [
   "s-j",
   "s-k",
   "s-l",
-] as const
+] as const;
 
 const SMALL_ROW_KEYS = [
   "b-1",
@@ -26,11 +26,11 @@ const SMALL_ROW_KEYS = [
   "b-6",
   "b-7",
   "b-8",
-] as const
+] as const;
 
 export default function EdgeBlurDemo() {
   return (
-    <div className="dark:bg-stone-950 flex flex-col items-center gap-10 rounded-md px-4 py-6 md:px-0">
+    <div className="flex flex-col items-center gap-10 rounded-md px-4 py-6 md:px-0 dark:bg-stone-950">
       <div className="max-w-xl space-y-2 text-center">
         <h2 className="text-foreground text-2xl font-bold tracking-tight">
           Edge blur
@@ -48,9 +48,9 @@ export default function EdgeBlurDemo() {
         </p>
       </div>
 
-      <div className="relative isolate h-[420px] w-full max-w-lg transform-gpu overflow-hidden rounded-xl border bg-muted/30 shadow-sm">
+      <div className="bg-muted/30 relative isolate h-[420px] w-full max-w-lg transform-gpu overflow-hidden rounded-xl border shadow-sm">
         <div className="absolute inset-0 z-0 overflow-y-auto">
-          <div className="from-background via-muted/40 to-background min-h-[700px] space-y-3 bg-gradient-to-b p-6 pb-28 pt-8">
+          <div className="from-background via-muted/40 to-background min-h-[700px] space-y-3 bg-gradient-to-b p-6 pt-8 pb-28">
             {SCROLL_PARAGRAPH_KEYS.map((key, i) => (
               <p
                 key={key}
@@ -70,10 +70,10 @@ export default function EdgeBlurDemo() {
       </div>
 
       <div className="grid w-full max-w-2xl grid-cols-1 gap-4 sm:grid-cols-2">
-        <div className="relative isolate h-44 transform-gpu overflow-hidden rounded-lg border bg-card">
+        <div className="bg-card relative isolate h-44 transform-gpu overflow-hidden rounded-lg border">
           <section
             aria-label="Demo panel with bottom edge blur"
-            className="absolute inset-0 z-0 overflow-y-auto p-4 text-xs text-muted-foreground"
+            className="text-muted-foreground absolute inset-0 z-0 overflow-y-auto p-4 text-xs"
           >
             {SMALL_ROW_KEYS.map((key, i) => (
               <p key={key} className="mb-2">
@@ -83,10 +83,10 @@ export default function EdgeBlurDemo() {
           </section>
           <BottomBlur height={56} />
         </div>
-        <div className="relative isolate h-44 transform-gpu overflow-hidden rounded-lg border bg-card">
+        <div className="bg-card relative isolate h-44 transform-gpu overflow-hidden rounded-lg border">
           <section
             aria-label="Demo panel with top edge blur"
-            className="absolute inset-0 z-0 overflow-y-auto p-4 pt-8 text-xs text-muted-foreground"
+            className="text-muted-foreground absolute inset-0 z-0 overflow-y-auto p-4 pt-8 text-xs"
           >
             {SMALL_ROW_KEYS.map((key, i) => (
               <p key={`top-${key}`} className="mb-2">
@@ -98,5 +98,5 @@ export default function EdgeBlurDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

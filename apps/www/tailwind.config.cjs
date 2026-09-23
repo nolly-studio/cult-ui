@@ -1,4 +1,4 @@
-const baseConfig = require("../../tailwind.config.cjs")
+const baseConfig = require("../../tailwind.config.cjs");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -8,4 +8,4 @@ module.exports = {
     "content/**/*.mdx",
     "registry/**/*.{ts,tsx}",
   ],
-}
+};

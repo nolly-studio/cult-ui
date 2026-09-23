@@ -18,7 +18,9 @@ Always start with the most appropriate HTML element:
 **Incorrect (generic div):**
 
 ```tsx
-<div onClick={handleClick} className="button">Click me</div>
+<div onClick={handleClick} className="button">
+  Click me
+</div>
 ```
 
 **Correct (semantic element):**
@@ -34,15 +36,29 @@ Every interactive element must be keyboard accessible:
 ```tsx
 function Menu() {
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    switch(e.key) {
-      case 'ArrowDown': focusNextItem(); break;
-      case 'ArrowUp': focusPreviousItem(); break;
-      case 'Home': focusFirstItem(); break;
-      case 'End': focusLastItem(); break;
-      case 'Escape': closeMenu(); break;
+    switch (e.key) {
+      case "ArrowDown":
+        focusNextItem();
+        break;
+      case "ArrowUp":
+        focusPreviousItem();
+        break;
+      case "Home":
+        focusFirstItem();
+        break;
+      case "End":
+        focusLastItem();
+        break;
+      case "Escape":
+        closeMenu();
+        break;
     }
   };
-  return <div role="menu" onKeyDown={handleKeyDown}>{/* items */}</div>;
+  return (
+    <div role="menu" onKeyDown={handleKeyDown}>
+      {/* items */}
+    </div>
+  );
 }
 ```
 
@@ -74,7 +90,10 @@ button:focus-visible {
 }
 
 /* Sufficient color contrast (4.5:1 for normal text) */
-.text { color: #333; background: white; }
+.text {
+  color: #333;
+  background: white;
+}
 ```
 
 ### ARIA Rules
@@ -93,7 +112,9 @@ button:focus-visible {
 function Modal({ isOpen, onClose, children }) {
   return isOpen ? (
     <div role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <button onClick={onClose} aria-label="Close dialog">×</button>
+      <button onClick={onClose} aria-label="Close dialog">
+        ×
+      </button>
       {children}
     </div>
   ) : null;
@@ -103,14 +124,22 @@ function Modal({ isOpen, onClose, children }) {
 #### Dropdown Menu
 
 ```tsx
-<button aria-haspopup="true" aria-expanded={isOpen} aria-controls="dropdown-menu">
+<button
+  aria-haspopup="true"
+  aria-expanded={isOpen}
+  aria-controls="dropdown-menu"
+>
   Menu
-</button>
-{isOpen && (
-  <ul id="dropdown-menu" role="menu">
-    <li role="menuitem" tabIndex={-1}>Item 1</li>
-  </ul>
-)}
+</button>;
+{
+  isOpen && (
+    <ul id="dropdown-menu" role="menu">
+      <li role="menuitem" tabIndex={-1}>
+        Item 1
+      </li>
+    </ul>
+  );
+}
 ```
 
 #### Tabs
@@ -188,5 +217,5 @@ function Modal({ isOpen, onClose, children }) {
 
 ```html
 <!-- Allow zooming -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 ```

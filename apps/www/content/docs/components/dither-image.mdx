@@ -71,7 +71,7 @@ import {
   DitherImageCaption,
   DitherImageContent,
   DitherImageFrame,
-} from "@/components/ui/dither-image"
+} from "@/components/ui/dither-image";
 ```
 
 ### Full-frame dither
@@ -104,7 +104,7 @@ import {
   DitherImageFrame,
   DitherImageOverlay,
   DitherImageReveal,
-} from "@/components/ui/dither-image"
+} from "@/components/ui/dither-image";
 
 export function DitherRevealExample() {
   return (
@@ -121,7 +121,7 @@ export function DitherRevealExample() {
         to={65}
       />
     </DitherImageReveal>
-  )
+  );
 }
 ```
 
@@ -135,14 +135,14 @@ For remote URLs, blobs, or data URLs, the image optimizer may need **`unoptimize
 
 ## API
 
-| Export               | Role                                                                                                                                                       |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `DitherImage`        | `<figure>` wrapper; groups frame + caption without applying dither filters.                                                                                |
-| `DitherImageFrame`   | Dither surface: `size`, `aspectRatio`, `grayscale`, `contrast`, `brightness`, `blur`, `opacity`, `rounded`, `invertOnDark`, and CSS variables via `style`. |
-| `DitherImageContent` | `next/image` child; use `fill` + `object-cover` sizing inside the frame.                                                                                   |
-| `DitherImageReveal`  | Relative, overflow-hidden stage for partial dither layouts.                                                                                                |
-| `DitherImageOverlay` | Absolutely positioned duplicate image with a gradient **`maskImage`**; props `direction`, `from`, `to`, `maskClassName`.                                   |
-| `DitherImageCaption` | `<figcaption>` with muted typography defaults.                                                                                                             |
+| Export | Role |
+| --- | --- |
+| `DitherImage` | `<figure>` wrapper; groups frame + caption without applying dither filters. |
+| `DitherImageFrame` | Dither surface: `size`, `aspectRatio`, `grayscale`, `contrast`, `brightness`, `blur`, `opacity`, `rounded`, `invertOnDark`, and CSS variables via `style`. |
+| `DitherImageContent` | `next/image` child; use `fill` + `object-cover` sizing inside the frame. |
+| `DitherImageReveal` | Relative, overflow-hidden stage for partial dither layouts. |
+| `DitherImageOverlay` | Absolutely positioned duplicate image with a gradient **`maskImage`**; props `direction`, `from`, `to`, `maskClassName`. |
+| `DitherImageCaption` | `<figcaption>` with muted typography defaults. |
 
 **Types:** `DitherSize`, `DitherAspectRatio`, `DitherRevealDirection` are exported for props and demos.
 

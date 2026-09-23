@@ -1,33 +1,33 @@
-"use client"
+"use client";
 
-import { useCallback, useMemo, useState } from "react"
+import { useCallback, useMemo, useState } from "react";
 
-import { PollWidget } from "../ui/poll-widget"
+import { PollWidget } from "../ui/poll-widget";
 
 const DEMO_OPTIONS = [
   { id: "speed", label: "Faster builds" },
   { id: "dx", label: "Better DX" },
   { id: "docs", label: "Clearer docs" },
-] as const
+] as const;
 
-const BASE_VOTES = { speed: 41, dx: 28, docs: 30 }
+const BASE_VOTES = { speed: 41, dx: 28, docs: 30 };
 
 function usePollState() {
-  const [votes, setVotes] = useState<Record<string, number>>(BASE_VOTES)
-  const [hasVoted, setHasVoted] = useState(false)
+  const [votes, setVotes] = useState<Record<string, number>>(BASE_VOTES);
+  const [hasVoted, setHasVoted] = useState(false);
 
   const onVote = useCallback((selectedIds: string[]) => {
     setVotes((prev) => {
-      const next: Record<string, number> = { ...prev }
+      const next: Record<string, number> = { ...prev };
       for (const id of selectedIds) {
-        next[id] = (next[id] ?? 0) + 1
+        next[id] = (next[id] ?? 0) + 1;
       }
-      return next
-    })
-    setHasVoted(true)
-  }, [])
+      return next;
+    });
+    setHasVoted(true);
+  }, []);
 
-  return { votes, hasVoted, onVote }
+  return { votes, hasVoted, onVote };
 }
 
 export default function PollWidgetDemo() {
@@ -37,22 +37,22 @@ export default function PollWidgetDemo() {
       <PopoverDemo />
       <DialogDemo />
     </div>
-  )
+  );
 }
 
 function InlineDemo() {
-  const { votes, hasVoted, onVote } = usePollState()
+  const { votes, hasVoted, onVote } = usePollState();
   const options = useMemo(
     () => DEMO_OPTIONS.map((o) => ({ id: o.id, label: o.label })),
     []
-  )
+  );
 
   return (
     <div className="space-y-2">
-      <h3 className="text-sm font-medium text-muted-foreground">
+      <h3 className="text-muted-foreground text-sm font-medium">
         Inline (default)
       </h3>
-      <div className="rounded-lg border border-border bg-card p-4">
+      <div className="border-border bg-card rounded-lg border p-4">
         <PollWidget
           question="Which feature matters most?"
           description="Pick one, then submit to see results and success state."
@@ -79,22 +79,22 @@ function InlineDemo() {
         </PollWidget>
       </div>
     </div>
-  )
+  );
 }
 
 function PopoverDemo() {
-  const { votes, hasVoted, onVote } = usePollState()
+  const { votes, hasVoted, onVote } = usePollState();
   const options = useMemo(
     () => DEMO_OPTIONS.map((o) => ({ id: o.id, label: o.label })),
     []
-  )
+  );
 
   return (
     <div className="space-y-2">
-      <h3 className="text-sm font-medium text-muted-foreground">
+      <h3 className="text-muted-foreground text-sm font-medium">
         Popover mode
       </h3>
-      <div className="rounded-lg border border-border bg-card p-4">
+      <div className="border-border bg-card rounded-lg border p-4">
         <PollWidget
           question="Vote from a popover"
           description="Opens in a popover when you click the trigger."
@@ -122,20 +122,20 @@ function PopoverDemo() {
         </PollWidget>
       </div>
     </div>
-  )
+  );
 }
 
 function DialogDemo() {
-  const { votes, hasVoted, onVote } = usePollState()
+  const { votes, hasVoted, onVote } = usePollState();
   const options = useMemo(
     () => DEMO_OPTIONS.map((o) => ({ id: o.id, label: o.label })),
     []
-  )
+  );
 
   return (
     <div className="space-y-2">
-      <h3 className="text-sm font-medium text-muted-foreground">Dialog mode</h3>
-      <div className="rounded-lg border border-border bg-card p-4">
+      <h3 className="text-muted-foreground text-sm font-medium">Dialog mode</h3>
+      <div className="border-border bg-card rounded-lg border p-4">
         <PollWidget
           question="Vote in a dialog"
           description="Opens in a modal dialog when you click the trigger."
@@ -163,5 +163,5 @@ function DialogDemo() {
         </PollWidget>
       </div>
     </div>
-  )
+  );
 }

@@ -1,33 +1,33 @@
-"use client"
+"use client";
 
-import { useMemo, useState } from "react"
-import { AnimatePresence, motion, MotionConfig } from "motion/react"
-import useMeasure from "react-use-measure"
+import { AnimatePresence, motion, MotionConfig } from "motion/react";
+import { useMemo, useState } from "react";
+import useMeasure from "react-use-measure";
 
-import FamilyButton from "../ui/family-button"
+import FamilyButton from "../ui/family-button";
 
 export default function FamilyButtonDemo() {
   return (
-    <div className=" w-full h-full min-h-[240px]">
-      <div className="absolute bottom-4 right-4 ">
+    <div className="h-full min-h-[240px] w-full">
+      <div className="absolute right-4 bottom-4">
         <FamilyButton>
           <MusicPlayerExample />
         </FamilyButton>
       </div>
     </div>
-  )
+  );
 }
 
 let tabs = [
   { id: 0, label: "Apple" },
   { id: 1, label: "Spotify" },
-]
+];
 
 export function MusicPlayerExample() {
-  const [activeTab, setActiveTab] = useState(0)
-  const [direction, setDirection] = useState(0)
-  const [isAnimating, setIsAnimating] = useState(false)
-  const [ref, bounds] = useMeasure()
+  const [activeTab, setActiveTab] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [ref, bounds] = useMeasure();
 
   const content = useMemo(() => {
     switch (activeTab) {
@@ -80,7 +80,7 @@ export function MusicPlayerExample() {
               />
             </svg>
           </div>
-        )
+        );
       case 1:
         return (
           <div className="flex items-center justify-center">
@@ -97,19 +97,19 @@ export function MusicPlayerExample() {
               />
             </svg>
           </div>
-        )
+        );
       default:
-        return null
+        return null;
     }
-  }, [activeTab])
+  }, [activeTab]);
 
   const handleTabClick = (newTabId: number) => {
     if (newTabId !== activeTab && !isAnimating) {
-      const newDirection = newTabId > activeTab ? 1 : -1
-      setDirection(newDirection)
-      setActiveTab(newTabId)
+      const newDirection = newTabId > activeTab ? 1 : -1;
+      setDirection(newDirection);
+      setActiveTab(newTabId);
     }
-  }
+  };
 
   const variants = {
     initial: (direction: number) => ({
@@ -127,24 +127,24 @@ export function MusicPlayerExample() {
       opacity: 0,
       filter: "blur(4px)",
     }),
-  }
+  };
 
   return (
-    <div className="flex flex-col items-center pt-4 ">
-      <div className="flex space-x-1 border border-none rounded-[8px] cursor-pointer bg-neutral-700  px-[3px] py-[3.2px] shadow-inner-shadow">
+    <div className="flex flex-col items-center pt-4">
+      <div className="shadow-inner-shadow flex cursor-pointer space-x-1 rounded-[8px] border border-none bg-neutral-700 px-[3px] py-[3.2px]">
         {tabs.map((tab, i) => (
           <button
             key={`${tab.id}-i-${i}`}
             onClick={() => handleTabClick(tab.id)}
             className={`${
-              activeTab === tab.id ? "text-white " : "hover:text-neutral-300/60"
-            } relative rounded-[5px] px-3 py-1.5 text-xs sm:text-sm font-medium text-neutral-600  transition focus-visible:outline-1 focus-visible:ring-1 focus-visible:ring-blue-light focus-visible:outline-none`}
+              activeTab === tab.id ? "text-white" : "hover:text-neutral-300/60"
+            } focus-visible:ring-blue-light relative rounded-[5px] px-3 py-1.5 text-xs font-medium text-neutral-600 transition focus-visible:ring-1 focus-visible:outline-1 focus-visible:outline-none sm:text-sm`}
             style={{ WebkitTapHighlightColor: "transparent" }}
           >
             {activeTab === tab.id && (
               <motion.span
                 layoutId="family-bubble"
-                className="absolute inset-0 z-10 bg-neutral-800  mix-blend-difference shadow-inner-shadow"
+                className="shadow-inner-shadow absolute inset-0 z-10 bg-neutral-800 mix-blend-difference"
                 style={{ borderRadius: 5 }}
                 transition={{ type: "spring", bounce: 0.19, duration: 0.4 }}
               />
@@ -155,11 +155,11 @@ export function MusicPlayerExample() {
       </div>
       <MotionConfig transition={{ duration: 0.4, type: "spring", bounce: 0.2 }}>
         <motion.div
-          className="relative mx-auto my-[10px] w-[60px] md:w-[150px] overflow-hidden"
+          className="relative mx-auto my-[10px] w-[60px] overflow-hidden md:w-[150px]"
           initial={false}
           animate={{ height: bounds.height }}
         >
-          <div className="md:p-6 p-2" ref={ref}>
+          <div className="p-2 md:p-6" ref={ref}>
             <AnimatePresence
               custom={direction}
               mode="popLayout"
@@ -182,5 +182,5 @@ export function MusicPlayerExample() {
         </motion.div>
       </MotionConfig>
     </div>
-  )
+  );
 }

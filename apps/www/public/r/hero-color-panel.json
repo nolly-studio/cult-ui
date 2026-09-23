@@ -3,13 +3,8 @@
   "name": "hero-color-panel",
   "type": "registry:ui",
   "description": "Split-layout hero section with responsive ColorPanels shader visuals, CTA, and tech stack badges",
-  "dependencies": [
-    "@paper-design/shaders-react"
-  ],
-  "registryDependencies": [
-    "badge",
-    "button"
-  ],
+  "dependencies": ["@paper-design/shaders-react"],
+  "registryDependencies": ["badge", "button"],
   "files": [
     {
       "path": "registry/default/ui/hero-color-panel.tsx",

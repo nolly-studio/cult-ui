@@ -1,14 +1,14 @@
 // TODO: EXAMPLE + DOCS + REGISTRY
-"use client"
+"use client";
 
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react";
 
 interface GlowingButtonProps {
-  href: string
-  text: string
-  glowColor?: string
-  textColor?: string
-  backgroundColor?: string
+  href: string;
+  text: string;
+  glowColor?: string;
+  textColor?: string;
+  backgroundColor?: string;
 }
 
 export default function EnhancedGlowingButton({
@@ -18,40 +18,40 @@ export default function EnhancedGlowingButton({
   textColor = "black",
   backgroundColor = "#d1d1d1",
 }: GlowingButtonProps) {
-  const [isHovering, setIsHovering] = useState(false)
-  const [glowPosition, setGlowPosition] = useState(0)
-  const buttonRef = useRef<HTMLAnchorElement>(null)
+  const [isHovering, setIsHovering] = useState(false);
+  const [glowPosition, setGlowPosition] = useState(0);
+  const buttonRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      if (!buttonRef.current || !isHovering) return
+      if (!buttonRef.current || !isHovering) return;
 
-      const rect = buttonRef.current.getBoundingClientRect()
-      const x = event.clientX - rect.left
-      const buttonWidth = rect.width
-      const percentage = (x / buttonWidth) * 100
-      setGlowPosition(percentage)
-    }
+      const rect = buttonRef.current.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const buttonWidth = rect.width;
+      const percentage = (x / buttonWidth) * 100;
+      setGlowPosition(percentage);
+    };
 
     if (isHovering) {
-      window.addEventListener("mousemove", handleMouseMove)
+      window.addEventListener("mousemove", handleMouseMove);
     }
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-    }
-  }, [isHovering])
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [isHovering]);
 
   return (
-    <div className="relative inline-flex items-center z-10 ">
+    <div className="relative z-10 inline-flex items-center">
       <div
-        className="border-button-light-blur absolute left-1/2 top-1/2 h-[calc(100%+9px)] w-[calc(100%+9px)] -translate-x-1/2 -translate-y-1/2 rounded-full will-change-transform"
+        className="border-button-light-blur absolute top-1/2 left-1/2 h-[calc(100%+9px)] w-[calc(100%+9px)] -translate-x-1/2 -translate-y-1/2 rounded-full will-change-transform"
         style={{ opacity: 1 }}
       >
         <div className="border-button-light relative h-full w-full rounded-full"></div>
       </div>
       <div
-        className="border-button-light-blur absolute left-1/2 top-1/2 h-[calc(100%+9px)] w-[calc(100%+9px)] -translate-x-1/2 -translate-y-1/2 scale-x-[-1] transform rounded-full will-change-transform"
+        className="border-button-light-blur absolute top-1/2 left-1/2 h-[calc(100%+9px)] w-[calc(100%+9px)] -translate-x-1/2 -translate-y-1/2 scale-x-[-1] transform rounded-full will-change-transform"
         style={{ opacity: 0 }}
       >
         <div className="border-button-light relative h-full w-full rounded-full"></div>
@@ -59,13 +59,13 @@ export default function EnhancedGlowingButton({
       <a
         ref={buttonRef}
         href={href}
-        className={`transition-all duration-200 uppercase font-bold flex items-center justify-center h-10  text-12 -tracking-[0.015em] relative z-10 overflow-hidden rounded-full border border-primary/20 space-x-1 px-16 sm:pl-[59px] sm:pr-[52px] bg-gradient-to-br from-background to-muted/50`}
+        className={`text-12 border-primary/20 from-background to-muted/50 relative z-10 flex h-10 items-center justify-center space-x-1 overflow-hidden rounded-full border bg-gradient-to-br px-16 font-bold -tracking-[0.015em] uppercase transition-all duration-200 sm:pr-[52px] sm:pl-[59px]`}
         style={{ backgroundColor }}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
         <div
-          className="absolute -z-10 flex w-[204px] items-center justify-center pointer-events-none"
+          className="pointer-events-none absolute -z-10 flex w-[204px] items-center justify-center"
           style={{
             transform: `translateX(calc(${glowPosition}% - 102px)) translateZ(0px)`,
             opacity: isHovering ? 1 : 0,
@@ -102,5 +102,5 @@ export default function EnhancedGlowingButton({
         </svg>
       </a>
     </div>
-  )
+  );
 }

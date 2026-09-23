@@ -1,8 +1,3 @@
-import {
-	JetBrains_Mono as FontMono,
-	Inter_Tight as FontSans,
-} from "next/font/google";
-import localFont from "next/font/local";
 import { GeistMono } from "geist/font/mono";
 
 // export const fontSans = localFont({
@@ -20,3 +15,8 @@ import { GeistMono } from "geist/font/mono";
 // 	subsets: ["latin"],
 // 	variable: "--font-mono",
 // });
+import {
+  JetBrains_Mono as FontMono,
+  Inter_Tight as FontSans,
+} from "next/font/google";
+import localFont from "next/font/local";

@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pixel-heading-word-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "pixel-heading-word"
-  ],
+  "registryDependencies": ["pixel-heading-word"],
   "files": [
     {
       "path": "registry/default/example/pixel-heading-word-demo.tsx",

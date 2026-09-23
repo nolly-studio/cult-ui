@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { StripeBgGuides } from "../ui/stripe-bg-guides"
+import { StripeBgGuides } from "../ui/stripe-bg-guides";
 
 export default function StripeBgGuidesDemo() {
   return (
-    <div className="relative w-full h-[400px] overflow-hidden rounded-lg border bg-background">
+    <div className="bg-background relative h-[400px] w-full overflow-hidden rounded-lg border">
       {/* Modified StripeBgGuides to work within a container */}
       <StripeBgGuides
         columnCount={6}
@@ -19,7 +19,7 @@ export default function StripeBgGuidesDemo() {
       {/* Content to demonstrate the background effect */}
       <div className="relative z-10 flex h-full items-center justify-center">
         <div className="max-w-md text-center">
-          <h3 className="text-2xl font-bold mb-2">Stripe Background Guides</h3>
+          <h3 className="mb-2 text-2xl font-bold">Stripe Background Guides</h3>
           <p className="text-muted-foreground">
             Animated background guides with glowing effects, inspired by
             Stripe's design system.
@@ -27,5 +27,5 @@ export default function StripeBgGuidesDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -28,7 +28,7 @@ export default {
   plugins: {
     "@tailwindcss/postcss": {},
   },
-}
+};
 ```
 
 Then replace your `src/index.css` contents with:
@@ -72,9 +72,9 @@ npm i -D @types/node
 ```
 
 ```typescript
-import path from "path"
-import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
+import path from "path";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [react()],
@@ -83,7 +83,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-})
+});
 ```
 
 ### Run the CLI
@@ -120,14 +120,14 @@ npx cult-ui@latest add button
 The command above will add the `Button` component to your project. You can then import it like this:
 
 ```tsx {1,6} showLineNumbers
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
     <div>
       <Button>Click me</Button>
     </div>
-  )
+  );
 }
 ```
 

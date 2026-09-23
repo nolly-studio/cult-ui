@@ -1,6 +1,15 @@
 "use client";
 
+import { CheckIcon, CopyIcon } from "lucide-react";
 import type { ComponentProps } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import {
   InputGroup,
@@ -10,15 +19,6 @@ import {
   InputGroupText,
 } from "@/components/ui/input-group";
 import { cn } from "@/lib/utils";
-import { CheckIcon, CopyIcon } from "lucide-react";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
 
 interface SnippetContextType {
   code: string;
@@ -55,7 +55,7 @@ export type SnippetTextProps = ComponentProps<typeof InputGroupText>;
 
 export const SnippetText = ({ className, ...props }: SnippetTextProps) => (
   <InputGroupText
-    className={cn("pl-2 font-normal text-muted-foreground", className)}
+    className={cn("text-muted-foreground pl-2 font-normal", className)}
     {...props}
   />
 );

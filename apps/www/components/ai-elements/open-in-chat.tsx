@@ -1,6 +1,12 @@
 "use client";
 
+import {
+  ChevronDownIcon,
+  ExternalLinkIcon,
+  MessageCircleIcon,
+} from "lucide-react";
 import type { ComponentProps } from "react";
+import { createContext, useContext } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -12,12 +18,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import {
-  ChevronDownIcon,
-  ExternalLinkIcon,
-  MessageCircleIcon,
-} from "lucide-react";
-import { createContext, useContext } from "react";
 
 const providers = {
   chatgpt: {

@@ -3,10 +3,7 @@
   "name": "cutout-card",
   "type": "registry:ui",
   "description": "Image card with cutout corners, hover motion, inset labels, pins, and reveal actions",
-  "dependencies": [
-    "motion",
-    "@radix-ui/react-use-controllable-state"
-  ],
+  "dependencies": ["motion", "@radix-ui/react-use-controllable-state"],
   "files": [
     {
       "path": "registry/default/ui/cutout-card.tsx",

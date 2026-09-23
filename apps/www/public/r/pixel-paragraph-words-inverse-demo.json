@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pixel-paragraph-words-inverse-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "pixel-paragraph-words-inverse"
-  ],
+  "registryDependencies": ["pixel-paragraph-words-inverse"],
   "files": [
     {
       "path": "registry/default/example/pixel-paragraph-words-inverse-demo.tsx",

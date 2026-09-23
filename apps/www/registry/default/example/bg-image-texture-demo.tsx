@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Download } from "lucide-react"
+import { Download } from "lucide-react";
+import { useState } from "react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Slider } from "@/components/ui/slider"
-import { BackgroundImageTexture } from "@/registry/default/ui/bg-image-texture"
-import type { TextureVariant } from "@/registry/default/ui/bg-image-texture"
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Slider } from "@/components/ui/slider";
+import { BackgroundImageTexture } from "@/registry/default/ui/bg-image-texture";
+import type { TextureVariant } from "@/registry/default/ui/bg-image-texture";
 
 const textureVariants: TextureVariant[] = [
   "fabric-of-squares",
@@ -23,7 +23,7 @@ const textureVariants: TextureVariant[] = [
   "debut-light",
   "groovepaper",
   "none",
-]
+];
 
 const textureMap: Record<Exclude<TextureVariant, "none">, string> = {
   "fabric-of-squares": "/textures/fabric-of-squares.png",
@@ -31,36 +31,36 @@ const textureMap: Record<Exclude<TextureVariant, "none">, string> = {
   inflicted: "/textures/inflicted.png",
   "debut-light": "/textures/debut-light.png",
   groovepaper: "/textures/groovepaper.png",
-}
+};
 
 async function downloadTexture(variant: Exclude<TextureVariant, "none">) {
-  const url = textureMap[variant]
+  const url = textureMap[variant];
   try {
-    const response = await fetch(url)
-    const blob = await response.blob()
-    const blobUrl = window.URL.createObjectURL(blob)
-    const link = document.createElement("a")
-    link.href = blobUrl
-    link.download = `${variant}.png`
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-    window.URL.revokeObjectURL(blobUrl)
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const blobUrl = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = blobUrl;
+    link.download = `${variant}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(blobUrl);
   } catch {
     // Fallback to direct link if fetch fails
-    const link = document.createElement("a")
-    link.href = url
-    link.download = `${variant}.png`
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${variant}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 }
 
 export default function BackgroundImageTextureDemo() {
   const [selectedVariant, setSelectedVariant] =
-    useState<TextureVariant>("fabric-of-squares")
-  const [opacity, setOpacity] = useState([0.5])
+    useState<TextureVariant>("fabric-of-squares");
+  const [opacity, setOpacity] = useState([0.5]);
 
   return (
     <div className="space-y-8 p-6">
@@ -129,11 +129,11 @@ export default function BackgroundImageTextureDemo() {
           <BackgroundImageTexture
             variant={selectedVariant}
             opacity={opacity[0]}
-            className="rounded-lg border border-border p-8 min-h-[400px]"
+            className="border-border min-h-[400px] rounded-lg border p-8"
           >
             <div className="space-y-6">
               <div>
-                <h3 className="text-3xl font-bold text-foreground mb-2">
+                <h3 className="text-foreground mb-2 text-3xl font-bold">
                   Texture Background
                 </h3>
                 <p className="text-muted-foreground text-lg">
@@ -143,15 +143,15 @@ export default function BackgroundImageTextureDemo() {
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 rounded-lg bg-card/50 border border-border">
-                  <h4 className="font-semibold mb-2">Feature 1</h4>
-                  <p className="text-sm text-muted-foreground">
+                <div className="bg-card/50 border-border rounded-lg border p-4">
+                  <h4 className="mb-2 font-semibold">Feature 1</h4>
+                  <p className="text-muted-foreground text-sm">
                     Content with texture background
                   </p>
                 </div>
-                <div className="p-4 rounded-lg bg-card/50 border border-border">
-                  <h4 className="font-semibold mb-2">Feature 2</h4>
-                  <p className="text-sm text-muted-foreground">
+                <div className="bg-card/50 border-border rounded-lg border p-4">
+                  <h4 className="mb-2 font-semibold">Feature 2</h4>
+                  <p className="text-muted-foreground text-sm">
                     More content examples
                   </p>
                 </div>
@@ -164,7 +164,7 @@ export default function BackgroundImageTextureDemo() {
       {/* All Variants Showcase */}
       <div className="space-y-4">
         <h3 className="text-2xl font-semibold">All Texture Variants</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {textureVariants
             .filter((v) => v !== "none")
             .map((variant) => (
@@ -189,13 +189,13 @@ export default function BackgroundImageTextureDemo() {
                   <BackgroundImageTexture
                     variant={variant}
                     opacity={0.5}
-                    className="rounded-lg border border-border p-6 h-48 flex items-center justify-center"
+                    className="border-border flex h-48 items-center justify-center rounded-lg border p-6"
                   >
                     <div className="text-center">
-                      <p className="text-sm font-medium text-foreground">
+                      <p className="text-foreground text-sm font-medium">
                         {variant}
                       </p>
-                      <p className="text-xs text-muted-foreground mt-1">
+                      <p className="text-muted-foreground mt-1 text-xs">
                         Opacity: 0.5
                       </p>
                     </div>
@@ -209,7 +209,7 @@ export default function BackgroundImageTextureDemo() {
       {/* Opacity Variations */}
       <div className="space-y-4">
         <h3 className="text-2xl font-semibold">Opacity Variations</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {[0.2, 0.5, 0.8].map((opacityValue) => (
             <Card key={opacityValue}>
               <CardHeader>
@@ -221,13 +221,13 @@ export default function BackgroundImageTextureDemo() {
                 <BackgroundImageTexture
                   variant="grid-noise"
                   opacity={opacityValue}
-                  className="rounded-lg border border-border p-6 h-48 flex items-center justify-center"
+                  className="border-border flex h-48 items-center justify-center rounded-lg border p-6"
                 >
                   <div className="text-center">
-                    <p className="text-sm font-medium text-foreground">
+                    <p className="text-foreground text-sm font-medium">
                       grid-noise texture
                     </p>
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <p className="text-muted-foreground mt-1 text-xs">
                       Opacity: {opacityValue}
                     </p>
                   </div>
@@ -241,7 +241,7 @@ export default function BackgroundImageTextureDemo() {
       {/* Use Case Examples */}
       <div className="space-y-4">
         <h3 className="text-2xl font-semibold">Use Case Examples</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {/* Card with Texture */}
           <Card>
             <CardHeader>
@@ -255,7 +255,7 @@ export default function BackgroundImageTextureDemo() {
               >
                 <div className="space-y-2">
                   <h4 className="font-semibold">Beautiful Card</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     Cards look great with subtle texture backgrounds
                   </p>
                 </div>
@@ -272,11 +272,11 @@ export default function BackgroundImageTextureDemo() {
               <BackgroundImageTexture
                 variant="groovepaper"
                 opacity={0.4}
-                className="rounded-b-lg p-6 min-h-[200px] flex items-center justify-center"
+                className="flex min-h-[200px] items-center justify-center rounded-b-lg p-6"
               >
-                <div className="text-center space-y-2">
+                <div className="space-y-2 text-center">
                   <h4 className="text-2xl font-bold">Hero Title</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     Perfect for hero sections and banners
                   </p>
                 </div>
@@ -286,5 +286,5 @@ export default function BackgroundImageTextureDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -2,14 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "intro-disclosure",
   "description": "Intro disclosure component with expandable content and smooth animations",
-  "dependencies": [
-    "motion",
-    "react-use-measure"
-  ],
-  "registryDependencies": [
-    "button",
-    "aspect-ratio"
-  ],
+  "dependencies": ["motion", "react-use-measure"],
+  "registryDependencies": ["button", "aspect-ratio"],
   "files": [
     {
       "path": "registry/default/ui/intro-disclosure.tsx",

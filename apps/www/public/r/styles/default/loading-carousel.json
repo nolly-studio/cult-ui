@@ -2,14 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "loading-carousel",
   "description": "Loading carousel component with smooth transitions and customizable content",
-  "dependencies": [
-    "embla-carousel-autoplay",
-    "lucide-react",
-    "motion"
-  ],
-  "registryDependencies": [
-    "carousel"
-  ],
+  "dependencies": ["embla-carousel-autoplay", "lucide-react", "motion"],
+  "registryDependencies": ["carousel"],
   "files": [
     {
       "path": "registry/default/ui/loading-carousel.tsx",

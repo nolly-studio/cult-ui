@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "cutout-card-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "cutout-card"
-  ],
+  "registryDependencies": ["cutout-card"],
   "files": [
     {
       "path": "registry/default/example/cutout-card-demo.tsx",

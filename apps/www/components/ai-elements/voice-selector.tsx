@@ -1,8 +1,20 @@
 "use client";
 
-import type { ComponentProps, ReactNode } from "react";
-
 import { useControllableState } from "@radix-ui/react-use-controllable-state";
+import {
+  CircleSmallIcon,
+  MarsIcon,
+  MarsStrokeIcon,
+  NonBinaryIcon,
+  PauseIcon,
+  PlayIcon,
+  TransgenderIcon,
+  VenusAndMarsIcon,
+  VenusIcon,
+} from "lucide-react";
+import type { ComponentProps, ReactNode } from "react";
+import { createContext, useCallback, useContext, useMemo } from "react";
+
 import { Button } from "@/components/ui/button";
 import {
   Command,
@@ -23,18 +35,6 @@ import {
 } from "@/components/ui/dialog";
 import { Spinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/utils";
-import {
-  CircleSmallIcon,
-  MarsIcon,
-  MarsStrokeIcon,
-  NonBinaryIcon,
-  PauseIcon,
-  PlayIcon,
-  TransgenderIcon,
-  VenusAndMarsIcon,
-  VenusIcon,
-} from "lucide-react";
-import { createContext, useCallback, useContext, useMemo } from "react";
 
 interface VoiceSelectorContextValue {
   value: string | undefined;
@@ -467,7 +467,7 @@ export const VoiceSelectorBullet = ({
 }: VoiceSelectorBulletProps) => (
   <span
     aria-hidden="true"
-    className={cn("select-none text-border", className)}
+    className={cn("text-border select-none", className)}
     {...props}
   >
     &bull;

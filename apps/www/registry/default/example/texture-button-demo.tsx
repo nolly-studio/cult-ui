@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { ChevronLeft, Trash, X } from "lucide-react"
+import { ChevronLeft, Trash, X } from "lucide-react";
 
-import { TextureButton } from "@/registry/default/ui/texture-button"
+import { TextureButton } from "@/registry/default/ui/texture-button";
 
 export default function TextureButtonDemo() {
   return (
-    <div className="  py-6 px-4 md:px-0 rounded-md flex justify-center">
+    <div className="flex justify-center rounded-md px-4 py-6 md:px-0">
       <div>
-        <div className="flex flex-col gap-3 max-w-lg mt-4">
+        <div className="mt-4 flex max-w-lg flex-col gap-3">
           <div className="flex gap-3">
             <div>
               <TextureButton key="primary" size="sm">
@@ -18,14 +18,14 @@ export default function TextureButtonDemo() {
             <div className="">
               <TextureButton key="primary2">Primary</TextureButton>
             </div>
-            <div className="md:w-36 hidden">
+            <div className="hidden md:w-36">
               <TextureButton key="primary3" size="lg">
                 Primary
               </TextureButton>
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-3 max-w-lg mt-4">
+        <div className="mt-4 flex max-w-lg flex-col gap-3">
           <div className="flex gap-3">
             <div>
               <TextureButton key="accent" variant="accent" size="sm">
@@ -37,15 +37,15 @@ export default function TextureButtonDemo() {
                 Accent
               </TextureButton>
             </div>
-            <div className="md:w-36 hidden">
+            <div className="hidden md:w-36">
               <TextureButton key="accent3" variant="accent" size="lg">
                 Accent
               </TextureButton>
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-3 max-w-lg mt-4">
-          <div className="flex gap-3 w-full">
+        <div className="mt-4 flex max-w-lg flex-col gap-3">
+          <div className="flex w-full gap-3">
             <div className="">
               <TextureButton key="secondary" variant="secondary" size="sm">
                 Secondary
@@ -63,8 +63,8 @@ export default function TextureButtonDemo() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-3 max-w-lg mt-4">
-          <div className="flex gap-3 w-full">
+        <div className="mt-4 flex max-w-lg flex-col gap-3">
+          <div className="flex w-full gap-3">
             <div className="">
               <TextureButton key="destructive" variant="destructive" size="sm">
                 Destructive
@@ -82,8 +82,8 @@ export default function TextureButtonDemo() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-3 max-w-lg mt-4">
-          <div className="flex gap-3 w-full">
+        <div className="mt-4 flex max-w-lg flex-col gap-3">
+          <div className="flex w-full gap-3">
             <div className="">
               <TextureButton key="minimal" variant="minimal" size="sm">
                 Minimal
@@ -101,7 +101,7 @@ export default function TextureButtonDemo() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-3 max-w-xs mt-4">
+        <div className="mt-4 flex max-w-xs flex-col gap-3">
           <div className="flex gap-3">
             <TextureButton key="icon1" variant="icon" size="icon">
               <ChevronLeft className="h-6 w-6 p-1" />
@@ -118,5 +118,5 @@ export default function TextureButtonDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }

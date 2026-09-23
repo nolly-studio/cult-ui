@@ -2,10 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "texture-card-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "texture-card",
-    "texture-button"
-  ],
+  "registryDependencies": ["texture-card", "texture-button"],
   "files": [
     {
       "path": "registry/default/example/texture-card-demo.tsx",

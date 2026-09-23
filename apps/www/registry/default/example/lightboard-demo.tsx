@@ -1,60 +1,60 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 
-import { LightBoard, PatternCell } from "../ui/lightboard"
+import { LightBoard, PatternCell } from "../ui/lightboard";
 
 export default function LightBoardDemo() {
   const [controlledDrawState, setControlledDrawState] =
-    useState<PatternCell>("2")
-  const [controlledHoverState, setControlledHoverState] = useState(false)
+    useState<PatternCell>("2");
+  const [controlledHoverState, setControlledHoverState] = useState(false);
 
   const cycleDrawState = () => {
     setControlledDrawState((prev) => {
       switch (prev) {
         case "0":
-          return "1"
+          return "1";
         case "1":
-          return "2"
+          return "2";
         case "2":
-          return "3"
+          return "3";
         case "3":
-          return "0"
+          return "0";
         default:
-          return "0"
+          return "0";
       }
-    })
-  }
+    });
+  };
 
   return (
-    <div className="space-y-2 lg:space-y-4 p-2 lg:p-8">
+    <div className="space-y-2 p-2 lg:space-y-4 lg:p-8">
       <h1 className="text-3xl font-bold text-white">LightBoard Demo</h1>
 
       {/* Controlled Interactive Board */}
-      <div className="max-w-2xl w-full">
-        <h2 className="text-xl font-semibold  mb-3">
+      <div className="w-full max-w-2xl">
+        <h2 className="mb-3 text-xl font-semibold">
           Controlled LightBoard with draw support
         </h2>
-        <p className=" mb-3">
+        <p className="mb-3">
           Try drawing on this board by clicking and dragging.
         </p>
 
-        <div className="flex space-x-4 mb-3">
+        <div className="mb-3 flex space-x-4">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm"
+            className="rounded bg-blue-500 px-4 py-2 text-sm font-bold text-white hover:bg-blue-700"
             onClick={cycleDrawState}
           >
             Draw Color: {controlledDrawState}
           </button>
           <button
-            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm"
+            className="rounded bg-green-500 px-4 py-2 text-sm font-bold text-white hover:bg-green-700"
             onClick={() => setControlledHoverState((prev) => !prev)}
           >
             Toggle Scroll: {controlledHoverState ? "On" : "Off"}
           </button>
         </div>
 
-        <div className="bg-neutral-900 dark:bg-background">
+        <div className="dark:bg-background bg-neutral-900">
           <LightBoard
             rows={12}
             lightSize={6}
@@ -77,10 +77,10 @@ export default function LightBoardDemo() {
         </div>
       </div>
 
-      <h2 className="text-xl font-semibold  mb-3">Drawing disabled</h2>
+      <h2 className="mb-3 text-xl font-semibold">Drawing disabled</h2>
 
       {/* Basic example */}
-      <div className="max-w-md w-full bg-black">
+      <div className="w-full max-w-md bg-black">
         <LightBoard
           text="Hello World"
           rows={7}
@@ -98,7 +98,7 @@ export default function LightBoardDemo() {
       </div>
 
       {/* Red Alert */}
-      <div className="max-w-lg w-full bg-black">
+      <div className="w-full max-w-lg bg-black">
         <LightBoard
           text="DANGER ZONE"
           rows={10}
@@ -116,7 +116,7 @@ export default function LightBoardDemo() {
       </div>
 
       {/* Rainbow Scroll */}
-      <div className="max-w-xl w-full bg-black">
+      <div className="w-full max-w-xl bg-black">
         <LightBoard
           rows={15}
           lightSize={2}
@@ -152,7 +152,7 @@ export default function LightBoardDemo() {
       </div>
 
       {/* Interactive Neon Board */}
-      <div className="max-w-2xl w-full bg-black">
+      <div className="w-full max-w-2xl bg-black">
         <LightBoard
           rows={12}
           lightSize={4}
@@ -169,12 +169,12 @@ export default function LightBoardDemo() {
         />
       </div>
 
-      <h2 className="text-xl font-semibold  mb-3">sketchpad</h2>
-      <p className=" mb-3">
+      <h2 className="mb-3 text-xl font-semibold">sketchpad</h2>
+      <p className="mb-3">
         Try drawing on this board by clicking and dragging.
       </p>
 
-      <div className="bg-neutral-900 dark:bg-background mb-2">
+      <div className="dark:bg-background mb-2 bg-neutral-900">
         <LightBoard
           rows={22}
           lightSize={6}
@@ -193,5 +193,5 @@ export default function LightBoardDemo() {
         />
       </div>
     </div>
-  )
+  );
 }

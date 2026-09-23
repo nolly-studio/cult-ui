@@ -46,7 +46,10 @@ npm install @radix-ui/react-slot @radix-ui/react-use-controllable-state
 
 <ComponentSource name="terminal-animation-demo" />
 
-<Step>Add this cursor blink utility to your global stylesheet (for example, <code>globals.css</code>).</Step>
+<Step>
+  Add this cursor blink utility to your global stylesheet (for example,{" "}
+  <code>globals.css</code>).
+</Step>
 
 ```css
 @keyframes caret-blink {
@@ -86,7 +89,7 @@ import {
   TerminalAnimationTabList,
   TerminalAnimationTabTrigger,
   type TabContent,
-} from "@/components/ui/terminal-animation"
+} from "@/components/ui/terminal-animation";
 
 const tabs: TabContent[] = [
   {
@@ -94,10 +97,14 @@ const tabs: TabContent[] = [
     command: "npm run dev",
     lines: [
       { text: "  ▲ Next.js 16.1.6", delay: 300 },
-      { text: "  - Local: http://localhost:3000", delay: 200, color: "text-cyan-400" },
+      {
+        text: "  - Local: http://localhost:3000",
+        delay: 200,
+        color: "text-cyan-400",
+      },
     ],
   },
-]
+];
 ```
 
 ```tsx
@@ -144,14 +151,18 @@ Use `renderLine` to fully control how each output line appears:
 ```tsx
 <TerminalAnimationOutput
   renderLine={(line, index, visible) => {
-    if (!visible) return null
+    if (!visible) return null;
 
     return (
       <div className="font-mono text-sm leading-relaxed">
-        <span className="text-muted-foreground mr-3 select-none">{String(index + 1).padStart(2, "0")}</span>
-        <span className={line.color ?? "text-foreground"}>{line.text || "\u00A0"}</span>
+        <span className="text-muted-foreground mr-3 select-none">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <span className={line.color ?? "text-foreground"}>
+          {line.text || "\u00A0"}
+        </span>
       </div>
-    )
+    );
   }}
 />
 ```
@@ -162,19 +173,19 @@ Use `renderLine` to fully control how each output line appears:
 
 #### `TerminalLine`
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `text` | `string` | Text content for an output line |
-| `color` | `string` | Optional utility class for line color |
-| `delay` | `number` | Delay (ms) before revealing the next line |
+| Property | Type     | Description                               |
+| -------- | -------- | ----------------------------------------- |
+| `text`   | `string` | Text content for an output line           |
+| `color`  | `string` | Optional utility class for line color     |
+| `delay`  | `number` | Delay (ms) before revealing the next line |
 
 #### `TabContent`
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `label` | `string` | Tab label |
-| `command` | `string` | Command text to animate in the prompt |
-| `lines` | `TerminalLine[]` | Output lines revealed after command typing |
+| Property  | Type             | Description                                |
+| --------- | ---------------- | ------------------------------------------ |
+| `label`   | `string`         | Tab label                                  |
+| `command` | `string`         | Command text to animate in the prompt      |
+| `lines`   | `TerminalLine[]` | Output lines revealed after command typing |
 
 ### `TerminalAnimationRoot`
 

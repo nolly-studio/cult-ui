@@ -1,8 +1,6 @@
 {
   "name": "menubar",
-  "dependencies": [
-    "@radix-ui/react-menubar"
-  ],
+  "dependencies": ["@radix-ui/react-menubar"],
   "files": [
     {
       "name": "menubar.tsx",

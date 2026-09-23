@@ -38,7 +38,10 @@ npx shadcn@latest add https://cult-ui.com/r/hero-color-panel.json
 npm install @paper-design/shaders-react
 ```
 
-<Step>Install required registry dependencies if they are not already in your project.</Step>
+<Step>
+  Install required registry dependencies if they are not already in your
+  project.
+</Step>
 
 ```bash
 npx shadcn@latest add button badge
@@ -73,7 +76,7 @@ import {
   HeroColorPanelsBadges,
   HeroColorPanelsVisual,
   HeroColorPanelsMobileVisual,
-} from "@/components/ui/hero-color-panel"
+} from "@/components/ui/hero-color-panel";
 ```
 
 ```tsx
@@ -98,7 +101,7 @@ export default function Page() {
         <HeroColorPanelsMobileVisual />
       </HeroColorPanelsRoot>
     </main>
-  )
+  );
 }
 ```
 
@@ -240,7 +243,9 @@ Use primitive exports for custom layout composition:
       <HeroColorPanelsActions />
       <HeroColorPanelsBadges />
     </HeroColorPanelsContent>
-    <HeroColorPanelsVisual desktopShaderProps={{ colors: ["#006CFF", "#00d2ff"] }} />
+    <HeroColorPanelsVisual
+      desktopShaderProps={{ colors: ["#006CFF", "#00d2ff"] }}
+    />
   </HeroColorPanelsContainer>
   <HeroColorPanelsMobileVisual />
 </HeroColorPanelsRoot>

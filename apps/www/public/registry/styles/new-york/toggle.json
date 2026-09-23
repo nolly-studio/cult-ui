@@ -1,8 +1,6 @@
 {
   "name": "toggle",
-  "dependencies": [
-    "@radix-ui/react-toggle"
-  ],
+  "dependencies": ["@radix-ui/react-toggle"],
   "files": [
     {
       "name": "toggle.tsx",

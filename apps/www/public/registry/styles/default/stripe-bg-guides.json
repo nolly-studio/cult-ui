@@ -1,9 +1,7 @@
 {
   "name": "stripe-bg-guides",
   "description": "Stripe-style background guides component with animated patterns and effects",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "name": "stripe-bg-guides.tsx",

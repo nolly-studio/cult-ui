@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "choice-poll-demo",
-  "registryDependencies": [
-    "choice-poll"
-  ],
+  "registryDependencies": ["choice-poll"],
   "files": [
     {
       "path": "registry/default/example/choice-poll-demo.tsx",

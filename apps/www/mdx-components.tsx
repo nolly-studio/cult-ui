@@ -1,27 +1,27 @@
-import * as React from "react"
-import NextImage from "next/image"
-import Link from "next/link"
+import NextImage from "next/image";
+import Link from "next/link";
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
+import { Callout } from "@/components/callout";
+import { CodeBlockCommand } from "@/components/code-block-command";
+import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
+import { CodeTabs } from "@/components/code-tabs";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
+import { ComponentsList } from "@/components/components-list";
+import { CopyButton } from "@/components/copy-button";
+import { getIconForLanguageExtension } from "@/components/icons";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Callout } from "@/components/callout"
-import { CodeBlockCommand } from "@/components/code-block-command"
-import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
-import { CodeTabs } from "@/components/code-tabs"
-import { ComponentPreview } from "@/components/component-preview"
-import { ComponentSource } from "@/components/component-source"
-import { ComponentsList } from "@/components/components-list"
-import { CopyButton } from "@/components/copy-button"
-import { getIconForLanguageExtension } from "@/components/icons"
+} from "@/components/ui/accordion";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
 
 export const mdxComponents = {
   h1: ({ className, ...props }: React.ComponentProps<"h1">) => (
@@ -48,7 +48,7 @@ export const mdxComponents = {
         )}
         {...props}
       />
-    )
+    );
   },
   h3: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
@@ -169,10 +169,10 @@ export const mdxComponents = {
       >
         {children}
       </pre>
-    )
+    );
   },
   figure: ({ className, ...props }: React.ComponentProps<"figure">) => {
-    return <figure className={cn("group relative", className)} {...props} />
+    return <figure className={cn("group relative", className)} {...props} />;
   },
   figcaption: ({
     className,
@@ -182,7 +182,7 @@ export const mdxComponents = {
     const iconExtension =
       "data-language" in props && typeof props["data-language"] === "string"
         ? getIconForLanguageExtension(props["data-language"])
-        : null
+        : null;
 
     return (
       <figcaption
@@ -195,7 +195,7 @@ export const mdxComponents = {
         {iconExtension}
         {children}
       </figcaption>
-    )
+    );
   },
   code: ({
     className,
@@ -207,12 +207,12 @@ export const mdxComponents = {
     __bun__,
     ...props
   }: React.ComponentProps<"code"> & {
-    __raw__?: string
-    __src__?: string
-    __npm__?: string
-    __yarn__?: string
-    __pnpm__?: string
-    __bun__?: string
+    __raw__?: string;
+    __src__?: string;
+    __npm__?: string;
+    __yarn__?: string;
+    __pnpm__?: string;
+    __bun__?: string;
   }) => {
     // Inline Code.
     if (typeof props.children === "string") {
@@ -224,11 +224,11 @@ export const mdxComponents = {
           )}
           {...props}
         />
-      )
+      );
     }
 
     // npm command.
-    const isNpmCommand = __npm__ && __yarn__ && __pnpm__ && __bun__
+    const isNpmCommand = __npm__ && __yarn__ && __pnpm__ && __bun__;
     if (isNpmCommand) {
       return (
         <CodeBlockCommand
@@ -237,14 +237,14 @@ export const mdxComponents = {
           __pnpm__={__pnpm__}
           __bun__={__bun__}
         />
-      )
+      );
     }
 
     // Default codeblock.
     return (
       <>
         {__raw__ && (
-          <div className="absolute top-2 right-2 z-10 opacity-70 group-hover:opacity-100 transition-opacity duration-150">
+          <div className="absolute top-2 right-2 z-10 opacity-70 transition-opacity duration-150 group-hover:opacity-100">
             <CopyButton
               value={__raw__}
               src={__src__}
@@ -254,7 +254,7 @@ export const mdxComponents = {
         )}
         <code {...props} />
       </>
-    )
+    );
   },
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
@@ -289,7 +289,9 @@ export const mdxComponents = {
     />
   ),
   Tabs: ({ className, ...props }: React.ComponentProps<typeof Tabs>) => {
-    return <Tabs className={cn("relative mt-6 w-full", className)} {...props} />
+    return (
+      <Tabs className={cn("relative mt-6 w-full", className)} {...props} />
+    );
   },
   TabsList: ({
     className,
@@ -365,20 +367,20 @@ export const mdxComponents = {
   ),
   CitationItem: ({ className, ...props }: React.ComponentProps<"li">) => (
     <li
-      className={cn(" flex items-start text-muted-foreground", className)}
+      className={cn("text-muted-foreground flex items-start", className)}
       {...props}
     />
   ),
   CitationLink: ({ className, ...props }: React.ComponentProps<"a">) => (
-    <a className={cn(" ml-1 hover:underline", className)} {...props} />
+    <a className={cn("ml-1 hover:underline", className)} {...props} />
   ),
   Citations: ({ className, ...props }: React.ComponentProps<"div">) => (
     <div
       className={cn(
-        "my-6 rounded-md border-l-4 border-border bg-transparent p-4 ",
+        "border-border my-6 rounded-md border-l-4 bg-transparent p-4",
         className
       )}
       {...props}
     />
   ),
-}
+};

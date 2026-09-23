@@ -49,23 +49,23 @@ npx shadcn@latest add https://cult-ui.com/r/svg-shapes-animated.json
 Each export is a client component (`"use client"`) that wraps stroked paths in `motion` elements. Animations use `whileInView` with `pathLength` from 0 → 1 so lines draw when the SVG enters the viewport. `useReducedMotion()` skips the animation and shows finished paths immediately.
 
 ```tsx
-import { GothicArchPanelSvg } from "@/components/ui/svg-shapes-animated"
+import { GothicArchPanelSvg } from "@/components/ui/svg-shapes-animated";
 
 export function Hero() {
   return (
     <div className="text-foreground/50 w-full max-w-4xl">
       <GothicArchPanelSvg />
     </div>
-  )
+  );
 }
 ```
 
 ### Props
 
-| Prop        | Type                                              | Default   |
-| ----------- | ------------------------------------------------- | --------- |
-| `className` | `string`                                          | —         |
-| `flip`      | `"none"` \| `"vertical"` \| `"horizontal"` \| `"both"` | `"none"` |
+| Prop | Type | Default |
+| --- | --- | --- |
+| `className` | `string` | — |
+| `flip` | `"none"` \| `"vertical"` \| `"horizontal"` \| `"both"` | `"none"` |
 
 Requires the **motion** package (`motion/react`), declared as a registry dependency when installing via CLI.
 

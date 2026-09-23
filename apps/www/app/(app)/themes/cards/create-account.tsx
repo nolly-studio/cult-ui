@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Icons } from "@/components/icons"
+import { Icons } from "@/components/icons";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   TextureCard,
   TextureCardContent,
@@ -11,7 +11,7 @@ import {
   TextureCardFooter,
   TextureCardHeader,
   TextureCardTitle,
-} from "@/registry/default/ui/texture-card"
+} from "@/registry/default/ui/texture-card";
 
 export function CardsCreateAccount() {
   return (
@@ -40,7 +40,7 @@ export function CardsCreateAccount() {
             <span className="w-full border-t" />
           </div>
           <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-background px-2 text-muted-foreground">
+            <span className="bg-background text-muted-foreground px-2">
               Or continue with
             </span>
           </div>
@@ -58,5 +58,5 @@ export function CardsCreateAccount() {
         <Button className="w-full">Create account</Button>
       </TextureCardFooter>
     </TextureCard>
-  )
+  );
 }

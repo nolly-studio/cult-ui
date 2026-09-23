@@ -1,14 +1,14 @@
-import { useTheme } from "next-themes"
-import { Bar, BarChart, Line, LineChart, ResponsiveContainer } from "recharts"
+import { useTheme } from "next-themes";
+import { Bar, BarChart, Line, LineChart, ResponsiveContainer } from "recharts";
 
-import { useConfig } from "@/hooks/use-config"
+import { useConfig } from "@/hooks/use-config";
 import {
   TextureCard,
   TextureCardContent,
   TextureCardHeader,
   TextureCardTitle,
-} from "@/registry/default/ui/texture-card"
-import { themes } from "@/registry/themes"
+} from "@/registry/default/ui/texture-card";
+import { themes } from "@/registry/themes";
 
 const data = [
   {
@@ -43,13 +43,13 @@ const data = [
     revenue: 26475,
     subscription: 189,
   },
-]
+];
 
 export function CardsStats() {
-  const { theme: mode } = useTheme()
-  const [config] = useConfig()
+  const { theme: mode } = useTheme();
+  const [config] = useConfig();
 
-  const theme = themes.find((theme) => theme.name === config.theme)
+  const theme = themes.find((theme) => theme.name === config.theme);
 
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
@@ -61,7 +61,7 @@ export function CardsStats() {
         </TextureCardHeader>
         <TextureCardContent>
           <div className="text-2xl font-bold">$15,231.89</div>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-muted-foreground text-xs">
             +20.1% from last month
           </p>
           <div className="h-[80px]">
@@ -106,7 +106,7 @@ export function CardsStats() {
         </TextureCardHeader>
         <TextureCardContent>
           <div className="text-2xl font-bold">+2350</div>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-muted-foreground text-xs">
             +180.1% from last month
           </p>
           <div className="mt-4 h-[80px]">
@@ -131,5 +131,5 @@ export function CardsStats() {
         </TextureCardContent>
       </TextureCard>
     </div>
-  )
+  );
 }

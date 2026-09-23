@@ -3,9 +3,7 @@
   "name": "animated-number",
   "type": "registry:ui",
   "description": "Number component with smooth counting animations and customizable formatting",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/animated-number.tsx",

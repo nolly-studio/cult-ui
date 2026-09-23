@@ -2,9 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "youtube-video-player-demo",
   "type": "registry:component",
-  "registryDependencies": [
-    "youtube-video-player"
-  ],
+  "registryDependencies": ["youtube-video-player"],
   "files": [
     {
       "path": "registry/default/example/youtube-video-player-demo.tsx",

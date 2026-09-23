@@ -1,87 +1,87 @@
-"use client"
+"use client";
 
-import { useEffect, useId, useRef, useState, type ReactNode } from "react"
-import { ArrowRight, Pause, Play, Sparkles, Wand2, Zap } from "lucide-react"
-import type { MetalFxPreset } from "metal-fx"
+import { ArrowRight, Pause, Play, Sparkles, Wand2, Zap } from "lucide-react";
+import type { MetalFxPreset } from "metal-fx";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
   MetalButton,
   MetalIconButton,
-} from "@/registry/default/ui/metal-button"
+} from "@/registry/default/ui/metal-button";
 
 const PRESET_ROW: { key: MetalFxPreset; label: string }[] = [
   { key: "chromatic", label: "Chromatic" },
   { key: "silver", label: "Silver" },
   { key: "gold", label: "Gold" },
-]
+];
 
-const METAL_VARIANTS = ["button", "circle"] as const
+const METAL_VARIANTS = ["button", "circle"] as const;
 
 const STRENGTH_ROW = [
   { value: 0.5, label: "50%" },
   { value: 0.75, label: "75%" },
   { value: 0.9, label: "90%" },
   { value: 1, label: "100%" },
-] as const
+] as const;
 
 function Section({
   title,
   description,
   children,
 }: {
-  title: string
-  description?: string
-  children: ReactNode
+  title: string;
+  description?: string;
+  children: ReactNode;
 }) {
   return (
     <section className="space-y-4">
       <div className="space-y-1">
-        <h3 className="font-semibold text-foreground text-sm tracking-tight">
+        <h3 className="text-foreground text-sm font-semibold tracking-tight">
           {title}
         </h3>
         {description ? (
-          <p className="text-pretty text-muted-foreground text-xs leading-relaxed">
+          <p className="text-muted-foreground text-xs leading-relaxed text-pretty">
             {description}
           </p>
         ) : null}
       </div>
       {children}
     </section>
-  )
+  );
 }
 
 export default function MetalButtonDemo() {
-  const id = useId()
-  const chipRef = useRef<HTMLButtonElement>(null)
-  const [preset, setPreset] = useState<MetalFxPreset>("chromatic")
-  const [metalPaused, setMetalPaused] = useState(false)
-  const [respectsReducedMotion, setRespectsReducedMotion] = useState(false)
+  const id = useId();
+  const chipRef = useRef<HTMLButtonElement>(null);
+  const [preset, setPreset] = useState<MetalFxPreset>("chromatic");
+  const [metalPaused, setMetalPaused] = useState(false);
+  const [respectsReducedMotion, setRespectsReducedMotion] = useState(false);
 
   const activePresetLabel =
-    PRESET_ROW.find((row) => row.key === preset)?.label ?? "Chromatic"
+    PRESET_ROW.find((row) => row.key === preset)?.label ?? "Chromatic";
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
-    const sync = () => setRespectsReducedMotion(mq.matches)
-    sync()
-    mq.addEventListener("change", sync)
-    return () => mq.removeEventListener("change", sync)
-  }, [])
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setRespectsReducedMotion(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
 
-  const effectivePaused = metalPaused || respectsReducedMotion
+  const effectivePaused = metalPaused || respectsReducedMotion;
 
   return (
     <div className="mx-auto w-full max-w-3xl space-y-10 px-4 py-8 md:px-6">
       <header className="space-y-2 text-center">
-        <p className="font-medium text-[11px] text-muted-foreground uppercase tracking-[0.2em]">
+        <p className="text-muted-foreground text-[11px] font-medium tracking-[0.2em] uppercase">
           Liquid metal
         </p>
-        <h2 className="font-semibold text-foreground text-xl tracking-tight md:text-2xl">
+        <h2 className="text-foreground text-xl font-semibold tracking-tight md:text-2xl">
           Button + animated metal ring
         </h2>
-        <p className="mx-auto max-w-lg text-pretty text-muted-foreground text-sm leading-relaxed">
+        <p className="text-muted-foreground mx-auto max-w-lg text-sm leading-relaxed text-pretty">
           <span className="text-foreground/90">className</span> targets the
           shadcn <span className="text-foreground/90">Button</span>;{" "}
           <span className="text-foreground/90">metalFxClassName</span> styles
@@ -227,7 +227,7 @@ export default function MetalButtonDemo() {
       >
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <button
-            className="rounded-full border border-border bg-muted/50 px-3 py-1.5 text-muted-foreground text-xs"
+            className="border-border bg-muted/50 text-muted-foreground rounded-full border px-3 py-1.5 text-xs"
             ref={chipRef}
             type="button"
           >
@@ -276,5 +276,5 @@ export default function MetalButtonDemo() {
         </p>
       </Section>
     </div>
-  )
+  );
 }

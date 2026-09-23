@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-const shapeSvgClass = "w-full  text-foreground stroke-2"
+const shapeSvgClass = "w-full  text-foreground stroke-2";
 
 const flipClasses = {
   none: "",
@@ -8,20 +8,20 @@ const flipClasses = {
   vertical: "origin-center -scale-y-100",
   horizontal: "origin-center -scale-x-100",
   both: "origin-center -scale-x-100 -scale-y-100",
-} as const
+} as const;
 
-export type ShapeShapeFlip = keyof typeof flipClasses
+export type ShapeShapeFlip = keyof typeof flipClasses;
 
 export interface ShapeSvgProps {
-  className?: string
-  flip?: ShapeShapeFlip
+  className?: string;
+  flip?: ShapeShapeFlip;
 }
 
 function shapeSvgClassName(
   flip: ShapeShapeFlip | undefined,
   className: string | undefined
 ) {
-  return cn(shapeSvgClass, flip ? flipClasses[flip] : null, className)
+  return cn(shapeSvgClass, flip ? flipClasses[flip] : null, className);
 }
 
 /** Line-art shapes: no fill tint (stroke-only reads correctly). */
@@ -33,12 +33,12 @@ function lineArtShapeSvgClassName(
     "w-full fill-none stroke-2",
     flip ? flipClasses[flip] : null,
     className
-  )
+  );
 }
 
 export interface CrosshairReticleSvgProps extends ShapeSvgProps {
   /** When true, draws the 50px-radius center ring. Default true. */
-  showCenterCircle?: boolean
+  showCenterCircle?: boolean;
 }
 
 /* ------------------------------------------------------------------ */
@@ -59,7 +59,7 @@ export function TriangleShapeSvg({ className, flip = "none" }: ShapeSvgProps) {
       <title>Equilateral triangle shape</title>
       <path d="M1200 2L2398 998H2Z" stroke="currentColor" />
     </svg>
-  )
+  );
 }
 
 /**
@@ -76,7 +76,7 @@ export function CircleShapeSvg({ className, flip = "none" }: ShapeSvgProps) {
       <title>Circular shape</title>
       <circle cx={1200} cy={500} r={498} stroke="currentColor" />
     </svg>
-  )
+  );
 }
 
 /**
@@ -93,7 +93,7 @@ export function EllipseShapeSvg({ className, flip = "none" }: ShapeSvgProps) {
       <title>Horizontal ellipse shape</title>
       <ellipse cx={1200} cy={400} rx={1000} ry={398} stroke="currentColor" />
     </svg>
-  )
+  );
 }
 
 /**
@@ -113,7 +113,7 @@ export function SemicircleShapeSvg({
       <title>Semicircle D-shape with flat left edge</title>
       <path d="M1 2H1200A498 498 0 0 1 1200 998H1Z" stroke="currentColor" />
     </svg>
-  )
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -137,7 +137,7 @@ export function RightTriangleShapeSvg({
       <title>Right triangle shape</title>
       <path d="M2 2L2398 998H2Z" stroke="currentColor" />
     </svg>
-  )
+  );
 }
 
 /**
@@ -155,7 +155,7 @@ export function KiteShapeSvg({ className, flip = "none" }: ShapeSvgProps) {
       <title>Kite shape</title>
       <path d="M1200 2L1700 400L1200 998L700 400Z" stroke="currentColor" />
     </svg>
-  )
+  );
 }
 
 /**
@@ -172,7 +172,7 @@ export function PennantShapeSvg({ className, flip = "none" }: ShapeSvgProps) {
       <title>Pennant flag shape tapering to a point</title>
       <path d="M1 1H1800L2399 300L1800 599H1Z" stroke="currentColor" />
     </svg>
-  )
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -203,7 +203,7 @@ export function RoundedSquareShapeSvg({
         y={1}
       />
     </svg>
-  )
+  );
 }
 
 /**
@@ -235,7 +235,7 @@ export function RoundedTriangleShapeSvg({
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /**
@@ -245,18 +245,18 @@ export function RoundedTriangleShapeSvg({
 export function SquircleShapeSvg({ className, flip = "none" }: ShapeSvgProps) {
   // Centered at 1200,450 with ~440px half-width and ~440px half-height
   // Superellipse approximation: control points at ~85% of the half-dimension
-  const cx = 1200
-  const cy = 450
-  const hw = 440 // half width
-  const hh = 440 // half height
-  const k = 0.85 // control point ratio (higher = more square)
+  const cx = 1200;
+  const cy = 450;
+  const hw = 440; // half width
+  const hh = 440; // half height
+  const k = 0.85; // control point ratio (higher = more square)
 
-  const t = cy - hh
-  const b = cy + hh
-  const l = cx - hw
-  const r = cx + hw
-  const kw = hw * k
-  const kh = hh * k
+  const t = cy - hh;
+  const b = cy + hh;
+  const l = cx - hw;
+  const r = cx + hw;
+  const kw = hw * k;
+  const kh = hh * k;
 
   return (
     <svg
@@ -275,7 +275,7 @@ export function SquircleShapeSvg({ className, flip = "none" }: ShapeSvgProps) {
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -305,7 +305,7 @@ export function GothicArchPanelSvg({
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /**
@@ -325,7 +325,7 @@ export function QuarterCircleShapeSvg({
       <title>Quarter circle fan wedge</title>
       <path d="M2 998V2A996 996 0 0 1 998 998Z" stroke="currentColor" />
     </svg>
-  )
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -353,7 +353,7 @@ export function SingleBracketShapeSvg({
         stroke="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 /**
@@ -373,7 +373,7 @@ export function ArrowPentagonShapeSvg({
       <title>Arrow pentagon shape</title>
       <path d="M1 1H2000L2399 300L2000 599H1Z" stroke="currentColor" />
     </svg>
-  )
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -386,10 +386,10 @@ export function ArrowPentagonShapeSvg({
 /* ------------------------------------------------------------------ */
 
 export function VesicaPiscisSvg({ className, flip = "none" }: ShapeSvgProps) {
-  const cx = 1200
-  const cy = 500
-  const r = 300
-  const offset = r / 2 // circles overlap by one radius
+  const cx = 1200;
+  const cy = 500;
+  const r = 300;
+  const offset = r / 2; // circles overlap by one radius
 
   return (
     <svg
@@ -402,7 +402,7 @@ export function VesicaPiscisSvg({ className, flip = "none" }: ShapeSvgProps) {
       <circle cx={cx - offset} cy={cy} r={r} stroke="currentColor" />
       <circle cx={cx + offset} cy={cy} r={r} stroke="currentColor" />
     </svg>
-  )
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -411,14 +411,14 @@ export function VesicaPiscisSvg({ className, flip = "none" }: ShapeSvgProps) {
 /* ------------------------------------------------------------------ */
 
 export function SeedOfLifeSvg({ className, flip = "none" }: ShapeSvgProps) {
-  const cx = 1200
-  const cy = 500
-  const r = 200
+  const cx = 1200;
+  const cy = 500;
+  const r = 200;
 
   const petals = Array.from({ length: 6 }, (_, i) => {
-    const angle = (i * 60 * Math.PI) / 180
-    return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) }
-  })
+    const angle = (i * 60 * Math.PI) / 180;
+    return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
+  });
 
   return (
     <svg
@@ -439,7 +439,7 @@ export function SeedOfLifeSvg({ className, flip = "none" }: ShapeSvgProps) {
         />
       ))}
     </svg>
-  )
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -448,31 +448,31 @@ export function SeedOfLifeSvg({ className, flip = "none" }: ShapeSvgProps) {
 /* ------------------------------------------------------------------ */
 
 export function FlowerOfLifeSvg({ className, flip = "none" }: ShapeSvgProps) {
-  const cx = 1200
-  const cy = 500
-  const r = 150
+  const cx = 1200;
+  const cy = 500;
+  const r = 150;
 
   // Ring 1: 6 circles at distance r
   const ring1 = Array.from({ length: 6 }, (_, i) => {
-    const angle = (i * 60 * Math.PI) / 180
-    return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) }
-  })
+    const angle = (i * 60 * Math.PI) / 180;
+    return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
+  });
 
   // Ring 2: 6 circles at distance 2r (aligned) + 6 at distance r√3 (offset 30°)
   const ring2a = Array.from({ length: 6 }, (_, i) => {
-    const angle = (i * 60 * Math.PI) / 180
-    return { x: cx + 2 * r * Math.cos(angle), y: cy + 2 * r * Math.sin(angle) }
-  })
+    const angle = (i * 60 * Math.PI) / 180;
+    return { x: cx + 2 * r * Math.cos(angle), y: cy + 2 * r * Math.sin(angle) };
+  });
   const ring2b = Array.from({ length: 6 }, (_, i) => {
-    const angle = ((i * 60 + 30) * Math.PI) / 180
-    const d = r * Math.sqrt(3)
-    return { x: cx + d * Math.cos(angle), y: cy + d * Math.sin(angle) }
-  })
+    const angle = ((i * 60 + 30) * Math.PI) / 180;
+    const d = r * Math.sqrt(3);
+    return { x: cx + d * Math.cos(angle), y: cy + d * Math.sin(angle) };
+  });
 
-  const allCircles = [{ x: cx, y: cy }, ...ring1, ...ring2a, ...ring2b]
+  const allCircles = [{ x: cx, y: cy }, ...ring1, ...ring2a, ...ring2b];
 
   // Bounding circle
-  const outerR = 2 * r + r * 0.15
+  const outerR = 2 * r + r * 0.15;
 
   return (
     <svg
@@ -493,7 +493,7 @@ export function FlowerOfLifeSvg({ className, flip = "none" }: ShapeSvgProps) {
         />
       ))}
     </svg>
-  )
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -502,29 +502,29 @@ export function FlowerOfLifeSvg({ className, flip = "none" }: ShapeSvgProps) {
 /* ------------------------------------------------------------------ */
 
 export function MetatronsCubeSvg({ className, flip = "none" }: ShapeSvgProps) {
-  const cx = 1200
-  const cy = 500
-  const r = 60
-  const ringR = 200
+  const cx = 1200;
+  const cy = 500;
+  const r = 60;
+  const ringR = 200;
 
   // Center + ring 1 (6) + ring 2 (6)
-  const center = { x: cx, y: cy }
+  const center = { x: cx, y: cy };
   const ring1 = Array.from({ length: 6 }, (_, i) => {
-    const angle = (i * 60 * Math.PI) / 180 - Math.PI / 2
-    return { x: cx + ringR * Math.cos(angle), y: cy + ringR * Math.sin(angle) }
-  })
+    const angle = (i * 60 * Math.PI) / 180 - Math.PI / 2;
+    return { x: cx + ringR * Math.cos(angle), y: cy + ringR * Math.sin(angle) };
+  });
   const ring2 = Array.from({ length: 6 }, (_, i) => {
-    const angle = (i * 60 * Math.PI) / 180 - Math.PI / 2
+    const angle = (i * 60 * Math.PI) / 180 - Math.PI / 2;
     return {
       x: cx + 2 * ringR * Math.cos(angle),
       y: cy + 2 * ringR * Math.sin(angle),
-    }
-  })
+    };
+  });
 
-  const nodes = [center, ...ring1, ...ring2]
+  const nodes = [center, ...ring1, ...ring2];
 
   // Connect every node to every other node
-  const lines: { x1: number; y1: number; x2: number; y2: number }[] = []
+  const lines: { x1: number; y1: number; x2: number; y2: number }[] = [];
   for (let i = 0; i < nodes.length; i++) {
     for (let j = i + 1; j < nodes.length; j++) {
       lines.push({
@@ -532,7 +532,7 @@ export function MetatronsCubeSvg({ className, flip = "none" }: ShapeSvgProps) {
         y1: nodes[i].y,
         x2: nodes[j].x,
         y2: nodes[j].y,
-      })
+      });
     }
   }
 
@@ -565,7 +565,7 @@ export function MetatronsCubeSvg({ className, flip = "none" }: ShapeSvgProps) {
         />
       ))}
     </svg>
-  )
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -574,12 +574,12 @@ export function MetatronsCubeSvg({ className, flip = "none" }: ShapeSvgProps) {
 /* ------------------------------------------------------------------ */
 
 export function SriYantraSvg({ className, flip = "none" }: ShapeSvgProps) {
-  const cx = 1200
-  const cy = 500
+  const cx = 1200;
+  const cy = 500;
 
   // Simplified Sri Yantra: 4 upward triangles + 5 downward triangles
   // Heights are canonical proportions (normalized to outer radius 320)
-  const outerR = 320
+  const outerR = 320;
 
   // Upward-pointing triangles (apex at top): base y, apex y
   const upTriangles = [
@@ -587,7 +587,7 @@ export function SriYantraSvg({ className, flip = "none" }: ShapeSvgProps) {
     { baseY: cy + 220, apexY: cy - 240, halfW: 250 },
     { baseY: cy + 140, apexY: cy - 160, halfW: 175 },
     { baseY: cy + 70, apexY: cy - 80, halfW: 100 },
-  ]
+  ];
 
   // Downward-pointing triangles (apex at bottom)
   const downTriangles = [
@@ -596,7 +596,7 @@ export function SriYantraSvg({ className, flip = "none" }: ShapeSvgProps) {
     { baseY: cy - 170, apexY: cy + 180, halfW: 195 },
     { baseY: cy - 110, apexY: cy + 110, halfW: 135 },
     { baseY: cy - 50, apexY: cy + 50, halfW: 70 },
-  ]
+  ];
 
   return (
     <svg
@@ -633,7 +633,7 @@ export function SriYantraSvg({ className, flip = "none" }: ShapeSvgProps) {
       {/* Bindu (center dot) */}
       <circle cx={cx} cy={cy} fill="currentColor" r={4} stroke="none" />
     </svg>
-  )
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -646,16 +646,16 @@ export function TetrahedronWireshapeSvg({
   className,
   flip = "none",
 }: ShapeSvgProps) {
-  const cx = 1200
-  const cy = 500
-  const r = 280
+  const cx = 1200;
+  const cy = 500;
+  const r = 280;
 
   // 3 outer vertices (equilateral triangle) + 1 center
   const verts = Array.from({ length: 3 }, (_, i) => {
-    const angle = (i * 120 * Math.PI) / 180 - Math.PI / 2
-    return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) }
-  })
-  const center = { x: cx, y: cy }
+    const angle = (i * 120 * Math.PI) / 180 - Math.PI / 2;
+    return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
+  });
+  const center = { x: cx, y: cy };
 
   return (
     <svg
@@ -683,24 +683,24 @@ export function TetrahedronWireshapeSvg({
         />
       ))}
     </svg>
-  )
+  );
 }
 
 /** Cube (Hexahedron) — projected as nested squares rotated 45°. */
 export function CubeWireshapeSvg({ className, flip = "none" }: ShapeSvgProps) {
-  const cx = 1200
-  const cy = 500
-  const outer = 260
-  const inner = 150
+  const cx = 1200;
+  const cy = 500;
+  const outer = 260;
+  const inner = 150;
 
   const outerVerts = Array.from({ length: 4 }, (_, i) => {
-    const angle = (i * 90 * Math.PI) / 180 - Math.PI / 4
-    return { x: cx + outer * Math.cos(angle), y: cy + outer * Math.sin(angle) }
-  })
+    const angle = (i * 90 * Math.PI) / 180 - Math.PI / 4;
+    return { x: cx + outer * Math.cos(angle), y: cy + outer * Math.sin(angle) };
+  });
   const innerVerts = Array.from({ length: 4 }, (_, i) => {
-    const angle = (i * 90 * Math.PI) / 180
-    return { x: cx + inner * Math.cos(angle), y: cy + inner * Math.sin(angle) }
-  })
+    const angle = (i * 90 * Math.PI) / 180;
+    return { x: cx + inner * Math.cos(angle), y: cy + inner * Math.sin(angle) };
+  });
 
   return (
     <svg
@@ -731,7 +731,7 @@ export function CubeWireshapeSvg({ className, flip = "none" }: ShapeSvgProps) {
         />
       ))}
     </svg>
-  )
+  );
 }
 
 /** Octahedron — 6 vertices, projected as a square with both diagonals and a center diamond. */
@@ -739,17 +739,17 @@ export function OctahedronWireshapeSvg({
   className,
   flip = "none",
 }: ShapeSvgProps) {
-  const cx = 1200
-  const cy = 500
-  const r = 280
+  const cx = 1200;
+  const cy = 500;
+  const r = 280;
 
   // 4 equatorial vertices (square) + top + bottom
   const eq = Array.from({ length: 4 }, (_, i) => {
-    const angle = (i * 90 * Math.PI) / 180
-    return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) }
-  })
-  const top = { x: cx, y: cy - r }
-  const bottom = { x: cx, y: cy + r }
+    const angle = (i * 90 * Math.PI) / 180;
+    return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
+  });
+  const top = { x: cx, y: cy - r };
+  const bottom = { x: cx, y: cy + r };
 
   return (
     <svg
@@ -779,7 +779,7 @@ export function OctahedronWireshapeSvg({
         </g>
       ))}
     </svg>
-  )
+  );
 }
 
 /** Icosahedron — 12 vertices, 30 edges. Simplified front-face projection. */
@@ -787,28 +787,28 @@ export function IcosahedronWireshapeSvg({
   className,
   flip = "none",
 }: ShapeSvgProps) {
-  const cx = 1200
-  const cy = 500
-  const outerR = 280
-  const innerR = 130
+  const cx = 1200;
+  const cy = 500;
+  const outerR = 280;
+  const innerR = 130;
 
   // Outer ring of 5 vertices + inner ring of 5 (rotated 36°) + top + bottom
   const outer = Array.from({ length: 5 }, (_, i) => {
-    const angle = (i * 72 * Math.PI) / 180 - Math.PI / 2
+    const angle = (i * 72 * Math.PI) / 180 - Math.PI / 2;
     return {
       x: cx + outerR * Math.cos(angle),
       y: cy + outerR * Math.sin(angle),
-    }
-  })
+    };
+  });
   const inner = Array.from({ length: 5 }, (_, i) => {
-    const angle = ((i * 72 + 36) * Math.PI) / 180 - Math.PI / 2
+    const angle = ((i * 72 + 36) * Math.PI) / 180 - Math.PI / 2;
     return {
       x: cx + innerR * Math.cos(angle),
       y: cy + innerR * Math.sin(angle),
-    }
-  })
-  const top = { x: cx, y: cy - outerR - 20 }
-  const bottom = { x: cx, y: cy + outerR + 20 }
+    };
+  });
+  const top = { x: cx, y: cy - outerR - 20 };
+  const bottom = { x: cx, y: cy + outerR + 20 };
 
   return (
     <svg
@@ -872,7 +872,7 @@ export function IcosahedronWireshapeSvg({
         )
       )}
     </svg>
-  )
+  );
 }
 
 /** Dodecahedron — 20 vertices, 30 edges. Projected as nested pentagons. */
@@ -880,21 +880,21 @@ export function DodecahedronWireshapeSvg({
   className,
   flip = "none",
 }: ShapeSvgProps) {
-  const cx = 1200
-  const cy = 500
-  const r1 = 280
-  const r2 = 180
-  const r3 = 110
+  const cx = 1200;
+  const cy = 500;
+  const r1 = 280;
+  const r2 = 180;
+  const r3 = 110;
 
   const ring = (r: number, offsetDeg = 0) =>
     Array.from({ length: 5 }, (_, i) => {
-      const angle = ((i * 72 + offsetDeg) * Math.PI) / 180 - Math.PI / 2
-      return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) }
-    })
+      const angle = ((i * 72 + offsetDeg) * Math.PI) / 180 - Math.PI / 2;
+      return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
+    });
 
-  const outerRing = ring(r1, 0)
-  const midRing = ring(r2, 36)
-  const innerRing = ring(r3, 0)
+  const outerRing = ring(r1, 0);
+  const midRing = ring(r2, 36);
+  const innerRing = ring(r3, 0);
 
   return (
     <svg
@@ -947,7 +947,7 @@ export function DodecahedronWireshapeSvg({
         </g>
       ))}
     </svg>
-  )
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -956,55 +956,59 @@ export function DodecahedronWireshapeSvg({
 /* ------------------------------------------------------------------ */
 
 export function GoldenSpiralSvg({ className, flip = "none" }: ShapeSvgProps) {
-  const phi = (1 + Math.sqrt(5)) / 2
+  const phi = (1 + Math.sqrt(5)) / 2;
 
   // Build rectangles from largest to smallest, 8 subdivisions
   // Start: full rectangle 800×494 centered at (1200,500)
-  const totalW = 800
-  const totalH = totalW / phi
-  const startX = 1200 - totalW / 2
-  const startY = 500 - totalH / 2
+  const totalW = 800;
+  const totalH = totalW / phi;
+  const startX = 1200 - totalW / 2;
+  const startY = 500 - totalH / 2;
 
   // Iteratively subdivide; each step cuts a square off and the remainder is a new golden rect
-  const rects: { x: number; y: number; w: number; h: number }[] = []
-  const arcs: string[] = []
+  const rects: { x: number; y: number; w: number; h: number }[] = [];
+  const arcs: string[] = [];
 
-  let rx = startX
-  let ry = startY
-  let rw = totalW
-  let rh = totalH
+  let rx = startX;
+  let ry = startY;
+  let rw = totalW;
+  let rh = totalH;
 
   for (let i = 0; i < 9; i++) {
-    rects.push({ x: rx, y: ry, w: rw, h: rh })
-    const side = Math.min(rw, rh)
-    const dir = i % 4
+    rects.push({ x: rx, y: ry, w: rw, h: rh });
+    const side = Math.min(rw, rh);
+    const dir = i % 4;
 
     // Arc goes from one corner of the square to the opposite via quarter circle
     switch (dir) {
       case 0: // cut square from right
         arcs.push(
           `M${rx + rw},${ry} A${side},${side} 0 0,1 ${rx + rw - side},${ry + side}`
-        )
-        rw -= side
-        break
+        );
+        rw -= side;
+        break;
       case 1: // cut from bottom
         arcs.push(
           `M${rx + rw},${ry + rh} A${side},${side} 0 0,1 ${rx},${ry + rh - side}`
-        )
-        rh -= side
-        break
+        );
+        rh -= side;
+        break;
       case 2: // cut from left
-        arcs.push(`M${rx},${ry + rh} A${side},${side} 0 0,1 ${rx + side},${ry}`)
-        rx += side
-        rw -= side
-        break
+        arcs.push(
+          `M${rx},${ry + rh} A${side},${side} 0 0,1 ${rx + side},${ry}`
+        );
+        rx += side;
+        rw -= side;
+        break;
       case 3: // cut from top
-        arcs.push(`M${rx},${ry} A${side},${side} 0 0,1 ${rx + rw},${ry + side}`)
-        ry += side
-        rh -= side
-        break
+        arcs.push(
+          `M${rx},${ry} A${side},${side} 0 0,1 ${rx + rw},${ry + side}`
+        );
+        ry += side;
+        rh -= side;
+        break;
       default: {
-        break
+        break;
       }
     }
   }
@@ -1033,7 +1037,7 @@ export function GoldenSpiralSvg({ className, flip = "none" }: ShapeSvgProps) {
       {/* Spiral arcs */}
       <path d={arcs.join(" ")} stroke="currentColor" strokeWidth={1.5} />
     </svg>
-  )
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -1042,21 +1046,21 @@ export function GoldenSpiralSvg({ className, flip = "none" }: ShapeSvgProps) {
 /* ------------------------------------------------------------------ */
 
 export function TorusTubeSvg({ className, flip = "none" }: ShapeSvgProps) {
-  const cx = 1200
-  const cy = 500
-  const majorR = 280 // distance from center to tube center
-  const tubeR = 100 // radius of the tube
-  const ringCount = 24
+  const cx = 1200;
+  const cy = 500;
+  const majorR = 280; // distance from center to tube center
+  const tubeR = 100; // radius of the tube
+  const ringCount = 24;
 
   // Draw circles along the major ring, creating a tube torus effect
   const circles = Array.from({ length: ringCount }, (_, i) => {
-    const angle = (i * 360 * Math.PI) / (180 * ringCount)
-    const x = cx + majorR * Math.cos(angle)
-    const y = cy + majorR * 0.35 * Math.sin(angle) // foreshortened for 3/4 view
+    const angle = (i * 360 * Math.PI) / (180 * ringCount);
+    const x = cx + majorR * Math.cos(angle);
+    const y = cy + majorR * 0.35 * Math.sin(angle); // foreshortened for 3/4 view
     // Scale radius for depth
-    const scale = 0.6 + 0.4 * Math.sin(angle)
-    return { x, y, r: tubeR * scale, opacity: 0.3 + 0.7 * scale }
-  })
+    const scale = 0.6 + 0.4 * Math.sin(angle);
+    return { x, y, r: tubeR * scale, opacity: 0.3 + 0.7 * scale };
+  });
 
   return (
     <svg
@@ -1096,5 +1100,5 @@ export function TorusTubeSvg({ className, flip = "none" }: ShapeSvgProps) {
         />
       ))}
     </svg>
-  )
+  );
 }

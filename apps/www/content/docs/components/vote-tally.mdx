@@ -50,7 +50,7 @@ Use `VoteTally.Root` with `VoteTally.Item` for each item; each item can include 
 ### Basic list
 
 ```tsx
-import { VoteTally } from "@/registry/default/ui/vote-tally"
+import { VoteTally } from "@/registry/default/ui/vote-tally";
 
 export default function Example() {
   return (
@@ -68,7 +68,7 @@ export default function Example() {
         <VoteTally.Trigger>Vote</VoteTally.Trigger>
       </VoteTally.Item>
     </VoteTally.Root>
-  )
+  );
 }
 ```
 
@@ -77,12 +77,15 @@ export default function Example() {
 Wire `value` / `onValueChange` and `votedItems` / `onVotedItemsChange` to sync with your backend or state.
 
 ```tsx
-import { useState } from "react"
-import { VoteTally } from "@/registry/default/ui/vote-tally"
+import { useState } from "react";
+import { VoteTally } from "@/registry/default/ui/vote-tally";
 
 export default function Example() {
-  const [votes, setVotes] = useState({ "dark-mode": 10, "keyboard-shortcuts": 5 })
-  const [voted, setVoted] = useState(new Set<string>())
+  const [votes, setVotes] = useState({
+    "dark-mode": 10,
+    "keyboard-shortcuts": 5,
+  });
+  const [voted, setVoted] = useState(new Set<string>());
 
   return (
     <VoteTally.Root
@@ -102,7 +105,7 @@ export default function Example() {
         <VoteTally.Trigger>Vote</VoteTally.Trigger>
       </VoteTally.Item>
     </VoteTally.Root>
-  )
+  );
 }
 ```
 
@@ -111,7 +114,7 @@ export default function Example() {
 Wrap items in `VoteTally.Group` with `sortBy="votes-desc"` or `sortBy="votes-asc"` to reorder by vote count.
 
 ```tsx
-import { VoteTally } from "@/registry/default/ui/vote-tally"
+import { VoteTally } from "@/registry/default/ui/vote-tally";
 
 export default function Example() {
   return (
@@ -134,7 +137,7 @@ export default function Example() {
         </VoteTally.Item>
       </VoteTally.Group>
     </VoteTally.Root>
-  )
+  );
 }
 ```
 

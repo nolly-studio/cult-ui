@@ -3,9 +3,7 @@
   "name": "svg-shapes-animated",
   "type": "registry:ui",
   "description": "Scroll-triggered stroke-draw animations for wide SVG shapes and panels using Motion",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/svg-shapes-animated.tsx",

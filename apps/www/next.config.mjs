@@ -1,4 +1,4 @@
-import { createMDX } from "fumadocs-mdx/next"
+import { createMDX } from "fumadocs-mdx/next";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -117,7 +117,7 @@ const nextConfig = {
         destination: "/docs/mcp",
         permanent: false,
       },
-    ]
+    ];
   },
   headers() {
     return [
@@ -143,7 +143,8 @@ const nextConfig = {
       },
       {
         // Large static marketing/screenshot assets.
-        source: "/:dir(cult-pro-images|cult-pro-component-images|component-images|placeholders|migrate|images|textures|fonts)/:path*",
+        source:
+          "/:dir(cult-pro-images|cult-pro-component-images|component-images|placeholders|migrate|images|textures|fonts)/:path*",
         headers: [
           {
             key: "Cache-Control",
@@ -151,10 +152,10 @@ const nextConfig = {
           },
         ],
       },
-    ]
+    ];
   },
-}
+};
 
-const withMDX = createMDX({})
+const withMDX = createMDX({});
 
-export default withMDX(nextConfig)
+export default withMDX(nextConfig);

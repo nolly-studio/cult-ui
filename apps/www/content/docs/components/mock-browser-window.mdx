@@ -47,7 +47,7 @@ npx shadcn@latest add https://cult-ui.com/r/mock-browser-window.json
 ## Usage
 
 ```tsx
-import { BrowserWindow } from "@/components/ui/mock-browser-window"
+import { BrowserWindow } from "@/components/ui/mock-browser-window";
 ```
 
 ### Basic Usage
@@ -144,20 +144,20 @@ Add your own content inside the window:
 
 ### BrowserWindow Props
 
-| Prop              | Type                                     | Default     | Description                                 |
-| ----------------- | ---------------------------------------- | ----------- | ------------------------------------------- |
-| `children`        | `React.ReactNode`                        | -           | Custom content to display inside the window |
-| `className`       | `string`                                 | -           | Additional CSS classes                      |
-| `size`            | `"sm" \| "md" \| "lg" \| "xl"`           | `"md"`      | Window size                                 |
-| `showSidebar`     | `boolean`                                | `false`     | Whether to show the sidebar                 |
-| `sidebarPosition` | `"left" \| "right" \| "top" \| "bottom"` | `"left"`    | Position of the sidebar                     |
-| `headerStyle`     | `"minimal" \| "full"`                    | `"minimal"` | Header style: minimal or with address bar   |
-| `variant`         | `"chrome" \| "safari" \| "generic"`      | `"generic"` | Browser variant style                       |
-| `theme`           | `"light" \| "dark" \| "auto"`            | `"auto"`    | Color theme                                 |
-| `url`             | `string`                                 | -           | URL to display in the address bar           |
-| `sidebarItems`    | `SidebarItem[]`                          | -           | Array of sidebar items                      |
-| `texture`         | `TextureType`                            | `"none"`    | Texture overlay type                        |
-| `textureOpacity`  | `number`                                 | `0.25`      | Opacity of the texture overlay              |
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `React.ReactNode` | - | Custom content to display inside the window |
+| `className` | `string` | - | Additional CSS classes |
+| `size` | `"sm" \| "md" \| "lg" \| "xl"` | `"md"` | Window size |
+| `showSidebar` | `boolean` | `false` | Whether to show the sidebar |
+| `sidebarPosition` | `"left" \| "right" \| "top" \| "bottom"` | `"left"` | Position of the sidebar |
+| `headerStyle` | `"minimal" \| "full"` | `"minimal"` | Header style: minimal or with address bar |
+| `variant` | `"chrome" \| "safari" \| "generic"` | `"generic"` | Browser variant style |
+| `theme` | `"light" \| "dark" \| "auto"` | `"auto"` | Color theme |
+| `url` | `string` | - | URL to display in the address bar |
+| `sidebarItems` | `SidebarItem[]` | - | Array of sidebar items |
+| `texture` | `TextureType` | `"none"` | Texture overlay type |
+| `textureOpacity` | `number` | `0.25` | Opacity of the texture overlay |
 
 ### SidebarItem Interface
 
@@ -273,9 +273,9 @@ Add your own content inside the window:
 ### With Icons and Badges
 
 ```tsx
-import { Bell, Home, Settings, Users } from "lucide-react"
+import { Bell, Home, Settings, Users } from "lucide-react";
 
-;<BrowserWindow
+<BrowserWindow
   variant="chrome"
   headerStyle="full"
   url="https://app.example.com"
@@ -286,7 +286,7 @@ import { Bell, Home, Settings, Users } from "lucide-react"
     { icon: <Bell className="w-4 h-4" />, label: "Notifications", badge: "3" },
     { icon: <Settings className="w-4 h-4" />, label: "Settings" },
   ]}
-/>
+/>;
 ```
 
 ### Different Sizes

@@ -1,9 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "bg-media-demo",
-  "registryDependencies": [
-    "bg-media"
-  ],
+  "registryDependencies": ["bg-media"],
   "files": [
     {
       "path": "registry/default/example/bg-media-demo.tsx",

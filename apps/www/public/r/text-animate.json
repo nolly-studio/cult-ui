@@ -3,9 +3,7 @@
   "name": "text-animate",
   "type": "registry:ui",
   "description": "Animated text component with customizable reveal effects and timing",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/default/ui/text-animate.tsx",

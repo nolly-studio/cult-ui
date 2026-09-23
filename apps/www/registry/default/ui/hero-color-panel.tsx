@@ -1,122 +1,121 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import type { SVGProps } from "react"
-import { ColorPanels } from "@paper-design/shaders-react"
+import { ColorPanels } from "@paper-design/shaders-react";
+import * as React from "react";
+import type { SVGProps } from "react";
 
-import { cn } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-const MemoizedColorPanels = React.memo(ColorPanels)
+const MemoizedColorPanels = React.memo(ColorPanels);
 
-type ColorPanelsProps = React.ComponentProps<typeof ColorPanels>
-type ColorPanelsIcon = React.ComponentType<SVGProps<SVGSVGElement>>
+type ColorPanelsProps = React.ComponentProps<typeof ColorPanels>;
+type ColorPanelsIcon = React.ComponentType<SVGProps<SVGSVGElement>>;
 
 export interface HeroColorPanelsTechItem {
-  name: string
-  version?: string
-  icon?: ColorPanelsIcon
+  name: string;
+  version?: string;
+  icon?: ColorPanelsIcon;
 }
 
 export interface HeroColorPanelsCTAProps {
-  label: React.ReactNode
-  href: string
-  target?: React.HTMLAttributeAnchorTarget
-  rel?: string
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>
-  className?: string
-  buttonClassName?: string
+  label: React.ReactNode;
+  href: string;
+  target?: React.HTMLAttributeAnchorTarget;
+  rel?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  className?: string;
+  buttonClassName?: string;
 }
 
-export interface HeroColorPanelsRootProps
-  extends Omit<React.ComponentPropsWithoutRef<"section">, "title"> {
-  srTitle?: string
-  title?: React.ReactNode
-  subtitle?: React.ReactNode
-  description?: React.ReactNode
-  showCta?: boolean
-  ctaProps?: Partial<HeroColorPanelsCTAProps>
-  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode
-  showBadges?: boolean
-  techStack?: HeroColorPanelsTechItem[]
+export interface HeroColorPanelsRootProps extends Omit<
+  React.ComponentPropsWithoutRef<"section">,
+  "title"
+> {
+  srTitle?: string;
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
+  description?: React.ReactNode;
+  showCta?: boolean;
+  ctaProps?: Partial<HeroColorPanelsCTAProps>;
+  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode;
+  showBadges?: boolean;
+  techStack?: HeroColorPanelsTechItem[];
   renderBadge?: (
     tech: HeroColorPanelsTechItem,
     index: number,
     defaultBadge: React.ReactNode
-  ) => React.ReactNode
-  desktopShaderProps?: Partial<ColorPanelsProps>
-  mobileShaderProps?: Partial<ColorPanelsProps>
+  ) => React.ReactNode;
+  desktopShaderProps?: Partial<ColorPanelsProps>;
+  mobileShaderProps?: Partial<ColorPanelsProps>;
 }
 
-export interface HeroColorPanelsHeadingProps
-  extends Omit<React.ComponentPropsWithoutRef<"div">, "title"> {
-  title?: React.ReactNode
-  subtitle?: React.ReactNode
-  headingClassName?: string
+export interface HeroColorPanelsHeadingProps extends Omit<
+  React.ComponentPropsWithoutRef<"div">,
+  "title"
+> {
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
+  headingClassName?: string;
 }
 
-export interface HeroColorPanelsDescriptionProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  description?: React.ReactNode
-  descriptionClassName?: string
+export interface HeroColorPanelsDescriptionProps extends React.ComponentPropsWithoutRef<"div"> {
+  description?: React.ReactNode;
+  descriptionClassName?: string;
 }
 
-export interface HeroColorPanelsActionsProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  showCta?: boolean
-  ctaProps?: Partial<HeroColorPanelsCTAProps>
-  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode
+export interface HeroColorPanelsActionsProps extends React.ComponentPropsWithoutRef<"div"> {
+  showCta?: boolean;
+  ctaProps?: Partial<HeroColorPanelsCTAProps>;
+  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode;
 }
 
-export interface HeroColorPanelsBadgesProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  showBadges?: boolean
-  techStack?: HeroColorPanelsTechItem[]
+export interface HeroColorPanelsBadgesProps extends React.ComponentPropsWithoutRef<"div"> {
+  showBadges?: boolean;
+  techStack?: HeroColorPanelsTechItem[];
   renderBadge?: (
     tech: HeroColorPanelsTechItem,
     index: number,
     defaultBadge: React.ReactNode
-  ) => React.ReactNode
+  ) => React.ReactNode;
 }
 
-export interface HeroColorPanelsVisualProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  desktopShaderProps?: Partial<ColorPanelsProps>
-  desktopClassName?: string
+export interface HeroColorPanelsVisualProps extends React.ComponentPropsWithoutRef<"div"> {
+  desktopShaderProps?: Partial<ColorPanelsProps>;
+  desktopClassName?: string;
 }
 
-export interface HeroColorPanelsMobileVisualProps
-  extends React.ComponentPropsWithoutRef<"div"> {
-  mobileShaderProps?: Partial<ColorPanelsProps>
+export interface HeroColorPanelsMobileVisualProps extends React.ComponentPropsWithoutRef<"div"> {
+  mobileShaderProps?: Partial<ColorPanelsProps>;
 }
 
 export interface HeroColorPanelsProps extends HeroColorPanelsRootProps {
-  containerClassName?: string
-  contentClassName?: string
-  headingWrapClassName?: string
-  headingClassName?: string
-  descriptionWrapClassName?: string
-  descriptionClassName?: string
-  ctaWrapClassName?: string
-  badgesWrapClassName?: string
-  visualClassName?: string
-  mobileVisualClassName?: string
+  containerClassName?: string;
+  contentClassName?: string;
+  headingWrapClassName?: string;
+  headingClassName?: string;
+  descriptionWrapClassName?: string;
+  descriptionClassName?: string;
+  ctaWrapClassName?: string;
+  badgesWrapClassName?: string;
+  visualClassName?: string;
+  mobileVisualClassName?: string;
 }
 
 interface HeroColorPanelsContextValue {
-  srTitle: string
-  title: React.ReactNode
-  subtitle: React.ReactNode
-  description: React.ReactNode
-  showCta: boolean
-  mergedCtaProps: HeroColorPanelsCTAProps
-  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode
-  showBadges: boolean
-  techStack: HeroColorPanelsTechItem[]
-  renderBadge?: HeroColorPanelsBadgesProps["renderBadge"]
-  mergedDesktopShaderProps: Partial<ColorPanelsProps>
-  mergedMobileShaderProps: Partial<ColorPanelsProps>
+  srTitle: string;
+  title: React.ReactNode;
+  subtitle: React.ReactNode;
+  description: React.ReactNode;
+  showCta: boolean;
+  mergedCtaProps: HeroColorPanelsCTAProps;
+  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode;
+  showBadges: boolean;
+  techStack: HeroColorPanelsTechItem[];
+  renderBadge?: HeroColorPanelsBadgesProps["renderBadge"];
+  mergedDesktopShaderProps: Partial<ColorPanelsProps>;
+  mergedMobileShaderProps: Partial<ColorPanelsProps>;
 }
 
 const defaultDesktopShaderProps: Partial<ColorPanelsProps> = {
@@ -136,7 +135,7 @@ const defaultDesktopShaderProps: Partial<ColorPanelsProps> = {
   speed: 4,
   scale: 0.96,
   rotation: 180,
-}
+};
 
 const defaultMobileShaderProps: Partial<ColorPanelsProps> = {
   colors: ["#ed40b3", "#6ef7cc", "#adfa1e", "#b054de"],
@@ -154,14 +153,14 @@ const defaultMobileShaderProps: Partial<ColorPanelsProps> = {
   scale: 0.96,
   rotation: 180,
   style: { height: "100%", width: "100%" },
-}
+};
 
 const defaultCtaProps: HeroColorPanelsCTAProps = {
   label: "Check it out today ",
   href: "https://aisdkagents.com",
   target: "_blank",
   rel: "noopener noreferrer",
-}
+};
 
 const defaultDescription = (
   <>
@@ -171,7 +170,7 @@ const defaultDescription = (
     <span className="font-medium tracking-tight">shadcn/ui</span>.
     <span className="hidden sm:inline"> Headless, themable, practical.</span>
   </>
-)
+);
 
 const defaultTechStack: HeroColorPanelsTechItem[] = [
   {
@@ -184,106 +183,125 @@ const defaultTechStack: HeroColorPanelsTechItem[] = [
     version: "v6",
     icon: AISDKIcon,
   },
-]
+];
 
 const HeroColorPanelsContext = React.createContext<
   HeroColorPanelsContextValue | undefined
->(undefined)
+>(undefined);
 
 function useHeroColorPanelsContext() {
-  const context = React.useContext(HeroColorPanelsContext)
+  const context = React.useContext(HeroColorPanelsContext);
   if (!context) {
     throw new Error(
       "HeroColorPanels components must be used within HeroColorPanelsRoot"
-    )
+    );
   }
-  return context
+  return context;
 }
 
 export function useHeroColorPanels() {
-  return useHeroColorPanelsContext()
+  return useHeroColorPanelsContext();
 }
 
 export const HeroColorPanelsRoot = React.forwardRef<
   HTMLElement,
   HeroColorPanelsRootProps
->(({ className, children, srTitle = "AI SDK Agents", title = <span className="">
-      AI SDK Agents
-    </span>, subtitle = "Copy and Paste", description = defaultDescription, showCta = true, ctaProps, renderCta, showBadges = true, techStack = defaultTechStack, renderBadge, desktopShaderProps, mobileShaderProps, ...props }, ref) => {
-  const mergedCtaProps = React.useMemo(
-    () => ({
-      ...defaultCtaProps,
-      ...ctaProps,
-    }),
-    [ctaProps]
-  )
-
-  const mergedDesktopShaderProps = React.useMemo(
-    () => ({
-      ...defaultDesktopShaderProps,
-      ...desktopShaderProps,
-    }),
-    [desktopShaderProps]
-  )
-
-  const mergedMobileShaderProps = React.useMemo(
-    () => ({
-      ...defaultMobileShaderProps,
-      ...mobileShaderProps,
-      style: {
-        ...(defaultMobileShaderProps.style as React.CSSProperties),
-        ...(mobileShaderProps?.style as React.CSSProperties | undefined),
-      },
-    }),
-    [mobileShaderProps]
-  )
-
-  const contextValue = React.useMemo<HeroColorPanelsContextValue>(
-    () => ({
-      srTitle,
-      title,
-      subtitle,
-      description,
-      showCta,
-      mergedCtaProps,
+>(
+  (
+    {
+      className,
+      children,
+      srTitle = "AI SDK Agents",
+      title = <span className="">AI SDK Agents</span>,
+      subtitle = "Copy and Paste",
+      description = defaultDescription,
+      showCta = true,
+      ctaProps,
       renderCta,
-      showBadges,
-      techStack,
+      showBadges = true,
+      techStack = defaultTechStack,
       renderBadge,
-      mergedDesktopShaderProps,
-      mergedMobileShaderProps,
-    }),
-    [
-      srTitle,
-      title,
-      subtitle,
-      description,
-      showCta,
-      mergedCtaProps,
-      renderCta,
-      showBadges,
-      techStack,
-      renderBadge,
-      mergedDesktopShaderProps,
-      mergedMobileShaderProps,
-    ]
-  )
+      desktopShaderProps,
+      mobileShaderProps,
+      ...props
+    },
+    ref
+  ) => {
+    const mergedCtaProps = React.useMemo(
+      () => ({
+        ...defaultCtaProps,
+        ...ctaProps,
+      }),
+      [ctaProps]
+    );
 
-  return (
-    <HeroColorPanelsContext.Provider value={contextValue}>
-      <section
-        className={cn("relative h-full w-full overflow-hidden", className)}
-        data-slot="hero-colorpanels-root"
-        ref={ref}
-        {...props}
-      >
-        <h1 className="sr-only">{srTitle}</h1>
-        {children}
-      </section>
-    </HeroColorPanelsContext.Provider>
-  )
-})
-HeroColorPanelsRoot.displayName = "HeroColorPanelsRoot"
+    const mergedDesktopShaderProps = React.useMemo(
+      () => ({
+        ...defaultDesktopShaderProps,
+        ...desktopShaderProps,
+      }),
+      [desktopShaderProps]
+    );
+
+    const mergedMobileShaderProps = React.useMemo(
+      () => ({
+        ...defaultMobileShaderProps,
+        ...mobileShaderProps,
+        style: {
+          ...(defaultMobileShaderProps.style as React.CSSProperties),
+          ...(mobileShaderProps?.style as React.CSSProperties | undefined),
+        },
+      }),
+      [mobileShaderProps]
+    );
+
+    const contextValue = React.useMemo<HeroColorPanelsContextValue>(
+      () => ({
+        srTitle,
+        title,
+        subtitle,
+        description,
+        showCta,
+        mergedCtaProps,
+        renderCta,
+        showBadges,
+        techStack,
+        renderBadge,
+        mergedDesktopShaderProps,
+        mergedMobileShaderProps,
+      }),
+      [
+        srTitle,
+        title,
+        subtitle,
+        description,
+        showCta,
+        mergedCtaProps,
+        renderCta,
+        showBadges,
+        techStack,
+        renderBadge,
+        mergedDesktopShaderProps,
+        mergedMobileShaderProps,
+      ]
+    );
+
+    return (
+      <HeroColorPanelsContext.Provider value={contextValue}>
+        <section
+          className={cn("relative h-full w-full overflow-hidden", className)}
+          data-slot="hero-colorpanels-root"
+          ref={ref}
+          {...props}
+        >
+          <h1 className="sr-only">{srTitle}</h1>
+          {children}
+        </section>
+      </HeroColorPanelsContext.Provider>
+    );
+  }
+);
+HeroColorPanelsRoot.displayName = "HeroColorPanelsRoot";
 
 export function HeroColorPanelsContainer({
   className,
@@ -292,13 +310,13 @@ export function HeroColorPanelsContainer({
   return (
     <div
       className={cn(
-        "container relative z-10 grid gap-6 pb-16 sm:gap-8 sm:pb-20 lg:grid-cols-[1fr_minmax(300px,500px)] lg:items-center lg:gap-12 lg:pb-24 xl:grid-cols-[1fr_1fr]",
+        "relative z-10 container grid gap-6 pb-16 sm:gap-8 sm:pb-20 lg:grid-cols-[1fr_minmax(300px,500px)] lg:items-center lg:gap-12 lg:pb-24 xl:grid-cols-[1fr_1fr]",
         className
       )}
       data-slot="hero-colorpanels-container"
       {...props}
     />
-  )
+  );
 }
 
 export function HeroColorPanelsContent({
@@ -314,7 +332,7 @@ export function HeroColorPanelsContent({
       data-slot="hero-colorpanels-content"
       {...props}
     />
-  )
+  );
 }
 
 export function HeroColorPanelsHeading({
@@ -325,9 +343,9 @@ export function HeroColorPanelsHeading({
   children,
   ...props
 }: HeroColorPanelsHeadingProps) {
-  const context = useHeroColorPanelsContext()
-  const resolvedTitle = title ?? context.title
-  const resolvedSubtitle = subtitle ?? context.subtitle
+  const context = useHeroColorPanelsContext();
+  const resolvedTitle = title ?? context.title;
+  const resolvedSubtitle = subtitle ?? context.subtitle;
 
   return (
     <div
@@ -339,7 +357,7 @@ export function HeroColorPanelsHeading({
         <div className="relative">
           <h2
             className={cn(
-              "relative mb-0 text-balance font-medium text-3xl tracking-[-0.04em] sm:text-4xl md:text-5xl lg:tracking-[-0.06em] xl:text-6xl 2xl:text-7xl",
+              "relative mb-0 text-3xl font-medium tracking-[-0.04em] text-balance sm:text-4xl md:text-5xl lg:tracking-[-0.06em] xl:text-6xl 2xl:text-7xl",
               headingClassName
             )}
             data-slot="hero-colorpanels-heading"
@@ -350,7 +368,7 @@ export function HeroColorPanelsHeading({
         </div>
       )}
     </div>
-  )
+  );
 }
 
 export function HeroColorPanelsDescription({
@@ -360,8 +378,8 @@ export function HeroColorPanelsDescription({
   children,
   ...props
 }: HeroColorPanelsDescriptionProps) {
-  const context = useHeroColorPanelsContext()
-  const resolvedDescription = description ?? context.description
+  const context = useHeroColorPanelsContext();
+  const resolvedDescription = description ?? context.description;
 
   return (
     <div
@@ -375,7 +393,7 @@ export function HeroColorPanelsDescription({
       {children ?? (
         <p
           className={cn(
-            "mt-0 mb-0 font-sans text-foreground/70 text-sm sm:text-base md:text-foreground/80 lg:text-lg xl:text-xl",
+            "text-foreground/70 md:text-foreground/80 mt-0 mb-0 font-sans text-sm sm:text-base lg:text-lg xl:text-xl",
             descriptionClassName
           )}
           data-slot="hero-colorpanels-description"
@@ -384,7 +402,7 @@ export function HeroColorPanelsDescription({
         </p>
       )}
     </div>
-  )
+  );
 }
 
 export function HeroColorPanelsActions({
@@ -395,16 +413,16 @@ export function HeroColorPanelsActions({
   children,
   ...props
 }: HeroColorPanelsActionsProps) {
-  const context = useHeroColorPanelsContext()
-  const shouldShowCta = showCta ?? context.showCta
-  const resolvedCtaProps = { ...context.mergedCtaProps, ...ctaProps }
-  const resolvedRenderCta = renderCta ?? context.renderCta
+  const context = useHeroColorPanelsContext();
+  const shouldShowCta = showCta ?? context.showCta;
+  const resolvedCtaProps = { ...context.mergedCtaProps, ...ctaProps };
+  const resolvedRenderCta = renderCta ?? context.renderCta;
 
   if (!shouldShowCta) {
-    return null
+    return null;
   }
 
-  const defaultCta = <HeroColorPanelsCTA {...resolvedCtaProps} />
+  const defaultCta = <HeroColorPanelsCTA {...resolvedCtaProps} />;
 
   return (
     <div
@@ -415,7 +433,7 @@ export function HeroColorPanelsActions({
       {children ??
         (resolvedRenderCta ? resolvedRenderCta(defaultCta) : defaultCta)}
     </div>
-  )
+  );
 }
 
 export function HeroColorPanelsCTA({
@@ -441,7 +459,7 @@ export function HeroColorPanelsCTA({
         </a>
       </Button>
     </div>
-  )
+  );
 }
 
 export function HeroColorPanelsBadges({
@@ -451,13 +469,13 @@ export function HeroColorPanelsBadges({
   renderBadge,
   ...props
 }: HeroColorPanelsBadgesProps) {
-  const context = useHeroColorPanelsContext()
-  const shouldShowBadges = showBadges ?? context.showBadges
-  const resolvedTechStack = techStack ?? context.techStack
-  const resolvedRenderBadge = renderBadge ?? context.renderBadge
+  const context = useHeroColorPanelsContext();
+  const shouldShowBadges = showBadges ?? context.showBadges;
+  const resolvedTechStack = techStack ?? context.techStack;
+  const resolvedRenderBadge = renderBadge ?? context.renderBadge;
 
   if (!shouldShowBadges) {
-    return null
+    return null;
   }
 
   return (
@@ -470,12 +488,12 @@ export function HeroColorPanelsBadges({
       {...props}
     >
       {resolvedTechStack.map((tech, index) => {
-        const Icon = tech.icon
+        const Icon = tech.icon;
         const defaultBadge = (
           <Badge
             className={cn(
               "group relative px-3.5 py-1.5 font-medium transition-all duration-150",
-              "border border-border/50 bg-card text-card-foreground",
+              "border-border/50 bg-card text-card-foreground border",
               "shadow-[0_1px_3px_rgba(0,0,0,0.08)] dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)]",
               "hover:-translate-y-px hover:shadow-[0_2px_8px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
             )}
@@ -483,7 +501,7 @@ export function HeroColorPanelsBadges({
             key={tech.name}
             variant="outline"
           >
-            {Icon ? <Icon className="size-3.5 opacity-80 mr-1" /> : null}
+            {Icon ? <Icon className="mr-1 size-3.5 opacity-80" /> : null}
             <span className="font-semibold tracking-tight">{tech.name}</span>
             {tech.version ? (
               <span className="font-mono text-xs opacity-50">
@@ -491,20 +509,20 @@ export function HeroColorPanelsBadges({
               </span>
             ) : null}
           </Badge>
-        )
+        );
 
         if (resolvedRenderBadge) {
           return (
             <React.Fragment key={tech.name}>
               {resolvedRenderBadge(tech, index, defaultBadge)}
             </React.Fragment>
-          )
+          );
         }
 
-        return defaultBadge
+        return defaultBadge;
       })}
     </div>
-  )
+  );
 }
 
 export function HeroColorPanelsVisual({
@@ -513,11 +531,11 @@ export function HeroColorPanelsVisual({
   desktopShaderProps,
   ...props
 }: HeroColorPanelsVisualProps) {
-  const context = useHeroColorPanelsContext()
+  const context = useHeroColorPanelsContext();
   const resolvedDesktopShaderProps = {
     ...context.mergedDesktopShaderProps,
     ...desktopShaderProps,
-  }
+  };
 
   return (
     <div
@@ -538,7 +556,7 @@ export function HeroColorPanelsVisual({
         <MemoizedColorPanels {...resolvedDesktopShaderProps} />
       </div>
     </div>
-  )
+  );
 }
 
 export function HeroColorPanelsMobileVisual({
@@ -546,7 +564,7 @@ export function HeroColorPanelsMobileVisual({
   mobileShaderProps,
   ...props
 }: HeroColorPanelsMobileVisualProps) {
-  const context = useHeroColorPanelsContext()
+  const context = useHeroColorPanelsContext();
   const resolvedMobileShaderProps = {
     ...context.mergedMobileShaderProps,
     ...mobileShaderProps,
@@ -554,7 +572,7 @@ export function HeroColorPanelsMobileVisual({
       ...(context.mergedMobileShaderProps.style as React.CSSProperties),
       ...(mobileShaderProps?.style as React.CSSProperties | undefined),
     },
-  }
+  };
 
   return (
     <div
@@ -565,10 +583,10 @@ export function HeroColorPanelsMobileVisual({
       data-slot="hero-colorpanels-mobile"
       {...props}
     >
-      <div className="absolute inset-x-0 top-0 z-10 h-44 bg-gradient-to-b from-background via-background/90 to-transparent" />
+      <div className="from-background via-background/90 absolute inset-x-0 top-0 z-10 h-44 bg-gradient-to-b to-transparent" />
       <MemoizedColorPanels {...resolvedMobileShaderProps} />
     </div>
-  )
+  );
 }
 
 export function HeroColorPanels({
@@ -611,7 +629,7 @@ export function HeroColorPanels({
       </HeroColorPanelsContainer>
       <HeroColorPanelsMobileVisual className={mobileVisualClassName} />
     </HeroColorPanelsRoot>
-  )
+  );
 }
 
 export function AISDKIcon(props: SVGProps<SVGSVGElement>) {
@@ -631,14 +649,14 @@ export function AISDKIcon(props: SVGProps<SVGSVGElement>) {
         fill="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 export function NextjsIcon(props: SVGProps<SVGSVGElement>) {
-  const id = React.useId()
-  const maskId = `${id}-mask`
-  const paint0Id = `${id}-paint0`
-  const paint1Id = `${id}-paint1`
+  const id = React.useId();
+  const maskId = `${id}-mask`;
+  const paint0Id = `${id}-paint0`;
+  const paint1Id = `${id}-paint1`;
 
   return (
     <svg
@@ -709,7 +727,7 @@ export function NextjsIcon(props: SVGProps<SVGSVGElement>) {
         </linearGradient>
       </defs>
     </svg>
-  )
+  );
 }
 
-export default HeroColorPanels
+export default HeroColorPanels;
