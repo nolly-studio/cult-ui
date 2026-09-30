@@ -71,7 +71,7 @@ export const BorderBeamButton = forwardRef<
       borderRadius={borderRadius}
       brightness={brightness}
       className={cn(
-        "inline-flex w-fit min-w-0 flex-col items-stretch overflow-visible! leading-none",
+        "overflow-visible! inline-flex w-fit min-w-0 flex-col items-stretch leading-none",
         borderBeamClassName
       )}
       colorVariant={colorVariant}

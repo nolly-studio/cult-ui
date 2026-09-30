@@ -31,11 +31,11 @@ function Section({
   return (
     <section className="space-y-4">
       <div className="space-y-1">
-        <h3 className="text-foreground text-sm font-semibold tracking-tight">
+        <h3 className="font-semibold text-foreground text-sm tracking-tight">
           {title}
         </h3>
         {description ? (
-          <p className="text-muted-foreground text-xs leading-relaxed text-pretty">
+          <p className="text-pretty text-muted-foreground text-xs leading-relaxed">
             {description}
           </p>
         ) : null}
@@ -63,13 +63,13 @@ export default function BorderBeamButtonDemo() {
   return (
     <div className="mx-auto w-full max-w-3xl space-y-10 px-4 py-8 md:px-6">
       <header className="space-y-2 text-center">
-        <p className="text-muted-foreground text-[11px] font-medium tracking-[0.2em] uppercase">
+        <p className="font-medium text-[11px] text-muted-foreground uppercase tracking-[0.2em]">
           Border beam
         </p>
-        <h2 className="text-foreground text-xl font-semibold tracking-tight md:text-2xl">
+        <h2 className="font-semibold text-foreground text-xl tracking-tight md:text-2xl">
           Button + traveling glow
         </h2>
-        <p className="text-muted-foreground mx-auto max-w-lg text-sm leading-relaxed text-pretty">
+        <p className="mx-auto max-w-lg text-pretty text-muted-foreground text-sm leading-relaxed">
           <span className="text-foreground/90">className</span> targets the
           shadcn <span className="text-foreground/90">Button</span>;{" "}
           <span className="text-foreground/90">borderBeamClassName</span> styles

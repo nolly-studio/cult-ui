@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-tabs-demo",
+  "registryDependencies": [
+    "animated-tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/animated-tabs-demo.tsx",
+      "content": "\"use client\"\n\nimport {\n  AnimatedTabs,\n  AnimatedTabsContent,\n  AnimatedTabsIndicator,\n  AnimatedTabsList,\n  AnimatedTabsTrigger,\n} from \"@/registry/default/ui/animated-tabs\"\n\nexport default function AnimatedTabsDemo() {\n  return (\n    <div>\n      <section className=\"space-y-3\">\n        <h2 className=\"font-semibold text-foreground text-lg tracking-tight\">\n          Tabs — underline\n        </h2>\n        <AnimatedTabs\n          className=\"w-full min-w-96 max-w-96\"\n          defaultValue=\"overview\"\n        >\n          <AnimatedTabsList variant=\"underline\">\n            <AnimatedTabsTrigger value=\"overview\">Overview</AnimatedTabsTrigger>\n            <AnimatedTabsTrigger value=\"usage\">Usage</AnimatedTabsTrigger>\n            <AnimatedTabsTrigger value=\"billing\">Billing</AnimatedTabsTrigger>\n            <AnimatedTabsIndicator variant=\"underline\" />\n          </AnimatedTabsList>\n          <AnimatedTabsContent value=\"overview\">\n            Project summary, health metrics, and rollouts for the current\n            workspace.\n          </AnimatedTabsContent>\n          <AnimatedTabsContent value=\"usage\">\n            API volume, seat counts, and rate limits for the billing period in\n            view.\n          </AnimatedTabsContent>\n          <AnimatedTabsContent value=\"billing\">\n            Invoices, payment methods, and tax details for this account and\n            billing.\n          </AnimatedTabsContent>\n        </AnimatedTabs>\n\n        <h2 className=\"font-semibold text-foreground text-lg tracking-tight\">\n          Tabs — pill\n        </h2>\n        <AnimatedTabs\n          className=\"w-full min-w-96 max-w-96\"\n          defaultValue=\"design\"\n        >\n          <AnimatedTabsList variant=\"pill\">\n            <AnimatedTabsTrigger value=\"design\">Design</AnimatedTabsTrigger>\n            <AnimatedTabsTrigger value=\"code\">Code</AnimatedTabsTrigger>\n            <AnimatedTabsTrigger value=\"preview\">Preview</AnimatedTabsTrigger>\n            <AnimatedTabsIndicator variant=\"pill\" />\n          </AnimatedTabsList>\n          <AnimatedTabsContent value=\"design\">\n            Tokens, spacing, and motion aligned with the polished surfaces.\n          </AnimatedTabsContent>\n          <AnimatedTabsContent value=\"code\">\n            Implementation notes and props for each primitive.\n          </AnimatedTabsContent>\n          <AnimatedTabsContent value=\"preview\">\n            Live preview of the active variant.\n          </AnimatedTabsContent>\n        </AnimatedTabs>\n      </section>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

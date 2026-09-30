@@ -1374,4 +1374,525 @@ export const ui: Registry["items"] = [
     ],
     description: "Speech bubble component",
   },
+  // Cult Pro migration
+  {
+    name: "apple-iphone-17-pro",
+    type: "registry:ui",
+    dependencies: ["lucide-react", "motion"],
+
+    files: [
+      {
+        path: "registry/default/ui/apple-iphone-17-pro.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "iPhone-style device frame with Dynamic Island, status bar, and configurable frame colors",
+  },
+  // Cult Pro migration
+  {
+    name: "apple-keyboard",
+    type: "registry:ui",
+    dependencies: ["@tabler/icons-react"],
+
+    files: [
+      {
+        path: "registry/default/ui/apple-keyboard.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Compact Apple-style keyboard with labeled keys and media row",
+  },
+  // Cult Pro migration
+  {
+    name: "apple-watch-ultra",
+    type: "registry:ui",
+    dependencies: ["lucide-react", "motion"],
+
+    files: [
+      {
+        path: "registry/default/ui/apple-watch-ultra.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Watch Ultra–style case, complications, crown, and action button",
+  },
+  // Cult Pro migration
+  {
+    name: "mac-screen",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/mac-screen.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Classic Mac frame with an image or GIF composited into the CRT",
+  },
+  // Cult Pro migration
+  {
+    name: "apple-pro-display-xdr",
+    type: "registry:ui",
+    dependencies: ["@tabler/icons-react", "motion"],
+    registryDependencies: ["https://cult-ui.com/r/base-tooltip.json"],
+    files: [
+      {
+        path: "registry/default/ui/apple-pro-display-xdr.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Studio Display–style aluminum frame, screen modes, and interactive macOS dock",
+  },
+  // Cult Pro migration
+  {
+    name: "marketing-hero-analytics",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/marketing-hero-analytics.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Analytics hero section for marketing pages",
+  },
+  // Cult Pro migration
+  {
+    name: "marketing-feature-code",
+    type: "registry:ui",
+    dependencies: ["lucide-react"],
+
+    files: [
+      {
+        path: "registry/default/ui/marketing-feature-code.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Marketing section for code or network policy features",
+  },
+  // Cult Pro migration
+  {
+    name: "feature-sticky-section",
+    type: "registry:ui",
+    dependencies: [
+      "@radix-ui/react-slot",
+      "@radix-ui/react-use-controllable-state",
+    ],
+
+    files: [
+      {
+        path: "registry/default/ui/feature-sticky-section.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Sticky section with controllable panels and scroll behavior",
+  },
+  // Cult Pro migration
+  {
+    name: "analytics-chart",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/analytics-chart.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Vercel-style gradient line chart with floating tooltip cards",
+  },
+  // Cult Pro migration
+  {
+    name: "kanban-board",
+    type: "registry:ui",
+    dependencies: ["motion"],
+
+    files: [
+      {
+        path: "registry/default/ui/kanban-board.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Kanban board with drag-and-drop columns and cards",
+  },
+  // Cult Pro migration
+  {
+    name: "agent-suggest-card-stack",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/agent-suggest-card-stack.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Stack of suggestion cards for AI agent responses",
+  },
+  // Cult Pro migration
+  {
+    name: "collab-avatar",
+    type: "registry:ui",
+    dependencies: ["motion"],
+
+    files: [
+      {
+        path: "registry/default/ui/collab-avatar.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Collaboration avatar with initials and color",
+  },
+  // Cult Pro migration
+  {
+    name: "collab-toolbar",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/collab-toolbar.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Toolbar component for collaborative editing UI",
+  },
+  // Cult Pro migration
+  {
+    name: "animated-dropzone",
+    type: "registry:ui",
+    dependencies: ["lucide-react", "motion"],
+
+    files: [
+      {
+        path: "registry/default/ui/animated-dropzone.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "File dropzone with animated rim, frosted fill, moving border trail, and file-type glyphs",
+  },
+  // Cult Pro migration
+  {
+    name: "animated-search",
+    type: "registry:ui",
+    dependencies: ["@paper-design/shaders-react", "motion"],
+
+    files: [
+      {
+        path: "registry/default/ui/animated-search.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Search input with animated gradient border, staggered placeholder, blur deletion on clear, loading line, and Warp shader avatar",
+  },
+  // Cult Pro migration
+  {
+    name: "globe",
+    type: "registry:ui",
+    dependencies: ["cobe", "motion", "next-themes"],
+
+    files: [
+      {
+        path: "registry/default/ui/globe.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "COBE-powered 3D globe with showcase presets, markers, arcs, DOM overlays, and theme-aware styling",
+  },
+  // Cult Pro migration
+  {
+    name: "file-icons",
+    type: "registry:ui",
+    dependencies: ["lucide-react"],
+
+    files: [
+      {
+        path: "registry/default/ui/file-icons.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Icon set for file types and languages",
+  },
+  // Cult Pro migration
+  {
+    name: "animated-button",
+    type: "registry:ui",
+    dependencies: ["@base-ui/react", "motion"],
+
+    files: [
+      {
+        path: "registry/default/ui/animated-button.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Primary action button with animated gradient rim, frosted fill, staggered label, and loading spinner",
+  },
+  // Cult Pro migration
+  {
+    name: "copy-button",
+    type: "registry:ui",
+    dependencies: ["lucide-react", "motion"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "registry/default/ui/copy-button.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Button that copies content to clipboard with feedback",
+  },
+  // Cult Pro migration
+  {
+    name: "animated-card",
+    type: "registry:ui",
+    dependencies: ["@base-ui/react", "motion"],
+
+    files: [
+      {
+        path: "registry/default/ui/animated-card.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Composable card with animated gradient rim, frosted fill, layered shadow, and Base UI button actions",
+  },
+  // Cult Pro migration
+  {
+    name: "border-beam-card",
+    type: "registry:ui",
+    dependencies: ["border-beam"],
+    registryDependencies: ["card"],
+    files: [
+      {
+        path: "registry/default/ui/border-beam-card.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "border-beam around compound Card API with balanced title and description",
+  },
+  // Cult Pro migration
+  {
+    name: "animated-tabs",
+    type: "registry:ui",
+    dependencies: ["@base-ui/react"],
+
+    files: [
+      {
+        path: "registry/default/ui/animated-tabs.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Base UI tabs with gradient indicator: underline or pill variant aligned with animated card rim colors",
+  },
+  // Cult Pro migration
+  {
+    name: "animated-segmented",
+    type: "registry:ui",
+    dependencies: ["@base-ui/react", "motion"],
+
+    files: [
+      {
+        path: "registry/default/ui/animated-segmented.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Segmented control with frosted track, gradient rim, and spring sliding thumb",
+  },
+  // Cult Pro migration
+  {
+    name: "animated-toggle-group",
+    type: "registry:ui",
+    dependencies: ["@base-ui/react", "motion"],
+
+    files: [
+      {
+        path: "registry/default/ui/animated-toggle-group.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Segmented single-select control with frosted track, gradient rim, and spring-driven sliding thumb (aligned with Animated Button)",
+  },
+  // Cult Pro migration
+  {
+    name: "animated-notification",
+    type: "registry:ui",
+    dependencies: ["@base-ui/react", "lucide-react", "motion"],
+
+    files: [
+      {
+        path: "registry/default/ui/animated-notification.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Polished notification surface for local AnimatePresence use with rim variants and glyph stagger",
+  },
+  // Cult Pro migration
+  {
+    name: "animated-toast",
+    type: "registry:ui",
+    dependencies: ["lucide-react", "motion", "sonner"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "registry/default/ui/animated-toast.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Sonner-backed polished toasts with rim variants; mount PolishedToaster once in the root layout",
+  },
+  // Cult Pro migration
+  {
+    name: "animated-switch",
+    type: "registry:ui",
+    dependencies: ["@base-ui/react", "motion"],
+
+    files: [
+      {
+        path: "registry/default/ui/animated-switch.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Toggle switch with spring thumb, frosted track, and extended touch hit area",
+  },
+  // Cult Pro migration
+  {
+    name: "animated-input",
+    type: "registry:ui",
+    dependencies: ["@base-ui/react", "motion"],
+
+    files: [
+      {
+        path: "registry/default/ui/animated-input.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Single-line and multiline inputs with frosted fill and gradient rim for generic forms",
+  },
+  // Cult Pro migration
+  {
+    name: "animated-field",
+    type: "registry:ui",
+
+    registryDependencies: ["field"],
+    files: [
+      {
+        path: "registry/default/ui/animated-field.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Form field layout (label, description, error) for AnimatedInput and AnimatedTextarea",
+  },
+  // Cult Pro migration
+  {
+    name: "animated-progress",
+    type: "registry:ui",
+    dependencies: ["@base-ui/react", "motion"],
+
+    files: [
+      {
+        path: "registry/default/ui/animated-progress.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Progress bar with spring-driven determinate fill and indeterminate gradient strip",
+  },
+  // Cult Pro migration
+  {
+    name: "border-beam-input",
+    type: "registry:ui",
+    dependencies: ["@base-ui/react", "border-beam"],
+    registryDependencies: ["input-group"],
+    files: [
+      {
+        path: "registry/default/ui/border-beam-input.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "border-beam on Base UI input and input-group primitives with line or full border glow",
+  },
+  // Cult Pro migration
+  {
+    name: "animated-badge",
+    type: "registry:ui",
+    dependencies: ["class-variance-authority", "motion"],
+    registryDependencies: ["badge"],
+    files: [
+      {
+        path: "registry/default/ui/animated-badge.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Badge with optional layout animation, live status dot, and gradient rim aligned with Animated Button / Card",
+  },
+  // Cult Pro migration
+  {
+    name: "animated-select",
+    type: "registry:ui",
+    dependencies: ["@base-ui/react", "lucide-react", "motion"],
+    registryDependencies: ["https://cult-ui.com/r/base-select.json"],
+    files: [
+      {
+        path: "registry/default/ui/animated-select.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Composable animated select with gradient rim, frosted fill, and staggered label",
+  },
+  // Cult Pro migration
+  {
+    name: "animated-composer",
+    type: "registry:ui",
+    dependencies: [
+      "@base-ui/react",
+      "@paper-design/shaders-react",
+      "lucide-react",
+      "motion",
+    ],
+
+    files: [
+      {
+        path: "registry/default/ui/animated-composer.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Multiline prompt field with shader avatar, staggered placeholder, loading line, and send/attach chrome",
+  },
+  // Cult Pro migration
+  {
+    name: "wizard-expandable",
+    type: "registry:ui",
+    dependencies: [
+      "@base-ui/react",
+      "@radix-ui/react-use-controllable-state",
+      "motion",
+    ],
+    registryDependencies: ["badge", "button"],
+    files: [
+      {
+        path: "registry/default/ui/wizard-expandable.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Expandable multi-step wizard with optional forward validation, scrollable step rail, and Motion height transitions",
+  },
 ]

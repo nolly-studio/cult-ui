@@ -1395,6 +1395,535 @@
       "description": "Speech bubble component"
     },
     {
+      "name": "apple-iphone-17-pro",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/apple-iphone-17-pro.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "iPhone-style device frame with Dynamic Island, status bar, and configurable frame colors"
+    },
+    {
+      "name": "apple-keyboard",
+      "type": "registry:ui",
+      "dependencies": [
+        "@tabler/icons-react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/apple-keyboard.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Compact Apple-style keyboard with labeled keys and media row"
+    },
+    {
+      "name": "apple-watch-ultra",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/apple-watch-ultra.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Watch Ultra–style case, complications, crown, and action button"
+    },
+    {
+      "name": "mac-screen",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/default/ui/mac-screen.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Classic Mac frame with an image or GIF composited into the CRT"
+    },
+    {
+      "name": "apple-pro-display-xdr",
+      "type": "registry:ui",
+      "dependencies": [
+        "@tabler/icons-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://cult-ui.com/r/base-tooltip.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/apple-pro-display-xdr.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Studio Display–style aluminum frame, screen modes, and interactive macOS dock"
+    },
+    {
+      "name": "marketing-hero-analytics",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/default/ui/marketing-hero-analytics.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Analytics hero section for marketing pages"
+    },
+    {
+      "name": "marketing-feature-code",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/marketing-feature-code.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Marketing section for code or network policy features"
+    },
+    {
+      "name": "feature-sticky-section",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "@radix-ui/react-use-controllable-state"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/feature-sticky-section.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Sticky section with controllable panels and scroll behavior"
+    },
+    {
+      "name": "analytics-chart",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/default/ui/analytics-chart.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Vercel-style gradient line chart with floating tooltip cards"
+    },
+    {
+      "name": "kanban-board",
+      "type": "registry:ui",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/kanban-board.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Kanban board with drag-and-drop columns and cards"
+    },
+    {
+      "name": "agent-suggest-card-stack",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/default/ui/agent-suggest-card-stack.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Stack of suggestion cards for AI agent responses"
+    },
+    {
+      "name": "collab-avatar",
+      "type": "registry:ui",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/collab-avatar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Collaboration avatar with initials and color"
+    },
+    {
+      "name": "collab-toolbar",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/default/ui/collab-toolbar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Toolbar component for collaborative editing UI"
+    },
+    {
+      "name": "animated-dropzone",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-dropzone.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "File dropzone with animated rim, frosted fill, moving border trail, and file-type glyphs"
+    },
+    {
+      "name": "animated-search",
+      "type": "registry:ui",
+      "dependencies": [
+        "@paper-design/shaders-react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-search.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Search input with animated gradient border, staggered placeholder, blur deletion on clear, loading line, and Warp shader avatar"
+    },
+    {
+      "name": "globe",
+      "type": "registry:ui",
+      "dependencies": [
+        "cobe",
+        "motion",
+        "next-themes"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/globe.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "COBE-powered 3D globe with showcase presets, markers, arcs, DOM overlays, and theme-aware styling"
+    },
+    {
+      "name": "file-icons",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/file-icons.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Icon set for file types and languages"
+    },
+    {
+      "name": "animated-button",
+      "type": "registry:ui",
+      "dependencies": [
+        "@base-ui/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Primary action button with animated gradient rim, frosted fill, staggered label, and loading spinner"
+    },
+    {
+      "name": "copy-button",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/copy-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Button that copies content to clipboard with feedback"
+    },
+    {
+      "name": "animated-card",
+      "type": "registry:ui",
+      "dependencies": [
+        "@base-ui/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Composable card with animated gradient rim, frosted fill, layered shadow, and Base UI button actions"
+    },
+    {
+      "name": "border-beam-card",
+      "type": "registry:ui",
+      "dependencies": [
+        "border-beam"
+      ],
+      "registryDependencies": [
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/border-beam-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "border-beam around compound Card API with balanced title and description"
+    },
+    {
+      "name": "animated-tabs",
+      "type": "registry:ui",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-tabs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Base UI tabs with gradient indicator: underline or pill variant aligned with animated card rim colors"
+    },
+    {
+      "name": "animated-segmented",
+      "type": "registry:ui",
+      "dependencies": [
+        "@base-ui/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-segmented.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Segmented control with frosted track, gradient rim, and spring sliding thumb"
+    },
+    {
+      "name": "animated-toggle-group",
+      "type": "registry:ui",
+      "dependencies": [
+        "@base-ui/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Segmented single-select control with frosted track, gradient rim, and spring-driven sliding thumb (aligned with Animated Button)"
+    },
+    {
+      "name": "animated-notification",
+      "type": "registry:ui",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-notification.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Polished notification surface for local AnimatePresence use with rim variants and glyph stagger"
+    },
+    {
+      "name": "animated-toast",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react",
+        "motion",
+        "sonner"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-toast.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Sonner-backed polished toasts with rim variants; mount PolishedToaster once in the root layout"
+    },
+    {
+      "name": "animated-switch",
+      "type": "registry:ui",
+      "dependencies": [
+        "@base-ui/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-switch.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Toggle switch with spring thumb, frosted track, and extended touch hit area"
+    },
+    {
+      "name": "animated-input",
+      "type": "registry:ui",
+      "dependencies": [
+        "@base-ui/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Single-line and multiline inputs with frosted fill and gradient rim for generic forms"
+    },
+    {
+      "name": "animated-field",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Form field layout (label, description, error) for AnimatedInput and AnimatedTextarea"
+    },
+    {
+      "name": "animated-progress",
+      "type": "registry:ui",
+      "dependencies": [
+        "@base-ui/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-progress.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Progress bar with spring-driven determinate fill and indeterminate gradient strip"
+    },
+    {
+      "name": "border-beam-input",
+      "type": "registry:ui",
+      "dependencies": [
+        "@base-ui/react",
+        "border-beam"
+      ],
+      "registryDependencies": [
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/border-beam-input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "border-beam on Base UI input and input-group primitives with line or full border glow"
+    },
+    {
+      "name": "animated-badge",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "motion"
+      ],
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-badge.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Badge with optional layout animation, live status dot, and gradient rim aligned with Animated Button / Card"
+    },
+    {
+      "name": "animated-select",
+      "type": "registry:ui",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://cult-ui.com/r/base-select.json"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Composable animated select with gradient rim, frosted fill, and staggered label"
+    },
+    {
+      "name": "animated-composer",
+      "type": "registry:ui",
+      "dependencies": [
+        "@base-ui/react",
+        "@paper-design/shaders-react",
+        "lucide-react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/animated-composer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Multiline prompt field with shader avatar, staggered placeholder, loading line, and send/attach chrome"
+    },
+    {
+      "name": "wizard-expandable",
+      "type": "registry:ui",
+      "dependencies": [
+        "@base-ui/react",
+        "@radix-ui/react-use-controllable-state",
+        "motion"
+      ],
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/wizard-expandable.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Expandable multi-step wizard with optional forward validation, scrollable step rail, and Motion height transitions"
+    },
+    {
       "name": "text-animate-demo",
       "type": "registry:component",
       "registryDependencies": [
@@ -2736,6 +3265,493 @@
       "files": [
         {
           "path": "registry/default/example/speech-bubble-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "apple-iphone-17-pro-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "apple-iphone-17-pro"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/apple-iphone-17-pro-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "apple-keyboard-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "apple-keyboard"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/apple-keyboard-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "apple-watch-ultra-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "apple-watch-ultra"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/apple-watch-ultra-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "mac-screen-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "mac-screen"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/mac-screen-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "apple-pro-display-xdr-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "apple-pro-display-xdr"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/apple-pro-display-xdr-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "marketing-hero-analytics-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "marketing-hero-analytics"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/marketing-hero-analytics-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "marketing-feature-code-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "marketing-feature-code"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/marketing-feature-code-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "feature-sticky-section-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "feature-sticky-section"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/feature-sticky-section-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "analytics-chart-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "analytics-chart"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/analytics-chart-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "kanban-board-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "kanban-board"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/kanban-board-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "agent-suggest-card-stack-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "agent-suggest-card-stack"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/agent-suggest-card-stack-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "collab-avatar-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "collab-avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/collab-avatar-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "collab-toolbar-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "collab-toolbar"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/collab-toolbar-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-dropzone-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "animated-dropzone"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/animated-dropzone-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-search-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "animated-search",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/animated-search-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "globe-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "globe"
+      ],
+      "dependencies": [
+        "cobe",
+        "motion",
+        "next-themes"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/globe-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "file-icons-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "file-icons"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/file-icons-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-button-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "animated-button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/animated-button-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "copy-button-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "copy-button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/copy-button-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-card-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "animated-card"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/animated-card-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "border-beam-card-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "border-beam-card"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/border-beam-card-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-tabs-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "animated-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/animated-tabs-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-segmented-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "animated-segmented"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/animated-segmented-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-toggle-group-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "animated-toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/animated-toggle-group-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-notification-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "animated-notification"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/animated-notification-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-toast-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "animated-toast"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/animated-toast-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-switch-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "animated-switch"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/animated-switch-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-input-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "animated-input"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/animated-input-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-field-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "animated-field"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/animated-field-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-progress-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "animated-progress"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/animated-progress-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "border-beam-input-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "border-beam-input"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/border-beam-input-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-badge-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "animated-badge"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/animated-badge-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-select-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "animated-select",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/animated-select-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "animated-composer-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "animated-composer"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/animated-composer-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "wizard-expandable-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "wizard-expandable",
+        "button",
+        "input",
+        "label",
+        "textarea"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/wizard-expandable-demo.tsx",
           "type": "registry:component"
         }
       ]

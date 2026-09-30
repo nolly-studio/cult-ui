@@ -1160,4 +1160,430 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "apple-iphone-17-pro-demo",
+    type: "registry:component",
+    registryDependencies: ["apple-iphone-17-pro"],
+
+    files: [
+      {
+        path: "registry/default/example/apple-iphone-17-pro-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "apple-keyboard-demo",
+    type: "registry:component",
+    registryDependencies: ["apple-keyboard"],
+
+    files: [
+      {
+        path: "registry/default/example/apple-keyboard-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "apple-watch-ultra-demo",
+    type: "registry:component",
+    registryDependencies: ["apple-watch-ultra"],
+
+    files: [
+      {
+        path: "registry/default/example/apple-watch-ultra-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "mac-screen-demo",
+    type: "registry:component",
+    registryDependencies: ["mac-screen"],
+
+    files: [
+      {
+        path: "registry/default/example/mac-screen-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "apple-pro-display-xdr-demo",
+    type: "registry:component",
+    registryDependencies: ["apple-pro-display-xdr"],
+
+    files: [
+      {
+        path: "registry/default/example/apple-pro-display-xdr-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "marketing-hero-analytics-demo",
+    type: "registry:component",
+    registryDependencies: ["marketing-hero-analytics"],
+
+    files: [
+      {
+        path: "registry/default/example/marketing-hero-analytics-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "marketing-feature-code-demo",
+    type: "registry:component",
+    registryDependencies: ["marketing-feature-code"],
+
+    files: [
+      {
+        path: "registry/default/example/marketing-feature-code-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "feature-sticky-section-demo",
+    type: "registry:component",
+    registryDependencies: ["feature-sticky-section"],
+
+    files: [
+      {
+        path: "registry/default/example/feature-sticky-section-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "analytics-chart-demo",
+    type: "registry:component",
+    registryDependencies: ["analytics-chart"],
+
+    files: [
+      {
+        path: "registry/default/example/analytics-chart-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "kanban-board-demo",
+    type: "registry:component",
+    registryDependencies: ["kanban-board"],
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/default/example/kanban-board-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "agent-suggest-card-stack-demo",
+    type: "registry:component",
+    registryDependencies: ["agent-suggest-card-stack"],
+
+    files: [
+      {
+        path: "registry/default/example/agent-suggest-card-stack-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "collab-avatar-demo",
+    type: "registry:component",
+    registryDependencies: ["collab-avatar"],
+
+    files: [
+      {
+        path: "registry/default/example/collab-avatar-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "collab-toolbar-demo",
+    type: "registry:component",
+    registryDependencies: ["collab-toolbar"],
+
+    files: [
+      {
+        path: "registry/default/example/collab-toolbar-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "animated-dropzone-demo",
+    type: "registry:component",
+    registryDependencies: ["animated-dropzone"],
+
+    files: [
+      {
+        path: "registry/default/example/animated-dropzone-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "animated-search-demo",
+    type: "registry:component",
+    registryDependencies: ["animated-search", "button"],
+
+    files: [
+      {
+        path: "registry/default/example/animated-search-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "globe-demo",
+    type: "registry:component",
+    registryDependencies: ["globe"],
+    dependencies: ["cobe", "motion", "next-themes"],
+    files: [
+      {
+        path: "registry/default/example/globe-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "file-icons-demo",
+    type: "registry:component",
+    registryDependencies: ["file-icons"],
+
+    files: [
+      {
+        path: "registry/default/example/file-icons-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "animated-button-demo",
+    type: "registry:component",
+    registryDependencies: ["animated-button"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/default/example/animated-button-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "copy-button-demo",
+    type: "registry:component",
+    registryDependencies: ["copy-button"],
+
+    files: [
+      {
+        path: "registry/default/example/copy-button-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "animated-card-demo",
+    type: "registry:component",
+    registryDependencies: ["animated-card"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/default/example/animated-card-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "border-beam-card-demo",
+    type: "registry:component",
+    registryDependencies: ["border-beam-card"],
+
+    files: [
+      {
+        path: "registry/default/example/border-beam-card-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "animated-tabs-demo",
+    type: "registry:component",
+    registryDependencies: ["animated-tabs"],
+
+    files: [
+      {
+        path: "registry/default/example/animated-tabs-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "animated-segmented-demo",
+    type: "registry:component",
+    registryDependencies: ["animated-segmented"],
+
+    files: [
+      {
+        path: "registry/default/example/animated-segmented-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "animated-toggle-group-demo",
+    type: "registry:component",
+    registryDependencies: ["animated-toggle-group"],
+
+    files: [
+      {
+        path: "registry/default/example/animated-toggle-group-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "animated-notification-demo",
+    type: "registry:component",
+    registryDependencies: ["animated-notification"],
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/default/example/animated-notification-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "animated-toast-demo",
+    type: "registry:component",
+    registryDependencies: ["animated-toast"],
+
+    files: [
+      {
+        path: "registry/default/example/animated-toast-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "animated-switch-demo",
+    type: "registry:component",
+    registryDependencies: ["animated-switch"],
+
+    files: [
+      {
+        path: "registry/default/example/animated-switch-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "animated-input-demo",
+    type: "registry:component",
+    registryDependencies: ["animated-input"],
+
+    files: [
+      {
+        path: "registry/default/example/animated-input-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "animated-field-demo",
+    type: "registry:component",
+    registryDependencies: ["animated-field"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/default/example/animated-field-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "animated-progress-demo",
+    type: "registry:component",
+    registryDependencies: ["animated-progress"],
+
+    files: [
+      {
+        path: "registry/default/example/animated-progress-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "border-beam-input-demo",
+    type: "registry:component",
+    registryDependencies: ["border-beam-input"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/default/example/border-beam-input-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "animated-badge-demo",
+    type: "registry:component",
+    registryDependencies: ["animated-badge"],
+
+    files: [
+      {
+        path: "registry/default/example/animated-badge-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "animated-select-demo",
+    type: "registry:component",
+    registryDependencies: ["animated-select", "button"],
+
+    files: [
+      {
+        path: "registry/default/example/animated-select-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "animated-composer-demo",
+    type: "registry:component",
+    registryDependencies: ["animated-composer"],
+
+    files: [
+      {
+        path: "registry/default/example/animated-composer-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "wizard-expandable-demo",
+    type: "registry:component",
+    registryDependencies: [
+      "wizard-expandable",
+      "button",
+      "input",
+      "label",
+      "textarea",
+    ],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/default/example/wizard-expandable-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ]

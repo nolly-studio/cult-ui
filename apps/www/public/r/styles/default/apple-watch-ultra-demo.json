@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "apple-watch-ultra-demo",
+  "registryDependencies": [
+    "apple-watch-ultra"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/apple-watch-ultra-demo.tsx",
+      "content": "\"use client\"\n\nimport { AppleWatchUltra } from \"@/registry/default/ui/apple-watch-ultra\"\n\nexport default function AppleWatchUltraDemo() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <AppleWatchUltra />\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

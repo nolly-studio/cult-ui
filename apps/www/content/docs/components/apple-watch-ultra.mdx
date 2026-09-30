@@ -1,0 +1,62 @@
+---
+title: Apple Watch Ultra
+description: Watch Ultra–style case, complications, crown, and action button
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="apple-watch-ultra-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/apple-watch-ultra.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies:</Step>
+
+```bash
+npm install lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="apple-watch-ultra" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+`AppleWatchUltra` is a self-contained client component with interactive crown, action button, and complication regions.
+
+```tsx
+import { AppleWatchUltra } from "@/components/apple-watch-ultra";
+
+export function Showcase() {
+  return <AppleWatchUltra />;
+}
+```

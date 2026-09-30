@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "apple-iphone-17-pro-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "apple-iphone-17-pro"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/apple-iphone-17-pro-demo.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport {\n  IPhone17ProMax,\n  type DynamicIslandSize,\n} from \"@/registry/default/ui/apple-iphone-17-pro\"\n\nconst FRAME_SWATCH: Record<\"graphite\" | \"gold\" | \"blue\", string> = {\n  graphite: \"#363839\",\n  gold: \"#E96A45\",\n  blue: \"#0066F7\",\n}\n\nexport default function AppleIPhone17ProDemo() {\n  const [dynamicIslandSize, setDynamicIslandSize] =\n    useState<DynamicIslandSize>(\"default\")\n  const [frameColor, setFrameColor] = useState<\n    \"graphite\" | \"silver\" | \"gold\" | \"blue\"\n  >(\"graphite\")\n\n  const cycleDynamicIsland = () => {\n    const sizes: DynamicIslandSize[] = [\"default\", \"expanded\", \"large\", \"ultra\"]\n    const currentIndex = sizes.indexOf(dynamicIslandSize)\n    const nextIndex = (currentIndex + 1) % sizes.length\n    setDynamicIslandSize(sizes[nextIndex])\n  }\n\n  return (\n    <IPhone17ProMax\n      batteryLevel={94}\n      dynamicIslandSize={dynamicIslandSize}\n      frameColor={frameColor}\n      onDynamicIslandTap={cycleDynamicIsland}\n      signalStrength={2}\n      time=\"9:41\"\n    >\n      {/* Demo screen content */}\n      <div className=\"flex flex-1 flex-col items-center justify-center gap-6 px-6\">\n        <h1 className=\"text-center font-bold text-xl\">iPhone 17 Pro Max</h1>\n        <p className=\"text-center text-neutral-500 text-sm\">\n          Tap the Screen to cycle <br /> through dynamic island sizes\n        </p>\n\n        <div className=\"rounded-full bg-neutral-100 px-3 py-1.5 text-neutral-400 text-xs\">\n          Current: {dynamicIslandSize}\n        </div>\n\n        {/* Frame color selector */}\n        <div className=\"mt-4 flex gap-3\">\n          {([\"graphite\", \"gold\", \"blue\"] as const).map((color) => (\n            <button\n              className={`h-8 w-8 rounded-full border-2 transition-all ${\n                frameColor === color\n                  ? \"scale-110 border-black\"\n                  : \"border-transparent\"\n              }`}\n              key={color}\n              onClick={() => setFrameColor(color)}\n              style={{ background: FRAME_SWATCH[color] }}\n              type=\"button\"\n            />\n          ))}\n        </div>\n        <p className=\"text-neutral-400 text-xs\">Select frame color</p>\n      </div>\n    </IPhone17ProMax>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

@@ -144,7 +144,7 @@ function SettingSlider({
           onChange(typeof v === "number" ? v : (v[0] ?? min))
         }
         step={step}
-        value={value}
+        value={[value]}
       />
     </div>
   )

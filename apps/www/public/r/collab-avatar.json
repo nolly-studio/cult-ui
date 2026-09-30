@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collab-avatar",
+  "type": "registry:ui",
+  "description": "Collaboration avatar with initials and color",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/ui/collab-avatar.tsx",
+      "content": "\"use client\"\n\nimport { motion, useReducedMotion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst WHITESPACE = /\\s+/\n\nfunction initialsFromName(name: string): string {\n  const parts = name.trim().split(WHITESPACE).filter(Boolean)\n  if (parts.length >= 2) {\n    const a = parts[0][0] ?? \"\"\n    const b = parts[1][0] ?? \"\"\n    return `${a}${b}`.toUpperCase()\n  }\n  const word = parts[0] ?? \"\"\n  if (word.length <= 1) {\n    return word.toUpperCase()\n  }\n  return word.slice(0, 2).toUpperCase()\n}\n\nconst enterEase = [0.2, 0, 0, 1] as const\n\nexport function CollabAvatar({\n  name,\n  color,\n  size = 24,\n  className,\n}: {\n  name: string\n  color: string\n  size?: number\n  className?: string\n}) {\n  const reduceMotion = useReducedMotion()\n  const initials = initialsFromName(name)\n  const fontSize = size * 0.38\n\n  return (\n    <motion.div\n      data-slot=\"collab-avatar\"\n      role=\"img\"\n      aria-label={name}\n      title={name}\n      className={cn(\n        \"relative isolate shrink-0 select-none [-webkit-font-smoothing:antialiased]\",\n        className\n      )}\n      initial={\n        reduceMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.92 }\n      }\n      animate={{ opacity: 1, scale: 1 }}\n      transition={\n        reduceMotion ? { duration: 0 } : { duration: 0.22, ease: enterEase }\n      }\n      style={{\n        width: size,\n        height: size,\n        borderRadius: \"50%\",\n        display: \"flex\",\n        alignItems: \"center\",\n        justifyContent: \"center\",\n        fontSize,\n        fontWeight: 600,\n        color,\n        lineHeight: 1,\n        letterSpacing: \"-0.03em\",\n        background: `\n          linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, transparent 48%),\n          linear-gradient(135deg, ${color}18, ${color}3a)\n        `,\n        border: `1px solid ${color}55`,\n        boxShadow: `\n          0 0 0 1px ${color}22,\n          0 1px 2px rgba(0, 0, 0, 0.06),\n          inset 0 1px 0 rgba(255, 255, 255, 0.28)\n        `,\n      }}\n    >\n      <span\n        className=\"pointer-events-none block translate-y-[0.5px] leading-none tracking-tight\"\n        aria-hidden\n      >\n        {initials}\n      </span>\n    </motion.div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

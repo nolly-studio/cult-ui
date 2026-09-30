@@ -1,0 +1,75 @@
+---
+title: Apple Pro Display XDR
+description: Studio Display–style aluminum frame, screen modes, and interactive macOS dock
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="apple-pro-display-xdr-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[95%]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/apple-pro-display-xdr.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies:</Step>
+
+```bash
+npm install @tabler/icons-react motion
+```
+
+<Step>Install the tooltip component from shadcn/ui:</Step>
+
+```bash
+npx shadcn@latest add tooltip
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="apple-pro-display-xdr" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>
+  The built-in wallpaper demo loads `next/image` from `public/images/apple-wallpaper.jpg`. Add
+  that asset or pass `screenContent` / adjust the source in the component.
+</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+`AppleProDisplayXDR` is a client component. Optionally pass `screenContent` to fully control the display area; otherwise the default cycling demos and dock run on click.
+
+```tsx
+import { AppleProDisplayXDR } from "@/components/apple-pro-display-xdr";
+
+export function Hero() {
+  return (
+    <AppleProDisplayXDR initialMode="wallpaper" />
+  );
+}
+```

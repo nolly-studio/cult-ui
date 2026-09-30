@@ -1,0 +1,46 @@
+---
+title: Globe (COBE)
+description: Interactive 3D globe with cobe WebGL, presets, markers, and arcs
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="globe-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/globe.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="globe" />
+
+<Step>Install dependencies: `cobe`, `motion`, and `next-themes` if you do not already use them. Ensure your app wraps content with `ThemeProvider` from `next-themes` for dark mode palette resolution.</Step>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>

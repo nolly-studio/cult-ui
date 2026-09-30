@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-card-demo",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "animated-card"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/animated-card-demo.tsx",
+      "content": "\"use client\"\n\nimport { MoreHorizontalIcon } from \"lucide-react\"\n\nimport {\n  AnimatedCard,\n  AnimatedCardAction,\n  AnimatedCardButton,\n  AnimatedCardContent,\n  AnimatedCardDescription,\n  AnimatedCardFooter,\n  AnimatedCardHeader,\n  AnimatedCardTitle,\n} from \"@/registry/default/ui/animated-card\"\n\nexport default function AnimatedCardDemo() {\n  return (\n    <div className=\"flex w-full max-w-lg flex-col gap-10\">\n      <AnimatedCard aria-label=\"Composable animated card example\">\n        <AnimatedCardHeader>\n          <AnimatedCardTitle>Composable card</AnimatedCardTitle>\n          <AnimatedCardDescription>\n            Header, content, and footer slots share the same gradient rim and\n            frosted surface as the polished search field. Footer actions use{\" \"}\n            <code className=\"rounded bg-muted px-1 py-0.5 font-mono text-[0.8rem]\">\n              AnimatedCardButton\n            </code>{\" \"}\n            so labels stay high-contrast in dark mode.\n          </AnimatedCardDescription>\n          <AnimatedCardAction>\n            <AnimatedCardButton\n              aria-label=\"More options\"\n              size=\"icon\"\n              type=\"button\"\n              variant=\"secondary\"\n            >\n              <MoreHorizontalIcon aria-hidden className=\"size-4\" />\n            </AnimatedCardButton>\n          </AnimatedCardAction>\n        </AnimatedCardHeader>\n\n        <AnimatedCardContent>\n          <p className=\"text-foreground/90 text-sm leading-relaxed\">\n            Use{\" \"}\n            <code className=\"rounded bg-muted px-1 py-0.5 font-mono text-[0.8rem]\">\n              AnimatedCardContent\n            </code>{\" \"}\n            for the main body between the header and footer. Tab through the\n            header action or footer buttons to see focus-within on the rim.\n          </p>\n          <ul className=\"list-inside list-disc space-y-1.5 text-muted-foreground text-sm\">\n            <li>\n              <span className=\"text-foreground/90\">AnimatedCardHeader</span> —\n              title, description, optional action\n            </li>\n            <li>\n              <span className=\"text-foreground/90\">AnimatedCardFooter</span> —\n              primary actions aligned to the end\n            </li>\n          </ul>\n        </AnimatedCardContent>\n\n        <AnimatedCardFooter className=\"justify-between gap-3\">\n          <AnimatedCardButton type=\"button\" variant=\"secondary\">\n            Cancel\n          </AnimatedCardButton>\n          <AnimatedCardButton type=\"button\" variant=\"primary\">\n            Continue\n          </AnimatedCardButton>\n        </AnimatedCardFooter>\n      </AnimatedCard>\n\n      <AnimatedCard\n        aria-label=\"Minimal animated card\"\n        className=\"max-w-md self-center\"\n      >\n        <AnimatedCardHeader>\n          <AnimatedCardTitle>Minimal layout</AnimatedCardTitle>\n          <AnimatedCardDescription>\n            Title and description only — no content slot or footer. Same rim and\n            hover behavior.\n          </AnimatedCardDescription>\n        </AnimatedCardHeader>\n      </AnimatedCard>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

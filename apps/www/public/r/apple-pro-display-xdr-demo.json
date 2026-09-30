@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "apple-pro-display-xdr-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "apple-pro-display-xdr"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/apple-pro-display-xdr-demo.tsx",
+      "content": "\"use client\"\n\nimport { AppleProDisplayXDR } from \"@/registry/default/ui/apple-pro-display-xdr\"\n\nexport default function AppleProDisplayXDRDemo() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <AppleProDisplayXDR />\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

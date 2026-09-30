@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-switch-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "animated-switch"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/animated-switch-demo.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { AnimatedSwitch } from \"@/registry/default/ui/animated-switch\"\n\nexport default function AnimatedSwitchDemo() {\n  const [notifyOn, setNotifyOn] = useState(true)\n  const [compact, setCompact] = useState(false)\n\n  return (\n    <main className=\"flex min-h-screen flex-col items-center justify-center bg-background p-8\">\n      <div className=\"w-full max-w-md space-y-10\">\n        <section className=\"space-y-3\">\n          <h2 className=\"font-semibold text-foreground text-lg tracking-tight\">\n            Default\n          </h2>\n          <p className=\"text-pretty text-muted-foreground text-sm\">\n            Toggles on and off with a spring-animated thumb and an enlarged tap\n            target for easier touch use.\n          </p>\n          <div className=\"flex items-center gap-4\">\n            <AnimatedSwitch\n              checked={notifyOn}\n              onCheckedChange={setNotifyOn}\n              translucent\n            />\n            <span className=\"text-muted-foreground text-sm\">\n              Notifications {notifyOn ? \"on\" : \"off\"}\n            </span>\n          </div>\n        </section>\n\n        <section className=\"space-y-3\">\n          <h2 className=\"font-semibold text-foreground text-lg tracking-tight\">\n            Small\n          </h2>\n          <p className=\"text-pretty text-muted-foreground text-sm\">\n            A smaller footprint for dense toolbars and compact settings rows.\n          </p>\n          <div className=\"flex items-center gap-4\">\n            <AnimatedSwitch\n              checked={compact}\n              onCheckedChange={setCompact}\n              size=\"sm\"\n              translucent\n            />\n            <span className=\"text-muted-foreground text-sm\">\n              Compact mode {compact ? \"on\" : \"off\"}\n            </span>\n          </div>\n        </section>\n      </div>\n    </main>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

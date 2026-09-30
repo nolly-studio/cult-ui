@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-field",
+  "type": "registry:ui",
+  "description": "Form field layout (label, description, error) for AnimatedInput and AnimatedTextarea",
+  "registryDependencies": [
+    "field"
+  ],
+  "files": [
+    {
+      "path": "registry/default/ui/animated-field.tsx",
+      "content": "\"use client\"\n\n/**\n * Form field layout aligned with shadcn `Field` — label, description, error, and control\n * slots for {@link AnimatedInput} / {@link AnimatedTextarea} (general-purpose; not tied to\n * search or composer).\n */\nimport type { ComponentProps } from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport {\n  Field,\n  FieldContent,\n  FieldDescription,\n  FieldError,\n  FieldLabel,\n  FieldTitle,\n} from \"@/components/ui/field\"\n\nexport type AnimatedFieldProps = ComponentProps<typeof Field>\n\n/** Root group; pairs with {@link AnimatedFieldLabel}, {@link AnimatedFieldContent}, etc. */\nexport function AnimatedField({ className, ...props }: AnimatedFieldProps) {\n  return (\n    <Field\n      className={cn(\"group/animated-field w-full max-w-full gap-2\", className)}\n      data-slot=\"animated-field\"\n      {...props}\n    />\n  )\n}\n\nexport const AnimatedFieldContent = FieldContent\nexport const AnimatedFieldDescription = FieldDescription\nexport const AnimatedFieldError = FieldError\nexport const AnimatedFieldLabel = FieldLabel\nexport const AnimatedFieldTitle = FieldTitle\n",
+      "type": "registry:ui"
+    }
+  ]
+}

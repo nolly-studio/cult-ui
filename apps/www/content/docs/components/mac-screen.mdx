@@ -1,0 +1,67 @@
+---
+title: Mac Screen
+description: Classic Mac frame with an image or GIF composited into the CRT
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="mac-screen-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/mac-screen.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="mac-screen" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>
+  Add the frame asset to your app’s public folder at
+  `public/component-frames/apple-computer-img.png` (or change the `src` in the
+  component to match your file).
+</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+`MacScreen` is a client component. Pass `gifUrl` for any image URL (not only GIFs) to show inside the bezel, and `alt` for accessible text for that inner image.
+
+```tsx
+import { MacScreen } from "@/components/mac-screen";
+
+export function Hero() {
+  return (
+    <MacScreen
+      gifUrl="https://example.com/preview.png"
+      alt="Product screenshot"
+    />
+  );
+}
+```

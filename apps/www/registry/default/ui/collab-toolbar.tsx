@@ -1,0 +1,289 @@
+"use client"
+
+import type { ReactNode } from "react"
+
+export type IconKey =
+  | "phone"
+  | "compass"
+  | "desktop"
+  | "chrome"
+  | "chat"
+  | "inbox"
+  | "toggle"
+  | "layers"
+  | "upload"
+  | "menu"
+
+export const icons: Record<IconKey, ReactNode> = {
+  phone: (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      fill="currentColor"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M5.25 0C3.73122 0 2.5 1.23122 2.5 2.75V13.25C2.5 14.7688 3.73122 16 5.25 16H10.75C12.2688 16 13.5 14.7688 13.5 13.25V2.75C13.5 1.23122 12.2688 0 10.75 0H5.25ZM4 2.75C4 2.05964 4.55964 1.5 5.25 1.5H10.75C11.4404 1.5 12 2.05964 12 2.75V13.25C12 13.9404 11.4404 14.5 10.75 14.5H5.25C4.55964 14.5 4 13.9404 4 13.25V2.75ZM6.25 4.75C6.80228 4.75 7.25 4.30228 7.25 3.75C7.25 3.19772 6.80228 2.75 6.25 2.75C5.69772 2.75 5.25 3.19772 5.25 3.75C5.25 4.30228 5.69772 4.75 6.25 4.75Z"
+      />
+    </svg>
+  ),
+  compass: (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      fill="currentColor"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M14.5 8C14.5 11.5899 11.5899 14.5 8 14.5C4.41015 14.5 1.5 11.5899 1.5 8C1.5 4.41015 4.41015 1.5 8 1.5C11.5899 1.5 14.5 4.41015 14.5 8ZM16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM12.5925 3.40746L8.75908 4.93074L6.01936 6.0194L4.9307 8.75912L3.40742 12.5926L7.24089 11.0693L9.9806 9.98064L11.0693 7.24092L12.5925 3.40746ZM9.25 8C9.25 8.69036 8.69036 9.25 8 9.25C7.30964 9.25 6.75 8.69036 6.75 8C6.75 7.30964 7.30964 6.75 8 6.75C8.69036 6.75 9.25 7.30964 9.25 8Z"
+      />
+    </svg>
+  ),
+  desktop: (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      fill="currentColor"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M0 2C0 1.44772 .447715 1 1 1H15C15.5523 1 16 1.44772 16 2V10.5C16 11.0523 15.5523 11.5 15 11.5H8.75V14.5H9.75H10.5V16H9.75H6.25H5.5V14.5H6.25H7.25V11.5H1C.447714 11.5 0 11.0523 0 10.5V2ZM1.5 2.5V10H14.5V2.5H1.5Z"
+      />
+    </svg>
+  ),
+  chrome: (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      fill="currentColor"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8.53216 11.3333L6.77086 14.3839C3.76871 13.8094 1.5 11.1696 1.5 8C1.5 6.86643 1.79018 5.80063 2.3003 4.87284L5.006 9.55925C5.56913 10.6383 6.69854 11.375 8 11.375C8.18107 11.375 8.35881 11.3607 8.53216 11.3333ZM10.8505 9.80787L8.14234 14.4985C11.6665 14.4228 14.5 11.5423 14.5 8C14.5 7.2549 14.3746 6.53909 14.1438 5.8725L10.6201 5.8725C11.0921 6.45305 11.375 7.19349 11.375 8C11.375 8.66509 11.1826 9.28525 10.8505 9.80787ZM8.13109 4.6275L13.5577 4.6275C12.4175 2.7524 10.355 1.5 8 1.5C6.0376 1.5 4.27831 2.36964 3.08649 3.74456L4.84694 6.79376C5.33242 5.52553 6.56104 4.625 8 4.625C8.0439 4.625 8.0876 4.62584 8.13109 4.6275ZM8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16ZM5.875 8C5.875 6.8264 6.8264 5.875 8 5.875C9.1736 5.875 10.125 6.8264 10.125 8C10.125 9.1736 9.1736 10.125 8 10.125C6.8264 10.125 5.875 9.1736 5.875 8Z"
+      />
+    </svg>
+  ),
+  chat: (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      fill="currentColor"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M2.8914 10.4028L2.98327 10.6318C3.22909 11.2445 3.5 12.1045 3.5 13C3.5 13.3588 3.4564 13.7131 3.38773 14.0495C3.69637 13.9446 4.01409 13.8159 4.32918 13.6584C4.87888 13.3835 5.33961 13.0611 5.70994 12.7521L6.22471 12.3226L6.88809 12.4196C7.24851 12.4724 7.61994 12.5 8 12.5C11.7843 12.5 14.5 9.85569 14.5 7C14.5 4.14431 11.7843 1.5 8 1.5C4.21574 1.5 1.5 4.14431 1.5 7C1.5 8.18175 1.94229 9.29322 2.73103 10.2153L2.8914 10.4028ZM2.8135 15.7653C1.76096 16 1 16 1 16C1 16 1.43322 15.3097 1.72937 14.4367C1.88317 13.9834 2 13.4808 2 13C2 12.3826 1.80733 11.7292 1.59114 11.1903C.591845 10.0221 0 8.57152 0 7C0 3.13401 3.58172 0 8 0C12.4183 0 16 3.13401 16 7C16 10.866 12.4183 14 8 14C7.54721 14 7.10321 13.9671 6.67094 13.9038C6.22579 14.2753 5.66881 14.6656 5 15C4.23366 15.3832 3.46733 15.6195 2.8135 15.7653Z"
+      />
+    </svg>
+  ),
+  inbox: (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      fill="currentColor"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M1.67705 7.5L3.92705 3H12.0729L14.3229 7.5H10H9.25V8.25C9.25 8.94036 8.69036 9.5 8 9.5C7.30964 9.5 6.75 8.94036 6.75 8.25V7.5H6H1.67705ZM1.5 9V12C1.5 12.5523 1.94772 13 2.5 13H13.5C14.0523 13 14.5 12.5523 14.5 12V9H10.6465C10.32 10.1543 9.25878 11 8 11C6.74122 11 5.67998 10.1543 5.35352 9H1.5ZM3 1.5H13L15.8944 7.28885C15.9639 7.42771 16 7.58082 16 7.73607V12C16 13.3807 14.8807 14.5 13.5 14.5H2.5C1.11929 14.5 0 13.3807 0 12V7.73607C0 7.58082 .0361451 7.42771 .105573 7.28885L3 1.5Z"
+      />
+    </svg>
+  ),
+  toggle: (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      fill="currentColor"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M6 3.5H10C12.4853 3.5 14.5 5.51472 14.5 8C14.5 10.4853 12.4853 12.5 10 12.5H6C3.51472 12.5 1.5 10.4853 1.5 8C1.5 5.51472 3.51472 3.5 6 3.5ZM0 8C0 4.68629 2.68629 2 6 2H10C13.3137 2 16 4.68629 16 8C16 11.3137 13.3137 14 10 14H6C2.68629 14 0 11.3137 0 8ZM7.5 8C7.5 8.82843 6.82843 9.5 6 9.5C5.17157 9.5 4.5 8.82843 4.5 8C4.5 7.17157 5.17157 6.5 6 6.5C6.82843 6.5 7.5 7.17157 7.5 8ZM9 8C9 9.65685 7.65685 11 6 11C4.34315 11 3 9.65685 3 8C3 6.34315 4.34315 5 6 5C7.65685 5 9 6.34315 9 8Z"
+      />
+    </svg>
+  ),
+  layers: (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      fill="currentColor"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M0 5.25136V4.2487L.463236 4.05702L7.71324 1.05702L8 .938354L8.28676 1.05702L15.5368 4.05702L16 4.2487V5.25136L15.5368 5.44304L8.28676 8.44304L8 8.5617L7.71324 8.44304L.463236 5.44304L0 5.25136ZM0 8.45825V6.83491L.536764 7.05702L8 10.1453L15.4632 7.05702L16 6.83491V8.45825L8.28676 11.6499L8 11.7686L7.71324 11.6499L0 8.45825ZM0 11.7083V10.0849L.536764 10.307L8 13.3953L15.4632 10.307L16 10.0849V11.7083L8.28676 14.8999L8 15.0186L7.71324 14.8999L0 11.7083ZM8 6.93835L2.71154 4.75003L8 2.5617L13.2885 4.75003L8 6.93835Z"
+      />
+    </svg>
+  ),
+  upload: (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      fill="currentColor"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M7.29289 1.39644C7.68342 1.00592 8.31658 1.00592 8.70711 1.39644L11.7803 4.46966L12.3107 5L11.25 6.06066L10.7197 5.53033L8.75 3.56066V10.25V11H7.25V10.25V3.56066L5.28033 5.53033L4.75 6.06066L3.68934 5L4.21967 4.46966L7.29289 1.39644ZM13.5 9.25V13.5H2.5V9.25V8.5H1V9.25V14C1 14.5523 1.44771 15 2 15H14C14.5523 15 15 14.5523 15 14V9.25V8.5H13.5V9.25Z"
+      />
+    </svg>
+  ),
+  menu: (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      fill="currentColor"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M1 2H1.75H14.25H15V3.5H14.25H1.75H1V2ZM1 12.5H1.75H14.25H15V14H14.25H1.75H1V12.5ZM1.75 7.25H1V8.75H1.75H14.25H15V7.25H14.25H1.75Z"
+      />
+    </svg>
+  ),
+}
+
+export type Collaborator = {
+  name: string
+  color?: string
+  imageUrl?: string
+}
+
+function CollabToolbarAvatar({
+  name,
+  size = 24,
+  imageUrl,
+}: {
+  name: string
+  size?: number
+  imageUrl?: string
+}) {
+  const src =
+    imageUrl ?? `https://i.pravatar.cc/80?u=${encodeURIComponent(name)}`
+
+  return (
+    <div
+      data-slot="collab-avatar"
+      title={name}
+      role="img"
+      aria-label={name}
+      className="shrink-0 rounded-full border-2 border-white bg-cover bg-center shadow-[0_0_0_1px_rgba(0,0,0,0.08)] dark:border-zinc-900 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.16)]"
+      style={{
+        width: size,
+        height: size,
+        backgroundImage: `url(${src})`,
+      }}
+    />
+  )
+}
+
+export type ToolbarGroup = IconKey[] | "avatars"
+
+export function CollabToolbarIcon({ icon }: { icon: IconKey }) {
+  return (
+    <button
+      data-slot="collab-toolbar-icon"
+      type="button"
+      aria-label={icon}
+      className="flex cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-1.5 text-zinc-500 transition-colors duration-150 ease-out hover:bg-black/5 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-zinc-100"
+    >
+      {icons[icon]}
+    </button>
+  )
+}
+
+export function CollabToolbarDivider() {
+  return (
+    <div
+      data-slot="collab-toolbar-divider"
+      className="h-5 w-px shrink-0 bg-black/10 dark:bg-white/15"
+    />
+  )
+}
+
+export function CollabToolbar({
+  groups,
+  avatars = [],
+}: {
+  groups: ToolbarGroup[]
+  avatars?: Collaborator[]
+}) {
+  return (
+    <div
+      data-slot="collab-toolbar"
+      className="inline-flex items-center gap-1 rounded-xl bg-white px-2 py-1.5 shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_4px_12px_rgba(0,0,0,0.06),0_12px_36px_rgba(0,0,0,0.08)] dark:bg-zinc-900 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.12),0_8px_24px_rgba(0,0,0,0.45)]"
+      style={{
+        fontFamily: '"Geist", Arial, sans-serif',
+        WebkitFontSmoothing: "antialiased",
+      }}
+    >
+      {groups.map((group) => {
+        const groupKey = Array.isArray(group)
+          ? `icons:${group.join("|")}`
+          : group
+
+        return (
+          <div key={groupKey} style={{ display: "contents" }}>
+            {groups[0] !== group && <CollabToolbarDivider />}
+            {Array.isArray(group) ? (
+              <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
+                {group.map((icon) => (
+                  <CollabToolbarIcon key={icon} icon={icon} />
+                ))}
+              </div>
+            ) : group === "avatars" ? (
+              <div style={{ display: "flex", alignItems: "center" }}>
+                {avatars.map((avatar, index) => (
+                  <div
+                    key={avatar.name}
+                    style={{ marginLeft: index > 0 ? -4 : 0 }}
+                  >
+                    <CollabToolbarAvatar
+                      name={avatar.name}
+                      imageUrl={avatar.imageUrl}
+                      size={24}
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        )
+      })}
+    </div>
+  )
+}

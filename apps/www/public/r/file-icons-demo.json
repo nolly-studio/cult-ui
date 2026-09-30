@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "file-icons-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "file-icons"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/file-icons-demo.tsx",
+      "content": "\"use client\"\n\nimport {\n  getIconForLanguageExtension,\n  Icons,\n} from \"@/registry/default/ui/file-icons\"\n\nconst iconKeys = Object.keys(Icons) as (keyof typeof Icons)[]\n\nfunction IconsDemo() {\n  return (\n    <div className=\"flex flex-col gap-8\">\n      <div>\n        <h3 className=\"text-sm font-medium text-muted-foreground mb-3\">\n          Icons\n        </h3>\n        <ul className=\"grid grid-cols-4 sm:grid-cols-6 gap-4\">\n          {iconKeys.map((key) => {\n            const Icon = Icons[key]\n            return (\n              <li\n                key={key}\n                className=\"flex flex-col items-center gap-2 rounded-lg border bg-card p-3\"\n              >\n                <Icon className=\"size-6 text-foreground\" aria-hidden />\n                <span className=\"text-xs text-muted-foreground\">{key}</span>\n              </li>\n            )\n          })}\n        </ul>\n      </div>\n      <div>\n        <h3 className=\"text-sm font-medium text-muted-foreground mb-3\">\n          getIconForLanguageExtension\n        </h3>\n        <ul className=\"flex flex-wrap gap-4\">\n          {([\"json\", \"css\", \"ts\"] as const).map((ext) => (\n            <li\n              key={ext}\n              className=\"flex items-center gap-2 rounded-lg border bg-card px-3 py-2\"\n            >\n              {getIconForLanguageExtension(ext)}\n              <span className=\"text-sm text-muted-foreground\">.{ext}</span>\n            </li>\n          ))}\n        </ul>\n      </div>\n    </div>\n  )\n}\n\nexport default IconsDemo\n",
+      "type": "registry:component"
+    }
+  ]
+}

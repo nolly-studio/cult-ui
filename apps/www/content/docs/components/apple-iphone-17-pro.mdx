@@ -1,0 +1,66 @@
+---
+title: Apple iPhone 17 Pro Max
+description: iPhone-style device frame with Dynamic Island, status bar, and configurable frame colors
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="apple-iphone-17-pro-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/apple-iphone-17-pro.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependencies:</Step>
+
+```bash
+npm install lucide-react motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="apple-iphone-17-pro" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+`IPhone17ProMax` is a client component. Pass `children` for the screen body, and use `dynamicIslandSize`, `frameColor`, and optional callbacks to match your layout.
+
+```tsx
+import { IPhone17ProMax } from "@/components/apple-iphone-17-pro";
+
+export function Hero() {
+  return (
+    <IPhone17ProMax frameColor="graphite" dynamicIslandSize="default" time="9:41">
+      <div className="flex flex-1 items-center justify-center text-sm">Your UI</div>
+    </IPhone17ProMax>
+  );
+}
+```

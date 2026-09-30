@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "agent-suggest-card-stack-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "agent-suggest-card-stack"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/agent-suggest-card-stack-demo.tsx",
+      "content": "\"use client\"\n\nimport { AgentSuggestCardStack } from \"@/registry/default/ui/agent-suggest-card-stack\"\nimport type { SuggestionItem } from \"@/registry/default/ui/agent-suggest-card-stack\"\n\nconst sampleSuggestions: SuggestionItem[] = [\n  {\n    id: \"1\",\n    title: \"Update auth config\",\n    progress: 100,\n    status: \"success\",\n  },\n  {\n    id: \"2\",\n    title: \"Fix type errors\",\n    progress: 65,\n    status: \"mixed\",\n    mixedProgress: { success: 2, error: 1 },\n  },\n  {\n    id: \"3\",\n    title: \"Add tests\",\n    progress: 0,\n    status: \"error\",\n  },\n]\n\nfunction AgentSuggestCardStackDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-6\">\n      <AgentSuggestCardStack\n        width={320}\n        height={220}\n        headerTitle=\"Suggestions\"\n        headerBadge=\"3\"\n        commitButtonText=\"Apply\"\n        suggestions={sampleSuggestions}\n      />\n    </div>\n  )\n}\n\nexport default AgentSuggestCardStackDemo\n",
+      "type": "registry:component"
+    }
+  ]
+}

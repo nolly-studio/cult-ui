@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature-sticky-section-demo",
+  "registryDependencies": [
+    "feature-sticky-section"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/feature-sticky-section-demo.tsx",
+      "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\nimport { StickySection } from \"@/registry/default/ui/feature-sticky-section\"\n\nconst sections = [\n  {\n    id: \"overview\",\n    title: \"Overview\",\n    body: \"This is the first section. Scroll or click the list to switch sections.\",\n  },\n  {\n    id: \"details\",\n    title: \"Details\",\n    body: \"This is the second section. The sticky list highlights the active section as you scroll.\",\n  },\n  {\n    id: \"summary\",\n    title: \"Summary\",\n    body: \"This is the third section. Click any list item to scroll to its panel.\",\n  },\n]\n\nfunction FeatureStickySectionDemo() {\n  return (\n    <div className=\"w-full max-w-4xl mx-auto p-6\">\n      <StickySection.Root>\n        <div className=\"flex gap-8\">\n          <aside className=\"w-44 shrink-0\">\n            <StickySection.List asChild>\n              <ul className=\"sticky top-6 flex flex-col gap-1\">\n                {sections.map((section, i) => (\n                  <StickySection.Item asChild index={i} key={section.id}>\n                    <li>\n                      <StickySection.Trigger\n                        index={i}\n                        className={cn(\n                          \"w-full rounded-md border-none bg-transparent px-3 py-2 text-left text-sm transition-colors\",\n                          \"hover:bg-muted\",\n                          \"data-[state=active]:bg-primary data-[state=active]:text-primary-foreground\"\n                        )}\n                      >\n                        {section.title}\n                      </StickySection.Trigger>\n                    </li>\n                  </StickySection.Item>\n                ))}\n              </ul>\n            </StickySection.List>\n          </aside>\n          <StickySection.Content asChild>\n            <div className=\"min-w-0 flex-1 space-y-24\">\n              {sections.map((section, i) => (\n                <StickySection.Panel\n                  index={i}\n                  key={section.id}\n                  className=\"min-h-[50vh] rounded-lg border border-border bg-card p-6\"\n                >\n                  <h3 className=\"mb-2 font-semibold text-lg\">\n                    {section.title}\n                  </h3>\n                  <p className=\"text-muted-foreground\">{section.body}</p>\n                </StickySection.Panel>\n              ))}\n            </div>\n          </StickySection.Content>\n        </div>\n      </StickySection.Root>\n    </div>\n  )\n}\n\nexport default FeatureStickySectionDemo\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

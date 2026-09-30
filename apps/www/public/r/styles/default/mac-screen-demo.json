@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mac-screen-demo",
+  "registryDependencies": [
+    "mac-screen"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/mac-screen-demo.tsx",
+      "content": "\"use client\"\n\nimport { MacScreen } from \"@/registry/default/ui/mac-screen\"\n\nexport default function MacScreenDemo() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <MacScreen />\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

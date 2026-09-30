@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "copy-button-demo",
+  "registryDependencies": [
+    "copy-button"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/copy-button-demo.tsx",
+      "content": "\"use client\"\n\nimport { CopyButton } from \"@/registry/default/ui/copy-button\"\n\nconst sampleCode = \"npm install @radix-ui/react-slot\"\nconst sampleUrl = \"https://github.com/vercel/next.js\"\n\nfunction CopyableRow({\n  value,\n  children,\n}: {\n  value: string\n  children: React.ReactNode\n}) {\n  return (\n    <div\n      className={[\n        \"group relative flex w-full max-w-xl items-stretch overflow-hidden rounded-2xl border border-border/70\",\n        \"bg-gradient-to-b from-muted/40 to-muted/20 text-left\",\n        \"shadow-[0_1px_2px_rgba(0,0,0,0.05),0_1px_0_0_rgba(255,255,255,0.06)_inset]\",\n        \"ring-1 ring-black/[0.04] dark:from-muted/25 dark:to-muted/10 dark:ring-white/[0.06]\",\n        \"transition-[box-shadow,background-color,border-color] duration-200 ease-out\",\n        \"[@media(hover:hover)]:hover:border-border [@media(hover:hover)]:hover:shadow-[0_4px_14px_rgba(0,0,0,0.08)]\",\n        \"dark:[@media(hover:hover)]:hover:shadow-[0_4px_18px_rgba(0,0,0,0.35)]\",\n      ].join(\" \")}\n    >\n      <div className=\"min-w-0 flex-1 px-4 py-3.5 leading-snug\">{children}</div>\n      <div\n        className={[\n          \"flex shrink-0 items-center border-border/60 border-l bg-muted/30 px-1 py-1.5\",\n          \"dark:bg-muted/15\",\n          \"[@media(hover:hover)]:group-hover:bg-muted/45 dark:[@media(hover:hover)]:group-hover:bg-muted/25\",\n        ].join(\" \")}\n      >\n        <CopyButton\n          className=\"text-muted-foreground [@media(hover:hover)]:hover:text-foreground\"\n          layout=\"inline\"\n          size=\"icon-sm\"\n          value={value}\n          variant=\"ghost\"\n        />\n      </div>\n    </div>\n  )\n}\n\nfunction CopyButtonDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-5 p-6\">\n      <CopyableRow value={sampleCode}>\n        <code className=\"font-mono text-foreground text-sm tracking-tight antialiased\">\n          {sampleCode}\n        </code>\n      </CopyableRow>\n      <CopyableRow value={sampleUrl}>\n        <span className=\"text-pretty text-muted-foreground text-sm leading-relaxed\">\n          {sampleUrl}\n        </span>\n      </CopyableRow>\n    </div>\n  )\n}\n\nexport default CopyButtonDemo\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

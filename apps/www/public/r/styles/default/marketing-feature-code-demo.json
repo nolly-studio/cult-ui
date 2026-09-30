@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marketing-feature-code-demo",
+  "registryDependencies": [
+    "marketing-feature-code"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/marketing-feature-code-demo.tsx",
+      "content": "\"use client\"\n\nimport { NetworkPolicySection } from \"@/registry/default/ui/marketing-feature-code\"\n\nfunction MarketingFeatureCodeDemo() {\n  return (\n    <div className=\"w-full\">\n      <NetworkPolicySection />\n    </div>\n  )\n}\n\nexport default MarketingFeatureCodeDemo\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}
