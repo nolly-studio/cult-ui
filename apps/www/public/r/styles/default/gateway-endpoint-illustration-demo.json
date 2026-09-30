@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/default/example/gateway-endpoint-illustration-demo.tsx",
-      "content": "\"use client\";\n\nimport { GatewayEndpoint } from \"@/registry/default/ui/gateway-endpoint-illustration\";\n\nfunction GatewayEndpointIllustrationDemo() {\n\treturn (\n\t\t<div className=\"w-full max-w-[264px]\">\n\t\t\t<GatewayEndpoint />\n\t\t</div>\n\t);\n}\n\nexport default GatewayEndpointIllustrationDemo;\n",
+      "content": "\"use client\"\n\nimport { GatewayEndpoint } from \"@/registry/default/ui/gateway-endpoint-illustration\"\n\nfunction GatewayEndpointIllustrationDemo() {\n  return (\n    <div className=\"w-full max-w-[264px]\">\n      <GatewayEndpoint />\n    </div>\n  )\n}\n\nexport default GatewayEndpointIllustrationDemo\n",
       "type": "registry:component"
     }
   ],

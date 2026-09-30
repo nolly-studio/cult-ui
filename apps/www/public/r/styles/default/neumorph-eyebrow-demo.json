@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/default/example/neumorph-eyebrow-demo.tsx",
-      "content": "import { NeumorphEyebrow } from \"../ui/neumorph-eyebrow\";\n\nexport default function NeumorphEyebrowDemo() {\n  return (\n    <div className=\"flex w-full flex-col items-center justify-center space-y-4\">\n      <NeumorphEyebrow>A milestone in scraping</NeumorphEyebrow>\n      <NeumorphEyebrow intent=\"primary\">Primary variant</NeumorphEyebrow>\n      <NeumorphEyebrow intent=\"secondary\">Secondary variant</NeumorphEyebrow>\n    </div>\n  );\n}\n",
+      "content": "import { NeumorphEyebrow } from \"../ui/neumorph-eyebrow\"\n\nexport default function NeumorphEyebrowDemo() {\n  return (\n    <div className=\"flex w-full flex-col items-center justify-center space-y-4\">\n      <NeumorphEyebrow>A milestone in scraping</NeumorphEyebrow>\n      <NeumorphEyebrow intent=\"primary\">Primary variant</NeumorphEyebrow>\n      <NeumorphEyebrow intent=\"secondary\">Secondary variant</NeumorphEyebrow>\n    </div>\n  )\n}\n",
       "type": "registry:component"
     }
   ],

@@ -1,0 +1,60 @@
+---
+title: Shadow Card
+description: Composable marketing card with extruded edge, backdrop layers, and optional pixel gradient mesh
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="shadow-card-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/shadow-card.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="shadow-card" />
+
+<Step>Install `@radix-ui/react-slot` if you use the root `asChild` prop.</Step>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Parts
+
+| Part | Role |
+|------|------|
+| `ShadowCard` | Root container; supports `asChild` to merge props onto a child (e.g. `Link`). |
+| `ShadowCardBevel` | L-shaped bars for the 3D edge; use `barClassName` for thickness or color. |
+| `ShadowCardBackdrop` | Absolutely positioned layer for gradients or images (`className` sets geometry). |
+| `ShadowCardGlow` | Optional blurred accent blob. |
+| `ShadowCardPixelGradient` | Row/column color mesh; pass `colors` to customize the grid. |
+| `ShadowCardVerticalText` | Vertical writing mode wrapper for edge copy. |
+| `ShadowCardFooter` | Bottom-left absolute region for logos or metadata. |
+
+Place `ShadowCardBevel` after other layers so its `z-10` stack paints on top.

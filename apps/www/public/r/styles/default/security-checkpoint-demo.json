@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/default/example/security-checkpoint-demo.tsx",
-      "content": "\"use client\";\n\nimport { SecurityCheckpoint } from \"@/registry/default/ui/security-checkpoint\";\n\nfunction SecurityCheckpointDemo() {\n  return (\n    <div className=\"flex min-h-[240px] w-full items-center justify-center\">\n      <SecurityCheckpoint />\n    </div>\n  );\n}\n\nexport default SecurityCheckpointDemo;\n",
+      "content": "\"use client\"\n\nimport { SecurityCheckpoint } from \"@/registry/default/ui/security-checkpoint\"\n\nfunction SecurityCheckpointDemo() {\n  return (\n    <div className=\"flex min-h-[240px] w-full items-center justify-center\">\n      <SecurityCheckpoint />\n    </div>\n  )\n}\n\nexport default SecurityCheckpointDemo\n",
       "type": "registry:component"
     }
   ],

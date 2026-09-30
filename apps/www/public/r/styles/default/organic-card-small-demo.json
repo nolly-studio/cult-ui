@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "organic-card-small-demo",
+  "registryDependencies": [
+    "organic-card-small"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/organic-card-small-demo.tsx",
+      "content": "\"use client\";\n\nimport { OrganicCardSmall } from \"@/registry/default/ui/organic-card-small\";\n\nexport default function OrganicCardSmallDemo() {\n  return (\n    <div>\n      <div className=\"mx-auto max-w-3xl px-4 sm:px-0\">\n        <OrganicCardSmall\n          category=\"Engineering\"\n          date=\"Apr 2, 2026\"\n          href=\"#\"\n          image=\"https://images.unsplash.com/photo-1677442136019-21780ecad995?w=670&h=208&fit=crop\"\n          imageAlt=\"AI neural network visualization\"\n          title=\"Building scalable AI infrastructure for enterprise\"\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

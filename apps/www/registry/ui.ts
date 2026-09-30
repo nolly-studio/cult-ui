@@ -1273,4 +1273,105 @@ export const ui: Registry["items"] = [
     description:
       "Circular avatar with Paper Design Warp shader; motion-safe pulse, pauses off-screen and when reduced motion is preferred",
   },
+  // Cult Pro migration
+  {
+    name: "folded-card",
+    type: "registry:ui",
+    files: [
+      { path: "registry/default/ui/folded-card.tsx", type: "registry:ui" },
+    ],
+    description: "Card with folded corner clip-path accent",
+  },
+  // Cult Pro migration
+  {
+    name: "shadow-card",
+    type: "registry:ui",
+    dependencies: ["@radix-ui/react-slot"],
+
+    files: [
+      {
+        path: "registry/default/ui/shadow-card.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Composable marketing card with L-shaped extrusion, optional pixel gradient mesh, and Radix Slot on the root",
+  },
+  // Cult Pro migration
+  {
+    name: "organic-card",
+    type: "registry:ui",
+    dependencies: ["lucide-react"],
+
+    files: [
+      {
+        path: "registry/default/ui/organic-card.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Composable marketing card with optional link root, image slot, eyebrow/title/body, accent band, and footer CTA",
+  },
+  // Cult Pro migration
+  {
+    name: "organic-card-small",
+    type: "registry:ui",
+    dependencies: ["lucide-react", "motion"],
+
+    files: [
+      {
+        path: "registry/default/ui/organic-card-small.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Compact card with SVG silhouette, category and date, motion morph on hover, and optional link",
+  },
+  // Cult Pro migration
+  {
+    name: "organic-button",
+    type: "registry:ui",
+    dependencies: [
+      "@radix-ui/react-slot",
+      "class-variance-authority",
+      "lucide-react",
+    ],
+
+    files: [
+      {
+        path: "registry/default/ui/organic-button.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Anchor-based CTA with fixed SVG end caps, shared surface colors via CSS variables, and size and animation variants",
+  },
+  // Cult Pro migration
+  {
+    name: "fluted-glass",
+    type: "registry:ui",
+    dependencies: ["@paper-design/shaders-react"],
+
+    files: [
+      {
+        path: "registry/default/ui/fluted-glass.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Paper Design fluted-glass image shader with sensible defaults — ribbed, streaked distortions over a source image",
+  },
+  // Cult Pro migration
+  {
+    name: "speech-bubble",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/speech-bubble.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Speech bubble component",
+  },
 ]

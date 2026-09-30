@@ -1,0 +1,71 @@
+---
+title: Fluted Glass
+description: Paper Design fluted-glass image shader with sensible defaults — ribbed, streaked distortions over a source image
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="fluted-glass-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/fluted-glass.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="fluted-glass" />
+
+<Step>Install `@paper-design/shaders-react` if it is not already in your project (the CLI recipe includes it).</Step>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+The exported `FlutedGlass` component wraps [`FlutedGlass`](https://github.com/paper-design/shaders) from `@paper-design/shaders-react` with opinionated defaults (image size, fluting, colors, and fit). Pass any supported prop to override defaults; import `defaultFlutedGlassProps` to reuse the same baseline in your own layouts.
+
+Because the shader runs in WebGL, render it only in a client component (`"use client"`).
+
+```tsx
+"use client";
+
+import { FlutedGlass } from "@/components/fluted-glass";
+
+export function HeroFluted() {
+  return (
+    <div className="relative aspect-video w-full max-w-4xl overflow-hidden rounded-2xl">
+      <FlutedGlass
+        className="absolute inset-0 size-full"
+        image="https://paper.design/flowers.webp"
+        width={1280}
+        height={720}
+      />
+    </div>
+  );
+}
+```

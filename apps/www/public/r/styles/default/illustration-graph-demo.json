@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/default/example/illustration-graph-demo.tsx",
-      "content": "\"use client\";\n\nimport { IllustrationGraph } from \"@/registry/default/ui/illustration-graph\";\n\nfunction IllustrationGraphDemo() {\n\treturn (\n\t\t<div className=\"flex items-center justify-center rounded-lg border bg-card/50 p-4\">\n\t\t\t<IllustrationGraph />\n\t\t</div>\n\t);\n}\n\nexport default IllustrationGraphDemo;\n",
+      "content": "\"use client\"\n\nimport { IllustrationGraph } from \"@/registry/default/ui/illustration-graph\"\n\nfunction IllustrationGraphDemo() {\n  return (\n    <div className=\"flex items-center justify-center rounded-lg border bg-card/50 p-4\">\n      <IllustrationGraph />\n    </div>\n  )\n}\n\nexport default IllustrationGraphDemo\n",
       "type": "registry:component"
     }
   ],

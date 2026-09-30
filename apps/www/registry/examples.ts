@@ -1070,4 +1070,94 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "folded-card-demo",
+    type: "registry:component",
+    registryDependencies: ["folded-card"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/default/example/folded-card-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "shadow-card-demo",
+    type: "registry:component",
+    registryDependencies: ["shadow-card"],
+
+    files: [
+      {
+        path: "registry/default/example/shadow-card-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "organic-card-demo",
+    type: "registry:component",
+    registryDependencies: ["organic-card"],
+
+    files: [
+      {
+        path: "registry/default/example/organic-card-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "organic-card-small-demo",
+    type: "registry:component",
+    registryDependencies: ["organic-card-small"],
+
+    files: [
+      {
+        path: "registry/default/example/organic-card-small-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "organic-button-demo",
+    type: "registry:component",
+    registryDependencies: ["organic-button"],
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "registry/default/example/organic-button-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "fluted-glass-demo",
+    type: "registry:component",
+    registryDependencies: [
+      "fluted-glass",
+      "button",
+      "input",
+      "label",
+      "slider",
+    ],
+    dependencies: ["@paper-design/shaders-react"],
+    files: [
+      {
+        path: "registry/default/example/fluted-glass-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "speech-bubble-demo",
+    type: "registry:component",
+    registryDependencies: ["speech-bubble"],
+
+    files: [
+      {
+        path: "registry/default/example/speech-bubble-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
 ]

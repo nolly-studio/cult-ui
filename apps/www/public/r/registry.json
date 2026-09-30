@@ -1300,6 +1300,101 @@
       "description": "Circular avatar with Paper Design Warp shader; motion-safe pulse, pauses off-screen and when reduced motion is preferred"
     },
     {
+      "name": "folded-card",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/default/ui/folded-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Card with folded corner clip-path accent"
+    },
+    {
+      "name": "shadow-card",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-slot"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/shadow-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Composable marketing card with L-shaped extrusion, optional pixel gradient mesh, and Radix Slot on the root"
+    },
+    {
+      "name": "organic-card",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/organic-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Composable marketing card with optional link root, image slot, eyebrow/title/body, accent band, and footer CTA"
+    },
+    {
+      "name": "organic-card-small",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/organic-card-small.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Compact card with SVG silhouette, category and date, motion morph on hover, and optional link"
+    },
+    {
+      "name": "organic-button",
+      "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/organic-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Anchor-based CTA with fixed SVG end caps, shared surface colors via CSS variables, and size and animation variants"
+    },
+    {
+      "name": "fluted-glass",
+      "type": "registry:ui",
+      "dependencies": [
+        "@paper-design/shaders-react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/fluted-glass.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Paper Design fluted-glass image shader with sensible defaults — ribbed, streaked distortions over a source image"
+    },
+    {
+      "name": "speech-bubble",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/default/ui/speech-bubble.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Speech bubble component"
+    },
+    {
       "name": "text-animate-demo",
       "type": "registry:component",
       "registryDependencies": [
@@ -2537,6 +2632,110 @@
       "files": [
         {
           "path": "registry/default/example/ai-blob-warp-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "folded-card-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "folded-card"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/folded-card-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "shadow-card-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "shadow-card"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/shadow-card-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "organic-card-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "organic-card"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/organic-card-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "organic-card-small-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "organic-card-small"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/organic-card-small-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "organic-button-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "organic-button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/organic-button-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "fluted-glass-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "fluted-glass",
+        "button",
+        "input",
+        "label",
+        "slider"
+      ],
+      "dependencies": [
+        "@paper-design/shaders-react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/fluted-glass-demo.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "speech-bubble-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "speech-bubble"
+      ],
+      "files": [
+        {
+          "path": "registry/default/example/speech-bubble-demo.tsx",
           "type": "registry:component"
         }
       ]

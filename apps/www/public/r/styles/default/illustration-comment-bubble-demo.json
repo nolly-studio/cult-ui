@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/default/example/illustration-comment-bubble-demo.tsx",
-      "content": "\"use client\";\n\nexport { CommentBubbleDemo as default } from \"@/registry/default/ui/illustration-comment-bubble\";\n",
+      "content": "\"use client\"\n\nexport { CommentBubbleDemo as default } from \"@/registry/default/ui/illustration-comment-bubble\"\n",
       "type": "registry:component"
     }
   ],

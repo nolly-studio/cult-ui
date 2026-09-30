@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/default/example/gateway-svg-illustration-demo.tsx",
-      "content": "\"use client\";\n\nimport GatewayOverhead from \"@/registry/default/ui/gateway-svg-illustration\";\n\nfunction GatewaySvgIllustrationDemo() {\n\treturn (\n\t\t<div className=\"w-full max-w-[264px]\">\n\t\t\t<GatewayOverhead showBackgroundGrid />\n\t\t</div>\n\t);\n}\n\nexport default GatewaySvgIllustrationDemo;\n",
+      "content": "\"use client\"\n\nimport GatewayOverhead from \"@/registry/default/ui/gateway-svg-illustration\"\n\nfunction GatewaySvgIllustrationDemo() {\n  return (\n    <div className=\"w-full max-w-[264px]\">\n      <GatewayOverhead showBackgroundGrid />\n    </div>\n  )\n}\n\nexport default GatewaySvgIllustrationDemo\n",
       "type": "registry:component"
     }
   ],

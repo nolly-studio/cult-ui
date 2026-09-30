@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/default/example/gateway-route-illustration-demo.tsx",
-      "content": "\"use client\";\n\nimport { GatewayRouting } from \"@/registry/default/ui/gateway-route-illustration\";\n\nfunction GatewayRouteIllustrationDemo() {\n\treturn (\n\t\t<div className=\"w-full max-w-[264px]\">\n\t\t\t<GatewayRouting />\n\t\t</div>\n\t);\n}\n\nexport default GatewayRouteIllustrationDemo;\n",
+      "content": "\"use client\"\n\nimport { GatewayRouting } from \"@/registry/default/ui/gateway-route-illustration\"\n\nfunction GatewayRouteIllustrationDemo() {\n  return (\n    <div className=\"w-full max-w-[264px]\">\n      <GatewayRouting />\n    </div>\n  )\n}\n\nexport default GatewayRouteIllustrationDemo\n",
       "type": "registry:component"
     }
   ],

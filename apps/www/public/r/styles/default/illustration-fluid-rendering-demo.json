@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/default/example/illustration-fluid-rendering-demo.tsx",
-      "content": "\"use client\";\n\nimport { FluidRendering } from \"@/registry/default/ui/illustration-fluid-rendering\";\n\nfunction IllustrationFluidRenderingDemo() {\n\treturn (\n\t\t<div className=\"flex items-center justify-center rounded-lg border bg-card/50 p-4\">\n\t\t\t<FluidRendering />\n\t\t</div>\n\t);\n}\n\nexport default IllustrationFluidRenderingDemo;\n",
+      "content": "\"use client\"\n\nimport { FluidRendering } from \"@/registry/default/ui/illustration-fluid-rendering\"\n\nfunction IllustrationFluidRenderingDemo() {\n  return (\n    <div className=\"flex items-center justify-center rounded-lg border bg-card/50 p-4\">\n      <FluidRendering />\n    </div>\n  )\n}\n\nexport default IllustrationFluidRenderingDemo\n",
       "type": "registry:component"
     }
   ],

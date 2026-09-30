@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fluted-glass",
+  "type": "registry:ui",
+  "description": "Paper Design fluted-glass image shader with sensible defaults — ribbed, streaked distortions over a source image",
+  "dependencies": [
+    "@paper-design/shaders-react"
+  ],
+  "files": [
+    {
+      "path": "registry/default/ui/fluted-glass.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { FlutedGlass as FlutedGlassShader } from \"@paper-design/shaders-react\"\nimport type { FlutedGlassProps } from \"@paper-design/shaders-react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst MemoizedFlutedGlass = React.memo(FlutedGlassShader)\n\nconst defaultFlutedGlassProps = {\n  width: 1280,\n  height: 720,\n  image: \"https://paper.design/flowers.webp\",\n  colorBack: \"#00000000\",\n  colorShadow: \"#000000\",\n  colorHighlight: \"#ffffff\",\n  size: 0.5,\n  shadows: 0.25,\n  highlights: 0.1,\n  shape: \"lines\",\n  angle: 0,\n  distortionShape: \"prism\",\n  distortion: 0.5,\n  shift: 0,\n  stretch: 0,\n  blur: 0,\n  edges: 0.25,\n  margin: 0,\n  grainMixer: 0,\n  grainOverlay: 0,\n  fit: \"cover\",\n} as const satisfies FlutedGlassProps\n\nexport { defaultFlutedGlassProps }\n\nexport type { FlutedGlassProps } from \"@paper-design/shaders-react\"\n\nexport const FlutedGlass: React.FC<FlutedGlassProps> = ({\n  className,\n  ...props\n}) => (\n  <MemoizedFlutedGlass\n    className={cn(className)}\n    {...defaultFlutedGlassProps}\n    {...props}\n  />\n)\n\nFlutedGlass.displayName = \"FlutedGlass\"\n",
+      "type": "registry:ui"
+    }
+  ]
+}
