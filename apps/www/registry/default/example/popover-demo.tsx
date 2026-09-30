@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import { Image as ImageIcon, Paintbrush, Plus } from "lucide-react";
-import React from "react";
+import React from "react"
+import { Image as ImageIcon, Paintbrush, Plus } from "lucide-react"
 
 import {
   PopoverBody,
@@ -16,12 +16,12 @@ import {
   PopoverSubmitButton,
   PopoverTextarea,
   PopoverTrigger,
-} from "../ui/popover";
+} from "../ui/popover"
 
 function PopoverInput() {
   const handleSubmit = (note: string) => {
-    console.log("Submitted note:", note);
-  };
+    console.log("Submitted note:", note)
+  }
 
   return (
     <PopoverRoot>
@@ -37,7 +37,7 @@ function PopoverInput() {
         </PopoverForm>
       </PopoverContent>
     </PopoverRoot>
-  );
+  )
 }
 
 const ColorPickerPopover = () => {
@@ -48,7 +48,7 @@ const ColorPickerPopover = () => {
     "#FF33F1",
     "#33FFF1",
     "#F1FF33",
-  ];
+  ]
 
   return (
     <PopoverRoot>
@@ -72,8 +72,8 @@ const ColorPickerPopover = () => {
         </PopoverFooter>
       </PopoverContent>
     </PopoverRoot>
-  );
-};
+  )
+}
 
 const QuickActionsPopover = () => {
   const actions = [
@@ -92,7 +92,7 @@ const QuickActionsPopover = () => {
       label: "Edit Colors",
       action: () => console.log("Edit Colors"),
     },
-  ];
+  ]
 
   return (
     <PopoverRoot>
@@ -109,8 +109,8 @@ const QuickActionsPopover = () => {
         </PopoverBody>
       </PopoverContent>
     </PopoverRoot>
-  );
-};
+  )
+}
 
 const ImagePreviewPopover = () => {
   return (
@@ -133,8 +133,8 @@ const ImagePreviewPopover = () => {
         </PopoverFooter>
       </PopoverContent>
     </PopoverRoot>
-  );
-};
+  )
+}
 
 export default function PopoverExamples() {
   return (
@@ -150,5 +150,5 @@ export default function PopoverExamples() {
         </div>
       </div>
     </div>
-  );
+  )
 }

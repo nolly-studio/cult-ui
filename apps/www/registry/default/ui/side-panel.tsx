@@ -1,19 +1,19 @@
-"use client";
+"use client"
 
-import { AnimatePresence, motion, MotionConfig } from "motion/react";
-import React, { forwardRef, ReactNode } from "react";
-import useMeasure from "react-use-measure";
+import React, { forwardRef, ReactNode } from "react"
+import { AnimatePresence, motion, MotionConfig } from "motion/react"
+import useMeasure from "react-use-measure"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 type PanelContainerProps = {
-  panelOpen: boolean;
-  handlePanelOpen: () => void;
-  className?: string;
-  videoUrl?: string;
-  renderButton?: (handleToggle: () => void) => ReactNode;
-  children: ReactNode;
-};
+  panelOpen: boolean
+  handlePanelOpen: () => void
+  className?: string
+  videoUrl?: string
+  renderButton?: (handleToggle: () => void) => ReactNode
+  children: ReactNode
+}
 
 const sectionVariants = {
   open: {
@@ -28,13 +28,13 @@ const sectionVariants = {
   closed: {
     transition: { duration: 0.2, ease: [0.42, 0, 0.58, 1] as const },
   },
-};
+}
 
-const sharedTransition = { duration: 0.6, ease: [0.42, 0, 0.58, 1] as const };
+const sharedTransition = { duration: 0.6, ease: [0.42, 0, 0.58, 1] as const }
 
 export const SidePanel = forwardRef<HTMLDivElement, PanelContainerProps>(
   ({ panelOpen, handlePanelOpen, className, renderButton, children }, ref) => {
-    const [measureRef, bounds] = useMeasure();
+    const [measureRef, bounds] = useMeasure()
 
     return (
       <ResizablePanel>
@@ -85,17 +85,17 @@ export const SidePanel = forwardRef<HTMLDivElement, PanelContainerProps>(
           </motion.div>
         </motion.div>
       </ResizablePanel>
-    );
+    )
   }
-);
+)
 
-SidePanel.displayName = "SidePanel";
+SidePanel.displayName = "SidePanel"
 
-export default SidePanel;
+export default SidePanel
 
 type ResizablePanelProps = {
-  children: React.ReactNode;
-};
+  children: React.ReactNode
+}
 
 const ResizablePanel = React.forwardRef<HTMLDivElement, ResizablePanelProps>(
   ({ children }, ref) => {
@@ -103,7 +103,7 @@ const ResizablePanel = React.forwardRef<HTMLDivElement, ResizablePanelProps>(
       type: "tween" as const,
       ease: [0.42, 0, 0.58, 1] as const,
       duration: 0.4,
-    };
+    }
 
     return (
       <MotionConfig transition={transition}>
@@ -121,8 +121,8 @@ const ResizablePanel = React.forwardRef<HTMLDivElement, ResizablePanelProps>(
           </div>
         </div>
       </MotionConfig>
-    );
+    )
   }
-);
+)
 
-ResizablePanel.displayName = "ResizablePanel";
+ResizablePanel.displayName = "ResizablePanel"

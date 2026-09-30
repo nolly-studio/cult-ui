@@ -3,7 +3,7 @@ import {
   MinimalCardDescription,
   MinimalCardImage,
   MinimalCardTitle,
-} from "@/registry/default/ui/minimal-card";
+} from "@/registry/default/ui/minimal-card"
 
 export default function MinimalCardDemo() {
   const cards = [
@@ -32,7 +32,7 @@ export default function MinimalCardDemo() {
       description:
         "How to design with gestures and motion that feel intuitive and natural.",
     },
-  ];
+  ]
   return (
     <div className="w-full max-w-4xl">
       <div className="flex min-h-[500px] flex-col justify-center space-y-4 rounded-lg p-4">
@@ -49,5 +49,5 @@ export default function MinimalCardDemo() {
         </div>
       </div>
     </div>
-  );
+  )
 }

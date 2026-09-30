@@ -1,42 +1,42 @@
-"use client";
+"use client"
 
-import { Check, Copy, Minus, Plus, Trash2 } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState } from "react"
+import { Check, Copy, Minus, Plus, Trash2 } from "lucide-react"
 
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from "@/components/ui/accordion"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
-import { Switch } from "@/components/ui/switch";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useToast } from "@/components/ui/use-toast";
+} from "@/components/ui/select"
+import { Slider } from "@/components/ui/slider"
+import { Switch } from "@/components/ui/switch"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useToast } from "@/components/ui/use-toast"
 
-import { CanvasFractalGrid } from "../ui/canvas-fractal-grid";
+import { CanvasFractalGrid } from "../ui/canvas-fractal-grid"
 
 type GradientStop = {
-  color: string;
-  position: number;
-};
+  color: string
+  position: number
+}
 
 type Gradient = {
-  stops: GradientStop[];
-  centerX: number;
-  centerY: number;
-};
+  stops: GradientStop[]
+  centerX: number
+  centerY: number
+}
 
 const initialConfig = {
   dotSize: 5,
@@ -73,22 +73,22 @@ const initialConfig = {
       centerY: 30,
     },
   ],
-};
+}
 
 export function ConfigurableCanvasFractalGrid() {
-  const [config, setConfig] = useState(initialConfig);
-  const [isCopied, setIsCopied] = useState(false);
-  const { toast } = useToast();
+  const [config, setConfig] = useState(initialConfig)
+  const [isCopied, setIsCopied] = useState(false)
+  const { toast } = useToast()
 
   const updateConfig = (key: string, value: any) => {
-    setConfig((prev) => ({ ...prev, [key]: value }));
-  };
+    setConfig((prev) => ({ ...prev, [key]: value }))
+  }
 
   const updateGradient = (index: number, updatedGradient: Gradient) => {
-    const newGradients = [...config.gradients];
-    newGradients[index] = updatedGradient;
-    updateConfig("gradients", newGradients);
-  };
+    const newGradients = [...config.gradients]
+    newGradients[index] = updatedGradient
+    updateConfig("gradients", newGradients)
+  }
 
   const addGradient = () => {
     const newGradient: Gradient = {
@@ -98,14 +98,14 @@ export function ConfigurableCanvasFractalGrid() {
       ],
       centerX: 50,
       centerY: 50,
-    };
-    updateConfig("gradients", [...config.gradients, newGradient]);
-  };
+    }
+    updateConfig("gradients", [...config.gradients, newGradient])
+  }
 
   const removeGradient = (index: number) => {
-    const newGradients = config.gradients.filter((_, i) => i !== index);
-    updateConfig("gradients", newGradients);
-  };
+    const newGradients = config.gradients.filter((_, i) => i !== index)
+    updateConfig("gradients", newGradients)
+  }
 
   const copyConfigToClipboard = () => {
     const configString = `
@@ -134,18 +134,18 @@ export function CanvasFractalGridExample() {
     </div>
   )
 }
-`;
+`
 
     navigator.clipboard.writeText(configString).then(() => {
-      setIsCopied(true);
+      setIsCopied(true)
       toast({
         title: "Configuration Copied",
         description:
           "The current configuration has been copied to your clipboard.",
-      });
-      setTimeout(() => setIsCopied(false), 2000);
-    });
-  };
+      })
+      setTimeout(() => setIsCopied(false), 2000)
+    })
+  }
 
   return (
     <div className="container mx-auto py-8">
@@ -421,15 +421,15 @@ export function CanvasFractalGridExample() {
                                 type="color"
                                 value={stop.color}
                                 onChange={(e) => {
-                                  const newStops = [...gradient.stops];
+                                  const newStops = [...gradient.stops]
                                   newStops[stopIndex] = {
                                     ...stop,
                                     color: e.target.value,
-                                  };
+                                  }
                                   updateGradient(index, {
                                     ...gradient,
                                     stops: newStops,
-                                  });
+                                  })
                                 }}
                                 className="h-10 w-16"
                               />
@@ -439,15 +439,15 @@ export function CanvasFractalGridExample() {
                                 step={1}
                                 value={[stop.position]}
                                 onValueChange={([value]) => {
-                                  const newStops = [...gradient.stops];
+                                  const newStops = [...gradient.stops]
                                   newStops[stopIndex] = {
                                     ...stop,
                                     position: value,
-                                  };
+                                  }
                                   updateGradient(index, {
                                     ...gradient,
                                     stops: newStops,
-                                  });
+                                  })
                                 }}
                                 className="flex-grow"
                               />
@@ -457,11 +457,11 @@ export function CanvasFractalGridExample() {
                                 onClick={() => {
                                   const newStops = gradient.stops.filter(
                                     (_, i) => i !== stopIndex
-                                  );
+                                  )
                                   updateGradient(index, {
                                     ...gradient,
                                     stops: newStops,
-                                  });
+                                  })
                                 }}
                               >
                                 <Minus className="h-4 w-4" />
@@ -475,11 +475,11 @@ export function CanvasFractalGridExample() {
                                 const newStops = [
                                   ...gradient.stops,
                                   { color: "#000000", position: 100 },
-                                ];
+                                ]
                                 updateGradient(index, {
                                   ...gradient,
                                   stops: newStops,
-                                });
+                                })
                               }}
                             >
                               <Plus className="mr-2 h-4 w-4" />
@@ -508,7 +508,7 @@ export function CanvasFractalGridExample() {
         </Card>
       </div>
     </div>
-  );
+  )
 }
 
-export default ConfigurableCanvasFractalGrid;
+export default ConfigurableCanvasFractalGrid

@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
 interface EdgeBlurProps {
-  position?: "top" | "bottom";
-  height?: number;
+  position?: "top" | "bottom"
+  height?: number
 }
 
 export function EdgeBlur({ position = "bottom", height = 75 }: EdgeBlurProps) {
-  const blurLayers = [1, 2, 3, 6, 12];
+  const blurLayers = [1, 2, 3, 6, 12]
 
-  const isTop = position === "top";
+  const isTop = position === "top"
 
   return (
     <div
@@ -28,14 +28,14 @@ export function EdgeBlur({ position = "bottom", height = 75 }: EdgeBlurProps) {
         />
       ))}
     </div>
-  );
+  )
 }
 
 // Convenience exports for specific positions
 export function TopBlur({ height = 75 }: { height?: number }) {
-  return <EdgeBlur position="top" height={height} />;
+  return <EdgeBlur position="top" height={height} />
 }
 
 export function BottomBlur({ height = 75 }: { height?: number }) {
-  return <EdgeBlur position="bottom" height={height} />;
+  return <EdgeBlur position="bottom" height={height} />
 }

@@ -1,5 +1,6 @@
-"use client";
+"use client"
 
+import { useState } from "react"
 import {
   CheckCircle,
   Code,
@@ -9,14 +10,13 @@ import {
   Rocket,
   Settings,
   Upload,
-} from "lucide-react";
-import { useState } from "react";
+} from "lucide-react"
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import ToolbarExpandable from "@/registry/default/ui/toolbar-expandable";
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import ToolbarExpandable from "@/registry/default/ui/toolbar-expandable"
 
 const deploymentSteps = [
   {
@@ -182,7 +182,7 @@ const deploymentSteps = [
       </div>
     ),
   },
-];
+]
 
 const downloadSteps = [
   {
@@ -243,13 +243,13 @@ const downloadSteps = [
       </div>
     ),
   },
-];
+]
 
 export default function DynamicToolbarDemo() {
-  const [controlledExpanded, setControlledExpanded] = useState(false);
+  const [controlledExpanded, setControlledExpanded] = useState(false)
   const [controlledActiveStep, setControlledActiveStep] = useState<
     string | null
-  >(null);
+  >(null)
 
   return (
     <div className="">
@@ -287,9 +287,9 @@ export default function DynamicToolbarDemo() {
                   size="sm"
                   className="text-xs sm:text-sm"
                   onClick={() => {
-                    setControlledExpanded(!controlledExpanded);
+                    setControlledExpanded(!controlledExpanded)
                     if (!controlledExpanded && !controlledActiveStep) {
-                      setControlledActiveStep("setup");
+                      setControlledActiveStep("setup")
                     }
                   }}
                 >
@@ -300,8 +300,8 @@ export default function DynamicToolbarDemo() {
                   size="sm"
                   className="text-xs sm:text-sm"
                   onClick={() => {
-                    setControlledExpanded(true);
-                    setControlledActiveStep("configure");
+                    setControlledExpanded(true)
+                    setControlledActiveStep("configure")
                   }}
                 >
                   Configuration
@@ -311,8 +311,8 @@ export default function DynamicToolbarDemo() {
                   size="sm"
                   className="text-xs sm:text-sm"
                   onClick={() => {
-                    setControlledExpanded(true);
-                    setControlledActiveStep("deploy");
+                    setControlledExpanded(true)
+                    setControlledActiveStep("deploy")
                   }}
                 >
                   Deploy
@@ -322,8 +322,8 @@ export default function DynamicToolbarDemo() {
                   size="sm"
                   className="text-xs sm:text-sm"
                   onClick={() => {
-                    setControlledExpanded(false);
-                    setControlledActiveStep(null);
+                    setControlledExpanded(false)
+                    setControlledActiveStep(null)
                   }}
                 >
                   Reset
@@ -453,5 +453,5 @@ export default function DynamicToolbarDemo() {
         </div>
       </div>
     </div>
-  );
+  )
 }

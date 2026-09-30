@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-blob-warp",
+  "type": "registry:ui",
+  "description": "Circular avatar with Paper Design Warp shader; motion-safe pulse, pauses off-screen and when reduced motion is preferred",
+  "dependencies": [
+    "@paper-design/shaders-react",
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/ui/ai-blob-warp.tsx",
+      "content": "\"use client\"\n\nimport { forwardRef, useCallback, useRef, type ComponentProps } from \"react\"\nimport { Warp, type WarpProps } from \"@paper-design/shaders-react\"\nimport { motion, useInView, useReducedMotion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst DEFAULT_WARP: Partial<WarpProps> = {\n  /** Same stops as the main glow in `animated-search.tsx` (90deg linear-gradient). */\n  colors: [\"#ff0080\", \"#7928ca\", \"#00d4ff\", \"#0070f3\"],\n  distortion: 0.25,\n  height: 720,\n  proportion: 0.54,\n  scale: 0.2,\n  shape: \"checks\",\n  shapeScale: 1,\n  softness: 1,\n  speed: 1,\n  swirl: 0.8,\n  swirlIterations: 10,\n  width: 1280,\n}\n\nexport type AiBlobWarpAvatarProps = Omit<ComponentProps<\"div\">, \"children\"> & {\n  /** Props forwarded to the Paper `Warp` shader (merged after defaults). */\n  warpProps?: Partial<WarpProps>\n}\n\n/**\n * Circular avatar frame with an animated Warp shader inside.\n * Motion uses transforms only; shader speed pauses off-screen and when `prefers-reduced-motion` is set.\n */\nexport const AiBlobWarpAvatar = forwardRef<\n  HTMLDivElement,\n  AiBlobWarpAvatarProps\n>(function AiBlobWarpAvatarImpl(\n  { className, warpProps, ...props },\n  forwardedRef\n) {\n  const {\n    className: warpClassName,\n    speed: warpSpeed,\n    ...restWarpProps\n  } = warpProps ?? {}\n  const rootRef = useRef<HTMLDivElement>(null)\n  const reduceMotion = useReducedMotion()\n  const inView = useInView(rootRef, {\n    amount: 0.2,\n    margin: \"0px 0px -10% 0px\",\n  })\n  const live = inView && !reduceMotion\n\n  const setRefs = useCallback(\n    (node: HTMLDivElement | null) => {\n      rootRef.current = node\n      if (typeof forwardedRef === \"function\") {\n        forwardedRef(node)\n      } else if (forwardedRef) {\n        forwardedRef.current = node\n      }\n    },\n    [forwardedRef]\n  )\n\n  const baseSpeed = warpSpeed ?? DEFAULT_WARP.speed ?? 1\n\n  return (\n    <div\n      className={cn(\n        \"relative isolate size-8 overflow-hidden rounded-full border border-border/10 bg-muted\",\n        className\n      )}\n      ref={setRefs}\n      {...props}\n    >\n      <motion.div\n        animate={\n          live\n            ? {\n                scale: [1, 1.055, 0.99, 1],\n                rotate: [0, 2, -1.5, 0],\n              }\n            : { scale: 1, rotate: 0 }\n        }\n        aria-hidden\n        className=\"pointer-events-none absolute inset-0 origin-center rounded-full\"\n        transition={{\n          duration: 5.2,\n          ease: \"easeInOut\",\n          repeat: Number.POSITIVE_INFINITY,\n        }}\n      >\n        <Warp\n          {...DEFAULT_WARP}\n          {...restWarpProps}\n          speed={live ? baseSpeed : 0}\n        />\n      </motion.div>\n    </div>\n  )\n})\n\nAiBlobWarpAvatar.displayName = \"AiBlobWarpAvatar\"\n",
+      "type": "registry:ui"
+    }
+  ]
+}

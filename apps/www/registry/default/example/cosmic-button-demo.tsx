@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { CosmicButton } from "@/registry/default/ui/cosmic-button";
+import { CosmicButton } from "@/registry/default/ui/cosmic-button"
 
 export default function CosmicButtonDemo() {
   return (
@@ -13,5 +13,5 @@ export default function CosmicButtonDemo() {
         </div>
       </div>
     </div>
-  );
+  )
 }

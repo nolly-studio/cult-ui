@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { BottomBlur, EdgeBlur, TopBlur } from "@/registry/default/ui/edge-blur";
+import { BottomBlur, EdgeBlur, TopBlur } from "@/registry/default/ui/edge-blur"
 
 const SCROLL_PARAGRAPH_KEYS = [
   "s-a",
@@ -15,7 +15,7 @@ const SCROLL_PARAGRAPH_KEYS = [
   "s-j",
   "s-k",
   "s-l",
-] as const;
+] as const
 
 const SMALL_ROW_KEYS = [
   "b-1",
@@ -26,7 +26,7 @@ const SMALL_ROW_KEYS = [
   "b-6",
   "b-7",
   "b-8",
-] as const;
+] as const
 
 export default function EdgeBlurDemo() {
   return (
@@ -98,5 +98,5 @@ export default function EdgeBlurDemo() {
         </div>
       </div>
     </div>
-  );
+  )
 }

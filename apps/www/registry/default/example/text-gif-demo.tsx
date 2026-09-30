@@ -1,31 +1,31 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
-import { Input } from "@/components/ui/input";
+import { Input } from "@/components/ui/input"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/components/ui/select"
 
-import { TextGif } from "../ui/text-gif";
+import { TextGif } from "../ui/text-gif"
 
 export default function TextGifDemo() {
-  const [text, setText] = useState("TextGif");
-  const [size, setSize] = useState("xl");
-  const [weight, setWeight] = useState("bold");
+  const [text, setText] = useState("TextGif")
+  const [size, setSize] = useState("xl")
+  const [weight, setWeight] = useState("bold")
 
   const gifUrls = [
     "https://media.giphy.com/media/3zvbrvbRe7wxBofOBI/giphy.gif",
     "https://media.giphy.com/media/fnglNFjBGiyAFtm6ke/giphy.gif",
     "https://media.giphy.com/media/9Pmfazv34l7aNIKK05/giphy.gif",
     "https://media.giphy.com/media/4bhs1boql4XVJgmm4H/giphy.gif",
-  ];
+  ]
 
-  const [selectedGif, setSelectedGif] = useState(gifUrls[0]);
+  const [selectedGif, setSelectedGif] = useState(gifUrls[0])
 
   return (
     <div className="mx-auto max-w-3xl space-y-8 rounded-xl bg-neutral-50 p-6 dark:bg-neutral-900">
@@ -118,5 +118,5 @@ export default function TextGifDemo() {
         </div>
       </div>
     </div>
-  );
+  )
 }

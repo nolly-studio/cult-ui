@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import { Slot } from "@radix-ui/react-slot";
-import { cva } from "class-variance-authority";
-import * as React from "react";
+import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
+import { cva } from "class-variance-authority"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 const buttonVariantsOuter = cva("", {
   variants: {
@@ -32,7 +32,7 @@ const buttonVariantsOuter = cva("", {
     variant: "primary",
     size: "default",
   },
-});
+})
 
 const innerDivVariants = cva(
   "text-muted-foreground flex h-full w-full items-center justify-center",
@@ -63,18 +63,19 @@ const innerDivVariants = cva(
       size: "default",
     },
   }
-);
+)
 
-export interface UnifiedButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface UnifiedButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?:
     | "primary"
     | "secondary"
     | "accent"
     | "destructive"
     | "minimal"
-    | "icon";
-  size?: "default" | "sm" | "lg" | "icon";
-  asChild?: boolean;
+    | "icon"
+  size?: "default" | "sm" | "lg" | "icon"
+  asChild?: boolean
 }
 
 const TextureButton = React.forwardRef<HTMLButtonElement, UnifiedButtonProps>(
@@ -89,7 +90,7 @@ const TextureButton = React.forwardRef<HTMLButtonElement, UnifiedButtonProps>(
     },
     ref
   ) => {
-    const Comp = asChild ? Slot : "button";
+    const Comp = asChild ? Slot : "button"
 
     return (
       <Comp
@@ -101,12 +102,12 @@ const TextureButton = React.forwardRef<HTMLButtonElement, UnifiedButtonProps>(
           {children}
         </div>
       </Comp>
-    );
+    )
   }
-);
+)
 
-TextureButton.displayName = "TextureButton";
+TextureButton.displayName = "TextureButton"
 
-export { TextureButton };
+export { TextureButton }
 
 // export default TextureButton

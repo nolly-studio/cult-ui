@@ -1,13 +1,13 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
-import { PixelHeading } from "@/registry/default/ui/pixel-heading-character";
-import type { PixelHeadingMode } from "@/registry/default/ui/pixel-heading-character";
+import { PixelHeading } from "@/registry/default/ui/pixel-heading-character"
+import type { PixelHeadingMode } from "@/registry/default/ui/pixel-heading-character"
 
 /* ─── Constants ─── */
 
-const MODES: PixelHeadingMode[] = ["uniform", "multi", "wave", "random"];
+const MODES: PixelHeadingMode[] = ["uniform", "multi", "wave", "random"]
 const PREFIX_FONTS = [
   "none",
   "square",
@@ -15,34 +15,34 @@ const PREFIX_FONTS = [
   "circle",
   "triangle",
   "line",
-] as const;
-const HEADING_LEVELS = ["h1", "h2", "h3", "h4", "h5", "h6"] as const;
+] as const
+const HEADING_LEVELS = ["h1", "h2", "h3", "h4", "h5", "h6"] as const
 
 /* ─── Demo ─── */
 
 export default function PixelHeadingCharacterDemo() {
-  const [text, setText] = useState("Pixel Fonts");
-  const [mode, setMode] = useState<PixelHeadingMode>("wave");
-  const [autoPlay, setAutoPlay] = useState(true);
-  const [showLabel, setShowLabel] = useState(true);
-  const [cycleInterval, setCycleInterval] = useState(340);
-  const [staggerDelay, setStaggerDelay] = useState(200);
-  const [prefix, setPrefix] = useState("");
+  const [text, setText] = useState("Pixel Fonts")
+  const [mode, setMode] = useState<PixelHeadingMode>("wave")
+  const [autoPlay, setAutoPlay] = useState(true)
+  const [showLabel, setShowLabel] = useState(true)
+  const [cycleInterval, setCycleInterval] = useState(340)
+  const [staggerDelay, setStaggerDelay] = useState(200)
+  const [prefix, setPrefix] = useState("")
   const [prefixFont, setPrefixFont] =
-    useState<(typeof PREFIX_FONTS)[number]>("none");
+    useState<(typeof PREFIX_FONTS)[number]>("none")
   const [headingLevel, setHeadingLevel] =
-    useState<(typeof HEADING_LEVELS)[number]>("h1");
-  const [defaultFontIndex, setDefaultFontIndex] = useState(3);
-  const [isolateEnabled, setIsolateEnabled] = useState(false);
-  const [isolateChars, setIsolateChars] = useState("x");
-  const [isolateFont, setIsolateFont] = useState("sans");
+    useState<(typeof HEADING_LEVELS)[number]>("h1")
+  const [defaultFontIndex, setDefaultFontIndex] = useState(3)
+  const [isolateEnabled, setIsolateEnabled] = useState(false)
+  const [isolateChars, setIsolateChars] = useState("x")
+  const [isolateFont, setIsolateFont] = useState("sans")
 
   const isolateMap = isolateEnabled
     ? Object.fromEntries(isolateChars.split("").map((c) => [c, isolateFont]))
-    : undefined;
+    : undefined
 
   /* ── Reset key forces remount when autoPlay toggles ── */
-  const [resetKey, setResetKey] = useState(0);
+  const [resetKey, setResetKey] = useState(0)
 
   return (
     <div className="w-full space-y-8 py-4">
@@ -87,8 +87,8 @@ export default function PixelHeadingCharacterDemo() {
                 type="button"
                 key={m}
                 onClick={() => {
-                  setMode(m);
-                  setResetKey((k) => k + 1);
+                  setMode(m)
+                  setResetKey((k) => k + 1)
                 }}
                 className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
                   mode === m
@@ -163,8 +163,8 @@ export default function PixelHeadingCharacterDemo() {
           <Toggle
             checked={autoPlay}
             onChange={(v) => {
-              setAutoPlay(v);
-              setResetKey((k) => k + 1);
+              setAutoPlay(v)
+              setResetKey((k) => k + 1)
             }}
           />
         </ControlGroup>
@@ -240,7 +240,7 @@ export default function PixelHeadingCharacterDemo() {
         </ControlGroup>
       </div>
     </div>
-  );
+  )
 }
 
 /* ─── Shared control primitives ─── */
@@ -249,8 +249,8 @@ function ControlGroup({
   label,
   children,
 }: {
-  label: string;
-  children: React.ReactNode;
+  label: string
+  children: React.ReactNode
 }) {
   return (
     <div className="space-y-2">
@@ -259,15 +259,15 @@ function ControlGroup({
       </span>
       {children}
     </div>
-  );
+  )
 }
 
 function Toggle({
   checked,
   onChange,
 }: {
-  checked: boolean;
-  onChange: (v: boolean) => void;
+  checked: boolean
+  onChange: (v: boolean) => void
 }) {
   return (
     <button
@@ -285,5 +285,5 @@ function Toggle({
         }`}
       />
     </button>
-  );
+  )
 }

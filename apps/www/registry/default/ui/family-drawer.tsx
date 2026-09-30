@@ -1,8 +1,5 @@
-"use client";
+"use client"
 
-import { Slot } from "@radix-ui/react-slot";
-import clsx from "clsx";
-import { AnimatePresence, motion } from "motion/react";
 import {
   createContext,
   useContext,
@@ -10,18 +7,21 @@ import {
   useRef,
   useState,
   type ReactNode,
-} from "react";
-import useMeasure from "react-use-measure";
-import { Drawer } from "vaul";
+} from "react"
+import { Slot } from "@radix-ui/react-slot"
+import clsx from "clsx"
+import { AnimatePresence, motion } from "motion/react"
+import useMeasure from "react-use-measure"
+import { Drawer } from "vaul"
 
 // ============================================================================
 // Types
 // ============================================================================
 
-type ViewComponent = React.ComponentType<Record<string, unknown>>;
+type ViewComponent = React.ComponentType<Record<string, unknown>>
 
 interface ViewsRegistry {
-  [viewName: string]: ViewComponent;
+  [viewName: string]: ViewComponent
 }
 
 // ============================================================================
@@ -29,27 +29,27 @@ interface ViewsRegistry {
 // ============================================================================
 
 interface FamilyDrawerContextValue {
-  isOpen: boolean;
-  view: string;
-  setView: (view: string) => void;
-  opacityDuration: number;
-  elementRef: ReturnType<typeof useMeasure>[0];
-  bounds: ReturnType<typeof useMeasure>[1];
-  views: ViewsRegistry | undefined;
+  isOpen: boolean
+  view: string
+  setView: (view: string) => void
+  opacityDuration: number
+  elementRef: ReturnType<typeof useMeasure>[0]
+  bounds: ReturnType<typeof useMeasure>[1]
+  views: ViewsRegistry | undefined
 }
 
 const FamilyDrawerContext = createContext<FamilyDrawerContextValue | undefined>(
   undefined
-);
+)
 
 function useFamilyDrawer() {
-  const context = useContext(FamilyDrawerContext);
+  const context = useContext(FamilyDrawerContext)
   if (!context) {
     throw new Error(
       "FamilyDrawer components must be used within FamilyDrawerRoot"
-    );
+    )
   }
-  return context;
+  return context
 }
 
 // ============================================================================
@@ -57,13 +57,13 @@ function useFamilyDrawer() {
 // ============================================================================
 
 interface FamilyDrawerRootProps {
-  children: ReactNode;
-  open?: boolean;
-  defaultOpen?: boolean;
-  onOpenChange?: (open: boolean) => void;
-  defaultView?: string;
-  onViewChange?: (view: string) => void;
-  views?: ViewsRegistry;
+  children: ReactNode
+  open?: boolean
+  defaultOpen?: boolean
+  onOpenChange?: (open: boolean) => void
+  defaultView?: string
+  onViewChange?: (view: string) => void
+  views?: ViewsRegistry
 }
 
 function FamilyDrawerRoot({
@@ -75,47 +75,45 @@ function FamilyDrawerRoot({
   onViewChange,
   views: customViews,
 }: FamilyDrawerRootProps) {
-  const [internalOpen, setInternalOpen] = useState(defaultOpen);
-  const [view, setView] = useState(defaultView);
-  const [elementRef, bounds] = useMeasure();
-  const previousHeightRef = useRef<number>(0);
+  const [internalOpen, setInternalOpen] = useState(defaultOpen)
+  const [view, setView] = useState(defaultView)
+  const [elementRef, bounds] = useMeasure()
+  const previousHeightRef = useRef<number>(0)
 
-  const isOpen = controlledOpen !== undefined ? controlledOpen : internalOpen;
-  const setIsOpen = onOpenChange || setInternalOpen;
+  const isOpen = controlledOpen !== undefined ? controlledOpen : internalOpen
+  const setIsOpen = onOpenChange || setInternalOpen
 
   const opacityDuration = useMemo(() => {
-    const currentHeight = bounds.height;
-    const previousHeight = previousHeightRef.current;
+    const currentHeight = bounds.height
+    const previousHeight = previousHeightRef.current
 
-    const MIN_DURATION = 0.15;
-    const MAX_DURATION = 0.27;
+    const MIN_DURATION = 0.15
+    const MAX_DURATION = 0.27
 
     if (!previousHeightRef.current) {
-      previousHeightRef.current = currentHeight;
-      return MIN_DURATION;
+      previousHeightRef.current = currentHeight
+      return MIN_DURATION
     }
 
-    const heightDifference = Math.abs(currentHeight - previousHeight);
-    previousHeightRef.current = currentHeight;
+    const heightDifference = Math.abs(currentHeight - previousHeight)
+    previousHeightRef.current = currentHeight
 
     const duration = Math.min(
       Math.max(heightDifference / 500, MIN_DURATION),
       MAX_DURATION
-    );
+    )
 
-    return duration;
-  }, [bounds.height]);
+    return duration
+  }, [bounds.height])
 
   const handleViewChange = (newView: string) => {
-    setView(newView);
-    onViewChange?.(newView);
-  };
+    setView(newView)
+    onViewChange?.(newView)
+  }
 
   // Use custom views if provided, otherwise pass undefined
   const views =
-    customViews && Object.keys(customViews).length > 0
-      ? customViews
-      : undefined;
+    customViews && Object.keys(customViews).length > 0 ? customViews : undefined
 
   const contextValue: FamilyDrawerContextValue = {
     isOpen,
@@ -125,7 +123,7 @@ function FamilyDrawerRoot({
     elementRef,
     bounds,
     views,
-  };
+  }
 
   return (
     <FamilyDrawerContext.Provider value={contextValue}>
@@ -133,7 +131,7 @@ function FamilyDrawerRoot({
         {children}
       </Drawer.Root>
     </FamilyDrawerContext.Provider>
-  );
+  )
 }
 
 // ============================================================================
@@ -141,9 +139,9 @@ function FamilyDrawerRoot({
 // ============================================================================
 
 interface FamilyDrawerTriggerProps {
-  children: ReactNode;
-  asChild?: boolean;
-  className?: string;
+  children: ReactNode
+  asChild?: boolean
+  className?: string
 }
 
 function FamilyDrawerTrigger({
@@ -156,7 +154,7 @@ function FamilyDrawerTrigger({
       <Drawer.Trigger asChild>
         <Slot>{children}</Slot>
       </Drawer.Trigger>
-    );
+    )
   }
 
   return (
@@ -171,7 +169,7 @@ function FamilyDrawerTrigger({
         {children}
       </button>
     </Drawer.Trigger>
-  );
+  )
 }
 
 // ============================================================================
@@ -179,7 +177,7 @@ function FamilyDrawerTrigger({
 // ============================================================================
 
 function FamilyDrawerPortal({ children }: { children: ReactNode }) {
-  return <Drawer.Portal>{children}</Drawer.Portal>;
+  return <Drawer.Portal>{children}</Drawer.Portal>
 }
 
 // ============================================================================
@@ -187,19 +185,19 @@ function FamilyDrawerPortal({ children }: { children: ReactNode }) {
 // ============================================================================
 
 interface FamilyDrawerOverlayProps {
-  className?: string;
-  onClick?: () => void;
+  className?: string
+  onClick?: () => void
 }
 
 function FamilyDrawerOverlay({ className, onClick }: FamilyDrawerOverlayProps) {
-  const { setView } = useFamilyDrawer();
+  const { setView } = useFamilyDrawer()
 
   return (
     <Drawer.Overlay
       className={clsx("fixed inset-0 z-10 bg-black/30", className)}
       onClick={onClick || (() => setView("default"))}
     />
-  );
+  )
 }
 
 // ============================================================================
@@ -207,9 +205,9 @@ function FamilyDrawerOverlay({ className, onClick }: FamilyDrawerOverlayProps) {
 // ============================================================================
 
 interface FamilyDrawerContentProps {
-  children: ReactNode;
-  className?: string;
-  asChild?: boolean;
+  children: ReactNode
+  className?: string
+  asChild?: boolean
 }
 
 function FamilyDrawerContent({
@@ -217,7 +215,7 @@ function FamilyDrawerContent({
   className,
   asChild = false,
 }: FamilyDrawerContentProps) {
-  const { bounds } = useFamilyDrawer();
+  const { bounds } = useFamilyDrawer()
 
   const content = (
     <motion.div
@@ -231,7 +229,7 @@ function FamilyDrawerContent({
     >
       {children}
     </motion.div>
-  );
+  )
 
   if (asChild) {
     return (
@@ -244,7 +242,7 @@ function FamilyDrawerContent({
       >
         <Slot>{content}</Slot>
       </Drawer.Content>
-    );
+    )
   }
 
   return (
@@ -257,7 +255,7 @@ function FamilyDrawerContent({
     >
       {content}
     </Drawer.Content>
-  );
+  )
 }
 
 // ============================================================================
@@ -265,15 +263,15 @@ function FamilyDrawerContent({
 // ============================================================================
 
 interface FamilyDrawerAnimatedWrapperProps {
-  children: ReactNode;
-  className?: string;
+  children: ReactNode
+  className?: string
 }
 
 function FamilyDrawerAnimatedWrapper({
   children,
   className,
 }: FamilyDrawerAnimatedWrapperProps) {
-  const { elementRef } = useFamilyDrawer();
+  const { elementRef } = useFamilyDrawer()
 
   return (
     <div
@@ -282,7 +280,7 @@ function FamilyDrawerAnimatedWrapper({
     >
       {children}
     </div>
-  );
+  )
 }
 
 // ============================================================================
@@ -290,13 +288,13 @@ function FamilyDrawerAnimatedWrapper({
 // ============================================================================
 
 interface FamilyDrawerAnimatedContentProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 function FamilyDrawerAnimatedContent({
   children,
 }: FamilyDrawerAnimatedContentProps) {
-  const { view, opacityDuration } = useFamilyDrawer();
+  const { view, opacityDuration } = useFamilyDrawer()
 
   return (
     <AnimatePresence initial={false} mode="popLayout" custom={view}>
@@ -313,7 +311,7 @@ function FamilyDrawerAnimatedContent({
         {children}
       </motion.div>
     </AnimatePresence>
-  );
+  )
 }
 
 // ============================================================================
@@ -321,9 +319,9 @@ function FamilyDrawerAnimatedContent({
 // ============================================================================
 
 interface FamilyDrawerCloseProps {
-  children?: ReactNode;
-  asChild?: boolean;
-  className?: string;
+  children?: ReactNode
+  asChild?: boolean
+  className?: string
 }
 
 function FamilyDrawerClose({
@@ -342,17 +340,17 @@ function FamilyDrawerClose({
     >
       {children || <CloseIcon />}
     </button>
-  );
+  )
 
   if (asChild) {
     return (
       <Drawer.Close asChild>
         <Slot>{defaultClose}</Slot>
       </Drawer.Close>
-    );
+    )
   }
 
-  return <Drawer.Close asChild>{defaultClose}</Drawer.Close>;
+  return <Drawer.Close asChild>{defaultClose}</Drawer.Close>
 }
 
 // ============================================================================
@@ -360,10 +358,10 @@ function FamilyDrawerClose({
 // ============================================================================
 
 interface FamilyDrawerHeaderProps {
-  icon: ReactNode;
-  title: string;
-  description: string;
-  className?: string;
+  icon: ReactNode
+  title: string
+  description: string
+  className?: string
 }
 
 function FamilyDrawerHeader({
@@ -382,14 +380,14 @@ function FamilyDrawerHeader({
         {description}
       </p>
     </header>
-  );
+  )
 }
 
 interface FamilyDrawerButtonProps {
-  children: ReactNode;
-  onClick: () => void;
-  className?: string;
-  asChild?: boolean;
+  children: ReactNode
+  onClick: () => void
+  className?: string
+  asChild?: boolean
 }
 
 function FamilyDrawerButton({
@@ -410,20 +408,20 @@ function FamilyDrawerButton({
     >
       {children}
     </button>
-  );
+  )
 
   if (asChild) {
-    return <Slot>{button}</Slot>;
+    return <Slot>{button}</Slot>
   }
 
-  return button;
+  return button
 }
 
 interface FamilyDrawerSecondaryButtonProps {
-  children: ReactNode;
-  onClick: () => void;
-  className: string;
-  asChild?: boolean;
+  children: ReactNode
+  onClick: () => void
+  className: string
+  asChild?: boolean
 }
 
 function FamilyDrawerSecondaryButton({
@@ -444,13 +442,13 @@ function FamilyDrawerSecondaryButton({
     >
       {children}
     </button>
-  );
+  )
 
   if (asChild) {
-    return <Slot>{button}</Slot>;
+    return <Slot>{button}</Slot>
   }
 
-  return button;
+  return button
 }
 
 // ============================================================================
@@ -458,7 +456,7 @@ function FamilyDrawerSecondaryButton({
 // ============================================================================
 
 interface FamilyDrawerViewContentProps {
-  views?: ViewsRegistry;
+  views?: ViewsRegistry
 }
 
 function FamilyDrawerViewContent(
@@ -466,26 +464,26 @@ function FamilyDrawerViewContent(
     views: propViews,
   }: FamilyDrawerViewContentProps = {} as FamilyDrawerViewContentProps
 ) {
-  const { view, views: contextViews } = useFamilyDrawer();
+  const { view, views: contextViews } = useFamilyDrawer()
 
   // Use prop views first, then context views
-  const views = propViews || contextViews;
+  const views = propViews || contextViews
 
   if (!views) {
     throw new Error(
       "FamilyDrawerViewContent requires views to be provided via props or FamilyDrawerRoot"
-    );
+    )
   }
 
-  const ViewComponent = views[view];
+  const ViewComponent = views[view]
 
   if (!ViewComponent) {
     // Fallback to default view if view not found
-    const DefaultComponent = views.default;
-    return DefaultComponent ? <DefaultComponent /> : null;
+    const DefaultComponent = views.default
+    return DefaultComponent ? <DefaultComponent /> : null
   }
 
-  return <ViewComponent />;
+  return <ViewComponent />
 }
 
 // ============================================================================
@@ -517,7 +515,7 @@ function CloseIcon() {
         strokeLinejoin="round"
       />
     </svg>
-  );
+  )
 }
 
 // ============================================================================
@@ -540,4 +538,4 @@ export {
   useFamilyDrawer,
   type ViewsRegistry,
   type ViewComponent,
-};
+}

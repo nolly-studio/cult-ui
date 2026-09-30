@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 import {
   TerminalAnimationBackgroundGradient,
@@ -18,19 +18,19 @@ import {
   TerminalAnimationWindow,
   type TabContent,
   type TerminalLine,
-} from "../ui/terminal-animation";
+} from "../ui/terminal-animation"
 
 export interface TerminalAnimationDemoProps {
   /** Tab content for each command; defaults to defaultTerminalTabs */
-  tabs?: TabContent[];
+  tabs?: TabContent[]
   /** Background image URL; when unset, BackgroundGradient is used */
-  backgroundImage?: string;
+  backgroundImage?: string
   /** Force dark mode for the terminal regardless of page theme */
-  alwaysDark?: boolean;
+  alwaysDark?: boolean
 }
 
 const backgroundImage =
-  "/component-images/terminal-animation/terminal-animation-bg-2.png";
+  "/component-images/terminal-animation/terminal-animation-bg-2.png"
 
 const tabs: TabContent[] = [
   {
@@ -215,10 +215,10 @@ const tabs: TabContent[] = [
       { text: "  Time:        1.234 s", color: "text-slate-500", delay: 100 },
     ],
   },
-];
+]
 
 export function TerminalAnimationDemo() {
-  const [animationKey, setAnimationKey] = useState(0);
+  const [animationKey, setAnimationKey] = useState(0)
 
   return (
     <TerminalAnimationRoot
@@ -266,7 +266,7 @@ export function TerminalAnimationDemo() {
                 visible: boolean
               ) => {
                 if (!visible) {
-                  return null;
+                  return null
                 }
                 return (
                   <div className="leading-relaxed">
@@ -279,7 +279,7 @@ export function TerminalAnimationDemo() {
                       {line.text || "\u00A0"}
                     </span>
                   </div>
-                );
+                )
               }}
             />
             <TerminalAnimationTrailingPrompt className="mt-1 flex items-center gap-2 leading-relaxed">
@@ -310,5 +310,5 @@ export function TerminalAnimationDemo() {
         </TerminalAnimationWindow>
       </TerminalAnimationContainer>
     </TerminalAnimationRoot>
-  );
+  )
 }

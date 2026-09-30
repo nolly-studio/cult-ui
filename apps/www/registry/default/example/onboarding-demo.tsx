@@ -1,5 +1,7 @@
-"use client";
+"use client"
 
+import { useState } from "react"
+import Image from "next/image"
 import {
   ArrowLeft,
   BookOpen,
@@ -12,19 +14,17 @@ import {
   Palette,
   Rocket,
   TrendingUp,
-} from "lucide-react";
-import Image from "next/image";
-import { useState } from "react";
+} from "lucide-react"
 
-import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/dialog"
 
 import {
   ChoiceGroup,
@@ -32,7 +32,7 @@ import {
   Onboarding,
   TipsList,
   useOnboarding,
-} from "../ui/onboarding";
+} from "../ui/onboarding"
 
 const STEP_CONFIG = [
   {
@@ -47,7 +47,7 @@ const STEP_CONFIG = [
     title: "You're ready to go!",
     description: "A few tips to get the most out of AI SDK Agents",
   },
-];
+]
 
 export const FEATURES = [
   {
@@ -74,7 +74,7 @@ export const FEATURES = [
       "Download any pattern as a fully working Next.js application, ready to run locally.",
     image: "/component-images/onboarding/onboarding-nextjs.png",
   },
-] as const;
+] as const
 
 export const ROLES = [
   { id: "designer", label: "Designer", icon: Palette },
@@ -85,7 +85,7 @@ export const ROLES = [
   { id: "developer", label: "Developer", icon: Code2 },
   { id: "agency", label: "Agency", icon: Building },
   { id: "other", label: "Other", icon: CircleDashed },
-] as const;
+] as const
 
 export const GOALS = [
   { id: "ai-agents", label: "Building AI agents" },
@@ -94,7 +94,7 @@ export const GOALS = [
   { id: "rag", label: "RAG & search" },
   { id: "prototyping", label: "Rapid prototyping" },
   { id: "other", label: "Something else" },
-] as const;
+] as const
 
 export const TIPS = [
   {
@@ -109,23 +109,23 @@ export const TIPS = [
     number: 3,
     text: "Copy skills and critical files to quickly skill up claude code and cursor.",
   },
-] as const;
+] as const
 
-export const TOTAL_STEPS = 3;
-export const MAX_STEP_VALUE = FEATURES.length - 1;
+export const TOTAL_STEPS = 3
+export const MAX_STEP_VALUE = FEATURES.length - 1
 
 // ============================================================================
 // Headless Primitives Demo (composable, uses shadcn tokens)
 // ============================================================================
 
 export default function OnboardingDemo() {
-  return <HeadlessOnboardingDemo />;
+  return <HeadlessOnboardingDemo />
 }
 
 export function HeadlessOnboardingDemo() {
-  const [open, setOpen] = useState(false);
-  const [selectedRole, setSelectedRole] = useState<string | null>(null);
-  const [selectedGoal, setSelectedGoal] = useState<string | null>(null);
+  const [open, setOpen] = useState(false)
+  const [selectedRole, setSelectedRole] = useState<string | null>(null)
+  const [selectedGoal, setSelectedGoal] = useState<string | null>(null)
 
   return (
     <div className="flex flex-col items-center gap-4">
@@ -172,12 +172,12 @@ export function HeadlessOnboardingDemo() {
         </DialogContent>
       </Dialog>
     </div>
-  );
+  )
 }
 
 function HeadlessOnboardingHeader() {
-  const { currentStep } = useOnboarding();
-  const config = STEP_CONFIG[currentStep - 1];
+  const { currentStep } = useOnboarding()
+  const config = STEP_CONFIG[currentStep - 1]
 
   return (
     <DialogHeader className="!text-center">
@@ -192,11 +192,11 @@ function HeadlessOnboardingHeader() {
         <Onboarding.StepIndicator />
       </div>
     </DialogHeader>
-  );
+  )
 }
 
 function HeadlessFeatureStep() {
-  const { stepValue, setStepValue } = useOnboarding();
+  const { stepValue, setStepValue } = useOnboarding()
 
   return (
     <div className="flex flex-col gap-4 md:flex-row md:gap-6">
@@ -207,8 +207,8 @@ function HeadlessFeatureStep() {
         value={stepValue}
       >
         {FEATURES.map((feature, index) => {
-          const Icon = feature.icon;
-          const isActive = stepValue === index;
+          const Icon = feature.icon
+          const isActive = stepValue === index
           return (
             <FeatureCarousel.Item index={index} key={feature.id}>
               <div
@@ -237,7 +237,7 @@ function HeadlessFeatureStep() {
                 </div>
               </div>
             </FeatureCarousel.Item>
-          );
+          )
         })}
       </FeatureCarousel>
       <div className="order-1 w-full md:order-2 md:w-1/2">
@@ -252,7 +252,7 @@ function HeadlessFeatureStep() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 function HeadlessRoleStep({
@@ -261,13 +261,13 @@ function HeadlessRoleStep({
   selectedGoal,
   onGoalSelect,
 }: {
-  selectedRole: string | null;
-  onRoleSelect: (v: string) => void;
-  selectedGoal: string | null;
-  onGoalSelect: (v: string) => void;
+  selectedRole: string | null
+  onRoleSelect: (v: string) => void
+  selectedGoal: string | null
+  onGoalSelect: (v: string) => void
 }) {
-  const { handleNext } = useOnboarding();
-  const [question, setQuestion] = useState(selectedGoal ? 2 : 1);
+  const { handleNext } = useOnboarding()
+  const [question, setQuestion] = useState(selectedGoal ? 2 : 1)
 
   return (
     <div className="flex flex-col gap-4">
@@ -285,15 +285,15 @@ function HeadlessRoleStep({
             className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-3"
             name="Select your role"
             onValueChange={(v) => {
-              onRoleSelect(v);
-              setTimeout(() => setQuestion(2), 300);
+              onRoleSelect(v)
+              setTimeout(() => setQuestion(2), 300)
             }}
             orientation="grid"
             value={selectedRole}
           >
             {ROLES.map((role) => {
-              const Icon = role.icon;
-              const isSelected = selectedRole === role.id;
+              const Icon = role.icon
+              const isSelected = selectedRole === role.id
               return (
                 <ChoiceGroup.Item
                   className={cn(
@@ -308,7 +308,7 @@ function HeadlessRoleStep({
                   <Icon className="text-muted-foreground size-4 shrink-0" />
                   <span>{role.label}</span>
                 </ChoiceGroup.Item>
-              );
+              )
             })}
           </ChoiceGroup>
           <p className="text-muted-foreground text-sm">Question 1 of 2</p>
@@ -327,14 +327,14 @@ function HeadlessRoleStep({
             className="grid grid-cols-2 gap-2 sm:gap-3"
             name="Select your goal"
             onValueChange={(v) => {
-              onGoalSelect(v);
-              setTimeout(() => handleNext(), 300);
+              onGoalSelect(v)
+              setTimeout(() => handleNext(), 300)
             }}
             orientation="grid"
             value={selectedGoal}
           >
             {GOALS.map((goal) => {
-              const isSelected = selectedGoal === goal.id;
+              const isSelected = selectedGoal === goal.id
               return (
                 <ChoiceGroup.Item
                   className={cn(
@@ -348,7 +348,7 @@ function HeadlessRoleStep({
                 >
                   <span>{goal.label}</span>
                 </ChoiceGroup.Item>
-              );
+              )
             })}
           </ChoiceGroup>
           <div className="flex items-center justify-between">
@@ -367,7 +367,7 @@ function HeadlessRoleStep({
         </div>
       )}
     </div>
-  );
+  )
 }
 
 function HeadlessTipsStep() {
@@ -403,5 +403,5 @@ function HeadlessTipsStep() {
         </div>
       </div>
     </div>
-  );
+  )
 }

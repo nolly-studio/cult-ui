@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import { AnimatePresence, motion, MotionConfig } from "motion/react";
-import { useMemo, useState } from "react";
-import useMeasure from "react-use-measure";
+import { useMemo, useState } from "react"
+import { AnimatePresence, motion, MotionConfig } from "motion/react"
+import useMeasure from "react-use-measure"
 
-import FamilyButton from "../ui/family-button";
+import FamilyButton from "../ui/family-button"
 
 export default function FamilyButtonDemo() {
   return (
@@ -15,19 +15,19 @@ export default function FamilyButtonDemo() {
         </FamilyButton>
       </div>
     </div>
-  );
+  )
 }
 
 let tabs = [
   { id: 0, label: "Apple" },
   { id: 1, label: "Spotify" },
-];
+]
 
 export function MusicPlayerExample() {
-  const [activeTab, setActiveTab] = useState(0);
-  const [direction, setDirection] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [ref, bounds] = useMeasure();
+  const [activeTab, setActiveTab] = useState(0)
+  const [direction, setDirection] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+  const [ref, bounds] = useMeasure()
 
   const content = useMemo(() => {
     switch (activeTab) {
@@ -80,7 +80,7 @@ export function MusicPlayerExample() {
               />
             </svg>
           </div>
-        );
+        )
       case 1:
         return (
           <div className="flex items-center justify-center">
@@ -97,19 +97,19 @@ export function MusicPlayerExample() {
               />
             </svg>
           </div>
-        );
+        )
       default:
-        return null;
+        return null
     }
-  }, [activeTab]);
+  }, [activeTab])
 
   const handleTabClick = (newTabId: number) => {
     if (newTabId !== activeTab && !isAnimating) {
-      const newDirection = newTabId > activeTab ? 1 : -1;
-      setDirection(newDirection);
-      setActiveTab(newTabId);
+      const newDirection = newTabId > activeTab ? 1 : -1
+      setDirection(newDirection)
+      setActiveTab(newTabId)
     }
-  };
+  }
 
   const variants = {
     initial: (direction: number) => ({
@@ -127,7 +127,7 @@ export function MusicPlayerExample() {
       opacity: 0,
       filter: "blur(4px)",
     }),
-  };
+  }
 
   return (
     <div className="flex flex-col items-center pt-4">
@@ -182,5 +182,5 @@ export function MusicPlayerExample() {
         </motion.div>
       </MotionConfig>
     </div>
-  );
+  )
 }

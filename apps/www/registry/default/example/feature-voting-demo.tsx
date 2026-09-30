@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import { ArrowUp } from "lucide-react";
-import { useState } from "react";
+import { useState } from "react"
+import { ArrowUp } from "lucide-react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
-import { FeatureVoting, type FeatureVotingValue } from "../ui/feature-voting";
+import { FeatureVoting, type FeatureVotingValue } from "../ui/feature-voting"
 
 const FEATURES = [
   {
@@ -33,7 +33,7 @@ const FEATURES = [
     title: "Mobile App",
     description: "Native iOS and Android applications",
   },
-] as const;
+] as const
 
 function FeatureVotingExample() {
   const [votes, setVotes] = useState<FeatureVotingValue>({
@@ -42,11 +42,11 @@ function FeatureVotingExample() {
     "export-pdf": 67,
     "api-access": 203,
     "mobile-app": 156,
-  });
+  })
 
   const [votedFeatures, setVotedFeatures] = useState<Set<string>>(
     new Set(["dark-mode"])
-  );
+  )
 
   return (
     <div className="w-full max-w-md">
@@ -98,7 +98,7 @@ function FeatureVotingExample() {
         </FeatureVoting.Group>
       </FeatureVoting.Root>
     </div>
-  );
+  )
 }
 
 function FeatureVotingBasicExample() {
@@ -146,7 +146,7 @@ function FeatureVotingBasicExample() {
         </FeatureVoting.Item>
       </FeatureVoting.Root>
     </div>
-  );
+  )
 }
 
 function FeatureVotingSortedExample() {
@@ -184,7 +184,7 @@ function FeatureVotingSortedExample() {
         </FeatureVoting.Group>
       </FeatureVoting.Root>
     </div>
-  );
+  )
 }
 
 export default function FeatureVotingDemo() {
@@ -205,5 +205,5 @@ export default function FeatureVotingDemo() {
         <FeatureVotingSortedExample />
       </div>
     </div>
-  );
+  )
 }

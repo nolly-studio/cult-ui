@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 export const DistortedGlass = ({ className }: { className?: string }) => {
   return (
@@ -51,5 +51,5 @@ export const DistortedGlass = ({ className }: { className?: string }) => {
         }
       `}</style>
     </>
-  );
-};
+  )
+}

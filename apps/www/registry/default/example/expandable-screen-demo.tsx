@@ -1,35 +1,35 @@
-"use client";
+"use client"
 
-import Image from "next/image";
-import { useId } from "react";
+import { useId } from "react"
+import Image from "next/image"
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/select"
+import { Textarea } from "@/components/ui/textarea"
 import {
   ExpandableScreen,
   ExpandableScreenContent,
   ExpandableScreenTrigger,
-} from "@/registry/default/ui/expandable-screen";
+} from "@/registry/default/ui/expandable-screen"
 
 const formFieldClassName =
-  "w-full rounded-lg border-0 bg-primary-foreground px-4 text-primary shadow-none placeholder:text-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-sm";
+  "w-full rounded-lg border-0 bg-primary-foreground px-4 text-primary shadow-none placeholder:text-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-sm"
 
 function ExpandableScreenDemo() {
-  const nameId = useId();
-  const emailId = useId();
-  const websiteId = useId();
-  const companySizeId = useId();
-  const messageId = useId();
+  const nameId = useId()
+  const emailId = useId()
+  const websiteId = useId()
+  const companySizeId = useId()
+  const messageId = useId()
   return (
     <ExpandableScreen
       layoutId="cta-card"
@@ -239,7 +239,7 @@ function ExpandableScreenDemo() {
         </div>
       </ExpandableScreenContent>
     </ExpandableScreen>
-  );
+  )
 }
 
-export default ExpandableScreenDemo;
+export default ExpandableScreenDemo

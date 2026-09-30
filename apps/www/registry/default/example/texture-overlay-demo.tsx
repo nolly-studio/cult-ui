@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { TextureOverlay } from "@/registry/default/ui/texture-overlay";
+import { TextureOverlay } from "@/registry/default/ui/texture-overlay"
 
 export default function TextureOverlayDemo() {
   return (
@@ -122,5 +122,5 @@ export default function TextureOverlayDemo() {
         </div>
       </div>
     </div>
-  );
+  )
 }

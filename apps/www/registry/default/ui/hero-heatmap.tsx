@@ -1,32 +1,32 @@
-"use client";
+"use client"
 
-import { Heatmap } from "@paper-design/shaders-react";
-import * as React from "react";
-import type { SVGProps } from "react";
+import * as React from "react"
+import type { SVGProps } from "react"
+import { Heatmap } from "@paper-design/shaders-react"
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 
-const MemoizedHeatmap = React.memo(Heatmap);
+const MemoizedHeatmap = React.memo(Heatmap)
 
-type HeatmapProps = React.ComponentProps<typeof Heatmap>;
-type HeatmapIcon = React.ComponentType<SVGProps<SVGSVGElement>>;
+type HeatmapProps = React.ComponentProps<typeof Heatmap>
+type HeatmapIcon = React.ComponentType<SVGProps<SVGSVGElement>>
 
 export interface HeroHeatmapTechItem {
-  name: string;
-  version?: string;
-  icon?: HeatmapIcon;
+  name: string
+  version?: string
+  icon?: HeatmapIcon
 }
 
 export interface HeroHeatmapCTAProps {
-  label: React.ReactNode;
-  href: string;
-  target?: React.HTMLAttributeAnchorTarget;
-  rel?: string;
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
-  className?: string;
-  buttonClassName?: string;
+  label: React.ReactNode
+  href: string
+  target?: React.HTMLAttributeAnchorTarget
+  rel?: string
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>
+  className?: string
+  buttonClassName?: string
 }
 
 /** Heatmap shader props that can be passed at the root for convenience */
@@ -46,95 +46,97 @@ export type HeroHeatmapShaderOverrides = Partial<
     | "speed"
     | "scale"
   >
->;
+>
 
 export interface HeroHeatmapRootProps
-  extends
-    Omit<React.ComponentPropsWithoutRef<"section">, "title">,
+  extends Omit<React.ComponentPropsWithoutRef<"section">, "title">,
     HeroHeatmapShaderOverrides {
-  srTitle?: string;
-  title?: React.ReactNode;
-  subtitle?: React.ReactNode;
-  description?: React.ReactNode;
-  showCta?: boolean;
-  ctaProps?: Partial<HeroHeatmapCTAProps>;
-  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode;
-  showBadges?: boolean;
-  techStack?: HeroHeatmapTechItem[];
+  srTitle?: string
+  title?: React.ReactNode
+  subtitle?: React.ReactNode
+  description?: React.ReactNode
+  showCta?: boolean
+  ctaProps?: Partial<HeroHeatmapCTAProps>
+  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode
+  showBadges?: boolean
+  techStack?: HeroHeatmapTechItem[]
   renderBadge?: (
     tech: HeroHeatmapTechItem,
     index: number,
     defaultBadge: React.ReactNode
-  ) => React.ReactNode;
-  desktopShaderProps?: Partial<HeatmapProps>;
-  mobileShaderProps?: Partial<HeatmapProps>;
+  ) => React.ReactNode
+  desktopShaderProps?: Partial<HeatmapProps>
+  mobileShaderProps?: Partial<HeatmapProps>
 }
 
-export interface HeroHeatmapHeadingProps extends Omit<
-  React.ComponentPropsWithoutRef<"div">,
-  "title"
-> {
-  title?: React.ReactNode;
-  subtitle?: React.ReactNode;
-  headingClassName?: string;
+export interface HeroHeatmapHeadingProps
+  extends Omit<React.ComponentPropsWithoutRef<"div">, "title"> {
+  title?: React.ReactNode
+  subtitle?: React.ReactNode
+  headingClassName?: string
 }
 
-export interface HeroHeatmapDescriptionProps extends React.ComponentPropsWithoutRef<"div"> {
-  description?: React.ReactNode;
-  descriptionClassName?: string;
+export interface HeroHeatmapDescriptionProps
+  extends React.ComponentPropsWithoutRef<"div"> {
+  description?: React.ReactNode
+  descriptionClassName?: string
 }
 
-export interface HeroHeatmapActionsProps extends React.ComponentPropsWithoutRef<"div"> {
-  showCta?: boolean;
-  ctaProps?: Partial<HeroHeatmapCTAProps>;
-  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode;
+export interface HeroHeatmapActionsProps
+  extends React.ComponentPropsWithoutRef<"div"> {
+  showCta?: boolean
+  ctaProps?: Partial<HeroHeatmapCTAProps>
+  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode
 }
 
-export interface HeroHeatmapBadgesProps extends React.ComponentPropsWithoutRef<"div"> {
-  showBadges?: boolean;
-  techStack?: HeroHeatmapTechItem[];
+export interface HeroHeatmapBadgesProps
+  extends React.ComponentPropsWithoutRef<"div"> {
+  showBadges?: boolean
+  techStack?: HeroHeatmapTechItem[]
   renderBadge?: (
     tech: HeroHeatmapTechItem,
     index: number,
     defaultBadge: React.ReactNode
-  ) => React.ReactNode;
+  ) => React.ReactNode
 }
 
-export interface HeroHeatmapVisualProps extends React.ComponentPropsWithoutRef<"div"> {
-  desktopShaderProps?: Partial<HeatmapProps>;
-  desktopClassName?: string;
+export interface HeroHeatmapVisualProps
+  extends React.ComponentPropsWithoutRef<"div"> {
+  desktopShaderProps?: Partial<HeatmapProps>
+  desktopClassName?: string
 }
 
-export interface HeroHeatmapMobileVisualProps extends React.ComponentPropsWithoutRef<"div"> {
-  mobileShaderProps?: Partial<HeatmapProps>;
+export interface HeroHeatmapMobileVisualProps
+  extends React.ComponentPropsWithoutRef<"div"> {
+  mobileShaderProps?: Partial<HeatmapProps>
 }
 
 export interface HeroHeatmapProps extends HeroHeatmapRootProps {
-  containerClassName?: string;
-  contentClassName?: string;
-  headingWrapClassName?: string;
-  headingClassName?: string;
-  descriptionWrapClassName?: string;
-  descriptionClassName?: string;
-  ctaWrapClassName?: string;
-  badgesWrapClassName?: string;
-  visualClassName?: string;
-  mobileVisualClassName?: string;
+  containerClassName?: string
+  contentClassName?: string
+  headingWrapClassName?: string
+  headingClassName?: string
+  descriptionWrapClassName?: string
+  descriptionClassName?: string
+  ctaWrapClassName?: string
+  badgesWrapClassName?: string
+  visualClassName?: string
+  mobileVisualClassName?: string
 }
 
 interface HeroHeatmapContextValue {
-  srTitle: string;
-  title: React.ReactNode;
-  subtitle: React.ReactNode;
-  description: React.ReactNode;
-  showCta: boolean;
-  mergedCtaProps: HeroHeatmapCTAProps;
-  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode;
-  showBadges: boolean;
-  techStack: HeroHeatmapTechItem[];
-  renderBadge?: HeroHeatmapBadgesProps["renderBadge"];
-  mergedDesktopShaderProps: Partial<HeatmapProps>;
-  mergedMobileShaderProps: Partial<HeatmapProps>;
+  srTitle: string
+  title: React.ReactNode
+  subtitle: React.ReactNode
+  description: React.ReactNode
+  showCta: boolean
+  mergedCtaProps: HeroHeatmapCTAProps
+  renderCta?: (defaultCta: React.ReactNode) => React.ReactNode
+  showBadges: boolean
+  techStack: HeroHeatmapTechItem[]
+  renderBadge?: HeroHeatmapBadgesProps["renderBadge"]
+  mergedDesktopShaderProps: Partial<HeatmapProps>
+  mergedMobileShaderProps: Partial<HeatmapProps>
 }
 
 const defaultDesktopShaderProps: Partial<HeatmapProps> = {
@@ -158,7 +160,7 @@ const defaultDesktopShaderProps: Partial<HeatmapProps> = {
   outerGlow: 0.5,
   speed: 1,
   scale: 0.55,
-};
+}
 
 const defaultMobileShaderProps: Partial<HeatmapProps> = {
   image: "/cult-icon.svg",
@@ -180,14 +182,14 @@ const defaultMobileShaderProps: Partial<HeatmapProps> = {
   speed: 0.85,
   scale: 0.68,
   style: { height: "100%", width: "100%" },
-};
+}
 
 const defaultCtaProps: HeroHeatmapCTAProps = {
   label: "Check it out today",
   href: "https://aisdkagents.com",
   target: "_blank",
   rel: "noopener noreferrer",
-};
+}
 
 const defaultDescription = (
   <>
@@ -197,7 +199,7 @@ const defaultDescription = (
     <span className="font-medium tracking-tight">shadcn/ui</span>.
     <span className="hidden sm:inline"> Headless, themable, practical.</span>
   </>
-);
+)
 
 const defaultTechStack: HeroHeatmapTechItem[] = [
   {
@@ -210,169 +212,138 @@ const defaultTechStack: HeroHeatmapTechItem[] = [
     version: "v6",
     icon: AISDKIcon,
   },
-];
+]
 
 const HeroHeatmapContext = React.createContext<
   HeroHeatmapContextValue | undefined
->(undefined);
+>(undefined)
 
 function useHeroHeatmapContext() {
-  const context = React.useContext(HeroHeatmapContext);
+  const context = React.useContext(HeroHeatmapContext)
   if (!context) {
     throw new Error(
       "HeroHeatmap components must be used within HeroHeatmapRoot"
-    );
+    )
   }
-  return context;
+  return context
 }
 
 export function useHeroHeatmap() {
-  return useHeroHeatmapContext();
+  return useHeroHeatmapContext()
 }
 
 export const HeroHeatmapRoot = React.forwardRef<
   HTMLElement,
   HeroHeatmapRootProps
->(
-  (
-    {
-      className,
-      children,
-      srTitle = "AI SDK Agents",
-      title = <span className="">AI SDK Agents</span>,
-      subtitle = "Copy and Paste",
-      description = defaultDescription,
-      showCta = true,
-      ctaProps,
+>(({ className, children, srTitle = "AI SDK Agents", title = <span className="">
+      AI SDK Agents
+    </span>, subtitle = "Copy and Paste", description = defaultDescription, showCta = true, ctaProps, renderCta, showBadges = true, techStack = defaultTechStack, renderBadge, desktopShaderProps, mobileShaderProps, width, height, image, colors, colorBack, contour, angle, noise, innerGlow, outerGlow, speed, scale, ...props }, ref) => {
+  const mergedCtaProps = React.useMemo(
+    () => ({
+      ...defaultCtaProps,
+      ...ctaProps,
+    }),
+    [ctaProps]
+  )
+
+  const shaderOverrides = React.useMemo((): Partial<HeatmapProps> => {
+    const overrides: Partial<HeatmapProps> = {}
+    if (width !== undefined) overrides.width = width
+    if (height !== undefined) overrides.height = height
+    if (image !== undefined) overrides.image = image
+    if (colors !== undefined) overrides.colors = colors
+    if (colorBack !== undefined) overrides.colorBack = colorBack
+    if (contour !== undefined) overrides.contour = contour
+    if (angle !== undefined) overrides.angle = angle
+    if (noise !== undefined) overrides.noise = noise
+    if (innerGlow !== undefined) overrides.innerGlow = innerGlow
+    if (outerGlow !== undefined) overrides.outerGlow = outerGlow
+    if (speed !== undefined) overrides.speed = speed
+    if (scale !== undefined) overrides.scale = scale
+    return overrides
+  }, [
+    width,
+    height,
+    image,
+    colors,
+    colorBack,
+    contour,
+    angle,
+    noise,
+    innerGlow,
+    outerGlow,
+    speed,
+    scale,
+  ])
+
+  const mergedDesktopShaderProps = React.useMemo(
+    () => ({
+      ...defaultDesktopShaderProps,
+      ...shaderOverrides,
+      ...desktopShaderProps,
+    }),
+    [shaderOverrides, desktopShaderProps]
+  )
+
+  const mergedMobileShaderProps = React.useMemo(
+    () => ({
+      ...defaultMobileShaderProps,
+      ...shaderOverrides,
+      ...mobileShaderProps,
+      style: {
+        ...(defaultMobileShaderProps.style as React.CSSProperties),
+        ...(mobileShaderProps?.style as React.CSSProperties | undefined),
+      },
+    }),
+    [shaderOverrides, mobileShaderProps]
+  )
+
+  const contextValue = React.useMemo<HeroHeatmapContextValue>(
+    () => ({
+      srTitle,
+      title,
+      subtitle,
+      description,
+      showCta,
+      mergedCtaProps,
       renderCta,
-      showBadges = true,
-      techStack = defaultTechStack,
+      showBadges,
+      techStack,
       renderBadge,
-      desktopShaderProps,
-      mobileShaderProps,
-      width,
-      height,
-      image,
-      colors,
-      colorBack,
-      contour,
-      angle,
-      noise,
-      innerGlow,
-      outerGlow,
-      speed,
-      scale,
-      ...props
-    },
-    ref
-  ) => {
-    const mergedCtaProps = React.useMemo(
-      () => ({
-        ...defaultCtaProps,
-        ...ctaProps,
-      }),
-      [ctaProps]
-    );
+      mergedDesktopShaderProps,
+      mergedMobileShaderProps,
+    }),
+    [
+      srTitle,
+      title,
+      subtitle,
+      description,
+      showCta,
+      mergedCtaProps,
+      renderCta,
+      showBadges,
+      techStack,
+      renderBadge,
+      mergedDesktopShaderProps,
+      mergedMobileShaderProps,
+    ]
+  )
 
-    const shaderOverrides = React.useMemo((): Partial<HeatmapProps> => {
-      const overrides: Partial<HeatmapProps> = {};
-      if (width !== undefined) overrides.width = width;
-      if (height !== undefined) overrides.height = height;
-      if (image !== undefined) overrides.image = image;
-      if (colors !== undefined) overrides.colors = colors;
-      if (colorBack !== undefined) overrides.colorBack = colorBack;
-      if (contour !== undefined) overrides.contour = contour;
-      if (angle !== undefined) overrides.angle = angle;
-      if (noise !== undefined) overrides.noise = noise;
-      if (innerGlow !== undefined) overrides.innerGlow = innerGlow;
-      if (outerGlow !== undefined) overrides.outerGlow = outerGlow;
-      if (speed !== undefined) overrides.speed = speed;
-      if (scale !== undefined) overrides.scale = scale;
-      return overrides;
-    }, [
-      width,
-      height,
-      image,
-      colors,
-      colorBack,
-      contour,
-      angle,
-      noise,
-      innerGlow,
-      outerGlow,
-      speed,
-      scale,
-    ]);
-
-    const mergedDesktopShaderProps = React.useMemo(
-      () => ({
-        ...defaultDesktopShaderProps,
-        ...shaderOverrides,
-        ...desktopShaderProps,
-      }),
-      [shaderOverrides, desktopShaderProps]
-    );
-
-    const mergedMobileShaderProps = React.useMemo(
-      () => ({
-        ...defaultMobileShaderProps,
-        ...shaderOverrides,
-        ...mobileShaderProps,
-        style: {
-          ...(defaultMobileShaderProps.style as React.CSSProperties),
-          ...(mobileShaderProps?.style as React.CSSProperties | undefined),
-        },
-      }),
-      [shaderOverrides, mobileShaderProps]
-    );
-
-    const contextValue = React.useMemo<HeroHeatmapContextValue>(
-      () => ({
-        srTitle,
-        title,
-        subtitle,
-        description,
-        showCta,
-        mergedCtaProps,
-        renderCta,
-        showBadges,
-        techStack,
-        renderBadge,
-        mergedDesktopShaderProps,
-        mergedMobileShaderProps,
-      }),
-      [
-        srTitle,
-        title,
-        subtitle,
-        description,
-        showCta,
-        mergedCtaProps,
-        renderCta,
-        showBadges,
-        techStack,
-        renderBadge,
-        mergedDesktopShaderProps,
-        mergedMobileShaderProps,
-      ]
-    );
-
-    return (
-      <HeroHeatmapContext.Provider value={contextValue}>
-        <section
-          className={cn("relative h-full w-full overflow-hidden", className)}
-          data-slot="hero-heatmap-root"
-          ref={ref}
-          {...props}
-        >
-          <h1 className="sr-only">{srTitle}</h1>
-          {children}
-        </section>
-      </HeroHeatmapContext.Provider>
-    );
-  }
-);
-HeroHeatmapRoot.displayName = "HeroHeatmapRoot";
+  return (
+    <HeroHeatmapContext.Provider value={contextValue}>
+      <section
+        className={cn("relative h-full w-full overflow-hidden", className)}
+        data-slot="hero-heatmap-root"
+        ref={ref}
+        {...props}
+      >
+        <h1 className="sr-only">{srTitle}</h1>
+        {children}
+      </section>
+    </HeroHeatmapContext.Provider>
+  )
+})
+HeroHeatmapRoot.displayName = "HeroHeatmapRoot"
 
 export function HeroHeatmapContainer({
   className,
@@ -387,7 +358,7 @@ export function HeroHeatmapContainer({
       data-slot="hero-heatmap-container"
       {...props}
     />
-  );
+  )
 }
 
 export function HeroHeatmapContent({
@@ -403,7 +374,7 @@ export function HeroHeatmapContent({
       data-slot="hero-heatmap-content"
       {...props}
     />
-  );
+  )
 }
 
 export function HeroHeatmapHeading({
@@ -414,9 +385,9 @@ export function HeroHeatmapHeading({
   children,
   ...props
 }: HeroHeatmapHeadingProps) {
-  const context = useHeroHeatmapContext();
-  const resolvedTitle = title ?? context.title;
-  const resolvedSubtitle = subtitle ?? context.subtitle;
+  const context = useHeroHeatmapContext()
+  const resolvedTitle = title ?? context.title
+  const resolvedSubtitle = subtitle ?? context.subtitle
 
   return (
     <div
@@ -439,7 +410,7 @@ export function HeroHeatmapHeading({
         </div>
       )}
     </div>
-  );
+  )
 }
 
 export function HeroHeatmapDescription({
@@ -449,8 +420,8 @@ export function HeroHeatmapDescription({
   children,
   ...props
 }: HeroHeatmapDescriptionProps) {
-  const context = useHeroHeatmapContext();
-  const resolvedDescription = description ?? context.description;
+  const context = useHeroHeatmapContext()
+  const resolvedDescription = description ?? context.description
 
   return (
     <div
@@ -473,7 +444,7 @@ export function HeroHeatmapDescription({
         </p>
       )}
     </div>
-  );
+  )
 }
 
 export function HeroHeatmapActions({
@@ -484,16 +455,16 @@ export function HeroHeatmapActions({
   children,
   ...props
 }: HeroHeatmapActionsProps) {
-  const context = useHeroHeatmapContext();
-  const shouldShowCta = showCta ?? context.showCta;
-  const resolvedCtaProps = { ...context.mergedCtaProps, ...ctaProps };
-  const resolvedRenderCta = renderCta ?? context.renderCta;
+  const context = useHeroHeatmapContext()
+  const shouldShowCta = showCta ?? context.showCta
+  const resolvedCtaProps = { ...context.mergedCtaProps, ...ctaProps }
+  const resolvedRenderCta = renderCta ?? context.renderCta
 
   if (!shouldShowCta) {
-    return null;
+    return null
   }
 
-  const defaultCta = <HeroHeatmapCTA {...resolvedCtaProps} />;
+  const defaultCta = <HeroHeatmapCTA {...resolvedCtaProps} />
 
   return (
     <div
@@ -504,7 +475,7 @@ export function HeroHeatmapActions({
       {children ??
         (resolvedRenderCta ? resolvedRenderCta(defaultCta) : defaultCta)}
     </div>
-  );
+  )
 }
 
 export function HeroHeatmapCTA({
@@ -530,7 +501,7 @@ export function HeroHeatmapCTA({
         </a>
       </Button>
     </div>
-  );
+  )
 }
 
 export function HeroHeatmapBadges({
@@ -540,13 +511,13 @@ export function HeroHeatmapBadges({
   renderBadge,
   ...props
 }: HeroHeatmapBadgesProps) {
-  const context = useHeroHeatmapContext();
-  const shouldShowBadges = showBadges ?? context.showBadges;
-  const resolvedTechStack = techStack ?? context.techStack;
-  const resolvedRenderBadge = renderBadge ?? context.renderBadge;
+  const context = useHeroHeatmapContext()
+  const shouldShowBadges = showBadges ?? context.showBadges
+  const resolvedTechStack = techStack ?? context.techStack
+  const resolvedRenderBadge = renderBadge ?? context.renderBadge
 
   if (!shouldShowBadges) {
-    return null;
+    return null
   }
 
   return (
@@ -559,7 +530,7 @@ export function HeroHeatmapBadges({
       {...props}
     >
       {resolvedTechStack.map((tech, index) => {
-        const Icon = tech.icon;
+        const Icon = tech.icon
         const defaultBadge = (
           <Badge
             className={cn(
@@ -580,20 +551,20 @@ export function HeroHeatmapBadges({
               </span>
             ) : null}
           </Badge>
-        );
+        )
 
         if (resolvedRenderBadge) {
           return (
             <React.Fragment key={tech.name}>
               {resolvedRenderBadge(tech, index, defaultBadge)}
             </React.Fragment>
-          );
+          )
         }
 
-        return defaultBadge;
+        return defaultBadge
       })}
     </div>
-  );
+  )
 }
 
 export function HeroHeatmapVisual({
@@ -602,11 +573,11 @@ export function HeroHeatmapVisual({
   desktopShaderProps,
   ...props
 }: HeroHeatmapVisualProps) {
-  const context = useHeroHeatmapContext();
+  const context = useHeroHeatmapContext()
   const resolvedDesktopShaderProps = {
     ...context.mergedDesktopShaderProps,
     ...desktopShaderProps,
-  };
+  }
 
   return (
     <div
@@ -633,7 +604,7 @@ export function HeroHeatmapVisual({
         />
       </div>
     </div>
-  );
+  )
 }
 
 export function HeroHeatmapMobileVisual({
@@ -641,7 +612,7 @@ export function HeroHeatmapMobileVisual({
   mobileShaderProps,
   ...props
 }: HeroHeatmapMobileVisualProps) {
-  const context = useHeroHeatmapContext();
+  const context = useHeroHeatmapContext()
   const resolvedMobileShaderProps = {
     ...context.mergedMobileShaderProps,
     ...mobileShaderProps,
@@ -649,7 +620,7 @@ export function HeroHeatmapMobileVisual({
       ...(context.mergedMobileShaderProps.style as React.CSSProperties),
       ...(mobileShaderProps?.style as React.CSSProperties | undefined),
     },
-  };
+  }
 
   return (
     <div
@@ -669,7 +640,7 @@ export function HeroHeatmapMobileVisual({
         }
       />
     </div>
-  );
+  )
 }
 
 export function HeroHeatmap({
@@ -712,7 +683,7 @@ export function HeroHeatmap({
       </HeroHeatmapContainer>
       <HeroHeatmapMobileVisual className={mobileVisualClassName} />
     </HeroHeatmapRoot>
-  );
+  )
 }
 
 export function AISDKIcon(props: SVGProps<SVGSVGElement>) {
@@ -732,14 +703,14 @@ export function AISDKIcon(props: SVGProps<SVGSVGElement>) {
         fill="currentColor"
       />
     </svg>
-  );
+  )
 }
 
 export function NextjsIcon(props: SVGProps<SVGSVGElement>) {
-  const id = React.useId();
-  const maskId = `${id}-mask`;
-  const paint0Id = `${id}-paint0`;
-  const paint1Id = `${id}-paint1`;
+  const id = React.useId()
+  const maskId = `${id}-mask`
+  const paint0Id = `${id}-paint0`
+  const paint1Id = `${id}-paint1`
 
   return (
     <svg
@@ -810,7 +781,7 @@ export function NextjsIcon(props: SVGProps<SVGSVGElement>) {
         </linearGradient>
       </defs>
     </svg>
-  );
+  )
 }
 
-export default HeroHeatmap;
+export default HeroHeatmap

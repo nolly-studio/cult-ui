@@ -1,4 +1,4 @@
-import { BgAnimateButton } from "../ui/bg-animate-button";
+import { BgAnimateButton } from "../ui/bg-animate-button"
 
 type Gradients =
   | "sunrise"
@@ -7,10 +7,10 @@ type Gradients =
   | "default"
   | "forest"
   | "sunset"
-  | "nebula";
+  | "nebula"
 
-type Radius = "full" | "xl" | "2xl" | "3xl" | "sm";
-type Animations = "spin" | "pulse" | "spin-slow" | "spin-fast";
+type Radius = "full" | "xl" | "2xl" | "3xl" | "sm"
+type Animations = "spin" | "pulse" | "spin-slow" | "spin-fast"
 
 const gradients: Gradients[] = [
   "sunrise",
@@ -20,9 +20,9 @@ const gradients: Gradients[] = [
   "sunset",
   "default",
   "nebula",
-];
-const roundings: Radius[] = ["full", "xl", "2xl", "3xl", "sm"];
-const animations: Animations[] = ["spin", "pulse", "spin-slow", "spin-fast"];
+]
+const roundings: Radius[] = ["full", "xl", "2xl", "3xl", "sm"]
+const animations: Animations[] = ["spin", "pulse", "spin-slow", "spin-fast"]
 
 export const BgAnimateButtonsDemo = () => {
   return (
@@ -68,7 +68,7 @@ export const BgAnimateButtonsDemo = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default BgAnimateButtonsDemo;
+export default BgAnimateButtonsDemo

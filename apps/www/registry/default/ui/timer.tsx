@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import { cva, type VariantProps } from "class-variance-authority";
-import { Clock } from "lucide-react";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { Clock } from "lucide-react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 const timerVariants = cva(
   [
@@ -33,7 +33,7 @@ const timerVariants = cva(
       size: "md",
     },
   }
-);
+)
 
 const timerIconVariants = cva("transition-transform duration-[2000ms]", {
   variants: {
@@ -51,7 +51,7 @@ const timerIconVariants = cva("transition-transform duration-[2000ms]", {
     size: "md",
     loading: false,
   },
-});
+})
 
 const timerDisplayVariants = cva("font-mono tracking-tight tabular-nums", {
   variants: {
@@ -64,59 +64,59 @@ const timerDisplayVariants = cva("font-mono tracking-tight tabular-nums", {
   defaultVariants: {
     size: "md",
   },
-});
+})
 
 export type TimerRootProps = {
   /** Whether the timer is in loading/running state */
-  loading?: boolean;
+  loading?: boolean
 } & VariantProps<typeof timerVariants> &
-  React.HTMLAttributes<HTMLDivElement>;
+  React.HTMLAttributes<HTMLDivElement>
 
 export type TimerIconProps = {
   /** Custom icon to display instead of default Clock */
-  icon?: React.ComponentType<{ className?: string }>;
+  icon?: React.ComponentType<{ className?: string }>
 } & VariantProps<typeof timerIconVariants> &
-  React.HTMLAttributes<HTMLDivElement>;
+  React.HTMLAttributes<HTMLDivElement>
 
 export type TimerDisplayProps = {
   /** Time value to display */
-  time: string;
+  time: string
   /** Optional label for accessibility */
-  label?: string;
+  label?: string
 } & VariantProps<typeof timerDisplayVariants> &
-  React.HTMLAttributes<HTMLDivElement>;
+  React.HTMLAttributes<HTMLDivElement>
 
 export type UseTimerOptions = {
   /** Whether the timer should be running */
-  loading?: boolean;
+  loading?: boolean
   /** Callback fired on each tick with elapsed time */
-  onTick?: (seconds: number, milliseconds: number) => void;
+  onTick?: (seconds: number, milliseconds: number) => void
   /** Whether to reset timer when loading state changes */
-  resetOnLoadingChange?: boolean;
+  resetOnLoadingChange?: boolean
   /** Time format to use */
-  format?: "SS.MS" | "MM:SS" | "HH:MM:SS";
-};
+  format?: "SS.MS" | "MM:SS" | "HH:MM:SS"
+}
 
 export type UseTimerReturn = {
   /** Total elapsed seconds */
-  elapsedTime: number;
+  elapsedTime: number
   /** Current milliseconds (0-999) */
-  milliseconds: number;
+  milliseconds: number
   /** Formatted time strings */
   formattedTime: {
-    seconds: string;
-    milliseconds: string;
-    display: string;
-  };
+    seconds: string
+    milliseconds: string
+    display: string
+  }
   /** Whether timer is currently running */
-  isRunning: boolean;
+  isRunning: boolean
   /** Reset timer to 0 */
-  reset: () => void;
+  reset: () => void
   /** Start the timer */
-  start: () => void;
+  start: () => void
   /** Stop the timer */
-  stop: () => void;
-};
+  stop: () => void
+}
 
 /**
  * Root container for timer components
@@ -134,10 +134,10 @@ export const TimerRoot = React.forwardRef<HTMLDivElement, TimerRootProps>(
       >
         {children}
       </div>
-    );
+    )
   }
-);
-TimerRoot.displayName = "TimerRoot";
+)
+TimerRoot.displayName = "TimerRoot"
 
 /**
  * Icon component for timer with loading animation
@@ -152,10 +152,10 @@ export const TimerIcon = React.forwardRef<HTMLDivElement, TimerIconProps>(
       >
         <Icon className="h-full w-full" />
       </div>
-    );
+    )
   }
-);
-TimerIcon.displayName = "TimerIcon";
+)
+TimerIcon.displayName = "TimerIcon"
 
 /**
  * Display component for formatted time
@@ -171,16 +171,16 @@ export const TimerDisplay = React.forwardRef<HTMLDivElement, TimerDisplayProps>(
       >
         {time}
       </div>
-    );
+    )
   }
-);
-TimerDisplay.displayName = "TimerDisplay";
+)
+TimerDisplay.displayName = "TimerDisplay"
 
 export type TimerProps = TimerRootProps &
   UseTimerOptions & {
     /** Time format to display */
-    format?: "SS.MS" | "MM:SS" | "HH:MM:SS";
-  } & React.HTMLAttributes<HTMLDivElement>;
+    format?: "SS.MS" | "MM:SS" | "HH:MM:SS"
+  } & React.HTMLAttributes<HTMLDivElement>
 
 export const Timer = React.forwardRef<HTMLDivElement, TimerProps>(
   (
@@ -201,7 +201,7 @@ export const Timer = React.forwardRef<HTMLDivElement, TimerProps>(
       onTick,
       resetOnLoadingChange,
       format,
-    });
+    })
 
     return (
       <TimerRoot
@@ -215,10 +215,10 @@ export const Timer = React.forwardRef<HTMLDivElement, TimerProps>(
         <TimerIcon size={size} loading={loading} />
         <TimerDisplay size={size} time={formattedTime.display} />
       </TimerRoot>
-    );
+    )
   }
-);
-Timer.displayName = "Timer";
+)
+Timer.displayName = "Timer"
 
 /**
  * Hook for managing timer state and formatting
@@ -229,77 +229,77 @@ export function useTimer({
   resetOnLoadingChange = true,
   format = "SS.MS",
 }: UseTimerOptions = {}): UseTimerReturn {
-  const [elapsedTime, setElapsedTime] = useState(0);
-  const [milliseconds, setMilliseconds] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
-  const startTimeRef = useRef<number>(0);
-  const rafRef = useRef<number | null>(null);
+  const [elapsedTime, setElapsedTime] = useState(0)
+  const [milliseconds, setMilliseconds] = useState(0)
+  const [isRunning, setIsRunning] = useState(false)
+  const startTimeRef = useRef<number>(0)
+  const rafRef = useRef<number | null>(null)
 
   const reset = useCallback(() => {
-    setElapsedTime(0);
-    setMilliseconds(0);
-    startTimeRef.current = 0;
-  }, []);
+    setElapsedTime(0)
+    setMilliseconds(0)
+    startTimeRef.current = 0
+  }, [])
 
   const start = useCallback(() => {
-    setIsRunning(true);
-    startTimeRef.current = performance.now();
-  }, []);
+    setIsRunning(true)
+    startTimeRef.current = performance.now()
+  }, [])
 
   const stop = useCallback(() => {
-    setIsRunning(false);
+    setIsRunning(false)
     if (rafRef.current) {
-      cancelAnimationFrame(rafRef.current);
+      cancelAnimationFrame(rafRef.current)
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
-    if (!isRunning) return;
+    if (!isRunning) return
 
     const updateTimer = () => {
-      const now = performance.now();
-      const elapsed = now - startTimeRef.current;
+      const now = performance.now()
+      const elapsed = now - startTimeRef.current
 
-      const newElapsedTime = Math.floor(elapsed / 1000);
-      const newMilliseconds = Math.floor(elapsed % 1000);
+      const newElapsedTime = Math.floor(elapsed / 1000)
+      const newMilliseconds = Math.floor(elapsed % 1000)
 
-      setElapsedTime(newElapsedTime);
-      setMilliseconds(newMilliseconds);
+      setElapsedTime(newElapsedTime)
+      setMilliseconds(newMilliseconds)
 
-      rafRef.current = requestAnimationFrame(updateTimer);
-    };
+      rafRef.current = requestAnimationFrame(updateTimer)
+    }
 
-    rafRef.current = requestAnimationFrame(updateTimer);
+    rafRef.current = requestAnimationFrame(updateTimer)
 
     return () => {
       if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
+        cancelAnimationFrame(rafRef.current)
       }
-    };
-  }, [isRunning]);
+    }
+  }, [isRunning])
 
   useEffect(() => {
     if (loading) {
       if (resetOnLoadingChange) {
-        reset();
+        reset()
       }
-      start();
+      start()
     } else {
-      stop();
+      stop()
     }
-  }, [loading, resetOnLoadingChange, reset, start, stop]);
+  }, [loading, resetOnLoadingChange, reset, start, stop])
 
   useEffect(() => {
     if (onTick) {
-      onTick(elapsedTime, milliseconds);
+      onTick(elapsedTime, milliseconds)
     }
-  }, [elapsedTime, milliseconds, onTick]);
+  }, [elapsedTime, milliseconds, onTick])
 
   const formatTime = useCallback(
     (totalSeconds: number, ms: number) => {
-      const hours = Math.floor(totalSeconds / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
+      const hours = Math.floor(totalSeconds / 3600)
+      const minutes = Math.floor((totalSeconds % 3600) / 60)
+      const seconds = totalSeconds % 60
 
       switch (format) {
         case "HH:MM:SS":
@@ -311,10 +311,10 @@ export function useTimer({
             display: `${hours.toString().padStart(2, "0")}:${minutes
               .toString()
               .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`,
-          };
+          }
         case "MM:SS":
-          const totalMinutes = Math.floor(totalSeconds / 60);
-          const remainingSeconds = totalSeconds % 60;
+          const totalMinutes = Math.floor(totalSeconds / 60)
+          const remainingSeconds = totalSeconds % 60
           return {
             seconds: remainingSeconds.toString().padStart(2, "0"),
             milliseconds: Math.floor(ms / 10)
@@ -325,7 +325,7 @@ export function useTimer({
               .padStart(2, "0")}:${remainingSeconds
               .toString()
               .padStart(2, "0")}`,
-          };
+          }
         case "SS.MS":
         default:
           return {
@@ -338,13 +338,13 @@ export function useTimer({
             )
               .toString()
               .padStart(2, "0")}`,
-          };
+          }
       }
     },
     [format]
-  );
+  )
 
-  const formattedTime = formatTime(elapsedTime, milliseconds);
+  const formattedTime = formatTime(elapsedTime, milliseconds)
 
   return {
     elapsedTime,
@@ -354,5 +354,5 @@ export function useTimer({
     reset,
     start,
     stop,
-  };
+  }
 }

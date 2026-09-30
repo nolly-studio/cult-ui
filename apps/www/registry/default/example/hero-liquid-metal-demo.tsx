@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import {
   AISDKIcon,
@@ -13,7 +13,7 @@ import {
   HeroLiquidMetalRoot,
   HeroLiquidMetalVisual,
   NextjsIcon,
-} from "../ui/hero-liquid-metal";
+} from "../ui/hero-liquid-metal"
 
 export default function HeroLiquidMetalDemo() {
   return (
@@ -105,5 +105,5 @@ export default function HeroLiquidMetalDemo() {
         </HeroLiquidMetalRoot>
       </div>
     </div>
-  );
+  )
 }

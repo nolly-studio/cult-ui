@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import {
   AISDKIcon,
@@ -13,7 +13,7 @@ import {
   HeroStaticRadialGradientRoot,
   HeroStaticRadialGradientVisual,
   NextjsIcon,
-} from "../ui/hero-static-radial-gradient";
+} from "../ui/hero-static-radial-gradient"
 
 export default function HeroStaticRadialGradientDemo() {
   return (
@@ -93,5 +93,5 @@ export default function HeroStaticRadialGradientDemo() {
         </HeroStaticRadialGradientRoot>
       </div>
     </div>
-  );
+  )
 }

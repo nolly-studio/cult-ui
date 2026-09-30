@@ -1,0 +1,50 @@
+---
+title: Circuit Board
+description: Animated SVG circuit illustration with glowing traces and a central chip
+component: true
+links: {}
+---
+
+<ComponentPreview
+  name="circuit-board-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[95%]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/circuit-board.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="circuit-board" />
+
+<Step>Install dependencies if needed: `motion` and `lucide-react`.</Step>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+Import and render `CircuitBoard` inside a full-width container. The SVG scales with its parent (`max-w-[891px]` inside the component). Pair it with dark backgrounds so the orange pulse and card treatments read clearly.

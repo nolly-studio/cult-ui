@@ -1,30 +1,30 @@
-"use client";
+"use client"
 
-import { Check, Copy } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState } from "react"
+import { Check, Copy } from "lucide-react"
 
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from "@/components/ui/accordion"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
-import { Switch } from "@/components/ui/switch";
-import { useToast } from "@/components/ui/use-toast";
+} from "@/components/ui/select"
+import { Slider } from "@/components/ui/slider"
+import { Switch } from "@/components/ui/switch"
+import { useToast } from "@/components/ui/use-toast"
 
-import { FractalDotGrid } from "../ui/bg-animated-fractal-dot-grid";
+import { FractalDotGrid } from "../ui/bg-animated-fractal-dot-grid"
 
 const initialConfig = {
   dotSize: 5.5,
@@ -38,16 +38,16 @@ const initialConfig = {
   noiseOpacity: 0.03,
   enableMouseGlow: false,
   initialPerformance: "medium" as const,
-};
+}
 
 export function ConfigurableFractalDotGridDemo() {
-  const [config, setConfig] = useState(initialConfig);
-  const [isCopied, setIsCopied] = useState(false);
-  const { toast } = useToast();
+  const [config, setConfig] = useState(initialConfig)
+  const [isCopied, setIsCopied] = useState(false)
+  const { toast } = useToast()
 
   const updateConfig = (key: string, value: any) => {
-    setConfig((prev) => ({ ...prev, [key]: value }));
-  };
+    setConfig((prev) => ({ ...prev, [key]: value }))
+  }
 
   const copyConfigToClipboard = () => {
     const configString = `
@@ -74,18 +74,18 @@ export function FractalDotGridExample() {
     </div>
   )
 }
-`;
+`
 
     navigator.clipboard.writeText(configString).then(() => {
-      setIsCopied(true);
+      setIsCopied(true)
       toast({
         title: "Configuration Copied",
         description:
           "The current configuration has been copied to your clipboard.",
-      });
-      setTimeout(() => setIsCopied(false), 2000);
-    });
-  };
+      })
+      setTimeout(() => setIsCopied(false), 2000)
+    })
+  }
 
   return (
     <div className="container mx-auto py-8">
@@ -294,7 +294,7 @@ export function FractalDotGridExample() {
         </Card>
       </div>
     </div>
-  );
+  )
 }
 
-export default ConfigurableFractalDotGridDemo;
+export default ConfigurableFractalDotGridDemo

@@ -1,5 +1,6 @@
-"use client";
+"use client"
 
+import React, { useState } from "react"
 import {
   Battery,
   Bluetooth,
@@ -17,19 +18,18 @@ import {
   Users,
   Video,
   Wind,
-} from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import React, { useState } from "react";
+} from "lucide-react"
+import { AnimatePresence, motion, useReducedMotion } from "motion/react"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@/components/ui/tooltip"
 import {
   Expandable,
   ExpandableCard,
@@ -38,7 +38,7 @@ import {
   ExpandableCardHeader,
   ExpandableContent,
   ExpandableTrigger,
-} from "@/registry/default/ui/expandable";
+} from "@/registry/default/ui/expandable"
 
 // _____________________EXAMPLES______________________
 function DesignSyncExample() {
@@ -159,7 +159,7 @@ function DesignSyncExample() {
         </ExpandableTrigger>
       )}
     </Expandable>
-  );
+  )
 }
 
 export function ProductShowcaseCard() {
@@ -301,7 +301,7 @@ export function ProductShowcaseCard() {
         </ExpandableTrigger>
       )}
     </Expandable>
-  );
+  )
 }
 
 export function WeatherForecastCard() {
@@ -415,7 +415,7 @@ export function WeatherForecastCard() {
         </ExpandableCard>
       </ExpandableTrigger>
     </Expandable>
-  );
+  )
 }
 
 export default function ExpandableCardExamples() {
@@ -429,5 +429,5 @@ export default function ExpandableCardExamples() {
         <div className="flex min-h-[600px] gap-24"></div>
       </div>
     </div>
-  );
+  )
 }

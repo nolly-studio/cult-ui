@@ -1,5 +1,6 @@
-"use client";
+"use client"
 
+import { createContext, useContext } from "react"
 import {
   ArrowUpLeftSquareIcon,
   Loader,
@@ -8,12 +9,11 @@ import {
   MousePointerClickIcon,
   User,
   Waves,
-} from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
-import { createContext, useContext } from "react";
+} from "lucide-react"
+import { motion, useReducedMotion } from "motion/react"
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import {
   DynamicContainer,
   DynamicDescription,
@@ -24,10 +24,10 @@ import {
   SizePresets,
   useDynamicIslandSize,
   useScheduledAnimations,
-} from "@/registry/default/ui/dynamic-island";
+} from "@/registry/default/ui/dynamic-island"
 
 const DynamicAction = () => {
-  const { state: blobState, setSize } = useDynamicIslandSize();
+  const { state: blobState, setSize } = useDynamicIslandSize()
 
   const blobStates: SizePresets[] = [
     "compact",
@@ -35,13 +35,13 @@ const DynamicAction = () => {
     "tall",
     "long",
     "medium",
-  ];
+  ]
 
   const cycleBlobStates = () => {
-    const currentIndex = blobStates.indexOf(blobState.size);
-    const nextIndex = (currentIndex + 1) % blobStates.length;
-    setSize(blobStates[nextIndex]);
-  };
+    const currentIndex = blobStates.indexOf(blobState.size)
+    const nextIndex = (currentIndex + 1) % blobStates.length
+    setSize(blobStates[nextIndex])
+  }
 
   useScheduledAnimations([
     { size: "compact", delay: 1000 },
@@ -49,7 +49,7 @@ const DynamicAction = () => {
     { size: "tall", delay: 1600 },
     { size: "long", delay: 1800 },
     { size: "medium", delay: 2200 },
-  ]);
+  ])
 
   // Provide dynamic detail in such a beautiful small place :)
   const renderCompactState = () => (
@@ -64,7 +64,7 @@ const DynamicAction = () => {
         </DynamicDescription>
       </div>
     </DynamicContainer>
-  );
+  )
 
   // Great for call to action, popping up in users face :)
   const renderLargeState = () => (
@@ -77,7 +77,7 @@ const DynamicAction = () => {
         </DynamicTitle>
       </div>
     </DynamicContainer>
-  );
+  )
 
   // Great for user onboarding, forms, etc
   const renderTallState = () => (
@@ -94,7 +94,7 @@ const DynamicAction = () => {
         any cool cults?
       </DynamicTitle>
     </DynamicContainer>
-  );
+  )
 
   const renderLongState = () => (
     <DynamicContainer className="flex h-full w-full items-center justify-center">
@@ -108,7 +108,7 @@ const DynamicAction = () => {
         </DynamicTitle>
       </DynamicDiv>
     </DynamicContainer>
-  );
+  )
 
   const renderMediumState = () => (
     <DynamicContainer className="flex h-full flex-col justify-between px-2 pt-4 text-left text-white">
@@ -131,7 +131,7 @@ const DynamicAction = () => {
         </Button>
       </DynamicDiv>
     </DynamicContainer>
-  );
+  )
 
   // Render function for other states
   const renderOtherStates = () => (
@@ -141,24 +141,24 @@ const DynamicAction = () => {
       </div>
       <p className="text-white">cycle states</p>
     </div>
-  );
+  )
 
   // Main render logic based on size
   function renderState() {
     switch (blobState.size) {
       case "compact":
-        return renderCompactState();
+        return renderCompactState()
       case "large":
-        return renderLargeState();
+        return renderLargeState()
       case "tall":
-        return renderTallState();
+        return renderTallState()
       case "medium":
-        return renderMediumState();
+        return renderMediumState()
       case "long":
-        return renderLongState();
+        return renderLongState()
       // Optionally add cases for other states as necessary
       default:
-        return renderOtherStates();
+        return renderOtherStates()
     }
   }
 
@@ -187,8 +187,8 @@ const DynamicAction = () => {
         <DynamicIsland id="dynamic-blob">{renderState()}</DynamicIsland>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default function DynamicIslandDemo() {
   return (
@@ -197,16 +197,16 @@ export default function DynamicIslandDemo() {
         <DynamicAction />
       </div>
     </DynamicIslandProvider>
-  );
+  )
 }
 
-const FadeInStaggerContext = createContext(false);
+const FadeInStaggerContext = createContext(false)
 
-const viewport = { once: true, margin: "0px 0px -200px" };
+const viewport = { once: true, margin: "0px 0px -200px" }
 
 export function FadeIn(props: any) {
-  let shouldReduceMotion = useReducedMotion();
-  let isInStaggerGroup = useContext(FadeInStaggerContext);
+  let shouldReduceMotion = useReducedMotion()
+  let isInStaggerGroup = useContext(FadeInStaggerContext)
 
   return (
     <motion.div
@@ -224,7 +224,7 @@ export function FadeIn(props: any) {
           })}
       {...props}
     />
-  );
+  )
 }
 
 export function FadeInStagger({ faster = false, ...props }) {
@@ -238,5 +238,5 @@ export function FadeInStagger({ faster = false, ...props }) {
         {...props}
       />
     </FadeInStaggerContext.Provider>
-  );
+  )
 }

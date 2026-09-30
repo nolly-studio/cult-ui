@@ -1,55 +1,55 @@
-import type React from "react";
+import type React from "react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 interface SidebarItem {
-  icon?: React.ReactNode;
-  label: string;
-  active?: boolean;
-  badge?: string | number;
+  icon?: React.ReactNode
+  label: string
+  active?: boolean
+  badge?: string | number
 }
 
 interface WindowControlsProps {
-  variant?: "macos" | "windows" | "chrome" | "safari";
-  headerStyle?: "minimal" | "full";
+  variant?: "macos" | "windows" | "chrome" | "safari"
+  headerStyle?: "minimal" | "full"
 }
 
 interface AddressBarProps {
-  url?: string;
-  secure?: boolean;
-  variant?: "chrome" | "safari";
-  className?: string;
+  url?: string
+  secure?: boolean
+  variant?: "chrome" | "safari"
+  className?: string
 }
 
 interface SidebarContentProps {
-  items?: SidebarItem[];
-  variant?: "navigation" | "bookmarks" | "history" | "extensions";
-  className?: string;
+  items?: SidebarItem[]
+  variant?: "navigation" | "bookmarks" | "history" | "extensions"
+  className?: string
 }
 
 interface BrowserWindowProps {
-  children?: React.ReactNode;
-  className?: string;
-  size?: "sm" | "md" | "lg" | "xl";
-  showSidebar?: boolean;
-  sidebarPosition?: "left" | "right" | "top" | "bottom";
-  headerStyle?: "minimal" | "full";
-  variant?: "chrome" | "safari" | "generic";
-  theme?: "light" | "dark" | "auto";
-  url?: string;
+  children?: React.ReactNode
+  className?: string
+  size?: "sm" | "md" | "lg" | "xl"
+  showSidebar?: boolean
+  sidebarPosition?: "left" | "right" | "top" | "bottom"
+  headerStyle?: "minimal" | "full"
+  variant?: "chrome" | "safari" | "generic"
+  theme?: "light" | "dark" | "auto"
+  url?: string
   sidebarItems?: Array<{
-    icon?: React.ReactNode;
-    label: string;
-    active?: boolean;
-    badge?: string | number;
-  }>;
+    icon?: React.ReactNode
+    label: string
+    active?: boolean
+    badge?: string | number
+  }>
 }
 
 function WindowControls({
   variant = "macos",
   headerStyle = "full",
 }: WindowControlsProps) {
-  const sizeClasses = "size-2";
+  const sizeClasses = "size-2"
 
   if (variant === "macos" || variant === "safari") {
     const dotColors =
@@ -65,7 +65,7 @@ function WindowControls({
               "bg-yellow-500 hover:bg-yellow-600 border border-foreground/20",
             green:
               "bg-green-500 hover:bg-green-600 border border-foreground/20 ",
-          };
+          }
 
     return (
       <div className="flex gap-2">
@@ -106,7 +106,7 @@ function WindowControls({
           )}
         </div>
       </div>
-    );
+    )
   }
 
   if (variant === "windows") {
@@ -123,7 +123,7 @@ function WindowControls({
           <div className="absolute h-0.5 w-2 -rotate-45 bg-white"></div>
         </div>
       </div>
-    );
+    )
   }
 
   if (variant === "chrome") {
@@ -148,7 +148,7 @@ function WindowControls({
           )}
         ></div>
       </div>
-    );
+    )
   }
 
   return (
@@ -163,7 +163,7 @@ function WindowControls({
         className={`${sizeClasses} border-foreground/20 bg-foreground/10 rounded-full border`}
       ></div>
     </div>
-  );
+  )
 }
 
 function AddressBar({
@@ -177,12 +177,12 @@ function AddressBar({
       "bg-muted/30 rounded-full border border-foreground/5 shadow-[0px_1px_2px_0px_rgba(0,0,0,0.03)_inset] backdrop-blur-sm",
     safari:
       "bg-muted/20 rounded-lg border border-foreground/5 shadow-[0px_1px_2px_0px_rgba(0,0,0,0.03)_inset] backdrop-blur-sm",
-  };
+  }
 
   const iconColors = {
     chrome: "text-muted-foreground/60",
     safari: "text-muted-foreground/60",
-  };
+  }
 
   return (
     <div className={`flex flex-1 justify-center ${className}`}>
@@ -200,7 +200,7 @@ function AddressBar({
         <span className="truncate">{url}</span>
       </div>
     </div>
-  );
+  )
 }
 
 function SidebarContent({
@@ -235,7 +235,7 @@ function SidebarContent({
         </div>
       ))}
     </div>
-  );
+  )
 }
 
 export function BrowserWindow({
@@ -255,36 +255,36 @@ export function BrowserWindow({
     md: "h-80 max-w-2xl",
     lg: "h-96 max-w-4xl",
     xl: "h-[32rem] max-w-6xl",
-  };
+  }
 
   const sidebarSizes = {
     sm: "w-32",
     md: "w-48",
     lg: "w-56",
     xl: "w-64",
-  };
+  }
 
   const themeClasses =
     theme === "dark"
       ? "bg-background border-border"
       : theme === "light"
         ? "bg-background border-border"
-        : "bg-background border-border";
+        : "bg-background border-border"
 
   const getHeaderStyles = () => {
     const baseStyles =
-      "h-11 border-b border-foreground/5 flex items-center px-4";
+      "h-11 border-b border-foreground/5 flex items-center px-4"
 
     if (variant === "chrome") {
-      return `${baseStyles} bg-muted/10 overflow-hidden`;
+      return `${baseStyles} bg-muted/10 overflow-hidden`
     }
 
     if (variant === "safari") {
-      return `${baseStyles} bg-muted/10 overflow-hidden border-b border-border/30`;
+      return `${baseStyles} bg-muted/10 overflow-hidden border-b border-border/30`
     }
 
-    return `${baseStyles} bg-muted/20`;
-  };
+    return `${baseStyles} bg-muted/20`
+  }
 
   return (
     <div
@@ -351,5 +351,5 @@ export function BrowserWindow({
         </div>
       )}
     </div>
-  );
+  )
 }

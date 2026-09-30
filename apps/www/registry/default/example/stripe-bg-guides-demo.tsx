@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { StripeBgGuides } from "../ui/stripe-bg-guides";
+import { StripeBgGuides } from "../ui/stripe-bg-guides"
 
 export default function StripeBgGuidesDemo() {
   return (
@@ -27,5 +27,5 @@ export default function StripeBgGuidesDemo() {
         </div>
       </div>
     </div>
-  );
+  )
 }

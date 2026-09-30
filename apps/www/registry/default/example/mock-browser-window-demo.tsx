@@ -1,19 +1,19 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Switch } from "@/components/ui/switch";
-import { BrowserWindow } from "@/registry/default/ui/mock-browser-window";
+} from "@/components/ui/select"
+import { Switch } from "@/components/ui/switch"
+import { BrowserWindow } from "@/registry/default/ui/mock-browser-window"
 
 export default function DemoPage() {
   const [config, setConfig] = useState({
@@ -23,14 +23,14 @@ export default function DemoPage() {
     showSidebar: true,
     sidebarPosition: "left" as "left" | "right" | "top" | "bottom",
     url: "https://example.com/dashboard",
-  });
+  })
 
   const [sidebarItems] = useState([
     { label: "Overview", active: true },
     { label: "Users", badge: "12" },
     { label: "Analytics", badge: "new" },
     { label: "Settings" },
-  ]);
+  ])
 
   return (
     <div className="min-h-screen">
@@ -211,5 +211,5 @@ export default function DemoPage() {
         </div>
       </main>
     </div>
-  );
+  )
 }

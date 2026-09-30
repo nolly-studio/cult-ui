@@ -1,20 +1,20 @@
-"use client";
+"use client"
 
-import { ChevronDownIcon, ResetIcon } from "@radix-ui/react-icons";
-import { DatabaseIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
+import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
+import { ChevronDownIcon, ResetIcon } from "@radix-ui/react-icons"
+import { DatabaseIcon } from "lucide-react"
+import { toast } from "sonner"
 
-import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/collapsible"
 
-import { IntroDisclosure } from "../ui/intro-disclosure";
+import { IntroDisclosure } from "../ui/intro-disclosure"
 
 const steps = [
   {
@@ -65,76 +65,76 @@ const steps = [
       href: "/docs/components",
     },
   },
-];
+]
 
 type StorageState = {
-  desktop: string | null;
-  mobile: string | null;
-};
+  desktop: string | null
+  mobile: string | null
+}
 
 export default function IntroDisclosureDemo() {
-  const router = useRouter();
-  const [open, setOpen] = useState(true);
-  const [openMobile, setOpenMobile] = useState(true);
-  const [debugOpen, setDebugOpen] = useState(false);
+  const router = useRouter()
+  const [open, setOpen] = useState(true)
+  const [openMobile, setOpenMobile] = useState(true)
+  const [debugOpen, setDebugOpen] = useState(false)
   const [storageState, setStorageState] = useState<StorageState>({
     desktop: null,
     mobile: null,
-  });
+  })
 
   const updateStorageState = () => {
     setStorageState({
       desktop: localStorage.getItem("feature_intro-demo_desktop"),
       mobile: localStorage.getItem("feature_intro-demo_mobile"),
-    });
-  };
+    })
+  }
 
   // Update storage state whenever localStorage changes
   useEffect(() => {
-    updateStorageState();
-    window.addEventListener("storage", updateStorageState);
-    return () => window.removeEventListener("storage", updateStorageState);
-  }, []);
+    updateStorageState()
+    window.addEventListener("storage", updateStorageState)
+    return () => window.removeEventListener("storage", updateStorageState)
+  }, [])
 
   // Update storage state after reset
   const handleReset = () => {
     // localStorage.removeItem("feature_intro-demo")
-    setOpen(true);
+    setOpen(true)
     if (storageState.desktop === "false") {
-      toast.info("Clear the local storage to trigger the feature again");
-      setDebugOpen(true);
+      toast.info("Clear the local storage to trigger the feature again")
+      setDebugOpen(true)
     }
     if (storageState.desktop === null) {
-      updateStorageState();
+      updateStorageState()
     }
-  };
+  }
 
   const handleResetMobile = () => {
     // localStorage.removeItem("feature_intro-demo-mobile")
-    setOpenMobile(true);
-    updateStorageState();
-  };
+    setOpenMobile(true)
+    updateStorageState()
+  }
 
   const handleClearDesktop = () => {
-    localStorage.removeItem("feature_intro-demo_desktop");
-    updateStorageState();
-    router.refresh();
-    toast.success("Desktop storage cleared");
-  };
+    localStorage.removeItem("feature_intro-demo_desktop")
+    updateStorageState()
+    router.refresh()
+    toast.success("Desktop storage cleared")
+  }
 
   const handleClearMobile = () => {
-    localStorage.removeItem("feature_intro-demo_mobile");
-    updateStorageState();
-    router.refresh();
-    toast.success("Mobile storage cleared");
-  };
+    localStorage.removeItem("feature_intro-demo_mobile")
+    updateStorageState()
+    router.refresh()
+    toast.success("Mobile storage cleared")
+  }
 
   const handleDebugOpenChange = (open: boolean) => {
     if (open) {
-      updateStorageState();
+      updateStorageState()
     }
-    setDebugOpen(open);
-  };
+    setDebugOpen(open)
+  }
 
   return (
     <div className="w-full space-y-8">
@@ -297,5 +297,5 @@ export default function IntroDisclosureDemo() {
         </div>
       </div>
     </div>
-  );
+  )
 }

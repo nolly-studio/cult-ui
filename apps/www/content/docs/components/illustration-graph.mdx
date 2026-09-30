@@ -1,0 +1,69 @@
+---
+title: Illustration Graph
+description: Graph illustration component
+component: true
+links: {}
+---
+
+<ComponentPreview name="illustration-graph-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/illustration-graph.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="illustration-graph" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Props
+
+| Prop                 | Type                              | Description                          |
+| -------------------- | --------------------------------- | ------------------------------------ |
+| width                | `number`                          | SVG width                            |
+| height               | `number`                          | SVG height                           |
+| backgroundColor      | `string`                          | Background color                     |
+| borderColor          | `string`                          | Border color                         |
+| cardFill             | `string`                          | Card fill color                      |
+| cardStroke           | `string`                          | Card stroke color                    |
+| gridLineColor        | `string`                          | Grid line color                      |
+| primaryLineColor     | `string`                          | Primary line color                   |
+| errorLineColor       | `string`                          | Error line color                     |
+| errorBadgeColor      | `string`                          | Error badge background color         |
+| errorBadgeTextColor  | `string`                          | Error badge text color               |
+| highlightAreaColor   | `string`                          | Highlight area fill color            |
+| highlightBorderColor | `string`                          | Highlight area border color          |
+| textColor            | `string`                          | Text color                           |
+| mutedTextColor       | `string`                          | Muted text color                     |
+| badgeText            | `string`                          | Badge label text                     |
+| headerText           | `string`                          | Header text                          |
+| footerText           | `string`                          | Footer text                          |
+| yAxisLabels          | `string[]`                        | Y-axis label strings                 |
+| dataPoints           | `DataPoint[]`                     | Chart data points (x, y)             |
+| errorRegion          | `{ start: number; end: number }` | Optional error region range          |
+| showHighlightArea    | `boolean`                         | Whether to show the highlight area   |
+| customBadgeIcon      | `ReactNode`                       | Custom icon for the badge            |

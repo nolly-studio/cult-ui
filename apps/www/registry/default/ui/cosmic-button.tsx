@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import type { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 /**
  * Requires these keyframes and utilities in your CSS (e.g. global CSS or Tailwind):
@@ -25,8 +25,8 @@ import { cn } from "@/lib/utils";
 
 export type CosmicButtonProps<E extends "a" | "button" = "a"> = {
   /** The HTML element to render as. @default "a" */
-  as?: E;
-} & ComponentPropsWithoutRef<E>;
+  as?: E
+} & ComponentPropsWithoutRef<E>
 
 /**
  * An animated button/link with a cosmic gradient border effect.
@@ -46,14 +46,14 @@ export function CosmicButton<E extends "a" | "button" = "a">({
   children,
   ...props
 }: CosmicButtonProps<E>) {
-  const Element = as ?? "a";
-  const isAnchor = Element === "a";
+  const Element = as ?? "a"
+  const isAnchor = Element === "a"
 
   const baseClassName = cn(
     "group/cosmic relative inline-flex min-h-11 min-w-11 items-center justify-center gap-3 rounded-[15px] p-[3px] transition-transform",
     "focus-visible:ring-2 focus-visible:ring-[#adfa1b] focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none dark:focus-visible:ring-offset-[#0c0912]",
     className
-  );
+  )
 
   const content = (
     <>
@@ -74,11 +74,11 @@ export function CosmicButton<E extends "a" | "button" = "a">({
         </span>
       </span>
     </>
-  );
+  )
 
   if (isAnchor) {
     const { href, rel, target, ...rest } =
-      props as ComponentPropsWithoutRef<"a">;
+      props as ComponentPropsWithoutRef<"a">
     return (
       <a
         className={baseClassName}
@@ -89,7 +89,7 @@ export function CosmicButton<E extends "a" | "button" = "a">({
       >
         {content}
       </a>
-    );
+    )
   }
 
   return (
@@ -99,5 +99,5 @@ export function CosmicButton<E extends "a" | "button" = "a">({
     >
       {content}
     </button>
-  );
+  )
 }

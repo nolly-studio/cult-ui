@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import { cva, type VariantProps } from "class-variance-authority";
-import { Loader2 } from "lucide-react";
-import { motion, type HTMLMotionProps } from "motion/react";
-import type React from "react";
+import type React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { Loader2 } from "lucide-react"
+import { motion, type HTMLMotionProps } from "motion/react"
 
 const buttonVariants = cva(
   // Base styles
@@ -79,12 +79,13 @@ const buttonVariants = cva(
       size: "medium",
     },
   }
-);
+)
 
 export interface NeumorphButtonProps
-  extends HTMLMotionProps<"button">, VariantProps<typeof buttonVariants> {
-  children: React.ReactNode;
-  loading?: boolean;
+  extends HTMLMotionProps<"button">,
+    VariantProps<typeof buttonVariants> {
+  children: React.ReactNode
+  loading?: boolean
 }
 
 const NeumorphButton: React.FC<NeumorphButtonProps> = ({
@@ -115,7 +116,7 @@ const NeumorphButton: React.FC<NeumorphButtonProps> = ({
         {children}
       </motion.span>
     </motion.button>
-  );
-};
+  )
+}
 
-export default NeumorphButton;
+export default NeumorphButton

@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import { ArrowUp } from "lucide-react";
-import { useState } from "react";
+import { useState } from "react"
+import { ArrowUp } from "lucide-react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
-import { VoteTally, type VoteTallyValue } from "../ui/vote-tally";
+import { VoteTally, type VoteTallyValue } from "../ui/vote-tally"
 
 /* -----------------------------------------------------------------------------
  * Example: Styled Vote Tally Widget
@@ -38,7 +38,7 @@ const FEATURES = [
     title: "Mobile App",
     description: "Native iOS and Android applications",
   },
-] as const;
+] as const
 
 export function VoteTallyExample() {
   const [votes, setVotes] = useState<VoteTallyValue>({
@@ -47,11 +47,11 @@ export function VoteTallyExample() {
     "export-pdf": 67,
     "api-access": 203,
     "mobile-app": 156,
-  });
+  })
 
   const [votedItems, setVotedItems] = useState<Set<string>>(
     new Set(["dark-mode"])
-  );
+  )
 
   return (
     <div className="w-full max-w-md">
@@ -100,7 +100,7 @@ export function VoteTallyExample() {
         </VoteTally.Group>
       </VoteTally.Root>
     </div>
-  );
+  )
 }
 
 /* -----------------------------------------------------------------------------
@@ -150,7 +150,7 @@ export function VoteTallyCompact() {
         ))}
       </VoteTally.Root>
     </div>
-  );
+  )
 }
 
 export default function VoteTallyDemo() {
@@ -163,5 +163,5 @@ export default function VoteTallyDemo() {
         <VoteTallyCompact />
       </div>
     </div>
-  );
+  )
 }

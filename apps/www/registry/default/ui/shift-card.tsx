@@ -1,19 +1,17 @@
-"use client";
+"use client"
 
-import { AnimatePresence, motion, MotionProps } from "motion/react";
-import * as React from "react";
+import * as React from "react"
+import { AnimatePresence, motion, MotionProps } from "motion/react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
-interface ShiftCardProps extends Omit<
-  MotionProps,
-  "onAnimationStart" | "onAnimationComplete"
-> {
-  className?: string;
-  topContent?: React.ReactNode;
-  middleContent?: React.ReactNode;
-  topAnimateContent?: React.ReactNode;
-  bottomContent?: React.ReactNode;
+interface ShiftCardProps
+  extends Omit<MotionProps, "onAnimationStart" | "onAnimationComplete"> {
+  className?: string
+  topContent?: React.ReactNode
+  middleContent?: React.ReactNode
+  topAnimateContent?: React.ReactNode
+  bottomContent?: React.ReactNode
 }
 
 const ShiftCardHeader = React.forwardRef<
@@ -23,11 +21,11 @@ const ShiftCardHeader = React.forwardRef<
   <div ref={ref} {...props}>
     {children}
   </div>
-));
-ShiftCardHeader.displayName = "ShiftCardHeader";
+))
+ShiftCardHeader.displayName = "ShiftCardHeader"
 
 interface ShiftCardContentProps extends React.HTMLAttributes<HTMLDivElement> {
-  isHovered: boolean;
+  isHovered: boolean
 }
 const ShiftCardContent = React.forwardRef<
   HTMLDivElement,
@@ -40,7 +38,7 @@ const ShiftCardContent = React.forwardRef<
       ? { opacity: 1, height: 194 }
       : { opacity: 1, height: 38 },
     transition: { duration: 0.3, delay: 0.1, ease: "circIn" },
-  };
+  }
 
   return (
     <motion.div
@@ -51,9 +49,9 @@ const ShiftCardContent = React.forwardRef<
     >
       {children}
     </motion.div>
-  );
-});
-ShiftCardContent.displayName = "ShiftCardContent";
+  )
+})
+ShiftCardContent.displayName = "ShiftCardContent"
 
 const ShiftCard = React.forwardRef<HTMLDivElement, ShiftCardProps>(
   (
@@ -67,12 +65,12 @@ const ShiftCard = React.forwardRef<HTMLDivElement, ShiftCardProps>(
     },
     ref
   ) => {
-    const [isHovered, setHovered] = React.useState(false);
-    const handleMouseEnter = () => setHovered(true);
-    const handleMouseLeave = () => setHovered(false);
-    const handleTapStart = () => setHovered(true);
-    const handleTapCancel = () => setHovered(false);
-    const handleTap = () => setHovered(false);
+    const [isHovered, setHovered] = React.useState(false)
+    const handleMouseEnter = () => setHovered(true)
+    const handleMouseLeave = () => setHovered(false)
+    const handleTapStart = () => setHovered(true)
+    const handleTapCancel = () => setHovered(false)
+    const handleTap = () => setHovered(false)
 
     return (
       <motion.div
@@ -127,11 +125,11 @@ const ShiftCard = React.forwardRef<HTMLDivElement, ShiftCardProps>(
           </motion.div>
         </ShiftCardContent>
       </motion.div>
-    );
+    )
   }
-);
+)
 
-ShiftCard.displayName = "ShiftCard";
+ShiftCard.displayName = "ShiftCard"
 
-export { ShiftCard, ShiftCardHeader, ShiftCardContent };
-export default ShiftCard;
+export { ShiftCard, ShiftCardHeader, ShiftCardContent }
+export default ShiftCard

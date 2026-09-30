@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-illustration-vercel-demo",
+  "registryDependencies": [
+    "tabs-illustration-vercel"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/tabs-illustration-vercel-demo.tsx",
+      "content": "\"use client\";\n\nimport GenerateAnything from \"@/registry/default/ui/tabs-illustration-vercel\";\n\nfunction TabsIllustrationVercelDemo() {\n\treturn (\n\t\t<div className=\"w-full max-w-5xl min-w-5xl\">\n\t\t\t<GenerateAnything />\n\t\t</div>\n\t);\n}\n\nexport default TabsIllustrationVercelDemo;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

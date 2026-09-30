@@ -1,4 +1,4 @@
-import type { Registry } from "@/registry/schema";
+import type { Registry } from "@/registry/schema"
 
 export const ui: Registry["items"] = [
   {
@@ -1069,4 +1069,208 @@ export const ui: Registry["items"] = [
     ],
     description: "Base UI tooltip primitives used by Apple Pro Display XDR",
   },
-];
+  // Cult Pro migration
+  {
+    name: "gateway-endpoint-illustration",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/gateway-endpoint-illustration.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Illustration for gateway endpoint concepts",
+  },
+  // Cult Pro migration
+  {
+    name: "gateway-route-illustration",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/gateway-route-illustration.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Illustration for gateway routing",
+  },
+  // Cult Pro migration
+  {
+    name: "gateway-svg-illustration",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/gateway-svg-illustration.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "SVG illustration for gateway overhead",
+  },
+  // Cult Pro migration
+  {
+    name: "illustration-card-grid",
+    type: "registry:ui",
+
+    registryDependencies: [
+      "https://cult-ui.com/r/gateway-endpoint-illustration.json",
+      "https://cult-ui.com/r/gateway-route-illustration.json",
+      "https://cult-ui.com/r/gateway-svg-illustration.json",
+    ],
+    files: [
+      {
+        path: "registry/default/ui/illustration-card-grid.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Grid of cards with gateway illustrations",
+  },
+  // Cult Pro migration
+  {
+    name: "illustration-cursor",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/illustration-cursor.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Cursor illustration and demo for collaboration UI",
+  },
+  // Cult Pro migration
+  {
+    name: "illustration-comment-bubble",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/illustration-comment-bubble.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Comment bubble illustration for code or chat UI",
+  },
+  // Cult Pro migration
+  {
+    name: "illustration-fluid-rendering",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/illustration-fluid-rendering.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Fluid rendering illustration",
+  },
+  // Cult Pro migration
+  {
+    name: "illustration-globe-vercel",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/illustration-globe-vercel.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Globe deployment illustration",
+  },
+  // Cult Pro migration
+  {
+    name: "illustration-graph",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/illustration-graph.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Graph illustration component",
+  },
+  // Cult Pro migration
+  {
+    name: "tabs-illustration-vercel",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/tabs-illustration-vercel.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Tabs with Vercel-style illustrations",
+  },
+  // Cult Pro migration
+  {
+    name: "circuit-board",
+    type: "registry:ui",
+    dependencies: ["lucide-react", "motion"],
+
+    files: [
+      {
+        path: "registry/default/ui/circuit-board.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Animated SVG circuit illustration with glowing traces and a central chip, for hero or product sections",
+  },
+  // Cult Pro migration
+  {
+    name: "fluid-ai-workloads",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/fluid-ai-workloads.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Fluid visualization for AI workload states",
+  },
+  // Cult Pro migration
+  {
+    name: "security-checkpoint",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/security-checkpoint.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Security checkpoint illustration or component",
+  },
+  // Cult Pro migration
+  {
+    name: "merging-bubbles",
+    type: "registry:ui",
+
+    files: [
+      {
+        path: "registry/default/ui/merging-bubbles.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Merging bubbles visualization",
+  },
+  // Cult Pro migration
+  {
+    name: "ai-blob-warp",
+    type: "registry:ui",
+    dependencies: ["@paper-design/shaders-react", "motion"],
+
+    files: [
+      {
+        path: "registry/default/ui/ai-blob-warp.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description:
+      "Circular avatar with Paper Design Warp shader; motion-safe pulse, pauses off-screen and when reduced motion is preferred",
+  },
+]

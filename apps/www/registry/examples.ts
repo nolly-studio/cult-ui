@@ -1,4 +1,4 @@
-import type { Registry } from "@/registry/schema";
+import type { Registry } from "@/registry/schema"
 
 export const examples: Registry["items"] = [
   {
@@ -890,4 +890,184 @@ export const examples: Registry["items"] = [
       },
     ],
   },
-];
+  {
+    name: "gateway-endpoint-illustration-demo",
+    type: "registry:component",
+    registryDependencies: ["gateway-endpoint-illustration"],
+
+    files: [
+      {
+        path: "registry/default/example/gateway-endpoint-illustration-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "gateway-route-illustration-demo",
+    type: "registry:component",
+    registryDependencies: ["gateway-route-illustration"],
+
+    files: [
+      {
+        path: "registry/default/example/gateway-route-illustration-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "gateway-svg-illustration-demo",
+    type: "registry:component",
+    registryDependencies: ["gateway-svg-illustration"],
+
+    files: [
+      {
+        path: "registry/default/example/gateway-svg-illustration-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "illustration-card-grid-demo",
+    type: "registry:component",
+    registryDependencies: ["illustration-card-grid"],
+
+    files: [
+      {
+        path: "registry/default/example/illustration-card-grid-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "illustration-cursor-demo",
+    type: "registry:component",
+    registryDependencies: ["illustration-cursor"],
+
+    files: [
+      {
+        path: "registry/default/example/illustration-cursor-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "illustration-comment-bubble-demo",
+    type: "registry:component",
+    registryDependencies: ["illustration-comment-bubble"],
+
+    files: [
+      {
+        path: "registry/default/example/illustration-comment-bubble-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "illustration-fluid-rendering-demo",
+    type: "registry:component",
+    registryDependencies: ["illustration-fluid-rendering"],
+
+    files: [
+      {
+        path: "registry/default/example/illustration-fluid-rendering-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "illustration-globe-vercel-demo",
+    type: "registry:component",
+    registryDependencies: ["illustration-globe-vercel"],
+
+    files: [
+      {
+        path: "registry/default/example/illustration-globe-vercel-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "illustration-graph-demo",
+    type: "registry:component",
+    registryDependencies: ["illustration-graph"],
+
+    files: [
+      {
+        path: "registry/default/example/illustration-graph-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "tabs-illustration-vercel-demo",
+    type: "registry:component",
+    registryDependencies: ["tabs-illustration-vercel"],
+
+    files: [
+      {
+        path: "registry/default/example/tabs-illustration-vercel-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "circuit-board-demo",
+    type: "registry:component",
+    registryDependencies: ["circuit-board"],
+
+    files: [
+      {
+        path: "registry/default/example/circuit-board-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "fluid-ai-workloads-demo",
+    type: "registry:component",
+    registryDependencies: ["fluid-ai-workloads"],
+
+    files: [
+      {
+        path: "registry/default/example/fluid-ai-workloads-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "security-checkpoint-demo",
+    type: "registry:component",
+    registryDependencies: ["security-checkpoint"],
+
+    files: [
+      {
+        path: "registry/default/example/security-checkpoint-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "merging-bubbles-demo",
+    type: "registry:component",
+    registryDependencies: ["merging-bubbles"],
+
+    files: [
+      {
+        path: "registry/default/example/merging-bubbles-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+  {
+    name: "ai-blob-warp-demo",
+    type: "registry:component",
+    registryDependencies: ["ai-blob-warp"],
+
+    files: [
+      {
+        path: "registry/default/example/ai-blob-warp-demo.tsx",
+        type: "registry:component",
+      },
+    ],
+  },
+]

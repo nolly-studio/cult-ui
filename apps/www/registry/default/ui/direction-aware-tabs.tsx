@@ -1,25 +1,25 @@
-"use client";
+"use client"
 
-import { AnimatePresence, motion, MotionConfig } from "motion/react";
-import { ReactNode, useMemo, useState } from "react";
-import useMeasure from "react-use-measure";
+import { ReactNode, useMemo, useState } from "react"
+import { AnimatePresence, motion, MotionConfig } from "motion/react"
+import useMeasure from "react-use-measure"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 type Tab = {
-  id: number;
-  label: string;
-  content: ReactNode;
-};
+  id: number
+  label: string
+  content: ReactNode
+}
 
 interface OgImageSectionProps {
-  tabs: Tab[];
-  className?: string;
+  tabs: Tab[]
+  className?: string
   /** Outer container radius (e.g. `rounded-lg`) */
-  rounded?: string;
+  rounded?: string
   /** Inner tab/bubble radius — should be outer radius minus container padding (~3px) */
-  roundedInner?: string;
-  onChange?: () => void;
+  roundedInner?: string
+  onChange?: () => void
 }
 
 function DirectionAwareTabs({
@@ -29,24 +29,24 @@ function DirectionAwareTabs({
   roundedInner,
   onChange,
 }: OgImageSectionProps) {
-  const [activeTab, setActiveTab] = useState(0);
-  const [direction, setDirection] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [ref, bounds] = useMeasure();
+  const [activeTab, setActiveTab] = useState(0)
+  const [direction, setDirection] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+  const [ref, bounds] = useMeasure()
 
   const content = useMemo(() => {
-    const activeTabContent = tabs.find((tab) => tab.id === activeTab)?.content;
-    return activeTabContent || null;
-  }, [activeTab, tabs]);
+    const activeTabContent = tabs.find((tab) => tab.id === activeTab)?.content
+    return activeTabContent || null
+  }, [activeTab, tabs])
 
   const handleTabClick = (newTabId: number) => {
     if (newTabId !== activeTab && !isAnimating) {
-      const newDirection = newTabId > activeTab ? 1 : -1;
-      setDirection(newDirection);
-      setActiveTab(newTabId);
-      onChange ? onChange() : null;
+      const newDirection = newTabId > activeTab ? 1 : -1
+      setDirection(newDirection)
+      setActiveTab(newTabId)
+      onChange ? onChange() : null
     }
-  };
+  }
 
   const variants = {
     initial: (direction: number) => ({
@@ -64,7 +64,7 @@ function DirectionAwareTabs({
       opacity: 0,
       filter: "blur(4px)",
     }),
-  };
+  }
 
   return (
     <div className="flex w-full flex-col items-center">
@@ -132,6 +132,6 @@ function DirectionAwareTabs({
         </motion.div>
       </MotionConfig>
     </div>
-  );
+  )
 }
-export { DirectionAwareTabs };
+export { DirectionAwareTabs }

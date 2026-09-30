@@ -1,5 +1,6 @@
-"use client";
+"use client"
 
+import { useCallback, useEffect, useId, useRef, useState } from "react"
 import {
   AlertTriangle,
   ArrowLeft,
@@ -10,8 +11,7 @@ import {
   Trash,
   Upload,
   XCircle,
-} from "lucide-react";
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+} from "lucide-react"
 
 import {
   FamilyDrawerAnimatedContent,
@@ -28,14 +28,14 @@ import {
   FamilyDrawerViewContent,
   useFamilyDrawer,
   type ViewsRegistry,
-} from "@/registry/default/ui/family-drawer";
+} from "@/registry/default/ui/family-drawer"
 
 // ============================================================================
 // Example 2: Custom Views via Props
 // ============================================================================
 
 function CustomDefaultView() {
-  const { setView } = useFamilyDrawer();
+  const { setView } = useFamilyDrawer()
 
   return (
     <>
@@ -56,11 +56,11 @@ function CustomDefaultView() {
         </FamilyDrawerButton>
       </div>
     </>
-  );
+  )
 }
 
 function CustomSettingsView() {
-  const { setView } = useFamilyDrawer();
+  const { setView } = useFamilyDrawer()
 
   return (
     <div>
@@ -100,13 +100,13 @@ function CustomSettingsView() {
         </FamilyDrawerSecondaryButton>
       </div>
     </div>
-  );
+  )
 }
 
 function CustomProfileView() {
-  const { setView } = useFamilyDrawer();
-  const nameId = useId();
-  const emailId = useId();
+  const { setView } = useFamilyDrawer()
+  const nameId = useId()
+  const emailId = useId()
 
   return (
     <div>
@@ -162,11 +162,11 @@ function CustomProfileView() {
         </FamilyDrawerSecondaryButton>
       </div>
     </div>
-  );
+  )
 }
 
 function CustomAboutView() {
-  const { setView } = useFamilyDrawer();
+  const { setView } = useFamilyDrawer()
 
   return (
     <div>
@@ -194,7 +194,7 @@ function CustomAboutView() {
         </FamilyDrawerSecondaryButton>
       </div>
     </div>
-  );
+  )
 }
 
 const customViews: ViewsRegistry = {
@@ -202,7 +202,7 @@ const customViews: ViewsRegistry = {
   settings: CustomSettingsView,
   profile: CustomProfileView,
   about: CustomAboutView,
-};
+}
 
 export function CustomViewsExample() {
   return (
@@ -228,7 +228,7 @@ export function CustomViewsExample() {
         </FamilyDrawerPortal>
       </FamilyDrawerRoot>
     </div>
-  );
+  )
 }
 
 // ============================================================================
@@ -236,7 +236,7 @@ export function CustomViewsExample() {
 // ============================================================================
 
 function ComposableView() {
-  const { view, setView } = useFamilyDrawer();
+  const { view, setView } = useFamilyDrawer()
 
   return (
     <div>
@@ -276,11 +276,11 @@ function ComposableView() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 function View1() {
-  const { setView } = useFamilyDrawer();
+  const { setView } = useFamilyDrawer()
 
   return (
     <div className="px-2">
@@ -314,11 +314,11 @@ function View1() {
         </FamilyDrawerSecondaryButton>
       </div>
     </div>
-  );
+  )
 }
 
 function View2() {
-  const { setView } = useFamilyDrawer();
+  const { setView } = useFamilyDrawer()
 
   return (
     <div className="px-2">
@@ -360,11 +360,11 @@ function View2() {
         </FamilyDrawerSecondaryButton>
       </div>
     </div>
-  );
+  )
 }
 
 function View3() {
-  const { setView } = useFamilyDrawer();
+  const { setView } = useFamilyDrawer()
 
   return (
     <div className="px-2">
@@ -398,7 +398,7 @@ function View3() {
         </FamilyDrawerSecondaryButton>
       </div>
     </div>
-  );
+  )
 }
 
 const composableViews: ViewsRegistry = {
@@ -406,7 +406,7 @@ const composableViews: ViewsRegistry = {
   view1: View1,
   view2: View2,
   view3: View3,
-};
+}
 
 export function ComposablePatternExample() {
   return (
@@ -432,7 +432,7 @@ export function ComposablePatternExample() {
         </FamilyDrawerPortal>
       </FamilyDrawerRoot>
     </div>
-  );
+  )
 }
 
 // ============================================================================
@@ -440,7 +440,7 @@ export function ComposablePatternExample() {
 // ============================================================================
 
 function MinimalView() {
-  const { setView } = useFamilyDrawer();
+  const { setView } = useFamilyDrawer()
 
   return (
     <div className="px-2 py-4">
@@ -456,12 +456,12 @@ function MinimalView() {
         Close
       </button>
     </div>
-  );
+  )
 }
 
 const minimalViews: ViewsRegistry = {
   default: MinimalView,
-};
+}
 
 export function MinimalExample() {
   return (
@@ -487,7 +487,7 @@ export function MinimalExample() {
         </FamilyDrawerPortal>
       </FamilyDrawerRoot>
     </div>
-  );
+  )
 }
 
 // ============================================================================
@@ -495,60 +495,60 @@ export function MinimalExample() {
 // ============================================================================
 
 interface FileWithPreview extends File {
-  preview?: string;
+  preview?: string
 }
 
 function FileUploadDefaultView() {
-  const { setView } = useFamilyDrawer();
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
+  const { setView } = useFamilyDrawer()
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const [isDragging, setIsDragging] = useState(false)
 
   const handleDragEnter = useCallback((e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragging(true);
-  }, []);
+    e.preventDefault()
+    e.stopPropagation()
+    setIsDragging(true)
+  }, [])
 
   const handleDragLeave = useCallback((e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragging(false);
-  }, []);
+    e.preventDefault()
+    e.stopPropagation()
+    setIsDragging(false)
+  }, [])
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-  }, []);
+    e.preventDefault()
+    e.stopPropagation()
+  }, [])
 
   const handleDrop = useCallback(
     (e: React.DragEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-      setIsDragging(false);
+      e.preventDefault()
+      e.stopPropagation()
+      setIsDragging(false)
 
-      const files = Array.from(e.dataTransfer.files);
+      const files = Array.from(e.dataTransfer.files)
       if (files.length > 0) {
         // Store files in a way that can be accessed by other views
         // For demo purposes, we'll use a simple approach
-        const event = new CustomEvent("filesSelected", { detail: { files } });
-        window.dispatchEvent(event);
-        setView("preview");
+        const event = new CustomEvent("filesSelected", { detail: { files } })
+        window.dispatchEvent(event)
+        setView("preview")
       }
     },
     [setView]
-  );
+  )
 
   const handleFileSelect = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const files = Array.from(e.target.files || []);
+      const files = Array.from(e.target.files || [])
       if (files.length > 0) {
-        const event = new CustomEvent("filesSelected", { detail: { files } });
-        window.dispatchEvent(event);
-        setView("preview");
+        const event = new CustomEvent("filesSelected", { detail: { files } })
+        window.dispatchEvent(event)
+        setView("preview")
       }
     },
     [setView]
-  );
+  )
 
   return (
     <div>
@@ -597,50 +597,50 @@ function FileUploadDefaultView() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 function FilePreviewView() {
-  const { setView } = useFamilyDrawer();
-  const [files, setFiles] = useState<FileWithPreview[]>([]);
+  const { setView } = useFamilyDrawer()
+  const [files, setFiles] = useState<FileWithPreview[]>([])
 
   useEffect(() => {
     const handleFilesSelected = (e: Event) => {
-      const customEvent = e as CustomEvent<{ files: File[] }>;
+      const customEvent = e as CustomEvent<{ files: File[] }>
       const selectedFiles = customEvent.detail.files.map((file, idx) => {
         const fileWithPreview: FileWithPreview = Object.assign(file, {
           preview: undefined,
-        });
+        })
         if (file.type.startsWith("image/")) {
-          const reader = new FileReader();
+          const reader = new FileReader()
           reader.onload = (e) => {
-            fileWithPreview.preview = e.target?.result as string;
+            fileWithPreview.preview = e.target?.result as string
             setFiles((prev) => {
-              const updated = [...prev];
-              updated[idx] = fileWithPreview;
-              return updated;
-            });
-          };
-          reader.readAsDataURL(file);
+              const updated = [...prev]
+              updated[idx] = fileWithPreview
+              return updated
+            })
+          }
+          reader.readAsDataURL(file)
         }
-        return fileWithPreview;
-      });
-      setFiles(selectedFiles);
-    };
+        return fileWithPreview
+      })
+      setFiles(selectedFiles)
+    }
 
-    window.addEventListener("filesSelected", handleFilesSelected);
+    window.addEventListener("filesSelected", handleFilesSelected)
     return () => {
-      window.removeEventListener("filesSelected", handleFilesSelected);
-    };
-  }, []);
+      window.removeEventListener("filesSelected", handleFilesSelected)
+    }
+  }, [])
 
   const formatFileSize = (bytes: number) => {
-    if (bytes === 0) return "0 Bytes";
-    const k = 1024;
-    const sizes = ["Bytes", "KB", "MB", "GB"];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + " " + sizes[i];
-  };
+    if (bytes === 0) return "0 Bytes"
+    const k = 1024
+    const sizes = ["Bytes", "KB", "MB", "GB"]
+    const i = Math.floor(Math.log(bytes) / Math.log(k))
+    return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + " " + sizes[i]
+  }
 
   return (
     <div>
@@ -652,7 +652,7 @@ function FilePreviewView() {
         />
         <div className="border-border mt-6 space-y-3 border-t pt-6">
           {files.map((file) => {
-            const fileKey = `${file.name}-${file.size}-${file.lastModified}`;
+            const fileKey = `${file.name}-${file.size}-${file.lastModified}`
             return (
               <div
                 key={fileKey}
@@ -679,7 +679,7 @@ function FilePreviewView() {
                   </p>
                 </div>
               </div>
-            );
+            )
           })}
         </div>
       </div>
@@ -698,14 +698,14 @@ function FilePreviewView() {
         </FamilyDrawerSecondaryButton>
       </div>
     </div>
-  );
+  )
 }
 
 function FileEditMetadataView() {
-  const { setView } = useFamilyDrawer();
-  const nameId = useId();
-  const descriptionId = useId();
-  const tagsId = useId();
+  const { setView } = useFamilyDrawer()
+  const nameId = useId()
+  const descriptionId = useId()
+  const tagsId = useId()
 
   return (
     <div>
@@ -775,11 +775,11 @@ function FileEditMetadataView() {
         </FamilyDrawerSecondaryButton>
       </div>
     </div>
-  );
+  )
 }
 
 function FileConfirmView() {
-  const { setView } = useFamilyDrawer();
+  const { setView } = useFamilyDrawer()
 
   return (
     <div>
@@ -827,11 +827,11 @@ function FileConfirmView() {
         </FamilyDrawerSecondaryButton>
       </div>
     </div>
-  );
+  )
 }
 
 function FileCompleteView() {
-  const { setView } = useFamilyDrawer();
+  const { setView } = useFamilyDrawer()
 
   return (
     <div>
@@ -865,7 +865,7 @@ function FileCompleteView() {
         </FamilyDrawerSecondaryButton>
       </div>
     </div>
-  );
+  )
 }
 
 const fileUploadViews: ViewsRegistry = {
@@ -874,7 +874,7 @@ const fileUploadViews: ViewsRegistry = {
   edit: FileEditMetadataView,
   confirm: FileConfirmView,
   complete: FileCompleteView,
-};
+}
 
 export function FileUploadFlowExample() {
   return (
@@ -900,7 +900,7 @@ export function FileUploadFlowExample() {
         </FamilyDrawerPortal>
       </FamilyDrawerRoot>
     </div>
-  );
+  )
 }
 
 // ============================================================================
@@ -908,7 +908,7 @@ export function FileUploadFlowExample() {
 // ============================================================================
 
 function ConfirmationWarningView() {
-  const { setView } = useFamilyDrawer();
+  const { setView } = useFamilyDrawer()
 
   return (
     <div>
@@ -960,16 +960,16 @@ function ConfirmationWarningView() {
         </FamilyDrawerSecondaryButton>
       </div>
     </div>
-  );
+  )
 }
 
 function ConfirmationInputView() {
-  const { setView } = useFamilyDrawer();
-  const [confirmationText, setConfirmationText] = useState("");
-  const confirmationId = useId();
-  const CONFIRMATION_WORD = "DELETE";
+  const { setView } = useFamilyDrawer()
+  const [confirmationText, setConfirmationText] = useState("")
+  const confirmationId = useId()
+  const CONFIRMATION_WORD = "DELETE"
 
-  const isConfirmed = confirmationText === CONFIRMATION_WORD;
+  const isConfirmed = confirmationText === CONFIRMATION_WORD
 
   return (
     <div>
@@ -1022,7 +1022,7 @@ function ConfirmationInputView() {
         <FamilyDrawerSecondaryButton
           onClick={() => {
             if (isConfirmed) {
-              setView("final-warning");
+              setView("final-warning")
             }
           }}
           className={`bg-destructive text-white ${
@@ -1033,11 +1033,11 @@ function ConfirmationInputView() {
         </FamilyDrawerSecondaryButton>
       </div>
     </div>
-  );
+  )
 }
 
 function ConfirmationFinalWarningView() {
-  const { setView } = useFamilyDrawer();
+  const { setView } = useFamilyDrawer()
 
   return (
     <div>
@@ -1094,20 +1094,20 @@ function ConfirmationFinalWarningView() {
         </FamilyDrawerSecondaryButton>
       </div>
     </div>
-  );
+  )
 }
 
 function ConfirmationProcessingView() {
-  const { setView } = useFamilyDrawer();
+  const { setView } = useFamilyDrawer()
 
   useEffect(() => {
     // Simulate processing delay, then transition to complete
     const timer = setTimeout(() => {
-      setView("complete");
-    }, 3000);
+      setView("complete")
+    }, 3000)
 
-    return () => clearTimeout(timer);
-  }, [setView]);
+    return () => clearTimeout(timer)
+  }, [setView])
 
   return (
     <div>
@@ -1133,11 +1133,11 @@ function ConfirmationProcessingView() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 function ConfirmationCompleteView() {
-  const { setView } = useFamilyDrawer();
+  const { setView } = useFamilyDrawer()
 
   return (
     <div>
@@ -1183,11 +1183,11 @@ function ConfirmationCompleteView() {
         </FamilyDrawerSecondaryButton>
       </div>
     </div>
-  );
+  )
 }
 
 function ConfirmationDefaultView() {
-  const { setView } = useFamilyDrawer();
+  const { setView } = useFamilyDrawer()
 
   return (
     <>
@@ -1203,7 +1203,7 @@ function ConfirmationDefaultView() {
         </FamilyDrawerButton>
       </div>
     </>
-  );
+  )
 }
 
 const confirmationViews: ViewsRegistry = {
@@ -1213,7 +1213,7 @@ const confirmationViews: ViewsRegistry = {
   "final-warning": ConfirmationFinalWarningView,
   processing: ConfirmationProcessingView,
   complete: ConfirmationCompleteView,
-};
+}
 
 export function ConfirmationFlowExample() {
   return (
@@ -1239,7 +1239,7 @@ export function ConfirmationFlowExample() {
         </FamilyDrawerPortal>
       </FamilyDrawerRoot>
     </div>
-  );
+  )
 }
 
 // ============================================================================
@@ -1264,5 +1264,5 @@ export default function FamilyDrawerDemo() {
         <ConfirmationFlowExample />
       </div>
     </div>
-  );
+  )
 }

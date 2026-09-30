@@ -1,4 +1,4 @@
-import SquigglyArrow from "@/registry/default/ui/squiggle-arrow";
+import SquigglyArrow from "@/registry/default/ui/squiggle-arrow"
 
 function SquigglyArrowDemo() {
   return (
@@ -64,7 +64,7 @@ function SquigglyArrowDemo() {
         </div>
       </div>
     </main>
-  );
+  )
 }
 
-export default SquigglyArrowDemo;
+export default SquigglyArrowDemo

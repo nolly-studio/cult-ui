@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import { ChevronLeft, Trash, X } from "lucide-react";
+import { ChevronLeft, Trash, X } from "lucide-react"
 
-import { TextureButton } from "@/registry/default/ui/texture-button";
+import { TextureButton } from "@/registry/default/ui/texture-button"
 
 export default function TextureButtonDemo() {
   return (
@@ -118,5 +118,5 @@ export default function TextureButtonDemo() {
         </div>
       </div>
     </div>
-  );
+  )
 }

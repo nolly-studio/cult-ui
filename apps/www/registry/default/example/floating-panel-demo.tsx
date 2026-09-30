@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import { Image as ImageIcon, Paintbrush, Plus, X } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
-import React from "react";
+import React from "react"
+import { Image as ImageIcon, Paintbrush, Plus, X } from "lucide-react"
+import { AnimatePresence, motion } from "motion/react"
 
 import {
   FloatingPanelBody,
@@ -17,12 +17,12 @@ import {
   FloatingPanelSubmitButton,
   FloatingPanelTextarea,
   FloatingPanelTrigger,
-} from "../ui/floating-panel";
+} from "../ui/floating-panel"
 
 function FloatingPanelInput() {
   const handleSubmit = (note: string) => {
-    console.log("Submitted note:", note);
-  };
+    console.log("Submitted note:", note)
+  }
 
   return (
     <FloatingPanelRoot>
@@ -45,7 +45,7 @@ function FloatingPanelInput() {
         </FloatingPanelForm>
       </FloatingPanelContent>
     </FloatingPanelRoot>
-  );
+  )
 }
 
 const ColorPickerFloatingPanel = () => {
@@ -56,7 +56,7 @@ const ColorPickerFloatingPanel = () => {
     "#FF33F1",
     "#33FFF1",
     "#F1FF33",
-  ];
+  ]
 
   return (
     <FloatingPanelRoot>
@@ -92,8 +92,8 @@ const ColorPickerFloatingPanel = () => {
         </FloatingPanelFooter>
       </FloatingPanelContent>
     </FloatingPanelRoot>
-  );
-};
+  )
+}
 
 const QuickActionsFloatingPanel = () => {
   const actions = [
@@ -112,7 +112,7 @@ const QuickActionsFloatingPanel = () => {
       label: "Edit Colors",
       action: () => console.log("Edit Colors"),
     },
-  ];
+  ]
 
   return (
     <FloatingPanelRoot>
@@ -149,8 +149,8 @@ const QuickActionsFloatingPanel = () => {
         </FloatingPanelFooter>
       </FloatingPanelContent>
     </FloatingPanelRoot>
-  );
-};
+  )
+}
 
 const ImagePreviewFloatingPanel = () => {
   return (
@@ -191,8 +191,8 @@ const ImagePreviewFloatingPanel = () => {
         </FloatingPanelFooter>
       </FloatingPanelContent>
     </FloatingPanelRoot>
-  );
-};
+  )
+}
 
 export default function FloatingPanelExamples() {
   return (
@@ -205,5 +205,5 @@ export default function FloatingPanelExamples() {
         <ImagePreviewFloatingPanel />
       </div>
     </div>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import {
   AISDKIcon,
@@ -13,7 +13,7 @@ import {
   HeroHeatmapRoot,
   HeroHeatmapVisual,
   NextjsIcon,
-} from "../ui/hero-heatmap";
+} from "../ui/hero-heatmap"
 
 export default function HeroHeatmapDemo() {
   return (
@@ -105,5 +105,5 @@ export default function HeroHeatmapDemo() {
         </HeroHeatmapRoot>
       </div>
     </div>
-  );
+  )
 }

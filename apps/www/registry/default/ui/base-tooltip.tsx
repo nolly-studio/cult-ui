@@ -10,7 +10,7 @@ function TooltipProvider({
   delayDuration,
   ...props
 }: TooltipPrimitive.Provider.Props & { delayDuration?: number }) {
-  const resolvedDelay = delay ?? delayDuration ?? 0;
+  const resolvedDelay = delay ?? delayDuration ?? 0
   return (
     <TooltipPrimitive.Provider
       data-slot="tooltip-provider"
@@ -29,11 +29,11 @@ function Tooltip({
     <TooltipPrimitive.Root data-slot="tooltip" {...props}>
       {children}
     </TooltipPrimitive.Root>
-  );
+  )
   if (delayDuration != null) {
-    return <TooltipProvider delay={delayDuration}>{root}</TooltipProvider>;
+    return <TooltipProvider delay={delayDuration}>{root}</TooltipProvider>
   }
-  return root;
+  return root
 }
 
 function TooltipTrigger({

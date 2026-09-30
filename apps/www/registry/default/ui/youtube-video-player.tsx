@@ -1,43 +1,43 @@
-"use client";
+"use client"
 
-import { Maximize2, Minimize2, Play } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
+import { Maximize2, Minimize2, Play } from "lucide-react"
+import { AnimatePresence, motion } from "motion/react"
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 
 interface YouTubePlayerProps {
-  videoId: string;
-  title?: string;
-  defaultExpanded?: boolean;
-  customThumbnail?: string;
+  videoId: string
+  title?: string
+  defaultExpanded?: boolean
+  customThumbnail?: string
 
   // Container & Layout
-  className?: string;
-  containerClassName?: string;
-  expandedClassName?: string;
+  className?: string
+  containerClassName?: string
+  expandedClassName?: string
 
   // Thumbnail & Media
-  thumbnailClassName?: string;
-  thumbnailImageClassName?: string;
+  thumbnailClassName?: string
+  thumbnailImageClassName?: string
 
   // Play Button
-  playButtonClassName?: string;
-  playIconClassName?: string;
+  playButtonClassName?: string
+  playIconClassName?: string
 
   // Title
-  titleClassName?: string;
+  titleClassName?: string
 
   // Controls
-  controlsClassName?: string;
-  expandButtonClassName?: string;
+  controlsClassName?: string
+  expandButtonClassName?: string
 
   // Backdrop
-  backdropClassName?: string;
+  backdropClassName?: string
 
   // Player
-  playerClassName?: string;
+  playerClassName?: string
 }
 
 export function YouTubePlayer({
@@ -60,59 +60,59 @@ export function YouTubePlayer({
   backdropClassName,
   playerClassName,
 }: YouTubePlayerProps) {
-  const [expanded, setExpanded] = useState(defaultExpanded);
-  const [playing, setPlaying] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const [expanded, setExpanded] = useState(defaultExpanded)
+  const [playing, setPlaying] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
 
   // Extract video ID from full URL if needed
   const extractVideoId = (id: string) => {
     if (id.includes("youtube.com") || id.includes("youtu.be")) {
       try {
-        const url = new URL(id);
+        const url = new URL(id)
         if (id.includes("youtube.com")) {
-          return url.searchParams.get("v") || "";
+          return url.searchParams.get("v") || ""
         } else {
-          return url.pathname.substring(1);
+          return url.pathname.substring(1)
         }
       } catch (error) {
-        console.error("Invalid YouTube URL:", error);
-        return id;
+        console.error("Invalid YouTube URL:", error)
+        return id
       }
     }
-    return id;
-  };
+    return id
+  }
 
-  const actualVideoId = extractVideoId(videoId);
+  const actualVideoId = extractVideoId(videoId)
 
   const handlePlay = () => {
-    setPlaying(true);
-  };
+    setPlaying(true)
+  }
 
   const toggleExpand = () => {
-    setExpanded(!expanded);
-  };
+    setExpanded(!expanded)
+  }
 
   // Handle Escape key to minimize when expanded
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape" && expanded) {
-        setExpanded(false);
+        setExpanded(false)
       }
-    };
+    }
     if (expanded) {
-      document.addEventListener("keydown", handleKeyDown);
+      document.addEventListener("keydown", handleKeyDown)
     }
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [expanded]);
+      document.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [expanded])
 
   const getThumbnailUrl = () => {
-    if (customThumbnail) return customThumbnail;
+    if (customThumbnail) return customThumbnail
     return actualVideoId
       ? `https://i.ytimg.com/vi/${actualVideoId}/hqdefault.jpg`
-      : "";
-  };
+      : ""
+  }
 
   return (
     <>
@@ -339,18 +339,18 @@ export function YouTubePlayer({
         )}
       </AnimatePresence>
     </>
-  );
+  )
 }
 
 // Controls Component
 interface YouTubePlayerControlsProps {
-  videoId: string;
-  expanded: boolean;
-  playing: boolean;
-  isHovered: boolean;
-  onToggleExpand: () => void;
-  controlsClassName?: string;
-  expandButtonClassName?: string;
+  videoId: string
+  expanded: boolean
+  playing: boolean
+  isHovered: boolean
+  onToggleExpand: () => void
+  controlsClassName?: string
+  expandButtonClassName?: string
 }
 
 function YouTubePlayerControls({
@@ -362,7 +362,7 @@ function YouTubePlayerControls({
   controlsClassName,
   expandButtonClassName,
 }: YouTubePlayerControlsProps) {
-  const shouldShow = !playing || isHovered || expanded;
+  const shouldShow = !playing || isHovered || expanded
 
   return (
     <AnimatePresence>
@@ -401,8 +401,8 @@ function YouTubePlayerControls({
         </motion.div>
       )}
     </AnimatePresence>
-  );
+  )
 }
 
 // Export sub-components for advanced customization
-export { YouTubePlayerControls };
+export { YouTubePlayerControls }

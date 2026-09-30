@@ -1,14 +1,14 @@
 // TODO: EXAMPLE + DOCS + REGISTRY
-"use client";
+"use client"
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react"
 
 interface GlowingButtonProps {
-  href: string;
-  text: string;
-  glowColor?: string;
-  textColor?: string;
-  backgroundColor?: string;
+  href: string
+  text: string
+  glowColor?: string
+  textColor?: string
+  backgroundColor?: string
 }
 
 export default function EnhancedGlowingButton({
@@ -18,29 +18,29 @@ export default function EnhancedGlowingButton({
   textColor = "black",
   backgroundColor = "#d1d1d1",
 }: GlowingButtonProps) {
-  const [isHovering, setIsHovering] = useState(false);
-  const [glowPosition, setGlowPosition] = useState(0);
-  const buttonRef = useRef<HTMLAnchorElement>(null);
+  const [isHovering, setIsHovering] = useState(false)
+  const [glowPosition, setGlowPosition] = useState(0)
+  const buttonRef = useRef<HTMLAnchorElement>(null)
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      if (!buttonRef.current || !isHovering) return;
+      if (!buttonRef.current || !isHovering) return
 
-      const rect = buttonRef.current.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const buttonWidth = rect.width;
-      const percentage = (x / buttonWidth) * 100;
-      setGlowPosition(percentage);
-    };
+      const rect = buttonRef.current.getBoundingClientRect()
+      const x = event.clientX - rect.left
+      const buttonWidth = rect.width
+      const percentage = (x / buttonWidth) * 100
+      setGlowPosition(percentage)
+    }
 
     if (isHovering) {
-      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mousemove", handleMouseMove)
     }
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, [isHovering]);
+      window.removeEventListener("mousemove", handleMouseMove)
+    }
+  }, [isHovering])
 
   return (
     <div className="relative z-10 inline-flex items-center">
@@ -102,5 +102,5 @@ export default function EnhancedGlowingButton({
         </svg>
       </a>
     </div>
-  );
+  )
 }

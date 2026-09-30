@@ -1,21 +1,21 @@
-"use client";
+"use client"
 
-import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { useRef } from "react"
+import { motion, useScroll, useTransform } from "motion/react"
 
-import { DistortedGlass } from "@/registry/default/ui/distorted-glass";
+import { DistortedGlass } from "@/registry/default/ui/distorted-glass"
 
 export default function DistortedGlassDemo() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
-  });
+  })
 
   // Transform values for parallax effects
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, -200]);
-  const parallaxYSlow = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const parallaxYFast = useTransform(scrollYProgress, [0, 1], [0, -300]);
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, -200])
+  const parallaxYSlow = useTransform(scrollYProgress, [0, 1], [0, -100])
+  const parallaxYFast = useTransform(scrollYProgress, [0, 1], [0, -300])
 
   return (
     <div className="relative flex h-screen flex-col overflow-hidden">
@@ -65,9 +65,9 @@ export default function DistortedGlassDemo() {
           <div className="absolute inset-0 overflow-hidden">
             <div className="grid grid-cols-8 gap-4 p-8">
               {Array.from({ length: 64 }).map((_, i) => {
-                const row = Math.floor(i / 8);
-                const col = i % 8;
-                const squareId = `square-${row}-${col}`;
+                const row = Math.floor(i / 8)
+                const col = i % 8
+                const squareId = `square-${row}-${col}`
                 return (
                   <motion.div
                     key={squareId}
@@ -88,7 +88,7 @@ export default function DistortedGlassDemo() {
                       y: parallaxY,
                     }}
                   />
-                );
+                )
               })}
             </div>
           </div>
@@ -98,8 +98,8 @@ export default function DistortedGlassDemo() {
         <section className="from-primary/20 to-primary/10 relative flex h-[600px] items-center justify-center bg-gradient-to-br via-transparent">
           <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
             {Array.from({ length: 5 }).map((_, i) => {
-              const size = 200 + i * 80;
-              const circleId = `circle-${size}`;
+              const size = 200 + i * 80
+              const circleId = `circle-${size}`
               return (
                 <motion.div
                   key={circleId}
@@ -119,7 +119,7 @@ export default function DistortedGlassDemo() {
                     ease: "linear",
                   }}
                 />
-              );
+              )
             })}
           </div>
         </section>
@@ -128,8 +128,8 @@ export default function DistortedGlassDemo() {
         <section className="via-primary/10 to-primary/20 relative flex min-h-screen items-center justify-center bg-gradient-to-br from-transparent">
           <div className="absolute inset-0 overflow-hidden">
             {Array.from({ length: 20 }).map((_, i) => {
-              const lineTop = i * 10;
-              const lineId = `line-${lineTop}`;
+              const lineTop = i * 10
+              const lineId = `line-${lineTop}`
               return (
                 <motion.div
                   key={lineId}
@@ -149,7 +149,7 @@ export default function DistortedGlassDemo() {
                     ease: "easeInOut",
                   }}
                 />
-              );
+              )
             })}
           </div>
         </section>
@@ -168,5 +168,5 @@ export default function DistortedGlassDemo() {
         </section>
       </div>
     </div>
-  );
+  )
 }

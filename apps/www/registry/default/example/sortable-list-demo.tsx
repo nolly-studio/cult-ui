@@ -1,16 +1,16 @@
-"use client";
+"use client"
 
-import { Plus, RepeatIcon, Settings2Icon, XIcon } from "lucide-react";
-import { AnimatePresence, LayoutGroup, motion } from "motion/react";
-import { useCallback, useState } from "react";
-import { toast } from "sonner";
+import { useCallback, useState } from "react"
+import { Plus, RepeatIcon, Settings2Icon, XIcon } from "lucide-react"
+import { AnimatePresence, LayoutGroup, motion } from "motion/react"
+import { toast } from "sonner"
 
-import { Button } from "@/components/ui/button";
-import { Slider } from "@/components/ui/slider";
-import { cn } from "@/lib/utils";
-import { DirectionAwareTabs } from "@/registry/default/ui/direction-aware-tabs";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Slider } from "@/components/ui/slider"
+import { DirectionAwareTabs } from "@/registry/default/ui/direction-aware-tabs"
 
-import SortableList, { Item, SortableListItem } from "../ui/sortable-list";
+import SortableList, { Item, SortableListItem } from "../ui/sortable-list"
 
 const initialState = [
   {
@@ -41,23 +41,23 @@ const initialState = [
     description:
       "Present the AI-generated marketing copy suggestions to the user, along with insights on why these changes were recommended. Provide a user-friendly interface for the user to review, edit, and implement the optimized copy on their website.",
   },
-];
+]
 
 function SortableListDemo() {
-  const [items, setItems] = useState<Item[]>(initialState);
-  const [openItemId, setOpenItemId] = useState<number | null>(null);
-  const [tabChangeRerender, setTabChangeRerender] = useState<number>(1);
-  const [topP, setTopP] = useState([10]);
-  const [temp, setTemp] = useState([10]);
-  const [tokens, setTokens] = useState([10]);
+  const [items, setItems] = useState<Item[]>(initialState)
+  const [openItemId, setOpenItemId] = useState<number | null>(null)
+  const [tabChangeRerender, setTabChangeRerender] = useState<number>(1)
+  const [topP, setTopP] = useState([10])
+  const [temp, setTemp] = useState([10])
+  const [tokens, setTokens] = useState([10])
 
   const handleCompleteItem = (id: number) => {
     setItems((prevItems) =>
       prevItems.map((item) =>
         item.id === id ? { ...item, checked: !item.checked } : item
       )
-    );
-  };
+    )
+  }
 
   const handleAddItem = () => {
     setItems((prevItems) => [
@@ -68,25 +68,25 @@ function SortableListDemo() {
         id: Date.now(),
         description: "",
       },
-    ]);
-  };
+    ])
+  }
 
   const handleResetItems = () => {
-    setItems(initialState);
-  };
+    setItems(initialState)
+  }
 
   const handleCloseOnDrag = useCallback(() => {
     setItems((prevItems) => {
       const updatedItems = prevItems.map((item) =>
         item.checked ? { ...item, checked: false } : item
-      );
+      )
       return updatedItems.some(
         (item, index) => item.checked !== prevItems[index].checked
       )
         ? updatedItems
-        : prevItems;
-    });
-  }, []);
+        : prevItems
+    })
+  }, [])
 
   const renderListItem = (
     item: Item,
@@ -94,7 +94,7 @@ function SortableListDemo() {
     onCompleteItem: (id: number) => void,
     onRemoveItem: (id: number) => void
   ) => {
-    const isOpen = item.id === openItemId;
+    const isOpen = item.id === openItemId
 
     const tabs = [
       {
@@ -120,12 +120,12 @@ function SortableListDemo() {
                 value={item.text}
                 className="w-full rounded-lg border border-black/10 bg-neutral-800 px-1 py-[6px] text-xl font-semibold text-white placeholder:text-white/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#13EEE3]/80 md:text-3xl dark:border-white/10"
                 onChange={(e) => {
-                  const text = e.target.value;
+                  const text = e.target.value
                   setItems((prevItems) =>
                     prevItems.map((i) =>
                       i.id === item.id ? { ...i, text } : i
                     )
-                  );
+                  )
                 }}
               />
             </motion.div>
@@ -159,12 +159,12 @@ function SortableListDemo() {
                 value={item.description}
                 placeholder="update agent prompt"
                 onChange={(e) => {
-                  const description = e.target.value;
+                  const description = e.target.value
                   setItems((prevItems) =>
                     prevItems.map((i) =>
                       i.id === item.id ? { ...i, description } : i
                     )
-                  );
+                  )
                 }}
               />
             </motion.div>
@@ -260,7 +260,7 @@ function SortableListDemo() {
           </div>
         ),
       },
-    ];
+    ]
 
     return (
       <SortableListItem
@@ -374,8 +374,8 @@ function SortableListDemo() {
                           size="sm"
                           variant="ghost"
                           onClick={() => {
-                            setOpenItemId(null);
-                            toast.info("Changes saved");
+                            setOpenItemId(null)
+                            toast.info("Changes saved")
                           }}
                           className="h-7 rounded-lg bg-[#13EEE3]/80 text-black hover:bg-[#13EEE3] hover:text-black"
                         >
@@ -390,8 +390,8 @@ function SortableListDemo() {
           </div>
         )}
       />
-    );
-  };
+    )
+  }
 
   return (
     <div className="w-full max-w-xl md:px-4">
@@ -439,7 +439,7 @@ function SortableListDemo() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default SortableListDemo;
+export default SortableListDemo

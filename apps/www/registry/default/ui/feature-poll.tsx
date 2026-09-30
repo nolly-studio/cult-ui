@@ -1,8 +1,5 @@
-"use client";
+"use client"
 
-import { useControllableState } from "@radix-ui/react-use-controllable-state";
-import { cva } from "class-variance-authority";
-import { Check } from "lucide-react";
 import {
   createContext,
   useCallback,
@@ -12,62 +9,63 @@ import {
   type ComponentProps,
   type KeyboardEvent,
   type MouseEvent,
-} from "react";
+} from "react"
+import { useControllableState } from "@radix-ui/react-use-controllable-state"
+import { cva } from "class-variance-authority"
+import { Check } from "lucide-react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 /* -----------------------------------------------------------------------------
  * Types
  * -------------------------------------------------------------------------- */
 
-export interface FeaturePollRootProps extends Omit<
-  ComponentProps<"div">,
-  "defaultValue"
-> {
+export interface FeaturePollRootProps
+  extends Omit<ComponentProps<"div">, "defaultValue"> {
   /** Currently selected option(s) - controlled */
-  value?: string | string[];
+  value?: string | string[]
   /** Default selected option(s) - uncontrolled */
-  defaultValue?: string | string[];
+  defaultValue?: string | string[]
   /** Callback when selection changes */
-  onValueChange?: (value: string | string[]) => void;
+  onValueChange?: (value: string | string[]) => void
   /** Whether multiple selections are allowed */
-  multiple?: boolean;
+  multiple?: boolean
   /** Whether the poll is disabled */
-  disabled?: boolean;
+  disabled?: boolean
   /** Whether to show results after voting */
-  showResults?: boolean;
+  showResults?: boolean
   /** Vote counts per option (for showing results) */
-  votes?: Record<string, number>;
+  votes?: Record<string, number>
   /** Whether user has submitted their vote */
-  hasVoted?: boolean;
+  hasVoted?: boolean
 }
 
 export interface FeaturePollOptionProps extends ComponentProps<"button"> {
   /** Unique identifier for this option */
-  value: string;
+  value: string
   /** Whether this specific option is disabled */
-  disabled?: boolean;
+  disabled?: boolean
 }
 
-export type FeaturePollHeaderProps = ComponentProps<"div">;
+export type FeaturePollHeaderProps = ComponentProps<"div">
 
-export type FeaturePollTitleProps = ComponentProps<"h3">;
+export type FeaturePollTitleProps = ComponentProps<"h3">
 
-export type FeaturePollDescriptionProps = ComponentProps<"p">;
+export type FeaturePollDescriptionProps = ComponentProps<"p">
 
-export type FeaturePollOptionsProps = ComponentProps<"div">;
+export type FeaturePollOptionsProps = ComponentProps<"div">
 
-export type FeaturePollLabelProps = ComponentProps<"span">;
+export type FeaturePollLabelProps = ComponentProps<"span">
 
-export type FeaturePollIndicatorProps = ComponentProps<"span">;
+export type FeaturePollIndicatorProps = ComponentProps<"span">
 
-export type FeaturePollProgressProps = ComponentProps<"div">;
+export type FeaturePollProgressProps = ComponentProps<"div">
 
-export type FeaturePollPercentageProps = ComponentProps<"span">;
+export type FeaturePollPercentageProps = ComponentProps<"span">
 
 export interface FeaturePollFooterProps extends ComponentProps<"div"> {
   /** Total number of votes */
-  totalVotes?: number;
+  totalVotes?: number
 }
 
 /* -----------------------------------------------------------------------------
@@ -75,48 +73,48 @@ export interface FeaturePollFooterProps extends ComponentProps<"div"> {
  * -------------------------------------------------------------------------- */
 
 interface FeaturePollContextValue {
-  selected: string[];
-  multiple: boolean;
-  disabled: boolean;
-  showResults: boolean;
-  votes: Record<string, number>;
-  totalVotes: number;
-  hasVoted: boolean;
-  select: (optionId: string) => void;
-  isSelected: (optionId: string) => boolean;
-  getPercentage: (optionId: string) => number;
+  selected: string[]
+  multiple: boolean
+  disabled: boolean
+  showResults: boolean
+  votes: Record<string, number>
+  totalVotes: number
+  hasVoted: boolean
+  select: (optionId: string) => void
+  isSelected: (optionId: string) => boolean
+  getPercentage: (optionId: string) => number
 }
 
-const FeaturePollContext = createContext<FeaturePollContextValue | null>(null);
+const FeaturePollContext = createContext<FeaturePollContextValue | null>(null)
 
 function useFeaturePollContext() {
-  const context = useContext(FeaturePollContext);
+  const context = useContext(FeaturePollContext)
   if (!context) {
     throw new Error(
       "FeaturePoll components must be used within FeaturePoll.Root"
-    );
+    )
   }
-  return context;
+  return context
 }
 
 interface FeaturePollOptionContextValue {
-  optionId: string;
-  disabled: boolean;
-  isSelected: boolean;
-  percentage: number;
+  optionId: string
+  disabled: boolean
+  isSelected: boolean
+  percentage: number
 }
 
 const FeaturePollOptionContext =
-  createContext<FeaturePollOptionContextValue | null>(null);
+  createContext<FeaturePollOptionContextValue | null>(null)
 
 function useFeaturePollOptionContext() {
-  const context = useContext(FeaturePollOptionContext);
+  const context = useContext(FeaturePollOptionContext)
   if (!context) {
     throw new Error(
       "FeaturePoll.Option sub-components must be used within FeaturePoll.Option"
-    );
+    )
   }
-  return context;
+  return context
 }
 
 /* -----------------------------------------------------------------------------
@@ -147,7 +145,7 @@ const optionVariants = cva(
       state: "idle",
     },
   }
-);
+)
 
 const indicatorVariants = cva(
   [
@@ -171,7 +169,7 @@ const indicatorVariants = cva(
       multiple: false,
     },
   }
-);
+)
 
 const progressVariants = cva(
   [
@@ -190,7 +188,7 @@ const progressVariants = cva(
       state: "idle",
     },
   }
-);
+)
 
 /* -----------------------------------------------------------------------------
  * Root
@@ -211,67 +209,67 @@ function FeaturePollRoot({
 }: FeaturePollRootProps) {
   const normalizeValue = (val: string | string[] | undefined): string[] => {
     if (!val) {
-      return [];
+      return []
     }
-    return Array.isArray(val) ? val : [val];
-  };
+    return Array.isArray(val) ? val : [val]
+  }
 
   const [selectedArray, setSelectedArray] = useControllableState<string[]>({
     prop: controlledValue ? normalizeValue(controlledValue) : undefined,
     defaultProp: normalizeValue(defaultValue),
     onChange: (arr) => {
       if (onValueChange) {
-        onValueChange(multiple ? arr : (arr[0] ?? ""));
+        onValueChange(multiple ? arr : (arr[0] ?? ""))
       }
     },
-  });
+  })
 
-  const selected = selectedArray ?? [];
+  const selected = selectedArray ?? []
 
   const totalVotes = useMemo(
     () => Object.values(votes).reduce((sum, count) => sum + count, 0),
     [votes]
-  );
+  )
 
   const select = useCallback(
     (optionId: string) => {
       if (disabled || hasVoted) {
-        return;
+        return
       }
 
       setSelectedArray((prev) => {
-        const current = prev ?? [];
-        const isCurrentlySelected = current.includes(optionId);
+        const current = prev ?? []
+        const isCurrentlySelected = current.includes(optionId)
 
         if (multiple) {
           if (isCurrentlySelected) {
-            return current.filter((id) => id !== optionId);
+            return current.filter((id) => id !== optionId)
           }
-          return [...current, optionId];
+          return [...current, optionId]
         }
         if (isCurrentlySelected) {
-          return [];
+          return []
         }
-        return [optionId];
-      });
+        return [optionId]
+      })
     },
     [disabled, hasVoted, multiple, setSelectedArray]
-  );
+  )
 
   const isSelected = useCallback(
     (optionId: string) => selected.includes(optionId),
     [selected]
-  );
+  )
 
   const getPercentage = useCallback(
     (optionId: string) => {
       if (totalVotes === 0) {
-        return 0;
+        return 0
       }
-      return Math.round(((votes[optionId] ?? 0) / totalVotes) * 100);
+      return Math.round(((votes[optionId] ?? 0) / totalVotes) * 100)
     },
     [votes, totalVotes]
-  );
+  )
 
   const contextValue = useMemo(
     () => ({
@@ -298,7 +296,7 @@ function FeaturePollRoot({
       isSelected,
       getPercentage,
     ]
-  );
+  )
 
   return (
     <FeaturePollContext.Provider value={contextValue}>
@@ -313,7 +311,7 @@ function FeaturePollRoot({
         {children}
       </div>
     </FeaturePollContext.Provider>
-  );
+  )
 }
 
 /* -----------------------------------------------------------------------------
@@ -333,7 +331,7 @@ function FeaturePollHeader({
     >
       {children}
     </div>
-  );
+  )
 }
 
 /* -----------------------------------------------------------------------------
@@ -353,7 +351,7 @@ function FeaturePollTitle({
     >
       {children}
     </h3>
-  );
+  )
 }
 
 /* -----------------------------------------------------------------------------
@@ -373,7 +371,7 @@ function FeaturePollDescription({
     >
       {children}
     </p>
-  );
+  )
 }
 
 /* -----------------------------------------------------------------------------
@@ -385,50 +383,50 @@ function FeaturePollOptions({
   className,
   ...props
 }: FeaturePollOptionsProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null)
 
   const handleKeyDown = useCallback((event: KeyboardEvent<HTMLDivElement>) => {
-    const container = containerRef.current;
+    const container = containerRef.current
     if (!container) {
-      return;
+      return
     }
 
     const options = Array.from(
       container.querySelectorAll<HTMLButtonElement>(
         '[data-slot="feature-poll-option"]:not([disabled])'
       )
-    );
+    )
     const currentIndex = options.indexOf(
       document.activeElement as HTMLButtonElement
-    );
+    )
 
-    let nextIndex = currentIndex;
+    let nextIndex = currentIndex
 
     switch (event.key) {
       case "ArrowDown":
       case "ArrowRight":
-        event.preventDefault();
-        nextIndex = currentIndex < options.length - 1 ? currentIndex + 1 : 0;
-        break;
+        event.preventDefault()
+        nextIndex = currentIndex < options.length - 1 ? currentIndex + 1 : 0
+        break
       case "ArrowUp":
       case "ArrowLeft":
-        event.preventDefault();
-        nextIndex = currentIndex > 0 ? currentIndex - 1 : options.length - 1;
-        break;
+        event.preventDefault()
+        nextIndex = currentIndex > 0 ? currentIndex - 1 : options.length - 1
+        break
       case "Home":
-        event.preventDefault();
-        nextIndex = 0;
-        break;
+        event.preventDefault()
+        nextIndex = 0
+        break
       case "End":
-        event.preventDefault();
-        nextIndex = options.length - 1;
-        break;
+        event.preventDefault()
+        nextIndex = options.length - 1
+        break
       default:
-        break;
+        break
     }
 
-    options[nextIndex]?.focus();
-  }, []);
+    options[nextIndex]?.focus()
+  }, [])
 
   return (
     <div
@@ -441,7 +439,7 @@ function FeaturePollOptions({
     >
       {children}
     </div>
-  );
+  )
 }
 
 /* -----------------------------------------------------------------------------
@@ -463,32 +461,32 @@ function FeaturePollOption({
     isSelected,
     select,
     getPercentage,
-  } = useFeaturePollContext();
+  } = useFeaturePollContext()
 
-  const disabled = rootDisabled || optionDisabled;
-  const selected = isSelected(value);
-  const percentage = getPercentage(value);
+  const disabled = rootDisabled || optionDisabled
+  const selected = isSelected(value)
+  const percentage = getPercentage(value)
 
   const getState = (): "idle" | "selected" | "voted" => {
     if (hasVoted) {
-      return "voted";
+      return "voted"
     }
     if (selected) {
-      return "selected";
+      return "selected"
     }
-    return "idle";
-  };
-  const state = getState();
+    return "idle"
+  }
+  const state = getState()
 
   const handleClick = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
-      onClick?.(event);
+      onClick?.(event)
       if (!(event.defaultPrevented || disabled)) {
-        select(value);
+        select(value)
       }
     },
     [onClick, disabled, select, value]
-  );
+  )
 
   const optionContextValue = useMemo(
     () => ({
@@ -498,7 +496,7 @@ function FeaturePollOption({
       percentage,
     }),
     [value, disabled, selected, percentage]
-  );
+  )
 
   return (
     <FeaturePollOptionContext.Provider value={optionContextValue}>
@@ -535,7 +533,7 @@ function FeaturePollOption({
         </span>
       </button>
     </FeaturePollOptionContext.Provider>
-  );
+  )
 }
 
 /* -----------------------------------------------------------------------------
@@ -547,19 +545,19 @@ function FeaturePollIndicator({
   className,
   ...props
 }: FeaturePollIndicatorProps) {
-  const { multiple, hasVoted } = useFeaturePollContext();
-  const { isSelected } = useFeaturePollOptionContext();
+  const { multiple, hasVoted } = useFeaturePollContext()
+  const { isSelected } = useFeaturePollOptionContext()
 
   const getState = (): "idle" | "selected" | "voted" => {
     if (hasVoted) {
-      return "voted";
+      return "voted"
     }
     if (isSelected) {
-      return "selected";
+      return "selected"
     }
-    return "idle";
-  };
-  const state = getState();
+    return "idle"
+  }
+  const state = getState()
 
   return (
     <span
@@ -580,7 +578,7 @@ function FeaturePollIndicator({
       )}
       {children}
     </span>
-  );
+  )
 }
 
 /* -----------------------------------------------------------------------------
@@ -600,7 +598,7 @@ function FeaturePollLabel({
     >
       {children}
     </span>
-  );
+  )
 }
 
 /* -----------------------------------------------------------------------------
@@ -611,11 +609,11 @@ function FeaturePollProgress({
   className,
   ...props
 }: FeaturePollProgressProps) {
-  const { showResults } = useFeaturePollContext();
-  const { percentage, isSelected } = useFeaturePollOptionContext();
+  const { showResults } = useFeaturePollContext()
+  const { percentage, isSelected } = useFeaturePollOptionContext()
 
   if (!showResults) {
-    return null;
+    return null
   }
 
   return (
@@ -636,7 +634,7 @@ function FeaturePollProgress({
         style={{ width: `${percentage}%` }}
       />
     </span>
-  );
+  )
 }
 
 /* -----------------------------------------------------------------------------
@@ -648,11 +646,11 @@ function FeaturePollPercentage({
   className,
   ...props
 }: FeaturePollPercentageProps) {
-  const { showResults } = useFeaturePollContext();
-  const { percentage } = useFeaturePollOptionContext();
+  const { showResults } = useFeaturePollContext()
+  const { percentage } = useFeaturePollOptionContext()
 
   if (!showResults) {
-    return null;
+    return null
   }
 
   return (
@@ -666,7 +664,7 @@ function FeaturePollPercentage({
     >
       {children ?? `${percentage}%`}
     </span>
-  );
+  )
 }
 
 /* -----------------------------------------------------------------------------
@@ -679,8 +677,8 @@ function FeaturePollFooter({
   totalVotes,
   ...props
 }: FeaturePollFooterProps) {
-  const { totalVotes: contextTotalVotes, hasVoted } = useFeaturePollContext();
-  const votes = totalVotes ?? contextTotalVotes;
+  const { totalVotes: contextTotalVotes, hasVoted } = useFeaturePollContext()
+  const votes = totalVotes ?? contextTotalVotes
 
   return (
     <div
@@ -705,7 +703,7 @@ function FeaturePollFooter({
         </>
       )}
     </div>
-  );
+  )
 }
 
 /* -----------------------------------------------------------------------------
@@ -713,7 +711,7 @@ function FeaturePollFooter({
  * -------------------------------------------------------------------------- */
 
 export function useFeaturePoll() {
-  return useFeaturePollContext();
+  return useFeaturePollContext()
 }
 
 /* -----------------------------------------------------------------------------
@@ -732,7 +730,7 @@ export const FeaturePoll = {
   Progress: FeaturePollProgress,
   Percentage: FeaturePollPercentage,
   Footer: FeaturePollFooter,
-};
+}
 
 export {
   FeaturePollRoot,
@@ -746,4 +744,4 @@ export {
   FeaturePollProgress,
   FeaturePollPercentage,
   FeaturePollFooter,
-};
+}

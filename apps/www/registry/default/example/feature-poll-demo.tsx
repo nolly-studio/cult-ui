@@ -1,17 +1,17 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/ui/card"
 
-import { FeaturePoll } from "../ui/feature-poll";
+import { FeaturePoll } from "../ui/feature-poll"
 
 const features = [
   {
@@ -30,10 +30,10 @@ const features = [
     description: "More examples and guides",
   },
   { id: "a11y", label: "Accessibility", description: "Stronger a11y defaults" },
-];
+]
 
 function FeaturePollBasicExample() {
-  const [selected, setSelected] = useState<string>("");
+  const [selected, setSelected] = useState<string>("")
 
   return (
     <div className="w-full max-w-lg">
@@ -65,19 +65,19 @@ function FeaturePollBasicExample() {
         </FeaturePoll.Options>
       </FeaturePoll.Root>
     </div>
-  );
+  )
 }
 
 function FeaturePollWithResultsExample() {
-  const [selected, setSelected] = useState<string>("");
-  const [hasVoted, setHasVoted] = useState(false);
+  const [selected, setSelected] = useState<string>("")
+  const [hasVoted, setHasVoted] = useState(false)
 
   const votes = {
     speed: 42,
     dx: 28,
     docs: 30,
     a11y: 18,
-  };
+  }
 
   return (
     <Card className="w-full max-w-lg">
@@ -126,19 +126,19 @@ function FeaturePollWithResultsExample() {
         </FeaturePoll.Root>
       </CardContent>
     </Card>
-  );
+  )
 }
 
 function FeaturePollMultipleExample() {
-  const [selected, setSelected] = useState<string[]>([]);
-  const [hasVoted, setHasVoted] = useState(false);
+  const [selected, setSelected] = useState<string[]>([])
+  const [hasVoted, setHasVoted] = useState(false)
 
   const votes = {
     speed: 42,
     dx: 28,
     docs: 30,
     a11y: 18,
-  };
+  }
 
   return (
     <Card className="w-full max-w-lg">
@@ -191,7 +191,7 @@ function FeaturePollMultipleExample() {
         </FeaturePoll.Root>
       </CardContent>
     </Card>
-  );
+  )
 }
 
 export default function FeaturePollDemo() {
@@ -210,5 +210,5 @@ export default function FeaturePollDemo() {
         <FeaturePollMultipleExample />
       </div>
     </div>
-  );
+  )
 }

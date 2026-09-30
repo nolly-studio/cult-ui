@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import { BgAnimateButton } from "../ui/bg-animate-button";
-import { DirectionAwareTabs } from "../ui/direction-aware-tabs";
+import { BgAnimateButton } from "../ui/bg-animate-button"
+import { DirectionAwareTabs } from "../ui/direction-aware-tabs"
 
 const DirectionAwareTabsDemo = ({}) => {
   const tabs = [
@@ -73,13 +73,13 @@ const DirectionAwareTabsDemo = ({}) => {
         </div>
       ),
     },
-  ];
+  ]
 
   return (
     <div className="">
       <DirectionAwareTabs tabs={tabs} />
     </div>
-  );
-};
+  )
+}
 
-export default DirectionAwareTabsDemo;
+export default DirectionAwareTabsDemo

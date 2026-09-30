@@ -1,17 +1,17 @@
-"use client";
+"use client"
 
-import type React from "react";
-import { useState } from "react";
+import type React from "react"
+import { useState } from "react"
 
-import NeumorphButton from "../ui/neumorph-button";
+import NeumorphButton from "../ui/neumorph-button"
 
 export default function NeumorphButtonDemo() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   const handleClick = () => {
-    setLoading(true);
-    setTimeout(() => setLoading(false), 2000);
-  };
+    setLoading(true)
+    setTimeout(() => setLoading(false), 2000)
+  }
 
   return (
     <div className="space-y-8 p-4">
@@ -81,5 +81,5 @@ export default function NeumorphButtonDemo() {
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fluid-ai-workloads-demo",
+  "registryDependencies": [
+    "fluid-ai-workloads"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/fluid-ai-workloads-demo.tsx",
+      "content": "\"use client\";\n\nimport { FluidAIWorkloads } from \"@/registry/default/ui/fluid-ai-workloads\";\n\nfunction FluidAIWorkloadsDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-6\">\n      <div className=\"max-w-full overflow-hidden rounded-lg bg-card p-6\">\n        <FluidAIWorkloads height={200} width={400} />\n      </div>\n    </div>\n  );\n}\n\nexport default FluidAIWorkloadsDemo;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

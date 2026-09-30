@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
 import {
   PromptLibrary,
@@ -15,7 +15,7 @@ import {
   PromptLibrarySearch,
   PromptLibraryTrigger,
   type Prompt,
-} from "../ui/prompt-library";
+} from "../ui/prompt-library"
 
 const SAMPLE_PROMPTS: Prompt[] = [
   {
@@ -58,11 +58,11 @@ const SAMPLE_PROMPTS: Prompt[] = [
       "Please generate documentation for this code including:\n- Overview and purpose\n- Parameters and return values\n- Usage examples\n- Any important notes or caveats",
     category: "Documentation",
   },
-];
+]
 
 function PromptLibraryExample() {
-  const [prompts, setPrompts] = useState<Prompt[]>(SAMPLE_PROMPTS);
-  const [lastSelected, setLastSelected] = useState<Prompt | null>(null);
+  const [prompts, setPrompts] = useState<Prompt[]>(SAMPLE_PROMPTS)
+  const [lastSelected, setLastSelected] = useState<Prompt | null>(null)
 
   return (
     <div className="flex w-full max-w-md flex-col gap-4">
@@ -127,7 +127,7 @@ function PromptLibraryExample() {
         </div>
       )}
     </div>
-  );
+  )
 }
 
-export default PromptLibraryExample;
+export default PromptLibraryExample

@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import {
   AISDKIcon,
@@ -13,7 +13,7 @@ import {
   HeroDitheringRoot,
   HeroDitheringVisual,
   NextjsIcon,
-} from "../ui/hero-dithering";
+} from "../ui/hero-dithering"
 
 export default function HeroDitheringDemo() {
   return (
@@ -72,5 +72,5 @@ export default function HeroDitheringDemo() {
         </HeroDitheringRoot>
       </div>
     </div>
-  );
+  )
 }

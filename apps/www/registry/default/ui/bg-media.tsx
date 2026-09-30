@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import { cva } from "class-variance-authority";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState } from "react"
+import { cva } from "class-variance-authority"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 // Make sure this utility exists in your project for combining class names
 
 // Define the type for the variant and type props
-type OverlayVariant = "none" | "light" | "dark";
-type MediaType = "image" | "video";
+type OverlayVariant = "none" | "light" | "dark"
+type MediaType = "image" | "video"
 
 // Update the cva call with these types
 const backgroundVariants = cva(
@@ -32,13 +32,13 @@ const backgroundVariants = cva(
       type: "image",
     },
   }
-);
+)
 
 interface BackgroundMediaProps {
-  variant?: OverlayVariant;
-  type?: MediaType;
-  src: string;
-  alt?: string;
+  variant?: OverlayVariant
+  type?: MediaType
+  src: string
+  alt?: string
 }
 
 export const BackgroundMedia: React.FC<BackgroundMediaProps> = ({
@@ -47,24 +47,24 @@ export const BackgroundMedia: React.FC<BackgroundMediaProps> = ({
   src,
   alt = "",
 }) => {
-  const [isPlaying, setIsPlaying] = useState(true);
-  const mediaRef = useRef<HTMLVideoElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(true)
+  const mediaRef = useRef<HTMLVideoElement | null>(null)
 
   const toggleMediaPlay = () => {
     if (type === "video" && mediaRef.current) {
       if (isPlaying) {
-        mediaRef.current.pause();
+        mediaRef.current.pause()
       } else {
-        mediaRef.current.play();
+        mediaRef.current.play()
       }
-      setIsPlaying(!isPlaying);
+      setIsPlaying(!isPlaying)
     }
-  };
+  }
 
   const mediaClasses = cn(
     backgroundVariants({ overlay: variant, type }),
     "overflow-hidden"
-  );
+  )
 
   const renderMedia = () => {
     if (type === "video") {
@@ -80,7 +80,7 @@ export const BackgroundMedia: React.FC<BackgroundMediaProps> = ({
           <source src={src} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-      );
+      )
     } else {
       return (
         <img
@@ -89,9 +89,9 @@ export const BackgroundMedia: React.FC<BackgroundMediaProps> = ({
           className="absolute inset-0 h-full w-full rounded-br-[88px] object-cover"
           loading="eager"
         />
-      );
+      )
     }
-  };
+  }
 
   return (
     <div className={mediaClasses}>
@@ -106,7 +106,7 @@ export const BackgroundMedia: React.FC<BackgroundMediaProps> = ({
         </button>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default BackgroundMedia;
+export default BackgroundMedia

@@ -1,10 +1,14 @@
 import { exec } from "child_process";
+import { createRequire } from "module";
 import { promises as fs } from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 
 import { rimraf } from "rimraf";
 
-import { registry } from "@/registry/index";
+// Node 24 + tsx ESM named-export interop: load registry via createRequire.
+const require = createRequire(import.meta.url);
+const { registry } = require("../registry/index.ts") as typeof import("@/registry/index");
 
 async function buildRegistryIndex() {
   let index = `/* eslint-disable @typescript-eslint/ban-ts-comment */

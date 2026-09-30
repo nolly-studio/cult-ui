@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import {
   AISDKIcon,
@@ -13,7 +13,7 @@ import {
   HeroColorPanelsRoot,
   HeroColorPanelsVisual,
   NextjsIcon,
-} from "../ui/hero-color-panel";
+} from "../ui/hero-color-panel"
 
 export default function HeroColorPanelsDemo() {
   return (
@@ -97,5 +97,5 @@ export default function HeroColorPanelsDemo() {
         </HeroColorPanelsRoot>
       </div>
     </div>
-  );
+  )
 }

@@ -1,32 +1,32 @@
-"use client";
+"use client"
 
-import type { BorderBeamColorVariant } from "border-beam";
-import { ArrowRight, Pause, Play, Sparkles, Wand2, Zap } from "lucide-react";
-import { useEffect, useId, useState, type ReactNode } from "react";
+import { useEffect, useId, useState, type ReactNode } from "react"
+import type { BorderBeamColorVariant } from "border-beam"
+import { ArrowRight, Pause, Play, Sparkles, Wand2, Zap } from "lucide-react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 import {
   BorderBeamButton,
   BorderBeamIconButton,
-} from "@/registry/default/ui/border-beam-button";
+} from "@/registry/default/ui/border-beam-button"
 
 const COLOR_ROW: { key: BorderBeamColorVariant; label: string }[] = [
   { key: "colorful", label: "Colorful" },
   { key: "ocean", label: "Ocean" },
   { key: "sunset", label: "Sunset" },
   { key: "mono", label: "Mono" },
-];
+]
 
-const BEAM_SIZES = ["sm", "md", "line"] as const;
+const BEAM_SIZES = ["sm", "md", "line"] as const
 
 function Section({
   title,
   description,
   children,
 }: {
-  title: string;
-  description?: string;
-  children: ReactNode;
+  title: string
+  description?: string
+  children: ReactNode
 }) {
   return (
     <section className="space-y-4">
@@ -42,23 +42,23 @@ function Section({
       </div>
       {children}
     </section>
-  );
+  )
 }
 
 export default function BorderBeamButtonDemo() {
-  const id = useId();
-  const [beamActive, setBeamActive] = useState(true);
-  const [respectsReducedMotion, setRespectsReducedMotion] = useState(false);
+  const id = useId()
+  const [beamActive, setBeamActive] = useState(true)
+  const [respectsReducedMotion, setRespectsReducedMotion] = useState(false)
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => setRespectsReducedMotion(mq.matches);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
-  }, []);
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const sync = () => setRespectsReducedMotion(mq.matches)
+    sync()
+    mq.addEventListener("change", sync)
+    return () => mq.removeEventListener("change", sync)
+  }, [])
 
-  const effectiveActive = beamActive && !respectsReducedMotion;
+  const effectiveActive = beamActive && !respectsReducedMotion
 
   return (
     <div className="mx-auto w-full max-w-3xl space-y-10 px-4 py-8 md:px-6">
@@ -228,5 +228,5 @@ export default function BorderBeamButtonDemo() {
         </Section>
       </div>
     </div>
-  );
+  )
 }

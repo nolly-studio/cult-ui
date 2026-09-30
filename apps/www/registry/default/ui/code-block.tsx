@@ -1,22 +1,22 @@
-"use client";
+"use client"
 
-import { Check, Copy } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
-import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react"
+import { Check, Copy } from "lucide-react"
+import { AnimatePresence, motion } from "motion/react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 interface CodeTab {
-  label: string;
-  code: string;
-  language?: string;
+  label: string
+  code: string
+  language?: string
 }
 
 interface CodeBlockProps {
-  tabs?: CodeTab[];
-  code?: string;
-  language?: string;
-  className?: string;
+  tabs?: CodeTab[]
+  code?: string
+  language?: string
+  className?: string
 }
 
 export function CodeBlock({
@@ -25,46 +25,46 @@ export function CodeBlock({
   language = "bash",
   className,
 }: CodeBlockProps) {
-  const [activeTab, setActiveTab] = useState(0);
-  const [copied, setCopied] = useState(false);
-  const [direction, setDirection] = useState(0);
-  const preRef = useRef<HTMLPreElement>(null);
-  const tabsContainerRef = useRef<HTMLDivElement>(null);
-  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const [hasOverflow, setHasOverflow] = useState(false);
+  const [activeTab, setActiveTab] = useState(0)
+  const [copied, setCopied] = useState(false)
+  const [direction, setDirection] = useState(0)
+  const preRef = useRef<HTMLPreElement>(null)
+  const tabsContainerRef = useRef<HTMLDivElement>(null)
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([])
+  const [hasOverflow, setHasOverflow] = useState(false)
   const [indicator, setIndicator] = useState<{
-    left: number;
-    width: number;
-  } | null>(null);
+    left: number
+    width: number
+  } | null>(null)
 
   const measureIndicator = useCallback(() => {
-    const container = tabsContainerRef.current;
-    const activeEl = tabRefs.current[activeTab];
+    const container = tabsContainerRef.current
+    const activeEl = tabRefs.current[activeTab]
 
     if (!container || !activeEl) {
-      return;
+      return
     }
 
-    const containerRect = container.getBoundingClientRect();
-    const tabRect = activeEl.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect()
+    const tabRect = activeEl.getBoundingClientRect()
 
     setIndicator({
       left: tabRect.left - containerRect.left,
       width: tabRect.width,
-    });
-  }, [activeTab]);
+    })
+  }, [activeTab])
 
   const codeContent = useMemo(() => {
     if (tabs && tabs.length > 0) {
-      return tabs;
+      return tabs
     }
     if (code) {
-      return [{ label: language, code, language }];
+      return [{ label: language, code, language }]
     }
-    return [];
-  }, [tabs, code, language]);
+    return []
+  }, [tabs, code, language])
 
-  const currentCode = codeContent[activeTab]?.code || "";
+  const currentCode = codeContent[activeTab]?.code || ""
 
   // Check overflow when tab changes or content updates
   // biome-ignore lint/correctness/useExhaustiveDependencies: activeTab is needed to recheck overflow when content changes
@@ -72,55 +72,55 @@ export function CodeBlock({
     const checkOverflow = () => {
       if (preRef.current) {
         const hasHorizontalOverflow =
-          preRef.current.scrollWidth > preRef.current.clientWidth;
-        setHasOverflow(hasHorizontalOverflow);
+          preRef.current.scrollWidth > preRef.current.clientWidth
+        setHasOverflow(hasHorizontalOverflow)
       }
-    };
+    }
 
-    checkOverflow();
-    const resizeObserver = new ResizeObserver(checkOverflow);
+    checkOverflow()
+    const resizeObserver = new ResizeObserver(checkOverflow)
     if (preRef.current) {
-      resizeObserver.observe(preRef.current);
+      resizeObserver.observe(preRef.current)
     }
 
     return () => {
-      resizeObserver.disconnect();
-    };
-  }, [activeTab]);
+      resizeObserver.disconnect()
+    }
+  }, [activeTab])
 
   useLayoutEffect(() => {
-    measureIndicator();
+    measureIndicator()
 
-    const resizeObserver = new ResizeObserver(measureIndicator);
-    const container = tabsContainerRef.current;
+    const resizeObserver = new ResizeObserver(measureIndicator)
+    const container = tabsContainerRef.current
 
     if (container) {
-      resizeObserver.observe(container);
+      resizeObserver.observe(container)
     }
 
     for (const tab of tabRefs.current) {
       if (tab) {
-        resizeObserver.observe(tab);
+        resizeObserver.observe(tab)
       }
     }
 
     return () => {
-      resizeObserver.disconnect();
-    };
-  }, [measureIndicator]);
+      resizeObserver.disconnect()
+    }
+  }, [measureIndicator])
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(currentCode);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+    await navigator.clipboard.writeText(currentCode)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
 
   const handleTabChange = (index: number) => {
-    setDirection(index > activeTab ? 1 : -1);
-    setActiveTab(index);
-  };
+    setDirection(index > activeTab ? 1 : -1)
+    setActiveTab(index)
+  }
 
-  if (codeContent.length === 0) return null;
+  if (codeContent.length === 0) return null
 
   return (
     <div
@@ -150,7 +150,7 @@ export function CodeBlock({
                 <button
                   key={`${tab.label}-${index}`}
                   ref={(element) => {
-                    tabRefs.current[index] = element;
+                    tabRefs.current[index] = element
                   }}
                   type="button"
                   role="tab"
@@ -292,5 +292,5 @@ export function CodeBlock({
         </pre>
       </div>
     </div>
-  );
+  )
 }

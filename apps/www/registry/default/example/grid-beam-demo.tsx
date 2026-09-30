@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
+import { useTheme } from "next-themes"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 import {
   GridBeam,
   GridBeamCanvas,
@@ -11,7 +11,7 @@ import {
   GridBeamDividers,
   useGridBeam,
   type GridBeamPaletteKey,
-} from "@/registry/default/ui/grid-beam";
+} from "@/registry/default/ui/grid-beam"
 
 const DEMO_DATA = [
   ["Project", "Status", "Lead", "Progress"],
@@ -19,23 +19,23 @@ const DEMO_DATA = [
   ["Nebula API", "Review", "Kai Tanaka", "92%"],
   ["Void Engine", "Active", "Zara Osei", "45%"],
   ["Pulse Sync", "Paused", "Lev Petrov", "61%"],
-] as const;
+] as const
 
 /** Status → shadcn chart tokens (light & dark follow `globals.css` variables). */
 const STATUS_BADGE_CLASS: Record<string, string> = {
   Active: "border border-chart-2/25 bg-chart-2/10 text-chart-2",
   Review: "border border-chart-1/25 bg-chart-1/10 text-chart-1",
   Paused: "border border-chart-4/25 bg-chart-4/10 text-chart-4",
-};
+}
 
 const PROGRESS_FILL: Record<GridBeamPaletteKey, string> = {
   colorful: "linear-gradient(90deg, var(--chart-3), var(--chart-1))",
   ocean: "linear-gradient(90deg, var(--chart-2), var(--chart-1))",
   sunset: "linear-gradient(90deg, var(--chart-4), var(--chart-5))",
   mono: "linear-gradient(90deg, var(--muted-foreground), var(--foreground))",
-};
+}
 
-const VARIANTS: GridBeamPaletteKey[] = ["colorful", "mono", "ocean", "sunset"];
+const VARIANTS: GridBeamPaletteKey[] = ["colorful", "mono", "ocean", "sunset"]
 
 function pillClass(active: boolean) {
   return cn(
@@ -43,11 +43,11 @@ function pillClass(active: boolean) {
     active
       ? "bg-accent text-accent-foreground"
       : "text-muted-foreground fine-hover:hover:bg-muted/60 bg-transparent"
-  );
+  )
 }
 
 function beamThemeFromResolved(resolved: string | undefined): "dark" | "light" {
-  return resolved === "dark" ? "dark" : "light";
+  return resolved === "dark" ? "dark" : "light"
 }
 
 /** Headless API: compose layers yourself (same animation as {@link GridBeam}). */
@@ -57,10 +57,10 @@ function HeadlessMetricsStrip({
   active,
   breathe,
 }: {
-  variant: GridBeamPaletteKey;
-  beamTheme: "dark" | "light";
-  active: boolean;
-  breathe: boolean;
+  variant: GridBeamPaletteKey
+  beamTheme: "dark" | "light"
+  active: boolean
+  breathe: boolean
 }) {
   const { canvasRef, rows, cols } = useGridBeam({
     rows: 2,
@@ -71,7 +71,7 @@ function HeadlessMetricsStrip({
     breathe,
     duration: 4.2,
     strength: 0.85,
-  });
+  })
 
   return (
     <div className="border-border bg-card/40 relative overflow-hidden rounded-xl border">
@@ -111,7 +111,7 @@ function HeadlessMetricsStrip({
         </div>
       </GridBeamContent>
     </div>
-  );
+  )
 }
 
 function DemoTableCell({
@@ -121,11 +121,11 @@ function DemoTableCell({
   progressFill,
   statusClass,
 }: {
-  cell: string;
-  isProgress: boolean;
-  isStatus: boolean;
-  progressFill: string;
-  statusClass: string | undefined;
+  cell: string
+  isProgress: boolean
+  isStatus: boolean
+  progressFill: string
+  statusClass: string | undefined
 }) {
   if (isStatus && statusClass) {
     return (
@@ -137,7 +137,7 @@ function DemoTableCell({
       >
         {cell}
       </span>
-    );
+    )
   }
   if (isProgress) {
     return (
@@ -155,27 +155,27 @@ function DemoTableCell({
           {cell}
         </span>
       </div>
-    );
+    )
   }
-  return cell;
+  return cell
 }
 
 export default function GridBeamDemo() {
-  const [variant, setVariant] = useState<GridBeamPaletteKey>("colorful");
-  const [isActive, setIsActive] = useState(true);
-  const [breathe, setBreathe] = useState(true);
+  const [variant, setVariant] = useState<GridBeamPaletteKey>("colorful")
+  const [isActive, setIsActive] = useState(true)
+  const [breathe, setBreathe] = useState(true)
 
-  const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    setMounted(true)
+  }, [])
 
-  const beamTheme = beamThemeFromResolved(resolvedTheme);
+  const beamTheme = beamThemeFromResolved(resolvedTheme)
   const progressFill =
     PROGRESS_FILL[variant] ??
-    "linear-gradient(90deg, var(--muted-foreground), var(--foreground))";
+    "linear-gradient(90deg, var(--muted-foreground), var(--foreground))"
 
   return (
     <main className="bg-background text-foreground flex min-h-screen flex-col items-center justify-center px-5 py-10 font-sans transition-colors">
@@ -247,14 +247,14 @@ export default function GridBeamDemo() {
               }}
             >
               {DEMO_DATA.flat().map((cell, i) => {
-                const row = Math.floor(i / DEMO_DATA[0].length);
-                const col = i % DEMO_DATA[0].length;
-                const isHeader = row === 0;
-                const isStatus = col === 1 && !isHeader;
-                const isProgress = col === 3 && !isHeader;
+                const row = Math.floor(i / DEMO_DATA[0].length)
+                const col = i % DEMO_DATA[0].length
+                const isHeader = row === 0
+                const isStatus = col === 1 && !isHeader
+                const isProgress = col === 3 && !isHeader
                 const statusClass = isStatus
                   ? STATUS_BADGE_CLASS[cell]
-                  : undefined;
+                  : undefined
                 return (
                   <div
                     className={cn(
@@ -273,7 +273,7 @@ export default function GridBeamDemo() {
                       statusClass={statusClass}
                     />
                   </div>
-                );
+                )
               })}
             </div>
           </GridBeam>
@@ -295,5 +295,5 @@ export default function GridBeamDemo() {
         </section>
       </div>
     </main>
-  );
+  )
 }

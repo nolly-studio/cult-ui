@@ -1,4 +1,4 @@
-import BackgroundMedia from "../ui/bg-media";
+import BackgroundMedia from "../ui/bg-media"
 
 export default function BgMediaDemo() {
   return (
@@ -11,5 +11,5 @@ export default function BgMediaDemo() {
         />
       </div>
     </div>
-  );
+  )
 }

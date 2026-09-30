@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import { ReactNode } from "react";
+import { ReactNode } from "react"
 
-import { Typewriter } from "../ui/typewriter";
+import { Typewriter } from "../ui/typewriter"
 
 const texts = [
   "Testing 124",
   "Look at newcult.co",
   "and check gnow.io",
   "Sick af",
-];
+]
 
 export default function TypewriterDemo() {
   return (
@@ -20,7 +20,7 @@ export default function TypewriterDemo() {
         </p>
       </div>
     </IosOgShellCard>
-  );
+  )
 }
 
 function IosOgShellCard({ children }: { children: ReactNode }) {
@@ -45,5 +45,5 @@ function IosOgShellCard({ children }: { children: ReactNode }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

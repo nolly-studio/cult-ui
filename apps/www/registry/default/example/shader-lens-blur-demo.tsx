@@ -1,30 +1,30 @@
-"use client";
+"use client"
 
-import { useAtom } from "jotai";
-import { Circle, CircleOff, Sliders, Square, Triangle } from "lucide-react";
-import { motion } from "motion/react";
-import { useCallback, useId } from "react";
+import { useCallback, useId } from "react"
+import { useAtom } from "jotai"
+import { Circle, CircleOff, Sliders, Square, Triangle } from "lucide-react"
+import { motion } from "motion/react"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@/components/ui/popover"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
-import { Slider } from "@/components/ui/slider";
-import { Switch } from "@/components/ui/switch";
+} from "@/components/ui/select"
+import { Separator } from "@/components/ui/separator"
+import { Slider } from "@/components/ui/slider"
+import { Switch } from "@/components/ui/switch"
 
-import ColorPicker from "../ui/color-picker";
-import ShaderLensBlur, { configAtom } from "../ui/shader-lens-blur";
+import ColorPicker from "../ui/color-picker"
+import ShaderLensBlur, { configAtom } from "../ui/shader-lens-blur"
 
 function ShaderLensBlurDemo() {
   return (
@@ -32,45 +32,45 @@ function ShaderLensBlurDemo() {
       <ShaderLensBlur />
       <ShaderBlurConfig />
     </div>
-  );
+  )
 }
 
 function ShaderBlurConfig() {
-  const [config, setConfig] = useAtom(configAtom);
-  const id = useId();
-  const variationId = `${id}-variation`;
-  const enableHoverId = `${id}-enable-hover`;
-  const invertMouseId = `${id}-invert-mouse`;
-  const widthId = `${id}-width`;
-  const heightId = `${id}-height`;
+  const [config, setConfig] = useAtom(configAtom)
+  const id = useId()
+  const variationId = `${id}-variation`
+  const enableHoverId = `${id}-enable-hover`
+  const invertMouseId = `${id}-invert-mouse`
+  const widthId = `${id}-width`
+  const heightId = `${id}-height`
 
   const handleVariationChange = useCallback(
     (value: string) => {
-      setConfig((prev) => ({ ...prev, variation: parseInt(value) }));
+      setConfig((prev) => ({ ...prev, variation: parseInt(value) }))
     },
     [setConfig]
-  );
+  )
 
   const handleColorChange = useCallback(
     (key: "color1" | "color2" | "color3" | "color4", value: string) => {
-      setConfig((prev) => ({ ...prev, [key]: value }));
+      setConfig((prev) => ({ ...prev, [key]: value }))
     },
     [setConfig]
-  );
+  )
 
   const handleDimensionChange = useCallback(
     (key: "width" | "height", value: number) => {
-      setConfig((prev) => ({ ...prev, [key]: value }));
+      setConfig((prev) => ({ ...prev, [key]: value }))
     },
     [setConfig]
-  );
+  )
 
   const variationIcons = [
     { icon: Square, label: "Square" },
     { icon: Circle, label: "Solid Circle" },
     { icon: CircleOff, label: "Hollow Circle" },
     { icon: Triangle, label: "Triangle" },
-  ];
+  ]
 
   return (
     <Card className="border-border bg-card text-card-foreground">
@@ -250,6 +250,6 @@ function ShaderBlurConfig() {
         </div>
       </CardContent>
     </Card>
-  );
+  )
 }
-export default ShaderLensBlurDemo;
+export default ShaderLensBlurDemo

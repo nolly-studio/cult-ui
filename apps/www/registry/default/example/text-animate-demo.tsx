@@ -1,17 +1,17 @@
-"use client";
+"use client"
 
-import { motion, useInView } from "motion/react";
-import { useRef, useState } from "react";
+import { useRef, useState } from "react"
+import { motion, useInView } from "motion/react"
 
-import { FadeIn } from "@/components/fade-in";
+import { FadeIn } from "@/components/fade-in"
 
-import TextAnimate from "../ui/text-animate";
+import TextAnimate from "../ui/text-animate"
 
 // @ts-ignore
 const AnimationDemo = ({ type, children }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const [count, setCount] = useState(0);
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+  const [count, setCount] = useState(0)
 
   return (
     <div className="relative flex flex-col" ref={ref}>
@@ -25,18 +25,18 @@ const AnimationDemo = ({ type, children }) => {
         <Refresh onClick={() => setCount(count + 1)} />
       </div>
     </div>
-  );
-};
+  )
+}
 
 const button = {
   rest: { scale: 1 },
   hover: { scale: 1.1 },
   pressed: { scale: 0.95 },
-};
+}
 const arrow = {
   rest: { rotate: 0 },
   hover: { rotate: 360, transition: { duration: 0.4 } },
-};
+}
 
 // @ts-ignore
 const Refresh = ({ onClick }) => {
@@ -62,8 +62,8 @@ const Refresh = ({ onClick }) => {
         />
       </motion.svg>
     </motion.div>
-  );
-};
+  )
+}
 
 export default function TextAnimationDemo() {
   return (
@@ -135,5 +135,5 @@ export default function TextAnimationDemo() {
         </div>
       </div>
     </AnimationDemo>
-  );
+  )
 }

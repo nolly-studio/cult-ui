@@ -1,24 +1,24 @@
-"use client";
+"use client"
 
-import { Check, Copy, Lock, LockOpen, Palette, RefreshCw } from "lucide-react";
-import { motion } from "motion/react";
-import { Poline, positionFunctions } from "poline";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react"
+import { Check, Copy, Lock, LockOpen, Palette, RefreshCw } from "lucide-react"
+import { motion } from "motion/react"
+import { Poline, positionFunctions } from "poline"
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@/components/ui/tooltip"
 
-import ColorPicker from "../ui/color-picker";
+import ColorPicker from "../ui/color-picker"
 
 type ColorScheme = {
-  [key: string]: string;
-};
+  [key: string]: string
+}
 
 export default function ColorPickerDemo() {
   const [colorScheme, setColorScheme] = useState<ColorScheme>({
@@ -41,20 +41,20 @@ export default function ColorPickerDemo() {
     border: "240 5.9% 90%",
     input: "240 5.9% 90%",
     ring: "240 5.9% 10%",
-  });
-  const [lockedColor, setLockedColor] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
+  })
+  const [lockedColor, setLockedColor] = useState<string | null>(null)
+  const [copied, setCopied] = useState(false)
 
   const generateHarmoniousColors = useCallback(() => {
-    let anchorColors: [number, number, number][] = [];
+    let anchorColors: [number, number, number][] = []
 
     if (lockedColor) {
-      const [h, s, l] = colorScheme[lockedColor].split(" ").map(parseFloat);
-      anchorColors.push([h, s / 100, l / 100]);
+      const [h, s, l] = colorScheme[lockedColor].split(" ").map(parseFloat)
+      anchorColors.push([h, s / 100, l / 100])
     }
 
     while (anchorColors.length < 3) {
-      anchorColors.push([Math.random() * 360, 0.7, 0.5]);
+      anchorColors.push([Math.random() * 360, 0.7, 0.5])
     }
 
     const poline = new Poline({
@@ -63,33 +63,33 @@ export default function ColorPickerDemo() {
       positionFunctionX: positionFunctions.sinusoidalPosition,
       positionFunctionY: positionFunctions.quadraticPosition,
       positionFunctionZ: positionFunctions.linearPosition,
-    });
+    })
 
-    const newColorScheme = { ...colorScheme };
-    const colors = poline.colorsCSS;
+    const newColorScheme = { ...colorScheme }
+    const colors = poline.colorsCSS
 
     Object.keys(newColorScheme).forEach((key, index) => {
       if (key !== lockedColor) {
-        const color = colors[index % colors.length];
-        const [h, s, l] = color.match(/\d+(\.\d+)?/g)?.map(Number) || [0, 0, 0];
+        const color = colors[index % colors.length]
+        const [h, s, l] = color.match(/\d+(\.\d+)?/g)?.map(Number) || [0, 0, 0]
 
-        let adjustedLightness = l;
+        let adjustedLightness = l
         if (key.includes("foreground")) {
-          adjustedLightness = Math.min(l - 30, 20);
+          adjustedLightness = Math.min(l - 30, 20)
         } else if (key === "background") {
-          adjustedLightness = Math.max(l + 30, 90);
+          adjustedLightness = Math.max(l + 30, 90)
         } else if (key === "border" || key === "input") {
-          adjustedLightness = Math.min(Math.max(l, 70), 90);
+          adjustedLightness = Math.min(Math.max(l, 70), 90)
         }
 
         newColorScheme[key] = `${h.toFixed(1)} ${s.toFixed(
           1
-        )}% ${adjustedLightness.toFixed(1)}%`;
+        )}% ${adjustedLightness.toFixed(1)}%`
       }
-    });
+    })
 
-    setColorScheme(newColorScheme);
-  }, [colorScheme, lockedColor]);
+    setColorScheme(newColorScheme)
+  }, [colorScheme, lockedColor])
 
   const resetColors = useCallback(() => {
     setColorScheme({
@@ -112,34 +112,34 @@ export default function ColorPickerDemo() {
       border: "240 5.9% 90%",
       input: "240 5.9% 90%",
       ring: "240 5.9% 10%",
-    });
-    setLockedColor(null);
-  }, []);
+    })
+    setLockedColor(null)
+  }, [])
 
   const copyColorScheme = useCallback(() => {
     const cssVariables = Object.entries(colorScheme)
       .map(([key, value]) => `--${key}: ${value};`)
-      .join("\n    ");
+      .join("\n    ")
 
     const fullCss = `@layer base {
   :root {
     ${cssVariables}
   }
-}`;
+}`
 
-    navigator.clipboard.writeText(fullCss);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  }, [colorScheme]);
+    navigator.clipboard.writeText(fullCss)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }, [colorScheme])
 
   const getContrastColor = useCallback((color: string) => {
-    const [, , lightness] = color.split(" ").map(parseFloat);
-    return lightness > 50 ? "0 0% 0%" : "0 0% 100%";
-  }, []);
+    const [, , lightness] = color.split(" ").map(parseFloat)
+    return lightness > 50 ? "0 0% 0%" : "0 0% 100%"
+  }, [])
 
   const toggleLock = useCallback((key: string) => {
-    setLockedColor((prev) => (prev === key ? null : key));
-  }, []);
+    setLockedColor((prev) => (prev === key ? null : key))
+  }, [])
 
   return (
     <div className="mx-auto w-full max-w-4xl">
@@ -189,13 +189,13 @@ export default function ColorPickerDemo() {
                       onChange={(newColor) => {
                         const [h, s, l] = newColor
                           .match(/\d+(\.\d+)?/g)
-                          ?.map(Number) || [0, 0, 0];
+                          ?.map(Number) || [0, 0, 0]
                         setColorScheme({
                           ...colorScheme,
                           [key]: `${h.toFixed(1)} ${s.toFixed(1)}% ${l.toFixed(
                             1
                           )}%`,
-                        });
+                        })
                       }}
                     />
                   </div>
@@ -236,11 +236,9 @@ export default function ColorPickerDemo() {
                           size="sm"
                           className="font-mono"
                           onClick={() => {
-                            navigator.clipboard.writeText(
-                              `--${key}: ${value};`
-                            );
-                            setCopied(true);
-                            setTimeout(() => setCopied(false), 2000);
+                            navigator.clipboard.writeText(`--${key}: ${value};`)
+                            setCopied(true)
+                            setTimeout(() => setCopied(false), 2000)
                           }}
                           style={{
                             backgroundColor: `hsl(${value})`,
@@ -271,5 +269,5 @@ export default function ColorPickerDemo() {
         </div>
       </CardContent>
     </div>
-  );
+  )
 }

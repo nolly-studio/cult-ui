@@ -1,13 +1,13 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
 
-import { GradientHeading, Size, Variant, Weight } from "../ui/gradient-heading";
+import { GradientHeading, Size, Variant, Weight } from "../ui/gradient-heading"
 
 export default function GradientHeadingDemo() {
-  const variants: Variant[] = ["default", "pink", "light"];
-  const sizes: Size[] = ["lg", "xl", "xxl", "xxxl"];
-  const weights: Weight[] = ["thin", "base", "semi", "bold", "black"];
+  const variants: Variant[] = ["default", "pink", "light"]
+  const sizes: Size[] = ["lg", "xl", "xxl", "xxxl"]
+  const weights: Weight[] = ["thin", "base", "semi", "bold", "black"]
 
   return (
     <div className="space-y-8 p-4">
@@ -32,5 +32,5 @@ export default function GradientHeadingDemo() {
         </div>
       ))}
     </div>
-  );
+  )
 }

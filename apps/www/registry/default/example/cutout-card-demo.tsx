@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { motion } from "motion/react";
+import { motion } from "motion/react"
 
 import {
   CutoutCard,
@@ -15,14 +15,14 @@ import {
   cutoutCardSurfaceClassName,
   CutoutCorner,
   useCutoutContentStaggerVariants,
-} from "@/registry/default/ui/cutout-card";
+} from "@/registry/default/ui/cutout-card"
 
 // ============================================================================
 // Demo — full-page showcase matching the original single-component layout
 // ============================================================================
 
 function CutoutCardDemo() {
-  const stagger = useCutoutContentStaggerVariants();
+  const stagger = useCutoutContentStaggerVariants()
 
   return (
     <div className="flex min-h-screen items-center justify-center">
@@ -100,7 +100,7 @@ function CutoutCardDemo() {
         </CutoutCard>
       </div>
     </div>
-  );
+  )
 }
 
-export default CutoutCardDemo;
+export default CutoutCardDemo

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "illustration-card-grid-demo",
+  "registryDependencies": [
+    "illustration-card-grid"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/illustration-card-grid-demo.tsx",
+      "content": "\"use client\";\n\nimport { IllustrationCardGrid } from \"@/registry/default/ui/illustration-card-grid\";\n\nfunction IllustrationCardGridDemo() {\n\treturn (\n\t\t<div className=\"w-full\">\n\t\t\t<IllustrationCardGrid />\n\t\t</div>\n\t);\n}\n\nexport default IllustrationCardGridDemo;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

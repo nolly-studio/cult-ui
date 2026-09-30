@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "illustration-comment-bubble-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "illustration-comment-bubble"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/illustration-comment-bubble-demo.tsx",
+      "content": "\"use client\"\n\nexport { CommentBubbleDemo as default } from \"@/registry/default/ui/illustration-comment-bubble\"\n",
+      "type": "registry:component"
+    }
+  ]
+}

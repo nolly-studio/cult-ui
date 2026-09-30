@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { YouTubePlayer } from "@/registry/default/ui/youtube-video-player";
+import { YouTubePlayer } from "@/registry/default/ui/youtube-video-player"
 
 export default function YouTubeVideoPlayerDemo() {
   return (
@@ -207,5 +207,5 @@ export default function YouTubeVideoPlayerDemo() {
         </div>
       </section>
     </div>
-  );
+  )
 }

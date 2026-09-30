@@ -1,5 +1,6 @@
-"use client";
+"use client"
 
+import { useState } from "react"
 import {
   Database01Icon,
   DropboxIcon,
@@ -7,20 +8,19 @@ import {
   GoogleIcon,
   NotionIcon,
   SlackIcon,
-} from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
-import { useState } from "react";
+} from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/ui/card"
 
-import { ChoicePoll } from "../ui/choice-poll";
+import { ChoicePoll } from "../ui/choice-poll"
 
 /* -----------------------------------------------------------------------------
  * Integration options data
@@ -63,26 +63,26 @@ const integrations = [
     description: "Database and authentication",
     icon: Database01Icon,
   },
-];
+]
 
 /* -----------------------------------------------------------------------------
  * Basic Example - Single Selection
  * -------------------------------------------------------------------------- */
 
 function ChoicePollBasicExample() {
-  const [selected, setSelected] = useState<string>("");
-  const [hasVoted, setHasVoted] = useState(false);
+  const [selected, setSelected] = useState<string>("")
+  const [hasVoted, setHasVoted] = useState(false)
 
   const votes = {
     slack: 234,
     notion: 189,
     github: 156,
     "google-drive": 98,
-  };
+  }
 
   const handleVote = () => {
-    setHasVoted(true);
-  };
+    setHasVoted(true)
+  }
 
   return (
     <Card className="w-full max-w-lg">
@@ -134,7 +134,7 @@ function ChoicePollBasicExample() {
         </ChoicePoll.Root>
       </CardContent>
     </Card>
-  );
+  )
 }
 
 /* -----------------------------------------------------------------------------
@@ -142,19 +142,19 @@ function ChoicePollBasicExample() {
  * -------------------------------------------------------------------------- */
 
 function ChoicePollWithResultsExample() {
-  const [selected, setSelected] = useState<string>("");
-  const [hasVoted, setHasVoted] = useState(false);
+  const [selected, setSelected] = useState<string>("")
+  const [hasVoted, setHasVoted] = useState(false)
 
   const votes = {
     slack: 100,
     notion: 189,
     github: 256,
     "google-drive": 98,
-  };
+  }
 
   const handleVote = () => {
-    setHasVoted(true);
-  };
+    setHasVoted(true)
+  }
 
   return (
     <Card className="w-full max-w-lg">
@@ -206,7 +206,7 @@ function ChoicePollWithResultsExample() {
         </ChoicePoll.Root>
       </CardContent>
     </Card>
-  );
+  )
 }
 
 /* -----------------------------------------------------------------------------
@@ -214,8 +214,8 @@ function ChoicePollWithResultsExample() {
  * -------------------------------------------------------------------------- */
 
 function ChoicePollMultipleExample() {
-  const [selected, setSelected] = useState<string[]>([]);
-  const [hasVoted, setHasVoted] = useState(false);
+  const [selected, setSelected] = useState<string[]>([])
+  const [hasVoted, setHasVoted] = useState(false)
 
   const votes = {
     slack: 100,
@@ -224,11 +224,11 @@ function ChoicePollMultipleExample() {
     "google-drive": 198,
     dropbox: 98,
     supabase: 156,
-  };
+  }
 
   const handleVote = () => {
-    setHasVoted(true);
-  };
+    setHasVoted(true)
+  }
 
   return (
     <Card className="w-full max-w-lg">
@@ -290,7 +290,7 @@ function ChoicePollMultipleExample() {
         </ChoicePoll.Root>
       </CardContent>
     </Card>
-  );
+  )
 }
 
 /* -----------------------------------------------------------------------------
@@ -298,7 +298,7 @@ function ChoicePollMultipleExample() {
  * -------------------------------------------------------------------------- */
 
 function ChoicePollCompactExample() {
-  const [selected, setSelected] = useState<string>("");
+  const [selected, setSelected] = useState<string>("")
 
   return (
     <div className="w-full max-w-sm">
@@ -329,7 +329,7 @@ function ChoicePollCompactExample() {
         </ChoicePoll.Options>
       </ChoicePoll.Root>
     </div>
-  );
+  )
 }
 
 /* -----------------------------------------------------------------------------
@@ -356,5 +356,5 @@ export default function ChoicePollDemo() {
         <ChoicePollCompactExample />
       </div>
     </div>
-  );
+  )
 }

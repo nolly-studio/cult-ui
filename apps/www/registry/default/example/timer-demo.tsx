@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import { Pause, Play, RotateCcw } from "lucide-react";
+import { Pause, Play, RotateCcw } from "lucide-react"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Timer,
   TimerDisplay,
   TimerIcon,
   TimerRoot,
   useTimer,
-} from "@/registry/default/ui/timer";
+} from "@/registry/default/ui/timer"
 
 export default function TimerExamples() {
   return (
@@ -55,13 +55,13 @@ export default function TimerExamples() {
         <CustomTimerExample />
       </div>
     </div>
-  );
+  )
 }
 
 function CustomTimerExample() {
   const { formattedTime, isRunning, start, stop, reset } = useTimer({
     format: "MM:SS",
-  });
+  })
 
   return (
     <div className="space-y-2">
@@ -90,5 +90,5 @@ function CustomTimerExample() {
         </div>
       </div>
     </div>
-  );
+  )
 }

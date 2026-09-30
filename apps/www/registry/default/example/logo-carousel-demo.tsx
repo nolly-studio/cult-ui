@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import React from "react";
+import React from "react"
 
-import { GradientHeading } from "../ui/gradient-heading";
-import LogoCarousel from "../ui/logo-carousel";
+import { GradientHeading } from "../ui/gradient-heading"
+import LogoCarousel from "../ui/logo-carousel"
 
 export default function LogoCarouselDemo() {
   return (
@@ -21,5 +21,5 @@ export default function LogoCarouselDemo() {
         <LogoCarousel columnCount={3} />
       </div>
     </div>
-  );
+  )
 }

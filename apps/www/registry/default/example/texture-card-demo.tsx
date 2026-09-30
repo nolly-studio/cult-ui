@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import { ArrowRight, Merge } from "lucide-react";
+import { ArrowRight, Merge } from "lucide-react"
 
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { TextureButton } from "@/registry/default/ui/texture-button";
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { TextureButton } from "@/registry/default/ui/texture-button"
 import {
   TextureCardContent,
   TextureCardFooter,
@@ -12,7 +12,7 @@ import {
   TextureCardStyled,
   TextureCardTitle,
   TextureSeparator,
-} from "@/registry/default/ui/texture-card";
+} from "@/registry/default/ui/texture-card"
 
 export default function TextureCardDemo() {
   return (
@@ -169,5 +169,5 @@ export default function TextureCardDemo() {
         </div>
       </div>
     </div>
-  );
+  )
 }

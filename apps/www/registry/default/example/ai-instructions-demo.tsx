@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
 import {
   Instruction,
@@ -15,7 +15,7 @@ import {
   InstructionsList,
   InstructionsSearch,
   InstructionsTrigger,
-} from "../ui/ai-instructions";
+} from "../ui/ai-instructions"
 
 const SAMPLE_INSTRUCTIONS: Instruction[] = [
   {
@@ -53,14 +53,14 @@ const SAMPLE_INSTRUCTIONS: Instruction[] = [
     content:
       "Include ARIA attributes, semantic HTML, keyboard navigation support, and screen reader considerations in all UI-related code.",
   },
-];
+]
 
 export default function AiInstructionsDemo() {
   const [activeInstructions, setActiveInstructions] = useState<string[]>([
     "concise",
-  ]);
+  ])
   const [instructions, setInstructions] =
-    useState<Instruction[]>(SAMPLE_INSTRUCTIONS);
+    useState<Instruction[]>(SAMPLE_INSTRUCTIONS)
 
   return (
     <div className="flex w-full max-w-md flex-col gap-4">
@@ -103,7 +103,7 @@ export default function AiInstructionsDemo() {
           </p>
           <div className="flex flex-wrap gap-1.5">
             {activeInstructions.map((id) => {
-              const instruction = instructions.find((i) => i.id === id);
+              const instruction = instructions.find((i) => i.id === id)
               return instruction ? (
                 <span
                   className="bg-primary/10 text-primary rounded-md px-2 py-0.5 text-xs"
@@ -111,11 +111,11 @@ export default function AiInstructionsDemo() {
                 >
                   {instruction.title}
                 </span>
-              ) : null;
+              ) : null
             })}
           </div>
         </div>
       )}
     </div>
-  );
+  )
 }

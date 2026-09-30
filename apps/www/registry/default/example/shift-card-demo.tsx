@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import { motion } from "motion/react";
+import { motion } from "motion/react"
 
-import { ShiftCard } from "@/registry/default/ui/shift-card";
-import { TextureButton } from "@/registry/default/ui/texture-button";
+import { ShiftCard } from "@/registry/default/ui/shift-card"
+import { TextureButton } from "@/registry/default/ui/texture-button"
 
 export default function ShiftCardDemo() {
   // Content for the top part of the card
@@ -49,7 +49,7 @@ export default function ShiftCardDemo() {
         Screen Capture
       </h3>
     </div>
-  );
+  )
 
   // Content that animates into top from the middle
   const topAnimateContent = (
@@ -82,7 +82,7 @@ export default function ShiftCardDemo() {
         }}
       />
     </>
-  );
+  )
 
   // Content that animates from the top to the middle
   const middleContent = (
@@ -94,7 +94,7 @@ export default function ShiftCardDemo() {
       alt="Animated Middle"
       className="rounded-lg border-2 border-white dark:border-black"
     />
-  );
+  )
 
   // Content for the bottom part of the card that shows more details on hover
   const bottomContent = (
@@ -159,7 +159,7 @@ export default function ShiftCardDemo() {
         </TextureButton>
       </div>
     </div>
-  );
+  )
 
   return (
     <div className="flex items-center justify-center">
@@ -171,5 +171,5 @@ export default function ShiftCardDemo() {
         bottomContent={bottomContent}
       />
     </div>
-  );
+  )
 }

@@ -1,19 +1,19 @@
-"use client";
+"use client"
 
-import { HelpCircle } from "lucide-react";
-import { useState } from "react";
+import { useState } from "react"
+import { HelpCircle } from "lucide-react"
 
-import { MorphSurface } from "@/registry/default/ui/morph-surface";
+import { MorphSurface } from "@/registry/default/ui/morph-surface"
 
 export default function MorphSurfaceDemo() {
-  const [isControlledOpen, setIsControlledOpen] = useState(false);
+  const [isControlledOpen, setIsControlledOpen] = useState(false)
 
   const handleSubmit = async (formData: FormData) => {
-    const message = formData.get("message") as string;
-    console.log("Submitted message:", message);
+    const message = formData.get("message") as string
+    console.log("Submitted message:", message)
     // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 500));
-  };
+    await new Promise((resolve) => setTimeout(resolve, 500))
+  }
 
   return (
     <div className="space-y-12 p-8">
@@ -40,7 +40,7 @@ export default function MorphSurfaceDemo() {
             placeholder="Share your thoughts..."
             onSubmit={handleSubmit}
             onSuccess={() => {
-              console.log("Feedback submitted successfully!");
+              console.log("Feedback submitted successfully!")
             }}
           />
         </div>
@@ -119,5 +119,5 @@ export default function MorphSurfaceDemo() {
         </div>
       </section>
     </div>
-  );
+  )
 }

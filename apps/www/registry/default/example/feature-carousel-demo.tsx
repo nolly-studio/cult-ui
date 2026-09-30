@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
-import { FeatureCarousel } from "../ui/feature-carousel";
+import { FeatureCarousel } from "../ui/feature-carousel"
 
 export default function FeatureCarouselDemo() {
   return (
@@ -57,7 +57,7 @@ export default function FeatureCarouselDemo() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 // Add metadata for the registry

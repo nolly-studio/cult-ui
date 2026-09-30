@@ -1,39 +1,39 @@
-"use client";
+"use client"
 
-import { ArrowRight, Pause, Play, Sparkles, Wand2, Zap } from "lucide-react";
-import type { MetalFxPreset } from "metal-fx";
-import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react"
+import { ArrowRight, Pause, Play, Sparkles, Wand2, Zap } from "lucide-react"
+import type { MetalFxPreset } from "metal-fx"
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import {
   MetalButton,
   MetalIconButton,
-} from "@/registry/default/ui/metal-button";
+} from "@/registry/default/ui/metal-button"
 
 const PRESET_ROW: { key: MetalFxPreset; label: string }[] = [
   { key: "chromatic", label: "Chromatic" },
   { key: "silver", label: "Silver" },
   { key: "gold", label: "Gold" },
-];
+]
 
-const METAL_VARIANTS = ["button", "circle"] as const;
+const METAL_VARIANTS = ["button", "circle"] as const
 
 const STRENGTH_ROW = [
   { value: 0.5, label: "50%" },
   { value: 0.75, label: "75%" },
   { value: 0.9, label: "90%" },
   { value: 1, label: "100%" },
-] as const;
+] as const
 
 function Section({
   title,
   description,
   children,
 }: {
-  title: string;
-  description?: string;
-  children: ReactNode;
+  title: string
+  description?: string
+  children: ReactNode
 }) {
   return (
     <section className="space-y-4">
@@ -49,28 +49,28 @@ function Section({
       </div>
       {children}
     </section>
-  );
+  )
 }
 
 export default function MetalButtonDemo() {
-  const id = useId();
-  const chipRef = useRef<HTMLButtonElement>(null);
-  const [preset, setPreset] = useState<MetalFxPreset>("chromatic");
-  const [metalPaused, setMetalPaused] = useState(false);
-  const [respectsReducedMotion, setRespectsReducedMotion] = useState(false);
+  const id = useId()
+  const chipRef = useRef<HTMLButtonElement>(null)
+  const [preset, setPreset] = useState<MetalFxPreset>("chromatic")
+  const [metalPaused, setMetalPaused] = useState(false)
+  const [respectsReducedMotion, setRespectsReducedMotion] = useState(false)
 
   const activePresetLabel =
-    PRESET_ROW.find((row) => row.key === preset)?.label ?? "Chromatic";
+    PRESET_ROW.find((row) => row.key === preset)?.label ?? "Chromatic"
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => setRespectsReducedMotion(mq.matches);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
-  }, []);
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const sync = () => setRespectsReducedMotion(mq.matches)
+    sync()
+    mq.addEventListener("change", sync)
+    return () => mq.removeEventListener("change", sync)
+  }, [])
 
-  const effectivePaused = metalPaused || respectsReducedMotion;
+  const effectivePaused = metalPaused || respectsReducedMotion
 
   return (
     <div className="mx-auto w-full max-w-3xl space-y-10 px-4 py-8 md:px-6">
@@ -276,5 +276,5 @@ export default function MetalButtonDemo() {
         </p>
       </Section>
     </div>
-  );
+  )
 }

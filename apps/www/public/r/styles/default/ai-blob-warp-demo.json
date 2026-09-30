@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-blob-warp-demo",
+  "registryDependencies": [
+    "ai-blob-warp"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/ai-blob-warp-demo.tsx",
+      "content": "\"use client\";\n\nimport type { ReactNode } from \"react\";\n\nimport { AiBlobWarpAvatar } from \"@/registry/default/ui/ai-blob-warp\";\n\nfunction SampleCard({ label, description, children }: { label: string; description: string; children: ReactNode }) {\n  return (\n    <div className=\"flex flex-col items-center gap-3 rounded-xl border border-border/60 bg-card/40 p-4 text-center shadow-sm\">\n      {children}\n      <div className=\"space-y-1\">\n        <p className=\"font-medium text-foreground text-sm\">{label}</p>\n        <p className=\"max-w-56 text-balance text-muted-foreground text-xs leading-relaxed\">{description}</p>\n      </div>\n    </div>\n  );\n}\n\nexport default function AiBlobWarpDemo() {\n  return (\n    <div className=\"mx-auto max-w-lg space-y-8 px-4 py-10 sm:py-14\">\n      <div className=\"text-center\">\n        <h1 className=\"mb-2 font-semibold text-2xl text-foreground\">AI blob warp</h1>\n        <p className=\"text-balance text-muted-foreground text-sm leading-relaxed\">\n          Circular avatar with Paper&apos;s <code className=\"text-foreground\">Warp</code> shader. Size via{\" \"}\n          <code className=\"text-foreground\">className</code>, tuning via <code className=\"text-foreground\">warpProps</code>.\n        </p>\n      </div>\n\n      <div className=\"flex flex-wrap justify-center gap-6\">\n        <SampleCard description=\"Defaults: size-8, Cult-style gradient stops.\" label=\"Default\">\n          <AiBlobWarpAvatar aria-label=\"Default warp avatar\" />\n        </SampleCard>\n        <SampleCard description=\"Larger frame and warm palette override.\" label=\"Warm\">\n          <AiBlobWarpAvatar\n            aria-label=\"Warm warp avatar\"\n            className=\"size-14\"\n            warpProps={{\n              colors: [\"#fda4af\", \"#fb923c\", \"#f472b6\", \"#fecdd3\"],\n            }}\n          />\n        </SampleCard>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

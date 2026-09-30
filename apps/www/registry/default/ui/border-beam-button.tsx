@@ -1,19 +1,19 @@
-"use client";
+"use client"
 
-import {
-  BorderBeam,
-  type BorderBeamProps,
-  type BorderBeamSize,
-} from "border-beam";
 /**
  * `border-beam` around `Button` — compact `beamSize="sm"` glow for controls.
  * `className` styles the button; `borderBeamClassName` styles the beam wrapper.
  */
-import type { ComponentProps, CSSProperties } from "react";
-import { forwardRef } from "react";
+import type { ComponentProps, CSSProperties } from "react"
+import { forwardRef } from "react"
+import {
+  BorderBeam,
+  type BorderBeamProps,
+  type BorderBeamSize,
+} from "border-beam"
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 
 type BeamShellProps = Pick<
   BorderBeamProps,
@@ -30,15 +30,15 @@ type BeamShellProps = Pick<
   | "onActivate"
   | "onDeactivate"
 > & {
-  beamSize?: BorderBeamSize;
-  borderBeamClassName?: string;
-  borderBeamStyle?: CSSProperties;
-};
+  beamSize?: BorderBeamSize
+  borderBeamClassName?: string
+  borderBeamStyle?: CSSProperties
+}
 
 export type BorderBeamButtonProps = ComponentProps<typeof Button> &
-  BeamShellProps;
+  BeamShellProps
 
-export type BorderBeamIconButtonProps = BorderBeamButtonProps;
+export type BorderBeamIconButtonProps = BorderBeamButtonProps
 
 export const BorderBeamButton = forwardRef<
   HTMLDivElement,
@@ -89,10 +89,10 @@ export const BorderBeamButton = forwardRef<
     >
       <Button className={className} {...buttonProps} />
     </BorderBeam>
-  );
-});
+  )
+})
 
-BorderBeamButton.displayName = "BorderBeamButton";
+BorderBeamButton.displayName = "BorderBeamButton"
 
 export const BorderBeamIconButton = forwardRef<
   HTMLDivElement,
@@ -108,7 +108,7 @@ export const BorderBeamIconButton = forwardRef<
       size={size}
       {...props}
     />
-  );
-});
+  )
+})
 
-BorderBeamIconButton.displayName = "BorderBeamIconButton";
+BorderBeamIconButton.displayName = "BorderBeamIconButton"

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gateway-route-illustration-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "gateway-route-illustration"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/gateway-route-illustration-demo.tsx",
+      "content": "\"use client\"\n\nimport { GatewayRouting } from \"@/registry/default/ui/gateway-route-illustration\"\n\nfunction GatewayRouteIllustrationDemo() {\n  return (\n    <div className=\"w-full max-w-[264px]\">\n      <GatewayRouting />\n    </div>\n  )\n}\n\nexport default GatewayRouteIllustrationDemo\n",
+      "type": "registry:component"
+    }
+  ]
+}

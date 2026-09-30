@@ -1,20 +1,20 @@
-"use client";
+"use client"
 
-import { Download } from "lucide-react";
-import { useState } from "react";
+import { useState } from "react"
+import { Download } from "lucide-react"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Slider } from "@/components/ui/slider";
-import { BackgroundImageTexture } from "@/registry/default/ui/bg-image-texture";
-import type { TextureVariant } from "@/registry/default/ui/bg-image-texture";
+} from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
+import { Slider } from "@/components/ui/slider"
+import { BackgroundImageTexture } from "@/registry/default/ui/bg-image-texture"
+import type { TextureVariant } from "@/registry/default/ui/bg-image-texture"
 
 const textureVariants: TextureVariant[] = [
   "fabric-of-squares",
@@ -23,7 +23,7 @@ const textureVariants: TextureVariant[] = [
   "debut-light",
   "groovepaper",
   "none",
-];
+]
 
 const textureMap: Record<Exclude<TextureVariant, "none">, string> = {
   "fabric-of-squares": "/textures/fabric-of-squares.png",
@@ -31,36 +31,36 @@ const textureMap: Record<Exclude<TextureVariant, "none">, string> = {
   inflicted: "/textures/inflicted.png",
   "debut-light": "/textures/debut-light.png",
   groovepaper: "/textures/groovepaper.png",
-};
+}
 
 async function downloadTexture(variant: Exclude<TextureVariant, "none">) {
-  const url = textureMap[variant];
+  const url = textureMap[variant]
   try {
-    const response = await fetch(url);
-    const blob = await response.blob();
-    const blobUrl = window.URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = blobUrl;
-    link.download = `${variant}.png`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    window.URL.revokeObjectURL(blobUrl);
+    const response = await fetch(url)
+    const blob = await response.blob()
+    const blobUrl = window.URL.createObjectURL(blob)
+    const link = document.createElement("a")
+    link.href = blobUrl
+    link.download = `${variant}.png`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    window.URL.revokeObjectURL(blobUrl)
   } catch {
     // Fallback to direct link if fetch fails
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `${variant}.png`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    const link = document.createElement("a")
+    link.href = url
+    link.download = `${variant}.png`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }
 }
 
 export default function BackgroundImageTextureDemo() {
   const [selectedVariant, setSelectedVariant] =
-    useState<TextureVariant>("fabric-of-squares");
-  const [opacity, setOpacity] = useState([0.5]);
+    useState<TextureVariant>("fabric-of-squares")
+  const [opacity, setOpacity] = useState([0.5])
 
   return (
     <div className="space-y-8 p-6">
@@ -286,5 +286,5 @@ export default function BackgroundImageTextureDemo() {
         </div>
       </div>
     </div>
-  );
+  )
 }

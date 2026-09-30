@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import { animate, motion, useMotionValue, useTransform } from "motion/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
+import { animate, motion, useMotionValue, useTransform } from "motion/react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 const containerVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -17,7 +17,7 @@ const containerVariants = {
       staggerChildren: 0.1,
     },
   },
-};
+}
 
 const itemVariants = {
   hidden: { opacity: 0, y: 15 },
@@ -29,7 +29,7 @@ const itemVariants = {
       ease: [0, 0, 0.58, 1] as const,
     },
   },
-};
+}
 
 export function AnimatedContainer() {
   return (
@@ -63,21 +63,21 @@ export function AnimatedContainer() {
         </motion.span>
       </motion.div>
     </motion.div>
-  );
+  )
 }
 
 export interface ITextAnimationProps {
-  delay: number;
+  delay: number
 }
 
 function TextAnimation({ delay }: ITextAnimationProps) {
-  const [animationComplete, setAnimationComplete] = useState(false);
-  const baseText = "Create a ";
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (latest) => Math.round(latest));
+  const [animationComplete, setAnimationComplete] = useState(false)
+  const baseText = "Create a "
+  const count = useMotionValue(0)
+  const rounded = useTransform(count, (latest) => Math.round(latest))
   const displayText = useTransform(rounded, (latest) =>
     baseText.slice(0, latest)
-  );
+  )
 
   useEffect(() => {
     const controls = animate(count, baseText.length, {
@@ -86,9 +86,9 @@ function TextAnimation({ delay }: ITextAnimationProps) {
       duration: 1,
       ease: [0.42, 0, 0.58, 1] as const,
       onComplete: () => setAnimationComplete(true),
-    });
-    return controls.stop;
-  }, [count, baseText.length, delay]);
+    })
+    return controls.stop
+  }, [count, baseText.length, delay])
 
   return (
     <span>
@@ -96,15 +96,15 @@ function TextAnimation({ delay }: ITextAnimationProps) {
       {animationComplete && <RepeatedTextAnimation delay={delay + 1} />}
       <BlinkingCursor />
     </span>
-  );
+  )
 }
 
 export interface IRepeatedTextAnimationProps {
-  delay: number;
+  delay: number
 }
 
 function RepeatedTextAnimation({ delay }: IRepeatedTextAnimationProps) {
-  const textIndex = useMotionValue(0);
+  const textIndex = useMotionValue(0)
   const texts = [
     "quiz page with questions and answers",
     "blog Article Details Page Layout",
@@ -116,15 +116,15 @@ function RepeatedTextAnimation({ delay }: IRepeatedTextAnimationProps) {
     "list of product categories with image, name and description.",
     "landing page hero section with a heading, leading text and an opt-in form.",
     "contact form with first name, last name, email, and message fields.",
-  ];
+  ]
 
-  const baseText = useTransform(textIndex, (latest) => texts[latest] || "");
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (latest) => Math.round(latest));
+  const baseText = useTransform(textIndex, (latest) => texts[latest] || "")
+  const count = useMotionValue(0)
+  const rounded = useTransform(count, (latest) => Math.round(latest))
   const displayText = useTransform(rounded, (latest) =>
     baseText.get().slice(0, latest)
-  );
-  const updatedThisRound = useMotionValue(true);
+  )
+  const updatedThisRound = useMotionValue(true)
 
   useEffect(() => {
     const animation = animate(count, 60, {
@@ -137,17 +137,17 @@ function RepeatedTextAnimation({ delay }: IRepeatedTextAnimationProps) {
       repeatDelay: 1,
       onUpdate(latest) {
         if (updatedThisRound.get() && latest > 0) {
-          updatedThisRound.set(false);
+          updatedThisRound.set(false)
         } else if (!updatedThisRound.get() && latest === 0) {
-          textIndex.set((textIndex.get() + 1) % texts.length);
-          updatedThisRound.set(true);
+          textIndex.set((textIndex.get() + 1) % texts.length)
+          updatedThisRound.set(true)
         }
       },
-    });
-    return () => animation.stop();
-  }, [count, delay, textIndex, texts, updatedThisRound]);
+    })
+    return () => animation.stop()
+  }, [count, delay, textIndex, texts, updatedThisRound])
 
-  return <motion.span className="inline">{displayText}</motion.span>;
+  return <motion.span className="inline">{displayText}</motion.span>
 }
 
 const cursorVariants = {
@@ -161,7 +161,7 @@ const cursorVariants = {
       times: [0, 0.5, 0.5, 1],
     },
   },
-};
+}
 
 function BlinkingCursor() {
   return (
@@ -170,5 +170,5 @@ function BlinkingCursor() {
       animate="blinking"
       className="inline-block h-5 w-[1px] translate-y-1 bg-neutral-900"
     />
-  );
+  )
 }

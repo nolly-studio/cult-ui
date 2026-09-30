@@ -1,20 +1,20 @@
-"use client";
+"use client"
 
-import { PlusIcon, XIcon } from "lucide-react";
-import { motion } from "motion/react";
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useState } from "react"
+import { PlusIcon, XIcon } from "lucide-react"
+import { motion } from "motion/react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
-const CONTAINER_SIZE = 200;
+const CONTAINER_SIZE = 200
 
 interface FamilyButtonProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const FamilyButton: React.FC<FamilyButtonProps> = ({ children }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const toggleExpand = () => setIsExpanded(!isExpanded);
+  const [isExpanded, setIsExpanded] = useState(false)
+  const toggleExpand = () => setIsExpanded(!isExpanded)
 
   return (
     <div
@@ -53,14 +53,14 @@ const FamilyButton: React.FC<FamilyButtonProps> = ({ children }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 // A container that wraps content and handles animations
 interface FamilyButtonContainerProps {
-  isExpanded: boolean;
-  toggleExpand: () => void;
-  children: ReactNode;
+  isExpanded: boolean
+  toggleExpand: () => void
+  children: ReactNode
 }
 
 const FamilyButtonContainer: FC<FamilyButtonContainerProps> = ({
@@ -158,8 +158,8 @@ const FamilyButtonContainer: FC<FamilyButtonContainerProps> = ({
         )}
       </motion.div>
     </motion.div>
-  );
-};
+  )
+}
 
-export { FamilyButton };
-export default FamilyButton;
+export { FamilyButton }
+export default FamilyButton

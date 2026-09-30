@@ -1,33 +1,33 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
-import { PixelParagraph } from "@/registry/default/ui/pixel-paragraph-words";
+import { PixelParagraph } from "@/registry/default/ui/pixel-paragraph-words"
 
 /* ─── Constants ─── */
 
-const PIXEL_FONTS = ["square", "grid", "circle", "triangle", "line"] as const;
-type PixelFont = (typeof PIXEL_FONTS)[number];
+const PIXEL_FONTS = ["square", "grid", "circle", "triangle", "line"] as const
+type PixelFont = (typeof PIXEL_FONTS)[number]
 
-const WRAPPER_TAGS = ["p", "span", "div"] as const;
+const WRAPPER_TAGS = ["p", "span", "div"] as const
 
 const DEFAULT_TEXT =
-  "54+ animated components and effects. Free, open source, and built to drop into any shadcn/ui project.";
-const DEFAULT_PIXEL_WORDS = "animated,shadcn/ui";
+  "54+ animated components and effects. Free, open source, and built to drop into any shadcn/ui project."
+const DEFAULT_PIXEL_WORDS = "animated,shadcn/ui"
 
 /* ─── Demo ─── */
 
 export default function PixelParagraphWordsDemo() {
-  const [text, setText] = useState(DEFAULT_TEXT);
-  const [pixelWordsInput, setPixelWordsInput] = useState(DEFAULT_PIXEL_WORDS);
-  const [font, setFont] = useState<PixelFont>("square");
+  const [text, setText] = useState(DEFAULT_TEXT)
+  const [pixelWordsInput, setPixelWordsInput] = useState(DEFAULT_PIXEL_WORDS)
+  const [font, setFont] = useState<PixelFont>("square")
   const [wrapperTag, setWrapperTag] =
-    useState<(typeof WRAPPER_TAGS)[number]>("p");
+    useState<(typeof WRAPPER_TAGS)[number]>("p")
 
   const pixelWords = pixelWordsInput
     .split(",")
     .map((w) => w.trim())
-    .filter(Boolean);
+    .filter(Boolean)
 
   return (
     <div className="w-full space-y-8 py-4">
@@ -115,7 +115,7 @@ export default function PixelParagraphWordsDemo() {
         </ControlGroup>
       </div>
     </div>
-  );
+  )
 }
 
 /* ─── Shared control primitives ─── */
@@ -125,9 +125,9 @@ function ControlGroup({
   children,
   className,
 }: {
-  label: string;
-  children: React.ReactNode;
-  className?: string;
+  label: string
+  children: React.ReactNode
+  className?: string
 }) {
   return (
     <div className={`space-y-2 ${className ?? ""}`}>
@@ -136,5 +136,5 @@ function ControlGroup({
       </span>
       {children}
     </div>
-  );
+  )
 }

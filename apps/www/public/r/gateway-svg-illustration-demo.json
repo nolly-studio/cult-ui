@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gateway-svg-illustration-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "gateway-svg-illustration"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/gateway-svg-illustration-demo.tsx",
+      "content": "\"use client\"\n\nimport GatewayOverhead from \"@/registry/default/ui/gateway-svg-illustration\"\n\nfunction GatewaySvgIllustrationDemo() {\n  return (\n    <div className=\"w-full max-w-[264px]\">\n      <GatewayOverhead showBackgroundGrid />\n    </div>\n  )\n}\n\nexport default GatewaySvgIllustrationDemo\n",
+      "type": "registry:component"
+    }
+  ]
+}

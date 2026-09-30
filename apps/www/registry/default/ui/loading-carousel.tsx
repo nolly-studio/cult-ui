@@ -1,18 +1,19 @@
 // npm i embla-carousel-autoplay framer-motion lucide-react
 // npx shadcn@latest add carousel
-"use client";
+"use client"
 
-import Autoplay from "embla-carousel-autoplay";
-import { ChevronRight } from "lucide-react";
+import React, { useCallback, useEffect, useMemo, useState } from "react"
+import Image from "next/image"
+import Autoplay from "embla-carousel-autoplay"
+import { ChevronRight } from "lucide-react"
 import {
   AnimatePresence,
   motion,
   useReducedMotion,
   type Variants,
-} from "motion/react";
-import Image from "next/image";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+} from "motion/react"
 
+import { cn } from "@/lib/utils"
 import {
   Carousel,
   CarouselContent,
@@ -20,28 +21,27 @@ import {
   CarouselNext,
   CarouselPrevious,
   type CarouselApi,
-} from "@/components/ui/carousel";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/carousel"
 
 interface Tip {
-  text: string;
-  image: string;
-  url?: string;
+  text: string
+  image: string
+  url?: string
 }
 
 interface LoadingCarouselProps {
-  tips?: Tip[];
-  className?: string;
-  autoplayInterval?: number;
-  showNavigation?: boolean;
-  showIndicators?: boolean;
-  showProgress?: boolean;
-  aspectRatio?: "video" | "square" | "wide";
-  textPosition?: "top" | "bottom";
-  onTipChange?: (index: number) => void;
-  backgroundTips?: boolean;
-  backgroundGradient?: boolean;
-  shuffleTips?: boolean;
+  tips?: Tip[]
+  className?: string
+  autoplayInterval?: number
+  showNavigation?: boolean
+  showIndicators?: boolean
+  showProgress?: boolean
+  aspectRatio?: "video" | "square" | "wide"
+  textPosition?: "top" | "bottom"
+  onTipChange?: (index: number) => void
+  backgroundTips?: boolean
+  backgroundGradient?: boolean
+  shuffleTips?: boolean
 }
 
 const defaultTips: Tip[] = [
@@ -70,19 +70,19 @@ const defaultTips: Tip[] = [
     image: "/placeholders/cult-seo.png",
     url: "https://www.newcult.co/templates/cult-seo",
   },
-];
+]
 
 function shuffleArray<T>(array: T[]): T[] {
-  const shuffled = [...array];
+  const shuffled = [...array]
   for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
   }
-  return shuffled;
+  return shuffled
 }
 
 function getTipKey(tip: Tip): string {
-  return `${tip.text}-${tip.image}`;
+  return `${tip.text}-${tip.image}`
 }
 
 const carouselVariants: Variants = {
@@ -98,18 +98,18 @@ const carouselVariants: Variants = {
     x: direction < 0 ? "100%" : "-100%",
     opacity: 0,
   }),
-};
+}
 
 const textVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { delay: 0.3, duration: 0.5 } },
-};
+}
 
 const aspectRatioClasses = {
   video: "aspect-video",
   square: "aspect-square",
   wide: "aspect-[2/1]",
-};
+}
 
 export function LoadingCarousel({
   onTipChange,
@@ -125,13 +125,13 @@ export function LoadingCarousel({
   backgroundGradient = false,
   shuffleTips = false,
 }: LoadingCarouselProps) {
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(0);
-  const prefersReducedMotion = useReducedMotion();
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
+  const [direction, setDirection] = useState(0)
+  const prefersReducedMotion = useReducedMotion()
   const [displayTips] = useState(() =>
     shuffleTips ? shuffleArray(tips) : tips
-  );
+  )
 
   const autoplay = useMemo(
     () =>
@@ -140,38 +140,38 @@ export function LoadingCarousel({
         stopOnInteraction: false,
       }),
     [autoplayInterval]
-  );
+  )
 
   useEffect(() => {
     if (!api) {
-      return;
+      return
     }
 
-    setCurrent(api.selectedScrollSnap());
+    setCurrent(api.selectedScrollSnap())
     setDirection(
       api.scrollSnapList().indexOf(api.selectedScrollSnap()) - current
-    );
+    )
 
     const onSelect = () => {
-      const newIndex = api.selectedScrollSnap();
-      setCurrent(newIndex);
-      setDirection(api.scrollSnapList().indexOf(newIndex) - current);
-      onTipChange?.(newIndex);
-    };
+      const newIndex = api.selectedScrollSnap()
+      setCurrent(newIndex)
+      setDirection(api.scrollSnapList().indexOf(newIndex) - current)
+      onTipChange?.(newIndex)
+    }
 
-    api.on("select", onSelect);
+    api.on("select", onSelect)
 
     return () => {
-      api.off("select", onSelect);
-    };
-  }, [api, current, onTipChange]);
+      api.off("select", onSelect)
+    }
+  }, [api, current, onTipChange])
 
   const handleSelect = useCallback(
     (index: number) => {
-      api?.scrollTo(index);
+      api?.scrollTo(index)
     },
     [api]
-  );
+  )
 
   return (
     <motion.div
@@ -280,8 +280,8 @@ export function LoadingCarousel({
             {showIndicators && (
               <div className="flex w-full gap-2 overflow-x-auto pb-1 sm:pb-0">
                 {(displayTips || []).map((tip, index) => {
-                  const isActive = index === current;
-                  const isComplete = index < current;
+                  const isActive = index === current
+                  const isComplete = index < current
 
                   return (
                     <button
@@ -325,7 +325,7 @@ export function LoadingCarousel({
                         )}
                       </span>
                     </button>
-                  );
+                  )
                 })}
               </div>
             )}
@@ -360,7 +360,7 @@ export function LoadingCarousel({
         </div>
       </div>
     </motion.div>
-  );
+  )
 }
 
-export default LoadingCarousel;
+export default LoadingCarousel

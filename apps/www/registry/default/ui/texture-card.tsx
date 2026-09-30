@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from "react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 const TextureCardStyled = React.forwardRef<
   HTMLDivElement,
@@ -27,7 +27,7 @@ const TextureCardStyled = React.forwardRef<
       </div>
     </div>
   </div>
-));
+))
 
 // Allows for global css overrides and theme support - similar to shad cn
 const TextureCard = React.forwardRef<
@@ -54,10 +54,10 @@ const TextureCard = React.forwardRef<
         </div>
       </div>
     </div>
-  );
-});
+  )
+})
 
-TextureCard.displayName = "TextureCard";
+TextureCard.displayName = "TextureCard"
 
 const TextureCardHeader = React.forwardRef<
   HTMLDivElement,
@@ -71,8 +71,8 @@ const TextureCardHeader = React.forwardRef<
     )}
     {...props}
   />
-));
-TextureCardHeader.displayName = "TextureCardHeader";
+))
+TextureCardHeader.displayName = "TextureCardHeader"
 
 const TextureCardTitle = React.forwardRef<
   HTMLHeadingElement,
@@ -86,8 +86,8 @@ const TextureCardTitle = React.forwardRef<
     )}
     {...props}
   />
-));
-TextureCardTitle.displayName = "TextureCardTitle";
+))
+TextureCardTitle.displayName = "TextureCardTitle"
 
 const TextureCardDescription = React.forwardRef<
   HTMLParagraphElement,
@@ -101,16 +101,16 @@ const TextureCardDescription = React.forwardRef<
     )}
     {...props}
   />
-));
-TextureCardDescription.displayName = "TextureCardDescription";
+))
+TextureCardDescription.displayName = "TextureCardDescription"
 
 const TextureCardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div ref={ref} className={cn("px-6 py-4", className)} {...props} />
-));
-TextureCardContent.displayName = "TextureCardContent";
+))
+TextureCardContent.displayName = "TextureCardContent"
 
 const TextureCardFooter = React.forwardRef<
   HTMLDivElement,
@@ -125,14 +125,14 @@ const TextureCardFooter = React.forwardRef<
     )}
     {...props}
   />
-));
-TextureCardFooter.displayName = "TextureCardFooter";
+))
+TextureCardFooter.displayName = "TextureCardFooter"
 
 const TextureSeparator = () => {
   return (
     <div className="border border-t-neutral-50 border-r-transparent border-b-neutral-300/50 border-l-transparent dark:border-t-neutral-950 dark:border-b-neutral-700/50" />
-  );
-};
+  )
+}
 
 export {
   TextureCard,
@@ -143,6 +143,6 @@ export {
   TextureSeparator,
   TextureCardDescription,
   TextureCardContent,
-};
+}
 
-export default TextureCard;
+export default TextureCard

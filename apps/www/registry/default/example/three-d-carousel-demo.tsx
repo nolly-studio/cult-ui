@@ -1,4 +1,4 @@
-import ThreeDPhotoCarousel from "../ui/three-d-carousel";
+import ThreeDPhotoCarousel from "../ui/three-d-carousel"
 
 export default function ThreeDPhotoCarouselDemo() {
   return (
@@ -9,5 +9,5 @@ export default function ThreeDPhotoCarouselDemo() {
         </div>
       </div>
     </div>
-  );
+  )
 }

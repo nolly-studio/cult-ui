@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import { cva, type VariantProps } from "class-variance-authority";
-import * as React from "react";
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 const tweetGridVariants = cva("max-w-4xl px-2 md:max-w-6xl", {
   variants: {
@@ -18,7 +18,7 @@ const tweetGridVariants = cva("max-w-4xl px-2 md:max-w-6xl", {
   defaultVariants: {
     columns: 3,
   },
-});
+})
 
 const tweetItemVariants = cva("break-inside-avoid", {
   variants: {
@@ -31,14 +31,13 @@ const tweetItemVariants = cva("break-inside-avoid", {
   defaultVariants: {
     spacing: "md",
   },
-});
+})
 
 export interface TweetGridProps
-  extends
-    VariantProps<typeof tweetGridVariants>,
+  extends VariantProps<typeof tweetGridVariants>,
     VariantProps<typeof tweetItemVariants> {
-  tweets: string[];
-  className?: string;
+  tweets: string[]
+  className?: string
 }
 
 // Mock Tweet component to avoid react-tweet CSS import issues
@@ -65,8 +64,8 @@ const MockTweet: React.FC<{ id: string }> = ({ id }) => {
         <span>❤️ 0</span>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export const TweetGrid: React.FC<TweetGridProps> = ({
   tweets,
@@ -85,5 +84,5 @@ export const TweetGrid: React.FC<TweetGridProps> = ({
         </div>
       ))}
     </div>
-  );
-};
+  )
+}

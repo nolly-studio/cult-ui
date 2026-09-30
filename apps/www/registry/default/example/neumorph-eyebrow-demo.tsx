@@ -1,4 +1,4 @@
-import { NeumorphEyebrow } from "../ui/neumorph-eyebrow";
+import { NeumorphEyebrow } from "../ui/neumorph-eyebrow"
 
 export default function NeumorphEyebrowDemo() {
   return (
@@ -7,5 +7,5 @@ export default function NeumorphEyebrowDemo() {
       <NeumorphEyebrow intent="primary">Primary variant</NeumorphEyebrow>
       <NeumorphEyebrow intent="secondary">Secondary variant</NeumorphEyebrow>
     </div>
-  );
+  )
 }

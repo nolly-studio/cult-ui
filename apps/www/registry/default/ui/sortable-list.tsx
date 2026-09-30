@@ -1,37 +1,37 @@
-"use client";
+"use client"
 
-import { Trash } from "lucide-react";
+// npx shadcn-ui@latest add checkbox
+// npm  i react-use-measure
+import { Dispatch, ReactNode, SetStateAction, useState } from "react"
+import { Trash } from "lucide-react"
 import {
   AnimatePresence,
   LayoutGroup,
   motion,
   Reorder,
   useDragControls,
-} from "motion/react";
-// npx shadcn-ui@latest add checkbox
-// npm  i react-use-measure
-import { Dispatch, ReactNode, SetStateAction, useState } from "react";
-import useMeasure from "react-use-measure";
+} from "motion/react"
+import useMeasure from "react-use-measure"
 
-import { Checkbox } from "@/components/ui/checkbox";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
+import { Checkbox } from "@/components/ui/checkbox"
 
 export type Item = {
-  text: string;
-  checked: boolean;
-  id: number;
-  description: string;
-};
+  text: string
+  checked: boolean
+  id: number
+  description: string
+}
 
 interface SortableListItemProps {
-  item: Item;
-  order: number;
-  onCompleteItem: (id: number) => void;
-  onRemoveItem: (id: number) => void;
-  renderExtra?: (item: Item) => React.ReactNode;
-  isExpanded?: boolean;
-  className?: string;
-  handleDrag: () => void;
+  item: Item
+  order: number
+  onCompleteItem: (id: number) => void
+  onRemoveItem: (id: number) => void
+  renderExtra?: (item: Item) => React.ReactNode
+  isExpanded?: boolean
+  className?: string
+  handleDrag: () => void
 }
 
 function SortableListItem({
@@ -44,20 +44,20 @@ function SortableListItem({
   isExpanded,
   className,
 }: SortableListItemProps) {
-  let [ref, bounds] = useMeasure();
-  const [isDragging, setIsDragging] = useState(false);
+  let [ref, bounds] = useMeasure()
+  const [isDragging, setIsDragging] = useState(false)
   // const [isDraggable, setIsDraggable] = useState(true)
-  const dragControls = useDragControls();
+  const dragControls = useDragControls()
 
   const handleDragStart = (event: any) => {
-    setIsDragging(true);
-    dragControls.start(event, { snapToCursor: true });
-    handleDrag();
-  };
+    setIsDragging(true)
+    dragControls.start(event, { snapToCursor: true })
+    handleDrag()
+  }
 
   const handleDragEnd = () => {
-    setIsDragging(false);
-  };
+    setIsDragging(false)
+  }
 
   return (
     <motion.div className={cn("", className)} key={item.id}>
@@ -244,21 +244,21 @@ function SortableListItem({
         </AnimatePresence>
       </div>
     </motion.div>
-  );
+  )
 }
 
-SortableListItem.displayName = "SortableListItem";
+SortableListItem.displayName = "SortableListItem"
 
 interface SortableListProps {
-  items: Item[];
-  setItems: Dispatch<SetStateAction<Item[]>>;
-  onCompleteItem: (id: number) => void;
+  items: Item[]
+  setItems: Dispatch<SetStateAction<Item[]>>
+  onCompleteItem: (id: number) => void
   renderItem: (
     item: Item,
     order: number,
     onCompleteItem: (id: number) => void,
     onRemoveItem: (id: number) => void
-  ) => ReactNode;
+  ) => ReactNode
 }
 
 function SortableList({
@@ -285,12 +285,12 @@ function SortableList({
           </AnimatePresence>
         </Reorder.Group>
       </LayoutGroup>
-    );
+    )
   }
-  return null;
+  return null
 }
 
-SortableList.displayName = "SortableList";
+SortableList.displayName = "SortableList"
 
-export { SortableList, SortableListItem };
-export default SortableList;
+export { SortableList, SortableListItem }
+export default SortableList

@@ -1,7 +1,5 @@
-"use client";
+"use client"
 
-import { X } from "lucide-react";
-import { AnimatePresence, motion, MotionConfig } from "motion/react";
 import React, {
   createContext,
   useContext,
@@ -9,15 +7,17 @@ import React, {
   useId,
   useRef,
   useState,
-} from "react";
+} from "react"
+import { X } from "lucide-react"
+import { AnimatePresence, motion, MotionConfig } from "motion/react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 const TRANSITION = {
   type: "spring" as const,
   bounce: 0.05,
   duration: 0.3,
-};
+}
 
 function useClickOutside(
   ref: React.RefObject<HTMLElement | null>,
@@ -26,57 +26,57 @@ function useClickOutside(
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
-        handler();
+        handler()
       }
-    };
+    }
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside)
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [ref, handler]);
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [ref, handler])
 }
 
 interface PopoverContextType {
-  isOpen: boolean;
-  openPopover: () => void;
-  closePopover: () => void;
-  uniqueId: string;
-  note: string;
-  setNote: (note: string) => void;
+  isOpen: boolean
+  openPopover: () => void
+  closePopover: () => void
+  uniqueId: string
+  note: string
+  setNote: (note: string) => void
 }
 
-const PopoverContext = createContext<PopoverContextType | undefined>(undefined);
+const PopoverContext = createContext<PopoverContextType | undefined>(undefined)
 
 function usePopover() {
-  const context = useContext(PopoverContext);
+  const context = useContext(PopoverContext)
   if (!context) {
-    throw new Error("usePopover must be used within a PopoverProvider");
+    throw new Error("usePopover must be used within a PopoverProvider")
   }
-  return context;
+  return context
 }
 
 function usePopoverLogic() {
-  const uniqueId = useId();
-  const [isOpen, setIsOpen] = useState(false);
-  const [note, setNote] = useState("");
+  const uniqueId = useId()
+  const [isOpen, setIsOpen] = useState(false)
+  const [note, setNote] = useState("")
 
-  const openPopover = () => setIsOpen(true);
+  const openPopover = () => setIsOpen(true)
   const closePopover = () => {
-    setIsOpen(false);
-    setNote("");
-  };
+    setIsOpen(false)
+    setNote("")
+  }
 
-  return { isOpen, openPopover, closePopover, uniqueId, note, setNote };
+  return { isOpen, openPopover, closePopover, uniqueId, note, setNote }
 }
 
 interface PopoverRootProps {
-  children: React.ReactNode;
-  className?: string;
+  children: React.ReactNode
+  className?: string
 }
 
 export function PopoverRoot({ children, className }: PopoverRootProps) {
-  const popoverLogic = usePopoverLogic();
+  const popoverLogic = usePopoverLogic()
 
   return (
     <PopoverContext.Provider value={popoverLogic}>
@@ -91,16 +91,16 @@ export function PopoverRoot({ children, className }: PopoverRootProps) {
         </div>
       </MotionConfig>
     </PopoverContext.Provider>
-  );
+  )
 }
 
 interface PopoverTriggerProps {
-  children: React.ReactNode;
-  className?: string;
+  children: React.ReactNode
+  className?: string
 }
 
 export function PopoverTrigger({ children, className }: PopoverTriggerProps) {
-  const { openPopover, uniqueId } = usePopover();
+  const { openPopover, uniqueId } = usePopover()
 
   return (
     <motion.button
@@ -119,33 +119,33 @@ export function PopoverTrigger({ children, className }: PopoverTriggerProps) {
         {children}
       </motion.span>
     </motion.button>
-  );
+  )
 }
 
 interface PopoverContentProps {
-  children: React.ReactNode;
-  className?: string;
+  children: React.ReactNode
+  className?: string
 }
 
 export function PopoverContent({ children, className }: PopoverContentProps) {
-  const { isOpen, closePopover, uniqueId } = usePopover();
-  const formContainerRef = useRef<HTMLDivElement>(null);
+  const { isOpen, closePopover, uniqueId } = usePopover()
+  const formContainerRef = useRef<HTMLDivElement>(null)
 
-  useClickOutside(formContainerRef, closePopover);
+  useClickOutside(formContainerRef, closePopover)
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        closePopover();
+        closePopover()
       }
-    };
+    }
 
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown)
 
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [closePopover]);
+      document.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [closePopover])
 
   return (
     <AnimatePresence>
@@ -168,13 +168,13 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
         </motion.div>
       )}
     </AnimatePresence>
-  );
+  )
 }
 
 interface PopoverFormProps {
-  children: React.ReactNode;
-  onSubmit?: (note: string) => void;
-  className?: string;
+  children: React.ReactNode
+  onSubmit?: (note: string) => void
+  className?: string
 }
 
 export function PopoverForm({
@@ -182,13 +182,13 @@ export function PopoverForm({
   onSubmit,
   className,
 }: PopoverFormProps) {
-  const { note, closePopover } = usePopover();
+  const { note, closePopover } = usePopover()
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit?.(note);
-    closePopover();
-  };
+    e.preventDefault()
+    onSubmit?.(note)
+    closePopover()
+  }
 
   return (
     <form
@@ -197,16 +197,16 @@ export function PopoverForm({
     >
       {children}
     </form>
-  );
+  )
 }
 
 interface PopoverLabelProps {
-  children: React.ReactNode;
-  className?: string;
+  children: React.ReactNode
+  className?: string
 }
 
 export function PopoverLabel({ children, className }: PopoverLabelProps) {
-  const { uniqueId, note } = usePopover();
+  const { uniqueId, note } = usePopover()
 
   return (
     <motion.span
@@ -222,15 +222,15 @@ export function PopoverLabel({ children, className }: PopoverLabelProps) {
     >
       {children}
     </motion.span>
-  );
+  )
 }
 
 interface PopoverTextareaProps {
-  className?: string;
+  className?: string
 }
 
 export function PopoverTextarea({ className }: PopoverTextareaProps) {
-  const { note, setNote } = usePopover();
+  const { note, setNote } = usePopover()
 
   return (
     <textarea
@@ -242,12 +242,12 @@ export function PopoverTextarea({ className }: PopoverTextareaProps) {
       value={note}
       onChange={(e) => setNote(e.target.value)}
     />
-  );
+  )
 }
 
 interface PopoverFooterProps {
-  children: React.ReactNode;
-  className?: string;
+  children: React.ReactNode
+  className?: string
 }
 
 export function PopoverFooter({ children, className }: PopoverFooterProps) {
@@ -258,15 +258,15 @@ export function PopoverFooter({ children, className }: PopoverFooterProps) {
     >
       {children}
     </div>
-  );
+  )
 }
 
 interface PopoverCloseButtonProps {
-  className?: string;
+  className?: string
 }
 
 export function PopoverCloseButton({ className }: PopoverCloseButtonProps) {
-  const { closePopover } = usePopover();
+  const { closePopover } = usePopover()
 
   return (
     <button
@@ -277,11 +277,11 @@ export function PopoverCloseButton({ className }: PopoverCloseButtonProps) {
     >
       <X size={16} className="text-zinc-900 dark:text-zinc-100" />
     </button>
-  );
+  )
 }
 
 interface PopoverSubmitButtonProps {
-  className?: string;
+  className?: string
 }
 
 export function PopoverSubmitButton({ className }: PopoverSubmitButtonProps) {
@@ -296,15 +296,15 @@ export function PopoverSubmitButton({ className }: PopoverSubmitButtonProps) {
     >
       Submit
     </button>
-  );
+  )
 }
 
 export function PopoverHeader({
   children,
   className,
 }: {
-  children: React.ReactNode;
-  className?: string;
+  children: React.ReactNode
+  className?: string
 }) {
   return (
     <div
@@ -315,17 +315,17 @@ export function PopoverHeader({
     >
       {children}
     </div>
-  );
+  )
 }
 
 export function PopoverBody({
   children,
   className,
 }: {
-  children: React.ReactNode;
-  className?: string;
+  children: React.ReactNode
+  className?: string
 }) {
-  return <div className={cn("p-4", className)}>{children}</div>;
+  return <div className={cn("p-4", className)}>{children}</div>
 }
 
 // New component: PopoverButton
@@ -334,9 +334,9 @@ export function PopoverButton({
   onClick,
   className,
 }: {
-  children: React.ReactNode;
-  onClick?: () => void;
-  className?: string;
+  children: React.ReactNode
+  onClick?: () => void
+  className?: string
 }) {
   return (
     <button
@@ -348,5 +348,5 @@ export function PopoverButton({
     >
       {children}
     </button>
-  );
+  )
 }

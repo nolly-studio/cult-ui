@@ -1,44 +1,44 @@
-"use client";
+"use client"
 
-import { AnimatePresence, motion, MotionConfig } from "motion/react";
 import React, {
   createContext,
   forwardRef,
   ReactNode,
   useContext,
   useState,
-} from "react";
-import ReactPlayer from "react-player/lazy";
-import useMeasure from "react-use-measure";
+} from "react"
+import { AnimatePresence, motion, MotionConfig } from "motion/react"
+import ReactPlayer from "react-player/lazy"
+import useMeasure from "react-use-measure"
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 
-import { SidePanel } from "../ui/side-panel";
+import { SidePanel } from "../ui/side-panel"
 
 // Theme Context for Styling
 type ThemeContextType = {
-  panelClass?: string;
-};
+  panelClass?: string
+}
 
 // Create the context with the type
-const ThemeContext = createContext<ThemeContextType>({});
+const ThemeContext = createContext<ThemeContextType>({})
 
 // Custom Hook for Measuring and Animations
 const useCustomMeasure = () => {
-  const [ref, bounds] = useMeasure();
+  const [ref, bounds] = useMeasure()
   const animateProps = {
     animate: { height: bounds.height > 0 ? bounds.height : 0.1 },
     transition: { type: "spring", bounce: 0.02, duration: 0.65 },
-  };
-  return { ref, animateProps };
-};
+  }
+  return { ref, animateProps }
+}
 
 // ResizablePanel Component
 type ResizablePanelProps = {
-  children: ReactNode;
-  className?: string;
-};
+  children: ReactNode
+  className?: string
+}
 
 // ResizablePanel Component
 const ResizablePanel = forwardRef<HTMLDivElement, ResizablePanelProps>(
@@ -47,7 +47,7 @@ const ResizablePanel = forwardRef<HTMLDivElement, ResizablePanelProps>(
       type: "tween" as const,
       ease: [0.42, 0, 0.58, 1] as const,
       duration: 0.4,
-    };
+    }
 
     return (
       <MotionConfig transition={transition}>
@@ -68,16 +68,16 @@ const ResizablePanel = forwardRef<HTMLDivElement, ResizablePanelProps>(
           </div>
         </div>
       </MotionConfig>
-    );
+    )
   }
-);
+)
 
-ResizablePanel.displayName = "ResizablePanel";
+ResizablePanel.displayName = "ResizablePanel"
 
 // VideoPowerButton Component
 type VideoPowerButtonProps = {
-  handleVideoOpen: () => void;
-};
+  handleVideoOpen: () => void
+}
 
 // VideoPowerButton Component
 const VideoPowerButton = forwardRef<HTMLInputElement, VideoPowerButtonProps>(
@@ -101,16 +101,16 @@ const VideoPowerButton = forwardRef<HTMLInputElement, VideoPowerButtonProps>(
           </svg>
         </label>
       </div>
-    );
+    )
   }
-);
+)
 
-VideoPowerButton.displayName = "VideoPowerButton";
+VideoPowerButton.displayName = "VideoPowerButton"
 
 type YoutubeVideoProps = {
-  videoOpen: boolean;
-  url: string;
-};
+  videoOpen: boolean
+  url: string
+}
 
 const YoutubeVideo = forwardRef<HTMLDivElement, YoutubeVideoProps>(
   ({ videoOpen, url }, ref) => {
@@ -134,16 +134,16 @@ const YoutubeVideo = forwardRef<HTMLDivElement, YoutubeVideoProps>(
           </motion.div>
         )}
       </AnimatePresence>
-    );
+    )
   }
-);
+)
 
-YoutubeVideo.displayName = "YoutubeVideo";
+YoutubeVideo.displayName = "YoutubeVideo"
 
 type VideoContentProps = {
-  url: string;
-  videoOpen: boolean;
-};
+  url: string
+  videoOpen: boolean
+}
 
 // Define the VideoContent component
 const VideoContent: React.FC<VideoContentProps> = ({ url, videoOpen }) => {
@@ -151,14 +151,14 @@ const VideoContent: React.FC<VideoContentProps> = ({ url, videoOpen }) => {
   const videoVariants = {
     hidden: { opacity: 0, scale: 0.9, y: 30 },
     visible: { opacity: 1, scale: 1, y: 0 },
-  };
+  }
 
   // Define transition properties
   const transition = {
     duration: 0.2,
     ease: [0.04, 0.62, 0.23, 0.98] as const, // Custom cubic-bezier easing
     delay: 0.3,
-  };
+  }
 
   return (
     <AnimatePresence>
@@ -181,17 +181,17 @@ const VideoContent: React.FC<VideoContentProps> = ({ url, videoOpen }) => {
         </motion.div>
       )}
     </AnimatePresence>
-  );
-};
+  )
+}
 
 // Define the main VideoSection component
 type VideoSectionProps = {
-  videoOpen: boolean;
-  handleVideoOpen: () => void;
-  className?: string;
-  videoUrl: string;
-  children?: ReactNode; // Add this line
-};
+  videoOpen: boolean
+  handleVideoOpen: () => void
+  className?: string
+  videoUrl: string
+  children?: ReactNode // Add this line
+}
 
 const VideoSection: React.FC<VideoSectionProps> = ({
   videoOpen,
@@ -200,7 +200,7 @@ const VideoSection: React.FC<VideoSectionProps> = ({
   videoUrl,
   children,
 }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext)
 
   return (
     <ResizablePanel className={cn(className, theme.panelClass)}>
@@ -213,8 +213,8 @@ const VideoSection: React.FC<VideoSectionProps> = ({
         </>
       )}
     </ResizablePanel>
-  );
-};
+  )
+}
 
 export {
   VideoContent,
@@ -223,14 +223,14 @@ export {
   VideoPowerButton,
   ResizablePanel,
   useCustomMeasure,
-};
+}
 
 export default function VideoSectionDemo() {
-  const [videoOpen, setVideoOpen] = useState(false);
+  const [videoOpen, setVideoOpen] = useState(false)
 
   const handleVideoOpen = () => {
-    setVideoOpen(!videoOpen);
-  };
+    setVideoOpen(!videoOpen)
+  }
 
   const renderVideoButton = (handleToggle: () => void) => (
     <div
@@ -252,7 +252,7 @@ export default function VideoSectionDemo() {
         {videoOpen ? "close" : "open"}
       </Button>
     </div>
-  );
+  )
 
   return (
     <div className="w-full max-w-4xl">
@@ -269,5 +269,5 @@ export default function VideoSectionDemo() {
         </SidePanel>
       </div>
     </div>
-  );
+  )
 }

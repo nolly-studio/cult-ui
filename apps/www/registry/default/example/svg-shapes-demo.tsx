@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import type { ReactNode } from "react";
+import type { ReactNode } from "react"
 
 import {
   ArrowPentagonShapeSvg,
@@ -29,14 +29,14 @@ import {
   TorusTubeSvg,
   TriangleShapeSvg,
   VesicaPiscisSvg,
-} from "@/registry/default/ui/svg-shapes";
+} from "@/registry/default/ui/svg-shapes"
 
 function DemoSection({
   title,
   children,
 }: {
-  title: string;
-  children: ReactNode;
+  title: string
+  children: ReactNode
 }) {
   return (
     <section className="w-full space-y-4">
@@ -47,7 +47,7 @@ function DemoSection({
         {children}
       </div>
     </section>
-  );
+  )
 }
 
 function ShapeTile({
@@ -55,9 +55,9 @@ function ShapeTile({
   tall,
   children,
 }: {
-  label: string;
-  tall?: boolean;
-  children: ReactNode;
+  label: string
+  tall?: boolean
+  children: ReactNode
 }) {
   return (
     <div className="bg-muted/30 flex flex-col gap-2 rounded-lg border p-3">
@@ -70,7 +70,7 @@ function ShapeTile({
         {children}
       </div>
     </div>
-  );
+  )
 }
 
 export default function SvgShapesDemo() {
@@ -205,5 +205,5 @@ export default function SvgShapesDemo() {
         </section>
       </div>
     </div>
-  );
+  )
 }

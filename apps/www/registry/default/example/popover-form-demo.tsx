@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import { Mail, Monitor, Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
+import { Mail, Monitor, Moon, Sun } from "lucide-react"
 
 import {
   PopoverForm,
@@ -10,38 +10,38 @@ import {
   PopoverFormCutOutRightIcon,
   PopoverFormSeparator,
   PopoverFormSuccess,
-} from "@/registry/default/ui/popover-form";
+} from "@/registry/default/ui/popover-form"
 
-type FormState = "idle" | "loading" | "success";
+type FormState = "idle" | "loading" | "success"
 
 export function NewsletterSignupExample() {
-  const [formState, setFormState] = useState<FormState>("idle");
-  const [open, setOpen] = useState(false);
-  const [email, setEmail] = useState("");
+  const [formState, setFormState] = useState<FormState>("idle")
+  const [open, setOpen] = useState(false)
+  const [email, setEmail] = useState("")
 
   function submit() {
-    setFormState("loading");
+    setFormState("loading")
     setTimeout(() => {
-      setFormState("success");
-    }, 1500);
+      setFormState("success")
+    }, 1500)
 
     setTimeout(() => {
-      setOpen(false);
-      setFormState("idle");
-      setEmail("");
-    }, 3300);
+      setOpen(false)
+      setFormState("idle")
+      setEmail("")
+    }, 3300)
   }
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setOpen(false);
+        setOpen(false)
       }
-    };
+    }
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [])
 
   return (
     <div className="flex w-full items-center justify-center">
@@ -55,9 +55,9 @@ export function NewsletterSignupExample() {
         openChild={
           <form
             onSubmit={(e) => {
-              e.preventDefault();
-              if (!email) return;
-              submit();
+              e.preventDefault()
+              if (!email) return
+              submit()
             }}
             className="p-4"
           >
@@ -101,40 +101,40 @@ export function NewsletterSignupExample() {
         }
       />
     </div>
-  );
+  )
 }
 
-type Theme = "light" | "dark" | "system";
+type Theme = "light" | "dark" | "system"
 
 export function ColorThemeSwitcherExample() {
-  const [theme, setTheme] = useState<Theme>("system");
-  const [systemTheme, setSystemTheme] = useState<"light" | "dark">("light");
-  const [open, setOpen] = useState(false);
-  const themes: Theme[] = ["light", "dark", "system"];
+  const [theme, setTheme] = useState<Theme>("system")
+  const [systemTheme, setSystemTheme] = useState<"light" | "dark">("light")
+  const [open, setOpen] = useState(false)
+  const themes: Theme[] = ["light", "dark", "system"]
 
   useEffect(() => {
-    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)")
     const updateSystemTheme = () => {
-      setSystemTheme(systemPrefersDark.matches ? "dark" : "light");
-    };
+      setSystemTheme(systemPrefersDark.matches ? "dark" : "light")
+    }
 
-    updateSystemTheme();
-    systemPrefersDark.addEventListener("change", updateSystemTheme);
+    updateSystemTheme()
+    systemPrefersDark.addEventListener("change", updateSystemTheme)
 
     return () => {
-      systemPrefersDark.removeEventListener("change", updateSystemTheme);
-    };
-  }, []);
+      systemPrefersDark.removeEventListener("change", updateSystemTheme)
+    }
+  }, [])
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.remove("light", "dark");
+    const root = window.document.documentElement
+    root.classList.remove("light", "dark")
     if (theme === "system") {
-      root.classList.add(systemTheme);
+      root.classList.add(systemTheme)
     } else {
-      root.classList.add(theme);
+      root.classList.add(theme)
     }
-  }, [theme, systemTheme]);
+  }, [theme, systemTheme])
 
   return (
     <div className="flex w-full items-center justify-center">
@@ -154,8 +154,8 @@ export function ColorThemeSwitcherExample() {
 
             <div className="space-y-2 pt-2">
               {themes.map((t) => {
-                const isSelected = theme === t;
-                const effectiveTheme = t === "system" ? systemTheme : t;
+                const isSelected = theme === t
+                const effectiveTheme = t === "system" ? systemTheme : t
                 return (
                   <button
                     key={t}
@@ -175,38 +175,38 @@ export function ColorThemeSwitcherExample() {
                     {t === "system" && <Monitor className="mr-2 h-4 w-4" />}
                     <span className="capitalize">{t}</span>
                   </button>
-                );
+                )
               })}
             </div>
           </div>
         }
       />
     </div>
-  );
+  )
 }
 
 export function FeedbackFormExample() {
-  const [formState, setFormState] = useState<FormState>("idle");
-  const [open, setOpen] = useState(false);
-  const [feedback, setFeedback] = useState("");
+  const [formState, setFormState] = useState<FormState>("idle")
+  const [open, setOpen] = useState(false)
+  const [feedback, setFeedback] = useState("")
 
   function submit() {
-    setFormState("loading");
+    setFormState("loading")
     setTimeout(() => {
-      setFormState("success");
-    }, 1500);
+      setFormState("success")
+    }, 1500)
 
     setTimeout(() => {
-      setOpen(false);
-      setFormState("idle");
-      setFeedback("");
-    }, 3300);
+      setOpen(false)
+      setFormState("idle")
+      setFeedback("")
+    }, 3300)
   }
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setOpen(false);
+        setOpen(false)
       }
 
       if (
@@ -215,13 +215,13 @@ export function FeedbackFormExample() {
         open &&
         formState === "idle"
       ) {
-        submit();
+        submit()
       }
-    };
+    }
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [open, formState]);
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [open, formState])
 
   return (
     <div className="flex w-full items-center justify-center">
@@ -236,9 +236,9 @@ export function FeedbackFormExample() {
         openChild={
           <form
             onSubmit={(e) => {
-              e.preventDefault();
-              if (!feedback) return;
-              submit();
+              e.preventDefault()
+              if (!feedback) return
+              submit()
             }}
             className=""
           >
@@ -275,29 +275,29 @@ export function FeedbackFormExample() {
         }
       />
     </div>
-  );
+  )
 }
 
 export function ContactFormExample() {
-  const [formState, setFormState] = useState<FormState>("idle");
-  const [open, setOpen] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [formState, setFormState] = useState<FormState>("idle")
+  const [open, setOpen] = useState(false)
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState("")
 
   function submit() {
-    setFormState("loading");
+    setFormState("loading")
     setTimeout(() => {
-      setFormState("success");
-    }, 1500);
+      setFormState("success")
+    }, 1500)
 
     setTimeout(() => {
-      setOpen(false);
-      setFormState("idle");
-      setName("");
-      setEmail("");
-      setMessage("");
-    }, 3300);
+      setOpen(false)
+      setFormState("idle")
+      setName("")
+      setEmail("")
+      setMessage("")
+    }, 3300)
   }
 
   return (
@@ -313,9 +313,9 @@ export function ContactFormExample() {
         openChild={
           <form
             onSubmit={(e) => {
-              e.preventDefault();
-              if (!name || !email || !message) return;
-              submit();
+              e.preventDefault()
+              if (!name || !email || !message) return
+              submit()
             }}
             className="space-y-4"
           >
@@ -390,7 +390,7 @@ export function ContactFormExample() {
         }
       />
     </div>
-  );
+  )
 }
 
 export default function PopoverFormExamples() {
@@ -401,5 +401,5 @@ export default function PopoverFormExamples() {
       <NewsletterSignupExample />
       <ColorThemeSwitcherExample />
     </div>
-  );
+  )
 }

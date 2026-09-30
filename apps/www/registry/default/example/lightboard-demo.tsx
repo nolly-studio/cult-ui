@@ -1,30 +1,30 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
-import { LightBoard, PatternCell } from "../ui/lightboard";
+import { LightBoard, PatternCell } from "../ui/lightboard"
 
 export default function LightBoardDemo() {
   const [controlledDrawState, setControlledDrawState] =
-    useState<PatternCell>("2");
-  const [controlledHoverState, setControlledHoverState] = useState(false);
+    useState<PatternCell>("2")
+  const [controlledHoverState, setControlledHoverState] = useState(false)
 
   const cycleDrawState = () => {
     setControlledDrawState((prev) => {
       switch (prev) {
         case "0":
-          return "1";
+          return "1"
         case "1":
-          return "2";
+          return "2"
         case "2":
-          return "3";
+          return "3"
         case "3":
-          return "0";
+          return "0"
         default:
-          return "0";
+          return "0"
       }
-    });
-  };
+    })
+  }
 
   return (
     <div className="space-y-2 p-2 lg:space-y-4 lg:p-8">
@@ -193,5 +193,5 @@ export default function LightBoardDemo() {
         />
       </div>
     </div>
-  );
+  )
 }

@@ -1,0 +1,367 @@
+"use client"
+
+import * as React from "react"
+
+import { cn } from "@/lib/utils"
+
+type GatewayRoutingIds = {
+  clip: string
+  gradientRingClip: string
+}
+
+export interface GatewayRoutingProps
+  extends Omit<React.ComponentProps<"svg">, "width" | "height"> {
+  width?: number
+  height?: number
+  backgroundColor?: string
+  borderColor?: string
+  iconBoxFill?: string
+  iconBoxStroke?: string
+  logoColor?: string
+  innerCircleColor?: string
+  topArcColor?: string
+  bottomArcColor?: string
+  leftArcColor?: string
+  iconColor?: string
+  topIcon?: React.ReactNode
+  leftIcon?: React.ReactNode
+  rightIcon?: React.ReactNode
+  showGradientRing?: boolean
+  gradientColor?: string
+}
+
+function buildGatewayRoutingIds(id: string): GatewayRoutingIds {
+  const base = id.replaceAll(":", "")
+  return {
+    clip: `${base}-gateway-routing-clip`,
+    gradientRingClip: `${base}-gradient-ring-clip`,
+  }
+}
+
+function GatewayRoutingSvg({
+  className,
+  width = 264,
+  height = 120,
+  ...props
+}: React.ComponentProps<"svg">) {
+  return (
+    <svg
+      data-slot="gateway-routing"
+      width={width}
+      height={height}
+      viewBox="0 0 264 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn(className)}
+      {...props}
+    />
+  )
+}
+
+function GatewayRoutingDefs({ ids }: { ids: GatewayRoutingIds }) {
+  return (
+    <defs data-slot="gateway-routing-defs">
+      <clipPath id={ids.clip}>
+        <rect width="264" height="120" fill="white" />
+      </clipPath>
+      <clipPath id={ids.gradientRingClip}>
+        <path d="M179 65H178.5C178.5 90.6812 157.681 111.5 132 111.5V112V112.5C158.234 112.5 179.5 91.2335 179.5 65H179ZM132 112V111.5C106.319 111.5 85.5 90.6812 85.5 65H85H84.5C84.5 91.2335 105.766 112.5 132 112.5V112ZM85 65H85.5C85.5 39.3188 106.319 18.5 132 18.5V18V17.5C105.766 17.5 84.5 38.7665 84.5 65H85ZM132 18V18.5C157.681 18.5 178.5 39.3188 178.5 65H179H179.5C179.5 38.7665 158.234 17.5 132 17.5V18Z" />
+      </clipPath>
+    </defs>
+  )
+}
+
+function GatewayRoutingScene({
+  ids,
+  children,
+}: React.PropsWithChildren<{ ids: GatewayRoutingIds }>) {
+  return (
+    <g data-slot="gateway-routing-scene" clipPath={`url(#${ids.clip})`}>
+      {children}
+    </g>
+  )
+}
+
+function GatewayRoutingBackground({
+  backgroundColor,
+}: {
+  backgroundColor: string
+}) {
+  return (
+    <rect
+      data-slot="gateway-routing-background"
+      width="264"
+      height="120"
+      fill={backgroundColor}
+    />
+  )
+}
+
+function GatewayRoutingGradientRing({
+  ids,
+  gradientColor,
+}: {
+  ids: GatewayRoutingIds
+  gradientColor: string
+}) {
+  return (
+    <g
+      data-slot="gateway-routing-gradient-ring"
+      clipPath={`url(#${ids.gradientRingClip})`}
+    >
+      <g transform="matrix(0.0005 -0.0475 0.0475 0.0005 132 65)">
+        <foreignObject x="-1021.05" y="-1021.05" width="2042.1" height="2042.1">
+          <div
+            style={{
+              background: `conic-gradient(from 90deg, ${gradientColor}ed 0deg, ${gradientColor} 10.8835deg, ${gradientColor}33 251.922deg, ${gradientColor}ed 360deg)`,
+              height: "100%",
+              width: "100%",
+              opacity: 1,
+            }}
+          />
+        </foreignObject>
+      </g>
+    </g>
+  )
+}
+
+function GatewayRoutingArcs({
+  topArcColor,
+  bottomArcColor,
+  leftArcColor,
+}: {
+  topArcColor: string
+  bottomArcColor: string
+  leftArcColor: string
+}) {
+  return (
+    <g data-slot="gateway-routing-arcs">
+      <path
+        data-slot="gateway-routing-top-arc"
+        d="M132 18C157.957 18 179 39.0426 179 65C179 73.5607 176.711 81.5869 172.712 88.5"
+        stroke={topArcColor}
+        strokeWidth="1"
+        fill="none"
+      />
+      <path
+        data-slot="gateway-routing-bottom-arc"
+        d="M91.5811 89C99.7763 102.772 114.81 112 132 112C148.77 112 163.489 103.217 171.807 90"
+        stroke={bottomArcColor}
+        strokeWidth="1"
+        fill="none"
+      />
+      <path
+        data-slot="gateway-routing-left-arc"
+        d="M132 18C106.043 18 85 39.0426 85 65C85 71.3762 86.2697 77.4559 88.5701 83"
+        stroke={leftArcColor}
+        strokeWidth="1"
+        fill="none"
+      />
+    </g>
+  )
+}
+
+function GatewayRoutingIconBubble({
+  x,
+  y,
+  fill,
+  stroke,
+}: {
+  x: number
+  y: number
+  fill: string
+  stroke: string
+}) {
+  return (
+    <rect
+      data-slot="gateway-routing-icon-bubble"
+      x={x}
+      y={y}
+      width="32"
+      height="32"
+      rx="16"
+      fill={fill}
+      stroke={stroke}
+    />
+  )
+}
+
+function GatewayRoutingCenter({
+  logoColor,
+  innerCircleColor,
+}: {
+  logoColor: string
+  innerCircleColor: string
+}) {
+  return (
+    <g data-slot="gateway-routing-center">
+      <path
+        data-slot="gateway-routing-vercel-logo"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M132 57L140 71H124L132 57Z"
+        fill={logoColor}
+      />
+      <circle
+        data-slot="gateway-routing-inner-circle"
+        cx="132"
+        cy="65"
+        r="20"
+        stroke={innerCircleColor}
+        fill="none"
+      />
+    </g>
+  )
+}
+
+function GatewayRouting({
+  width = 264,
+  height = 120,
+  //   backgroundColor = "#FAFAFA",
+  backgroundColor = "transparent",
+  borderColor = "#EAEAEA",
+  iconBoxFill = "white",
+  iconBoxStroke = "#EAEAEA",
+  logoColor = "black",
+  innerCircleColor = "#C9C9C9",
+  topArcColor = "#0067D6",
+  bottomArcColor = "#CA2A30",
+  leftArcColor = "#FFB224",
+  iconColor = "#171717",
+  topIcon,
+  leftIcon,
+  rightIcon,
+  showGradientRing = true,
+  gradientColor = "#1F1F1F",
+  className,
+  ...props
+}: GatewayRoutingProps) {
+  const ids = buildGatewayRoutingIds(React.useId())
+  void borderColor
+
+  return (
+    <GatewayRoutingSvg
+      width={width}
+      height={height}
+      className={className}
+      {...props}
+    >
+      <GatewayRoutingDefs ids={ids} />
+      <GatewayRoutingScene ids={ids}>
+        <GatewayRoutingBackground backgroundColor={backgroundColor} />
+
+        {showGradientRing ? (
+          <GatewayRoutingGradientRing ids={ids} gradientColor={gradientColor} />
+        ) : null}
+
+        <GatewayRoutingArcs
+          topArcColor={topArcColor}
+          bottomArcColor={bottomArcColor}
+          leftArcColor={leftArcColor}
+        />
+
+        <GatewayRoutingIconBubble
+          x={155}
+          y={74}
+          fill={iconBoxFill}
+          stroke={iconBoxStroke}
+        />
+        {rightIcon ?? <CohereIcon color={iconColor} />}
+
+        <GatewayRoutingIconBubble
+          x={76}
+          y={73}
+          fill={iconBoxFill}
+          stroke={iconBoxStroke}
+        />
+        {leftIcon ?? <AnthropicIcon color={iconColor} />}
+
+        <GatewayRoutingIconBubble
+          x={116}
+          y={4}
+          fill={iconBoxFill}
+          stroke={iconBoxStroke}
+        />
+        {topIcon ?? <GeminiIcon color={iconColor} />}
+
+        <GatewayRoutingCenter
+          logoColor={logoColor}
+          innerCircleColor={innerCircleColor}
+        />
+      </GatewayRoutingScene>
+    </GatewayRoutingSvg>
+  )
+}
+
+function GeminiIcon({ color = "#171717" }: { color?: string }) {
+  return (
+    <g data-slot="gateway-routing-gemini-icon">
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M134.541 18.3409C134.577 18.3409 134.583 18.359 134.565 18.3831L133.956 19.451L132.056 22.7934C132.056 22.8115 132.037 22.8115 132.019 22.8115C132.001 22.8115 131.995 22.8115 131.983 22.7934L129.467 18.4072C129.449 18.3831 129.467 18.371 129.485 18.371H129.648L134.547 18.3529H134.541V18.3409ZM129.962 12.5008C129.944 12.5008 129.938 12.5008 129.926 12.5189L127.838 16.175C127.82 16.2112 127.784 16.2293 127.742 16.2293H125.654C125.612 16.2293 125.6 16.2474 125.63 16.2836L129.859 23.6802C129.878 23.7044 129.866 23.7225 129.835 23.7225H127.802C127.742 23.7225 127.688 23.7587 127.657 23.819L126.698 25.5023C126.662 25.5566 126.68 25.5928 126.752 25.5928H130.915C130.951 25.5928 130.976 25.6109 130.988 25.6471L132.007 27.4389C132.043 27.4992 132.068 27.4992 132.104 27.4389L135.748 21.0618L136.321 20.0603C136.321 20.0422 136.339 20.0422 136.357 20.0422C136.375 20.0422 136.381 20.0422 136.393 20.0603L137.431 21.9065C137.449 21.9306 137.473 21.9487 137.51 21.9487L139.525 21.9306C139.531 21.9306 139.543 21.9306 139.549 21.9125V21.8884L137.437 18.178C137.419 18.1538 137.419 18.1237 137.437 18.0995L137.654 17.7315L138.469 16.2896C138.487 16.2655 138.469 16.2474 138.445 16.2474H129.998C129.956 16.2474 129.944 16.2293 129.974 16.1931L131.024 14.365C131.042 14.3409 131.042 14.3107 131.024 14.2866L130.028 12.543C130.028 12.5249 130.01 12.5189 129.992 12.5189H129.968L129.962 12.5008ZM132.46 12.2172C132.749 12.7179 133.033 13.2187 133.31 13.7315C133.335 13.7738 133.371 13.7919 133.425 13.7919H137.467C137.594 13.7919 137.703 13.8703 137.787 14.0332L138.843 15.9035C138.976 16.1448 139.024 16.2534 138.861 16.5128C138.674 16.8265 138.487 17.1403 138.306 17.46L138.034 17.9427C137.956 18.0875 137.872 18.1478 138.01 18.3167L139.947 21.6953C140.074 21.9125 140.025 22.0513 139.923 22.2624C139.603 22.8356 139.277 23.4027 138.945 23.9638C138.831 24.1629 138.686 24.2353 138.451 24.2353C137.884 24.2293 137.323 24.2353 136.755 24.2413C136.731 24.2413 136.707 24.2353 136.683 24.2232C136.653 24.2111 136.629 24.187 136.611 24.1569L135.554 22.2745C135.518 22.2202 135.494 22.2202 135.458 22.2745L132.104 28.0663C132.068 28.1266 132.031 28.1266 131.995 28.0663L130.556 25.5566C130.538 25.5204 130.502 25.5023 130.46 25.5023H126.176C125.949 25.5023 125.797 25.4118 125.672 25.2248L124.543 23.2521C124.374 22.9504 124.362 22.8357 124.555 22.4977L128.965 14.7775C129.001 14.7172 128.983 14.6629 128.947 14.6086L127.898 12.7563C127.766 12.521 127.79 12.3822 127.916 12.147C128.248 11.5557 128.58 10.9585 128.918 10.3672C129.026 10.1742 129.177 10.0837 129.4 10.0837C129.978 10.0898 130.557 10.0837 131.136 10.0777C131.16 10.0777 131.184 10.0837 131.208 10.0958C131.238 10.1079 131.262 10.132 131.28 10.1621L132.46 12.2172Z"
+        fill={color}
+      />
+    </g>
+  )
+}
+
+function AnthropicIcon({ color = "#171717" }: { color?: string }) {
+  return (
+    <g data-slot="gateway-routing-anthropic-icon">
+      <path d="M88.5377 82.333H86.2688V84.7229H88.5377V82.333Z" fill={color} />
+      <path d="M97.6144 82.333H95.3455V84.7229H97.6144V82.333Z" fill={color} />
+      <path
+        d="M90.8066 84.7227H86.2688V87.1125H90.8066V84.7227Z"
+        fill={color}
+      />
+      <path
+        d="M97.6145 84.7227H93.0767V87.1125H97.6145V84.7227Z"
+        fill={color}
+      />
+      <path d="M97.6147 87.1123H86.2688V89.502H97.6147V87.1123Z" fill={color} />
+      <path
+        d="M88.5377 89.5029H86.2688V91.8928H88.5377V89.5029Z"
+        fill={color}
+      />
+      <path
+        d="M93.0763 89.5029H90.8074V91.8928H93.0763V89.5029Z"
+        fill={color}
+      />
+      <path
+        d="M97.6144 89.5029H95.3455V91.8928H97.6144V89.5029Z"
+        fill={color}
+      />
+      <path d="M90.8081 91.8945H84V94.2844H90.8081V91.8945Z" fill={color} />
+      <path
+        d="M99.8847 91.8945H93.0767V94.2844H99.8847V91.8945Z"
+        fill={color}
+      />
+    </g>
+  )
+}
+
+function CohereIcon({ color = "#171717" }: { color?: string }) {
+  return (
+    <path
+      data-slot="gateway-routing-cohere-icon"
+      d="M180.928 84.4521C180.736 84.358 180.654 84.5373 180.541 84.6283C180.503 84.6577 180.471 84.6958 180.438 84.7311C180.158 85.0306 179.83 85.2275 179.402 85.2039C178.776 85.1687 178.241 85.3655 177.769 85.8443C177.669 85.2539 177.335 84.9014 176.827 84.6753C176.561 84.5578 176.293 84.4403 176.107 84.1847C175.977 84.0027 175.941 83.8 175.876 83.6002C175.835 83.4798 175.794 83.3564 175.655 83.3359C175.504 83.3124 175.445 83.4386 175.386 83.5444C175.15 83.9762 175.058 84.4521 175.067 84.9337C175.088 86.0176 175.546 86.8811 176.455 87.495C176.558 87.5655 176.585 87.6359 176.552 87.7388C176.49 87.9503 176.417 88.1559 176.352 88.3673C176.31 88.5025 176.248 88.5319 176.104 88.473C175.605 88.2646 175.173 87.9561 174.793 87.5831C174.146 86.9575 173.561 86.2673 172.832 85.7268C172.661 85.6005 172.49 85.483 172.312 85.3714C171.568 84.6489 172.41 84.0555 172.605 83.9851C172.808 83.9116 172.676 83.659 172.017 83.662C171.359 83.6649 170.756 83.8852 169.989 84.1789C169.876 84.223 169.758 84.2552 169.637 84.2817C168.94 84.1495 168.217 84.1201 167.461 84.2053C166.038 84.3639 164.901 85.0366 164.066 86.185C163.062 87.5655 162.825 89.1339 163.115 90.77C163.419 92.4941 164.299 93.9216 165.651 95.0378C167.054 96.195 168.669 96.7619 170.511 96.6532C171.63 96.5886 172.876 96.4388 174.282 95.2492C174.636 95.4255 175.008 95.4959 175.625 95.5488C176.101 95.5929 176.558 95.5253 176.913 95.4519C177.468 95.3344 177.429 94.8204 177.229 94.7264C175.602 93.9686 175.959 94.277 175.634 94.0273C176.461 93.0493 177.707 92.033 178.194 88.7403C178.232 88.4789 178.2 88.3144 178.194 88.103C178.191 87.9738 178.221 87.9238 178.368 87.9091C178.776 87.8621 179.171 87.7505 179.535 87.5508C180.589 86.9751 181.014 86.0293 181.114 84.8956C181.129 84.7223 181.111 84.5431 180.928 84.4521ZM171.743 94.6559C170.166 93.4164 169.401 93.0081 169.085 93.0257C168.79 93.0434 168.843 93.3812 168.908 93.6015C168.976 93.8188 169.064 93.9686 169.188 94.1595C169.274 94.2858 169.333 94.4738 169.103 94.6148C168.595 94.9291 167.949 94.9114 167.315 94.7528C165.663 94.3328 164.519 93.3282 163.845 91.7833C163.389 90.7348 163.277 89.6333 163.601 88.5142C164.039 87.0194 165.009 86.0235 166.476 85.5154C167.315 85.2246 168.178 85.1601 169.052 85.3244C169.34 85.3773 169.616 85.4713 169.928 85.5712C169.616 85.8443 169.331 86.0823 169.067 86.3466C168.414 86.9898 167.861 87.7035 167.497 88.5377C166.923 89.8476 166.929 91.1575 167.594 92.4296C167.879 92.976 168.29 93.4105 168.855 93.6954C169.619 94.0861 170.402 94.0332 171.181 93.7189C171.562 93.5661 171.91 93.3576 172.219 93.0962C172.624 92.7559 172.969 92.3655 173.255 91.9281C173.504 91.5463 173.704 91.1399 173.89 90.7289C174.174 90.0916 174.396 89.4307 174.492 88.7344C174.543 88.3586 174.568 87.9797 174.577 87.5978C174.583 87.3277 174.465 87.1632 174.198 87.0692C173.647 86.8753 173.105 86.6521 172.563 86.4377C172.276 86.3261 171.989 86.2086 171.712 86.0735C171.484 85.9618 171.382 85.7914 171.43 85.5418C171.478 85.2893 171.641 85.1542 171.895 85.1248C172.276 85.0837 172.639 85.1542 172.99 85.3009C173.674 85.5888 174.306 85.9618 174.866 86.4495C175.026 86.5905 175.117 86.5935 175.283 86.4612C175.598 86.2056 175.935 85.9765 176.263 85.7356C176.464 85.5888 176.664 85.5712 176.889 85.6917C177.375 85.9589 177.569 86.3877 177.593 86.9104C177.635 87.8358 177.417 88.7109 177.126 89.5686C176.673 90.9079 175.983 92.1213 175.058 93.1933C174.848 93.4399 174.614 93.6601 174.357 93.8568C173.913 94.1948 173.619 94.1889 173.179 93.8421C172.733 93.4869 172.276 93.1375 171.743 94.6559Z"
+      fill={color}
+    />
+  )
+}
+
+export {
+  GatewayRouting,
+  GatewayRoutingSvg,
+  GatewayRoutingDefs,
+  GatewayRoutingScene,
+  GatewayRoutingBackground,
+  GatewayRoutingGradientRing,
+  GatewayRoutingArcs,
+  GatewayRoutingIconBubble,
+  GatewayRoutingCenter,
+  GeminiIcon,
+  AnthropicIcon,
+  CohereIcon,
+}

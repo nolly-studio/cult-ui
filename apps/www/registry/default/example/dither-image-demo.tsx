@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import {
   DitherImage,
@@ -8,7 +8,7 @@ import {
   DitherImageOverlay,
   DitherImageReveal,
   type DitherRevealDirection,
-} from "@/registry/default/ui/dither-image";
+} from "@/registry/default/ui/dither-image"
 
 const GHIBLI_STILLS: { alt: string; src: string }[] = Array.from(
   { length: 9 },
@@ -16,18 +16,18 @@ const GHIBLI_STILLS: { alt: string; src: string }[] = Array.from(
     src: `/images/gibli/gibli-${i + 1}.jpg`,
     alt: `Studio Ghibli-style still ${i + 1}, dithered`,
   })
-);
+)
 
-const FRAME_SIZES = "(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 90vw";
+const FRAME_SIZES = "(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 90vw"
 /** Fixed box for `DitherImageReveal` + overlay demos (`size-56` → 14rem). */
-const REVEAL_SIZES = "224px";
+const REVEAL_SIZES = "224px"
 
 const REVEAL_OVERLAY_VARIANTS: {
-  direction: DitherRevealDirection;
-  from: number;
-  to: number;
-  label: string;
-  hint: string;
+  direction: DitherRevealDirection
+  from: number
+  to: number
+  label: string
+  hint: string
 }[] = [
   {
     direction: "r",
@@ -71,7 +71,7 @@ const REVEAL_OVERLAY_VARIANTS: {
     label: "radial",
     hint: "Center clean, edges dither",
   },
-];
+]
 
 export default function DitherImageDemo() {
   return (
@@ -266,7 +266,7 @@ export default function DitherImageDemo() {
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {REVEAL_OVERLAY_VARIANTS.map(
               ({ direction, from, to, label, hint }, i) => {
-                const img = GHIBLI_STILLS[(7 + i) % GHIBLI_STILLS.length];
+                const img = GHIBLI_STILLS[(7 + i) % GHIBLI_STILLS.length]
                 return (
                   <DitherImage key={direction}>
                     <DitherImageReveal className="mx-auto size-56 overflow-hidden rounded-xl">
@@ -307,12 +307,12 @@ export default function DitherImageDemo() {
                       </span>
                     </DitherImageCaption>
                   </DitherImage>
-                );
+                )
               }
             )}
           </div>
         </section>
       </div>
     </main>
-  );
+  )
 }

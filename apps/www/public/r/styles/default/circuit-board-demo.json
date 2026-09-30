@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "circuit-board-demo",
+  "registryDependencies": [
+    "circuit-board"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/circuit-board-demo.tsx",
+      "content": "\"use client\";\n\nimport { CircuitBoard } from \"@/registry/default/ui/circuit-board\";\n\nfunction CircuitBoardDemo() {\n  return (\n    <div className=\"flex w-full items-center justify-center p-6 md:p-10\">\n      <CircuitBoard />\n    </div>\n  );\n}\n\nexport default CircuitBoardDemo;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

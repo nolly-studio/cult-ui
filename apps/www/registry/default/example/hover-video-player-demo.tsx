@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
-import { GradientHeading } from "../ui/gradient-heading";
-import { HoverVideoPlayer } from "../ui/hover-video-player";
+import { GradientHeading } from "../ui/gradient-heading"
+import { HoverVideoPlayer } from "../ui/hover-video-player"
 
 export default function HoverVideoPlayerDemo() {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useReducedMotion()
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center gap-12 py-12">
@@ -54,5 +54,5 @@ export default function HoverVideoPlayerDemo() {
         newcopy.ai
       </a>
     </div>
-  );
+  )
 }

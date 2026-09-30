@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import {
   useCallback,
@@ -9,13 +9,13 @@ import {
   type ChangeEvent,
   type DragEvent,
   type ReactNode,
-} from "react";
+} from "react"
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Switch } from "@/components/ui/switch"
 import {
   DitherImage,
   DitherImageContent,
@@ -24,7 +24,7 @@ import {
   DitherImageReveal,
   type DitherRevealDirection,
   type DitherSize,
-} from "@/registry/default/ui/dither-image";
+} from "@/registry/default/ui/dither-image"
 
 /** Layered edge + lift (SKILL-DESIGN) — replaces flat card borders. */
 const PANEL_SURFACE = cn(
@@ -34,33 +34,33 @@ const PANEL_SURFACE = cn(
   "transition-shadow duration-200",
   "hover:shadow-[0px_0px_0px_1px_rgba(0,0,0,0.08),0px_1px_2px_-1px_rgba(0,0,0,0.08),0px_2px_4px_0px_rgba(0,0,0,0.06)]",
   "dark:hover:shadow-[0px_0px_0px_1px_rgba(255,255,255,0.1),0px_1px_2px_-1px_rgba(255,255,255,0.05),0px_2px_4px_0px_rgba(0,0,0,0.25)]"
-);
+)
 
 const BTN_PRESS =
-  "active:scale-[0.96] transition-transform duration-150 ease-[cubic-bezier(0.2,0,0,1)]";
+  "active:scale-[0.96] transition-transform duration-150 ease-[cubic-bezier(0.2,0,0,1)]"
 
 const SELECT_SURFACE = cn(
   "border-input/80 bg-input/15 h-10 w-full rounded-[calc(var(--radius)-2px)] border px-2.5 text-sm outline-none",
   "focus-visible:border-ring focus-visible:ring-ring/30 focus-visible:ring-2"
-);
+)
 
-const FALLBACK_SRC = "/images/gibli/gibli-1.jpg";
-const FALLBACK_ALT = "Sample wallpaper — upload or paste a URL to preview";
+const FALLBACK_SRC = "/images/gibli/gibli-1.jpg"
+const FALLBACK_ALT = "Sample wallpaper — upload or paste a URL to preview"
 
-const REMOTE_HTTP_RE = /^https?:\/\//i;
+const REMOTE_HTTP_RE = /^https?:\/\//i
 
 function labelFromRemoteUrl(href: string): string {
   if (href.startsWith("/")) {
-    const file = href.split("/").pop();
-    return file ?? href;
+    const file = href.split("/").pop()
+    return file ?? href
   }
   try {
-    const u = new URL(href);
+    const u = new URL(href)
     const path =
-      u.pathname.length > 48 ? `${u.pathname.slice(0, 48)}…` : u.pathname;
-    return `${u.hostname}${path}`;
+      u.pathname.length > 48 ? `${u.pathname.slice(0, 48)}…` : u.pathname
+    return `${u.hostname}${path}`
   } catch {
-    return "Remote image";
+    return "Remote image"
   }
 }
 
@@ -70,7 +70,7 @@ function needsUnoptimizedImage(src: string): boolean {
     src.startsWith("blob:") ||
     src.startsWith("data:") ||
     REMOTE_HTTP_RE.test(src)
-  );
+  )
 }
 
 const SIZE_OPTIONS: { value: DitherSize; label: string }[] = [
@@ -80,18 +80,18 @@ const SIZE_OPTIONS: { value: DitherSize; label: string }[] = [
   { value: "lg", label: "lg (20px)" },
   { value: "xl", label: "xl (28px)" },
   { value: "2xl", label: "2xl (40px)" },
-];
+]
 
 const ASPECT_OPTIONS = [
   { value: "square" as const, label: "1:1" },
   { value: "video" as const, label: "16:9" },
   { value: "portrait" as const, label: "3:4" },
   { value: "wide" as const, label: "21:9" },
-];
+]
 
 const REVEAL_DIRECTION_OPTIONS: {
-  value: DitherRevealDirection;
-  label: string;
+  value: DitherRevealDirection
+  label: string
 }[] = [
   { value: "r", label: "Right fade (clean left)" },
   { value: "l", label: "Left fade (clean right)" },
@@ -102,7 +102,7 @@ const REVEAL_DIRECTION_OPTIONS: {
   { value: "bl-tr", label: "Diagonal ↗ (clean bottom-left)" },
   { value: "br-tl", label: "Diagonal ↖ (clean bottom-right)" },
   { value: "radial", label: "Radial" },
-];
+]
 
 const QUICK_GIFS = [
   {
@@ -125,19 +125,19 @@ const QUICK_GIFS = [
     href: "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGxmaTUybzN3ZmVqMDV4aHd6eXBwcDhuMWNicWZueTk4eWppNmQ2ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LUl2tRY5oVlBu/giphy.gif",
     label: "GIF 4",
   },
-] as const;
+] as const
 
 /** Local stills: `public/images/gibli/gibli-1.jpg` … `gibli-9.jpg` → `/images/gibli/...`. */
 const QUICK_GHIBLI: { href: string; label: string }[] = Array.from(
   { length: 9 },
   (_, i) => {
-    const n = i + 1;
+    const n = i + 1
     return {
       href: `/images/gibli/gibli-${n}.jpg`,
       label: String(n),
-    };
+    }
   }
-);
+)
 
 function RangeField({
   id,
@@ -149,14 +149,14 @@ function RangeField({
   step,
   suffix,
 }: {
-  id: string;
-  label: string;
-  value: number;
-  onChange: (v: number) => void;
-  min: number;
-  max: number;
-  step: number;
-  suffix?: string;
+  id: string
+  label: string
+  value: number
+  onChange: (v: number) => void
+  min: number
+  max: number
+  step: number
+  suffix?: string
 }) {
   return (
     <div className="flex flex-col gap-1.5">
@@ -183,7 +183,7 @@ function RangeField({
         value={value}
       />
     </div>
-  );
+  )
 }
 
 /** Single stat pill — wraps as one unit so lines never break mid-value (e.g. “reveal r”). */
@@ -191,8 +191,8 @@ function CaptionMetaChip({
   kicker,
   children,
 }: {
-  kicker: string;
-  children: ReactNode;
+  kicker: string
+  children: ReactNode
 }) {
   return (
     <span
@@ -210,7 +210,7 @@ function CaptionMetaChip({
         {children}
       </span>
     </span>
-  );
+  )
 }
 
 function PanelSection({
@@ -220,11 +220,11 @@ function PanelSection({
   children,
   className,
 }: {
-  eyebrow: string;
-  title: string;
-  description?: string;
-  children: ReactNode;
-  className?: string;
+  eyebrow: string
+  title: string
+  description?: string
+  children: ReactNode
+  className?: string
 }) {
   return (
     <div className={cn("flex flex-col gap-4", className)}>
@@ -243,197 +243,195 @@ function PanelSection({
       </div>
       {children}
     </div>
-  );
+  )
 }
 
 export interface DitherImageDemoUploadProps {
   /** Starting image: same-origin path (e.g. `/images/foo.jpg`) or `https://…` image / GIF. */
-  initialSrc?: string;
+  initialSrc?: string
   /** Caption label when `initialSrc` is set; if omitted and `initialSrc` is remote, a short URL label is derived. */
-  initialLabel?: string;
+  initialLabel?: string
 }
 
 export default function DitherImageDemoUpload({
   initialSrc,
   initialLabel,
 }: DitherImageDemoUploadProps = {}) {
-  const baseId = useId();
-  const blobUrlRef = useRef<string | null>(null);
+  const baseId = useId()
+  const blobUrlRef = useRef<string | null>(null)
 
-  const [previewSrc, setPreviewSrc] = useState(
-    () => initialSrc ?? FALLBACK_SRC
-  );
+  const [previewSrc, setPreviewSrc] = useState(() => initialSrc ?? FALLBACK_SRC)
   const [fileLabel, setFileLabel] = useState<string | null>(() => {
     if (initialLabel) {
-      return initialLabel;
+      return initialLabel
     }
     if (initialSrc && REMOTE_HTTP_RE.test(initialSrc)) {
-      return labelFromRemoteUrl(initialSrc);
+      return labelFromRemoteUrl(initialSrc)
     }
     if (initialSrc?.startsWith("data:")) {
-      return "Data URL";
+      return "Data URL"
     }
-    return null;
-  });
+    return null
+  })
   const [urlDraft, setUrlDraft] = useState(() => {
     if (initialSrc && REMOTE_HTTP_RE.test(initialSrc)) {
-      return initialSrc;
+      return initialSrc
     }
-    return "";
-  });
+    return ""
+  })
 
-  const [size, setSize] = useState<DitherSize>("md");
+  const [size, setSize] = useState<DitherSize>("md")
   const [aspect, setAspect] =
-    useState<(typeof ASPECT_OPTIONS)[number]["value"]>("square");
-  const [grayscale, setGrayscale] = useState(1);
-  const [contrast, setContrast] = useState(120);
-  const [brightness, setBrightness] = useState(1);
-  const [blurPx, setBlurPx] = useState(0);
-  const [opacity, setOpacity] = useState(1);
+    useState<(typeof ASPECT_OPTIONS)[number]["value"]>("square")
+  const [grayscale, setGrayscale] = useState(1)
+  const [contrast, setContrast] = useState(120)
+  const [brightness, setBrightness] = useState(1)
+  const [blurPx, setBlurPx] = useState(0)
+  const [opacity, setOpacity] = useState(1)
 
-  const [revealEnabled, setRevealEnabled] = useState(true);
-  const [revealDir, setRevealDir] = useState<DitherRevealDirection>("r");
-  const [revealFrom, setRevealFrom] = useState(0);
-  const [revealTo, setRevealTo] = useState(65);
-  const [fileDragging, setFileDragging] = useState(false);
-  const fileDropDepth = useRef(0);
+  const [revealEnabled, setRevealEnabled] = useState(true)
+  const [revealDir, setRevealDir] = useState<DitherRevealDirection>("r")
+  const [revealFrom, setRevealFrom] = useState(0)
+  const [revealTo, setRevealTo] = useState(65)
+  const [fileDragging, setFileDragging] = useState(false)
+  const fileDropDepth = useRef(0)
 
   const revokeBlob = useCallback(() => {
     if (blobUrlRef.current) {
-      URL.revokeObjectURL(blobUrlRef.current);
-      blobUrlRef.current = null;
+      URL.revokeObjectURL(blobUrlRef.current)
+      blobUrlRef.current = null
     }
-  }, []);
+  }, [])
 
-  useEffect(() => () => revokeBlob(), [revokeBlob]);
+  useEffect(() => () => revokeBlob(), [revokeBlob])
 
   const applyFile = useCallback(
     (file: File) => {
       if (!file.type.startsWith("image/")) {
-        return;
+        return
       }
-      revokeBlob();
-      const url = URL.createObjectURL(file);
-      blobUrlRef.current = url;
-      setPreviewSrc(url);
-      setFileLabel(file.name);
-      setUrlDraft("");
+      revokeBlob()
+      const url = URL.createObjectURL(file)
+      blobUrlRef.current = url
+      setPreviewSrc(url)
+      setFileLabel(file.name)
+      setUrlDraft("")
     },
     [revokeBlob]
-  );
+  )
 
   const onFileChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
-      const file = e.target.files?.[0];
+      const file = e.target.files?.[0]
       if (file) {
-        applyFile(file);
+        applyFile(file)
       }
-      e.target.value = "";
+      e.target.value = ""
     },
     [applyFile]
-  );
+  )
 
   const onFileDragEnter = useCallback((e: DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    fileDropDepth.current += 1;
+    e.preventDefault()
+    e.stopPropagation()
+    fileDropDepth.current += 1
     if (e.dataTransfer.types.includes("Files")) {
-      setFileDragging(true);
+      setFileDragging(true)
     }
-  }, []);
+  }, [])
 
   const onFileDragLeave = useCallback((e: DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    fileDropDepth.current -= 1;
+    e.preventDefault()
+    e.stopPropagation()
+    fileDropDepth.current -= 1
     if (fileDropDepth.current <= 0) {
-      fileDropDepth.current = 0;
-      setFileDragging(false);
+      fileDropDepth.current = 0
+      setFileDragging(false)
     }
-  }, []);
+  }, [])
 
   const onFileDragOver = useCallback((e: DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    e.dataTransfer.dropEffect = "copy";
-  }, []);
+    e.preventDefault()
+    e.stopPropagation()
+    e.dataTransfer.dropEffect = "copy"
+  }, [])
 
   const onFileDrop = useCallback(
     (e: DragEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-      fileDropDepth.current = 0;
-      setFileDragging(false);
-      const file = e.dataTransfer.files?.[0];
+      e.preventDefault()
+      e.stopPropagation()
+      fileDropDepth.current = 0
+      setFileDragging(false)
+      const file = e.dataTransfer.files?.[0]
       if (file) {
-        applyFile(file);
+        applyFile(file)
       }
     },
     [applyFile]
-  );
+  )
 
   const loadRemoteImage = useCallback(
     (href: string) => {
-      revokeBlob();
-      setPreviewSrc(href);
-      setFileLabel(labelFromRemoteUrl(href));
-      setUrlDraft(href);
+      revokeBlob()
+      setPreviewSrc(href)
+      setFileLabel(labelFromRemoteUrl(href))
+      setUrlDraft(href)
     },
     [revokeBlob]
-  );
+  )
 
   const applyImageUrl = useCallback(() => {
-    const raw = urlDraft.trim();
+    const raw = urlDraft.trim()
     if (!raw) {
-      return;
+      return
     }
     if (raw.startsWith("data:")) {
-      revokeBlob();
-      setPreviewSrc(raw);
-      setFileLabel("Pasted data URL");
-      return;
+      revokeBlob()
+      setPreviewSrc(raw)
+      setFileLabel("Pasted data URL")
+      return
     }
-    let href: string;
+    let href: string
     try {
-      const u = new URL(raw);
+      const u = new URL(raw)
       if (u.protocol === "http:" || u.protocol === "https:") {
-        href = u.href;
+        href = u.href
       } else {
-        return;
+        return
       }
     } catch {
       try {
-        const u = new URL(`https://${raw}`);
-        href = u.href;
+        const u = new URL(`https://${raw}`)
+        href = u.href
       } catch {
-        return;
+        return
       }
     }
-    loadRemoteImage(href);
-  }, [loadRemoteImage, urlDraft, revokeBlob]);
+    loadRemoteImage(href)
+  }, [loadRemoteImage, urlDraft, revokeBlob])
 
   const resetToSample = useCallback(() => {
-    revokeBlob();
-    setPreviewSrc(FALLBACK_SRC);
-    setFileLabel(null);
-    setUrlDraft("");
-  }, [revokeBlob]);
+    revokeBlob()
+    setPreviewSrc(FALLBACK_SRC)
+    setFileLabel(null)
+    setUrlDraft("")
+  }, [revokeBlob])
 
   const resetSliders = useCallback(() => {
-    setSize("md");
-    setAspect("square");
-    setGrayscale(1);
-    setContrast(120);
-    setBrightness(1);
-    setBlurPx(0);
-    setOpacity(1);
-    setRevealEnabled(true);
-    setRevealDir("r");
-    setRevealFrom(0);
-    setRevealTo(65);
-  }, []);
+    setSize("md")
+    setAspect("square")
+    setGrayscale(1)
+    setContrast(120)
+    setBrightness(1)
+    setBlurPx(0)
+    setOpacity(1)
+    setRevealEnabled(true)
+    setRevealDir("r")
+    setRevealFrom(0)
+    setRevealTo(65)
+  }, [])
 
-  const unoptimized = needsUnoptimizedImage(previewSrc);
+  const unoptimized = needsUnoptimizedImage(previewSrc)
 
   return (
     <main className="bg-background min-h-screen antialiased">
@@ -505,8 +503,8 @@ export default function DitherImageDemoUpload({
                       onChange={(e) => setUrlDraft(e.target.value)}
                       onKeyDown={(e) => {
                         if (e.key === "Enter") {
-                          e.preventDefault();
-                          applyImageUrl();
+                          e.preventDefault()
+                          applyImageUrl()
                         }
                       }}
                       placeholder="https://example.com/photo.jpg or animated.gif"
@@ -934,5 +932,5 @@ export default function DitherImageDemoUpload({
         </div>
       </div>
     </main>
-  );
+  )
 }

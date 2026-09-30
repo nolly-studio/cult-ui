@@ -1,7 +1,5 @@
-"use client";
+"use client"
 
-import { LibraryIcon, PlusSignIcon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
 import {
   createContext,
   useCallback,
@@ -11,10 +9,12 @@ import {
   type ComponentProps,
   type PropsWithChildren,
   type ReactNode,
-} from "react";
+} from "react"
+import { LibraryIcon, PlusSignIcon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 
-import { useOptionalPromptInputController } from "@/components/ai-elements/prompt-input";
-import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -23,7 +23,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/components/ui/command";
+} from "@/components/ui/command"
 import {
   Dialog,
   DialogClose,
@@ -34,20 +34,20 @@ import {
   DialogTitle,
   type DialogDescriptionProps,
   type DialogTitleProps,
-} from "@/components/ui/dialog";
+} from "@/components/ui/dialog"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/ui/hover-card";
-import { Input } from "@/components/ui/input";
+} from "@/components/ui/hover-card"
+import { Input } from "@/components/ui/input"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/popover"
+import { Textarea } from "@/components/ui/textarea"
+import { useOptionalPromptInputController } from "@/components/ai-elements/prompt-input"
 
 // ============================================================================
 // Types
@@ -55,38 +55,38 @@ import { cn } from "@/lib/utils";
 
 export interface Prompt {
   /** Unique identifier for the prompt */
-  id: string;
+  id: string
   /** Display title for the prompt */
-  title: string;
+  title: string
   /** Short description shown in the list */
-  description: string;
+  description: string
   /** The actual prompt content to insert/copy */
-  prompt: string;
+  prompt: string
   /** Optional category for grouping */
-  category?: string;
+  category?: string
   /** Whether this is a user-created prompt */
-  isCustom?: boolean;
+  isCustom?: boolean
 }
 
 export interface PromptLibraryContextValue {
   /** All available prompts */
-  prompts: Prompt[];
+  prompts: Prompt[]
   /** Add a custom prompt */
-  addCustom: (prompt: Omit<Prompt, "id" | "isCustom">) => void;
+  addCustom: (prompt: Omit<Prompt, "id" | "isCustom">) => void
   /** Remove a custom prompt */
-  removeCustom: (id: string) => void;
+  removeCustom: (id: string) => void
   /** Select a prompt (insert or copy) */
-  selectPrompt: (prompt: Prompt) => void;
+  selectPrompt: (prompt: Prompt) => void
   /** Last selected prompt ID */
-  lastSelectedId: string | null;
+  lastSelectedId: string | null
   /** Open state for the popover */
-  open: boolean;
+  open: boolean
   /** Set open state for the popover */
-  setOpen: (open: boolean) => void;
+  setOpen: (open: boolean) => void
   /** Open state for the create dialog */
-  createDialogOpen: boolean;
+  createDialogOpen: boolean
   /** Set open state for the create dialog */
-  setCreateDialogOpen: (open: boolean) => void;
+  setCreateDialogOpen: (open: boolean) => void
 }
 
 // ============================================================================
@@ -95,21 +95,21 @@ export interface PromptLibraryContextValue {
 
 const PromptLibraryContext = createContext<PromptLibraryContextValue | null>(
   null
-);
+)
 
 /**
  * Hook to access the PromptLibrary context
  * @throws Error if used outside of PromptLibrary provider
  */
 export const usePromptLibrary = () => {
-  const ctx = useContext(PromptLibraryContext);
+  const ctx = useContext(PromptLibraryContext)
   if (!ctx) {
     throw new Error(
       "usePromptLibrary must be used within a PromptLibrary provider"
-    );
+    )
   }
-  return ctx;
-};
+  return ctx
+}
 
 // ============================================================================
 // Controllable State Hook
@@ -120,26 +120,26 @@ function useControllableState<T>(
   defaultValue: T,
   onChange?: (value: T) => void
 ): [T, (value: T | ((prev: T) => T)) => void] {
-  const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue);
-  const isControlled = controlledValue !== undefined;
-  const value = isControlled ? controlledValue : uncontrolledValue;
+  const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue)
+  const isControlled = controlledValue !== undefined
+  const value = isControlled ? controlledValue : uncontrolledValue
 
   const setValue = useCallback(
     (nextValue: T | ((prev: T) => T)) => {
       const resolvedValue =
         typeof nextValue === "function"
           ? (nextValue as (prev: T) => T)(value)
-          : nextValue;
+          : nextValue
 
       if (!isControlled) {
-        setUncontrolledValue(resolvedValue);
+        setUncontrolledValue(resolvedValue)
       }
-      onChange?.(resolvedValue);
+      onChange?.(resolvedValue)
     },
     [isControlled, onChange, value]
-  );
+  )
 
-  return [value, setValue];
+  return [value, setValue]
 }
 
 // ============================================================================
@@ -148,16 +148,16 @@ function useControllableState<T>(
 
 export type PromptLibraryProps = PropsWithChildren<{
   /** Initial set of prompts */
-  prompts?: Prompt[];
+  prompts?: Prompt[]
   /** Callback when prompts change (for custom prompts) */
-  onPromptsChange?: (prompts: Prompt[]) => void;
+  onPromptsChange?: (prompts: Prompt[]) => void
   /** Callback when a prompt is selected */
-  onSelect?: (prompt: Prompt) => void;
+  onSelect?: (prompt: Prompt) => void
   /** Controlled open state for popover */
-  open?: boolean;
+  open?: boolean
   /** Callback when open state changes */
-  onOpenChange?: (open: boolean) => void;
-}>;
+  onOpenChange?: (open: boolean) => void
+}>
 
 /**
  * Root component for the PromptLibrary widget.
@@ -174,45 +174,45 @@ export function PromptLibrary({
 }: PromptLibraryProps) {
   const [internalPrompts, setInternalPrompts] = useState<Prompt[]>(
     controlledPrompts ?? []
-  );
+  )
 
-  const prompts = controlledPrompts ?? internalPrompts;
+  const prompts = controlledPrompts ?? internalPrompts
 
   const [open, setOpen] = useControllableState(
     controlledOpen,
     false,
     onOpenChange
-  );
-  const [createDialogOpen, setCreateDialogOpen] = useState(false);
-  const [lastSelectedId, setLastSelectedId] = useState<string | null>(null);
+  )
+  const [createDialogOpen, setCreateDialogOpen] = useState(false)
+  const [lastSelectedId, setLastSelectedId] = useState<string | null>(null)
 
   // Try to get PromptInput controller for integration
-  const promptInputController = useOptionalPromptInputController();
+  const promptInputController = useOptionalPromptInputController()
 
   const selectPrompt = useCallback(
     async (prompt: Prompt) => {
-      setLastSelectedId(prompt.id);
+      setLastSelectedId(prompt.id)
 
       if (promptInputController) {
         // Insert directly into PromptInput textarea
-        promptInputController.textInput.setInput(prompt.prompt);
+        promptInputController.textInput.setInput(prompt.prompt)
       } else {
         // Fallback: copy to clipboard
         try {
-          await navigator.clipboard.writeText(prompt.prompt);
+          await navigator.clipboard.writeText(prompt.prompt)
         } catch (err) {
-          console.error("Failed to copy to clipboard:", err);
+          console.error("Failed to copy to clipboard:", err)
         }
       }
 
       // Close popover after selection
-      setOpen(false);
+      setOpen(false)
 
       // Call onSelect callback
-      onSelect?.(prompt);
+      onSelect?.(prompt)
     },
     [promptInputController, setOpen, onSelect]
-  );
+  )
 
   const addCustom = useCallback(
     (prompt: Omit<Prompt, "id" | "isCustom">) => {
@@ -220,27 +220,27 @@ export function PromptLibrary({
         ...prompt,
         id: `custom-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
         isCustom: true,
-      };
+      }
 
       if (controlledPrompts) {
-        onPromptsChange?.([...controlledPrompts, newPrompt]);
+        onPromptsChange?.([...controlledPrompts, newPrompt])
       } else {
-        setInternalPrompts((prev) => [...prev, newPrompt]);
+        setInternalPrompts((prev) => [...prev, newPrompt])
       }
     },
     [controlledPrompts, onPromptsChange]
-  );
+  )
 
   const removeCustom = useCallback(
     (id: string) => {
       if (controlledPrompts) {
-        onPromptsChange?.(controlledPrompts.filter((p) => p.id !== id));
+        onPromptsChange?.(controlledPrompts.filter((p) => p.id !== id))
       } else {
-        setInternalPrompts((prev) => prev.filter((p) => p.id !== id));
+        setInternalPrompts((prev) => prev.filter((p) => p.id !== id))
       }
     },
     [controlledPrompts, onPromptsChange]
-  );
+  )
 
   const contextValue = useMemo<PromptLibraryContextValue>(
     () => ({
@@ -264,7 +264,7 @@ export function PromptLibrary({
       setOpen,
       createDialogOpen,
     ]
-  );
+  )
 
   return (
     <PromptLibraryContext.Provider value={contextValue}>
@@ -272,7 +272,7 @@ export function PromptLibrary({
         {children}
       </Popover>
     </PromptLibraryContext.Provider>
-  );
+  )
 }
 
 // ============================================================================
@@ -281,8 +281,8 @@ export function PromptLibrary({
 
 export type PromptLibraryTriggerProps = ComponentProps<typeof Button> & {
   /** Custom label for the trigger button */
-  label?: ReactNode;
-};
+  label?: ReactNode
+}
 
 /**
  * Button that opens the prompt library popover.
@@ -314,14 +314,14 @@ export function PromptLibraryTrigger({
         )}
       </Button>
     </PopoverTrigger>
-  );
+  )
 }
 
 // ============================================================================
 // Content Component
 // ============================================================================
 
-export type PromptLibraryContentProps = ComponentProps<typeof PopoverContent>;
+export type PromptLibraryContentProps = ComponentProps<typeof PopoverContent>
 
 /**
  * Popover content container for the prompt library list.
@@ -343,14 +343,14 @@ export function PromptLibraryContent({
         {children}
       </Command>
     </PopoverContent>
-  );
+  )
 }
 
 // ============================================================================
 // Search Component
 // ============================================================================
 
-export type PromptLibrarySearchProps = ComponentProps<typeof CommandInput>;
+export type PromptLibrarySearchProps = ComponentProps<typeof CommandInput>
 
 /**
  * Search input for filtering prompts.
@@ -367,14 +367,14 @@ export function PromptLibrarySearch({
       placeholder={placeholder}
       {...props}
     />
-  );
+  )
 }
 
 // ============================================================================
 // List Component
 // ============================================================================
 
-export type PromptLibraryListProps = ComponentProps<typeof CommandList>;
+export type PromptLibraryListProps = ComponentProps<typeof CommandList>
 
 /**
  * Scrollable list container for prompts.
@@ -392,14 +392,14 @@ export function PromptLibraryList({
     >
       {children}
     </CommandList>
-  );
+  )
 }
 
 // ============================================================================
 // Empty Component
 // ============================================================================
 
-export type PromptLibraryEmptyProps = ComponentProps<typeof CommandEmpty>;
+export type PromptLibraryEmptyProps = ComponentProps<typeof CommandEmpty>
 
 /**
  * Empty state shown when no prompts match the search.
@@ -417,14 +417,14 @@ export function PromptLibraryEmpty({
     >
       {children}
     </CommandEmpty>
-  );
+  )
 }
 
 // ============================================================================
 // Group Component
 // ============================================================================
 
-export type PromptLibraryGroupProps = ComponentProps<typeof CommandGroup>;
+export type PromptLibraryGroupProps = ComponentProps<typeof CommandGroup>
 
 /**
  * Group container for categorizing prompts.
@@ -447,7 +447,7 @@ export function PromptLibraryGroup({
       data-slot="prompt-library-group"
       {...props}
     />
-  );
+  )
 }
 
 // ============================================================================
@@ -456,7 +456,7 @@ export function PromptLibraryGroup({
 
 export type PromptLibrarySeparatorProps = ComponentProps<
   typeof CommandSeparator
->;
+>
 
 /**
  * Visual separator between prompt groups.
@@ -471,7 +471,7 @@ export function PromptLibrarySeparator({
       data-slot="prompt-library-separator"
       {...props}
     />
-  );
+  )
 }
 
 // ============================================================================
@@ -483,10 +483,10 @@ export type PromptLibraryItemProps = Omit<
   "value" | "onSelect"
 > & {
   /** The prompt data */
-  prompt: Prompt;
+  prompt: Prompt
   /** Disable hover card preview */
-  disablePreview?: boolean;
-};
+  disablePreview?: boolean
+}
 
 /**
  * Individual prompt item with click-to-select and optional hover preview.
@@ -498,12 +498,12 @@ export function PromptLibraryItem({
   children,
   ...props
 }: PromptLibraryItemProps) {
-  const { selectPrompt, lastSelectedId } = usePromptLibrary();
-  const isLastSelected = lastSelectedId === prompt.id;
+  const { selectPrompt, lastSelectedId } = usePromptLibrary()
+  const isLastSelected = lastSelectedId === prompt.id
 
   const handleSelect = () => {
-    selectPrompt(prompt);
-  };
+    selectPrompt(prompt)
+  }
 
   const itemContent = (
     <CommandItem
@@ -529,24 +529,24 @@ export function PromptLibraryItem({
         )}
       </div>
     </CommandItem>
-  );
+  )
 
   if (disablePreview || !prompt.prompt) {
-    return itemContent;
+    return itemContent
   }
 
   return (
     <PromptLibraryHoverCard prompt={prompt}>
       {itemContent}
     </PromptLibraryHoverCard>
-  );
+  )
 }
 
 // ============================================================================
 // Item Title Component
 // ============================================================================
 
-export type PromptLibraryItemTitleProps = ComponentProps<"span">;
+export type PromptLibraryItemTitleProps = ComponentProps<"span">
 
 /**
  * Title text for a prompt item.
@@ -561,14 +561,14 @@ export function PromptLibraryItemTitle({
       data-slot="prompt-library-item-title"
       {...props}
     />
-  );
+  )
 }
 
 // ============================================================================
 // Item Description Component
 // ============================================================================
 
-export type PromptLibraryItemDescriptionProps = ComponentProps<"span">;
+export type PromptLibraryItemDescriptionProps = ComponentProps<"span">
 
 /**
  * Description text for a prompt item.
@@ -583,7 +583,7 @@ export function PromptLibraryItemDescription({
       data-slot="prompt-library-item-description"
       {...props}
     />
-  );
+  )
 }
 
 // ============================================================================
@@ -592,9 +592,9 @@ export function PromptLibraryItemDescription({
 
 export interface PromptLibraryHoverCardProps {
   /** The prompt to preview */
-  prompt: Prompt;
+  prompt: Prompt
   /** The trigger element (prompt item) */
-  children: ReactNode;
+  children: ReactNode
 }
 
 /**
@@ -641,14 +641,14 @@ export function PromptLibraryHoverCard({
         </div>
       </HoverCardContent>
     </HoverCard>
-  );
+  )
 }
 
 // ============================================================================
 // Footer Component
 // ============================================================================
 
-export type PromptLibraryFooterProps = ComponentProps<"div">;
+export type PromptLibraryFooterProps = ComponentProps<"div">
 
 /**
  * Footer container that stays fixed at the bottom of the popover.
@@ -667,7 +667,7 @@ export function PromptLibraryFooter({
     >
       {children}
     </div>
-  );
+  )
 }
 
 // ============================================================================
@@ -679,8 +679,8 @@ export type PromptLibraryCreateTriggerProps = Omit<
   "onSelect"
 > & {
   /** Custom label for the create button */
-  label?: ReactNode;
-};
+  label?: ReactNode
+}
 
 /**
  * Button that opens the create prompt dialog.
@@ -691,12 +691,12 @@ export function PromptLibraryCreateTrigger({
   children,
   ...props
 }: PromptLibraryCreateTriggerProps) {
-  const { setCreateDialogOpen, setOpen } = usePromptLibrary();
+  const { setCreateDialogOpen, setOpen } = usePromptLibrary()
 
   const handleSelect = () => {
-    setOpen(false);
-    setCreateDialogOpen(true);
-  };
+    setOpen(false)
+    setCreateDialogOpen(true)
+  }
 
   return (
     <CommandItem
@@ -720,7 +720,7 @@ export function PromptLibraryCreateTrigger({
         </>
       )}
     </CommandItem>
-  );
+  )
 }
 
 // ============================================================================
@@ -732,12 +732,12 @@ export type PromptLibraryCreateDialogProps = Omit<
   "open" | "onOpenChange" | "children"
 > & {
   /** Dialog title */
-  title?: DialogTitleProps["children"];
+  title?: DialogTitleProps["children"]
   /** Dialog description */
-  description?: DialogDescriptionProps["children"];
+  description?: DialogDescriptionProps["children"]
   /** Custom form content to replace the default form */
-  children?: ReactNode;
-};
+  children?: ReactNode
+}
 
 /**
  * Modal dialog for creating custom prompts.
@@ -749,17 +749,17 @@ export function PromptLibraryCreateDialog({
   ...props
 }: PromptLibraryCreateDialogProps) {
   const { createDialogOpen, setCreateDialogOpen, addCustom } =
-    usePromptLibrary();
-  const [formTitle, setFormTitle] = useState("");
-  const [formDescription, setFormDescription] = useState("");
-  const [formPrompt, setFormPrompt] = useState("");
-  const [formCategory, setFormCategory] = useState("");
+    usePromptLibrary()
+  const [formTitle, setFormTitle] = useState("")
+  const [formDescription, setFormDescription] = useState("")
+  const [formPrompt, setFormPrompt] = useState("")
+  const [formCategory, setFormCategory] = useState("")
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
 
     if (!(formTitle.trim() && formDescription.trim() && formPrompt.trim())) {
-      return;
+      return
     }
 
     addCustom({
@@ -767,26 +767,26 @@ export function PromptLibraryCreateDialog({
       description: formDescription.trim(),
       prompt: formPrompt.trim(),
       category: formCategory.trim() || undefined,
-    });
+    })
 
     // Reset form
-    setFormTitle("");
-    setFormDescription("");
-    setFormPrompt("");
-    setFormCategory("");
-    setCreateDialogOpen(false);
-  };
+    setFormTitle("")
+    setFormDescription("")
+    setFormPrompt("")
+    setFormCategory("")
+    setCreateDialogOpen(false)
+  }
 
   const handleOpenChange = (open: boolean) => {
-    setCreateDialogOpen(open);
+    setCreateDialogOpen(open)
     if (!open) {
       // Reset form when closing
-      setFormTitle("");
-      setFormDescription("");
-      setFormPrompt("");
-      setFormCategory("");
+      setFormTitle("")
+      setFormDescription("")
+      setFormPrompt("")
+      setFormCategory("")
     }
-  };
+  }
 
   return (
     <Dialog
@@ -865,7 +865,7 @@ export function PromptLibraryCreateDialog({
         )}
       </DialogContent>
     </Dialog>
-  );
+  )
 }
 
 // ============================================================================
@@ -887,4 +887,4 @@ export const PromptLibraryWidget = Object.assign(PromptLibrary, {
   Footer: PromptLibraryFooter,
   CreateTrigger: PromptLibraryCreateTrigger,
   CreateDialog: PromptLibraryCreateDialog,
-});
+})

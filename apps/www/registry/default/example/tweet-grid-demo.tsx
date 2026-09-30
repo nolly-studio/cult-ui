@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
 
-import { GradientHeading } from "../ui/gradient-heading";
-import { TweetGrid } from "../ui/tweet-grid";
+import { GradientHeading } from "../ui/gradient-heading"
+import { TweetGrid } from "../ui/tweet-grid"
 
 // Grab tweet ids
 const exampleTweets = [
@@ -17,7 +17,7 @@ const exampleTweets = [
   "1760248682828419497",
   "1760230134601122153",
   "1760184980356088267",
-];
+]
 
 export default function TweetGridDemo({}) {
   return (
@@ -36,5 +36,5 @@ export default function TweetGridDemo({}) {
         />
       </div>
     </div>
-  );
+  )
 }

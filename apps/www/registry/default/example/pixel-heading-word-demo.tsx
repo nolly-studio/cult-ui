@@ -1,28 +1,28 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
-import { PixelHeading } from "@/registry/default/ui/pixel-heading-word";
+import { PixelHeading } from "@/registry/default/ui/pixel-heading-word"
 
 /* ─── Constants ─── */
 
-const PIXEL_FONTS = ["square", "grid", "circle", "triangle", "line"] as const;
-type PixelFont = (typeof PIXEL_FONTS)[number];
+const PIXEL_FONTS = ["square", "grid", "circle", "triangle", "line"] as const
+type PixelFont = (typeof PIXEL_FONTS)[number]
 
-const HEADING_LEVELS = ["h1", "h2", "h3", "h4", "h5", "h6"] as const;
+const HEADING_LEVELS = ["h1", "h2", "h3", "h4", "h5", "h6"] as const
 
 /* ─── Demo ─── */
 
 export default function PixelHeadingWordDemo() {
-  const [text, setText] = useState("Pixel Fonts");
-  const [initialFont, setInitialFont] = useState<PixelFont>("square");
-  const [hoverFont, setHoverFont] = useState<PixelFont | "cycle">("triangle");
+  const [text, setText] = useState("Pixel Fonts")
+  const [initialFont, setInitialFont] = useState<PixelFont>("square")
+  const [hoverFont, setHoverFont] = useState<PixelFont | "cycle">("triangle")
 
-  const [showLabel, setShowLabel] = useState(true);
+  const [showLabel, setShowLabel] = useState(true)
   const [headingLevel, setHeadingLevel] =
-    useState<(typeof HEADING_LEVELS)[number]>("h1");
+    useState<(typeof HEADING_LEVELS)[number]>("h1")
 
-  const isSwapMode = hoverFont !== "cycle";
+  const isSwapMode = hoverFont !== "cycle"
 
   return (
     <div className="w-full space-y-8 py-4">
@@ -126,7 +126,7 @@ export default function PixelHeadingWordDemo() {
         </ControlGroup>
       </div>
     </div>
-  );
+  )
 }
 
 /* ─── Shared control primitives ─── */
@@ -135,8 +135,8 @@ function ControlGroup({
   label,
   children,
 }: {
-  label: string;
-  children: React.ReactNode;
+  label: string
+  children: React.ReactNode
 }) {
   return (
     <div className="space-y-2">
@@ -145,15 +145,15 @@ function ControlGroup({
       </span>
       {children}
     </div>
-  );
+  )
 }
 
 function Toggle({
   checked,
   onChange,
 }: {
-  checked: boolean;
-  onChange: (v: boolean) => void;
+  checked: boolean
+  onChange: (v: boolean) => void
 }) {
   return (
     <button
@@ -171,5 +171,5 @@ function Toggle({
         }`}
       />
     </button>
-  );
+  )
 }
