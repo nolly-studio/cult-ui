@@ -1040,4 +1040,33 @@ export const ui: Registry["items"] = [
     description:
       "Split-layout hero section with responsive LiquidMetal shader visuals, CTA, and tech stack badges",
   },
+  // Cult Pro migration: shared Base UI primitives
+  {
+    name: "base-select",
+    type: "registry:ui",
+    dependencies: [
+      "@base-ui/react",
+      "@hugeicons/react",
+      "@hugeicons/core-free-icons",
+    ],
+    files: [
+      {
+        path: "registry/default/ui/base-select.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Base UI select primitives used by Animated Select",
+  },
+  {
+    name: "base-tooltip",
+    type: "registry:ui",
+    dependencies: ["@base-ui/react", "@radix-ui/react-slot"],
+    files: [
+      {
+        path: "registry/default/ui/base-tooltip.tsx",
+        type: "registry:ui",
+      },
+    ],
+    description: "Base UI tooltip primitives used by Apple Pro Display XDR",
+  },
 ];
