@@ -5,11 +5,16 @@
   "description": "Intro disclosure component with expandable content and smooth animations",
   "dependencies": [
     "motion",
-    "react-use-measure"
+    "react-use-measure",
+    "lucide-react"
   ],
   "registryDependencies": [
     "button",
-    "aspect-ratio"
+    "aspect-ratio",
+    "checkbox",
+    "dialog",
+    "drawer",
+    "progress"
   ],
   "files": [
     {

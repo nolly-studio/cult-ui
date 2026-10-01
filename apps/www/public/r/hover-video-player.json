@@ -4,7 +4,12 @@
   "type": "registry:ui",
   "description": "Video player component that plays on hover with smooth animations",
   "dependencies": [
-    "motion"
+    "motion",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "slider"
   ],
   "files": [
     {

@@ -3,6 +3,10 @@
   "name": "side-panel",
   "type": "registry:ui",
   "description": "Sliding side panel component with customizable positioning and animations",
+  "dependencies": [
+    "motion",
+    "react-use-measure"
+  ],
   "files": [
     {
       "path": "registry/default/ui/side-panel.tsx",

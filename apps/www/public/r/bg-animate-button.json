@@ -3,6 +3,10 @@
   "name": "bg-animate-button",
   "type": "registry:ui",
   "description": "Button component with animated background effects and gradient transitions",
+  "dependencies": [
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
   "files": [
     {
       "path": "registry/default/ui/bg-animate-button.tsx",

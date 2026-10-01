@@ -9,6 +9,11 @@
     "lucide-react",
     "motion"
   ],
+  "registryDependencies": [
+    "button",
+    "dialog",
+    "popover"
+  ],
   "files": [
     {
       "path": "registry/default/ui/poll-widget.tsx",

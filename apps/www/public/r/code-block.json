@@ -4,7 +4,8 @@
   "type": "registry:ui",
   "description": "A beautiful code block component with tabs, copy functionality, and smooth animations",
   "dependencies": [
-    "motion"
+    "motion",
+    "lucide-react"
   ],
   "files": [
     {

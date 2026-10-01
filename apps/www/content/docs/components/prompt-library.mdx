@@ -52,21 +52,22 @@ Use `PromptLibrary` with `prompts`, `onPromptsChange`, and `onSelect`. Compose `
 ### Basic example
 
 ```tsx
-import { useState } from "react";
+import { useState } from "react"
+
 import {
   PromptLibrary,
-  PromptLibraryTrigger,
   PromptLibraryContent,
-  PromptLibrarySearch,
-  PromptLibraryList,
+  PromptLibraryCreateDialog,
+  PromptLibraryCreateTrigger,
   PromptLibraryEmpty,
+  PromptLibraryFooter,
   PromptLibraryGroup,
   PromptLibraryItem,
-  PromptLibraryFooter,
-  PromptLibraryCreateTrigger,
-  PromptLibraryCreateDialog,
+  PromptLibraryList,
+  PromptLibrarySearch,
+  PromptLibraryTrigger,
   type Prompt,
-} from "@/registry/default/ui/prompt-library";
+} from "@/registry/default/ui/prompt-library"
 
 const prompts: Prompt[] = [
   {
@@ -76,11 +77,11 @@ const prompts: Prompt[] = [
     prompt: "Please review this code for best practices and potential issues.",
     category: "Development",
   },
-];
+]
 
 export default function Example() {
-  const [promptsState, setPromptsState] = useState(prompts);
-  const [lastSelected, setLastSelected] = useState<Prompt | null>(null);
+  const [promptsState, setPromptsState] = useState(prompts)
+  const [lastSelected, setLastSelected] = useState<Prompt | null>(null)
 
   return (
     <PromptLibrary
@@ -107,7 +108,25 @@ export default function Example() {
       </PromptLibraryContent>
       <PromptLibraryCreateDialog />
     </PromptLibrary>
-  );
+  )
+}
+```
+
+### With AI Elements PromptInput
+
+Pass `onInsert` to put the selected prompt into your chat input instead of the clipboard. With [AI Elements](https://ai-sdk.dev/elements), read the controller inside `PromptInputProvider`:
+
+```tsx
+import { usePromptInputController } from "@/components/ai-elements/prompt-input"
+
+function PromptPicker() {
+  const controller = usePromptInputController()
+
+  return (
+    <PromptLibrary onInsert={controller.textInput.setInput}>
+      {/* trigger and content */}
+    </PromptLibrary>
+  )
 }
 ```
 
@@ -115,6 +134,6 @@ export default function Example() {
 
 - **Categories**: Group prompts with `PromptLibraryGroup` and optional `heading`
 - **Custom prompts**: Add and remove custom prompts via `onPromptsChange`, `PromptLibraryCreateTrigger`, and `PromptLibraryCreateDialog`
-- **Copy or insert**: Selecting a prompt copies to clipboard; when used with PromptInput, can insert directly
+- **Copy or insert**: Selecting a prompt copies it to the clipboard, or calls `onInsert` with the prompt text when you pass it
 - **Search**: `PromptLibrarySearch` filters the list
 - **Compound API**: PromptLibrary, PromptLibraryTrigger, PromptLibraryContent, PromptLibrarySearch, PromptLibraryList, PromptLibraryEmpty, PromptLibraryGroup, PromptLibraryItem, PromptLibraryFooter, PromptLibraryCreateTrigger, PromptLibraryCreateDialog

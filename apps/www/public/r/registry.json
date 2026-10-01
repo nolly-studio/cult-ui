@@ -31,7 +31,8 @@
       "name": "texture-button",
       "type": "registry:ui",
       "dependencies": [
-        "@radix-ui/react-slot"
+        "@radix-ui/react-slot",
+        "class-variance-authority"
       ],
       "files": [
         {
@@ -55,6 +56,10 @@
     {
       "name": "timer",
       "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/default/ui/timer.tsx",
@@ -66,6 +71,9 @@
     {
       "name": "shift-card",
       "type": "registry:ui",
+      "dependencies": [
+        "motion"
+      ],
       "files": [
         {
           "path": "registry/default/ui/shift-card.tsx",
@@ -132,6 +140,10 @@
     {
       "name": "bg-animate-button",
       "type": "registry:ui",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "registry/default/ui/bg-animate-button.tsx",
@@ -160,6 +172,10 @@
     {
       "name": "family-button",
       "type": "registry:ui",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
       "files": [
         {
           "path": "registry/default/ui/family-button.tsx",
@@ -171,6 +187,10 @@
     {
       "name": "side-panel",
       "type": "registry:ui",
+      "dependencies": [
+        "motion",
+        "react-use-measure"
+      ],
       "files": [
         {
           "path": "registry/default/ui/side-panel.tsx",
@@ -182,6 +202,9 @@
     {
       "name": "bg-media",
       "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "registry/default/ui/bg-media.tsx",
@@ -193,6 +216,9 @@
     {
       "name": "three-d-carousel",
       "type": "registry:ui",
+      "dependencies": [
+        "motion"
+      ],
       "files": [
         {
           "path": "registry/default/ui/three-d-carousel.tsx",
@@ -204,6 +230,9 @@
     {
       "name": "tweet-grid",
       "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "registry/default/ui/tweet-grid.tsx",
@@ -216,7 +245,8 @@
       "name": "gradient-heading",
       "type": "registry:ui",
       "dependencies": [
-        "@radix-ui/react-slot"
+        "@radix-ui/react-slot",
+        "class-variance-authority"
       ],
       "files": [
         {
@@ -259,7 +289,11 @@
       "type": "registry:ui",
       "dependencies": [
         "motion",
-        "react-use-measure"
+        "react-use-measure",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "checkbox"
       ],
       "files": [
         {
@@ -351,7 +385,8 @@
       "name": "popover",
       "type": "registry:ui",
       "dependencies": [
-        "motion"
+        "motion",
+        "lucide-react"
       ],
       "files": [
         {
@@ -365,7 +400,8 @@
       "name": "floating-panel",
       "type": "registry:ui",
       "dependencies": [
-        "motion"
+        "motion",
+        "lucide-react"
       ],
       "files": [
         {
@@ -379,7 +415,14 @@
       "name": "color-picker",
       "type": "registry:ui",
       "dependencies": [
-        "motion"
+        "motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "popover"
       ],
       "files": [
         {
@@ -395,7 +438,8 @@
       "dependencies": [
         "motion",
         "three",
-        "jotai"
+        "jotai",
+        "next-themes"
       ],
       "files": [
         {
@@ -434,7 +478,8 @@
       "name": "popover-form",
       "type": "registry:ui",
       "dependencies": [
-        "motion"
+        "motion",
+        "lucide-react"
       ],
       "files": [
         {
@@ -448,7 +493,8 @@
       "name": "expandable",
       "type": "registry:ui",
       "dependencies": [
-        "motion"
+        "motion",
+        "react-use-measure"
       ],
       "files": [
         {
@@ -495,7 +541,12 @@
       "name": "hover-video-player",
       "type": "registry:ui",
       "dependencies": [
-        "motion"
+        "motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "slider"
       ],
       "files": [
         {
@@ -508,6 +559,9 @@
     {
       "name": "neumorph-eyebrow",
       "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "registry/default/ui/neumorph-eyebrow.tsx",
@@ -519,6 +573,11 @@
     {
       "name": "neumorph-button",
       "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react",
+        "motion"
+      ],
       "files": [
         {
           "path": "registry/default/ui/neumorph-button.tsx",
@@ -531,7 +590,9 @@
       "name": "feature-carousel",
       "type": "registry:ui",
       "dependencies": [
-        "motion"
+        "motion",
+        "clsx",
+        "react-wrap-balancer"
       ],
       "files": [
         {
@@ -546,7 +607,8 @@
       "type": "registry:ui",
       "dependencies": [
         "@radix-ui/react-use-controllable-state",
-        "lucide-react"
+        "lucide-react",
+        "class-variance-authority"
       ],
       "files": [
         {
@@ -561,7 +623,8 @@
       "type": "registry:ui",
       "dependencies": [
         "@radix-ui/react-use-controllable-state",
-        "lucide-react"
+        "lucide-react",
+        "class-variance-authority"
       ],
       "files": [
         {
@@ -608,6 +671,11 @@
         "lucide-react",
         "motion"
       ],
+      "registryDependencies": [
+        "button",
+        "dialog",
+        "popover"
+      ],
       "files": [
         {
           "path": "registry/default/ui/poll-widget.tsx",
@@ -622,6 +690,15 @@
       "dependencies": [
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
+      ],
+      "registryDependencies": [
+        "button",
+        "command",
+        "dialog",
+        "hover-card",
+        "input",
+        "popover",
+        "textarea"
       ],
       "files": [
         {
@@ -638,6 +715,15 @@
         "@hugeicons/core-free-icons",
         "@hugeicons/react"
       ],
+      "registryDependencies": [
+        "button",
+        "command",
+        "dialog",
+        "hover-card",
+        "input",
+        "popover",
+        "textarea"
+      ],
       "files": [
         {
           "path": "registry/default/ui/ai-instructions.tsx",
@@ -651,11 +737,16 @@
       "type": "registry:ui",
       "registryDependencies": [
         "button",
-        "aspect-ratio"
+        "aspect-ratio",
+        "checkbox",
+        "dialog",
+        "drawer",
+        "progress"
       ],
       "dependencies": [
         "motion",
-        "react-use-measure"
+        "react-use-measure",
+        "lucide-react"
       ],
       "files": [
         {
@@ -668,7 +759,9 @@
     {
       "name": "text-gif",
       "type": "registry:ui",
-      "dependencies": [],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "registry/default/ui/text-gif.tsx",
@@ -742,7 +835,8 @@
       "name": "youtube-video-player",
       "type": "registry:ui",
       "dependencies": [
-        "motion"
+        "motion",
+        "lucide-react"
       ],
       "registryDependencies": [
         "button"
@@ -799,7 +893,8 @@
       "name": "code-block",
       "type": "registry:ui",
       "dependencies": [
-        "motion"
+        "motion",
+        "lucide-react"
       ],
       "files": [
         {
@@ -827,7 +922,8 @@
       "name": "metal-button",
       "type": "registry:ui",
       "dependencies": [
-        "metal-fx"
+        "metal-fx",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "button"
@@ -975,7 +1071,8 @@
       "name": "gradient-button-group",
       "type": "registry:ui",
       "dependencies": [
-        "motion"
+        "motion",
+        "next-themes"
       ],
       "files": [
         {

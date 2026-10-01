@@ -4,7 +4,8 @@
   "type": "registry:ui",
   "description": "Shadcn Button wrapped in MetalFx: animated liquid metal ring with text and icon variants",
   "dependencies": [
-    "metal-fx"
+    "metal-fx",
+    "class-variance-authority"
   ],
   "registryDependencies": [
     "button"

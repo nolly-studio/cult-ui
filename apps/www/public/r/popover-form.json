@@ -4,7 +4,8 @@
   "type": "registry:ui",
   "description": "Form popover component with success states and animated transitions",
   "dependencies": [
-    "motion"
+    "motion",
+    "lucide-react"
   ],
   "files": [
     {

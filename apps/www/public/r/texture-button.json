@@ -4,7 +4,8 @@
   "type": "registry:ui",
   "description": "Button component with texture overlay effects and customizable variants",
   "dependencies": [
-    "@radix-ui/react-slot"
+    "@radix-ui/react-slot",
+    "class-variance-authority"
   ],
   "files": [
     {

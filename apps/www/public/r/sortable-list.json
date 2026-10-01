@@ -5,7 +5,11 @@
   "description": "Drag-and-drop sortable list component with smooth animations and reordering",
   "dependencies": [
     "motion",
-    "react-use-measure"
+    "react-use-measure",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "checkbox"
   ],
   "files": [
     {

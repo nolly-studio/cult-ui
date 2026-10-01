@@ -34,7 +34,8 @@
     "pub:beta": "cd packages/cli && pnpm pub:beta",
     "pub:release": "cd packages/cli && pnpm pub:release",
     "test": "turbo run test --force",
-    "registry:build": "pnpm --filter=www registry:build"
+    "registry:build": "pnpm --filter=www registry:build",
+    "registry:check": "pnpm --filter=www registry:check"
   },
   "dependencies": {
     "@babel/core": "^7.22.1",

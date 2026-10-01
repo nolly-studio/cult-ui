@@ -69,7 +69,7 @@ function PromptLibraryExample() {
       <div className="bg-card rounded-lg border p-4">
         <p className="text-muted-foreground mb-3 text-sm">
           Browse and insert prompt templates. Click a prompt to copy it to
-          clipboard (or insert directly when used with PromptInput).
+          clipboard, or pass onInsert to put it straight into your input.
         </p>
         <PromptLibrary
           onPromptsChange={setPrompts}

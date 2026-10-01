@@ -4,7 +4,8 @@
   "type": "registry:ui",
   "description": "Expandable component system with smooth animations and customizable presets",
   "dependencies": [
-    "motion"
+    "motion",
+    "react-use-measure"
   ],
   "files": [
     {

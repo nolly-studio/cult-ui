@@ -3,6 +3,9 @@
   "name": "shift-card",
   "type": "registry:ui",
   "description": "Card component with shift animation effects and hover interactions",
+  "dependencies": [
+    "motion"
+  ],
   "files": [
     {
       "path": "registry/default/ui/shift-card.tsx",

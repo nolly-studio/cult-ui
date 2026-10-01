@@ -6,7 +6,8 @@
   "dependencies": [
     "motion",
     "three",
-    "jotai"
+    "jotai",
+    "next-themes"
   ],
   "files": [
     {

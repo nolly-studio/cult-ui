@@ -3,6 +3,9 @@
   "name": "three-d-carousel",
   "type": "registry:ui",
   "description": "3D carousel component with perspective effects and smooth item transitions",
+  "dependencies": [
+    "motion"
+  ],
   "files": [
     {
       "path": "registry/default/ui/three-d-carousel.tsx",

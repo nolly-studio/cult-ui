@@ -47,7 +47,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { Textarea } from "@/components/ui/textarea"
-import { useOptionalPromptInputController } from "@/components/ai-elements/prompt-input"
 
 // ============================================================================
 // Types
@@ -153,6 +152,11 @@ export type PromptLibraryProps = PropsWithChildren<{
   onPromptsChange?: (prompts: Prompt[]) => void
   /** Callback when a prompt is selected */
   onSelect?: (prompt: Prompt) => void
+  /**
+   * Inserts the selected prompt into your input instead of copying it to the
+   * clipboard, e.g. AI Elements' `controller.textInput.setInput`.
+   */
+  onInsert?: (text: string) => void
   /** Controlled open state for popover */
   open?: boolean
   /** Callback when open state changes */
@@ -162,12 +166,12 @@ export type PromptLibraryProps = PropsWithChildren<{
 /**
  * Root component for the PromptLibrary widget.
  * Provides context for all child components.
- * Integrates with PromptInput when used inside PromptInputProvider.
  */
 export function PromptLibrary({
   prompts: controlledPrompts,
   onPromptsChange,
   onSelect,
+  onInsert,
   open: controlledOpen,
   onOpenChange,
   children,
@@ -186,18 +190,13 @@ export function PromptLibrary({
   const [createDialogOpen, setCreateDialogOpen] = useState(false)
   const [lastSelectedId, setLastSelectedId] = useState<string | null>(null)
 
-  // Try to get PromptInput controller for integration
-  const promptInputController = useOptionalPromptInputController()
-
   const selectPrompt = useCallback(
     async (prompt: Prompt) => {
       setLastSelectedId(prompt.id)
 
-      if (promptInputController) {
-        // Insert directly into PromptInput textarea
-        promptInputController.textInput.setInput(prompt.prompt)
+      if (onInsert) {
+        onInsert(prompt.prompt)
       } else {
-        // Fallback: copy to clipboard
         try {
           await navigator.clipboard.writeText(prompt.prompt)
         } catch (err) {
@@ -211,7 +210,7 @@ export function PromptLibrary({
       // Call onSelect callback
       onSelect?.(prompt)
     },
-    [promptInputController, setOpen, onSelect]
+    [onInsert, setOpen, onSelect]
   )
 
   const addCustom = useCallback(

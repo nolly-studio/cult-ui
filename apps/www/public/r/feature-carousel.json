@@ -4,7 +4,9 @@
   "type": "registry:ui",
   "description": "Feature carousel component with smooth transitions and customizable layouts",
   "dependencies": [
-    "motion"
+    "motion",
+    "clsx",
+    "react-wrap-balancer"
   ],
   "files": [
     {

@@ -7,6 +7,15 @@
     "@hugeicons/core-free-icons",
     "@hugeicons/react"
   ],
+  "registryDependencies": [
+    "button",
+    "command",
+    "dialog",
+    "hover-card",
+    "input",
+    "popover",
+    "textarea"
+  ],
   "files": [
     {
       "path": "registry/default/ui/ai-instructions.tsx",

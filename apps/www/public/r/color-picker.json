@@ -4,7 +4,14 @@
   "type": "registry:ui",
   "description": "Interactive color picker component with HSL support and preset colors",
   "dependencies": [
-    "motion"
+    "motion",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "input",
+    "label",
+    "popover"
   ],
   "files": [
     {

@@ -5,7 +5,8 @@
   "description": "Feature poll component with single or multiple selection, optional results, and keyboard navigation",
   "dependencies": [
     "@radix-ui/react-use-controllable-state",
-    "lucide-react"
+    "lucide-react",
+    "class-variance-authority"
   ],
   "files": [
     {

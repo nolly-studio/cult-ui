@@ -3,6 +3,10 @@
   "name": "family-button",
   "type": "registry:ui",
   "description": "Button component with family-style design and interactive hover effects",
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
   "files": [
     {
       "path": "registry/default/ui/family-button.tsx",

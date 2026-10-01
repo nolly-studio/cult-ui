@@ -3,7 +3,9 @@
   "name": "text-gif",
   "type": "registry:ui",
   "description": "Text component with GIF-like animation effects and customizable styling",
-  "dependencies": [],
+  "dependencies": [
+    "class-variance-authority"
+  ],
   "files": [
     {
       "path": "registry/default/ui/text-gif.tsx",

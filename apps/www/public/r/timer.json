@@ -3,6 +3,10 @@
   "name": "timer",
   "type": "registry:ui",
   "description": "Countdown timer component with customizable duration and visual styles",
+  "dependencies": [
+    "class-variance-authority",
+    "lucide-react"
+  ],
   "files": [
     {
       "path": "registry/default/ui/timer.tsx",

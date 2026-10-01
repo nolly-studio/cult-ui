@@ -4,7 +4,8 @@
   "type": "registry:ui",
   "description": "Premium layered button group with animated active state, gradient ring accents, and theme toggle underlay",
   "dependencies": [
-    "motion"
+    "motion",
+    "next-themes"
   ],
   "files": [
     {

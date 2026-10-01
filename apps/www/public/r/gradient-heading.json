@@ -4,7 +4,8 @@
   "type": "registry:ui",
   "description": "Heading component with gradient text effects and customizable styling",
   "dependencies": [
-    "@radix-ui/react-slot"
+    "@radix-ui/react-slot",
+    "class-variance-authority"
   ],
   "files": [
     {
