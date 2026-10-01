@@ -1,6 +1,8 @@
 import { clsx, type ClassValue } from "clsx"
 import { extendTailwindMerge } from "tailwind-merge"
 
+import { siteConfig } from "@/config/site"
+
 const twMerge = extendTailwindMerge({
   extend: {
     classGroups: {
@@ -14,5 +16,5 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function absoluteUrl(path: string) {
-  return `${process.env.NEXT_PUBLIC_APP_URL || "https://cult-ui.com"}${path}`
+  return `${siteConfig.url}${path}`
 }
