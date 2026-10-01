@@ -1,65 +1,202 @@
-# cult/ui
+<a href="https://www.cult-ui.com">
+  <img src="apps/www/public/og.png" alt="Cult UI: Shadcn, expanded. Free, open-source animated components for shadcn/ui." width="100%">
+</a>
 
-Accessible and customizable components that you can copy and paste into your apps. Free. Open Source. **Use this to build your own component library**.
+# Cult UI
 
-![hero](apps/www/public/og.png)
+**150+ animated components, all free.** Including 58 just added. Open source, built to drop into any shadcn/ui project.
 
-137 animated components for shadcn/ui, including 58 just added. MIT licensed, installed with one command:
+[Browse components](https://www.cult-ui.com/docs/components/dynamic-island) · [Docs](https://www.cult-ui.com/docs) · [Installation](https://www.cult-ui.com/docs/installation) · [Changelog](https://www.cult-ui.com/docs/changelog)
+
+## Install
+
+Every component is a shadcn/ui registry item. The CLI copies the source into your project, so you own the code.
 
 ```bash
-npx shadcn@latest add https://cult-ui.com/r/shift-card.json
+npx shadcn@latest add https://www.cult-ui.com/r/shift-card.json
 ```
 
-> **[Browse all components](https://cult-ui.com/docs/components/hero-color-panels)**
+Or register the namespace once in `components.json` and install by name:
 
----
+```json
+{
+  "registries": {
+    "@cult-ui": "https://www.cult-ui.com/r/{name}.json"
+  }
+}
+```
 
-## AI SDK AGENTS
+```bash
+npx shadcn@latest add @cult-ui/shift-card
+```
 
-### 100+ AI Agent Patterns
+Components use Tailwind CSS v4 and shadcn theme tokens, and most animate with [Motion](https://motion.dev). Each docs page lists its dependencies.
 
-Full-stack AI apps built with Cult UI. Live interactive previews. Copy and paste what you need. Install with shadcn, download as a Next.js app, or open in v0.
+## Just added
 
-#### Featured Patterns
+**58 new components.** Illustrations, device mockups, cards and more, with the same docs and one-line install as the rest of Cult UI.
 
-| Preview | Pattern | Description |
-| --- | --- | --- |
-| <img src="apps/www/public/migrate/blocks/example-agent-competitor-light.png" alt="Competitor Research Agent" width="200"> | [Competitor Research Agent](https://aisdkagents.com/directory/examples/research-agents/example-agent-competitor?utm_source=cult-ui&utm_medium=github&utm_content=readme-example-agent-competitor) | Enter a competitor URL for comprehensive competitive intelligence. Uses Firecrawl Map + Parallel Scrape for fast extraction. Analyzes positioning, pricing, features, tech stack, and generates sales battle cards. |
-| <img src="apps/www/public/migrate/blocks/example-agent-data-analysis-light.png" alt="Data Analysis Agent" width="200"> | [Data Analysis Agent](https://aisdkagents.com/directory/examples/analytics-agents/example-agent-data-analysis?utm_source=cult-ui&utm_medium=github&utm_content=readme-example-agent-data-analysis) | Upload CSV or JSON data and get AI-powered analysis with interactive visualizations. Detect patterns, correlations, outliers, and generate insights with confidence scores. |
-| <img src="apps/www/public/migrate/blocks/example-agent-a11y-audit-light.png" alt="Accessibility Audit Agent" width="200"> | [Accessibility Audit Agent](https://aisdkagents.com/directory/examples/audit-agents/example-agent-a11y-audit?utm_source=cult-ui&utm_medium=github&utm_content=readme-example-agent-a11y-audit) | Audit any website for WCAG 2.1 accessibility compliance using Firecrawl, then use AI tools to analyze issues by severity, check color contrast, validate heading structure, and generate alt text. |
-| <img src="apps/www/public/migrate/blocks/ai-artifact-table-light.png" alt="Table Editor Artifact" width="200"> | [Table Editor Artifact](https://aisdkagents.com/directory/artifacts/interactive-artifacts/ai-artifact-table?utm_source=cult-ui&utm_medium=github&utm_content=readme-ai-artifact-table) | Spreadsheet editor with AI chat for data analysis and manipulation. Edit tables through conversation. |
-| <img src="apps/www/public/migrate/blocks/example-agent-branding-light.png" alt="Branding Agent" width="200"> | [Branding Agent](https://aisdkagents.com/directory/examples/design-agents/example-agent-branding?utm_source=cult-ui&utm_medium=github&utm_content=readme-example-agent-branding) | Extract brand design systems from any website using Firecrawl, then use AI tools to export tokens, generate color palettes, check accessibility, and analyze brand personality. |
-| <img src="apps/www/public/migrate/blocks/ai-artifact-chart-light.png" alt="Chart Generation Artifact" width="200"> | [Chart Generation Artifact](https://aisdkagents.com/directory/artifacts/static-artifacts/ai-artifact-chart?utm_source=cult-ui&utm_medium=github&utm_content=readme-ai-artifact-chart) | Generate burn rate charts and financial analysis through AI chat. Creates interactive visualizations from conversation. |
+<table>
+  <tr>
+    <td width="33%">
+      <a href="https://www.cult-ui.com/docs/components/globe">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/cult-pro-component-images/globe-demo-dark.png">
+          <img src="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/cult-pro-component-images/globe-demo-light.png" alt="Globe component preview">
+        </picture>
+      </a>
+      <br><a href="https://www.cult-ui.com/docs/components/globe">Globe</a>
+    </td>
+    <td width="33%">
+      <a href="https://www.cult-ui.com/docs/components/kanban-board">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/cult-pro-component-images/kanban-board-demo-dark.png">
+          <img src="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/cult-pro-component-images/kanban-board-demo-light.png" alt="Kanban board component preview">
+        </picture>
+      </a>
+      <br><a href="https://www.cult-ui.com/docs/components/kanban-board">Kanban board</a>
+    </td>
+    <td width="33%">
+      <a href="https://www.cult-ui.com/docs/components/fluted-glass">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/cult-pro-component-images/fluted-glass-demo-dark.png">
+          <img src="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/cult-pro-component-images/fluted-glass-demo-light.png" alt="Fluted glass component preview">
+        </picture>
+      </a>
+      <br><a href="https://www.cult-ui.com/docs/components/fluted-glass">Fluted glass</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="33%">
+      <a href="https://www.cult-ui.com/docs/components/mac-screen">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/cult-pro-component-images/mac-screen-demo-dark.png">
+          <img src="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/cult-pro-component-images/mac-screen-demo-light.png" alt="Mac screen component preview">
+        </picture>
+      </a>
+      <br><a href="https://www.cult-ui.com/docs/components/mac-screen">Mac screen</a>
+    </td>
+    <td width="33%">
+      <a href="https://www.cult-ui.com/docs/components/analytics-chart">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/cult-pro-component-images/analytics-chart-demo-dark.png">
+          <img src="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/cult-pro-component-images/analytics-chart-demo-light.png" alt="Analytics chart component preview">
+        </picture>
+      </a>
+      <br><a href="https://www.cult-ui.com/docs/components/analytics-chart">Analytics chart</a>
+    </td>
+    <td width="33%">
+      <a href="https://www.cult-ui.com/docs/components/folded-card">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/cult-pro-component-images/folded-card-demo-dark.png">
+          <img src="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/cult-pro-component-images/folded-card-demo-light.png" alt="Folded card component preview">
+        </picture>
+      </a>
+      <br><a href="https://www.cult-ui.com/docs/components/folded-card">Folded card</a>
+    </td>
+  </tr>
+</table>
 
-#### 4 Full-Stack Agent Templates
+[Browse all components →](https://www.cult-ui.com/docs/components/dynamic-island)
 
-| Preview | Template | Description | Stack |
-| --- | --- | --- | --- |
-| <img src="apps/www/public/migrate/templates/ecommerce-sub-agent-template/ecommerce-1.png" alt="Ecommerce Multi-Agent" width="200"> | [Ecommerce Multi-Agent](https://aisdkagents.com/templates/ecommerce-sub-agent-template?utm_source=cult-ui&utm_medium=github&utm_content=readme-ecommerce-sub-agent-template) | Full-featured ecommerce AI assistant with multi-agent orchestration, product browsing, shopping cart management, and real-time artifact streaming. | `nextjs` `ai-sdk-tools` `typescript` `tailwind` `zustand` `framer-motion` |
-| <img src="apps/www/public/migrate/templates/ai-sdk-better-auth-postgres-agent-config/agent-config-template-10.png" alt="AI SDK Agent Platform" width="200"> | [AI SDK Agent Platform](https://aisdkagents.com/templates/ai-agent-platform?utm_source=cult-ui&utm_medium=github&utm_content=readme-ai-agent-platform) | Build and deploy RAG agents: create, configure, and deploy AI agents with custom knowledge bases. Upload documents, scrape websites, and build vector embeddings with pgvector. | `nextjs` `workflow dev kit` `better-auth` `drizzle` `postgresql` `stripe` |
-| <img src="apps/www/public/migrate/templates/ai-sdk-tools-sub-agent-starter/sub-agent-1.png" alt="Sub Agent Starter" width="200"> | [Sub Agent Starter](https://aisdkagents.com/templates/sub-agent-starter?utm_source=cult-ui&utm_medium=github&utm_content=readme-sub-agent-starter) | Hyper minimal sub agent template featuring multi-agent orchestration, tool usage, and artifact streaming with AI SDK Tools. | `nextjs` `ai-sdk-tools` `typescript` `tailwind` `shadcn` |
-| <img src="apps/www/public/migrate/templates/ai-sdk-better-auth-postgres/better-auth-6.png" alt="Multi Tenant Better Auth Chat" width="200"> | [Multi Tenant Better Auth Chat](https://aisdkagents.com/templates/better-auth-postgres?utm_source=cult-ui&utm_medium=github&utm_content=readme-better-auth-postgres) | Full-featured ChatGPT-style SaaS chat app with multi-tenant organizations, team roles, artifact management, resumable streaming, and persistent conversation history. | `nextjs` `tailwind` `stripe` `drizzle` `resend` `better-auth` |
+## Built with Cult UI
 
-> **[Browse 100+ patterns](https://aisdkagents.com/directory?utm_source=cult-ui&utm_medium=github&utm_content=readme-directory)**
+**The components are free. The full-stack AI apps built from them are [AI SDK Agents](https://aisdkagents.com/?utm_source=cult-ui&utm_medium=github&utm_content=readme-section-link).** Agent patterns on the Vercel AI SDK with live previews. Install with shadcn, download a Next.js app, or open in v0.
 
----
+<table>
+  <tr>
+    <td width="33%" valign="top">
+      <a href="https://aisdkagents.com/patterns/example-agent-competitor?utm_source=cult-ui&utm_medium=github&utm_content=readme-pattern-card">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/migrate/blocks/example-agent-competitor-dark.png">
+          <img src="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/migrate/blocks/example-agent-competitor-light.png" alt="Competitor research agent preview">
+        </picture>
+      </a>
+      <br><a href="https://aisdkagents.com/patterns/example-agent-competitor?utm_source=cult-ui&utm_medium=github&utm_content=readme-pattern-card"><b>Competitor research agent</b></a>
+      <br><sub>Paste a competitor URL, get positioning, pricing and a sales battle card.</sub>
+    </td>
+    <td width="33%" valign="top">
+      <a href="https://aisdkagents.com/patterns/example-agent-data-analysis?utm_source=cult-ui&utm_medium=github&utm_content=readme-pattern-card">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/migrate/blocks/example-agent-data-analysis-dark.png">
+          <img src="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/migrate/blocks/example-agent-data-analysis-light.png" alt="Data analysis agent preview">
+        </picture>
+      </a>
+      <br><a href="https://aisdkagents.com/patterns/example-agent-data-analysis?utm_source=cult-ui&utm_medium=github&utm_content=readme-pattern-card"><b>Data analysis agent</b></a>
+      <br><sub>Upload CSV or JSON, get charts, outliers and insights with confidence scores.</sub>
+    </td>
+    <td width="33%" valign="top">
+      <a href="https://aisdkagents.com/patterns/example-agent-a11y-audit?utm_source=cult-ui&utm_medium=github&utm_content=readme-pattern-card">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/migrate/blocks/example-agent-a11y-audit-dark.png">
+          <img src="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/migrate/blocks/example-agent-a11y-audit-light.png" alt="Accessibility audit agent preview">
+        </picture>
+      </a>
+      <br><a href="https://aisdkagents.com/patterns/example-agent-a11y-audit?utm_source=cult-ui&utm_medium=github&utm_content=readme-pattern-card"><b>Accessibility audit agent</b></a>
+      <br><sub>A WCAG 2.1 audit of any site, with a prioritized fix plan.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="33%" valign="top">
+      <a href="https://aisdkagents.com/patterns/ai-artifact-table?utm_source=cult-ui&utm_medium=github&utm_content=readme-pattern-card">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/migrate/blocks/ai-artifact-table-dark.png">
+          <img src="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/migrate/blocks/ai-artifact-table-light.png" alt="Table editor artifact preview">
+        </picture>
+      </a>
+      <br><a href="https://aisdkagents.com/patterns/ai-artifact-table?utm_source=cult-ui&utm_medium=github&utm_content=readme-pattern-card"><b>Table editor artifact</b></a>
+      <br><sub>A spreadsheet you edit by chatting with it.</sub>
+    </td>
+    <td width="33%" valign="top">
+      <a href="https://aisdkagents.com/patterns/example-agent-branding?utm_source=cult-ui&utm_medium=github&utm_content=readme-pattern-card">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/migrate/blocks/example-agent-branding-dark.png">
+          <img src="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/migrate/blocks/example-agent-branding-light.png" alt="Branding agent preview">
+        </picture>
+      </a>
+      <br><a href="https://aisdkagents.com/patterns/example-agent-branding?utm_source=cult-ui&utm_medium=github&utm_content=readme-pattern-card"><b>Branding agent</b></a>
+      <br><sub>Extract any site's design system: tokens, palette and brand personality.</sub>
+    </td>
+    <td width="33%" valign="top">
+      <a href="https://aisdkagents.com/patterns/ai-artifact-chart?utm_source=cult-ui&utm_medium=github&utm_content=readme-pattern-card">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/migrate/blocks/ai-artifact-chart-dark.png">
+          <img src="https://raw.githubusercontent.com/nolly-studio/cult-ui/main/apps/www/public/migrate/blocks/ai-artifact-chart-light.png" alt="Chart generation artifact preview">
+        </picture>
+      </a>
+      <br><a href="https://aisdkagents.com/patterns/ai-artifact-chart?utm_source=cult-ui&utm_medium=github&utm_content=readme-pattern-card"><b>Chart generation artifact</b></a>
+      <br><sub>Burn rate charts and financial analysis from a conversation.</sub>
+    </td>
+  </tr>
+</table>
 
-## ADDITIONAL GOODS
+[Browse 100+ patterns →](https://aisdkagents.com/directory?utm_source=cult-ui&utm_medium=github&utm_content=readme-directory)
 
-- **[Free AI Marketing](https://www.newcopy.ai)** -- An AI Cofounder that knows your brand. Start creating marketing copy that converts.
-- **[Free SEO Improvement Tool](https://cleanmyseo.com)** -- Quickly evaluate your website's SEO performance for free. Open graph preview included.
-- **[Full Stack Shadcn Templates](https://www.newcult.co)** -- Comprehensive Next.js + Supabase templates built with Tailwind CSS, Cult components, and shadcn.
+## For AI agents
 
----
+The docs are written to be read by coding agents as well as people.
 
-## Documentation
+- [`llms.txt`](https://www.cult-ui.com/llms.txt) indexes every page, and [`llms-full.txt`](https://www.cult-ui.com/llms-full.txt) has the full docs in one file.
+- Add `.md` to any docs URL for clean markdown, for example [`/docs/components/dock.md`](https://www.cult-ui.com/docs/components/dock.md).
+- The [shadcn MCP server](https://www.cult-ui.com/docs/mcp-server) lets Cursor, Claude Code and VS Code search and install Cult UI components from a prompt.
 
-Visit https://cult-ui.com/docs to view the documentation.
+## Cult UI stays free
+
+**MIT licensed and maintained full time.** AI SDK Agents is what pays for it. If you ship AI features, it is the best way to keep this library going. Or [star it on GitHub](https://github.com/nolly-studio/cult-ui).
+
+More from the studio:
+
+- [AI SDK Agents](https://aisdkagents.com/?utm_source=cult-ui&utm_medium=github&utm_content=readme-studio) – 100+ Vercel AI SDK agent patterns with live previews and full-stack templates.
+- [Newcopy](https://www.newcopy.ai) – An AI cofounder that knows your brand. Marketing copy that converts.
+- [Best Models](https://www.bestmodels.dev/) – Independent ranking of the best models on Vercel AI Gateway, updated daily.
+- [Eve Directory](https://www.evedirectory.com/) – The open registry for Eve agents. Inspect every file before you install.
+
+Need a team? [Nolly Studio](https://www.nolly.studio/) is an AI-native product studio: agent systems and design-engineered UI, shipped in weeks.
 
 ## Contributing
 
-Please read the [contributing guide](/CONTRIBUTING.md).
+Read the [contributing guide](CONTRIBUTING.md) to get the repo running locally and add a component.
 
 ## License
 
-Licensed under the [MIT license](https://github.com/Jordan-Gilliam/ui/blob/main/LICENSE.md).
+[MIT](LICENSE.md) © Nolly Studio. Made by [@nolansym](https://x.com/nolansym).
