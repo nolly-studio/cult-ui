@@ -10,14 +10,14 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Slider } from "@/components/ui/slider"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/default/ui/base-select"
+} from "@/components/ui/select"
+import { Slider } from "@/components/ui/slider"
 import {
   defaultFlutedGlassProps,
   FlutedGlass,
@@ -151,6 +151,10 @@ function SettingSlider({
 }
 
 function FlutedGlassDemo() {
+  const customUrlId = React.useId()
+  const colorBackId = React.useId()
+  const colorShadowId = React.useId()
+  const colorHighlightId = React.useId()
   const [image, setImage] = React.useState<string>(DEMO_IMAGES[0].url)
   const [customUrl, setCustomUrl] = React.useState("")
   const [settings, setSettings] = React.useState<DemoSettings>(INITIAL_SETTINGS)
@@ -242,13 +246,13 @@ function FlutedGlassDemo() {
           <div className="flex-1 space-y-1">
             <Label
               className="text-muted-foreground text-xs"
-              htmlFor="fluted-custom-url"
+              htmlFor={customUrlId}
             >
               Custom image URL
             </Label>
             <Input
               className="font-mono text-xs"
-              id="fluted-custom-url"
+              id={customUrlId}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   applyCustomUrl()
@@ -364,13 +368,13 @@ function FlutedGlassDemo() {
           <div className="space-y-1">
             <Label
               className="text-muted-foreground text-xs"
-              htmlFor="fluted-color-back"
+              htmlFor={colorBackId}
             >
               Background
             </Label>
             <Input
               className="font-mono text-xs"
-              id="fluted-color-back"
+              id={colorBackId}
               onChange={(e) => patch("colorBack", e.target.value)}
               value={settings.colorBack}
             />
@@ -378,13 +382,13 @@ function FlutedGlassDemo() {
           <div className="space-y-1">
             <Label
               className="text-muted-foreground text-xs"
-              htmlFor="fluted-color-shadow"
+              htmlFor={colorShadowId}
             >
               Shadow tint
             </Label>
             <Input
               className="font-mono text-xs"
-              id="fluted-color-shadow"
+              id={colorShadowId}
               onChange={(e) => patch("colorShadow", e.target.value)}
               value={settings.colorShadow}
             />
@@ -392,13 +396,13 @@ function FlutedGlassDemo() {
           <div className="space-y-1">
             <Label
               className="text-muted-foreground text-xs"
-              htmlFor="fluted-color-highlight"
+              htmlFor={colorHighlightId}
             >
               Highlight tint
             </Label>
             <Input
               className="font-mono text-xs"
-              id="fluted-color-highlight"
+              id={colorHighlightId}
               onChange={(e) => patch("colorHighlight", e.target.value)}
               value={settings.colorHighlight}
             />

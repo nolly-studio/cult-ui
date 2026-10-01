@@ -1,10 +1,12 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
-import type { SidebarNavItem } from "types/nav";
+import { useEffect, useRef } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import type { SidebarNavItem } from "types/nav"
 
+import { docsConfig } from "@/config/docs"
+import { cn } from "@/lib/utils"
 import {
   Sidebar,
   SidebarContent,
@@ -14,56 +16,33 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
-import { docsConfig } from "@/config/docs";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/sidebar"
 
 function getIsActive(pathname: string | null, href?: string) {
   if (!pathname || !href) {
-    return false;
+    return false
   }
 
   if (href === "/docs") {
-    return pathname === href;
+    return pathname === href
   }
 
-  return pathname === href || pathname.startsWith(`${href}/`);
+  return pathname === href || pathname.startsWith(`${href}/`)
 }
 
 function LabelBadge({ label }: { label?: string }) {
   if (!label) {
-    return null;
-  }
-
-  if (label === "new") {
-    return (
-      <span className="shrink-0 rounded-sm border border-black bg-[#adfa1d] px-1.5 py-0.5 text-[10px] leading-none text-black">
-        {label}
-      </span>
-    );
-  }
-
-  if (label === "recent") {
-    return (
-      <span className="shrink-0 rounded-sm border border-black bg-cyan-200 px-1.5 py-0.5 text-[10px] leading-none text-black">
-        {label}
-      </span>
-    );
-  }
-
-  if (label === "updated") {
-    return (
-      <span className="shrink-0 rounded-sm border border-black bg-pink-400 px-1.5 py-0.5 text-[10px] leading-none text-black">
-        {label}
-      </span>
-    );
+    return null
   }
 
   return (
-    <span className="bg-muted text-foreground shrink-0 rounded-sm px-1.5 py-0.5 text-[10px] leading-none">
+    <span
+      data-label={label}
+      className="border-border/80 font-pixel-square text-muted-foreground data-[label=new]:border-foreground/15 data-[label=new]:text-foreground shrink-0 rounded-md border px-1 py-px text-[10px] leading-none lowercase"
+    >
       {label}
     </span>
-  );
+  )
 }
 
 function DocsSidebarItems({
@@ -71,15 +50,15 @@ function DocsSidebarItems({
   pathname,
   depth = 0,
 }: {
-  items: SidebarNavItem[];
-  pathname: string | null;
-  depth?: number;
+  items: SidebarNavItem[]
+  pathname: string | null
+  depth?: number
 }) {
   return (
     <SidebarMenu className={cn(depth > 0 && "pl-[2px]")}>
       {items.map((item, index) => {
-        const hasChildren = item.items.length > 0;
-        const isActive = getIsActive(pathname, item.href);
+        const hasChildren = item.items.length > 0
+        const isActive = getIsActive(pathname, item.href)
 
         return (
           <SidebarMenuItem
@@ -91,8 +70,8 @@ function DocsSidebarItems({
                 asChild
                 isActive={isActive}
                 className={cn(
-                  "min-w-0 justify-between gap-2",
-                  depth > 0 && "h-7 text-[0.75rem]",
+                  "data-[active=true]:bg-muted focus-visible:ring-ring h-8 min-w-0 justify-between gap-2 rounded-lg border-0 text-[0.8125rem] font-normal outline-none focus-visible:ring-2 data-[active=true]:font-medium",
+                  depth > 0 && "h-7",
                   item.external && "pr-3"
                 )}
               >
@@ -109,8 +88,8 @@ function DocsSidebarItems({
             ) : (
               <div
                 className={cn(
-                  "font-pixel-square text-foreground flex h-8 min-w-0 items-center justify-between gap-2 rounded-md px-2 text-[1rem] font-medium",
-                  depth > 0 && "h-7 text-[0.75rem]"
+                  "text-foreground mt-3 flex h-8 min-w-0 items-center justify-between gap-2 px-2 text-[0.8125rem] font-medium",
+                  depth > 0 && "h-7"
                 )}
               >
                 <span className="min-w-0 flex-1 truncate">{item.title}</span>
@@ -126,50 +105,47 @@ function DocsSidebarItems({
               />
             ) : null}
           </SidebarMenuItem>
-        );
+        )
       })}
     </SidebarMenu>
-  );
+  )
 }
 
 export function DocsSidebar() {
-  const pathname = usePathname();
-  const containerRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname()
+  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!pathname) return;
+    if (!pathname) return
 
     const activeLink = containerRef.current?.querySelector<HTMLElement>(
       '[data-sidebar-active="true"]'
-    );
-    if (!activeLink) return;
+    )
+    if (!activeLink) return
 
     requestAnimationFrame(() => {
       activeLink.scrollIntoView({
         block: "center",
         inline: "nearest",
-      });
-    });
-  }, [pathname]);
+      })
+    })
+  }, [pathname])
 
   return (
-    <Sidebar className="sticky top-[calc(var(--header-height)+0.6rem)] z-30 hidden h-[calc(100svh-7rem)] overscroll-none bg-transparent lg:flex">
+    <Sidebar className="sticky top-(--header-height) z-30 hidden h-[calc(100svh-var(--header-height))] overscroll-none bg-transparent lg:flex">
       <div className="h-(--top-spacing) shrink-0" />
       <div className="relative mt-2 h-full overflow-hidden">
-        {/* <div className="h-9" /> */}
-        <div className="from-background via-background/80 to-background/50 pointer-events-none absolute -top-1 z-20 h-8 w-(--sidebar-menu-width) shrink-0 bg-linear-to-b blur-xs" />
-        <div className="from-background via-background/80 to-background/50 pointer-events-none absolute bottom-8 z-20 h-8 w-(--sidebar-menu-width) shrink-0 bg-linear-to-t blur-xs" />
         <div className="via-border absolute top-12 right-0 bottom-0 hidden h-full w-px bg-linear-to-b from-transparent to-transparent lg:flex" />
         <SidebarContent
           ref={containerRef}
-          className="no-scrollbar mx-auto h-[calc(100svh-10rem)] w-(--sidebar-menu-width) overflow-x-hidden px-2 pb-2"
+          className="no-scrollbar mx-auto h-full w-(--sidebar-menu-width) overflow-x-hidden px-2 pb-16 [mask-image:linear-gradient(to_bottom,transparent,black_1.5rem,black_calc(100%-5rem),transparent_calc(100%-0.5rem))]"
         >
           {docsConfig.sidebarNav.map((section, index) => (
             <SidebarGroup
               key={`${section.title}-${index}`}
               className="pt-6 first:pt-6"
             >
-              <SidebarGroupLabel className="font-pixel-square text-foreground px-2 text-[1rem] font-semibold tracking-wide uppercase">
+              <SidebarGroupLabel className="text-muted-foreground mb-1 px-2 font-mono text-[10px] font-normal tracking-wider uppercase">
                 {section.title}
               </SidebarGroupLabel>
               <SidebarGroupContent>
@@ -180,5 +156,5 @@ export function DocsSidebar() {
         </SidebarContent>
       </div>
     </Sidebar>
-  );
+  )
 }

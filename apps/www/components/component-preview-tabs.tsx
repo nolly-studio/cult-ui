@@ -1,9 +1,10 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
 
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { segmentedTabsClass } from "@/components/segmented-tabs"
 
 export function ComponentPreviewTabs({
   className,
@@ -13,53 +14,53 @@ export function ComponentPreviewTabs({
   source,
   ...props
 }: React.ComponentProps<"div"> & {
-  align?: "center" | "start" | "end";
-  hideCode?: boolean;
-  component: React.ReactNode;
-  source: React.ReactNode;
+  align?: "center" | "start" | "end"
+  hideCode?: boolean
+  component: React.ReactNode
+  source: React.ReactNode
 }) {
-  const [tab, setTab] = React.useState("preview");
+  const [tab, setTab] = React.useState("preview")
 
   return (
     <div
-      className={cn("group relative mt-4 mb-12 flex flex-col gap-2", className)}
+      data-slot="component-preview"
+      className={cn("group relative mt-4 mb-12 flex flex-col gap-3", className)}
       {...props}
     >
-      <Tabs
-        className="relative mr-auto w-full"
-        value={tab}
-        onValueChange={setTab}
-      >
-        <div className="flex items-center justify-between">
-          {!hideCode && (
-            <TabsList>
-              <TabsTrigger value="preview">Preview</TabsTrigger>
-              <TabsTrigger value="code">Code</TabsTrigger>
-            </TabsList>
-          )}
-        </div>
-      </Tabs>
+      {!hideCode && (
+        <Tabs value={tab} onValueChange={setTab}>
+          <TabsList className={segmentedTabsClass.list}>
+            <TabsTrigger value="preview" className={segmentedTabsClass.trigger}>
+              Preview
+            </TabsTrigger>
+            <TabsTrigger value="code" className={segmentedTabsClass.trigger}>
+              Code
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+      )}
       <div
         data-tab={tab}
-        className="data-[tab=code]:border-code relative rounded-lg border md:-mx-1"
+        className="bg-background shadow-soft corner-squircle relative overflow-hidden rounded-[1.5rem] data-[tab=code]:bg-code"
       >
         {tab === "preview" ? (
           <div data-slot="preview">
             <div
               data-align={align}
-              className={cn(
-                "preview flex min-h-[650px] w-full justify-center overflow-y-auto data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start md:p-10"
-              )}
+              className="preview flex min-h-[650px] w-full justify-center overflow-y-auto data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start p-4 md:p-10"
             >
               {component}
             </div>
           </div>
         ) : (
-          <div data-slot="code" className="overflow-auto **:[figure]:!m-0">
+          <div
+            data-slot="code"
+            className="overflow-auto **:[figure]:!m-0 **:[figure]:!rounded-none **:[figure]:!shadow-none"
+          >
             {source}
           </div>
         )}
       </div>
     </div>
-  );
+  )
 }

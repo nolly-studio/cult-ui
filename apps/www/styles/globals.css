@@ -22,7 +22,7 @@
   --secondary-foreground: oklch(0.205 0 0);
 
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: oklch(0.51 0 0); /* #666666 */
 
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
@@ -30,7 +30,7 @@
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
 
-  --border: oklch(0.922 0 0);
+  --border: oklch(0.94 0 0); /* #EBEBEB */
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
 
@@ -166,17 +166,52 @@
     oklch(0.7 0.15 200) 51.42%,
     oklch(0.12 0.002 220) 64.69%
   );
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  /* Neutrals follow the Vercel Geist gray scale */
+  --background: oklch(1 0 0); /* #FFFFFF */
+  --canvas: oklch(0.985 0 0); /* #FAFAFA — marketing bands */
+  --foreground: oklch(0.205 0 0); /* #171717 */
 
   /* Semantic text (Nuxt UI–style names); override per theme if needed */
   --text-dimmed: var(--muted-foreground);
   --text-highlighted: var(--foreground);
+
+  /* Soft elevation (shadow-soft*) */
+  --elevation-soft-sm:
+    0 0 0 1px rgb(0 0 0 / 0.05), 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --elevation-soft:
+    0 0 0 1px rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06),
+    0 2px 4px 0 rgb(0 0 0 / 0.04);
+  --elevation-soft-md:
+    0 0 0 1px rgb(0 0 0 / 0.07), 0 2px 4px -1px rgb(0 0 0 / 0.06),
+    0 8px 16px -4px rgb(0 0 0 / 0.08);
+
+  /* Code surfaces (docs code blocks) */
+  --code: oklch(0.985 0 0); /* #FAFAFA */
+  --code-foreground: oklch(0.205 0 0);
+  --code-number: oklch(0.708 0 0);
+  --code-highlight: oklch(0.955 0 0);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
+  --elevation-soft-sm:
+    0 0 0 1px rgb(255 255 255 / 0.05), 0 1px 2px 0 rgb(0 0 0 / 0.35);
+  --elevation-soft:
+    0 0 0 1px rgb(255 255 255 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.4),
+    0 2px 4px 0 rgb(0 0 0 / 0.3);
+  --elevation-soft-md:
+    0 0 0 1px rgb(255 255 255 / 0.08), 0 2px 4px -1px rgb(0 0 0 / 0.45),
+    0 8px 16px -4px rgb(0 0 0 / 0.4);
+}
+
+.dark {
+  --background: oklch(0.145 0 0); /* #0A0A0A */
+  --canvas: oklch(0.145 0 0);
+
+  --code: oklch(0.18 0 0); /* #111111 */
+  --code-foreground: oklch(0.95 0 0);
+  --code-number: oklch(0.45 0 0);
+  --code-highlight: oklch(0.235 0 0);
+  --foreground: oklch(0.95 0 0); /* #EDEDED */
 
   --text-dimmed: var(--muted-foreground);
   --text-highlighted: var(--foreground);
@@ -187,14 +222,14 @@
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
 
-  --primary: oklch(0.922 0 0);
+  --primary: oklch(0.95 0 0);
   --primary-foreground: oklch(0.205 0 0);
 
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
 
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
+  --muted: oklch(0.235 0 0); /* #1F1F1F */
+  --muted-foreground: oklch(0.715 0 0); /* #A1A1A1 */
 
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
@@ -234,6 +269,11 @@
 
   /* Map tokens directly (OKLCH-ready) */
   --color-background: var(--background);
+  --color-canvas: var(--canvas);
+  --color-code: var(--code);
+  --color-code-foreground: var(--code-foreground);
+  --color-code-number: var(--code-number);
+  --color-code-highlight: var(--code-highlight);
   --color-foreground: var(--foreground);
   --color-dimmed: var(--text-dimmed);
   --color-highlighted: var(--text-highlighted);
@@ -356,6 +396,9 @@
     0px 0px 0px 1px oklch(1 0 0 / 0.04) inset,
     0px -2px 6px oklch(0 0 0 / 0.25) inset, 0px 1px 1px oklch(1 0 0 / 0.02),
     1px 1px 2px oklch(1 0 0 / 0.01);
+  --shadow-soft-sm: var(--elevation-soft-sm);
+  --shadow-soft: var(--elevation-soft);
+  --shadow-soft-md: var(--elevation-soft-md);
   --shadow-elevation-dark-two:
     0px 8px 16px oklch(0 0 0 / 0.5), 0px 4px 8px oklch(0 0 0 / 0.4),
     0px 2px 4px oklch(0 0 0 / 0.3), 0px 1px 2px oklch(1 0 0 / 0.05) inset,
@@ -510,6 +553,10 @@
 @utility container {
   @apply mx-auto px-8;
 } /* 2rem = 32px */
+
+@utility corner-squircle {
+  corner-shape: squircle;
+}
 
 /* Gradient utilities */
 @utility bg-gradientTopRight {
@@ -690,16 +737,6 @@
 
 /* Utilities */
 @layer utilities {
-  .step {
-    counter-increment: step;
-  }
-
-  .step:before {
-    @apply border-background absolute inline-flex h-9 w-9 items-center justify-center rounded-full border-4 bg-lime-400 text-center -indent-px font-mono text-base font-medium text-black;
-    @apply mt-[-4px] ml-[-50px];
-    content: counter(step);
-  }
-
   .chunk-container {
     @apply shadow-none;
   }
@@ -802,7 +839,14 @@
     }
 
     > h3 {
-      @apply !mt-16;
+      @apply relative !mt-10;
+      counter-increment: step;
+    }
+
+    > h3::before {
+      @apply bg-background text-foreground absolute top-1/2 -left-[2.875rem] inline-flex size-7 -translate-y-1/2 items-center justify-center rounded-full font-mono text-xs font-medium tabular-nums;
+      box-shadow: var(--elevation-soft-sm);
+      content: counter(step);
     }
 
     > h3 + p {
@@ -813,15 +857,14 @@
   [data-rehype-pretty-code-figure] {
     background-color: var(--color-code);
     color: var(--color-code-foreground);
-    border-radius: var(--radius-lg);
+    border-radius: 1rem;
     border-width: 0px;
-    border-color: var(--border);
+    box-shadow: var(--elevation-soft-sm);
     margin-top: calc(var(--spacing) * 6);
     overflow: hidden;
-    font-size: var(--text-sm);
+    font-size: 0.8125rem;
     outline: none;
     position: relative;
-    @apply -mx-1 md:-mx-1;
 
     &:has([data-rehype-pretty-code-title]) [data-slot="copy-button"] {
       top: calc(var(--spacing) * 1.5) !important;
@@ -829,12 +872,10 @@
   }
 
   [data-rehype-pretty-code-title] {
-    border-bottom: color-mix(in oklab, var(--border) 30%, transparent);
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
+    border-bottom: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
     padding-block: calc(var(--spacing) * 2.5);
     padding-inline: calc(var(--spacing) * 4);
-    font-size: var(--text-sm);
+    font-size: 0.75rem;
     font-family: var(--font-mono);
     color: var(--color-code-foreground);
   }

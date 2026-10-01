@@ -1,19 +1,20 @@
-"use client";
+"use client"
 
-import Link, { LinkProps } from "next/link";
-import { useRouter } from "next/navigation";
-import * as React from "react";
+import * as React from "react"
+import Link, { LinkProps } from "next/link"
+import { useRouter } from "next/navigation"
 
-import { Icons } from "@/components/icons";
-import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { docsConfig } from "@/config/docs";
-import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
+import { docsConfig } from "@/config/docs"
+import { siteConfig } from "@/config/site"
+import { aisdkAgentsUrl } from "@/lib/aisdkagents"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Icons } from "@/components/icons"
 
 export function MobileNav() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -67,24 +68,28 @@ export function MobileNav() {
 
         <div className="bg-background flex flex-col space-y-3 pt-4">
           <a
-            href="https://aisdkagents.com/patterns"
+            href={aisdkAgentsUrl("/patterns", {
+              medium: "header",
+              content: "mobile-nav-blocks",
+            })}
             target="_blank"
             rel="noopener noreferrer"
-            className={cn(
-              "hover:text-foreground/80 text-base font-semibold transition-colors"
-            )}
+            className="hover:text-foreground/80 text-base font-semibold transition-colors"
           >
-            Blocks <span className="text-xs text-lime-500">(100 new)</span>
+            AI blocks
+            <span className="sr-only"> (opens in a new tab)</span>
           </a>
           <a
-            href="https://aisdkagents.com/templates"
+            href={aisdkAgentsUrl("/templates", {
+              medium: "header",
+              content: "mobile-nav-templates",
+            })}
             target="_blank"
             rel="noopener noreferrer"
-            className={cn(
-              "hover:text-foreground/80 text-base font-semibold transition-colors"
-            )}
+            className="hover:text-foreground/80 text-base font-semibold transition-colors"
           >
-            Templates <span className="text-xs text-lime-500">(4 new)</span>
+            AI templates
+            <span className="sr-only"> (opens in a new tab)</span>
           </a>
         </div>
 
@@ -143,13 +148,13 @@ export function MobileNav() {
         </ScrollArea>
       </SheetContent>
     </Sheet>
-  );
+  )
 }
 
 interface MobileLinkProps extends LinkProps {
-  onOpenChange?: (open: boolean) => void;
-  children: React.ReactNode;
-  className?: string;
+  onOpenChange?: (open: boolean) => void
+  children: React.ReactNode
+  className?: string
 }
 
 function MobileLink({
@@ -159,18 +164,18 @@ function MobileLink({
   children,
   ...props
 }: MobileLinkProps) {
-  const router = useRouter();
+  const router = useRouter()
   return (
     <Link
       href={href}
       onClick={() => {
-        router.push(href.toString());
-        onOpenChange?.(false);
+        router.push(href.toString())
+        onOpenChange?.(false)
       }}
       className={cn(className)}
       {...props}
     >
       {children}
     </Link>
-  );
+  )
 }

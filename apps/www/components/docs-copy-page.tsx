@@ -1,29 +1,29 @@
-"use client";
+"use client"
 
-import { IconCheck, IconChevronDown, IconCopy } from "@tabler/icons-react";
+import { IconCheck, IconChevronDown, IconCopy } from "@tabler/icons-react"
 
-import { Button } from "@/components/ui/button";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu"
 import {
   Popover,
   PopoverAnchor,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import { Separator } from "@/components/ui/separator";
-import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+} from "@/components/ui/popover"
+import { Separator } from "@/components/ui/separator"
 
 function getPromptUrl(baseURL: string, url: string) {
   return `${baseURL}?q=${encodeURIComponent(
     `I’m looking at this shadcn/ui compatible registry documentation: ${url}.
 Help me understand how to use it. Be ready to explain concepts, give examples, or help debug based on it.
   `
-  )}`;
+  )}`
 }
 
 const menuItems = {
@@ -87,39 +87,47 @@ const menuItems = {
       Open in Claude
     </a>
   ),
-};
+}
 
 export function DocsCopyPage({ page, url }: { page: string; url: string }) {
-  const { copyToClipboard, isCopied } = useCopyToClipboard();
+  const { copyToClipboard, isCopied } = useCopyToClipboard()
 
   const trigger = (
     <Button
-      variant="secondary"
+      variant="ghost"
       size="sm"
-      className="peer -ml-0.5 size-8 shadow-none md:size-7 md:text-[0.8rem]"
+      aria-label="More ways to use this page"
+      className="peer text-muted-foreground hover:text-foreground size-8 rounded-full rounded-l-none shadow-none hover:bg-transparent"
     >
       <IconChevronDown className="rotate-180 sm:rotate-0" />
     </Button>
-  );
+  )
 
   return (
     <Popover>
-      <div className="bg-secondary group/buttons relative flex rounded-lg *:[[data-slot=button]]:focus-visible:relative *:[[data-slot=button]]:focus-visible:z-10">
+      <div className="bg-background shadow-soft-sm group/buttons relative flex rounded-full *:[[data-slot=button]]:focus-visible:relative *:[[data-slot=button]]:focus-visible:z-10">
         <PopoverAnchor />
         <Button
-          variant="secondary"
+          variant="ghost"
           size="sm"
-          className="h-8 shadow-none md:h-7 md:text-[0.8rem]"
+          className="text-muted-foreground hover:text-foreground h-8 gap-1.5 rounded-full rounded-r-none pr-2.5 pl-3 text-[0.8125rem] shadow-none hover:bg-transparent"
           onClick={() => copyToClipboard(page)}
         >
-          {isCopied ? <IconCheck /> : <IconCopy />}
-          Copy Page
+          {isCopied ? (
+            <IconCheck aria-hidden="true" className="size-3.5" />
+          ) : (
+            <IconCopy aria-hidden="true" className="size-3.5" />
+          )}
+          {isCopied ? "Copied" : "Copy page"}
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild className="hidden sm:flex">
             {trigger}
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="shadow-none">
+          <DropdownMenuContent
+            align="end"
+            className="shadow-soft-md rounded-xl border-0"
+          >
             {Object.entries(menuItems).map(([key, value]) => (
               <DropdownMenuItem key={key} asChild>
                 {value(url)}
@@ -129,7 +137,7 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
         </DropdownMenu>
         <Separator
           orientation="vertical"
-          className="!bg-foreground/10 absolute top-0 right-8 z-0 !h-8 peer-focus-visible:opacity-0 sm:right-7 sm:!h-7"
+          className="!bg-border absolute top-2 right-8 z-0 !h-4 peer-focus-visible:opacity-0"
         />
         <PopoverTrigger asChild className="flex sm:hidden">
           {trigger}
@@ -152,5 +160,5 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
         </PopoverContent>
       </div>
     </Popover>
-  );
+  )
 }

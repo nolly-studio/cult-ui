@@ -1138,6 +1138,7 @@ export const examples: Registry["items"] = [
       "button",
       "input",
       "label",
+      "select",
       "slider",
     ],
     dependencies: ["@paper-design/shaders-react"],

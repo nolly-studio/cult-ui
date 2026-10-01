@@ -1,42 +1,41 @@
-import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
-import { findNeighbour } from "fumadocs-core/server";
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import type * as React from "react"
+import Link from "next/link"
+import { notFound } from "next/navigation"
+import { mdxComponents } from "@/mdx-components"
+import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react"
+import { findNeighbour } from "fumadocs-core/server"
 
-import { DocsCopyPage } from "@/components/docs-copy-page";
-import { DocsTableOfContents } from "@/components/docs-toc";
-import {
-  GetAISDKAgentsCta,
-  GetCultProCta,
-} from "@/components/get-cult-pro-cta";
-import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/config/site";
-import { source } from "@/lib/source";
-import { absoluteUrl } from "@/lib/utils";
-import { mdxComponents } from "@/mdx-components";
+import { docsConfig } from "@/config/docs"
+import { siteConfig } from "@/config/site"
+import { source } from "@/lib/source"
+import { absoluteUrl, cn } from "@/lib/utils"
+import { DocsCopyPage } from "@/components/docs-copy-page"
+import { DocsPromoCard } from "@/components/docs-promo-card"
+import { DocsTableOfContents } from "@/components/docs-toc"
+import { PixelKicker, SectionTitle } from "@/components/section-heading"
 
-export const revalidate = false;
-export const dynamic = "force-static";
-export const dynamicParams = false;
+export const revalidate = false
+export const dynamic = "force-static"
+export const dynamicParams = false
 
 export function generateStaticParams() {
-  return source.generateParams();
+  return source.generateParams()
 }
 
 export async function generateMetadata(props: {
-  params: Promise<{ slug?: string[] }>;
+  params: Promise<{ slug?: string[] }>
 }) {
-  const params = await props.params;
-  const page = source.getPage(params.slug);
+  const params = await props.params
+  const page = source.getPage(params.slug)
 
   if (!page) {
-    notFound();
+    notFound()
   }
 
-  const doc = page.data;
+  const doc = page.data
 
   if (!doc.title || !doc.description) {
-    notFound();
+    notFound()
   }
 
   return {
@@ -63,142 +62,163 @@ export async function generateMetadata(props: {
       images: [siteConfig.ogImage],
       creator: "@nolansym",
     },
-  };
+  }
 }
 
 export default async function Page(props: {
-  params: Promise<{ slug?: string[] }>;
+  params: Promise<{ slug?: string[] }>
 }) {
-  const params = await props.params;
-  const page = source.getPage(params.slug);
+  const params = await props.params
+  const page = source.getPage(params.slug)
   if (!page) {
-    notFound();
+    notFound()
   }
 
-  const doc = page.data;
+  const doc = page.data
   // @ts-expect-error - revisit fumadocs types.
-  const MDX = doc.body;
-  const neighbours = await findNeighbour(source.pageTree, page.url);
+  const MDX = doc.body
+  const neighbours = await findNeighbour(source.pageTree, page.url)
+
+  const category = getCategory(page.url)
 
   return (
-    <div
-      data-slot="docs"
-      className="flex items-stretch text-[1.05rem] sm:text-[15px] xl:w-full"
-    >
+    <div data-slot="docs" className="flex items-stretch xl:w-full">
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="h-(--top-spacing) shrink-0" />
-        <div className="mx-auto flex w-full max-w-4xl min-w-0 flex-1 flex-col gap-4 px-1 py-14 text-neutral-800 md:px-0 lg:py-16 xl:max-w-6xl dark:text-neutral-300">
-          <div className="flex flex-col gap-1">
-            <div className="flex flex-col gap-1">
-              <div className="flex items-start justify-between">
-                <h1 className="scroll-m-20 text-4xl font-semibold tracking-tight sm:text-3xl xl:text-4xl">
-                  {doc.title}
-                </h1>
-                <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
-                  <DocsCopyPage
-                    // @ts-expect-error - revisit fumadocs types.
-                    page={doc.content || ""}
-                    url={absoluteUrl(page.url)}
-                  />
-                  {neighbours.previous && (
-                    <Button
-                      variant="secondary"
-                      size="icon"
-                      className="extend-touch-target ml-auto size-8 shadow-none md:size-7"
-                      asChild
-                    >
-                      <Link href={neighbours.previous.url}>
-                        <IconArrowLeft />
-                        <span className="sr-only">Previous</span>
-                      </Link>
-                    </Button>
-                  )}
-                  {neighbours.next && (
-                    <Button
-                      variant="secondary"
-                      size="icon"
-                      className="extend-touch-target size-8 shadow-none md:size-7"
-                      asChild
-                    >
-                      <Link href={neighbours.next.url}>
-                        <span className="sr-only">Next</span>
-                        <IconArrowRight />
-                      </Link>
-                    </Button>
-                  )}
-                </div>
+        <article className="text-foreground/80 mx-auto flex w-full max-w-4xl min-w-0 flex-1 flex-col px-3 py-10 text-[0.9375rem] leading-relaxed md:px-0 lg:py-14 xl:max-w-5xl">
+          <header className="mb-10 flex flex-col gap-4">
+            <div className="flex min-h-8 items-center justify-between gap-4">
+              {category ? <PixelKicker>{category}</PixelKicker> : <span />}
+              <div className="bg-background/85 border-border/80 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-1.5 border-t px-4 py-3 backdrop-blur-md sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:p-0 sm:backdrop-blur-none">
+                <DocsCopyPage
+                  // @ts-expect-error - revisit fumadocs types.
+                  page={doc.content || ""}
+                  url={absoluteUrl(page.url)}
+                />
+                {neighbours.previous && (
+                  <Link
+                    href={neighbours.previous.url}
+                    className={cn(iconPillClass, "ml-auto")}
+                  >
+                    <IconArrowLeft aria-hidden="true" className="size-4" />
+                    <span className="sr-only">
+                      Previous: {neighbours.previous.name}
+                    </span>
+                  </Link>
+                )}
+                {neighbours.next && (
+                  <Link href={neighbours.next.url} className={iconPillClass}>
+                    <IconArrowRight aria-hidden="true" className="size-4" />
+                    <span className="sr-only">
+                      Next: {neighbours.next.name}
+                    </span>
+                  </Link>
+                )}
               </div>
-              {doc.description && (
-                <p className="text-muted-foreground text-[1.05rem] text-balance sm:text-base">
-                  {doc.description}
-                </p>
-              )}
             </div>
-            {/* {links ? (
-              <div className="flex items-center space-x-2 pt-4">
-                {links?.doc && (
-                  <Badge variant="secondary">
-                    <Link href={links.doc} target="_blank" rel="noreferrer">
-                      Docs <IconArrowUpRight />
-                    </Link>
-                  </Badge>
-                )}
-                {links?.api && (
-                  <Badge variant="secondary">
-                    <Link href={links.api} target="_blank" rel="noreferrer">
-                      API Reference <IconArrowUpRight />
-                    </Link>
-                  </Badge>
-                )}
-              </div>
-            ) : null} */}
-          </div>
+            <SectionTitle
+              as="h1"
+              className="text-foreground scroll-m-28 text-3xl md:text-4xl lg:text-5xl"
+            >
+              {doc.title}
+            </SectionTitle>
+            {doc.description && (
+              <p className="text-foreground/55 max-w-2xl text-lg leading-snug text-pretty">
+                {doc.description}
+              </p>
+            )}
+          </header>
           <div className="w-full flex-1 *:data-[slot=alert]:first:mt-0">
             <MDX components={mdxComponents} />
           </div>
-        </div>
-        <div className="mx-auto hidden h-16 w-full max-w-2xl items-center gap-2 px-4 sm:flex md:px-0">
-          {neighbours.previous && (
-            <Button
-              variant="secondary"
-              size="sm"
-              asChild
-              className="shadow-none"
-            >
-              <Link href={neighbours.previous.url}>
-                <IconArrowLeft /> {neighbours.previous.name}
-              </Link>
-            </Button>
-          )}
-          {neighbours.next && (
-            <Button
-              variant="secondary"
-              size="sm"
-              className="ml-auto shadow-none"
-              asChild
-            >
-              <Link href={neighbours.next.url}>
-                {neighbours.next.name} <IconArrowRight />
-              </Link>
-            </Button>
-          )}
-        </div>
+          <DocsPager previous={neighbours.previous} next={neighbours.next} />
+        </article>
       </div>
-      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--footer-height)+2rem)] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
-        <div className="h-(--top-spacing) shrink-0" />
+      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--header-height))] w-72 flex-col gap-8 overflow-hidden overscroll-none px-6 pt-14 pb-8 xl:flex">
         {/* @ts-expect-error - revisit fumadocs types. */}
         {doc.toc?.length ? (
-          <div className="no-scrollbar h-[20rem] overflow-y-auto px-8">
+          <div className="no-scrollbar min-h-0 shrink overflow-y-auto">
             {/* @ts-expect-error - revisit fumadocs types. */}
             <DocsTableOfContents toc={doc.toc} />
-            <div className="h-12" />
           </div>
         ) : null}
-        <div className="flex flex-1 flex-col gap-3 px-6">
-          <GetAISDKAgentsCta />
-          <GetCultProCta />
-        </div>
+        <DocsPromoCard className="shrink-0" />
       </div>
     </div>
-  );
+  )
+}
+
+const iconPillClass =
+  "bg-background text-muted-foreground shadow-soft-sm hover:text-foreground hover:shadow-soft focus-visible:ring-ring inline-flex size-8 items-center justify-center rounded-full transition-[box-shadow,color] duration-150 outline-none focus-visible:ring-2"
+
+type Neighbour = { name: React.ReactNode; url: string } | undefined
+
+function DocsPager({
+  previous,
+  next,
+}: {
+  previous: Neighbour
+  next: Neighbour
+}) {
+  if (!previous && !next) return null
+  return (
+    <nav
+      aria-label="Pagination"
+      className="border-border/80 mt-16 grid gap-4 border-t pt-8 sm:grid-cols-2"
+    >
+      {previous ? (
+        <PagerLink href={previous.url} label="Previous" name={previous.name} />
+      ) : (
+        <span aria-hidden="true" className="hidden sm:block" />
+      )}
+      {next ? (
+        <PagerLink href={next.url} label="Next" name={next.name} align="end" />
+      ) : null}
+    </nav>
+  )
+}
+
+function PagerLink({
+  href,
+  label,
+  name,
+  align = "start",
+}: {
+  href: string
+  label: string
+  name: React.ReactNode
+  align?: "start" | "end"
+}) {
+  return (
+    <Link
+      href={href}
+      className={cn(
+        "group bg-card shadow-soft hover:shadow-soft-md focus-visible:ring-ring flex flex-col gap-1 rounded-2xl p-4 transition-shadow duration-150 outline-none focus-visible:ring-2 dark:bg-muted",
+        align === "end" && "items-end text-right"
+      )}
+    >
+      <span className="text-muted-foreground flex items-center gap-1 font-mono text-[10px] tracking-wider uppercase">
+        {align === "start" ? (
+          <IconArrowLeft aria-hidden="true" className="size-3" />
+        ) : null}
+        {label}
+        {align === "end" ? (
+          <IconArrowRight aria-hidden="true" className="size-3" />
+        ) : null}
+      </span>
+      <span className="text-foreground text-sm font-medium tracking-tight">
+        {name}
+      </span>
+    </Link>
+  )
+}
+
+function getCategory(url: string) {
+  for (const section of docsConfig.sidebarNav) {
+    for (const item of section.items) {
+      if (item.href === url) return section.title
+      if (item.items.some((child) => child.href === url)) return item.title
+    }
+  }
+  return null
 }

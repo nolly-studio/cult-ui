@@ -1,9 +1,9 @@
-import { DocsSidebar } from "@/components/docs-sidebar";
-import { ThemeProvider } from "@/components/providers";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar"
+import { DocsSidebar } from "@/components/docs-sidebar"
+import { ThemeProvider } from "@/components/providers"
 
 interface DocsLayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export default function DocsLayout({ children }: DocsLayoutProps) {
@@ -20,7 +20,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
           style={
             {
               "--sidebar-width": "calc(var(--spacing) * 72)",
-              "--header-height": "calc(var(--spacing) * 24)",
+              "--header-height": "calc(var(--spacing) * 16)",
             } as React.CSSProperties
           }
         >
@@ -29,5 +29,5 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
         </SidebarProvider>
       </div>
     </ThemeProvider>
-  );
+  )
 }

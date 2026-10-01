@@ -1,69 +1,124 @@
-import { Dithering } from "@paper-design/shaders-react";
-import { memo } from "react";
+import Link from "next/link"
 
-import { Icons } from "../icons";
-import { LocalTime } from "./local-time";
+import { siteConfig } from "@/config/site"
+import { aisdkAgentsUrl } from "@/lib/aisdkagents"
 
-const MemoizedDithering = memo(Dithering);
+import { Icons } from "../icons"
+import { LocalTime } from "./local-time"
+
+const columns = [
+  {
+    title: "Library",
+    links: [
+      { label: "Components", href: siteConfig.links.components },
+      { label: "Installation", href: "/docs/installation" },
+      { label: "Theming", href: "/docs/theming" },
+      { label: "MCP server", href: "/docs/mcp-server" },
+      { label: "Changelog", href: "/docs/changelog" },
+    ],
+  },
+  {
+    title: "Products",
+    links: [
+      {
+        label: "AI SDK Agents",
+        href: aisdkAgentsUrl("/", { medium: "footer", content: "home" }),
+      },
+      {
+        label: "AI blocks",
+        href: aisdkAgentsUrl("/patterns", {
+          medium: "footer",
+          content: "patterns",
+        }),
+      },
+      {
+        label: "AI skills",
+        href: aisdkAgentsUrl("/skills", {
+          medium: "footer",
+          content: "skills",
+        }),
+      },
+      { label: "Cult Pro downloads", href: "https://pro.cult-ui.com" },
+    ],
+  },
+  {
+    title: "Community",
+    links: [
+      { label: "GitHub", href: siteConfig.links.github },
+      { label: "X / Twitter", href: siteConfig.links.twitter },
+    ],
+  },
+]
+
+const linkClass =
+  "text-muted-foreground hover:text-foreground focus-visible:ring-ring rounded-md text-sm transition-colors duration-150 outline-none focus-visible:ring-2"
 
 export const Footer = () => (
-  <div className="relative grid w-full grid-cols-[0.2fr_3fr_0.2fr] md:grid-cols-[0.5fr_3fr_0.5fr]">
-    {/* Gradient overlays */}
-    <div className="pointer-events-none absolute inset-0">
-      <div className="from-background absolute top-0 right-0 left-0 h-8 bg-gradient-to-b to-transparent" />
-      <div className="from-background absolute right-0 bottom-0 left-0 h-6 bg-gradient-to-t to-transparent" />
-      <div className="from-background absolute top-0 bottom-0 left-0 w-8 bg-gradient-to-r to-transparent" />
-      <div className="from-background absolute top-0 right-0 bottom-0 w-8 bg-gradient-to-l to-transparent" />
-    </div>
-
-    <div className="absolute top-12 right-0 left-0 z-0">
-      <div className="shader-background absolute inset-0 z-0 select-none">
-        <MemoizedDithering
-          colorBack="#00000000"
-          // colorFront="#006CFF"
-          colorFront="#000000"
-          pxSize={3}
-          scale={2.13}
-          shape="swirl"
-          speed={0.43}
-          style={{
-            // background
-            // Color: "#000000",
-            height: "30.2vh",
-            // width: "100vw",
-          }}
-          type="4x4"
-        />
+  <footer className="border-border/80 border-t">
+    <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:py-16 md:grid-cols-[1.4fr_repeat(3,1fr)]">
+      <div className="flex flex-col items-start gap-3">
+        <Link
+          href="/"
+          className="focus-visible:ring-ring flex items-center gap-2 rounded-md outline-none focus-visible:ring-2"
+        >
+          <Icons.cultLogoBasic
+            aria-hidden="true"
+            className="fill-foreground size-6"
+          />
+          <span className="font-pixel-square text-lg font-bold">cult ui</span>
+        </Link>
+        <p className="text-muted-foreground max-w-xs text-sm text-pretty">
+          Free, open-source components for shadcn/ui. MIT licensed.
+        </p>
       </div>
-    </div>
-
-    {/* Top row */}
-
-    {/* Middle row - main content */}
-    <div className="" />
-    <div className="relative flex items-center justify-center">
-      {/* Main content */}
-      <div className="flex flex-col items-center justify-center px-5 py-36">
-        <div className="flex items-center justify-center gap-1">
-          <Icons.cultLogoBasic className="size-6 fill-black dark:fill-white" />
-          <h2 className="mb-2 text-center text-3xl font-medium tracking-[-0.12rem] md:text-4xl">
-            cult ui
+      {columns.map((column) => (
+        <nav key={column.title} aria-label={column.title}>
+          <h2 className="text-muted-foreground mb-4 font-mono text-[10px] tracking-wider uppercase">
+            {column.title}
           </h2>
-          <Icons.cultLogoBasic className="size-6 fill-black dark:fill-white" />
-        </div>
-
-        <p className="font-pixel-line max-w-2xl text-center text-lg">
-          Join the cult
-        </p>
-        <p className="font-pixel-line max-w-2xl text-center text-lg">
-          <LocalTime />
-        </p>
+          <ul className="flex flex-col gap-2.5">
+            {column.links.map((link) => {
+              const external = link.href.startsWith("http")
+              return (
+                <li key={link.label}>
+                  {external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={linkClass}
+                    >
+                      {link.label}
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </a>
+                  ) : (
+                    <Link href={link.href} className={linkClass}>
+                      {link.label}
+                    </Link>
+                  )}
+                </li>
+              )
+            })}
+          </ul>
+        </nav>
+      ))}
+    </div>
+    <div className="border-border/80 border-t">
+      <div className="text-muted-foreground mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-5 text-xs">
+        <span>© {new Date().getFullYear()} Nolly Studio</span>
+        <span>
+          Made by{" "}
+          <a
+            href={siteConfig.links.twitter}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-foreground underline-offset-4 transition-colors duration-150 hover:underline"
+          >
+            @nolansym
+          </a>
+          , shipped <LocalTime />
+        </span>
       </div>
     </div>
-
-    {/* Spacer */}
-    <div className="h-16" />
-
-    <div className="" />
-  </div>
-);
+  </footer>
+)

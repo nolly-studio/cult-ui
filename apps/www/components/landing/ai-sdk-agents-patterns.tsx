@@ -1,27 +1,31 @@
-"use client";
+"use client"
 
-import {
-  ArrowRight02Icon,
-  Layers01Icon,
-  ShapeCollectionIcon,
-  SparklesIcon,
-} from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
-import Image from "next/image";
-import type { SVGProps } from "react";
-import { useId, useState } from "react";
+import type * as React from "react"
+import type { SVGProps } from "react"
+import { useId } from "react"
+import { ArrowRight02Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 
+import { aisdkAgentsUrl } from "@/lib/aisdkagents"
+import { cn } from "@/lib/utils"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/tooltip"
+import { Icons } from "@/components/icons"
+import { pillCtaClass } from "@/components/pill-cta"
 
-import { Icons } from "../icons";
-import { GlowHeading } from "./glow-heading";
-import { PixelHeading } from "./pixel-heading-word";
+import {
+  CatalogBadge,
+  CatalogCard,
+  CatalogMetaLabel,
+  CatalogTray,
+  ComplexityBadge,
+  type Complexity,
+} from "./catalog-card"
+import { MarketingSection, SectionHeader } from "./marketing-section"
 
 // ---------------------------------------------------------------------------
 // Inline SVG Icon Components (only the icons used by the 6 featured blocks)
@@ -40,7 +44,7 @@ const OpenAIIcon = (props: SVGProps<SVGSVGElement>) => (
     <title>OpenAI</title>
     <path d="M239.184 106.203a64.716 64.716 0 0 0-5.576-53.103C219.452 28.459 191 15.784 163.213 21.74A65.586 65.586 0 0 0 52.096 45.22a64.716 64.716 0 0 0-43.23 31.36c-14.31 24.602-11.061 55.634 8.033 76.74a64.665 64.665 0 0 0 5.525 53.102c14.174 24.65 42.644 37.324 70.446 31.36a64.72 64.72 0 0 0 48.754 21.744c28.481.025 53.714-18.361 62.414-45.481a64.767 64.767 0 0 0 43.229-31.36c14.137-24.558 10.875-55.423-8.083-76.483Zm-97.56 136.338a48.397 48.397 0 0 1-31.105-11.255l1.535-.87 51.67-29.825a8.595 8.595 0 0 0 4.247-7.367v-72.85l21.845 12.636c.218.111.37.32.409.563v60.367c-.056 26.818-21.783 48.545-48.601 48.601Zm-104.466-44.61a48.345 48.345 0 0 1-5.781-32.589l1.534.921 51.722 29.826a8.339 8.339 0 0 0 8.441 0l63.181-36.425v25.221a.87.87 0 0 1-.358.665l-52.335 30.184c-23.257 13.398-52.97 5.431-66.404-17.803ZM23.549 85.38a48.499 48.499 0 0 1 25.58-21.333v61.39a8.288 8.288 0 0 0 4.195 7.316l62.874 36.272-21.845 12.636a.819.819 0 0 1-.767 0L41.353 151.53c-23.211-13.454-31.171-43.144-17.804-66.405v.256Zm179.466 41.695-63.08-36.63L161.73 77.86a.819.819 0 0 1 .768 0l52.233 30.184a48.6 48.6 0 0 1-7.316 87.635v-61.391a8.544 8.544 0 0 0-4.4-7.213Zm21.742-32.69-1.535-.922-51.619-30.081a8.39 8.39 0 0 0-8.492 0L99.98 99.808V74.587a.716.716 0 0 1 .307-.665l52.233-30.133a48.652 48.652 0 0 1 72.236 50.391v.205ZM88.061 139.097l-21.845-12.585a.87.87 0 0 1-.41-.614V65.685a48.652 48.652 0 0 1 79.757-37.346l-1.535.87-51.67 29.825a8.595 8.595 0 0 0-4.246 7.367l-.051 72.697Zm11.868-25.58 28.138-16.217 28.188 16.218v32.434l-28.086 16.218-28.188-16.218-.052-32.434Z" />
   </svg>
-);
+)
 
 function UpstashIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -76,14 +80,14 @@ function UpstashIcon(props: SVGProps<SVGSVGElement>) {
         fillOpacity=".4"
       />
     </svg>
-  );
+  )
 }
 
 function NextjsIcon(props: SVGProps<SVGSVGElement>) {
-  const id = useId();
-  const maskId = `${id}-mask`;
-  const grad0Id = `${id}-grad0`;
-  const grad1Id = `${id}-grad1`;
+  const id = useId()
+  const maskId = `${id}-mask`
+  const grad0Id = `${id}-grad0`
+  const grad1Id = `${id}-grad1`
 
   return (
     <svg
@@ -146,13 +150,13 @@ function NextjsIcon(props: SVGProps<SVGSVGElement>) {
         </linearGradient>
       </defs>
     </svg>
-  );
+  )
 }
 
 function GeminiIcon(props: SVGProps<SVGSVGElement>) {
-  const id = useId();
-  const primaryId = `${id}-primary`;
-  const secondaryId = `${id}-secondary`;
+  const id = useId()
+  const primaryId = `${id}-primary`
+  const secondaryId = `${id}-secondary`
 
   return (
     <svg
@@ -207,7 +211,7 @@ function GeminiIcon(props: SVGProps<SVGSVGElement>) {
         fill={`url(#${secondaryId})`}
       />
     </svg>
-  );
+  )
 }
 
 function AISDKIcon(props: SVGProps<SVGSVGElement>) {
@@ -224,7 +228,7 @@ function AISDKIcon(props: SVGProps<SVGSVGElement>) {
       <title>AISDK</title>
       <path d="M2.5.5V0h1v.5a2 2 0 002 2H6v1h-.5a2 2 0 00-2 2V6h-1v-.5a2 2 0 00-2-2H0v-1h.5a2 2 0 002-2zM14.5 4.5V5h-1v-.5a1 1 0 00-1-1H12v-1h.5a1 1 0 001-1V1h1v.5a1 1 0 001 1h.5v1h-.5a1 1 0 00-1 1zM8.407 4.93L8.5 4h1l.093.93a5 5 0 004.478 4.477L15 9.5v1l-.93.093a5 5 0 00-4.477 4.478L9.5 16h-1l-.093-.93a5 5 0 00-4.478-4.477L3 10.5v-1l.93-.093A5 5 0 008.406 4.93z" />
     </svg>
-  );
+  )
 }
 
 const FirecrawlIcon = (props: SVGProps<SVGSVGElement>) => (
@@ -242,7 +246,7 @@ const FirecrawlIcon = (props: SVGProps<SVGSVGElement>) => (
       fill="#262626"
     />
   </svg>
-);
+)
 
 // ---------------------------------------------------------------------------
 // Dependency icon map (scoped to only the icons matched by featured blocks)
@@ -285,7 +289,7 @@ const DEPENDENCY_ICONS = {
     icon: NextjsIcon,
     match: ["next", "@types/next"],
   },
-} as const;
+} as const
 
 // ---------------------------------------------------------------------------
 // Hardcoded block image URL helper
@@ -295,26 +299,26 @@ function getBlockImageUrl(
   blockName: string,
   theme: "light" | "dark" = "light"
 ): string {
-  return `/migrate/blocks/${blockName}-${theme}.png`;
+  return `/migrate/blocks/${blockName}-${theme}.png`
 }
 
 // ---------------------------------------------------------------------------
 // Hardcoded featured block data
 // ---------------------------------------------------------------------------
 
-const TOTAL_PATTERN_COUNT = 100;
+const TOTAL_PATTERN_COUNT = 100
 
 type FeaturedBlock = {
-  name: string;
-  title: string;
-  description: string;
-  href: string;
-  tags: string[];
-  complexity: string;
-  dependencies: string[];
-  externalServices: string[];
-  aiSdkApis: string[];
-};
+  name: string
+  title: string
+  description: string
+  href: string
+  tags: string[]
+  complexity: string
+  dependencies: string[]
+  externalServices: string[]
+  aiSdkApis: string[]
+}
 
 const FEATURED_BLOCKS: FeaturedBlock[] = [
   {
@@ -578,21 +582,21 @@ const FEATURED_BLOCKS: FeaturedBlock[] = [
     externalServices: ["openai", "upstash"],
     aiSdkApis: ["streamText", "convertToModelMessages", "tool("],
   },
-];
+]
 
 // ---------------------------------------------------------------------------
 // Hardcoded template data (only the fields used by TemplateCard)
 // ---------------------------------------------------------------------------
 
 type TemplateData = {
-  name: string;
-  slug: string;
-  description: string;
-  images?: string[];
-  stack: string[];
-  isNew?: boolean;
-  releaseDate?: string;
-};
+  name: string
+  slug: string
+  description: string
+  images?: string[]
+  stack: string[]
+  isNew?: boolean
+  releaseDate?: string
+}
 
 const TEMPLATES: TemplateData[] = [
   {
@@ -701,463 +705,239 @@ const TEMPLATES: TemplateData[] = [
       "framer-motion",
     ],
   },
-];
+]
 
 // ---------------------------------------------------------------------------
-// Complexity badge map
+// Dependency icons for the card footer
 // ---------------------------------------------------------------------------
 
-const COMPLEXITY_MAP: Record<string, { label: string; color: string }> = {
-  beginner: { label: "BEG", color: "text-emerald-600 dark:text-emerald-400" },
-  intermediate: { label: "INT", color: "text-amber-600 dark:text-amber-400" },
-  advanced: { label: "ADV", color: "text-rose-600 dark:text-rose-400" },
-};
+function matchDependencyIcons(dependencies: string[]) {
+  const seen = new Set<string>()
+  const icons: Array<{
+    key: string
+    name: string
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  }> = []
 
-// ---------------------------------------------------------------------------
-// TemplateCard component
-// ---------------------------------------------------------------------------
+  for (const dep of dependencies) {
+    const depLower = dep.toLowerCase()
+    const match = Object.entries(DEPENDENCY_ICONS).find(([, icon]) =>
+      icon.match.some((pattern) => {
+        const patternLower = pattern.toLowerCase()
+        if (patternLower.startsWith("@ai-sdk/"))
+          return depLower === patternLower
+        if (patternLower.startsWith("@"))
+          return depLower.startsWith(patternLower)
+        return depLower.includes(patternLower)
+      })
+    )
+    if (match && !seen.has(match[0])) {
+      seen.add(match[0])
+      icons.push({ key: match[0], name: match[1].name, icon: match[1].icon })
+    }
+  }
 
-function TemplateCard({
-  name,
-  slug,
-  description,
-  images,
-  stack,
-  isNew,
-}: {
-  name: string;
-  slug: string;
-  description: string;
-  images?: string[];
-  stack: string[];
-  isNew?: boolean;
-}) {
-  const [imgError, setImgError] = useState(false);
-  const previewImage = images?.at(0);
+  return icons.slice(0, 5)
+}
 
+function DependencyIcons({ dependencies }: { dependencies: string[] }) {
+  const icons = matchDependencyIcons(dependencies)
+  if (icons.length === 0) return null
   return (
-    <a
-      className="group border-border bg-background relative flex flex-col overflow-hidden rounded-xl border transition-all duration-150"
-      target="_blank"
-      rel="noopener noreferrer"
-      href={`https://aisdkagents.com/templates/${slug}`}
-    >
-      {/* Image Preview */}
-      <div className="border-border bg-muted/20 relative aspect-[16/10] w-full overflow-hidden border-b">
-        {imgError || !previewImage ? (
-          <div className="font-pixel-square text-muted-foreground flex h-full items-center justify-center text-[10px] tracking-wider uppercase">
-            <span>Template Preview</span>
-          </div>
-        ) : (
-          <Image
-            alt={`${name} preview`}
-            className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
-            fill
-            onError={() => setImgError(true)}
-            sizes="(max-width: 768px) 100vw, 50vw"
-            src={previewImage}
-          />
-        )}
-
-        {/* NEW badge */}
-        {isNew && (
-          <div className="border-border bg-primary absolute top-0 left-0 rounded-br-md border-r border-b px-2 py-1">
-            <span className="font-pixel-square text-primary-foreground text-[10px] font-medium tracking-wider uppercase">
-              New
-            </span>
-          </div>
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="flex flex-1 flex-col p-4">
-        {/* Title */}
-        <h3 className="mb-2 line-clamp-1 text-base leading-tight font-medium tracking-tight">
-          {name}
-        </h3>
-
-        {/* Description */}
-        <p className="text-muted-foreground mb-4 line-clamp-2 flex-1 text-sm leading-relaxed font-light">
-          {description}
-        </p>
-
-        {/* Tech Stack */}
-        <div className="mb-3 flex flex-wrap gap-1.5">
-          {stack.slice(0, 4).map((tech) => (
-            <span
-              className="border-border bg-muted/30 font-pixel-square text-muted-foreground group-hover:border-foreground/20 rounded-md border px-2 py-0.5 text-[10px] lowercase transition-colors"
-              key={tech}
-            >
-              {tech}
-            </span>
-          ))}
-          {stack.length > 4 && (
-            <span className="font-pixel-square text-muted-foreground/60 px-1 text-[10px]">
-              +{stack.length - 4}
-            </span>
-          )}
-        </div>
-
-        {/* Footer */}
-        <div className="border-border flex items-center justify-between border-t pt-3">
-          <span className="font-pixel-square text-muted-foreground text-[10px] tracking-wider uppercase">
-            Full-Stack Template
-          </span>
-
-          {/* View link */}
-          <span className="font-pixel-square text-muted-foreground group-hover:text-primary flex items-center gap-1 text-[10px] tracking-wider uppercase transition-colors">
-            View
-            <HugeiconsIcon
-              className="size-3 transition-transform group-hover:translate-x-0.5"
-              icon={ArrowRight02Icon}
-            />
-          </span>
-        </div>
-      </div>
-    </a>
-  );
+    <ul className="flex items-center gap-0.5" aria-label="Built with">
+      {icons.map(({ key, name, icon: Icon }) => (
+        <li key={key}>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <span className="text-muted-foreground hover:border-border hover:text-foreground flex size-5 items-center justify-center rounded-md border border-transparent transition-colors duration-150">
+                <Icon aria-hidden="true" className="size-3" />
+                <span className="sr-only">{name}</span>
+              </span>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">
+              <p className="font-pixel-square text-[10px] tracking-wider uppercase">
+                {name}
+              </p>
+            </TooltipContent>
+          </Tooltip>
+        </li>
+      ))}
+    </ul>
+  )
 }
 
 // ---------------------------------------------------------------------------
-// FeaturedPatternCard component
+// Section
 // ---------------------------------------------------------------------------
 
-type FeaturedCardProps = {
-  name: string;
-  title?: string;
-  description?: string;
-  href: string;
-  tags?: string[];
-  complexity?: string;
-  dependencies?: string[];
-  externalServices?: string[];
-  aiSdkApis?: string[];
-};
+const landing = (content: string) => ({ medium: "landing", content }) as const
 
-function FeaturedPatternCard({
-  name,
-  title,
-  description,
-  href,
-  tags = [],
-  complexity,
-  dependencies = [],
-  externalServices = [],
-  aiSdkApis = [],
-}: FeaturedCardProps) {
-  const [imgError, setImgError] = useState(false);
-  const complexityInfo = complexity ? COMPLEXITY_MAP[complexity] : null;
-
-  // Combine all dependencies for icon matching
-  const allDependencies = Array.from(
-    new Set([...dependencies, ...externalServices, ...aiSdkApis])
-  );
-
-  // Get unique icons
-  const seenIcons = new Set<string>();
-  const uniqueIcons = allDependencies
-    .reduce<
-      Array<{
-        key: string;
-        name: string;
-        icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-      }>
-    >((acc, dep) => {
-      const depLower = dep.toLowerCase();
-
-      const matchingIcon = Object.entries(DEPENDENCY_ICONS).find(([, icon]) =>
-        icon.match.some((pattern) => {
-          const patternLower = pattern.toLowerCase();
-          if (patternLower.startsWith("@ai-sdk/")) {
-            return depLower === patternLower;
-          }
-          if (patternLower.startsWith("@")) {
-            return depLower.startsWith(patternLower);
-          }
-          return depLower.includes(patternLower);
-        })
-      );
-
-      if (matchingIcon && !seenIcons.has(matchingIcon[0])) {
-        seenIcons.add(matchingIcon[0]);
-        acc.push({
-          key: matchingIcon[0],
-          name: matchingIcon[1].name,
-          icon: matchingIcon[1].icon,
-        });
-      }
-
-      return acc;
-    }, [])
-    .slice(0, 5);
-
-  return (
-    <a
-      className="group border-border bg-background relative flex flex-col overflow-hidden rounded-xl border transition-all duration-150"
-      target="_blank"
-      rel="noopener noreferrer"
-      href={`https://aisdkagents.com${href}`}
-    >
-      {/* Corner accents */}
-
-      {/* Image Preview */}
-      <div className="border-border bg-muted/20 relative aspect-[16/10] w-full overflow-hidden border-b">
-        {imgError ? (
-          <div className="font-pixel-square text-muted-foreground flex h-full items-center justify-center text-[10px] tracking-wider uppercase">
-            <span>Preview</span>
-          </div>
-        ) : (
-          <>
-            <Image
-              alt={`${title ?? name} preview`}
-              className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.01] dark:hidden"
-              fill
-              onError={() => setImgError(true)}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              src={getBlockImageUrl(name, "light")}
-            />
-            <Image
-              alt={`${title ?? name} preview`}
-              className="hidden object-cover object-top transition-transform duration-300 group-hover:scale-[1.02] dark:block"
-              fill
-              onError={() => setImgError(true)}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              src={getBlockImageUrl(name, "dark")}
-            />
-          </>
-        )}
-
-        {/* Complexity badge */}
-        {complexityInfo && (
-          <div className="border-border bg-background/95 absolute top-0 right-0 rounded-bl-md border-b border-l px-2 py-1 backdrop-blur-sm">
-            <span
-              className={cn(
-                "font-pixel-square text-[10px] font-medium tracking-wider uppercase",
-                complexityInfo.color
-              )}
-            >
-              {complexityInfo.label}
-            </span>
-          </div>
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="flex flex-1 flex-col p-3">
-        {/* Title */}
-        <h3 className="mb-1.5 line-clamp-1 text-sm leading-tight font-medium tracking-tight">
-          {title ?? name}
-        </h3>
-
-        {/* Description */}
-        <p className="text-muted-foreground mb-3 line-clamp-2 flex-1 text-xs leading-relaxed font-light">
-          {description}
-        </p>
-
-        {/* Tags */}
-        {tags.length > 0 && (
-          <div className="mb-3 flex flex-wrap gap-1">
-            {tags.slice(0, 2).map((tag) => (
-              <span
-                className="border-border font-pixel-square text-muted-foreground group-hover:border-foreground/20 rounded-md border px-1.5 py-0.5 text-[10px] lowercase transition-colors"
-                key={tag}
-              >
-                {tag}
-              </span>
-            ))}
-            {tags.length > 2 && (
-              <span className="font-pixel-square text-muted-foreground/60 px-1 text-[10px]">
-                +{tags.length - 2}
-              </span>
-            )}
-          </div>
-        )}
-
-        {/* Footer */}
-        <div className="border-border flex items-center justify-between border-t pt-2.5">
-          {/* Dependency icons */}
-          <div className="flex items-center gap-0.5">
-            {uniqueIcons.length > 0 ? (
-              uniqueIcons.map(({ key, name: iconName, icon: Icon }) => (
-                <Tooltip key={key}>
-                  <TooltipTrigger asChild>
-                    <div className="text-muted-foreground hover:border-border hover:text-foreground flex size-5 items-center justify-center rounded-md border border-transparent transition-all">
-                      <Icon className="size-3" />
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom">
-                    <p className="font-pixel-square text-[10px] tracking-wider uppercase">
-                      {iconName}
-                    </p>
-                  </TooltipContent>
-                </Tooltip>
-              ))
-            ) : (
-              <span className="font-pixel-square text-muted-foreground/60 text-[10px] tracking-wider uppercase">
-                —
-              </span>
-            )}
-          </div>
-
-          {/* View link */}
-          <span className="font-pixel-square text-muted-foreground group-hover:text-primary flex items-center gap-1 text-[10px] tracking-wider uppercase transition-colors">
-            View
-            <HugeiconsIcon
-              className="size-3 transition-transform group-hover:translate-x-0.5"
-              icon={ArrowRight02Icon}
-            />
-          </span>
-        </div>
-      </div>
-    </a>
-  );
+/** Shown to former Cult Pro buyers; update the copy and link when the offer details are final. */
+const PRO_CUSTOMER_DISCOUNT = {
+  lead: "Bought Cult Pro?",
+  detail: "You get a discount on AI SDK Agents.",
+  href: aisdkAgentsUrl("/", landing("pro-discount")),
 }
 
-// ---------------------------------------------------------------------------
-// Main component
-// ---------------------------------------------------------------------------
+function ProDiscountNote() {
+  return (
+    <a
+      href={PRO_CUSTOMER_DISCOUNT.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group bg-muted/55 shadow-soft-sm hover:shadow-soft focus-visible:ring-ring mb-8 inline-flex min-h-9 flex-wrap items-center gap-x-2 rounded-2xl py-1.5 pr-3 pl-1.5 text-sm transition-shadow duration-150 outline-none focus-visible:ring-2"
+    >
+      <span className="bg-background shadow-soft-sm flex size-6 items-center justify-center rounded-xl">
+        <Icons.cultLogoBasic
+          aria-hidden="true"
+          className="fill-foreground size-3.5"
+        />
+      </span>
+      <span className="text-foreground font-medium">
+        {PRO_CUSTOMER_DISCOUNT.lead}
+      </span>
+      <span className="text-muted-foreground">
+        {PRO_CUSTOMER_DISCOUNT.detail}
+      </span>
+      <span className="text-foreground inline-flex items-center gap-1 font-medium">
+        Claim it
+        <HugeiconsIcon
+          aria-hidden="true"
+          icon={ArrowRight02Icon}
+          className="size-3.5 transition-transform duration-150 ease-out group-hover:translate-x-0.5 motion-reduce:group-hover:translate-x-0"
+        />
+      </span>
+      <span className="sr-only">(opens in a new tab)</span>
+    </a>
+  )
+}
 
-export function WhatsIncluded() {
+export function AiSdkAgentsSection() {
   const sortedTemplates = [...TEMPLATES].sort((a, b) => {
-    const aDate = a.releaseDate ? new Date(a.releaseDate).getTime() : 0;
-    const bDate = b.releaseDate ? new Date(b.releaseDate).getTime() : 0;
-    return bDate - aDate;
-  });
+    const aDate = a.releaseDate ? new Date(a.releaseDate).getTime() : 0
+    const bDate = b.releaseDate ? new Date(b.releaseDate).getTime() : 0
+    return bDate - aDate
+  })
 
   return (
     <TooltipProvider>
-      <section className="mx-auto max-w-6xl py-16 md:px-4 md:py-24">
-        {/* Section Header */}
-        <div className="mb-12 text-center">
-          {/* Section divider */}
-          <div className="mx-auto mb-8 flex max-w-2xl items-center justify-center gap-4">
-            <div className="to-border h-px flex-1 bg-gradient-to-r from-transparent" />
-            <div className="border-border bg-background flex items-center gap-2 rounded-md border px-4 py-2">
-              <Icons.aisdkAgentsLogo className="size-3.5 fill-[#919191] md:size-4" />
-              <span className="font-pixel-square text-[11px] font-bold text-[#006BFF] uppercase">
-                AI SDK AGENTS
-              </span>
-            </div>
-            <div className="to-border h-px flex-1 bg-gradient-to-l from-transparent" />
-          </div>
-
-          <PixelHeading
-            as="h2"
-            className="mx-auto mb-4 max-w-3xl text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl"
-            initialFont="square"
-            disableCycling
-            disableHover
-          >
-            {TOTAL_PATTERN_COUNT}+ AI Blocks
-          </PixelHeading>
-
-          <p className="text-foreground/70 mx-auto max-w-md px-4 text-base leading-relaxed font-light md:px-0 md:text-lg">
-            Live interactive previews. Copy and paste what you need. Install
-            with shadcn, download as Nextjs app, or open in v0.
-          </p>
-        </div>
-
-        {/* Featured Patterns Grid */}
-        <div className="bg-muted shadow-elevation-light m-2 grid gap-4 rounded-xl p-2 sm:m-0 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURED_BLOCKS.map((block) => (
-            <FeaturedPatternCard
-              aiSdkApis={block.aiSdkApis}
-              complexity={block.complexity}
-              dependencies={block.dependencies}
-              description={block.description}
-              externalServices={block.externalServices}
-              href={block.href}
-              key={block.name}
-              name={block.name}
-              tags={block.tags}
-              title={block.title}
-            />
-          ))}
-        </div>
-
-        {/* View All Link */}
-        <div className="mt-8 flex justify-center">
-          <a
-            className="group border-border bg-background font-pixel-square hover:border-foreground/40 hover:bg-foreground hover:text-background flex items-center gap-2 rounded-md border px-6 py-3 text-sm tracking-wider uppercase transition-all"
-            href="https://aisdkagents.com/directory"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span>Browse All {TOTAL_PATTERN_COUNT} Patterns</span>
-            <HugeiconsIcon
-              className="size-4 transition-transform group-hover:translate-x-1"
-              icon={ArrowRight02Icon}
-            />
-          </a>
-        </div>
-
-        {/* Premium Templates Section */}
-        <div className="border-border/50 mt-20 border-t pt-16">
-          {/* Section Header */}
-          <div className="mb-12 text-center">
-            {/* Index marker */}
-            <div className="mx-auto mb-6 flex max-w-2xl items-center justify-center gap-4">
-              <div className="border-primary/30 flex items-center gap-2 rounded-md border px-3 py-1.5">
-                <Icons.aisdkAgentsLogo className="size-3.5 fill-[#919191] md:size-4" />
-                <span className="font-pixel-square text-[11px] font-bold text-[#006BFF] uppercase">
-                  AI SDK AGENTS
-                </span>
-              </div>
-            </div>
-
-            <PixelHeading
-              as="h2"
-              className="mx-auto mb-4 max-w-3xl text-3xl font-medium tracking-tight md:text-4xl lg:text-5xl"
-              initialFont="square"
-              disableCycling
-              disableHover
-            >
-              {TEMPLATES.length} Full-Stack Templates
-            </PixelHeading>
-
-            <p className="text-foreground/70 mx-auto max-w-2xl px-4 text-base leading-relaxed font-light md:px-0 md:text-lg">
-              Production-ready starter templates with authentication, payments,
-              databases, and AI integrations. Ship faster with complete
-              codebases.
-            </p>
-          </div>
-
-          {/* Templates Grid - 2 columns */}
-          <div className="bg-muted shadow-elevation-light m-2 grid gap-4 rounded-xl p-2 sm:m-0 md:grid-cols-2">
-            {sortedTemplates.map((template) => (
-              <TemplateCard
-                description={template.description}
-                images={template.images}
-                isNew={template.isNew}
-                key={template.slug}
-                name={template.name}
-                slug={template.slug}
-                stack={template.stack}
-              />
-            ))}
-          </div>
-
-          {/* View All Templates Link */}
-          <div className="mt-8 flex justify-center">
+      <MarketingSection aria-labelledby="aisdk-title">
+        <SectionHeader
+          id="aisdk-title"
+          kicker="AI SDK Agents"
+          title="Built with Cult UI"
+          lead="The components are free. The full-stack AI apps built from them are AI SDK Agents."
+          action={
             <a
-              className="group border-border bg-background font-pixel-square hover:border-foreground/40 hover:bg-foreground hover:text-background flex items-center gap-2 rounded-md border px-6 py-3 text-sm tracking-wider uppercase transition-all"
+              href={aisdkAgentsUrl("/directory", landing("section-cta"))}
               target="_blank"
               rel="noopener noreferrer"
-              href="https://aisdkagents.com/templates"
+              className={cn(pillCtaClass.ink, pillCtaClass.trailingIcon)}
             >
+              Browse {TOTAL_PATTERN_COUNT}+ patterns
               <HugeiconsIcon
-                className="text-primary group-hover:text-primary-foreground size-4"
-                icon={SparklesIcon}
-              />
-              <span>View All Templates</span>
-              <HugeiconsIcon
-                className="size-4 transition-transform group-hover:translate-x-1"
+                aria-hidden="true"
                 icon={ArrowRight02Icon}
+                className="size-4 transition-transform duration-150 ease-out group-hover:translate-x-0.5 motion-reduce:group-hover:translate-x-0"
               />
+              <span className="sr-only">(opens in a new tab)</span>
             </a>
-          </div>
+          }
+        >
+          Agent patterns on the Vercel AI SDK with live previews. Install with
+          shadcn, download a Next.js app, or open in v0.
+        </SectionHeader>
+
+        <ProDiscountNote />
+
+        <CatalogTray>
+          {FEATURED_BLOCKS.map((block) => (
+            <CatalogCard
+              key={block.name}
+              href={aisdkAgentsUrl(block.href, landing("pattern-card"))}
+              title={block.title}
+              description={block.description}
+              image={{
+                light: getBlockImageUrl(block.name, "light"),
+                dark: getBlockImageUrl(block.name, "dark"),
+              }}
+              badge={
+                isComplexity(block.complexity) ? (
+                  <ComplexityBadge complexity={block.complexity} />
+                ) : null
+              }
+              tags={block.tags}
+              meta={
+                <DependencyIcons
+                  dependencies={[
+                    ...block.dependencies,
+                    ...block.externalServices,
+                    ...block.aiSdkApis,
+                  ]}
+                />
+              }
+            />
+          ))}
+        </CatalogTray>
+
+        <div className="mt-16 sm:mt-24">
+          <SectionHeader
+            id="aisdk-templates-title"
+            title={`${TEMPLATES.length} full-stack templates`}
+            lead="Complete codebases with auth, payments, databases and AI."
+            action={
+              <a
+                href={aisdkAgentsUrl("/templates", landing("templates-cta"))}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(pillCtaClass.outline, pillCtaClass.trailingIcon)}
+              >
+                View all templates
+                <HugeiconsIcon
+                  aria-hidden="true"
+                  icon={ArrowRight02Icon}
+                  className="size-4 transition-transform duration-150 ease-out group-hover:translate-x-0.5 motion-reduce:group-hover:translate-x-0"
+                />
+                <span className="sr-only">(opens in a new tab)</span>
+              </a>
+            }
+          >
+            Start from a working product instead of a blank repo.
+          </SectionHeader>
+          <CatalogTray className="lg:grid-cols-2">
+            {sortedTemplates.map((template) => (
+              <CatalogCard
+                key={template.slug}
+                size="md"
+                href={aisdkAgentsUrl(
+                  `/templates/${template.slug}`,
+                  landing("template-card")
+                )}
+                title={template.name}
+                description={template.description}
+                image={{ light: template.images?.[0] ?? "" }}
+                sizes="(max-width: 640px) 100vw, 50vw"
+                badge={
+                  template.isNew ? (
+                    <CatalogBadge corner="left" tone="inverse">
+                      New
+                    </CatalogBadge>
+                  ) : null
+                }
+                tags={template.stack}
+                maxTags={4}
+                meta={<CatalogMetaLabel>Full-stack template</CatalogMetaLabel>}
+              />
+            ))}
+          </CatalogTray>
         </div>
-      </section>
+      </MarketingSection>
     </TooltipProvider>
-  );
+  )
+}
+
+function isComplexity(value: string): value is Complexity {
+  return (
+    value === "beginner" || value === "intermediate" || value === "advanced"
+  )
 }

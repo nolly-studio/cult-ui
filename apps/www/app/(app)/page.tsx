@@ -1,136 +1,30 @@
-import Link from "next/link";
-
-import { GitHubButton } from "@/components/github-link";
-import { Icons, ReactIcon, TailwindCSSIcon } from "@/components/icons";
-import { Footer } from "@/components/landing/footer";
-import {
-  HomeBelowHeroLayoutAlternate,
-  HomeBelowHeroLayoutDefault,
-} from "@/components/landing/home-below-hero-layouts";
-import { PixelHeading } from "@/components/landing/pixel-heading-character";
-import { PixelParagraphInverse } from "@/components/landing/pixel-paragraph-words-inverse";
-import { ui } from "@/registry/ui";
+import { GitHubLink } from "@/components/github-link"
+import { AiSdkAgentsSection } from "@/components/landing/ai-sdk-agents-patterns"
+import { BackgroundImageTexture } from "@/components/landing/bg-image-texture"
+import { Footer } from "@/components/landing/footer"
+import { FreeComponentsSection } from "@/components/landing/free-components-section"
+import { HomeHero } from "@/components/landing/home-hero"
+import { LiveDemoSection } from "@/components/landing/live-demo-section"
+import { SupportSection } from "@/components/landing/support-section"
+import { MarketingHeader } from "@/components/marketing-header"
+import { ui } from "@/registry/ui"
 
 export default function IndexPage() {
-  const componentCount = ui.length;
   return (
-    <div className="isolate min-h-screen overflow-hidden pb-8 sm:pb-12 md:pb-0">
-      <div className="relative py-12 md:pt-0">
-        {/* ─── Hero ─── */}
-        <section className="mx-auto flex max-w-[980px] flex-col items-center gap-2 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-14">
-          {/* Index marker */}
-          <div className="mx-auto mb-1 flex max-w-2xl items-center justify-center gap-4">
-            {/* <div className="h-px flex-1 bg-border" />
-						<Link
-							href="https://aisdkagents.com"
-							target="_blank"
-							rel="noreferrer"
-							className="flex items-center gap-2 border border-border bg-background px-3 py-1.5 transition-colors hover:border-foreground/40"
-						>
-							<span className="font-mono text-[11px] uppercase tracking-wider">
-								New! AI SDK Agent Patterns
-							</span>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width={12}
-								height={12}
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								strokeWidth={2}
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								className="text-muted-foreground"
-							>
-								<title>External link</title>
-								<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-								<polyline points="15 3 21 3 21 9" />
-								<line x1="10" y1="14" x2="21" y2="3" />
-							</svg>
-						</Link>
-						<div className="h-px flex-1 bg-border" /> */}
-          </div>
-
-          {/* Hero Title */}
-          <PixelHeading
-            as="h1"
-            prefix="Shadcn,"
-            // isolate={{ x: "mono", c: "mono" }}
-            prefixFont="line"
-            mode="wave"
-            autoPlay
-            cycleInterval={200}
-            staggerDelay={0}
-            className="text-center text-4xl leading-tight tracking-tight md:text-4xl lg:text-8xl lg:leading-[1.1]"
-          >
-            expanded
-          </PixelHeading>
-
-          {/* Hero Description */}
-          {/* <PixelParagraph
-						text={`${componentCount}+ animated components and effects.\nFree, open source, built to drop into any shadcn/ui project.`}
-						pixelWords={["animated", "shadcn/ui"]}
-						initialFont="grid"
-						hoverFont="circle"
-						className="mx-auto max-w-2xl whitespace-pre-line text-center leading-relaxed md:text-2xl"
-					/> */}
-
-          <PixelParagraphInverse
-            text={`${componentCount}+ animated components and effects. Free, open source, built to drop into any shadcn/ui project.`}
-            plainWords={["and ", "to", "any"]}
-            initialPlainFont="mono"
-            pixelFont="square"
-            className="mx-auto max-w-2xl text-center text-sm whitespace-pre-line md:text-2xl md:leading-snug"
-          />
-
-          {/* CTA Buttons */}
-          <div className="flex w-full items-center justify-center gap-4 py-6">
-            <Link
-              href="/docs/components/hero-color-panels"
-              className="border-foreground bg-foreground hover:bg-foreground/90 rounded-md border px-6 py-3 text-sm tracking-wider text-white uppercase transition-all"
-            >
-              <PixelParagraphInverse
-                text={`Browse ${componentCount} Components`}
-              />
-            </Link>
-
-            <GitHubButton />
-          </div>
-
-          {/* Tech Stack Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            <div className="border-border flex items-center gap-1.5 rounded-md border px-2 py-0.5">
-              <ReactIcon
-                className="size-3.5 text-[#61DAFB]"
-                aria-hidden="true"
-              />
-              <span className="text-muted-foreground font-mono text-[10px] tracking-wider uppercase">
-                React
-              </span>
-            </div>
-            <div className="border-border flex items-center gap-1.5 rounded-md border px-2 py-0.5">
-              <Icons.logo className="size-3" />
-              <span className="text-muted-foreground font-mono text-[10px] tracking-wider uppercase">
-                Shadcn/ui
-              </span>
-            </div>
-            <div className="border-border flex items-center gap-1.5 rounded-md border px-2 py-0.5">
-              <TailwindCSSIcon
-                className="size-3.5 text-[#06B6D4]"
-                aria-hidden="true"
-              />
-              <span className="text-muted-foreground font-mono text-[10px] tracking-wider uppercase">
-                Tailwind CSS
-              </span>
-            </div>
-          </div>
-        </section>
-
-        {/* <HomeBelowHeroLayoutDefault /> */}
-        <HomeBelowHeroLayoutAlternate />
+    <div className="isolate min-h-screen overflow-x-clip">
+      <MarketingHeader githubLink={<GitHubLink />} />
+      <BackgroundImageTexture
+        variant="debut-light"
+        opacity={0.25}
+        className="bg-canvas -mt-16 pt-16"
+      >
+        <HomeHero count={ui.length} />
+        <FreeComponentsSection />
+        <AiSdkAgentsSection />
+        <LiveDemoSection />
+        <SupportSection />
         <Footer />
-      </div>
+      </BackgroundImageTexture>
     </div>
-  );
+  )
 }
-IndexPage.theme = "light";
