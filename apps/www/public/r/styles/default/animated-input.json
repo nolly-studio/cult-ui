@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-input",
+  "type": "registry:ui",
   "description": "Deprecated alias for halo-input. Prefer npx shadcn add https://cult-ui.com/r/halo-input.json",
   "registryDependencies": [
     "https://cult-ui.com/r/halo-input.json"
   ],
-  "files": [],
-  "type": "registry:ui"
+  "files": []
 }

@@ -8,7 +8,7 @@ export default function HaloBadgeDemo() {
   const [count, setCount] = useState(3)
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-background p-8">
+    <main className="flex w-full flex-col items-center justify-center">
       <div className="w-full max-w-md space-y-10">
         <section className="space-y-3">
           <h2 className="font-semibold text-foreground text-lg tracking-tight">

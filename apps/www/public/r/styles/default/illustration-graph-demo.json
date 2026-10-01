@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "illustration-graph-demo",
+  "type": "registry:component",
   "registryDependencies": [
     "illustration-graph"
   ],
@@ -10,6 +11,5 @@
       "content": "\"use client\"\n\nimport { IllustrationGraph } from \"@/registry/default/ui/illustration-graph\"\n\nfunction IllustrationGraphDemo() {\n  return (\n    <div className=\"flex items-center justify-center rounded-lg border bg-card/50 p-4\">\n      <IllustrationGraph />\n    </div>\n  )\n}\n\nexport default IllustrationGraphDemo\n",
       "type": "registry:component"
     }
-  ],
-  "type": "registry:component"
+  ]
 }

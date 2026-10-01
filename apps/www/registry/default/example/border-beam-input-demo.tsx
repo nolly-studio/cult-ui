@@ -14,7 +14,7 @@ export default function BorderBeamInputDemo() {
   const searchId = useId()
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-background p-8">
+    <main className="flex w-full flex-col items-center justify-center">
       <div className="flex w-full max-w-3xl flex-col gap-10">
         <header className="space-y-2 text-center">
           <h2 className="font-semibold text-foreground text-xl tracking-tight">

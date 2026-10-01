@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-toast",
+  "type": "registry:ui",
   "description": "Deprecated alias for halo-toast. Prefer npx shadcn add https://cult-ui.com/r/halo-toast.json",
   "registryDependencies": [
     "https://cult-ui.com/r/halo-toast.json"
   ],
-  "files": [],
-  "type": "registry:ui"
+  "files": []
 }

@@ -11,6 +11,7 @@ import {
 import { GeistSans } from "geist/font/sans";
 import { Metadata, Viewport } from "next";
 
+import { JsonLd, siteJsonLd } from "@/components/json-ld";
 import { ThemeProvider } from "@/components/providers";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Toaster as NewYorkSonner } from "@/components/ui/sonner";
@@ -93,7 +94,9 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+        <JsonLd data={siteJsonLd} />
+      </head>
 
       <body
         className={cn(

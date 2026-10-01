@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-composer",
+  "type": "registry:ui",
   "description": "Deprecated alias for prompt-composer. Prefer npx shadcn add https://cult-ui.com/r/prompt-composer.json",
   "registryDependencies": [
     "https://cult-ui.com/r/prompt-composer.json"
   ],
-  "files": [],
-  "type": "registry:ui"
+  "files": []
 }

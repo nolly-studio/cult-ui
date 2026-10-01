@@ -1,8 +1,8 @@
 "use client"
 
+import * as React from "react"
 import { IconCheck, IconChevronDown, IconCopy } from "@tabler/icons-react"
 
-import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -20,7 +20,7 @@ import { Separator } from "@/components/ui/separator"
 
 function getPromptUrl(baseURL: string, url: string) {
   return `${baseURL}?q=${encodeURIComponent(
-    `I’m looking at this shadcn/ui compatible registry documentation: ${url}.
+    `I’m looking at this shadcn/ui compatible registry documentation: ${url}.md
 Help me understand how to use it. Be ready to explain concepts, give examples, or help debug based on it.
   `
   )}`
@@ -89,8 +89,37 @@ const menuItems = {
   ),
 }
 
-export function DocsCopyPage({ page, url }: { page: string; url: string }) {
-  const { copyToClipboard, isCopied } = useCopyToClipboard()
+async function copyPageMarkdown(url: string) {
+  const markdown = fetch(`${new URL(url).pathname}.md`).then((response) => {
+    if (!response.ok) throw new Error(`Failed to load ${url}.md`)
+    return response.text()
+  })
+
+  // Safari drops the user gesture across an await, so hand the clipboard a
+  // pending blob instead of awaiting the fetch first.
+  if (typeof ClipboardItem !== "undefined" && navigator.clipboard.write) {
+    await navigator.clipboard.write([
+      new ClipboardItem({
+        "text/plain": markdown.then(
+          (text) => new Blob([text], { type: "text/plain" })
+        ),
+      }),
+    ])
+    return
+  }
+
+  await navigator.clipboard.writeText(await markdown)
+}
+
+export function DocsCopyPage({ url }: { url: string }) {
+  const [isCopied, setIsCopied] = React.useState(false)
+
+  const handleCopy = () => {
+    copyPageMarkdown(url).then(() => {
+      setIsCopied(true)
+      setTimeout(() => setIsCopied(false), 2000)
+    }, console.error)
+  }
 
   const trigger = (
     <Button
@@ -111,7 +140,7 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
           variant="ghost"
           size="sm"
           className="text-muted-foreground hover:text-foreground h-8 gap-1.5 rounded-full rounded-r-none pr-2.5 pl-3 text-[0.8125rem] shadow-none hover:bg-transparent"
-          onClick={() => copyToClipboard(page)}
+          onClick={handleCopy}
         >
           {isCopied ? (
             <IconCheck aria-hidden="true" className="size-3.5" />

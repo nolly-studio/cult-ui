@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "border-beam-button",
+  "type": "registry:ui",
   "description": "Shadcn Button wrapped in Border Beam: animated border glow with compact icon and text variants",
   "dependencies": [
     "border-beam"
@@ -14,6 +15,5 @@
       "content": "\"use client\"\n\n/**\n * `border-beam` around `Button` — compact `beamSize=\"sm\"` glow for controls.\n * `className` styles the button; `borderBeamClassName` styles the beam wrapper.\n */\nimport type { ComponentProps, CSSProperties } from \"react\"\nimport { forwardRef } from \"react\"\nimport {\n  BorderBeam,\n  type BorderBeamProps,\n  type BorderBeamSize,\n} from \"border-beam\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/components/ui/button\"\n\ntype BeamShellProps = Pick<\n  BorderBeamProps,\n  | \"colorVariant\"\n  | \"theme\"\n  | \"staticColors\"\n  | \"duration\"\n  | \"active\"\n  | \"borderRadius\"\n  | \"brightness\"\n  | \"saturation\"\n  | \"hueRange\"\n  | \"strength\"\n  | \"onActivate\"\n  | \"onDeactivate\"\n> & {\n  beamSize?: BorderBeamSize\n  borderBeamClassName?: string\n  borderBeamStyle?: CSSProperties\n}\n\nexport type BorderBeamButtonProps = ComponentProps<typeof Button> &\n  BeamShellProps\n\nexport type BorderBeamIconButtonProps = BorderBeamButtonProps\n\nexport const BorderBeamButton = forwardRef<\n  HTMLDivElement,\n  BorderBeamButtonProps\n>(function BorderBeamButton(\n  {\n    beamSize = \"sm\",\n    borderBeamClassName,\n    borderBeamStyle,\n    theme = \"auto\",\n    colorVariant,\n    staticColors,\n    duration,\n    active,\n    borderRadius,\n    brightness,\n    saturation,\n    hueRange,\n    strength,\n    onActivate,\n    onDeactivate,\n    className,\n    ...buttonProps\n  },\n  ref\n) {\n  return (\n    <BorderBeam\n      active={active}\n      borderRadius={borderRadius}\n      brightness={brightness}\n      className={cn(\n        \"overflow-visible! inline-flex w-fit min-w-0 flex-col items-stretch leading-none\",\n        borderBeamClassName\n      )}\n      colorVariant={colorVariant}\n      duration={duration}\n      hueRange={hueRange}\n      onActivate={onActivate}\n      onDeactivate={onDeactivate}\n      ref={ref}\n      saturation={saturation}\n      size={beamSize}\n      staticColors={staticColors}\n      strength={strength}\n      style={borderBeamStyle}\n      theme={theme}\n    >\n      <Button className={className} {...buttonProps} />\n    </BorderBeam>\n  )\n})\n\nBorderBeamButton.displayName = \"BorderBeamButton\"\n\nexport const BorderBeamIconButton = forwardRef<\n  HTMLDivElement,\n  BorderBeamIconButtonProps\n>(function BorderBeamIconButton(\n  { size = \"icon-sm\", className, ...props },\n  ref\n) {\n  return (\n    <BorderBeamButton\n      className={cn(\"!leading-none [&_svg]:block [&_svg]:shrink-0\", className)}\n      ref={ref}\n      size={size}\n      {...props}\n    />\n  )\n})\n\nBorderBeamIconButton.displayName = \"BorderBeamIconButton\"\n",
       "type": "registry:ui"
     }
-  ],
-  "type": "registry:ui"
+  ]
 }

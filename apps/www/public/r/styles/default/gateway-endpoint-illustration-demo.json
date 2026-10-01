@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "gateway-endpoint-illustration-demo",
+  "type": "registry:component",
   "registryDependencies": [
     "gateway-endpoint-illustration"
   ],
@@ -10,6 +11,5 @@
       "content": "\"use client\"\n\nimport { GatewayEndpoint } from \"@/registry/default/ui/gateway-endpoint-illustration\"\n\nfunction GatewayEndpointIllustrationDemo() {\n  return (\n    <div className=\"w-full max-w-[264px]\">\n      <GatewayEndpoint />\n    </div>\n  )\n}\n\nexport default GatewayEndpointIllustrationDemo\n",
       "type": "registry:component"
     }
-  ],
-  "type": "registry:component"
+  ]
 }

@@ -54,7 +54,7 @@ export default function HaloDropzoneDemo() {
   }, [hasActiveUploads])
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-background p-8">
+    <main className="flex w-full flex-col items-center justify-center">
       <div className="w-full max-w-2xl space-y-6">
         <div className="text-center">
           <h2 className="text-balance font-semibold text-2xl text-foreground">

@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-field-demo",
+  "type": "registry:component",
   "description": "Deprecated alias for halo-field-demo",
   "registryDependencies": [
     "https://cult-ui.com/r/halo-field-demo.json"
   ],
-  "files": [],
-  "type": "registry:component"
+  "files": []
 }

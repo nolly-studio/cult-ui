@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "illustration-fluid-rendering-demo",
+  "type": "registry:component",
   "registryDependencies": [
     "illustration-fluid-rendering"
   ],
@@ -10,6 +11,5 @@
       "content": "\"use client\"\n\nimport { FluidRendering } from \"@/registry/default/ui/illustration-fluid-rendering\"\n\nfunction IllustrationFluidRenderingDemo() {\n  return (\n    <div className=\"flex items-center justify-center rounded-lg border bg-card/50 p-4\">\n      <FluidRendering />\n    </div>\n  )\n}\n\nexport default IllustrationFluidRenderingDemo\n",
       "type": "registry:component"
     }
-  ],
-  "type": "registry:component"
+  ]
 }

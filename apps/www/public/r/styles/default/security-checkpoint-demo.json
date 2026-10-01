@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "security-checkpoint-demo",
+  "type": "registry:component",
   "registryDependencies": [
     "security-checkpoint"
   ],
@@ -10,6 +11,5 @@
       "content": "\"use client\"\n\nimport { SecurityCheckpoint } from \"@/registry/default/ui/security-checkpoint\"\n\nfunction SecurityCheckpointDemo() {\n  return (\n    <div className=\"flex min-h-[240px] w-full items-center justify-center\">\n      <SecurityCheckpoint />\n    </div>\n  )\n}\n\nexport default SecurityCheckpointDemo\n",
       "type": "registry:component"
     }
-  ],
-  "type": "registry:component"
+  ]
 }

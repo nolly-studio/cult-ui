@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "Open-source Shadcn UI components, animated blocks, and full templates you can copy-paste into any TypeScript/Next.js project.",
   url: "https://cult-ui.com",
-  ogImage: "https://cult-ui.com/og.png",
+  ogImage: "https://cult-ui.com/og",
 
   /* ───────────────── Social links ───────────────── */
   links: {

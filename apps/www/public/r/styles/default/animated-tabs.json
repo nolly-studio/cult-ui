@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-tabs",
+  "type": "registry:ui",
   "description": "Deprecated alias for halo-tabs. Prefer npx shadcn add https://cult-ui.com/r/halo-tabs.json",
   "registryDependencies": [
     "https://cult-ui.com/r/halo-tabs.json"
   ],
-  "files": [],
-  "type": "registry:ui"
+  "files": []
 }

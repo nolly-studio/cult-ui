@@ -16,6 +16,7 @@ import { ThemeWrapper } from "@/components/theme-wrapper";
 export const metadata: Metadata = {
   title: "Themes",
   description: "Hand-picked themes that you can copy and paste into your apps.",
+  alternates: { canonical: "/themes" },
 };
 
 export default function ThemesPage() {

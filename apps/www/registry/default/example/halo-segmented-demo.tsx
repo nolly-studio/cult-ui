@@ -8,7 +8,7 @@ export default function HaloSegmentedDemo() {
   const [segment, setSegment] = useState("week")
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-16 bg-background p-8">
+    <main className="flex w-full flex-col items-center justify-center gap-16">
       <div className="w-full max-w-2xl space-y-10">
         <section className="space-y-3">
           <h2 className="font-semibold text-foreground text-lg tracking-tight">

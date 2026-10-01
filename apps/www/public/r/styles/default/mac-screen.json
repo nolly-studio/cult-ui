@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "mac-screen",
+  "type": "registry:ui",
   "description": "Classic Mac frame with an image or GIF composited into the CRT",
   "files": [
     {
@@ -8,6 +9,5 @@
       "content": "\"use client\"\n\ninterface MacScreenProps {\n  gifUrl?: string\n  alt?: string\n}\n\nexport function MacScreen({\n  gifUrl = \"https://media.giphy.com/media/sIIhZliB2McAo/giphy.gif\",\n  alt = \"Screen content\",\n}: MacScreenProps) {\n  return (\n    <div className=\"relative inline-block\">\n      {/* Mac Computer Image */}\n      <img\n        alt=\"Classic Macintosh Computer\"\n        className=\"w-full max-w-lg\"\n        src=\"/component-frames/apple-computer-img.png\"\n      />\n\n      {/* GIF overlay — all % so it tracks the responsive frame image (fixed rem width broke in previews) */}\n      <div\n        className=\"absolute overflow-hidden\"\n        style={{\n          top: \"22.27%\",\n          left: \"35.6%\",\n          width: \"28.79%\",\n          height: \"37.89%\",\n          borderRadius: \"2.5%\",\n        }}\n      >\n        <img alt={alt} className=\"h-full w-full object-cover\" src={gifUrl} />\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:ui"
     }
-  ],
-  "type": "registry:ui"
+  ]
 }

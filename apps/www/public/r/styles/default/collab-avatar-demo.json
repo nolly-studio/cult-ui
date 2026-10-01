@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "collab-avatar-demo",
+  "type": "registry:component",
   "registryDependencies": [
     "collab-avatar"
   ],
@@ -10,6 +11,5 @@
       "content": "\"use client\"\n\nimport { CollabAvatar } from \"@/registry/default/ui/collab-avatar\"\n\nconst avatars = [\n  { name: \"Jordan Gilliam\", color: \"#0070F3\" },\n  { name: \"Alex Kim\", color: \"#7928CA\" },\n  { name: \"Sam Taylor\", color: \"#EB3672\" },\n  { name: \"Jo\", color: \"#00C2A8\" },\n]\n\nfunction CollabAvatarDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-8 p-6\">\n      <div className=\"flex items-center gap-3\">\n        {avatars.map(({ name, color }) => (\n          <CollabAvatar key={name} name={name} color={color} size={32} />\n        ))}\n      </div>\n      <div className=\"flex items-center gap-4\">\n        <CollabAvatar name=\"Small\" color=\"#0070F3\" size={24} />\n        <CollabAvatar name=\"Medium\" color=\"#7928CA\" size={40} />\n        <CollabAvatar name=\"Large\" color=\"#EB3672\" size={56} />\n      </div>\n    </div>\n  )\n}\n\nexport default CollabAvatarDemo\n",
       "type": "registry:component"
     }
-  ],
-  "type": "registry:component"
+  ]
 }

@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-dropzone",
+  "type": "registry:ui",
   "description": "Deprecated alias for halo-dropzone. Prefer npx shadcn add https://cult-ui.com/r/halo-dropzone.json",
   "registryDependencies": [
     "https://cult-ui.com/r/halo-dropzone.json"
   ],
-  "files": [],
-  "type": "registry:ui"
+  "files": []
 }

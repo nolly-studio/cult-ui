@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-toggle-group-demo",
+  "type": "registry:component",
   "description": "Deprecated alias for halo-toggle-group-demo",
   "registryDependencies": [
     "https://cult-ui.com/r/halo-toggle-group-demo.json"
   ],
-  "files": [],
-  "type": "registry:component"
+  "files": []
 }

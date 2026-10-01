@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-tabs-demo",
+  "type": "registry:component",
   "description": "Deprecated alias for halo-tabs-demo",
   "registryDependencies": [
     "https://cult-ui.com/r/halo-tabs-demo.json"
   ],
-  "files": [],
-  "type": "registry:component"
+  "files": []
 }

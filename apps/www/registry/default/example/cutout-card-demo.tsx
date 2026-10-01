@@ -25,7 +25,7 @@ function CutoutCardDemo() {
   const stagger = useCutoutContentStaggerVariants()
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="flex w-full items-center justify-center">
       <div className="relative w-full max-w-md">
         <CutoutCard className={cutoutCardSurfaceClassName}>
           <CutoutCardMedia className="h-72">

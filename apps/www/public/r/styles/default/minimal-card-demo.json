@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "minimal-card-demo",
+  "type": "registry:component",
   "registryDependencies": [
     "minimal-card"
   ],
@@ -10,6 +11,5 @@
       "content": "import {\n  MinimalCard,\n  MinimalCardDescription,\n  MinimalCardImage,\n  MinimalCardTitle,\n} from \"@/registry/default/ui/minimal-card\"\n\nexport default function MinimalCardDemo() {\n  const cards = [\n    {\n      title: \"Sick title\",\n      description:\n        \"How to design with gestures and motion that feel intuitive and natural.\",\n    },\n    {\n      title: \"Sick title\",\n      description:\n        \"How to design with gestures and motion that feel intuitive and natural.\",\n    },\n    {\n      title: \"Sick title\",\n      description:\n        \"How to design with gestures and motion that feel intuitive and natural.\",\n    },\n    {\n      title: \"Sick title\",\n      description:\n        \"How to design with gestures and motion that feel intuitive and natural.\",\n    },\n    {\n      title: \"Sick title\",\n      description:\n        \"How to design with gestures and motion that feel intuitive and natural.\",\n    },\n  ]\n  return (\n    <div className=\"w-full max-w-4xl\">\n      <div className=\"flex min-h-[500px] flex-col justify-center space-y-4 rounded-lg p-4\">\n        <div className=\"relative grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2\">\n          {cards.map((card) => (\n            <MinimalCard>\n              <MinimalCardImage src=\"/basic-img.png\" alt={card.title} />\n              <MinimalCardTitle>{card.title}</MinimalCardTitle>\n              <MinimalCardDescription>\n                {card.description}\n              </MinimalCardDescription>\n            </MinimalCard>\n          ))}\n        </div>\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:component"
     }
-  ],
-  "type": "registry:component"
+  ]
 }

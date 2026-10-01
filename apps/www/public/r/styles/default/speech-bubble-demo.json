@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "speech-bubble-demo",
+  "type": "registry:component",
   "registryDependencies": [
     "speech-bubble"
   ],
@@ -10,6 +11,5 @@
       "content": "\"use client\"\n\nimport { SpeechBubble } from \"@/registry/default/ui/speech-bubble\"\n\nfunction SpeechBubbleDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-6 p-6\">\n      <SpeechBubble>Hello, how are you?</SpeechBubble>\n      <SpeechBubble showCursor={false}>No cursor variant</SpeechBubble>\n    </div>\n  )\n}\n\nexport default SpeechBubbleDemo\n",
       "type": "registry:component"
     }
-  ],
-  "type": "registry:component"
+  ]
 }

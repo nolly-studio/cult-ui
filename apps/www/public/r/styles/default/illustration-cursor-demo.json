@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "illustration-cursor-demo",
+  "type": "registry:component",
   "registryDependencies": [
     "illustration-cursor"
   ],
@@ -10,6 +11,5 @@
       "content": "\"use client\"\n\nimport { CursorDemo } from \"@/registry/default/ui/illustration-cursor\"\n\nfunction IllustrationCursorDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-6\">\n      <CursorDemo />\n    </div>\n  )\n}\n\nexport default IllustrationCursorDemo\n",
       "type": "registry:component"
     }
-  ],
-  "type": "registry:component"
+  ]
 }

@@ -2,7 +2,7 @@ import SquigglyArrow from "@/registry/default/ui/squiggle-arrow"
 
 function SquigglyArrowDemo() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-12">
+    <main className="flex w-full flex-col items-center justify-center gap-12">
       <div className="flex flex-col items-center gap-12">
         <div className="flex flex-col gap-6">
           <h2 className="text-center text-2xl font-semibold">Variants</h2>

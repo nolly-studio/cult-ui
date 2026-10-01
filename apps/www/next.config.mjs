@@ -12,6 +12,10 @@ const nextConfig = {
     "/docs/[[...slug]]": ["./registry/**/*"],
     "/registry/[name]": ["./registry/**/*"],
     "/code/[name]": ["./registry/**/*"],
+    "/llm/[[...slug]]": ["./registry/**/*", "./content/docs/**/*"],
+    "/llms-full.txt": ["./registry/**/*", "./content/docs/**/*"],
+    "/og": ["./assets/og/**/*"],
+    "/og/docs/[[...slug]]": ["./assets/og/**/*"],
   },
   // `public/` holds large block preview PNGs; tracing them into the docs Lambda
   // exceeds Vercel's 250MB limit. Static files are still deployed separately.
@@ -108,17 +112,14 @@ const nextConfig = {
         destination: "/view/:name",
         permanent: true,
       },
-      // Crawlers request markdown variants of docs pages; there is no
-      // /llm route, so send them to the canonical HTML page instead of
-      // letting every request 404 through a serverless function.
       {
         source: "/docs/:path*.mdx",
-        destination: "/docs/:path*",
+        destination: "/docs/:path*.md",
         permanent: true,
       },
       {
-        source: "/docs/:path*.md",
-        destination: "/docs/:path*",
+        source: "/docs.mdx",
+        destination: "/docs.md",
         permanent: true,
       },
       {
@@ -213,6 +214,15 @@ const nextConfig = {
         permanent: true,
       },
     ]
+  },
+  rewrites() {
+    return {
+      // Markdown variants of docs pages for LLMs and agents.
+      beforeFiles: [
+        { source: "/docs.md", destination: "/llm" },
+        { source: "/docs/:path*.md", destination: "/llm/:path*" },
+      ],
+    }
   },
   headers() {
     return [

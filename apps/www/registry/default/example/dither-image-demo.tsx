@@ -75,7 +75,7 @@ const REVEAL_OVERLAY_VARIANTS: {
 
 export default function DitherImageDemo() {
   return (
-    <main className="bg-background flex min-h-screen items-center justify-center p-8">
+    <main className="flex w-full items-center justify-center">
       <div className="flex w-full max-w-5xl flex-col gap-10">
         <header className="flex flex-col gap-2">
           <h1 className="text-foreground text-2xl font-semibold tracking-tight text-balance">

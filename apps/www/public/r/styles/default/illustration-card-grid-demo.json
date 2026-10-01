@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "illustration-card-grid-demo",
+  "type": "registry:component",
   "registryDependencies": [
     "illustration-card-grid"
   ],
@@ -10,6 +11,5 @@
       "content": "\"use client\"\n\nimport { IllustrationCardGrid } from \"@/registry/default/ui/illustration-card-grid\"\n\nfunction IllustrationCardGridDemo() {\n  return (\n    <div className=\"w-full\">\n      <IllustrationCardGrid />\n    </div>\n  )\n}\n\nexport default IllustrationCardGridDemo\n",
       "type": "registry:component"
     }
-  ],
-  "type": "registry:component"
+  ]
 }

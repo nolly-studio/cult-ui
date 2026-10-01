@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-badge-demo",
+  "type": "registry:component",
   "description": "Deprecated alias for halo-badge-demo",
   "registryDependencies": [
     "https://cult-ui.com/r/halo-badge-demo.json"
   ],
-  "files": [],
-  "type": "registry:component"
+  "files": []
 }

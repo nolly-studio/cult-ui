@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-input-demo",
+  "type": "registry:component",
   "description": "Deprecated alias for halo-input-demo",
   "registryDependencies": [
     "https://cult-ui.com/r/halo-input-demo.json"
   ],
-  "files": [],
-  "type": "registry:component"
+  "files": []
 }

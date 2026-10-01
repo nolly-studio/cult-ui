@@ -1,6 +1,8 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "Cult UI",
+  "short_name": "Cult UI",
+  "description": "Open-source shadcn/ui components, animated blocks, and templates.",
+  "start_url": "/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-card",
+  "type": "registry:ui",
   "description": "Deprecated alias for halo-card. Prefer npx shadcn add https://cult-ui.com/r/halo-card.json",
   "registryDependencies": [
     "https://cult-ui.com/r/halo-card.json"
   ],
-  "files": [],
-  "type": "registry:ui"
+  "files": []
 }

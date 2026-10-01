@@ -36,6 +36,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "LLMs & Agents",
+          href: "/docs/llms",
+          items: [],
+        },
+        {
           title: "Changelog",
           href: "/docs/changelog",
           items: [],

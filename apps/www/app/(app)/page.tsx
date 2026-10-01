@@ -1,3 +1,6 @@
+import type { Metadata } from "next"
+
+import { siteConfig } from "@/config/site"
 import { GitHubLink } from "@/components/github-link"
 import { AiSdkAgentsSection } from "@/components/landing/ai-sdk-agents-patterns"
 import { BackgroundImageTexture } from "@/components/landing/bg-image-texture"
@@ -9,6 +12,10 @@ import { SupportSection } from "@/components/landing/support-section"
 import { MarketingHeader } from "@/components/marketing-header"
 import { ModeToggle } from "@/components/mode-toggle"
 import { ui } from "@/registry/ui"
+
+export const metadata: Metadata = {
+  alternates: { canonical: siteConfig.url },
+}
 
 export default function IndexPage() {
   return (

@@ -64,6 +64,7 @@ var transformers = [
 
 // source.config.ts
 var source_config_default = defineConfig({
+  lastModifiedTime: "git",
   mdxOptions: {
     rehypePlugins: (plugins) => {
       plugins.shift();

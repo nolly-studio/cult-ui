@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-progress-demo",
+  "type": "registry:component",
   "description": "Deprecated alias for halo-progress-demo",
   "registryDependencies": [
     "https://cult-ui.com/r/halo-progress-demo.json"
   ],
-  "files": [],
-  "type": "registry:component"
+  "files": []
 }

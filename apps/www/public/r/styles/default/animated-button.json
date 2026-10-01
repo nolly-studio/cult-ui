@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-button",
+  "type": "registry:ui",
   "description": "Deprecated alias for halo-button. Prefer npx shadcn add https://cult-ui.com/r/halo-button.json",
   "registryDependencies": [
     "https://cult-ui.com/r/halo-button.json"
   ],
-  "files": [],
-  "type": "registry:ui"
+  "files": []
 }

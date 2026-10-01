@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "organic-card-demo",
+  "type": "registry:component",
   "registryDependencies": [
     "organic-card"
   ],
@@ -10,6 +11,5 @@
       "content": "\"use client\"\n\nimport {\n  OrganicCard,\n  OrganicCardBand,\n  OrganicCardBody,\n  OrganicCardDescription,\n  OrganicCardEyebrow,\n  OrganicCardFooter,\n  OrganicCardFooterIcon,\n  OrganicCardFooterLabel,\n  OrganicCardImage,\n  OrganicCardTitle,\n} from \"@/registry/default/ui/organic-card\"\n\nexport default function OrganicCardDemo() {\n  return (\n    <div className=\"mx-auto max-w-3xl px-4 sm:px-0\">\n      <OrganicCard\n        backgroundColor=\"#f0eee9\"\n        className=\"max-w-[617px]\"\n        href=\"/north\"\n      >\n        <OrganicCardBody>\n          <div>\n            <OrganicCardImage\n              alt=\"Card image\"\n              className=\"mb-5 h-[240px] animate-none opacity-100 sm:h-[300px]\"\n              src=\"https://images.unsplash.com/photo-1677442136019-21780ecad995?w=670&h=208&fit=crop\"\n            />\n            <OrganicCardEyebrow className=\"animate-none opacity-100\">\n              Product update\n            </OrganicCardEyebrow>\n            <OrganicCardTitle className=\"animate-none opacity-100\">\n              North\n            </OrganicCardTitle>\n            <OrganicCardDescription className=\"w-11/12 animate-none opacity-100\">\n              Powered by Command A, Compass, Embed, and Rerank - secure AI\n              agents, search, and generative AI in one place.\n            </OrganicCardDescription>\n          </div>\n        </OrganicCardBody>\n\n        <OrganicCardBand />\n\n        <OrganicCardFooter>\n          <OrganicCardFooterLabel className=\"animate-none opacity-100\">\n            Read more\n          </OrganicCardFooterLabel>\n          <OrganicCardFooterIcon className=\"animate-none opacity-100\" />\n        </OrganicCardFooter>\n      </OrganicCard>\n    </div>\n  )\n}\n",
       "type": "registry:component"
     }
-  ],
-  "type": "registry:component"
+  ]
 }

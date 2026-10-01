@@ -17,7 +17,7 @@ export default function BorderBeamCardDemo() {
   const activeId = useId()
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-background p-8">
+    <main className="flex w-full flex-col items-center justify-center">
       <div className="flex w-full max-w-3xl flex-col gap-14">
         <header className="space-y-2 text-center">
           <h2 className="font-semibold text-foreground text-xl tracking-tight">

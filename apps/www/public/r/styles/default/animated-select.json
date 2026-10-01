@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-select",
+  "type": "registry:ui",
   "description": "Deprecated alias for halo-select. Prefer npx shadcn add https://cult-ui.com/r/halo-select.json",
   "registryDependencies": [
     "https://cult-ui.com/r/halo-select.json"
   ],
-  "files": [],
-  "type": "registry:ui"
+  "files": []
 }

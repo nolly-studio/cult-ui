@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "merging-bubbles-demo",
+  "type": "registry:component",
   "registryDependencies": [
     "merging-bubbles"
   ],
@@ -10,6 +11,5 @@
       "content": "\"use client\"\n\nimport {\n  MergingBubbles,\n  NextLogo,\n  VercelLogo,\n} from \"@/registry/default/ui/merging-bubbles\"\n\nfunction MergingBubblesDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-8 p-6\">\n      <div className=\"flex flex-col items-center gap-4\">\n        <p className=\"text-sm text-muted-foreground\">Small</p>\n        <MergingBubbles\n          size=\"sm\"\n          startIcon={<NextLogo />}\n          endIcon={<VercelLogo />}\n        />\n      </div>\n      <div className=\"flex flex-col items-center gap-4\">\n        <p className=\"text-sm text-muted-foreground\">Medium</p>\n        <MergingBubbles\n          size=\"md\"\n          startIcon={<NextLogo />}\n          endIcon={<VercelLogo />}\n        />\n      </div>\n      <div className=\"flex flex-col items-center gap-4\">\n        <p className=\"text-sm text-muted-foreground\">Large</p>\n        <MergingBubbles\n          size=\"lg\"\n          startIcon={<NextLogo />}\n          endIcon={<VercelLogo />}\n        />\n      </div>\n    </div>\n  )\n}\n\nexport default MergingBubblesDemo\n",
       "type": "registry:component"
     }
-  ],
-  "type": "registry:component"
+  ]
 }

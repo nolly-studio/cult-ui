@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-number",
+  "type": "registry:ui",
   "description": "Deprecated alias for rolling-number. Prefer npx shadcn add https://cult-ui.com/r/rolling-number.json",
   "registryDependencies": [
     "https://cult-ui.com/r/rolling-number.json"
   ],
-  "files": [],
-  "type": "registry:ui"
+  "files": []
 }

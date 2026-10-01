@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "apple-keyboard-demo",
+  "type": "registry:component",
   "registryDependencies": [
     "apple-keyboard"
   ],
@@ -10,6 +11,5 @@
       "content": "\"use client\"\n\nimport { AppleKeyboard } from \"@/registry/default/ui/apple-keyboard\"\n\nexport default function AppleKeyboardDemo() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <AppleKeyboard />\n    </div>\n  )\n}\n",
       "type": "registry:component"
     }
-  ],
-  "type": "registry:component"
+  ]
 }

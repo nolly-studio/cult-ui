@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "gradient-button-group-demo",
+  "type": "registry:component",
   "registryDependencies": [
     "gradient-button-group"
   ],
@@ -10,6 +11,5 @@
       "content": "\"use client\"\n\nimport { GradientButtonGroup } from \"@/registry/default/ui/gradient-button-group\"\n\nexport default function GradientButtonGroupDemo() {\n  return (\n    <div className=\"mx-auto flex min-h-[320px] w-full items-center justify-center overflow-hidden rounded-md\">\n      <GradientButtonGroup />\n    </div>\n  )\n}\n",
       "type": "registry:component"
     }
-  ],
-  "type": "registry:component"
+  ]
 }

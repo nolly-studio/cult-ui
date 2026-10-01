@@ -1,15 +1,15 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "halo-segmented-demo",
+  "type": "registry:component",
   "registryDependencies": [
     "halo-segmented"
   ],
   "files": [
     {
       "path": "registry/default/example/halo-segmented-demo.tsx",
-      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { HaloSegmented } from \"@/registry/default/ui/halo-segmented\"\n\nexport default function HaloSegmentedDemo() {\n  const [segment, setSegment] = useState(\"week\")\n\n  return (\n    <main className=\"flex min-h-screen flex-col items-center justify-center gap-16 bg-background p-8\">\n      <div className=\"w-full max-w-2xl space-y-10\">\n        <section className=\"space-y-3\">\n          <h2 className=\"font-semibold text-foreground text-lg tracking-tight\">\n            Segmented control\n          </h2>\n          <p className=\"text-pretty text-muted-foreground text-sm\">\n            Single-select control: one option is active at a time, with a\n            spring-animated thumb that slides between segments.\n          </p>\n          <HaloSegmented\n            items={[\n              { label: \"Day\", value: \"day\" },\n              { label: \"Week\", value: \"week\" },\n              { label: \"Month\", value: \"month\" },\n            ]}\n            onValueChange={setSegment}\n            value={segment}\n          />\n          <p className=\"text-muted-foreground text-xs tabular-nums\">\n            Selected: {segment}\n          </p>\n        </section>\n      </div>\n    </main>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { HaloSegmented } from \"@/registry/default/ui/halo-segmented\"\n\nexport default function HaloSegmentedDemo() {\n  const [segment, setSegment] = useState(\"week\")\n\n  return (\n    <main className=\"flex w-full flex-col items-center justify-center gap-16\">\n      <div className=\"w-full max-w-2xl space-y-10\">\n        <section className=\"space-y-3\">\n          <h2 className=\"font-semibold text-foreground text-lg tracking-tight\">\n            Segmented control\n          </h2>\n          <p className=\"text-pretty text-muted-foreground text-sm\">\n            Single-select control: one option is active at a time, with a\n            spring-animated thumb that slides between segments.\n          </p>\n          <HaloSegmented\n            items={[\n              { label: \"Day\", value: \"day\" },\n              { label: \"Week\", value: \"week\" },\n              { label: \"Month\", value: \"month\" },\n            ]}\n            onValueChange={setSegment}\n            value={segment}\n          />\n          <p className=\"text-muted-foreground text-xs tabular-nums\">\n            Selected: {segment}\n          </p>\n        </section>\n      </div>\n    </main>\n  )\n}\n",
       "type": "registry:component"
     }
-  ],
-  "type": "registry:component"
+  ]
 }

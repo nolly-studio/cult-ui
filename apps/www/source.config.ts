@@ -9,6 +9,7 @@ import { z } from "zod";
 import { transformers } from "@/lib/highlight-code";
 
 export default defineConfig({
+  lastModifiedTime: "git",
   mdxOptions: {
     rehypePlugins: (plugins) => {
       plugins.shift();

@@ -1,6 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "collab-toolbar-demo",
+  "type": "registry:component",
   "registryDependencies": [
     "collab-toolbar"
   ],
@@ -10,6 +11,5 @@
       "content": "\"use client\"\n\nimport { CollabToolbar } from \"@/registry/default/ui/collab-toolbar\"\n\nconst avatars = [\n  { name: \"Jane Doe\", imageUrl: \"https://i.pravatar.cc/100?img=12\" },\n  { name: \"Alex Kim\", imageUrl: \"https://i.pravatar.cc/100?img=32\" },\n  { name: \"Sam Taylor\", imageUrl: \"https://i.pravatar.cc/100?img=68\" },\n]\n\nfunction CollabToolbarDemo() {\n  return (\n    <div className=\"flex items-center justify-center p-6\">\n      <CollabToolbar\n        groups={[[\"phone\", \"desktop\", \"chat\"], \"avatars\", [\"upload\", \"menu\"]]}\n        avatars={avatars}\n      />\n    </div>\n  )\n}\n\nexport default CollabToolbarDemo\n",
       "type": "registry:component"
     }
-  ],
-  "type": "registry:component"
+  ]
 }

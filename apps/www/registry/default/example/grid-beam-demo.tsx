@@ -178,7 +178,7 @@ export default function GridBeamDemo() {
     "linear-gradient(90deg, var(--muted-foreground), var(--foreground))"
 
   return (
-    <main className="bg-background text-foreground flex min-h-screen flex-col items-center justify-center px-5 py-10 font-sans transition-colors">
+    <main className="text-foreground flex w-full flex-col items-center justify-center font-sans transition-colors">
       <h1 className="from-foreground to-muted-foreground mb-1 bg-gradient-to-br from-20% bg-clip-text text-[clamp(22px,3.5vw,32px)] font-bold tracking-tight text-transparent">
         GridBeam
       </h1>

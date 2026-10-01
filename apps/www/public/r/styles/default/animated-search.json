@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-search",
+  "type": "registry:ui",
   "description": "Deprecated alias for halo-search. Prefer npx shadcn add https://cult-ui.com/r/halo-search.json",
   "registryDependencies": [
     "https://cult-ui.com/r/halo-search.json"
   ],
-  "files": [],
-  "type": "registry:ui"
+  "files": []
 }

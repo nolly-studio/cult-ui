@@ -14,7 +14,7 @@ export default function PromptComposerDemo() {
   const [isLoading, setIsLoading] = useState(false)
 
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-8">
+    <main className="relative flex w-full flex-col items-center justify-center">
       <div aria-hidden className="pointer-events-none absolute inset-0" />
       <div className="relative z-10 w-full max-w-2xl space-y-6">
         <div className="text-center">

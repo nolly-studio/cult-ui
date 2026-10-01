@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-segmented",
+  "type": "registry:ui",
   "description": "Deprecated alias for halo-segmented. Prefer npx shadcn add https://cult-ui.com/r/halo-segmented.json",
   "registryDependencies": [
     "https://cult-ui.com/r/halo-segmented.json"
   ],
-  "files": [],
-  "type": "registry:ui"
+  "files": []
 }

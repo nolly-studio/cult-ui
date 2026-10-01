@@ -9,7 +9,7 @@ export default function HaloInputDemo() {
   const [note, setNote] = useState("")
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-background p-8">
+    <main className="flex w-full flex-col items-center justify-center">
       <div className="w-full max-w-md space-y-8">
         <header className="space-y-2 text-center">
           <h2 className="font-semibold text-foreground text-lg tracking-tight">
