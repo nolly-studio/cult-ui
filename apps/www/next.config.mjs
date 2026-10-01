@@ -69,8 +69,13 @@ const nextConfig = {
     return [
       {
         source: "/components",
-        destination: "/docs/components",
-        permanent: true,
+        destination: "/docs/components/dynamic-island",
+        permanent: false,
+      },
+      {
+        source: "/docs/components",
+        destination: "/docs/components/dynamic-island",
+        permanent: false,
       },
       {
         source: "/docs/primitives/:path*",

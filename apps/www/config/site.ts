@@ -8,7 +8,7 @@ export const siteConfig = {
 
   /* ───────────────── Social links ───────────────── */
   links: {
-    components: "/docs/components",
+    components: "/docs/components/dynamic-island",
     twitter: "https://x.com/nolansym",
     github: "https://github.com/nolly-studio/cult-ui",
   },
