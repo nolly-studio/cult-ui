@@ -9,10 +9,11 @@ import {
   type ReactNode,
 } from "react"
 import { Slot } from "@radix-ui/react-slot"
-import clsx from "clsx"
 import { AnimatePresence, motion } from "motion/react"
 import useMeasure from "react-use-measure"
 import { Drawer } from "vaul"
+
+import { cn } from "@/lib/utils"
 
 // ============================================================================
 // Types
@@ -160,7 +161,7 @@ function FamilyDrawerTrigger({
   return (
     <Drawer.Trigger asChild>
       <button
-        className={clsx(
+        className={cn(
           "bg-background text-foreground hover:bg-accent focus-visible:shadow-focus-ring-button fixed top-1/2 left-1/2 h-[44px] -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full border px-4 py-2 font-medium antialiased transition-colors md:font-medium",
           className
         )}
@@ -194,7 +195,7 @@ function FamilyDrawerOverlay({ className, onClick }: FamilyDrawerOverlayProps) {
 
   return (
     <Drawer.Overlay
-      className={clsx("fixed inset-0 z-10 bg-black/30", className)}
+      className={cn("fixed inset-0 z-50 bg-black/30", className)}
       onClick={onClick || (() => setView("default"))}
     />
   )
@@ -235,8 +236,8 @@ function FamilyDrawerContent({
     return (
       <Drawer.Content
         asChild
-        className={clsx(
-          "bg-background fixed inset-x-4 bottom-4 z-10 mx-auto max-w-[361px] overflow-hidden rounded-[36px] outline-none md:mx-auto md:w-full",
+        className={cn(
+          "bg-background fixed inset-x-4 bottom-4 z-50 mx-auto max-w-[361px] overflow-hidden rounded-[36px] outline-none md:mx-auto md:w-full",
           className
         )}
       >
@@ -248,8 +249,8 @@ function FamilyDrawerContent({
   return (
     <Drawer.Content
       asChild
-      className={clsx(
-        "bg-background fixed inset-x-4 bottom-4 z-10 mx-auto max-w-[361px] overflow-hidden rounded-[36px] outline-none md:mx-auto md:w-full",
+      className={cn(
+        "bg-background fixed inset-x-4 bottom-4 z-50 mx-auto max-w-[361px] overflow-hidden rounded-[36px] outline-none md:mx-auto md:w-full",
         className
       )}
     >
@@ -276,7 +277,7 @@ function FamilyDrawerAnimatedWrapper({
   return (
     <div
       ref={elementRef}
-      className={clsx("px-6 pt-2.5 pb-6 antialiased", className)}
+      className={cn("px-6 pt-2.5 pb-6 antialiased", className)}
     >
       {children}
     </div>
@@ -332,7 +333,7 @@ function FamilyDrawerClose({
   const defaultClose = (
     <button
       data-vaul-no-drag=""
-      className={clsx(
+      className={cn(
         "bg-muted text-muted-foreground focus-visible:shadow-focus-ring-button absolute top-7 right-8 z-10 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full transition-transform focus:scale-95 active:scale-75",
         className
       )}
@@ -357,6 +358,45 @@ function FamilyDrawerClose({
 // Helper Components
 // ============================================================================
 
+type FamilyDrawerTitleProps = React.ComponentProps<typeof Drawer.Title>
+
+/**
+ * Accessible title for the drawer. Every view must render one (directly or via
+ * `FamilyDrawerHeader`) so screen readers can announce the dialog.
+ */
+function FamilyDrawerTitle({ className, ...props }: FamilyDrawerTitleProps) {
+  return (
+    <Drawer.Title
+      data-slot="family-drawer-title"
+      className={cn(
+        "text-foreground text-[22px] font-semibold md:font-medium",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+type FamilyDrawerDescriptionProps = React.ComponentProps<
+  typeof Drawer.Description
+>
+
+function FamilyDrawerDescription({
+  className,
+  ...props
+}: FamilyDrawerDescriptionProps) {
+  return (
+    <Drawer.Description
+      data-slot="family-drawer-description"
+      className={cn(
+        "text-muted-foreground text-[17px] leading-[24px] font-medium md:font-normal",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
 interface FamilyDrawerHeaderProps {
   icon: ReactNode
   title: string
@@ -371,14 +411,12 @@ function FamilyDrawerHeader({
   className,
 }: FamilyDrawerHeaderProps) {
   return (
-    <header className={clsx("mt-[21px]", className)}>
+    <header className={cn("mt-[21px]", className)}>
       {icon}
-      <h2 className="text-foreground mt-2.5 text-[22px] font-semibold md:font-medium">
-        {title}
-      </h2>
-      <p className="text-muted-foreground mt-3 text-[17px] leading-[24px] font-medium md:font-normal">
+      <FamilyDrawerTitle className="mt-2.5">{title}</FamilyDrawerTitle>
+      <FamilyDrawerDescription className="mt-3">
         {description}
-      </p>
+      </FamilyDrawerDescription>
     </header>
   )
 }
@@ -399,7 +437,7 @@ function FamilyDrawerButton({
   const button = (
     <button
       data-vaul-no-drag=""
-      className={clsx(
+      className={cn(
         "bg-muted text-foreground focus-visible:shadow-focus-ring-button flex h-12 w-full cursor-pointer items-center gap-[15px] rounded-[16px] px-4 text-[17px] font-semibold transition-transform focus:scale-95 active:scale-95 md:font-medium",
         className
       )}
@@ -434,7 +472,7 @@ function FamilyDrawerSecondaryButton({
     <button
       data-vaul-no-drag=""
       type="button"
-      className={clsx(
+      className={cn(
         "focus-visible:shadow-focus-ring-button flex h-12 w-full cursor-pointer items-center justify-center gap-[15px] rounded-full text-center text-[19px] font-semibold transition-transform focus:scale-95 active:scale-95 md:font-medium",
         className
       )}
@@ -532,6 +570,8 @@ export {
   FamilyDrawerAnimatedContent,
   FamilyDrawerClose,
   FamilyDrawerHeader,
+  FamilyDrawerTitle,
+  FamilyDrawerDescription,
   FamilyDrawerButton,
   FamilyDrawerSecondaryButton,
   FamilyDrawerViewContent,

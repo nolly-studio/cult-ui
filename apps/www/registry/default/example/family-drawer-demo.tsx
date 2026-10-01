@@ -19,11 +19,13 @@ import {
   FamilyDrawerButton,
   FamilyDrawerClose,
   FamilyDrawerContent,
+  FamilyDrawerDescription,
   FamilyDrawerHeader,
   FamilyDrawerOverlay,
   FamilyDrawerPortal,
   FamilyDrawerRoot,
   FamilyDrawerSecondaryButton,
+  FamilyDrawerTitle,
   FamilyDrawerTrigger,
   FamilyDrawerViewContent,
   useFamilyDrawer,
@@ -40,9 +42,7 @@ function CustomDefaultView() {
   return (
     <>
       <header className="border-border mb-4 flex h-[72px] items-center border-b pl-2">
-        <h2 className="text-foreground text-[19px] font-semibold md:font-medium">
-          Custom Menu
-        </h2>
+        <FamilyDrawerTitle className="text-[19px]">Custom Menu</FamilyDrawerTitle>
       </header>
       <div className="space-y-3">
         <FamilyDrawerButton onClick={() => setView("settings")}>
@@ -444,10 +444,12 @@ function MinimalView() {
 
   return (
     <div className="px-2 py-4">
-      <h2 className="text-xl font-semibold">Minimal View</h2>
-      <p className="text-muted-foreground mt-2 text-sm">
+      <FamilyDrawerTitle className="text-xl font-semibold">
+        Minimal View
+      </FamilyDrawerTitle>
+      <FamilyDrawerDescription className="mt-2 text-sm">
         A simple, minimal view example.
-      </p>
+      </FamilyDrawerDescription>
       <button
         type="button"
         onClick={() => setView("default")}
@@ -1192,9 +1194,9 @@ function ConfirmationDefaultView() {
   return (
     <>
       <header className="border-border mb-4 flex h-[72px] items-center border-b pl-2">
-        <h2 className="text-foreground text-[19px] font-semibold md:font-medium">
+        <FamilyDrawerTitle className="text-[19px]">
           Account Settings
-        </h2>
+        </FamilyDrawerTitle>
       </header>
       <div className="space-y-3">
         <FamilyDrawerButton onClick={() => setView("warning")}>
