@@ -2,6 +2,9 @@
   "name": "www",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "next dev --turbopack --port 3003",
     "build": "next build",
