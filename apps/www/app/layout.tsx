@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/next";
 import { GeistMono } from "geist/font/mono";
 import {
   GeistPixelSquare,
@@ -126,7 +127,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </div>
           {/* <TailwindIndicator /> */}
           <ThemeSwitcher />
-          <GoogleAnalytics gaId="G-5K1GVTD1JG" />
+          <Analytics />
+          <GoogleAnalytics gaId="G-7E7YD8249G" />
 
           <NewYorkToaster />
           <DefaultToaster />
