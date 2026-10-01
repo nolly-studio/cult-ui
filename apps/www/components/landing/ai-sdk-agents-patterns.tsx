@@ -14,13 +14,10 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { Icons } from "@/components/icons"
 import { pillCtaClass } from "@/components/pill-cta"
 
 import {
-  CatalogBadge,
   CatalogCard,
-  CatalogMetaLabel,
   CatalogTray,
   ComplexityBadge,
   type Complexity,
@@ -585,7 +582,7 @@ const FEATURED_BLOCKS: FeaturedBlock[] = [
 ]
 
 // ---------------------------------------------------------------------------
-// Hardcoded template data (only the fields used by TemplateCard)
+// Hardcoded template data — kept while the templates section is temporarily hidden
 // ---------------------------------------------------------------------------
 
 type TemplateData = {
@@ -598,7 +595,7 @@ type TemplateData = {
   releaseDate?: string
 }
 
-const TEMPLATES: TemplateData[] = [
+const _TEMPLATES: TemplateData[] = [
   {
     name: "Multi Tenant Better Auth Chat",
     slug: "better-auth-postgres",
@@ -772,52 +769,13 @@ function DependencyIcons({ dependencies }: { dependencies: string[] }) {
 
 const landing = (content: string) => ({ medium: "landing", content }) as const
 
-/** Shown to former Cult Pro buyers; update the copy and link when the offer details are final. */
-const PRO_CUSTOMER_DISCOUNT = {
-  lead: "Bought Cult Pro?",
-  detail: "You get a discount on AI SDK Agents.",
-  href: aisdkAgentsUrl("/", landing("pro-discount")),
-}
-
-function ProDiscountNote() {
-  return (
-    <a
-      href={PRO_CUSTOMER_DISCOUNT.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group bg-muted/55 shadow-soft-sm hover:shadow-soft focus-visible:ring-ring mb-8 inline-flex min-h-9 flex-wrap items-center gap-x-2 rounded-2xl py-1.5 pr-3 pl-1.5 text-sm transition-shadow duration-150 outline-none focus-visible:ring-2"
-    >
-      <span className="bg-background shadow-soft-sm flex size-6 items-center justify-center rounded-xl">
-        <Icons.cultLogoBasic
-          aria-hidden="true"
-          className="fill-foreground size-3.5"
-        />
-      </span>
-      <span className="text-foreground font-medium">
-        {PRO_CUSTOMER_DISCOUNT.lead}
-      </span>
-      <span className="text-muted-foreground">
-        {PRO_CUSTOMER_DISCOUNT.detail}
-      </span>
-      <span className="text-foreground inline-flex items-center gap-1 font-medium">
-        Claim it
-        <HugeiconsIcon
-          aria-hidden="true"
-          icon={ArrowRight02Icon}
-          className="size-3.5 transition-transform duration-150 ease-out group-hover:translate-x-0.5 motion-reduce:group-hover:translate-x-0"
-        />
-      </span>
-      <span className="sr-only">(opens in a new tab)</span>
-    </a>
-  )
-}
-
 export function AiSdkAgentsSection() {
-  const sortedTemplates = [...TEMPLATES].sort((a, b) => {
-    const aDate = a.releaseDate ? new Date(a.releaseDate).getTime() : 0
-    const bDate = b.releaseDate ? new Date(b.releaseDate).getTime() : 0
-    return bDate - aDate
-  })
+  // Temporarily hidden: full-stack templates section
+  // const sortedTemplates = [..._TEMPLATES].sort((a, b) => {
+  //   const aDate = a.releaseDate ? new Date(a.releaseDate).getTime() : 0
+  //   const bDate = b.releaseDate ? new Date(b.releaseDate).getTime() : 0
+  //   return bDate - aDate
+  // })
 
   return (
     <TooltipProvider>
@@ -847,8 +805,6 @@ export function AiSdkAgentsSection() {
           Agent patterns on the Vercel AI SDK with live previews. Install with
           shadcn, download a Next.js app, or open in v0.
         </SectionHeader>
-
-        <ProDiscountNote />
 
         <CatalogTray>
           {FEATURED_BLOCKS.map((block) => (
@@ -880,10 +836,11 @@ export function AiSdkAgentsSection() {
           ))}
         </CatalogTray>
 
+        {/* Temporarily hidden: full-stack templates
         <div className="mt-16 sm:mt-24">
           <SectionHeader
             id="aisdk-templates-title"
-            title={`${TEMPLATES.length} full-stack templates`}
+            title={`${_TEMPLATES.length} full-stack templates`}
             lead="Complete codebases with auth, payments, databases and AI."
             action={
               <a
@@ -931,6 +888,7 @@ export function AiSdkAgentsSection() {
             ))}
           </CatalogTray>
         </div>
+        */}
       </MarketingSection>
     </TooltipProvider>
   )

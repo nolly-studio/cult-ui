@@ -14,6 +14,13 @@ import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Callout, calloutClass } from "@/components/callout"
+import {
+  CitationItem,
+  CitationLink,
+  CitationList,
+  Citations,
+  CitationTitle,
+} from "@/components/citations"
 import { CodeBlockCommand } from "@/components/code-block-command"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CodeTabs } from "@/components/code-tabs"
@@ -384,25 +391,9 @@ export const mdxComponents = {
       {...props}
     />
   ),
-  CitationList: ({ className, ...props }: React.ComponentProps<"ul">) => (
-    <ul className={cn("list-none pl-0", className)} {...props} />
-  ),
-  CitationItem: ({ className, ...props }: React.ComponentProps<"li">) => (
-    <li
-      className={cn("text-muted-foreground flex items-start", className)}
-      {...props}
-    />
-  ),
-  CitationLink: ({ className, ...props }: React.ComponentProps<"a">) => (
-    <a className={cn("ml-1 hover:underline", className)} {...props} />
-  ),
-  Citations: ({ className, ...props }: React.ComponentProps<"div">) => (
-    <div
-      className={cn(
-        "border-border my-6 rounded-md border-l-4 bg-transparent p-4",
-        className
-      )}
-      {...props}
-    />
-  ),
+  Citations,
+  CitationTitle,
+  CitationList,
+  CitationItem,
+  CitationLink,
 }

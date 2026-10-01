@@ -7,7 +7,7 @@
  * The package sets `overflow: hidden` on the beam root; we set `overflow: visible` so the bloom
  * (especially `beamSize="line"`) is not clipped.
  *
- * Defaults: same concentric-radius shell as `AnimatedSelectTrigger` — outer `rounded-2xl` + `p-px`,
+ * Defaults: same concentric-radius shell as `HaloSelectTrigger` — outer `rounded-2xl` + `p-px`,
  * inner `rounded-[calc(1rem-1px)]` so the beam curve matches the card (not a smaller radius than
  * `Card`’s `rounded-2xl`). Layered shadow on the card; `text-balance` / `text-pretty` on title and
  * description wrappers.
@@ -33,11 +33,11 @@ import {
 
 /**
  * Outer rim matches `Card`’s `rounded-2xl` (1rem); `p-px` reserves the 1px track for the beam (same
- * idea as `AnimatedSelectTrigger`’s `rounded-xl` + `p-px` + inner `rounded-[11px]`).
+ * idea as `HaloSelectTrigger`’s `rounded-xl` + `p-px` + inner `rounded-[11px]`).
  */
 const borderBeamCardShellClass = cn(
   "relative w-full rounded-2xl p-px",
-  /* Inset highlight on the shell — same family as `AnimatedSelectTrigger` shadow stack */
+  /* Inset highlight on the shell — same family as `HaloSelectTrigger` shadow stack */
   "before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:shadow-[inset_0_1px_0_rgba(255,255,255,0.45)]",
   "dark:before:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
 )

@@ -1,43 +1,106 @@
 "use client"
 
-import * as React from "react"
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons"
+import { useEffect, useId, useState } from "react"
+import { motion, useReducedMotion } from "motion/react"
 import { useTheme } from "next-themes"
 
-import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+import { cn } from "@/lib/utils"
 
-export function ModeToggle() {
-  const { setTheme } = useTheme()
+const RAYS = [0, 45, 90, 135, 180, 225, 270, 315] as const
+
+/**
+ * Soft header chip that toggles light ↔ dark. The glyph morphs in place
+ * (sun disc + rays ↔ masked crescent) so the control stays one beat,
+ * matching the ledger chrome: muted fill, shadow-soft-sm, active press.
+ * System preference remains available from the command menu.
+ */
+export function ModeToggle({ className }: { className?: string }) {
+  const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  const reduceMotion = useReducedMotion()
+  const maskId = useId().replace(/:/g, "")
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isDark = mounted && resolvedTheme === "dark"
+  const duration = reduceMotion ? 0 : 0.45
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          className="text-muted-foreground hover:text-foreground w-9 px-0"
-        >
-          <SunIcon className="size-4 scale-100 rotate-0 transition-transform duration-200 motion-reduce:transition-none dark:scale-0 dark:-rotate-90" />
-          <MoonIcon className="absolute size-4 scale-0 rotate-90 transition-transform duration-200 motion-reduce:transition-none dark:scale-100 dark:rotate-0" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <button
+      type="button"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className={cn(
+        "text-muted-foreground hover:text-foreground focus-visible:ring-ring relative inline-flex size-9 shrink-0 items-center justify-center rounded-full outline-none",
+        "bg-muted/55 shadow-soft-sm hover:shadow-soft",
+        "transition-[color,box-shadow,background-color,transform] duration-150 ease-out",
+        "active:scale-[0.99] motion-reduce:active:scale-100",
+        "focus-visible:ring-2",
+        !mounted && "opacity-0",
+        className
+      )}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+    >
+      <motion.svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        fill="none"
+        className="size-4 overflow-visible"
+        animate={{ rotate: isDark ? -30 : 0 }}
+        transition={{ type: "spring", duration, bounce: 0 }}
+      >
+        <defs>
+          <mask id={maskId}>
+            <rect width="24" height="24" fill="white" />
+            <motion.circle
+              fill="black"
+              initial={false}
+              animate={{
+                cx: isDark ? 10 : 30,
+                cy: isDark ? 8 : 2,
+                r: 7.5,
+              }}
+              transition={{ type: "spring", duration, bounce: 0 }}
+            />
+          </mask>
+        </defs>
+
+        <motion.circle
+          cx="12"
+          cy="12"
+          fill="currentColor"
+          mask={`url(#${maskId})`}
+          initial={false}
+          animate={{ r: isDark ? 8 : 4.5 }}
+          transition={{ type: "spring", duration, bounce: 0.18 }}
+        />
+
+        {RAYS.map((deg, i) => (
+          <g key={deg} transform={`rotate(${deg} 12 12)`}>
+            <motion.line
+              x1="12"
+              y1="2.5"
+              x2="12"
+              y2="5.25"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              initial={false}
+              animate={{
+                opacity: isDark ? 0 : 1,
+                y1: isDark ? 5.25 : 2.5,
+              }}
+              transition={{
+                type: "spring",
+                duration,
+                bounce: 0.2,
+                delay: reduceMotion ? 0 : isDark ? 0 : i * 0.02,
+              }}
+            />
+          </g>
+        ))}
+      </motion.svg>
+    </button>
   )
 }

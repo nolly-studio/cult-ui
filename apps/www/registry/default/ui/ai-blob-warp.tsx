@@ -7,7 +7,7 @@ import { motion, useInView, useReducedMotion } from "motion/react"
 import { cn } from "@/lib/utils"
 
 const DEFAULT_WARP: Partial<WarpProps> = {
-  /** Same stops as the main glow in `animated-search.tsx` (90deg linear-gradient). */
+  /** Same stops as the main glow in `halo-search.tsx` (90deg linear-gradient). */
   colors: ["#ff0080", "#7928ca", "#00d4ff", "#0070f3"],
   distortion: 0.25,
   height: 720,

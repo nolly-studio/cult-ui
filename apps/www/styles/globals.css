@@ -532,6 +532,13 @@
   --animate-cosmic-spin-slow: cosmic-spin-slow 5s linear infinite;
 }
 
+@media (width >= 48rem) {
+  html,
+  body {
+    overscroll-behavior-y: none;
+  }
+}
+
 /* Base resets */
 @layer base {
   * {

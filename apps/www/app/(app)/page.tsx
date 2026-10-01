@@ -7,12 +7,16 @@ import { HomeHero } from "@/components/landing/home-hero"
 import { LiveDemoSection } from "@/components/landing/live-demo-section"
 import { SupportSection } from "@/components/landing/support-section"
 import { MarketingHeader } from "@/components/marketing-header"
+import { ModeToggle } from "@/components/mode-toggle"
 import { ui } from "@/registry/ui"
 
 export default function IndexPage() {
   return (
     <div className="isolate min-h-screen overflow-x-clip">
-      <MarketingHeader githubLink={<GitHubLink />} />
+      <MarketingHeader
+        githubLink={<GitHubLink />}
+        actions={<ModeToggle />}
+      />
       <BackgroundImageTexture
         variant="debut-light"
         opacity={0.25}

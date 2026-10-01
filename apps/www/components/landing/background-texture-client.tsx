@@ -9,9 +9,9 @@ export function BackgroundTextureClient({
   textureUrl: string;
   opacity: number;
 }) {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const themeOpacity =
-    textureUrl === "/textures/debut-light.png" && theme === "dark"
+    textureUrl === "/textures/debut-light.png" && resolvedTheme === "dark"
       ? 0.3
       : opacity;
 

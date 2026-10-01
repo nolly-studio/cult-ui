@@ -1,0 +1,66 @@
+---
+title: Rolling Number
+description: Number with smooth counting animation and customizable formatting
+component: true
+---
+
+<ComponentPreview
+  name="rolling-number-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  description="All variations"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://cult-ui.com/r/rolling-number.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="rolling-number" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+function BasicExample() {
+  const [value, setValue] = useState(1000);
+
+  return (
+    <div>
+      <RollingNumber value={value} />
+      <Button
+        size="sm"
+        variant="ghost"
+        className="border border-primary/10 rounded-full "
+        onClick={() => setValue(value + 1000)}
+      >
+        <Plus className="h-4 w-4" />
+      </Button>
+    </div>
+  );
+}
+```

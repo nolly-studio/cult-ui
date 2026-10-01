@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "base-select",
-  "description": "Base UI select primitives used by Animated Select",
+  "description": "Base UI select primitives used by Halo Select",
   "dependencies": [
     "@base-ui/react",
     "@hugeicons/react",

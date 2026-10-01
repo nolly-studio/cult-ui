@@ -11,7 +11,6 @@ import {
 import { GeistSans } from "geist/font/sans";
 import { Metadata, Viewport } from "next";
 
-import { Analytics } from "@/components/analytics";
 import { ThemeProvider } from "@/components/providers";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Toaster as NewYorkSonner } from "@/components/ui/sonner";
@@ -99,7 +98,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={cn(
           "bg-background relative min-h-screen font-sans antialiased",
-          "group/body overscroll-none [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
+          "group/body [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
           GeistPixelSquare.variable,
           GeistPixelGrid.variable,
           GeistPixelCircle.variable,
@@ -124,8 +123,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </div>
           {/* <TailwindIndicator /> */}
           <ThemeSwitcher />
-          <Analytics />
-
           <GoogleAnalytics gaId="G-5K1GVTD1JG" />
 
           <NewYorkToaster />

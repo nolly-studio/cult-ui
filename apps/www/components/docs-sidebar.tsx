@@ -55,7 +55,12 @@ function DocsSidebarItems({
   depth?: number
 }) {
   return (
-    <SidebarMenu className={cn(depth > 0 && "pl-[2px]")}>
+    <SidebarMenu
+      className={cn(
+        "min-w-0 grid-cols-[minmax(0,1fr)]",
+        depth > 0 && "pl-2"
+      )}
+    >
       {items.map((item, index) => {
         const hasChildren = item.items.length > 0
         const isActive = getIsActive(pathname, item.href)
@@ -63,7 +68,7 @@ function DocsSidebarItems({
         return (
           <SidebarMenuItem
             key={`${item.title}-${index}`}
-            className="mr-1 hover:cursor-pointer"
+            className="mr-1 min-w-0 hover:cursor-pointer"
           >
             {item.href && !item.disabled ? (
               <SidebarMenuButton
@@ -77,6 +82,7 @@ function DocsSidebarItems({
               >
                 <Link
                   href={item.href}
+                  prefetch={false}
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noreferrer" : undefined}
                   data-sidebar-active={isActive ? "true" : undefined}
@@ -89,7 +95,7 @@ function DocsSidebarItems({
               <div
                 className={cn(
                   "text-foreground mt-3 flex h-8 min-w-0 items-center justify-between gap-2 px-2 text-[0.8125rem] font-medium",
-                  depth > 0 && "h-7"
+                  depth > 0 && "text-muted-foreground mt-2 h-7 text-[0.75rem] font-normal tracking-wide uppercase"
                 )}
               >
                 <span className="min-w-0 flex-1 truncate">{item.title}</span>
@@ -118,16 +124,21 @@ export function DocsSidebar() {
   useEffect(() => {
     if (!pathname) return
 
-    const activeLink = containerRef.current?.querySelector<HTMLElement>(
+    const container = containerRef.current
+    const activeLink = container?.querySelector<HTMLElement>(
       '[data-sidebar-active="true"]'
     )
-    if (!activeLink) return
+    if (!container || !activeLink) return
 
+    // scrollIntoView would also scroll the overflow-x-hidden container sideways
     requestAnimationFrame(() => {
-      activeLink.scrollIntoView({
-        block: "center",
-        inline: "nearest",
-      })
+      const containerRect = container.getBoundingClientRect()
+      const linkRect = activeLink.getBoundingClientRect()
+      container.scrollTop +=
+        linkRect.top -
+        containerRect.top -
+        (container.clientHeight - linkRect.height) / 2
+      container.scrollLeft = 0
     })
   }, [pathname])
 

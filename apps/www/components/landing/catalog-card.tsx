@@ -68,7 +68,7 @@ export function CatalogCard({
       data-slot="catalog-card"
       {...linkProps}
       className={cn(
-        "group bg-card shadow-soft hover:shadow-soft-md focus-visible:ring-ring relative flex flex-col overflow-hidden rounded-2xl transition-shadow duration-150 outline-none focus-visible:ring-2 dark:bg-muted",
+        "group bg-card shadow-soft hover:shadow-soft-md focus-visible:ring-ring relative flex flex-col overflow-hidden rounded-2xl transition-shadow duration-150 outline-none focus-visible:ring-2 corner-squircle dark:bg-muted",
         className
       )}
     >

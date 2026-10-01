@@ -16,7 +16,9 @@ import { Event, trackEvent } from "@/lib/events";
 import { cn } from "@/lib/utils";
 
 export interface CopyButtonProps extends React.ComponentProps<typeof Button> {
-  value: string;
+  value?: string;
+  /** Resolves the value at click time; takes precedence over `value`. */
+  getValue?: () => string | Promise<string>;
   src?: string;
   event?: Event["name"];
   className?: string;
@@ -30,8 +32,25 @@ export async function copyToClipboardWithMeta(value: string, event?: Event) {
   }
 }
 
+async function copyPendingValue(value: Promise<string>) {
+  // Passing the promise to ClipboardItem keeps the click's user activation
+  // alive while the value loads (required by Safari).
+  if (typeof ClipboardItem !== "undefined" && navigator.clipboard.write) {
+    await navigator.clipboard.write([
+      new ClipboardItem({
+        "text/plain": value.then(
+          (text) => new Blob([text], { type: "text/plain" })
+        ),
+      }),
+    ]);
+    return;
+  }
+  await navigator.clipboard.writeText(await value);
+}
+
 export function CopyButton({
   value,
+  getValue,
   className,
   src,
   variant = "ghost",
@@ -52,13 +71,21 @@ export function CopyButton({
       variant={variant}
       className={cn("relative z-10 size-6 [&_svg]:size-3", className)}
       onClick={() => {
+        const resolved = getValue ? getValue() : (value ?? "");
+        if (typeof resolved !== "string") {
+          copyPendingValue(resolved).then(
+            () => setHasCopied(true),
+            () => setHasCopied(false)
+          );
+          return;
+        }
         copyToClipboardWithMeta(
-          value,
+          resolved,
           event
             ? {
                 name: event,
                 properties: {
-                  code: value,
+                  code: resolved,
                 },
               }
             : undefined

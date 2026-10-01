@@ -1,3 +1,4 @@
+import Image from "next/image"
 import {
   ArrowRight02Icon,
   ArrowUpRight01Icon,
@@ -20,16 +21,25 @@ const studioProducts = [
     href: "https://www.newcopy.ai",
   },
   {
-    title: "Clean My SEO",
+    title: "AI SDK Agents",
     description:
-      "Check your site's SEO performance for free, with an Open Graph preview.",
-    href: "https://cleanmyseo.com",
+      "120+ Vercel AI SDK agent patterns with live previews and full-stack templates.",
+    href: aisdkAgentsUrl("/", {
+      medium: "landing",
+      content: "studio-card",
+    }),
   },
   {
-    title: "Newcult",
+    title: "Best Models",
     description:
-      "Next.js and Supabase templates built with Tailwind, Cult UI and shadcn.",
-    href: "https://www.newcult.co",
+      "Independent ranking of the best models on Vercel AI Gateway, updated daily.",
+    href: "https://www.bestmodels.dev/",
+  },
+  {
+    title: "Eve Directory",
+    description:
+      "The open registry for Eve agents. Inspect every file before you install.",
+    href: "https://www.evedirectory.com/",
   },
 ]
 
@@ -79,26 +89,57 @@ export function SupportSection() {
         </a>
       </div>
 
-      <div
-        aria-hidden="true"
-        className="ml-[5.5rem] hidden flex-col items-center md:inline-flex"
+      <a
+        href="https://www.nolly.studio/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group focus-visible:ring-ring mt-10 flex items-end gap-4 rounded-2xl outline-none focus-visible:ring-2 md:mt-0 md:items-center"
       >
-        <div className="bg-border/80 h-16 w-px" />
-        <div className="border-x-primary/20 border-t-primary/30 bg-background h-2 w-3 rounded-t-full border border-b-0 shadow-[0_0_0_1px_var(--background)]" />
-      </div>
+        <div className="flex w-12 shrink-0 flex-col items-center md:ml-16">
+          <div
+            aria-hidden="true"
+            className="bg-border/80 hidden h-16 w-px md:block"
+          />
+          <Image
+            src="/images/jordan-headshot.jpg"
+            alt="Jordan Gilliam"
+            width={48}
+            height={48}
+            className="ring-border/80 size-12 rounded-full object-cover ring-1"
+          />
+        </div>
+        <div className="flex min-w-0 flex-col gap-0.5 pb-0.5 md:pt-16">
+          <span className="text-muted-foreground font-mono text-[10px] tracking-wider uppercase">
+            Hire me
+          </span>
+          <span className="group-hover:text-foreground flex items-center gap-1 text-sm leading-tight font-medium tracking-tight transition-colors duration-150">
+            Nolly Studio
+            <HugeiconsIcon
+              aria-hidden="true"
+              icon={ArrowUpRight01Icon}
+              className="text-muted-foreground group-hover:text-foreground size-3.5 transition-colors duration-150"
+            />
+          </span>
+          <span className="text-muted-foreground max-w-sm text-xs leading-relaxed font-light">
+            AI-native product studio. Agent systems and design-engineered UI,
+            shipped in weeks.
+          </span>
+          <span className="sr-only">(opens in a new tab)</span>
+        </div>
+      </a>
 
-      <div className="mt-10 md:mt-0">
+      <div className="mt-10">
         <h3 className="text-muted-foreground mb-4 font-mono text-[10px] tracking-wider uppercase">
           More from the studio
         </h3>
-        <ul className="bg-muted shadow-soft corner-squircle grid gap-4 rounded-[1.5rem] p-2 sm:grid-cols-3 dark:bg-background">
+        <ul className="bg-muted shadow-soft corner-squircle grid gap-4 rounded-[1.5rem] p-2 sm:grid-cols-2 lg:grid-cols-4 dark:bg-background">
           {studioProducts.map((product) => (
             <li key={product.title}>
               <a
                 href={product.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group bg-card shadow-soft hover:shadow-soft-md focus-visible:ring-ring flex h-full flex-col rounded-2xl p-4 transition-shadow duration-150 outline-none focus-visible:ring-2 dark:bg-muted"
+                className="group bg-card shadow-soft hover:shadow-soft-md focus-visible:ring-ring flex h-full flex-col rounded-2xl p-4 transition-shadow duration-150 outline-none focus-visible:ring-2 corner-squircle dark:bg-muted"
               >
                 <span className="mb-1.5 text-sm leading-tight font-medium tracking-tight">
                   {product.title}

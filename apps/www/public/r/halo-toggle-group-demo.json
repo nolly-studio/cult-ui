@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "halo-toggle-group-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "halo-toggle-group"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/halo-toggle-group-demo.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { HaloToggleGroup } from \"@/registry/default/ui/halo-toggle-group\"\n\nexport default function HaloToggleGroupDemo() {\n  const [segment, setSegment] = useState(\"week\")\n  return (\n    <div>\n      <section className=\"space-y-3\">\n        <h2 className=\"font-semibold text-foreground text-lg tracking-tight\">\n          Segmented control\n        </h2>\n        <p className=\"text-pretty text-muted-foreground text-sm\">\n          Single-select toggle group with a spring-driven thumb (same constants\n          as <code className=\"text-foreground\">HaloButton</code>\n          ).\n        </p>\n        <HaloToggleGroup\n          items={[\n            { label: \"Day\", value: \"day\" },\n            { label: \"Week\", value: \"week\" },\n            { label: \"Month\", value: \"month\" },\n          ]}\n          onValueChange={setSegment}\n          value={segment}\n        />\n        <p className=\"text-muted-foreground text-xs tabular-nums\">\n          Selected: {segment}\n        </p>\n      </section>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

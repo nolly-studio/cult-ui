@@ -2,17 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-field-demo",
   "type": "registry:component",
-  "dependencies": [
-    "lucide-react"
-  ],
+  "description": "Deprecated alias for halo-field-demo",
   "registryDependencies": [
-    "animated-field"
+    "https://cult-ui.com/r/halo-field-demo.json"
   ],
-  "files": [
-    {
-      "path": "registry/default/example/animated-field-demo.tsx",
-      "content": "\"use client\"\n\nimport { useId, useState } from \"react\"\nimport { Mail } from \"lucide-react\"\n\nimport {\n  AnimatedField,\n  AnimatedFieldContent,\n  AnimatedFieldDescription,\n  AnimatedFieldError,\n  AnimatedFieldLabel,\n} from \"@/registry/default/ui/animated-field\"\nimport {\n  AnimatedInput,\n  AnimatedTextarea,\n} from \"@/registry/default/ui/animated-input\"\n\nconst EMAIL_LIKE = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/\n\nexport default function AnimatedFieldDemo() {\n  const emailId = useId()\n  const bioId = useId()\n  const [email, setEmail] = useState(\"\")\n  const [showEmailError, setShowEmailError] = useState(false)\n  const emailInvalid = showEmailError && !EMAIL_LIKE.test(email)\n\n  return (\n    <main className=\"flex min-h-screen flex-col items-center justify-center bg-background p-8\">\n      <div className=\"flex w-full max-w-md flex-col gap-12\">\n        <section className=\"space-y-3\">\n          <h2 className=\"font-semibold text-foreground text-lg tracking-tight\">\n            Field + input\n          </h2>\n          <p className=\"text-pretty text-muted-foreground text-sm\">\n            Groups a label with an input, helper text, and optional validation\n            messages in a frosted shell with an animated rim.\n          </p>\n          <AnimatedField>\n            <AnimatedFieldLabel htmlFor={emailId}>Email</AnimatedFieldLabel>\n            <AnimatedFieldContent>\n              <AnimatedInput\n                aria-invalid={emailInvalid}\n                autoComplete=\"email\"\n                id={emailId}\n                invalid={emailInvalid}\n                leadingSlot={<Mail aria-hidden />}\n                onChange={(e) => setEmail(e.target.value)}\n                placeholder=\"you@example.com\"\n                type=\"email\"\n                value={email}\n              />\n              <AnimatedFieldDescription>\n                We’ll only use this for account updates.\n              </AnimatedFieldDescription>\n              {emailInvalid ? (\n                <AnimatedFieldError>\n                  Enter a valid email address.\n                </AnimatedFieldError>\n              ) : null}\n            </AnimatedFieldContent>\n          </AnimatedField>\n          <button\n            className=\"rounded-md border border-border px-3 py-1.5 font-medium text-foreground text-sm fine-hover:hover:bg-muted\"\n            onClick={() => setShowEmailError((v) => !v)}\n            type=\"button\"\n          >\n            Toggle validation (demo)\n          </button>\n        </section>\n\n        <section className=\"space-y-3\">\n          <h2 className=\"font-semibold text-foreground text-lg tracking-tight\">\n            Textarea\n          </h2>\n          <AnimatedField>\n            <AnimatedFieldLabel htmlFor={bioId}>Bio</AnimatedFieldLabel>\n            <AnimatedFieldContent>\n              <AnimatedTextarea\n                id={bioId}\n                placeholder=\"A few lines about you…\"\n                rows={5}\n              />\n              <AnimatedFieldDescription>\n                Optional — shown on your profile.\n              </AnimatedFieldDescription>\n            </AnimatedFieldContent>\n          </AnimatedField>\n        </section>\n      </div>\n    </main>\n  )\n}\n",
-      "type": "registry:component"
-    }
-  ]
+  "files": []
 }

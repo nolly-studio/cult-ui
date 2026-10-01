@@ -1,15 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-progress-demo",
+  "description": "Deprecated alias for halo-progress-demo",
   "registryDependencies": [
-    "animated-progress"
+    "https://cult-ui.com/r/halo-progress-demo.json"
   ],
-  "files": [
-    {
-      "path": "registry/default/example/animated-progress-demo.tsx",
-      "content": "\"use client\"\n\nimport { useEffect, useState } from \"react\"\n\nimport { AnimatedProgress } from \"@/registry/default/ui/animated-progress\"\n\nexport default function AnimatedProgressDemo() {\n  const [pct, setPct] = useState(0)\n\n  useEffect(() => {\n    if (pct >= 100) {\n      return\n    }\n    const id = window.setInterval(() => {\n      setPct((p) => Math.min(100, p + 2))\n    }, 120)\n    return () => window.clearInterval(id)\n  }, [pct])\n\n  return (\n    <main className=\"flex min-h-screen flex-col items-center justify-center bg-background p-8\">\n      <div className=\"w-full max-w-md space-y-10\">\n        <section className=\"space-y-3\">\n          <h2 className=\"font-semibold text-foreground text-lg tracking-tight\">\n            Determinate\n          </h2>\n          <p className=\"text-pretty text-muted-foreground text-sm\">\n            Shows a known completion percentage with an optional label and\n            numeric value — suited to uploads and other bounded tasks.\n          </p>\n          <AnimatedProgress\n            label=\"Uploading\"\n            showValue\n            value={pct === 100 ? 100 : pct}\n          />\n          <div className=\"flex gap-2\">\n            <button\n              className=\"rounded-md border border-border px-3 py-1.5 font-medium text-foreground text-sm fine-hover:hover:bg-muted\"\n              onClick={() => setPct(0)}\n              type=\"button\"\n            >\n              Reset\n            </button>\n          </div>\n        </section>\n\n        <section className=\"space-y-3\">\n          <h2 className=\"font-semibold text-foreground text-lg tracking-tight\">\n            Indeterminate\n          </h2>\n          <p className=\"text-pretty text-muted-foreground text-sm\">\n            Use when the duration is unknown: the bar loops until the task\n            finishes or you switch to a determinate value.\n          </p>\n          <AnimatedProgress value={null} />\n        </section>\n      </div>\n    </main>\n  )\n}\n",
-      "type": "registry:component"
-    }
-  ],
+  "files": [],
   "type": "registry:component"
 }

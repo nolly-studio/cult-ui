@@ -11,6 +11,7 @@ const nextConfig = {
   outputFileTracingIncludes: {
     "/docs/[[...slug]]": ["./registry/**/*"],
     "/registry/[name]": ["./registry/**/*"],
+    "/code/[name]": ["./registry/**/*"],
   },
   // `public/` holds large block preview PNGs; tracing them into the docs Lambda
   // exceeds Vercel's 250MB limit. Static files are still deployed separately.
@@ -124,6 +125,92 @@ const nextConfig = {
         source: "/mcp",
         destination: "/docs/mcp",
         permanent: false,
+      },
+      // Halo kit rename (animated-* → halo-*, plus prompt-composer / rolling-number)
+      {
+        source: "/docs/components/animated-badge",
+        destination: "/docs/components/halo-badge",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/animated-button",
+        destination: "/docs/components/halo-button",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/animated-card",
+        destination: "/docs/components/halo-card",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/animated-composer",
+        destination: "/docs/components/prompt-composer",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/animated-dropzone",
+        destination: "/docs/components/halo-dropzone",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/animated-field",
+        destination: "/docs/components/halo-field",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/animated-input",
+        destination: "/docs/components/halo-input",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/animated-notification",
+        destination: "/docs/components/halo-notification",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/animated-number",
+        destination: "/docs/components/rolling-number",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/animated-progress",
+        destination: "/docs/components/halo-progress",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/animated-search",
+        destination: "/docs/components/halo-search",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/animated-segmented",
+        destination: "/docs/components/halo-segmented",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/animated-select",
+        destination: "/docs/components/halo-select",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/animated-switch",
+        destination: "/docs/components/halo-switch",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/animated-tabs",
+        destination: "/docs/components/halo-tabs",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/animated-toast",
+        destination: "/docs/components/halo-toast",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/animated-toggle-group",
+        destination: "/docs/components/halo-toggle-group",
+        permanent: true,
       },
     ]
   },

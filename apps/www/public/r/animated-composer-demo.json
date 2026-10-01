@@ -2,14 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-composer-demo",
   "type": "registry:component",
+  "description": "Deprecated alias for prompt-composer-demo",
   "registryDependencies": [
-    "animated-composer"
+    "https://cult-ui.com/r/prompt-composer-demo.json"
   ],
-  "files": [
-    {
-      "path": "registry/default/example/animated-composer-demo.tsx",
-      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { AnimatedComposer } from \"@/registry/default/ui/animated-composer\"\n\nconst MOCK_LOADING_MS = 4200\n\nconst LOADING_STAGGER_SEC = 0.044\nconst LOADING_CHAR_DURATION_SEC = 0.42\n\nexport default function AnimatedComposerDemo() {\n  const [value, setValue] = useState(\"\")\n  const [isLoading, setIsLoading] = useState(false)\n\n  return (\n    <main className=\"relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-8\">\n      <div aria-hidden className=\"pointer-events-none absolute inset-0\" />\n      <div className=\"relative z-10 w-full max-w-2xl space-y-6\">\n        <div className=\"text-center\">\n          <h2 className=\"text-balance font-semibold text-2xl text-foreground\">\n            Animated composer\n          </h2>\n          <p className=\"mt-2 text-pretty text-muted-foreground text-sm\">\n            Multi-line message field with send on ⌘ or Ctrl+Enter, loading line\n            animation while sending, and an optional attachment affordance.\n          </p>\n        </div>\n        <AnimatedComposer\n          isLoading={isLoading}\n          loadingCharDurationSec={LOADING_CHAR_DURATION_SEC}\n          loadingStaggerSec={LOADING_STAGGER_SEC}\n          loadingText=\"Sending…\"\n          onAttach={() => {\n            // Demo: no-op; replace with file input / dialog.\n          }}\n          onChange={(e) => setValue(e.target.value)}\n          onSend={() => {\n            if (!value.trim() || isLoading) {\n              return\n            }\n            setIsLoading(true)\n            window.setTimeout(() => setIsLoading(false), MOCK_LOADING_MS)\n          }}\n          value={value}\n        />\n      </div>\n    </main>\n  )\n}\n",
-      "type": "registry:component"
-    }
-  ]
+  "files": []
 }

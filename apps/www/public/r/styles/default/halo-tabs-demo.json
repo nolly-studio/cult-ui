@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "halo-tabs-demo",
+  "registryDependencies": [
+    "halo-tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/halo-tabs-demo.tsx",
+      "content": "\"use client\"\n\nimport {\n  HaloTabs,\n  HaloTabsContent,\n  HaloTabsIndicator,\n  HaloTabsList,\n  HaloTabsTrigger,\n} from \"@/registry/default/ui/halo-tabs\"\n\nexport default function HaloTabsDemo() {\n  return (\n    <div>\n      <section className=\"space-y-3\">\n        <h2 className=\"font-semibold text-foreground text-lg tracking-tight\">\n          Tabs — underline\n        </h2>\n        <HaloTabs className=\"w-full min-w-96 max-w-96\" defaultValue=\"overview\">\n          <HaloTabsList variant=\"underline\">\n            <HaloTabsTrigger value=\"overview\">Overview</HaloTabsTrigger>\n            <HaloTabsTrigger value=\"usage\">Usage</HaloTabsTrigger>\n            <HaloTabsTrigger value=\"billing\">Billing</HaloTabsTrigger>\n            <HaloTabsIndicator variant=\"underline\" />\n          </HaloTabsList>\n          <HaloTabsContent value=\"overview\">\n            Project summary, health metrics, and rollouts for the current\n            workspace.\n          </HaloTabsContent>\n          <HaloTabsContent value=\"usage\">\n            API volume, seat counts, and rate limits for the billing period in\n            view.\n          </HaloTabsContent>\n          <HaloTabsContent value=\"billing\">\n            Invoices, payment methods, and tax details for this account and\n            billing.\n          </HaloTabsContent>\n        </HaloTabs>\n\n        <h2 className=\"font-semibold text-foreground text-lg tracking-tight\">\n          Tabs — pill\n        </h2>\n        <HaloTabs className=\"w-full min-w-96 max-w-96\" defaultValue=\"design\">\n          <HaloTabsList variant=\"pill\">\n            <HaloTabsTrigger value=\"design\">Design</HaloTabsTrigger>\n            <HaloTabsTrigger value=\"code\">Code</HaloTabsTrigger>\n            <HaloTabsTrigger value=\"preview\">Preview</HaloTabsTrigger>\n            <HaloTabsIndicator variant=\"pill\" />\n          </HaloTabsList>\n          <HaloTabsContent value=\"design\">\n            Tokens, spacing, and motion aligned with the polished surfaces.\n          </HaloTabsContent>\n          <HaloTabsContent value=\"code\">\n            Implementation notes and props for each primitive.\n          </HaloTabsContent>\n          <HaloTabsContent value=\"preview\">\n            Live preview of the active variant.\n          </HaloTabsContent>\n        </HaloTabs>\n      </section>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

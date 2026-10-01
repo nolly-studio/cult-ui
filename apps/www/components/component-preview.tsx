@@ -1,7 +1,7 @@
 import Image from "next/image";
 
+import { ComponentCodeLoader } from "@/components/component-code";
 import { ComponentPreviewTabs } from "@/components/component-preview-tabs";
-import { ComponentSource } from "@/components/component-source";
 import { Index } from "@/registry/__index__";
 
 export function ComponentPreview({
@@ -62,7 +62,7 @@ export function ComponentPreview({
       align={align}
       hideCode={hideCode}
       component={<Component />}
-      source={<ComponentSource name={name} collapsible={false} />}
+      source={<ComponentCodeLoader name={name} />}
       {...props}
     />
   );

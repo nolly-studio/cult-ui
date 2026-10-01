@@ -250,12 +250,12 @@ export const ui: Registry["items"] = [
       "Typewriter effect component with customizable typing speed and cursor animation",
   },
   {
-    name: "animated-number",
+    name: "rolling-number",
     type: "registry:ui",
     dependencies: ["motion"],
     files: [
       {
-        path: "registry/default/ui/animated-number.tsx",
+        path: "registry/default/ui/rolling-number.tsx",
         type: "registry:ui",
       },
     ],
@@ -1055,7 +1055,7 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
-    description: "Base UI select primitives used by Animated Select",
+    description: "Base UI select primitives used by Halo Select",
   },
   {
     name: "base-tooltip",
@@ -1560,13 +1560,13 @@ export const ui: Registry["items"] = [
   },
   // Cult Pro migration
   {
-    name: "animated-dropzone",
+    name: "halo-dropzone",
     type: "registry:ui",
     dependencies: ["lucide-react", "motion"],
 
     files: [
       {
-        path: "registry/default/ui/animated-dropzone.tsx",
+        path: "registry/default/ui/halo-dropzone.tsx",
         type: "registry:ui",
       },
     ],
@@ -1575,13 +1575,13 @@ export const ui: Registry["items"] = [
   },
   // Cult Pro migration
   {
-    name: "animated-search",
+    name: "halo-search",
     type: "registry:ui",
     dependencies: ["@paper-design/shaders-react", "motion"],
 
     files: [
       {
-        path: "registry/default/ui/animated-search.tsx",
+        path: "registry/default/ui/halo-search.tsx",
         type: "registry:ui",
       },
     ],
@@ -1619,13 +1619,13 @@ export const ui: Registry["items"] = [
   },
   // Cult Pro migration
   {
-    name: "animated-button",
+    name: "halo-button",
     type: "registry:ui",
     dependencies: ["@base-ui/react", "motion"],
 
     files: [
       {
-        path: "registry/default/ui/animated-button.tsx",
+        path: "registry/default/ui/halo-button.tsx",
         type: "registry:ui",
       },
     ],
@@ -1648,13 +1648,13 @@ export const ui: Registry["items"] = [
   },
   // Cult Pro migration
   {
-    name: "animated-card",
+    name: "halo-card",
     type: "registry:ui",
     dependencies: ["@base-ui/react", "motion"],
 
     files: [
       {
-        path: "registry/default/ui/animated-card.tsx",
+        path: "registry/default/ui/halo-card.tsx",
         type: "registry:ui",
       },
     ],
@@ -1678,28 +1678,28 @@ export const ui: Registry["items"] = [
   },
   // Cult Pro migration
   {
-    name: "animated-tabs",
+    name: "halo-tabs",
     type: "registry:ui",
     dependencies: ["@base-ui/react"],
 
     files: [
       {
-        path: "registry/default/ui/animated-tabs.tsx",
+        path: "registry/default/ui/halo-tabs.tsx",
         type: "registry:ui",
       },
     ],
     description:
-      "Base UI tabs with gradient indicator: underline or pill variant aligned with animated card rim colors",
+      "Base UI tabs with gradient indicator: underline or pill variant aligned with Halo Card rim colors",
   },
   // Cult Pro migration
   {
-    name: "animated-segmented",
+    name: "halo-segmented",
     type: "registry:ui",
     dependencies: ["@base-ui/react", "motion"],
 
     files: [
       {
-        path: "registry/default/ui/animated-segmented.tsx",
+        path: "registry/default/ui/halo-segmented.tsx",
         type: "registry:ui",
       },
     ],
@@ -1708,28 +1708,28 @@ export const ui: Registry["items"] = [
   },
   // Cult Pro migration
   {
-    name: "animated-toggle-group",
+    name: "halo-toggle-group",
     type: "registry:ui",
     dependencies: ["@base-ui/react", "motion"],
 
     files: [
       {
-        path: "registry/default/ui/animated-toggle-group.tsx",
+        path: "registry/default/ui/halo-toggle-group.tsx",
         type: "registry:ui",
       },
     ],
     description:
-      "Segmented single-select control with frosted track, gradient rim, and spring-driven sliding thumb (aligned with Animated Button)",
+      "Segmented single-select control with frosted track, gradient rim, and spring-driven sliding thumb (aligned with Halo Button)",
   },
   // Cult Pro migration
   {
-    name: "animated-notification",
+    name: "halo-notification",
     type: "registry:ui",
     dependencies: ["@base-ui/react", "lucide-react", "motion"],
 
     files: [
       {
-        path: "registry/default/ui/animated-notification.tsx",
+        path: "registry/default/ui/halo-notification.tsx",
         type: "registry:ui",
       },
     ],
@@ -1738,13 +1738,13 @@ export const ui: Registry["items"] = [
   },
   // Cult Pro migration
   {
-    name: "animated-toast",
+    name: "halo-toast",
     type: "registry:ui",
     dependencies: ["lucide-react", "motion", "sonner"],
     registryDependencies: ["button"],
     files: [
       {
-        path: "registry/default/ui/animated-toast.tsx",
+        path: "registry/default/ui/halo-toast.tsx",
         type: "registry:ui",
       },
     ],
@@ -1753,13 +1753,13 @@ export const ui: Registry["items"] = [
   },
   // Cult Pro migration
   {
-    name: "animated-switch",
+    name: "halo-switch",
     type: "registry:ui",
     dependencies: ["@base-ui/react", "motion"],
 
     files: [
       {
-        path: "registry/default/ui/animated-switch.tsx",
+        path: "registry/default/ui/halo-switch.tsx",
         type: "registry:ui",
       },
     ],
@@ -1768,13 +1768,13 @@ export const ui: Registry["items"] = [
   },
   // Cult Pro migration
   {
-    name: "animated-input",
+    name: "halo-input",
     type: "registry:ui",
     dependencies: ["@base-ui/react", "motion"],
 
     files: [
       {
-        path: "registry/default/ui/animated-input.tsx",
+        path: "registry/default/ui/halo-input.tsx",
         type: "registry:ui",
       },
     ],
@@ -1783,28 +1783,28 @@ export const ui: Registry["items"] = [
   },
   // Cult Pro migration
   {
-    name: "animated-field",
+    name: "halo-field",
     type: "registry:ui",
 
     registryDependencies: ["field"],
     files: [
       {
-        path: "registry/default/ui/animated-field.tsx",
+        path: "registry/default/ui/halo-field.tsx",
         type: "registry:ui",
       },
     ],
     description:
-      "Form field layout (label, description, error) for AnimatedInput and AnimatedTextarea",
+      "Form field layout (label, description, error) for HaloInput and HaloTextarea",
   },
   // Cult Pro migration
   {
-    name: "animated-progress",
+    name: "halo-progress",
     type: "registry:ui",
     dependencies: ["@base-ui/react", "motion"],
 
     files: [
       {
-        path: "registry/default/ui/animated-progress.tsx",
+        path: "registry/default/ui/halo-progress.tsx",
         type: "registry:ui",
       },
     ],
@@ -1828,28 +1828,28 @@ export const ui: Registry["items"] = [
   },
   // Cult Pro migration
   {
-    name: "animated-badge",
+    name: "halo-badge",
     type: "registry:ui",
     dependencies: ["class-variance-authority", "motion"],
     registryDependencies: ["badge"],
     files: [
       {
-        path: "registry/default/ui/animated-badge.tsx",
+        path: "registry/default/ui/halo-badge.tsx",
         type: "registry:ui",
       },
     ],
     description:
-      "Badge with optional layout animation, live status dot, and gradient rim aligned with Animated Button / Card",
+      "Badge with optional layout animation, live status dot, and gradient rim aligned with Halo Button / Card",
   },
   // Cult Pro migration
   {
-    name: "animated-select",
+    name: "halo-select",
     type: "registry:ui",
     dependencies: ["@base-ui/react", "lucide-react", "motion"],
     registryDependencies: ["https://cult-ui.com/r/base-select.json"],
     files: [
       {
-        path: "registry/default/ui/animated-select.tsx",
+        path: "registry/default/ui/halo-select.tsx",
         type: "registry:ui",
       },
     ],
@@ -1858,7 +1858,7 @@ export const ui: Registry["items"] = [
   },
   // Cult Pro migration
   {
-    name: "animated-composer",
+    name: "prompt-composer",
     type: "registry:ui",
     dependencies: [
       "@base-ui/react",
@@ -1869,7 +1869,7 @@ export const ui: Registry["items"] = [
 
     files: [
       {
-        path: "registry/default/ui/animated-composer.tsx",
+        path: "registry/default/ui/prompt-composer.tsx",
         type: "registry:ui",
       },
     ],
@@ -1894,5 +1894,142 @@ export const ui: Registry["items"] = [
     ],
     description:
       "Expandable multi-step wizard with optional forward validation, scrollable step rail, and Motion height transitions",
+  },
+  // Deprecated aliases — old animated-* install names resolve to Halo / renamed kits
+  {
+    name: "animated-badge",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-badge.json"],
+    files: [],
+    description:
+      "Deprecated alias for halo-badge. Prefer npx shadcn add https://cult-ui.com/r/halo-badge.json",
+  },
+  {
+    name: "animated-button",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-button.json"],
+    files: [],
+    description:
+      "Deprecated alias for halo-button. Prefer npx shadcn add https://cult-ui.com/r/halo-button.json",
+  },
+  {
+    name: "animated-card",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-card.json"],
+    files: [],
+    description:
+      "Deprecated alias for halo-card. Prefer npx shadcn add https://cult-ui.com/r/halo-card.json",
+  },
+  {
+    name: "animated-composer",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/prompt-composer.json"],
+    files: [],
+    description:
+      "Deprecated alias for prompt-composer. Prefer npx shadcn add https://cult-ui.com/r/prompt-composer.json",
+  },
+  {
+    name: "animated-dropzone",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-dropzone.json"],
+    files: [],
+    description:
+      "Deprecated alias for halo-dropzone. Prefer npx shadcn add https://cult-ui.com/r/halo-dropzone.json",
+  },
+  {
+    name: "animated-field",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-field.json"],
+    files: [],
+    description:
+      "Deprecated alias for halo-field. Prefer npx shadcn add https://cult-ui.com/r/halo-field.json",
+  },
+  {
+    name: "animated-input",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-input.json"],
+    files: [],
+    description:
+      "Deprecated alias for halo-input. Prefer npx shadcn add https://cult-ui.com/r/halo-input.json",
+  },
+  {
+    name: "animated-notification",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-notification.json"],
+    files: [],
+    description:
+      "Deprecated alias for halo-notification. Prefer npx shadcn add https://cult-ui.com/r/halo-notification.json",
+  },
+  {
+    name: "animated-number",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/rolling-number.json"],
+    files: [],
+    description:
+      "Deprecated alias for rolling-number. Prefer npx shadcn add https://cult-ui.com/r/rolling-number.json",
+  },
+  {
+    name: "animated-progress",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-progress.json"],
+    files: [],
+    description:
+      "Deprecated alias for halo-progress. Prefer npx shadcn add https://cult-ui.com/r/halo-progress.json",
+  },
+  {
+    name: "animated-search",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-search.json"],
+    files: [],
+    description:
+      "Deprecated alias for halo-search. Prefer npx shadcn add https://cult-ui.com/r/halo-search.json",
+  },
+  {
+    name: "animated-segmented",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-segmented.json"],
+    files: [],
+    description:
+      "Deprecated alias for halo-segmented. Prefer npx shadcn add https://cult-ui.com/r/halo-segmented.json",
+  },
+  {
+    name: "animated-select",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-select.json"],
+    files: [],
+    description:
+      "Deprecated alias for halo-select. Prefer npx shadcn add https://cult-ui.com/r/halo-select.json",
+  },
+  {
+    name: "animated-switch",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-switch.json"],
+    files: [],
+    description:
+      "Deprecated alias for halo-switch. Prefer npx shadcn add https://cult-ui.com/r/halo-switch.json",
+  },
+  {
+    name: "animated-tabs",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-tabs.json"],
+    files: [],
+    description:
+      "Deprecated alias for halo-tabs. Prefer npx shadcn add https://cult-ui.com/r/halo-tabs.json",
+  },
+  {
+    name: "animated-toast",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-toast.json"],
+    files: [],
+    description:
+      "Deprecated alias for halo-toast. Prefer npx shadcn add https://cult-ui.com/r/halo-toast.json",
+  },
+  {
+    name: "animated-toggle-group",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-toggle-group.json"],
+    files: [],
+    description:
+      "Deprecated alias for halo-toggle-group. Prefer npx shadcn add https://cult-ui.com/r/halo-toggle-group.json",
   },
 ]

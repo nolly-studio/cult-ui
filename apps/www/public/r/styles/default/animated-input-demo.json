@@ -1,15 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-input-demo",
+  "description": "Deprecated alias for halo-input-demo",
   "registryDependencies": [
-    "animated-input"
+    "https://cult-ui.com/r/halo-input-demo.json"
   ],
-  "files": [
-    {
-      "path": "registry/default/example/animated-input-demo.tsx",
-      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport {\n  AnimatedInput,\n  AnimatedTextarea,\n} from \"@/registry/default/ui/animated-input\"\n\nexport default function AnimatedInputDemo() {\n  const [name, setName] = useState(\"\")\n  const [note, setNote] = useState(\"\")\n\n  return (\n    <main className=\"flex min-h-screen flex-col items-center justify-center bg-background p-8\">\n      <div className=\"w-full max-w-md space-y-8\">\n        <header className=\"space-y-2 text-center\">\n          <h2 className=\"font-semibold text-foreground text-lg tracking-tight\">\n            Animated input\n          </h2>\n          <p className=\"text-pretty text-muted-foreground text-sm\">\n            Single-line and multiline controls with the same frosted rim polish\n            as the rest of the animated form set.\n          </p>\n        </header>\n        <section className=\"space-y-3\">\n          <h3 className=\"font-medium text-foreground text-sm\">Single line</h3>\n          <AnimatedInput\n            onChange={(e) => setName(e.target.value)}\n            placeholder=\"Display name\"\n            value={name}\n          />\n          <p className=\"text-muted-foreground text-xs tabular-nums\">\n            Value length: {name.length}\n          </p>\n        </section>\n        <section className=\"space-y-3\">\n          <h3 className=\"font-medium text-foreground text-sm\">Multiline</h3>\n          <AnimatedTextarea\n            className=\"min-h-[120px]\"\n            onChange={(e) => setNote(e.target.value)}\n            placeholder=\"Notes\"\n            value={note}\n          />\n          <p className=\"text-muted-foreground text-xs tabular-nums\">\n            {note.length} characters\n          </p>\n        </section>\n      </div>\n    </main>\n  )\n}\n",
-      "type": "registry:component"
-    }
-  ],
+  "files": [],
   "type": "registry:component"
 }

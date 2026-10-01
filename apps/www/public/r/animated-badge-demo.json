@@ -2,14 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-badge-demo",
   "type": "registry:component",
+  "description": "Deprecated alias for halo-badge-demo",
   "registryDependencies": [
-    "animated-badge"
+    "https://cult-ui.com/r/halo-badge-demo.json"
   ],
-  "files": [
-    {
-      "path": "registry/default/example/animated-badge-demo.tsx",
-      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { AnimatedBadge } from \"@/registry/default/ui/animated-badge\"\n\nexport default function AnimatedBadgeDemo() {\n  const [count, setCount] = useState(3)\n\n  return (\n    <main className=\"flex min-h-screen flex-col items-center justify-center bg-background p-8\">\n      <div className=\"w-full max-w-md space-y-10\">\n        <section className=\"space-y-3\">\n          <h2 className=\"font-semibold text-foreground text-lg tracking-tight\">\n            Counts & layout\n          </h2>\n          <p className=\"text-pretty text-muted-foreground text-sm\">\n            Tabular figures keep digit width steady when the count changes; the\n            label can animate when its text updates.\n          </p>\n          <div className=\"flex flex-wrap items-center gap-3\">\n            <AnimatedBadge tabularNums variant=\"secondary\">\n              {count}\n            </AnimatedBadge>\n            <button\n              className=\"rounded-md border border-border px-3 py-1.5 font-medium text-foreground text-sm fine-hover:hover:bg-muted\"\n              onClick={() => setCount((c) => (c >= 99 ? 1 : c + 7))}\n              type=\"button\"\n            >\n              Bump count\n            </button>\n          </div>\n        </section>\n\n        <section className=\"space-y-3\">\n          <h2 className=\"font-semibold text-foreground text-lg tracking-tight\">\n            Live & variants\n          </h2>\n          <p className=\"text-pretty text-muted-foreground text-sm\">\n            Live mode shows a leading status dot with a gentle pulse; reduced\n            motion preferences shorten or remove the animation.\n          </p>\n          <div className=\"flex flex-wrap items-center gap-2\">\n            <AnimatedBadge live variant=\"outline\">\n              Live\n            </AnimatedBadge>\n            <AnimatedBadge variant=\"default\">New</AnimatedBadge>\n            <AnimatedBadge variant=\"destructive\">Action</AnimatedBadge>\n            <AnimatedBadge layout={false} variant=\"ghost\">\n              Static label\n            </AnimatedBadge>\n          </div>\n        </section>\n      </div>\n    </main>\n  )\n}\n",
-      "type": "registry:component"
-    }
-  ]
+  "files": []
 }

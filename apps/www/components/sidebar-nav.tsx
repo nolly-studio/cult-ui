@@ -96,6 +96,7 @@ function NavItem({ item, pathname }: NavItemProps) {
     return (
       <Link
         href={item.href}
+        prefetch={false}
         data-sidebar-active={isActive ? "true" : undefined}
         className={cn(
           "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline",

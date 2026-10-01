@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "halo-field",
+  "type": "registry:ui",
+  "description": "Form field layout (label, description, error) for HaloInput and HaloTextarea",
+  "registryDependencies": [
+    "field"
+  ],
+  "files": [
+    {
+      "path": "registry/default/ui/halo-field.tsx",
+      "content": "\"use client\"\n\n/**\n * Form field layout aligned with shadcn `Field` — label, description, error, and control\n * slots for {@link HaloInput} / {@link HaloTextarea} (general-purpose; not tied to\n * search or composer).\n */\nimport type { ComponentProps } from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport {\n  Field,\n  FieldContent,\n  FieldDescription,\n  FieldError,\n  FieldLabel,\n  FieldTitle,\n} from \"@/components/ui/field\"\n\nexport type HaloFieldProps = ComponentProps<typeof Field>\n\n/** Root group; pairs with {@link HaloFieldLabel}, {@link HaloFieldContent}, etc. */\nexport function HaloField({ className, ...props }: HaloFieldProps) {\n  return (\n    <Field\n      className={cn(\"group/halo-field w-full max-w-full gap-2\", className)}\n      data-slot=\"halo-field\"\n      {...props}\n    />\n  )\n}\n\nexport const HaloFieldContent = FieldContent\nexport const HaloFieldDescription = FieldDescription\nexport const HaloFieldError = FieldError\nexport const HaloFieldLabel = FieldLabel\nexport const HaloFieldTitle = FieldTitle\n",
+      "type": "registry:ui"
+    }
+  ]
+}

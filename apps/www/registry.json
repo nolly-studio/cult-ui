@@ -241,14 +241,14 @@
       "description": "Typewriter effect component with customizable typing speed and cursor animation"
     },
     {
-      "name": "animated-number",
+      "name": "rolling-number",
       "type": "registry:ui",
       "dependencies": [
         "motion"
       ],
       "files": [
         {
-          "path": "registry/default/ui/animated-number.tsx",
+          "path": "registry/default/ui/rolling-number.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1104,7 +1104,7 @@
           "type": "registry:ui"
         }
       ],
-      "description": "Base UI select primitives used by Animated Select"
+      "description": "Base UI select primitives used by Halo Select"
     },
     {
       "name": "base-tooltip",
@@ -1569,7 +1569,7 @@
       "description": "Toolbar component for collaborative editing UI"
     },
     {
-      "name": "animated-dropzone",
+      "name": "halo-dropzone",
       "type": "registry:ui",
       "dependencies": [
         "lucide-react",
@@ -1577,14 +1577,14 @@
       ],
       "files": [
         {
-          "path": "registry/default/ui/animated-dropzone.tsx",
+          "path": "registry/default/ui/halo-dropzone.tsx",
           "type": "registry:ui"
         }
       ],
       "description": "File dropzone with animated rim, frosted fill, moving border trail, and file-type glyphs"
     },
     {
-      "name": "animated-search",
+      "name": "halo-search",
       "type": "registry:ui",
       "dependencies": [
         "@paper-design/shaders-react",
@@ -1592,7 +1592,7 @@
       ],
       "files": [
         {
-          "path": "registry/default/ui/animated-search.tsx",
+          "path": "registry/default/ui/halo-search.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1629,7 +1629,7 @@
       "description": "Icon set for file types and languages"
     },
     {
-      "name": "animated-button",
+      "name": "halo-button",
       "type": "registry:ui",
       "dependencies": [
         "@base-ui/react",
@@ -1637,7 +1637,7 @@
       ],
       "files": [
         {
-          "path": "registry/default/ui/animated-button.tsx",
+          "path": "registry/default/ui/halo-button.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1662,7 +1662,7 @@
       "description": "Button that copies content to clipboard with feedback"
     },
     {
-      "name": "animated-card",
+      "name": "halo-card",
       "type": "registry:ui",
       "dependencies": [
         "@base-ui/react",
@@ -1670,7 +1670,7 @@
       ],
       "files": [
         {
-          "path": "registry/default/ui/animated-card.tsx",
+          "path": "registry/default/ui/halo-card.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1694,21 +1694,21 @@
       "description": "border-beam around compound Card API with balanced title and description"
     },
     {
-      "name": "animated-tabs",
+      "name": "halo-tabs",
       "type": "registry:ui",
       "dependencies": [
         "@base-ui/react"
       ],
       "files": [
         {
-          "path": "registry/default/ui/animated-tabs.tsx",
+          "path": "registry/default/ui/halo-tabs.tsx",
           "type": "registry:ui"
         }
       ],
-      "description": "Base UI tabs with gradient indicator: underline or pill variant aligned with animated card rim colors"
+      "description": "Base UI tabs with gradient indicator: underline or pill variant aligned with Halo Card rim colors"
     },
     {
-      "name": "animated-segmented",
+      "name": "halo-segmented",
       "type": "registry:ui",
       "dependencies": [
         "@base-ui/react",
@@ -1716,14 +1716,14 @@
       ],
       "files": [
         {
-          "path": "registry/default/ui/animated-segmented.tsx",
+          "path": "registry/default/ui/halo-segmented.tsx",
           "type": "registry:ui"
         }
       ],
       "description": "Segmented control with frosted track, gradient rim, and spring sliding thumb"
     },
     {
-      "name": "animated-toggle-group",
+      "name": "halo-toggle-group",
       "type": "registry:ui",
       "dependencies": [
         "@base-ui/react",
@@ -1731,14 +1731,14 @@
       ],
       "files": [
         {
-          "path": "registry/default/ui/animated-toggle-group.tsx",
+          "path": "registry/default/ui/halo-toggle-group.tsx",
           "type": "registry:ui"
         }
       ],
-      "description": "Segmented single-select control with frosted track, gradient rim, and spring-driven sliding thumb (aligned with Animated Button)"
+      "description": "Segmented single-select control with frosted track, gradient rim, and spring-driven sliding thumb (aligned with Halo Button)"
     },
     {
-      "name": "animated-notification",
+      "name": "halo-notification",
       "type": "registry:ui",
       "dependencies": [
         "@base-ui/react",
@@ -1747,14 +1747,14 @@
       ],
       "files": [
         {
-          "path": "registry/default/ui/animated-notification.tsx",
+          "path": "registry/default/ui/halo-notification.tsx",
           "type": "registry:ui"
         }
       ],
       "description": "Polished notification surface for local AnimatePresence use with rim variants and glyph stagger"
     },
     {
-      "name": "animated-toast",
+      "name": "halo-toast",
       "type": "registry:ui",
       "dependencies": [
         "lucide-react",
@@ -1766,14 +1766,14 @@
       ],
       "files": [
         {
-          "path": "registry/default/ui/animated-toast.tsx",
+          "path": "registry/default/ui/halo-toast.tsx",
           "type": "registry:ui"
         }
       ],
       "description": "Sonner-backed polished toasts with rim variants; mount PolishedToaster once in the root layout"
     },
     {
-      "name": "animated-switch",
+      "name": "halo-switch",
       "type": "registry:ui",
       "dependencies": [
         "@base-ui/react",
@@ -1781,14 +1781,14 @@
       ],
       "files": [
         {
-          "path": "registry/default/ui/animated-switch.tsx",
+          "path": "registry/default/ui/halo-switch.tsx",
           "type": "registry:ui"
         }
       ],
       "description": "Toggle switch with spring thumb, frosted track, and extended touch hit area"
     },
     {
-      "name": "animated-input",
+      "name": "halo-input",
       "type": "registry:ui",
       "dependencies": [
         "@base-ui/react",
@@ -1796,28 +1796,28 @@
       ],
       "files": [
         {
-          "path": "registry/default/ui/animated-input.tsx",
+          "path": "registry/default/ui/halo-input.tsx",
           "type": "registry:ui"
         }
       ],
       "description": "Single-line and multiline inputs with frosted fill and gradient rim for generic forms"
     },
     {
-      "name": "animated-field",
+      "name": "halo-field",
       "type": "registry:ui",
       "registryDependencies": [
         "field"
       ],
       "files": [
         {
-          "path": "registry/default/ui/animated-field.tsx",
+          "path": "registry/default/ui/halo-field.tsx",
           "type": "registry:ui"
         }
       ],
-      "description": "Form field layout (label, description, error) for AnimatedInput and AnimatedTextarea"
+      "description": "Form field layout (label, description, error) for HaloInput and HaloTextarea"
     },
     {
-      "name": "animated-progress",
+      "name": "halo-progress",
       "type": "registry:ui",
       "dependencies": [
         "@base-ui/react",
@@ -1825,7 +1825,7 @@
       ],
       "files": [
         {
-          "path": "registry/default/ui/animated-progress.tsx",
+          "path": "registry/default/ui/halo-progress.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1850,7 +1850,7 @@
       "description": "border-beam on Base UI input and input-group primitives with line or full border glow"
     },
     {
-      "name": "animated-badge",
+      "name": "halo-badge",
       "type": "registry:ui",
       "dependencies": [
         "class-variance-authority",
@@ -1861,14 +1861,14 @@
       ],
       "files": [
         {
-          "path": "registry/default/ui/animated-badge.tsx",
+          "path": "registry/default/ui/halo-badge.tsx",
           "type": "registry:ui"
         }
       ],
-      "description": "Badge with optional layout animation, live status dot, and gradient rim aligned with Animated Button / Card"
+      "description": "Badge with optional layout animation, live status dot, and gradient rim aligned with Halo Button / Card"
     },
     {
-      "name": "animated-select",
+      "name": "halo-select",
       "type": "registry:ui",
       "dependencies": [
         "@base-ui/react",
@@ -1880,14 +1880,14 @@
       ],
       "files": [
         {
-          "path": "registry/default/ui/animated-select.tsx",
+          "path": "registry/default/ui/halo-select.tsx",
           "type": "registry:ui"
         }
       ],
       "description": "Composable animated select with gradient rim, frosted fill, and staggered label"
     },
     {
-      "name": "animated-composer",
+      "name": "prompt-composer",
       "type": "registry:ui",
       "dependencies": [
         "@base-ui/react",
@@ -1897,7 +1897,7 @@
       ],
       "files": [
         {
-          "path": "registry/default/ui/animated-composer.tsx",
+          "path": "registry/default/ui/prompt-composer.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1922,6 +1922,159 @@
         }
       ],
       "description": "Expandable multi-step wizard with optional forward validation, scrollable step rail, and Motion height transitions"
+    },
+    {
+      "name": "animated-badge",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-badge.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-badge. Prefer npx shadcn add https://cult-ui.com/r/halo-badge.json"
+    },
+    {
+      "name": "animated-button",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-button.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-button. Prefer npx shadcn add https://cult-ui.com/r/halo-button.json"
+    },
+    {
+      "name": "animated-card",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-card.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-card. Prefer npx shadcn add https://cult-ui.com/r/halo-card.json"
+    },
+    {
+      "name": "animated-composer",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "https://cult-ui.com/r/prompt-composer.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for prompt-composer. Prefer npx shadcn add https://cult-ui.com/r/prompt-composer.json"
+    },
+    {
+      "name": "animated-dropzone",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-dropzone.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-dropzone. Prefer npx shadcn add https://cult-ui.com/r/halo-dropzone.json"
+    },
+    {
+      "name": "animated-field",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-field.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-field. Prefer npx shadcn add https://cult-ui.com/r/halo-field.json"
+    },
+    {
+      "name": "animated-input",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-input.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-input. Prefer npx shadcn add https://cult-ui.com/r/halo-input.json"
+    },
+    {
+      "name": "animated-notification",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-notification.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-notification. Prefer npx shadcn add https://cult-ui.com/r/halo-notification.json"
+    },
+    {
+      "name": "animated-number",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "https://cult-ui.com/r/rolling-number.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for rolling-number. Prefer npx shadcn add https://cult-ui.com/r/rolling-number.json"
+    },
+    {
+      "name": "animated-progress",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-progress.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-progress. Prefer npx shadcn add https://cult-ui.com/r/halo-progress.json"
+    },
+    {
+      "name": "animated-search",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-search.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-search. Prefer npx shadcn add https://cult-ui.com/r/halo-search.json"
+    },
+    {
+      "name": "animated-segmented",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-segmented.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-segmented. Prefer npx shadcn add https://cult-ui.com/r/halo-segmented.json"
+    },
+    {
+      "name": "animated-select",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-select.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-select. Prefer npx shadcn add https://cult-ui.com/r/halo-select.json"
+    },
+    {
+      "name": "animated-switch",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-switch.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-switch. Prefer npx shadcn add https://cult-ui.com/r/halo-switch.json"
+    },
+    {
+      "name": "animated-tabs",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-tabs.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-tabs. Prefer npx shadcn add https://cult-ui.com/r/halo-tabs.json"
+    },
+    {
+      "name": "animated-toast",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-toast.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-toast. Prefer npx shadcn add https://cult-ui.com/r/halo-toast.json"
+    },
+    {
+      "name": "animated-toggle-group",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-toggle-group.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-toggle-group. Prefer npx shadcn add https://cult-ui.com/r/halo-toggle-group.json"
     },
     {
       "name": "text-animate-demo",
@@ -2188,14 +2341,14 @@
       ]
     },
     {
-      "name": "animated-number-demo",
+      "name": "rolling-number-demo",
       "type": "registry:component",
       "registryDependencies": [
-        "animated-number"
+        "rolling-number"
       ],
       "files": [
         {
-          "path": "registry/default/example/animated-number-demo.tsx",
+          "path": "registry/default/example/rolling-number-demo.tsx",
           "type": "registry:component"
         }
       ]
@@ -3244,6 +3397,7 @@
         "button",
         "input",
         "label",
+        "select",
         "slider"
       ],
       "dependencies": [
@@ -3442,28 +3596,28 @@
       ]
     },
     {
-      "name": "animated-dropzone-demo",
+      "name": "halo-dropzone-demo",
       "type": "registry:component",
       "registryDependencies": [
-        "animated-dropzone"
+        "halo-dropzone"
       ],
       "files": [
         {
-          "path": "registry/default/example/animated-dropzone-demo.tsx",
+          "path": "registry/default/example/halo-dropzone-demo.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
-      "name": "animated-search-demo",
+      "name": "halo-search-demo",
       "type": "registry:component",
       "registryDependencies": [
-        "animated-search",
+        "halo-search",
         "button"
       ],
       "files": [
         {
-          "path": "registry/default/example/animated-search-demo.tsx",
+          "path": "registry/default/example/halo-search-demo.tsx",
           "type": "registry:component"
         }
       ]
@@ -3500,17 +3654,17 @@
       ]
     },
     {
-      "name": "animated-button-demo",
+      "name": "halo-button-demo",
       "type": "registry:component",
       "registryDependencies": [
-        "animated-button"
+        "halo-button"
       ],
       "dependencies": [
         "lucide-react"
       ],
       "files": [
         {
-          "path": "registry/default/example/animated-button-demo.tsx",
+          "path": "registry/default/example/halo-button-demo.tsx",
           "type": "registry:component"
         }
       ]
@@ -3529,17 +3683,17 @@
       ]
     },
     {
-      "name": "animated-card-demo",
+      "name": "halo-card-demo",
       "type": "registry:component",
       "registryDependencies": [
-        "animated-card"
+        "halo-card"
       ],
       "dependencies": [
         "lucide-react"
       ],
       "files": [
         {
-          "path": "registry/default/example/animated-card-demo.tsx",
+          "path": "registry/default/example/halo-card-demo.tsx",
           "type": "registry:component"
         }
       ]
@@ -3558,124 +3712,124 @@
       ]
     },
     {
-      "name": "animated-tabs-demo",
+      "name": "halo-tabs-demo",
       "type": "registry:component",
       "registryDependencies": [
-        "animated-tabs"
+        "halo-tabs"
       ],
       "files": [
         {
-          "path": "registry/default/example/animated-tabs-demo.tsx",
+          "path": "registry/default/example/halo-tabs-demo.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
-      "name": "animated-segmented-demo",
+      "name": "halo-segmented-demo",
       "type": "registry:component",
       "registryDependencies": [
-        "animated-segmented"
+        "halo-segmented"
       ],
       "files": [
         {
-          "path": "registry/default/example/animated-segmented-demo.tsx",
+          "path": "registry/default/example/halo-segmented-demo.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
-      "name": "animated-toggle-group-demo",
+      "name": "halo-toggle-group-demo",
       "type": "registry:component",
       "registryDependencies": [
-        "animated-toggle-group"
+        "halo-toggle-group"
       ],
       "files": [
         {
-          "path": "registry/default/example/animated-toggle-group-demo.tsx",
+          "path": "registry/default/example/halo-toggle-group-demo.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
-      "name": "animated-notification-demo",
+      "name": "halo-notification-demo",
       "type": "registry:component",
       "registryDependencies": [
-        "animated-notification"
+        "halo-notification"
       ],
       "dependencies": [
         "motion"
       ],
       "files": [
         {
-          "path": "registry/default/example/animated-notification-demo.tsx",
+          "path": "registry/default/example/halo-notification-demo.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
-      "name": "animated-toast-demo",
+      "name": "halo-toast-demo",
       "type": "registry:component",
       "registryDependencies": [
-        "animated-toast"
+        "halo-toast"
       ],
       "files": [
         {
-          "path": "registry/default/example/animated-toast-demo.tsx",
+          "path": "registry/default/example/halo-toast-demo.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
-      "name": "animated-switch-demo",
+      "name": "halo-switch-demo",
       "type": "registry:component",
       "registryDependencies": [
-        "animated-switch"
+        "halo-switch"
       ],
       "files": [
         {
-          "path": "registry/default/example/animated-switch-demo.tsx",
+          "path": "registry/default/example/halo-switch-demo.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
-      "name": "animated-input-demo",
+      "name": "halo-input-demo",
       "type": "registry:component",
       "registryDependencies": [
-        "animated-input"
+        "halo-input"
       ],
       "files": [
         {
-          "path": "registry/default/example/animated-input-demo.tsx",
+          "path": "registry/default/example/halo-input-demo.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
-      "name": "animated-field-demo",
+      "name": "halo-field-demo",
       "type": "registry:component",
       "registryDependencies": [
-        "animated-field"
+        "halo-field"
       ],
       "dependencies": [
         "lucide-react"
       ],
       "files": [
         {
-          "path": "registry/default/example/animated-field-demo.tsx",
+          "path": "registry/default/example/halo-field-demo.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
-      "name": "animated-progress-demo",
+      "name": "halo-progress-demo",
       "type": "registry:component",
       "registryDependencies": [
-        "animated-progress"
+        "halo-progress"
       ],
       "files": [
         {
-          "path": "registry/default/example/animated-progress-demo.tsx",
+          "path": "registry/default/example/halo-progress-demo.tsx",
           "type": "registry:component"
         }
       ]
@@ -3697,41 +3851,41 @@
       ]
     },
     {
-      "name": "animated-badge-demo",
+      "name": "halo-badge-demo",
       "type": "registry:component",
       "registryDependencies": [
-        "animated-badge"
+        "halo-badge"
       ],
       "files": [
         {
-          "path": "registry/default/example/animated-badge-demo.tsx",
+          "path": "registry/default/example/halo-badge-demo.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
-      "name": "animated-select-demo",
+      "name": "halo-select-demo",
       "type": "registry:component",
       "registryDependencies": [
-        "animated-select",
+        "halo-select",
         "button"
       ],
       "files": [
         {
-          "path": "registry/default/example/animated-select-demo.tsx",
+          "path": "registry/default/example/halo-select-demo.tsx",
           "type": "registry:component"
         }
       ]
     },
     {
-      "name": "animated-composer-demo",
+      "name": "prompt-composer-demo",
       "type": "registry:component",
       "registryDependencies": [
-        "animated-composer"
+        "prompt-composer"
       ],
       "files": [
         {
-          "path": "registry/default/example/animated-composer-demo.tsx",
+          "path": "registry/default/example/prompt-composer-demo.tsx",
           "type": "registry:component"
         }
       ]
@@ -3755,6 +3909,159 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "animated-badge-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-badge-demo.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-badge-demo"
+    },
+    {
+      "name": "animated-button-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-button-demo.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-button-demo"
+    },
+    {
+      "name": "animated-card-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-card-demo.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-card-demo"
+    },
+    {
+      "name": "animated-composer-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://cult-ui.com/r/prompt-composer-demo.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for prompt-composer-demo"
+    },
+    {
+      "name": "animated-dropzone-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-dropzone-demo.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-dropzone-demo"
+    },
+    {
+      "name": "animated-field-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-field-demo.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-field-demo"
+    },
+    {
+      "name": "animated-input-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-input-demo.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-input-demo"
+    },
+    {
+      "name": "animated-notification-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-notification-demo.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-notification-demo"
+    },
+    {
+      "name": "animated-number-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://cult-ui.com/r/rolling-number-demo.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for rolling-number-demo"
+    },
+    {
+      "name": "animated-progress-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-progress-demo.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-progress-demo"
+    },
+    {
+      "name": "animated-search-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-search-demo.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-search-demo"
+    },
+    {
+      "name": "animated-segmented-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-segmented-demo.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-segmented-demo"
+    },
+    {
+      "name": "animated-select-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-select-demo.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-select-demo"
+    },
+    {
+      "name": "animated-switch-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-switch-demo.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-switch-demo"
+    },
+    {
+      "name": "animated-tabs-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-tabs-demo.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-tabs-demo"
+    },
+    {
+      "name": "animated-toast-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-toast-demo.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-toast-demo"
+    },
+    {
+      "name": "animated-toggle-group-demo",
+      "type": "registry:component",
+      "registryDependencies": [
+        "https://cult-ui.com/r/halo-toggle-group-demo.json"
+      ],
+      "files": [],
+      "description": "Deprecated alias for halo-toggle-group-demo"
     }
   ]
 }

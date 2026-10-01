@@ -481,21 +481,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-number": {
-    name: "animated-number",
+  "rolling-number": {
+    name: "rolling-number",
     description:
       "Number component with smooth counting animations and customizable formatting",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
       {
-        path: "registry/default/ui/animated-number.tsx",
+        path: "registry/default/ui/rolling-number.tsx",
         type: "registry:ui",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/default/ui/animated-number.tsx")
+      const mod = await import("@/registry/default/ui/rolling-number.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -1970,7 +1970,7 @@ export const Index: Record<string, any> = {
   },
   "base-select": {
     name: "base-select",
-    description: "Base UI select primitives used by Animated Select",
+    description: "Base UI select primitives used by Halo Select",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -2897,21 +2897,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-dropzone": {
-    name: "animated-dropzone",
+  "halo-dropzone": {
+    name: "halo-dropzone",
     description:
       "File dropzone with animated rim, frosted fill, moving border trail, and file-type glyphs",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
       {
-        path: "registry/default/ui/animated-dropzone.tsx",
+        path: "registry/default/ui/halo-dropzone.tsx",
         type: "registry:ui",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/default/ui/animated-dropzone.tsx")
+      const mod = await import("@/registry/default/ui/halo-dropzone.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -2922,21 +2922,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-search": {
-    name: "animated-search",
+  "halo-search": {
+    name: "halo-search",
     description:
       "Search input with animated gradient border, staggered placeholder, blur deletion on clear, loading line, and Warp shader avatar",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
       {
-        path: "registry/default/ui/animated-search.tsx",
+        path: "registry/default/ui/halo-search.tsx",
         type: "registry:ui",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/default/ui/animated-search.tsx")
+      const mod = await import("@/registry/default/ui/halo-search.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -2996,21 +2996,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-button": {
-    name: "animated-button",
+  "halo-button": {
+    name: "halo-button",
     description:
       "Primary action button with animated gradient rim, frosted fill, staggered label, and loading spinner",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
       {
-        path: "registry/default/ui/animated-button.tsx",
+        path: "registry/default/ui/halo-button.tsx",
         type: "registry:ui",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/default/ui/animated-button.tsx")
+      const mod = await import("@/registry/default/ui/halo-button.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3045,21 +3045,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-card": {
-    name: "animated-card",
+  "halo-card": {
+    name: "halo-card",
     description:
       "Composable card with animated gradient rim, frosted fill, layered shadow, and Base UI button actions",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
       {
-        path: "registry/default/ui/animated-card.tsx",
+        path: "registry/default/ui/halo-card.tsx",
         type: "registry:ui",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/default/ui/animated-card.tsx")
+      const mod = await import("@/registry/default/ui/halo-card.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3095,21 +3095,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-tabs": {
-    name: "animated-tabs",
+  "halo-tabs": {
+    name: "halo-tabs",
     description:
-      "Base UI tabs with gradient indicator: underline or pill variant aligned with animated card rim colors",
+      "Base UI tabs with gradient indicator: underline or pill variant aligned with Halo Card rim colors",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
       {
-        path: "registry/default/ui/animated-tabs.tsx",
+        path: "registry/default/ui/halo-tabs.tsx",
         type: "registry:ui",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/default/ui/animated-tabs.tsx")
+      const mod = await import("@/registry/default/ui/halo-tabs.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3120,21 +3120,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-segmented": {
-    name: "animated-segmented",
+  "halo-segmented": {
+    name: "halo-segmented",
     description:
       "Segmented control with frosted track, gradient rim, and spring sliding thumb",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
       {
-        path: "registry/default/ui/animated-segmented.tsx",
+        path: "registry/default/ui/halo-segmented.tsx",
         type: "registry:ui",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/default/ui/animated-segmented.tsx")
+      const mod = await import("@/registry/default/ui/halo-segmented.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3145,23 +3145,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-toggle-group": {
-    name: "animated-toggle-group",
+  "halo-toggle-group": {
+    name: "halo-toggle-group",
     description:
-      "Segmented single-select control with frosted track, gradient rim, and spring-driven sliding thumb (aligned with Animated Button)",
+      "Segmented single-select control with frosted track, gradient rim, and spring-driven sliding thumb (aligned with Halo Button)",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
       {
-        path: "registry/default/ui/animated-toggle-group.tsx",
+        path: "registry/default/ui/halo-toggle-group.tsx",
         type: "registry:ui",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/default/ui/animated-toggle-group.tsx"
-      )
+      const mod = await import("@/registry/default/ui/halo-toggle-group.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3172,23 +3170,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-notification": {
-    name: "animated-notification",
+  "halo-notification": {
+    name: "halo-notification",
     description:
       "Polished notification surface for local AnimatePresence use with rim variants and glyph stagger",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
       {
-        path: "registry/default/ui/animated-notification.tsx",
+        path: "registry/default/ui/halo-notification.tsx",
         type: "registry:ui",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/default/ui/animated-notification.tsx"
-      )
+      const mod = await import("@/registry/default/ui/halo-notification.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3199,21 +3195,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-toast": {
-    name: "animated-toast",
+  "halo-toast": {
+    name: "halo-toast",
     description:
       "Sonner-backed polished toasts with rim variants; mount PolishedToaster once in the root layout",
     type: "registry:ui",
     registryDependencies: ["button"],
     files: [
       {
-        path: "registry/default/ui/animated-toast.tsx",
+        path: "registry/default/ui/halo-toast.tsx",
         type: "registry:ui",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/default/ui/animated-toast.tsx")
+      const mod = await import("@/registry/default/ui/halo-toast.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3224,21 +3220,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-switch": {
-    name: "animated-switch",
+  "halo-switch": {
+    name: "halo-switch",
     description:
       "Toggle switch with spring thumb, frosted track, and extended touch hit area",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
       {
-        path: "registry/default/ui/animated-switch.tsx",
+        path: "registry/default/ui/halo-switch.tsx",
         type: "registry:ui",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/default/ui/animated-switch.tsx")
+      const mod = await import("@/registry/default/ui/halo-switch.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3249,21 +3245,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-input": {
-    name: "animated-input",
+  "halo-input": {
+    name: "halo-input",
     description:
       "Single-line and multiline inputs with frosted fill and gradient rim for generic forms",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
       {
-        path: "registry/default/ui/animated-input.tsx",
+        path: "registry/default/ui/halo-input.tsx",
         type: "registry:ui",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/default/ui/animated-input.tsx")
+      const mod = await import("@/registry/default/ui/halo-input.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3274,21 +3270,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-field": {
-    name: "animated-field",
+  "halo-field": {
+    name: "halo-field",
     description:
-      "Form field layout (label, description, error) for AnimatedInput and AnimatedTextarea",
+      "Form field layout (label, description, error) for HaloInput and HaloTextarea",
     type: "registry:ui",
     registryDependencies: ["field"],
     files: [
       {
-        path: "registry/default/ui/animated-field.tsx",
+        path: "registry/default/ui/halo-field.tsx",
         type: "registry:ui",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/default/ui/animated-field.tsx")
+      const mod = await import("@/registry/default/ui/halo-field.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3299,21 +3295,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-progress": {
-    name: "animated-progress",
+  "halo-progress": {
+    name: "halo-progress",
     description:
       "Progress bar with spring-driven determinate fill and indeterminate gradient strip",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
       {
-        path: "registry/default/ui/animated-progress.tsx",
+        path: "registry/default/ui/halo-progress.tsx",
         type: "registry:ui",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/default/ui/animated-progress.tsx")
+      const mod = await import("@/registry/default/ui/halo-progress.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3349,21 +3345,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-badge": {
-    name: "animated-badge",
+  "halo-badge": {
+    name: "halo-badge",
     description:
-      "Badge with optional layout animation, live status dot, and gradient rim aligned with Animated Button / Card",
+      "Badge with optional layout animation, live status dot, and gradient rim aligned with Halo Button / Card",
     type: "registry:ui",
     registryDependencies: ["badge"],
     files: [
       {
-        path: "registry/default/ui/animated-badge.tsx",
+        path: "registry/default/ui/halo-badge.tsx",
         type: "registry:ui",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/default/ui/animated-badge.tsx")
+      const mod = await import("@/registry/default/ui/halo-badge.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3374,21 +3370,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-select": {
-    name: "animated-select",
+  "halo-select": {
+    name: "halo-select",
     description:
       "Composable animated select with gradient rim, frosted fill, and staggered label",
     type: "registry:ui",
     registryDependencies: ["https://cult-ui.com/r/base-select.json"],
     files: [
       {
-        path: "registry/default/ui/animated-select.tsx",
+        path: "registry/default/ui/halo-select.tsx",
         type: "registry:ui",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/default/ui/animated-select.tsx")
+      const mod = await import("@/registry/default/ui/halo-select.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3399,21 +3395,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-composer": {
-    name: "animated-composer",
+  "prompt-composer": {
+    name: "prompt-composer",
     description:
       "Multiline prompt field with shader avatar, staggered placeholder, loading line, and send/attach chrome",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
       {
-        path: "registry/default/ui/animated-composer.tsx",
+        path: "registry/default/ui/prompt-composer.tsx",
         type: "registry:ui",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/default/ui/animated-composer.tsx")
+      const mod = await import("@/registry/default/ui/prompt-composer.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3446,6 +3442,193 @@ export const Index: Record<string, any> = {
         ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-badge": {
+    name: "animated-badge",
+    description:
+      "Deprecated alias for halo-badge. Prefer npx shadcn add https://cult-ui.com/r/halo-badge.json",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-badge.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-button": {
+    name: "animated-button",
+    description:
+      "Deprecated alias for halo-button. Prefer npx shadcn add https://cult-ui.com/r/halo-button.json",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-button.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-card": {
+    name: "animated-card",
+    description:
+      "Deprecated alias for halo-card. Prefer npx shadcn add https://cult-ui.com/r/halo-card.json",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-card.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-composer": {
+    name: "animated-composer",
+    description:
+      "Deprecated alias for prompt-composer. Prefer npx shadcn add https://cult-ui.com/r/prompt-composer.json",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/prompt-composer.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-dropzone": {
+    name: "animated-dropzone",
+    description:
+      "Deprecated alias for halo-dropzone. Prefer npx shadcn add https://cult-ui.com/r/halo-dropzone.json",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-dropzone.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-field": {
+    name: "animated-field",
+    description:
+      "Deprecated alias for halo-field. Prefer npx shadcn add https://cult-ui.com/r/halo-field.json",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-field.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-input": {
+    name: "animated-input",
+    description:
+      "Deprecated alias for halo-input. Prefer npx shadcn add https://cult-ui.com/r/halo-input.json",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-input.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-notification": {
+    name: "animated-notification",
+    description:
+      "Deprecated alias for halo-notification. Prefer npx shadcn add https://cult-ui.com/r/halo-notification.json",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-notification.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-number": {
+    name: "animated-number",
+    description:
+      "Deprecated alias for rolling-number. Prefer npx shadcn add https://cult-ui.com/r/rolling-number.json",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/rolling-number.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-progress": {
+    name: "animated-progress",
+    description:
+      "Deprecated alias for halo-progress. Prefer npx shadcn add https://cult-ui.com/r/halo-progress.json",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-progress.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-search": {
+    name: "animated-search",
+    description:
+      "Deprecated alias for halo-search. Prefer npx shadcn add https://cult-ui.com/r/halo-search.json",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-search.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-segmented": {
+    name: "animated-segmented",
+    description:
+      "Deprecated alias for halo-segmented. Prefer npx shadcn add https://cult-ui.com/r/halo-segmented.json",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-segmented.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-select": {
+    name: "animated-select",
+    description:
+      "Deprecated alias for halo-select. Prefer npx shadcn add https://cult-ui.com/r/halo-select.json",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-select.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-switch": {
+    name: "animated-switch",
+    description:
+      "Deprecated alias for halo-switch. Prefer npx shadcn add https://cult-ui.com/r/halo-switch.json",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-switch.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-tabs": {
+    name: "animated-tabs",
+    description:
+      "Deprecated alias for halo-tabs. Prefer npx shadcn add https://cult-ui.com/r/halo-tabs.json",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-tabs.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-toast": {
+    name: "animated-toast",
+    description:
+      "Deprecated alias for halo-toast. Prefer npx shadcn add https://cult-ui.com/r/halo-toast.json",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-toast.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-toggle-group": {
+    name: "animated-toggle-group",
+    description:
+      "Deprecated alias for halo-toggle-group. Prefer npx shadcn add https://cult-ui.com/r/halo-toggle-group.json",
+    type: "registry:ui",
+    registryDependencies: ["https://cult-ui.com/r/halo-toggle-group.json"],
+    files: [],
+    component: null,
     categories: undefined,
     meta: undefined,
   },
@@ -3957,21 +4140,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-number-demo": {
-    name: "animated-number-demo",
+  "rolling-number-demo": {
+    name: "rolling-number-demo",
     description: "",
     type: "registry:component",
-    registryDependencies: ["animated-number"],
+    registryDependencies: ["rolling-number"],
     files: [
       {
-        path: "registry/default/example/animated-number-demo.tsx",
+        path: "registry/default/example/rolling-number-demo.tsx",
         type: "registry:component",
         target: "",
       },
     ],
     component: React.lazy(async () => {
       const mod = await import(
-        "@/registry/default/example/animated-number-demo.tsx"
+        "@/registry/default/example/rolling-number-demo.tsx"
       )
       const exportName =
         Object.keys(mod).find(
@@ -6016,6 +6199,7 @@ export const Index: Record<string, any> = {
       "button",
       "input",
       "label",
+      "select",
       "slider",
     ],
     files: [
@@ -6401,21 +6585,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-dropzone-demo": {
-    name: "animated-dropzone-demo",
+  "halo-dropzone-demo": {
+    name: "halo-dropzone-demo",
     description: "",
     type: "registry:component",
-    registryDependencies: ["animated-dropzone"],
+    registryDependencies: ["halo-dropzone"],
     files: [
       {
-        path: "registry/default/example/animated-dropzone-demo.tsx",
+        path: "registry/default/example/halo-dropzone-demo.tsx",
         type: "registry:component",
         target: "",
       },
     ],
     component: React.lazy(async () => {
       const mod = await import(
-        "@/registry/default/example/animated-dropzone-demo.tsx"
+        "@/registry/default/example/halo-dropzone-demo.tsx"
       )
       const exportName =
         Object.keys(mod).find(
@@ -6427,21 +6611,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-search-demo": {
-    name: "animated-search-demo",
+  "halo-search-demo": {
+    name: "halo-search-demo",
     description: "",
     type: "registry:component",
-    registryDependencies: ["animated-search", "button"],
+    registryDependencies: ["halo-search", "button"],
     files: [
       {
-        path: "registry/default/example/animated-search-demo.tsx",
+        path: "registry/default/example/halo-search-demo.tsx",
         type: "registry:component",
         target: "",
       },
     ],
     component: React.lazy(async () => {
       const mod = await import(
-        "@/registry/default/example/animated-search-demo.tsx"
+        "@/registry/default/example/halo-search-demo.tsx"
       )
       const exportName =
         Object.keys(mod).find(
@@ -6501,21 +6685,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-button-demo": {
-    name: "animated-button-demo",
+  "halo-button-demo": {
+    name: "halo-button-demo",
     description: "",
     type: "registry:component",
-    registryDependencies: ["animated-button"],
+    registryDependencies: ["halo-button"],
     files: [
       {
-        path: "registry/default/example/animated-button-demo.tsx",
+        path: "registry/default/example/halo-button-demo.tsx",
         type: "registry:component",
         target: "",
       },
     ],
     component: React.lazy(async () => {
       const mod = await import(
-        "@/registry/default/example/animated-button-demo.tsx"
+        "@/registry/default/example/halo-button-demo.tsx"
       )
       const exportName =
         Object.keys(mod).find(
@@ -6553,22 +6737,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-card-demo": {
-    name: "animated-card-demo",
+  "halo-card-demo": {
+    name: "halo-card-demo",
     description: "",
     type: "registry:component",
-    registryDependencies: ["animated-card"],
+    registryDependencies: ["halo-card"],
     files: [
       {
-        path: "registry/default/example/animated-card-demo.tsx",
+        path: "registry/default/example/halo-card-demo.tsx",
         type: "registry:component",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/default/example/animated-card-demo.tsx"
-      )
+      const mod = await import("@/registry/default/example/halo-card-demo.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -6605,21 +6787,45 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-tabs-demo": {
-    name: "animated-tabs-demo",
+  "halo-tabs-demo": {
+    name: "halo-tabs-demo",
     description: "",
     type: "registry:component",
-    registryDependencies: ["animated-tabs"],
+    registryDependencies: ["halo-tabs"],
     files: [
       {
-        path: "registry/default/example/animated-tabs-demo.tsx",
+        path: "registry/default/example/halo-tabs-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/example/halo-tabs-demo.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "halo-segmented-demo": {
+    name: "halo-segmented-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["halo-segmented"],
+    files: [
+      {
+        path: "registry/default/example/halo-segmented-demo.tsx",
         type: "registry:component",
         target: "",
       },
     ],
     component: React.lazy(async () => {
       const mod = await import(
-        "@/registry/default/example/animated-tabs-demo.tsx"
+        "@/registry/default/example/halo-segmented-demo.tsx"
       )
       const exportName =
         Object.keys(mod).find(
@@ -6631,21 +6837,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-segmented-demo": {
-    name: "animated-segmented-demo",
+  "halo-toggle-group-demo": {
+    name: "halo-toggle-group-demo",
     description: "",
     type: "registry:component",
-    registryDependencies: ["animated-segmented"],
+    registryDependencies: ["halo-toggle-group"],
     files: [
       {
-        path: "registry/default/example/animated-segmented-demo.tsx",
+        path: "registry/default/example/halo-toggle-group-demo.tsx",
         type: "registry:component",
         target: "",
       },
     ],
     component: React.lazy(async () => {
       const mod = await import(
-        "@/registry/default/example/animated-segmented-demo.tsx"
+        "@/registry/default/example/halo-toggle-group-demo.tsx"
       )
       const exportName =
         Object.keys(mod).find(
@@ -6657,21 +6863,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-toggle-group-demo": {
-    name: "animated-toggle-group-demo",
+  "halo-notification-demo": {
+    name: "halo-notification-demo",
     description: "",
     type: "registry:component",
-    registryDependencies: ["animated-toggle-group"],
+    registryDependencies: ["halo-notification"],
     files: [
       {
-        path: "registry/default/example/animated-toggle-group-demo.tsx",
+        path: "registry/default/example/halo-notification-demo.tsx",
         type: "registry:component",
         target: "",
       },
     ],
     component: React.lazy(async () => {
       const mod = await import(
-        "@/registry/default/example/animated-toggle-group-demo.tsx"
+        "@/registry/default/example/halo-notification-demo.tsx"
       )
       const exportName =
         Object.keys(mod).find(
@@ -6683,21 +6889,45 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-notification-demo": {
-    name: "animated-notification-demo",
+  "halo-toast-demo": {
+    name: "halo-toast-demo",
     description: "",
     type: "registry:component",
-    registryDependencies: ["animated-notification"],
+    registryDependencies: ["halo-toast"],
     files: [
       {
-        path: "registry/default/example/animated-notification-demo.tsx",
+        path: "registry/default/example/halo-toast-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/example/halo-toast-demo.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "halo-switch-demo": {
+    name: "halo-switch-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["halo-switch"],
+    files: [
+      {
+        path: "registry/default/example/halo-switch-demo.tsx",
         type: "registry:component",
         target: "",
       },
     ],
     component: React.lazy(async () => {
       const mod = await import(
-        "@/registry/default/example/animated-notification-demo.tsx"
+        "@/registry/default/example/halo-switch-demo.tsx"
       )
       const exportName =
         Object.keys(mod).find(
@@ -6709,22 +6939,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-toast-demo": {
-    name: "animated-toast-demo",
+  "halo-input-demo": {
+    name: "halo-input-demo",
     description: "",
     type: "registry:component",
-    registryDependencies: ["animated-toast"],
+    registryDependencies: ["halo-input"],
     files: [
       {
-        path: "registry/default/example/animated-toast-demo.tsx",
+        path: "registry/default/example/halo-input-demo.tsx",
         type: "registry:component",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/default/example/animated-toast-demo.tsx"
-      )
+      const mod = await import("@/registry/default/example/halo-input-demo.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -6735,22 +6963,20 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-switch-demo": {
-    name: "animated-switch-demo",
+  "halo-field-demo": {
+    name: "halo-field-demo",
     description: "",
     type: "registry:component",
-    registryDependencies: ["animated-switch"],
+    registryDependencies: ["halo-field"],
     files: [
       {
-        path: "registry/default/example/animated-switch-demo.tsx",
+        path: "registry/default/example/halo-field-demo.tsx",
         type: "registry:component",
         target: "",
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/default/example/animated-switch-demo.tsx"
-      )
+      const mod = await import("@/registry/default/example/halo-field-demo.tsx")
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -6761,73 +6987,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-input-demo": {
-    name: "animated-input-demo",
+  "halo-progress-demo": {
+    name: "halo-progress-demo",
     description: "",
     type: "registry:component",
-    registryDependencies: ["animated-input"],
+    registryDependencies: ["halo-progress"],
     files: [
       {
-        path: "registry/default/example/animated-input-demo.tsx",
+        path: "registry/default/example/halo-progress-demo.tsx",
         type: "registry:component",
         target: "",
       },
     ],
     component: React.lazy(async () => {
       const mod = await import(
-        "@/registry/default/example/animated-input-demo.tsx"
-      )
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
-  "animated-field-demo": {
-    name: "animated-field-demo",
-    description: "",
-    type: "registry:component",
-    registryDependencies: ["animated-field"],
-    files: [
-      {
-        path: "registry/default/example/animated-field-demo.tsx",
-        type: "registry:component",
-        target: "",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/default/example/animated-field-demo.tsx"
-      )
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
-  "animated-progress-demo": {
-    name: "animated-progress-demo",
-    description: "",
-    type: "registry:component",
-    registryDependencies: ["animated-progress"],
-    files: [
-      {
-        path: "registry/default/example/animated-progress-demo.tsx",
-        type: "registry:component",
-        target: "",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/default/example/animated-progress-demo.tsx"
+        "@/registry/default/example/halo-progress-demo.tsx"
       )
       const exportName =
         Object.keys(mod).find(
@@ -6865,21 +7039,45 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-badge-demo": {
-    name: "animated-badge-demo",
+  "halo-badge-demo": {
+    name: "halo-badge-demo",
     description: "",
     type: "registry:component",
-    registryDependencies: ["animated-badge"],
+    registryDependencies: ["halo-badge"],
     files: [
       {
-        path: "registry/default/example/animated-badge-demo.tsx",
+        path: "registry/default/example/halo-badge-demo.tsx",
+        type: "registry:component",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/default/example/halo-badge-demo.tsx")
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "halo-select-demo": {
+    name: "halo-select-demo",
+    description: "",
+    type: "registry:component",
+    registryDependencies: ["halo-select", "button"],
+    files: [
+      {
+        path: "registry/default/example/halo-select-demo.tsx",
         type: "registry:component",
         target: "",
       },
     ],
     component: React.lazy(async () => {
       const mod = await import(
-        "@/registry/default/example/animated-badge-demo.tsx"
+        "@/registry/default/example/halo-select-demo.tsx"
       )
       const exportName =
         Object.keys(mod).find(
@@ -6891,47 +7089,21 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "animated-select-demo": {
-    name: "animated-select-demo",
+  "prompt-composer-demo": {
+    name: "prompt-composer-demo",
     description: "",
     type: "registry:component",
-    registryDependencies: ["animated-select", "button"],
+    registryDependencies: ["prompt-composer"],
     files: [
       {
-        path: "registry/default/example/animated-select-demo.tsx",
+        path: "registry/default/example/prompt-composer-demo.tsx",
         type: "registry:component",
         target: "",
       },
     ],
     component: React.lazy(async () => {
       const mod = await import(
-        "@/registry/default/example/animated-select-demo.tsx"
-      )
-      const exportName =
-        Object.keys(mod).find(
-          (key) =>
-            typeof mod[key] === "function" || typeof mod[key] === "object"
-        ) || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
-  "animated-composer-demo": {
-    name: "animated-composer-demo",
-    description: "",
-    type: "registry:component",
-    registryDependencies: ["animated-composer"],
-    files: [
-      {
-        path: "registry/default/example/animated-composer-demo.tsx",
-        type: "registry:component",
-        target: "",
-      },
-    ],
-    component: React.lazy(async () => {
-      const mod = await import(
-        "@/registry/default/example/animated-composer-demo.tsx"
+        "@/registry/default/example/prompt-composer-demo.tsx"
       )
       const exportName =
         Object.keys(mod).find(
@@ -6972,6 +7144,176 @@ export const Index: Record<string, any> = {
         ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-badge-demo": {
+    name: "animated-badge-demo",
+    description: "Deprecated alias for halo-badge-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-badge-demo.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-button-demo": {
+    name: "animated-button-demo",
+    description: "Deprecated alias for halo-button-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-button-demo.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-card-demo": {
+    name: "animated-card-demo",
+    description: "Deprecated alias for halo-card-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-card-demo.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-composer-demo": {
+    name: "animated-composer-demo",
+    description: "Deprecated alias for prompt-composer-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/prompt-composer-demo.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-dropzone-demo": {
+    name: "animated-dropzone-demo",
+    description: "Deprecated alias for halo-dropzone-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-dropzone-demo.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-field-demo": {
+    name: "animated-field-demo",
+    description: "Deprecated alias for halo-field-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-field-demo.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-input-demo": {
+    name: "animated-input-demo",
+    description: "Deprecated alias for halo-input-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-input-demo.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-notification-demo": {
+    name: "animated-notification-demo",
+    description: "Deprecated alias for halo-notification-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-notification-demo.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-number-demo": {
+    name: "animated-number-demo",
+    description: "Deprecated alias for rolling-number-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/rolling-number-demo.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-progress-demo": {
+    name: "animated-progress-demo",
+    description: "Deprecated alias for halo-progress-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-progress-demo.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-search-demo": {
+    name: "animated-search-demo",
+    description: "Deprecated alias for halo-search-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-search-demo.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-segmented-demo": {
+    name: "animated-segmented-demo",
+    description: "Deprecated alias for halo-segmented-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-segmented-demo.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-select-demo": {
+    name: "animated-select-demo",
+    description: "Deprecated alias for halo-select-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-select-demo.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-switch-demo": {
+    name: "animated-switch-demo",
+    description: "Deprecated alias for halo-switch-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-switch-demo.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-tabs-demo": {
+    name: "animated-tabs-demo",
+    description: "Deprecated alias for halo-tabs-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-tabs-demo.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-toast-demo": {
+    name: "animated-toast-demo",
+    description: "Deprecated alias for halo-toast-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-toast-demo.json"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
+  "animated-toggle-group-demo": {
+    name: "animated-toggle-group-demo",
+    description: "Deprecated alias for halo-toggle-group-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-toggle-group-demo.json"],
+    files: [],
+    component: null,
     categories: undefined,
     meta: undefined,
   },

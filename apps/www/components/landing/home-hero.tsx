@@ -143,7 +143,7 @@ export function HomeHero({ count }: { count: number }) {
         <NewComponentsChip />
         <SectionTitle as="h1" size="lg" className="mt-6">
           Shadcn,
-          <br />
+          <br className="md:hidden" />{" "}
           <PixelPhrase>expanded</PixelPhrase>
         </SectionTitle>
         <TwoToneSectionDescription

@@ -4,11 +4,14 @@ import path from "node:path";
 import * as React from "react";
 
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
-import { CopyButton } from "@/components/copy-button";
-import { getIconForLanguageExtension } from "@/components/icons";
+import { ComponentCode } from "@/components/component-code";
 import { highlightCode } from "@/lib/highlight-code";
 import { getRegistryItem } from "@/lib/registry";
 import { cn } from "@/lib/utils";
+
+// Collapsed blocks only show ~12 lines, so longer registry sources ship this
+// many lines in the page and load the rest from `/code/[name]` on expand.
+const COLLAPSED_PREVIEW_LINES = 24;
 
 export async function ComponentSource({
   name,
@@ -45,63 +48,39 @@ export async function ComponentSource({
   }
 
   const lang = language ?? title?.split(".").pop() ?? "tsx";
-  const highlightedCode = await highlightCode(code, lang);
 
   if (!collapsible) {
+    const highlightedCode = await highlightCode(code, lang);
     return (
       <div className={cn("relative", className)}>
-        <ComponentCode
-          code={code}
-          highlightedCode={highlightedCode}
-          language={lang}
-          title={title}
-        />
+        <ComponentCode html={highlightedCode} language={lang} title={title} />
       </div>
     );
   }
 
+  const lines = code.split("\n");
+  const lazyName =
+    name && !src && lang === "tsx" && lines.length > COLLAPSED_PREVIEW_LINES * 2
+      ? name
+      : undefined;
+  const highlightedCode = await highlightCode(
+    lazyName ? lines.slice(0, COLLAPSED_PREVIEW_LINES).join("\n") : code,
+    lang
+  );
+
   return (
-    <CodeCollapsibleWrapper className={className}>
+    <CodeCollapsibleWrapper
+      className={className}
+      lazyName={lazyName}
+      title={title}
+    >
       <ComponentCode
-        code={code}
-        highlightedCode={highlightedCode}
+        html={highlightedCode}
+        name={lazyName}
+        truncated={Boolean(lazyName)}
         language={lang}
         title={title}
       />
     </CodeCollapsibleWrapper>
-  );
-}
-
-function ComponentCode({
-  code,
-  highlightedCode,
-  language,
-  title,
-}: {
-  code: string;
-  highlightedCode: string;
-  language: string;
-  title: string | undefined;
-}) {
-  return (
-    <figure
-      data-rehype-pretty-code-figure=""
-      className="group relative [&>pre]:max-h-[650px] [&>pre]:overflow-auto"
-    >
-      {title && (
-        <figcaption
-          data-rehype-pretty-code-title=""
-          className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
-          data-language={language}
-        >
-          {getIconForLanguageExtension(language)}
-          {title}
-        </figcaption>
-      )}
-      <div className="absolute top-2 right-2 z-10 opacity-70 transition-opacity duration-150 group-hover:opacity-100">
-        <CopyButton value={code} className="hover:opacity-100" />
-      </div>
-      <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
-    </figure>
   );
 }

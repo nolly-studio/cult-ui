@@ -222,12 +222,12 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "animated-number-demo",
+    name: "rolling-number-demo",
     type: "registry:component",
-    registryDependencies: ["animated-number"],
+    registryDependencies: ["rolling-number"],
     files: [
       {
-        path: "registry/default/example/animated-number-demo.tsx",
+        path: "registry/default/example/rolling-number-demo.tsx",
         type: "registry:component",
       },
     ],
@@ -1318,25 +1318,25 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "animated-dropzone-demo",
+    name: "halo-dropzone-demo",
     type: "registry:component",
-    registryDependencies: ["animated-dropzone"],
+    registryDependencies: ["halo-dropzone"],
 
     files: [
       {
-        path: "registry/default/example/animated-dropzone-demo.tsx",
+        path: "registry/default/example/halo-dropzone-demo.tsx",
         type: "registry:component",
       },
     ],
   },
   {
-    name: "animated-search-demo",
+    name: "halo-search-demo",
     type: "registry:component",
-    registryDependencies: ["animated-search", "button"],
+    registryDependencies: ["halo-search", "button"],
 
     files: [
       {
-        path: "registry/default/example/animated-search-demo.tsx",
+        path: "registry/default/example/halo-search-demo.tsx",
         type: "registry:component",
       },
     ],
@@ -1366,13 +1366,13 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "animated-button-demo",
+    name: "halo-button-demo",
     type: "registry:component",
-    registryDependencies: ["animated-button"],
+    registryDependencies: ["halo-button"],
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "registry/default/example/animated-button-demo.tsx",
+        path: "registry/default/example/halo-button-demo.tsx",
         type: "registry:component",
       },
     ],
@@ -1390,13 +1390,13 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "animated-card-demo",
+    name: "halo-card-demo",
     type: "registry:component",
-    registryDependencies: ["animated-card"],
+    registryDependencies: ["halo-card"],
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "registry/default/example/animated-card-demo.tsx",
+        path: "registry/default/example/halo-card-demo.tsx",
         type: "registry:component",
       },
     ],
@@ -1414,109 +1414,109 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "animated-tabs-demo",
+    name: "halo-tabs-demo",
     type: "registry:component",
-    registryDependencies: ["animated-tabs"],
+    registryDependencies: ["halo-tabs"],
 
     files: [
       {
-        path: "registry/default/example/animated-tabs-demo.tsx",
+        path: "registry/default/example/halo-tabs-demo.tsx",
         type: "registry:component",
       },
     ],
   },
   {
-    name: "animated-segmented-demo",
+    name: "halo-segmented-demo",
     type: "registry:component",
-    registryDependencies: ["animated-segmented"],
+    registryDependencies: ["halo-segmented"],
 
     files: [
       {
-        path: "registry/default/example/animated-segmented-demo.tsx",
+        path: "registry/default/example/halo-segmented-demo.tsx",
         type: "registry:component",
       },
     ],
   },
   {
-    name: "animated-toggle-group-demo",
+    name: "halo-toggle-group-demo",
     type: "registry:component",
-    registryDependencies: ["animated-toggle-group"],
+    registryDependencies: ["halo-toggle-group"],
 
     files: [
       {
-        path: "registry/default/example/animated-toggle-group-demo.tsx",
+        path: "registry/default/example/halo-toggle-group-demo.tsx",
         type: "registry:component",
       },
     ],
   },
   {
-    name: "animated-notification-demo",
+    name: "halo-notification-demo",
     type: "registry:component",
-    registryDependencies: ["animated-notification"],
+    registryDependencies: ["halo-notification"],
     dependencies: ["motion"],
     files: [
       {
-        path: "registry/default/example/animated-notification-demo.tsx",
+        path: "registry/default/example/halo-notification-demo.tsx",
         type: "registry:component",
       },
     ],
   },
   {
-    name: "animated-toast-demo",
+    name: "halo-toast-demo",
     type: "registry:component",
-    registryDependencies: ["animated-toast"],
+    registryDependencies: ["halo-toast"],
 
     files: [
       {
-        path: "registry/default/example/animated-toast-demo.tsx",
+        path: "registry/default/example/halo-toast-demo.tsx",
         type: "registry:component",
       },
     ],
   },
   {
-    name: "animated-switch-demo",
+    name: "halo-switch-demo",
     type: "registry:component",
-    registryDependencies: ["animated-switch"],
+    registryDependencies: ["halo-switch"],
 
     files: [
       {
-        path: "registry/default/example/animated-switch-demo.tsx",
+        path: "registry/default/example/halo-switch-demo.tsx",
         type: "registry:component",
       },
     ],
   },
   {
-    name: "animated-input-demo",
+    name: "halo-input-demo",
     type: "registry:component",
-    registryDependencies: ["animated-input"],
+    registryDependencies: ["halo-input"],
 
     files: [
       {
-        path: "registry/default/example/animated-input-demo.tsx",
+        path: "registry/default/example/halo-input-demo.tsx",
         type: "registry:component",
       },
     ],
   },
   {
-    name: "animated-field-demo",
+    name: "halo-field-demo",
     type: "registry:component",
-    registryDependencies: ["animated-field"],
+    registryDependencies: ["halo-field"],
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "registry/default/example/animated-field-demo.tsx",
+        path: "registry/default/example/halo-field-demo.tsx",
         type: "registry:component",
       },
     ],
   },
   {
-    name: "animated-progress-demo",
+    name: "halo-progress-demo",
     type: "registry:component",
-    registryDependencies: ["animated-progress"],
+    registryDependencies: ["halo-progress"],
 
     files: [
       {
-        path: "registry/default/example/animated-progress-demo.tsx",
+        path: "registry/default/example/halo-progress-demo.tsx",
         type: "registry:component",
       },
     ],
@@ -1534,37 +1534,37 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "animated-badge-demo",
+    name: "halo-badge-demo",
     type: "registry:component",
-    registryDependencies: ["animated-badge"],
+    registryDependencies: ["halo-badge"],
 
     files: [
       {
-        path: "registry/default/example/animated-badge-demo.tsx",
+        path: "registry/default/example/halo-badge-demo.tsx",
         type: "registry:component",
       },
     ],
   },
   {
-    name: "animated-select-demo",
+    name: "halo-select-demo",
     type: "registry:component",
-    registryDependencies: ["animated-select", "button"],
+    registryDependencies: ["halo-select", "button"],
 
     files: [
       {
-        path: "registry/default/example/animated-select-demo.tsx",
+        path: "registry/default/example/halo-select-demo.tsx",
         type: "registry:component",
       },
     ],
   },
   {
-    name: "animated-composer-demo",
+    name: "prompt-composer-demo",
     type: "registry:component",
-    registryDependencies: ["animated-composer"],
+    registryDependencies: ["prompt-composer"],
 
     files: [
       {
-        path: "registry/default/example/animated-composer-demo.tsx",
+        path: "registry/default/example/prompt-composer-demo.tsx",
         type: "registry:component",
       },
     ],
@@ -1586,5 +1586,125 @@ export const examples: Registry["items"] = [
         type: "registry:component",
       },
     ],
+  },
+  // Deprecated demo aliases
+  {
+    name: "animated-badge-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-badge-demo.json"],
+    files: [],
+    description: "Deprecated alias for halo-badge-demo",
+  },
+  {
+    name: "animated-button-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-button-demo.json"],
+    files: [],
+    description: "Deprecated alias for halo-button-demo",
+  },
+  {
+    name: "animated-card-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-card-demo.json"],
+    files: [],
+    description: "Deprecated alias for halo-card-demo",
+  },
+  {
+    name: "animated-composer-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/prompt-composer-demo.json"],
+    files: [],
+    description: "Deprecated alias for prompt-composer-demo",
+  },
+  {
+    name: "animated-dropzone-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-dropzone-demo.json"],
+    files: [],
+    description: "Deprecated alias for halo-dropzone-demo",
+  },
+  {
+    name: "animated-field-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-field-demo.json"],
+    files: [],
+    description: "Deprecated alias for halo-field-demo",
+  },
+  {
+    name: "animated-input-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-input-demo.json"],
+    files: [],
+    description: "Deprecated alias for halo-input-demo",
+  },
+  {
+    name: "animated-notification-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-notification-demo.json"],
+    files: [],
+    description: "Deprecated alias for halo-notification-demo",
+  },
+  {
+    name: "animated-number-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/rolling-number-demo.json"],
+    files: [],
+    description: "Deprecated alias for rolling-number-demo",
+  },
+  {
+    name: "animated-progress-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-progress-demo.json"],
+    files: [],
+    description: "Deprecated alias for halo-progress-demo",
+  },
+  {
+    name: "animated-search-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-search-demo.json"],
+    files: [],
+    description: "Deprecated alias for halo-search-demo",
+  },
+  {
+    name: "animated-segmented-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-segmented-demo.json"],
+    files: [],
+    description: "Deprecated alias for halo-segmented-demo",
+  },
+  {
+    name: "animated-select-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-select-demo.json"],
+    files: [],
+    description: "Deprecated alias for halo-select-demo",
+  },
+  {
+    name: "animated-switch-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-switch-demo.json"],
+    files: [],
+    description: "Deprecated alias for halo-switch-demo",
+  },
+  {
+    name: "animated-tabs-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-tabs-demo.json"],
+    files: [],
+    description: "Deprecated alias for halo-tabs-demo",
+  },
+  {
+    name: "animated-toast-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-toast-demo.json"],
+    files: [],
+    description: "Deprecated alias for halo-toast-demo",
+  },
+  {
+    name: "animated-toggle-group-demo",
+    type: "registry:component",
+    registryDependencies: ["https://cult-ui.com/r/halo-toggle-group-demo.json"],
+    files: [],
+    description: "Deprecated alias for halo-toggle-group-demo",
   },
 ]

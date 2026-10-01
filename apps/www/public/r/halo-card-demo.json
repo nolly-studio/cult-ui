@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "halo-card-demo",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "halo-card"
+  ],
+  "files": [
+    {
+      "path": "registry/default/example/halo-card-demo.tsx",
+      "content": "\"use client\"\n\nimport { MoreHorizontalIcon } from \"lucide-react\"\n\nimport {\n  HaloCard,\n  HaloCardAction,\n  HaloCardButton,\n  HaloCardContent,\n  HaloCardDescription,\n  HaloCardFooter,\n  HaloCardHeader,\n  HaloCardTitle,\n} from \"@/registry/default/ui/halo-card\"\n\nexport default function HaloCardDemo() {\n  return (\n    <div className=\"flex w-full max-w-lg flex-col gap-10\">\n      <HaloCard aria-label=\"Composable animated card example\">\n        <HaloCardHeader>\n          <HaloCardTitle>Composable card</HaloCardTitle>\n          <HaloCardDescription>\n            Header, content, and footer slots share the same gradient rim and\n            frosted surface as the polished search field. Footer actions use{\" \"}\n            <code className=\"rounded bg-muted px-1 py-0.5 font-mono text-[0.8rem]\">\n              HaloCardButton\n            </code>{\" \"}\n            so labels stay high-contrast in dark mode.\n          </HaloCardDescription>\n          <HaloCardAction>\n            <HaloCardButton\n              aria-label=\"More options\"\n              size=\"icon\"\n              type=\"button\"\n              variant=\"secondary\"\n            >\n              <MoreHorizontalIcon aria-hidden className=\"size-4\" />\n            </HaloCardButton>\n          </HaloCardAction>\n        </HaloCardHeader>\n\n        <HaloCardContent>\n          <p className=\"text-foreground/90 text-sm leading-relaxed\">\n            Use{\" \"}\n            <code className=\"rounded bg-muted px-1 py-0.5 font-mono text-[0.8rem]\">\n              HaloCardContent\n            </code>{\" \"}\n            for the main body between the header and footer. Tab through the\n            header action or footer buttons to see focus-within on the rim.\n          </p>\n          <ul className=\"list-inside list-disc space-y-1.5 text-muted-foreground text-sm\">\n            <li>\n              <span className=\"text-foreground/90\">HaloCardHeader</span> —\n              title, description, optional action\n            </li>\n            <li>\n              <span className=\"text-foreground/90\">HaloCardFooter</span> —\n              primary actions aligned to the end\n            </li>\n          </ul>\n        </HaloCardContent>\n\n        <HaloCardFooter className=\"justify-between gap-3\">\n          <HaloCardButton type=\"button\" variant=\"secondary\">\n            Cancel\n          </HaloCardButton>\n          <HaloCardButton type=\"button\" variant=\"primary\">\n            Continue\n          </HaloCardButton>\n        </HaloCardFooter>\n      </HaloCard>\n\n      <HaloCard\n        aria-label=\"Minimal animated card\"\n        className=\"max-w-md self-center\"\n      >\n        <HaloCardHeader>\n          <HaloCardTitle>Minimal layout</HaloCardTitle>\n          <HaloCardDescription>\n            Title and description only — no content slot or footer. Same rim and\n            hover behavior.\n          </HaloCardDescription>\n        </HaloCardHeader>\n      </HaloCard>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}
