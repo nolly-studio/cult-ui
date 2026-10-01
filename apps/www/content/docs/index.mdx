@@ -3,67 +3,114 @@ title: Introduction
 description: Motion-rich, niche components for shadcn/ui projects. Accessible, customizable, and open source.
 ---
 
-Cult UI is an extension of the shadcn/ui ecosystem: a curated set of niche, animated components built to work with shadcn theme variables, patterns, and workflows.
+Cult UI is a shadcn/ui registry of animated, niche components: AI prompt inputs, Halo form controls, shader heroes, device mockups, illustrations, and more. Every component is plain React and Tailwind CSS source that you add to your project with the shadcn CLI, then own and edit like the rest of your code.
 
-This is not a traditional npm component package. Components are distributed as source via the registry and can be copied into your codebase, so you fully own and customize what you ship.
+## How it works
 
-**What does "not a component library" mean here?**
+Cult UI is not an npm package. It is a [registry](https://ui.shadcn.com/docs/registry) that the shadcn CLI already knows about under the `@cult-ui` namespace.
 
-It means no black-box dependency layer. You do not install a monolithic UI package from npm and style around its constraints.
+When you run `npx shadcn@latest add @cult-ui/halo-button`, the CLI:
 
-Instead, pick the components you need, add them through the shadcn registry CLI or copy the source, and adapt them to your product.
+1. Copies `halo-button.tsx` into your `components/ui` folder.
+2. Installs the npm packages it needs, such as `motion` and `@base-ui/react`.
+3. Adds any shadcn/ui components it builds on, such as `button` or `badge`.
 
-_Use Cult UI as a reference implementation for building your own design system on top of shadcn._
+There is no Cult UI runtime and nothing to keep in sync. Components use your shadcn theme tokens (`bg-card`, `text-muted-foreground`, `ring-ring`), so they pick up your colors, radius, and dark mode.
+
+## Quick start
+
+In a React project that already uses shadcn/ui:
+
+```bash
+npx shadcn@latest add @cult-ui/halo-button
+```
+
+```tsx
+import { HaloButton } from "@/components/ui/halo-button"
+
+export default function Page() {
+  return <HaloButton>Get started</HaloButton>
+}
+```
+
+New project, or not using shadcn/ui yet? Start with [Installation](/docs/installation).
+
+## Where to go next
+
+<div className="mt-6 grid gap-4 sm:grid-cols-2">
+  <LinkedCard href="/docs/installation">
+    <p className="font-medium">Installation</p>
+    <p className="text-muted-foreground mt-1 text-center text-sm">
+      Set up a project and add your first component
+    </p>
+  </LinkedCard>
+  <LinkedCard href="/docs/theming">
+    <p className="font-medium">Theming</p>
+    <p className="text-muted-foreground mt-1 text-center text-sm">
+      Which tokens components read and how to restyle them
+    </p>
+  </LinkedCard>
+  <LinkedCard href="/docs/mcp-server">
+    <p className="font-medium">MCP Server</p>
+    <p className="text-muted-foreground mt-1 text-center text-sm">
+      Let Cursor or Claude Code search and install components
+    </p>
+  </LinkedCard>
+  <LinkedCard href="/docs/llms">
+    <p className="font-medium">LLMs & Agents</p>
+    <p className="text-muted-foreground mt-1 text-center text-sm">
+      llms.txt, markdown docs, and agent rules
+    </p>
+  </LinkedCard>
+</div>
 
 ## FAQ
 
 <Accordion type="multiple">
 
 <AccordionItem value="faq-1">
-	<AccordionTrigger>
-		Why copy/paste and not packaged as a dependency?
-	</AccordionTrigger>
-	<AccordionContent>
-The idea behind this is to give you ownership and control over the code, allowing you to decide how the components are built and styled.
+<AccordionTrigger>Do I need shadcn/ui to use Cult UI?</AccordionTrigger>
+<AccordionContent>
 
-Start with some sensible defaults, then customize the components to your needs.
-
-One of the drawback of packaging the components in an npm package is that the style is coupled with the implementation. _The design of your components should be separate from their implementation._
+You need the shadcn CLI setup, which is a `components.json` file, a `cn` helper, and shadcn theme tokens in your CSS. Running `npx shadcn@latest init` creates all three. You do not need to use any other shadcn/ui components, although some Cult UI components build on them and the CLI adds those for you.
 
 </AccordionContent>
 </AccordionItem>
 
 <AccordionItem value="faq-2">
-  <AccordionTrigger>
-    Do you plan to publish it as an npm package?
-  </AccordionTrigger>
-  <AccordionContent>
-    No. I have no plans to publish it as an npm package.
-  </AccordionContent>
+<AccordionTrigger>Which frameworks are supported?</AccordionTrigger>
+<AccordionContent>
+
+Any React framework that shadcn/ui supports, including Next.js, Vite, React Router, Astro, and TanStack Start. A few components import `next/image` or `next/link`. They work best in Next.js and need a small swap elsewhere, which the [Vite guide](/docs/installation/vite) lists.
+
+</AccordionContent>
 </AccordionItem>
 
 <AccordionItem value="faq-3">
-<AccordionTrigger>
-Which frameworks are supported?
-</AccordionTrigger>
+<AccordionTrigger>Which versions of React and Tailwind CSS do the components target?</AccordionTrigger>
 <AccordionContent>
 
-You can use any framework that supports React. [Next.js](https://ui.Jordan-Gilliam.com/docs/installation/next), [Astro](https://ui.Jordan-Gilliam.com/docs/installation/astro), [Remix](https://ui.Jordan-Gilliam.com/docs/installation/remix), [Gatsby](https://ui.Jordan-Gilliam.com/docs/installation/gatsby) etc.
+React 19 and Tailwind CSS v4, matching a fresh `shadcn init`. Most components also run on React 18. Animated components use [Motion](https://motion.dev) and respect `prefers-reduced-motion`.
 
 </AccordionContent>
 </AccordionItem>
 
 <AccordionItem value="faq-4">
-	<AccordionTrigger>
-	Can I use this in my project?
-	</AccordionTrigger>
-	<AccordionContent>
-Yes. Free to use for personal and commercial projects. No attribution required.
+<AccordionTrigger>Why copy source instead of installing a package?</AccordionTrigger>
+<AccordionContent>
 
-But hey, let me know if you do. I'd love to see what you build.
+Owning the source lets you change anything, from markup to animation timing, without fighting a package API or waiting for a release. The tradeoff is that updates are manual. Re-run `shadcn add` with `--overwrite` to pull the latest version of a component, then review the diff.
 
-    </AccordionContent>
+</AccordionContent>
+</AccordionItem>
 
+<AccordionItem value="faq-5">
+<AccordionTrigger>Can I use Cult UI in commercial projects?</AccordionTrigger>
+<AccordionContent>
+
+Yes. Cult UI is [MIT licensed](https://github.com/nolly-studio/cult-ui/blob/main/LICENSE.md) and free for personal and commercial use, with no attribution required.
+
+</AccordionContent>
 </AccordionItem>
 
 </Accordion>

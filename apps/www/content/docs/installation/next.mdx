@@ -3,141 +3,62 @@ title: Next.js
 description: Set up a Next.js App Router project with shadcn/ui and Tailwind CSS, then add Cult UI components with the shadcn CLI.
 ---
 
+Next.js is the best-supported framework for Cult UI. Every component works in the App Router, including the ones that use `next/image` and `next/link`.
+
 <Steps>
 
-### Create project
+### Create a project with shadcn/ui
 
-Start by creating a new Next.js project using `create-next-app`:
-
-```bash
-npx create-next-app@latest my-app --typescript --tailwind --eslint
-```
-
-### Run the CLI
-
-Run the `cult-ui` init command to setup your project:
+This scaffolds a Next.js app with Tailwind CSS v4, the `@/` alias, `components.json`, and theme tokens:
 
 ```bash
-npx cult-ui@latest init
+npx shadcn@latest init -t next
 ```
 
-### Add motion
+When it asks for a component library, any choice works. Cult UI components that build on shadcn/ui components use the version you pick.
 
-Install `motion` for animation-powered components:
+Already have a Next.js app? Run `npx shadcn@latest init` inside it. The [shadcn Next.js guide](https://ui.shadcn.com/docs/installation/next) covers the prompts in detail.
+
+### Add a Cult UI component
 
 ```bash
-npm install motion
+npx shadcn@latest add @cult-ui/prompt-composer
 ```
 
-### Configure components.json
+### Use it from any page
 
-You will be asked a few questions to configure `components.json`:
+Cult UI components that need the browser already start with `"use client"`, so you can import them directly into Server Components:
 
-```txt showLineNumbers
-Which style would you like to use? › Default
-Which color would you like to use as base color? › Slate
-Do you want to use CSS variables for colors? › no / yes
-```
+```tsx title="app/page.tsx"
+import { PromptComposer } from "@/components/ui/prompt-composer"
 
-### Fonts (Tailwind v4)
-
-I use [Inter](https://rsms.me/inter/) as the default font. Inter is not required. You can replace it with any other font.
-
-Here's how I configure Inter for Next.js:
-
-**1. Import the font in the root layout:**
-
-```js showLineNumbers title=app/layout.tsx {2,5-8,16-17}
-import "@/styles/globals.css"
-import { Inter as FontSans } from "next/font/google"
-
-import { cn } from "@/lib/utils"
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-inter",
-})
-
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function Page() {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head />
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
-        ...
-      </body>
-    </html>
+    <main className="mx-auto max-w-xl p-8">
+      <PromptComposer placeholder="Ask anything" />
+    </main>
   )
 }
 ```
 
-**2. Map your font variable in `globals.css`**
-
-```css title="app/globals.css"
-@import "tailwindcss";
-
-@theme inline {
-  --font-sans: var(--font-inter);
-}
-```
-
-### App structure
-
-Here's how I structure my Next.js apps. You can use this as a reference:
-
-```txt {6-10,14-15}
-.
-├── app
-│   ├── layout.tsx
-│   └── page.tsx
-├── components
-│   ├── ui
-│   │   ├── alert-dialog.tsx
-│   │   ├── button.tsx
-│   │   ├── dropdown-menu.tsx
-│   │   └── ...
-│   ├── main-nav.tsx
-│   ├── page-header.tsx
-│   └── ...
-├── lib
-│   └── utils.ts
-├── styles
-│   └── globals.css
-├── next.config.js
-├── package.json
-├── postcss.config.mjs
-└── tsconfig.json
-```
-
-- I place the UI components in the `components/ui` folder.
-- The rest of the components such as `<PageHeader />` and `<MainNav />` are placed in the `components` folder.
-- The `lib` folder contains all the utility functions. I have a `utils.ts` where I define the `cn` helper.
-- The `styles` folder contains the global CSS.
-
-### That's it
-
-You can now start adding components to your project.
-
-```bash
-npx cult-ui@latest add button
-```
-
-The command above will add the `Button` component to your project. You can then import it like this:
-
-```tsx {1,6} showLineNumbers
-import { Button } from "@/components/ui/button";
-
-export default function Home() {
-  return (
-    <div>
-      <Button>Click me</Button>
-    </div>
-  );
-}
-```
-
 </Steps>
+
+## Next.js notes
+
+### Dark mode
+
+Components style dark mode through the `.dark` class that shadcn uses. Add [next-themes](https://ui.shadcn.com/docs/dark-mode/next) with `attribute="class"` to toggle it. Globe, Gradient Button Group, and Shader Lens Blur also read the active theme from `next-themes`, so they need its `ThemeProvider` in your root layout.
+
+### Remote images
+
+Components that render `next/image`, such as Cutout Card, Dither Image, and Minimal Card, follow the usual Next.js rule for remote images. Add the image host to `images.remotePatterns` in `next.config.ts`, or use local files from `public/`.
+
+### Fonts
+
+Components inherit your font tokens, so `next/font` works as usual. The Pixel Heading and Pixel Paragraph components use the Geist pixel fonts from the `geist` package. Their pages show the layout and `@theme` setup.
+
+## Next steps
+
+- Browse components in the sidebar and copy the install command from any page.
+- Adjust colors and radius in [Theming](/docs/theming).
+- Let your editor's agent install components through the [MCP Server](/docs/mcp-server).

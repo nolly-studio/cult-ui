@@ -3,132 +3,70 @@ title: Vite
 description: Set up a Vite React project with shadcn/ui, Tailwind CSS, and path aliases, then add Cult UI components with the shadcn CLI.
 ---
 
+Most Cult UI components run in a Vite React app without changes. A handful import Next.js modules and need a one-line swap, listed [below](#nextjs-specific-components).
+
 <Steps>
 
-### Create project
+### Set up Vite with shadcn/ui
 
-Start by creating a new React project using `vite`:
-
-```bash
-npm create vite@latest
-```
-
-### Add Tailwind v4
-
-Install Tailwind v4 and the PostCSS plugin:
+This scaffolds a Vite, React, and TypeScript app with Tailwind CSS v4, the `@/` alias, `components.json`, and theme tokens:
 
 ```bash
-npm install -D tailwindcss @tailwindcss/postcss
+npx shadcn@latest init -t vite
 ```
 
-Create `postcss.config.mjs`:
+Adding Cult UI to an existing Vite app? Follow the [shadcn Vite guide](https://ui.shadcn.com/docs/installation/vite) to add Tailwind CSS and the alias, then run `npx shadcn@latest init`.
 
-```js title="postcss.config.mjs"
-export default {
-  plugins: {
-    "@tailwindcss/postcss": {},
-  },
-};
-```
-
-Then replace your `src/index.css` contents with:
-
-```css title="src/index.css"
-@import "tailwindcss";
-```
-
-### Add motion
+### Add a Cult UI component
 
 ```bash
-npm install motion
+npx shadcn@latest add @cult-ui/halo-segmented
 ```
 
-### Edit tsconfig.json file
+### Use it
 
-Add the following code to the `tsconfig.json` file to resolve paths:
+```tsx title="src/App.tsx"
+import { HaloSegmented } from "@/components/ui/halo-segmented"
 
-```ts {4-9} showLineNumbers
-{
-  "compilerOptions": {
-    // ...
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    }
-    // ...
-  }
-}
-```
-
-### Update vite.config.ts
-
-Add the following code to the vite.config.ts so your app can resolve paths without error
-
-```bash
-# (so you can import "path" without error)
-npm i -D @types/node
-```
-
-```typescript
-import path from "path";
-import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
-
-export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
-});
-```
-
-### Run the CLI
-
-Run the `cult-ui` init command to setup your project:
-
-```bash
-npx cult-ui@latest init
-```
-
-### Configure components.json
-
-You will be asked a few questions to configure `components.json`:
-
-```txt showLineNumbers
-Would you like to use TypeScript (recommended)? no / yes
-Which style would you like to use? › Default
-Which color would you like to use as base color? › Slate
-Where is your global CSS file? › › src/index.css
-Do you want to use CSS variables for colors? › no / yes
-Configure the import alias for components: › @/components
-Configure the import alias for utils: › @/lib/utils
-Are you using React Server Components? › no / yes (no)
-```
-
-### That's it
-
-You can now start adding components to your project.
-
-```bash
-npx cult-ui@latest add button
-```
-
-The command above will add the `Button` component to your project. You can then import it like this:
-
-```tsx {1,6} showLineNumbers
-import { Button } from "@/components/ui/button";
-
-export default function Home() {
+export default function App() {
   return (
-    <div>
-      <Button>Click me</Button>
-    </div>
-  );
+    <HaloSegmented
+      defaultValue="monthly"
+      items={[
+        { value: "monthly", label: "Monthly" },
+        { value: "yearly", label: "Yearly" },
+      ]}
+    />
+  )
 }
 ```
+
+The `"use client"` line at the top of some components is a Next.js directive. Vite ignores it, so leave it in place.
 
 </Steps>
+
+## Next.js-specific components
+
+These components import `next/image` or `next/link`. After adding one, replace `Image` from `next/image` with a plain `<img>` (drop the `fill`, `priority`, and `sizes` props) and `Link` from `next/link` with `<a>` or your router's link:
+
+- Apple Pro Display XDR
+- Cutout Card
+- Dither Image
+- Feature Carousel
+- Feature Sticky Section
+- Folded Card
+- Hover Video Player
+- Intro Disclosure
+- Kanban Board
+- Loading Carousel
+- Minimal Card
+- Organic Card
+- Organic Card Small
+- Text Gif
+
+Globe, Gradient Button Group, and Shader Lens Blur read the active theme with `useTheme` from `next-themes`. The package works in Vite too. Wrap your app in its `ThemeProvider` with `attribute="class"`, or replace `useTheme` with your own theme state.
+
+## Next steps
+
+- Browse components in the sidebar and copy the install command from any page.
+- Adjust colors and radius in [Theming](/docs/theming).

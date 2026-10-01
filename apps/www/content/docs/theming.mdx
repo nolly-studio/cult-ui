@@ -3,188 +3,93 @@ title: Theming
 description: Theme Cult UI components with shadcn/ui CSS variables and Tailwind CSS v4 tokens, including dark mode and custom brand colors.
 ---
 
-You can choose between using CSS variables or Tailwind CSS utility classes for theming.
+Cult UI components use the same CSS variables as shadcn/ui, so the theme you already have applies to them. Change a token in your global CSS and every component that reads it updates, in light and dark mode.
 
-## Utility classes
+## The tokens components read
 
-```tsx /bg-zinc-950/ /text-zinc-50/ /dark:bg-white/ /dark:text-zinc-950/
-<div className="bg-zinc-950 dark:bg-white" />
-```
+A fresh `shadcn init` defines all of these. If you write your own theme, these are the ones that change how Cult UI looks:
 
-To use utility classes for theming set `tailwind.cssVariables` to `false` in your `components.json` file.
+| Token | What it controls in Cult UI |
+| --- | --- |
+| `--card` | Surfaces of cards, Halo controls, and the frosted fills mixed from it |
+| `--border`, `--input` | Hairline borders, input outlines, and control tracks |
+| `--muted`, `--muted-foreground` | Secondary surfaces, placeholders, captions, and icons |
+| `--foreground`, `--background` | Body text and page-level backgrounds |
+| `--ring` | Focus rings on every interactive component |
+| `--accent`, `--destructive` | Hover states and error states |
+| `--chart-1` to `--chart-5` | Globe marker and arc colors |
+| `--radius` | Corner radius for components that follow your theme's rounding |
 
-```json {8} title="components.json"
-{
-  "style": "default",
-  "rsc": true,
-  "tailwind": {
-    "config": "tailwind.config.js",
-    "css": "app/globals.css",
-    "baseColor": "slate",
-    "cssVariables": false
-  },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils"
-  }
-}
-```
+## Change your theme
 
-## CSS Variables
-
-```tsx /bg-background/ /text-foreground/
-<div className="bg-background text-foreground" />
-```
-
-To use CSS variables for theming set `tailwind.cssVariables` to `true` in your `components.json` file.
-
-```json {8} title="components.json"
-{
-  "style": "default",
-  "rsc": true,
-  "tailwind": {
-    "config": "tailwind.config.js",
-    "css": "app/globals.css",
-    "baseColor": "slate",
-    "cssVariables": true
-  },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils"
-  }
-}
-```
-
-### Convention
-
-We use a simple `background` and `foreground` convention for colors. The `background` variable is used for the background color of the component and the `foreground` variable is used for the text color.
-
-<Callout className="mt-4">
-
-The `background` suffix is omitted when the variable is used for the background color of the component.
-
-</Callout>
-
-Given the following CSS variables:
-
-```css
---primary: 222.2 47.4% 11.2%;
---primary-foreground: 210 40% 98%;
-```
-
-The `background` color of the following component will be `hsl(var(--primary))` and the `foreground` color will be `hsl(var(--primary-foreground))`.
-
-```tsx
-<div className="bg-primary text-primary-foreground">Hello</div>
-```
-
-<Callout>
-
-**CSS variables must be defined without color space function**. See the [Tailwind CSS documentation](https://tailwindcss.com/docs/customizing-colors#using-css-variables) for more information.
-
-</Callout>
-
-### List of variables
-
-Here's the list of variables available for customization:
-
-<Steps>
-
-```css title="Default background color of <body />...etc"
---background: 0 0% 100%;
---foreground: 222.2 47.4% 11.2%;
-```
-
-```css title="Muted backgrounds such as <TabsList />, <Skeleton /> and <Switch />"
---muted: 210 40% 96.1%;
---muted-foreground: 215.4 16.3% 46.9%;
-```
-
-```css title="Background color for <TextureCard />"
---card: 0 0% 100%;
---card-foreground: 222.2 47.4% 11.2%;
-```
-
-```css title="Background color for popovers such as <DropdownMenu />, <HoverCard />, <Popover />"
---popover: 0 0% 100%;
---popover-foreground: 222.2 47.4% 11.2%;
-```
-
-```css title="Default border color"
---border: 214.3 31.8% 91.4%;
-```
-
-```css title="Border color for inputs such as <Input />, <Select />, <Textarea />"
---input: 214.3 31.8% 91.4%;
-```
-
-```css title="Primary colors for <Button />"
---primary: 222.2 47.4% 11.2%;
---primary-foreground: 210 40% 98%;
-```
-
-```css title="Secondary colors for <Button />"
---secondary: 210 40% 96.1%;
---secondary-foreground: 222.2 47.4% 11.2%;
-```
-
-```css title="Used for accents such as hover effects on <DropdownMenuItem>, <SelectItem>...etc"
---accent: 210 40% 96.1%;
---accent-foreground: 222.2 47.4% 11.2%;
-```
-
-```css title="Used for destructive actions such as <Button variant="destructive">"
---destructive: 0 100% 50%;
---destructive-foreground: 210 40% 98%;
-```
-
-```css title="Used for focus ring"
---ring: 215 20.2% 65.1%;
-```
-
-```css title="Border radius for card, input and buttons"
---radius: 0.5rem;
-```
-
-</Steps>
-
-### Adding new colors
-
-To add new colors, you need to add them to your CSS file and to your `tailwind.config.js` file.
+Edit the values in your global CSS. shadcn uses OKLCH colors with Tailwind CSS v4:
 
 ```css title="app/globals.css"
 :root {
-  --warning: 38 92% 50%;
-  --warning-foreground: 48 96% 89%;
+  --card: oklch(1 0 0);
+  --border: oklch(0.92 0 0);
+  --ring: oklch(0.55 0.2 260);
+  --radius: 0.75rem;
 }
 
 .dark {
-  --warning: 48 96% 89%;
-  --warning-foreground: 38 92% 50%;
+  --card: oklch(0.2 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --ring: oklch(0.65 0.18 260);
 }
 ```
 
-```js {5-6} title="tailwind.config.js"
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        warning: "hsl(var(--warning))",
-        "warning-foreground": "hsl(var(--warning-foreground))",
-      },
-    },
-  },
-};
+For a complete palette, copy one of the [Cult UI themes](/themes) or generate one with the [shadcn theme editor](https://ui.shadcn.com/themes).
+
+## Dark mode
+
+Components switch to their dark styles when an ancestor has the `.dark` class, which matches shadcn's `@custom-variant dark (&:is(.dark *))`. Use [next-themes](https://ui.shadcn.com/docs/dark-mode) or any toggle that sets that class. Globe, Gradient Button Group, and Shader Lens Blur also read the theme from `next-themes` to pick their canvas colors.
+
+## Style one instance
+
+Every component accepts `className`, merged last with `cn`, so your classes win over the defaults:
+
+```tsx
+<HaloCard className="max-w-sm rounded-3xl" />
 ```
 
-You can now use the `warning` utility class in your components.
+Some components expose their own CSS variables for colors that tokens do not cover. Set them through `className` or `style`:
 
-```tsx /bg-warning/ /text-warning-foreground/
-<div className="bg-warning text-warning-foreground" />
+| Component | Variables |
+| --- | --- |
+| Organic Button | `--organic-surface`, `--organic-fg`, `--organic-duration` |
+| Illustration Globe Vercel | `--globe-bg`, `--globe-dot`, `--globe-wire`, `--globe-icon`, `--globe-error` |
+| Tabs Illustration Vercel | `--ga-bg`, `--ga-fg`, `--ga-surface`, `--ga-border`, and related `--ga-*` values |
+
+```tsx
+<OrganicButton className="[--organic-fg:var(--primary-foreground)] [--organic-surface:var(--primary)]">
+  Get started
+</OrganicButton>
 ```
 
-### Other color formats
+## Brand gradients
 
-I recommend using [HSL colors](https://www.smashingmagazine.com/2021/07/hsl-colors-css/) for theming but you can also use other color formats if you prefer.
+The animated rims on the Halo kit and Prompt Composer use fixed multicolor gradients so they look the same in any theme. To match your brand, edit the `linear-gradient(...)` values in the component file. The file lives in your project, so the change is yours to keep. Border Beam components get their colors from the `border-beam` package, so change them with the `colorVariant` and `theme` props.
 
-See the [Tailwind CSS documentation](https://tailwindcss.com/docs/customizing-colors#using-css-variables) for more information on using `rgb`, `rgba` or `hsl` colors.
+## Add a token
+
+To add a color that your own components can share, define it for both modes and expose it to Tailwind with `@theme inline`:
+
+```css title="app/globals.css"
+:root {
+  --warning: oklch(0.84 0.16 84);
+  --warning-foreground: oklch(0.28 0.07 46);
+}
+
+.dark {
+  --warning: oklch(0.41 0.11 46);
+  --warning-foreground: oklch(0.99 0.02 95);
+}
+
+@theme inline {
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+}
+```
+
+You can then use `bg-warning` and `text-warning-foreground` anywhere.

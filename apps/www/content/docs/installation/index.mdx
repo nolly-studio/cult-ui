@@ -4,125 +4,139 @@ description: Install Cult UI components with the shadcn CLI in Next.js, Vite, or
 published: true
 ---
 
-<Callout className="mb-6 border-emerald-600 bg-emerald-100 dark:border-emerald-400 dark:bg-emerald-900">
-
-**Starting a new project?** Begin with shadcn first:
-
-```bash
-npx shadcn@latest init
-```
-
-This guides you through creating a base project with your preferred framework, icon library, and theme variables.
-
-</Callout>
-
-## Quick Start
-
-Run the following command to initialize shadcn/ui in a new project:
-
-```bash
-npx shadcn@latest init
-```
-
-Then continue below to install Cult Components and configure the Cult UI registry.
-
-## Pick Your Framework
-
-Choose your framework, then follow the installation guide:
-
-<div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-6">
-  <LinkedCard href="/docs/installation/next">
-    <p className="mt-2 font-medium">Next.js</p>
-  </LinkedCard>
-  <LinkedCard href="/docs/installation/vite">
-    <p className="mt-2 font-medium">Vite</p>
-  </LinkedCard>
-  <LinkedCard href="/docs/installation/manual">
-    <p className="mt-2 font-medium">Manual (React)</p>
-  </LinkedCard>
-</div>
+Cult UI components install with the shadcn CLI from the `@cult-ui` registry. If your project already runs shadcn/ui, skip to [step 2](#add-a-component).
 
 <Steps>
 
-### Overview
+### Set up shadcn/ui
 
-Cult Components are designed specifically for **React** and developed using **TypeScript**. They use **Tailwind CSS v4** for styling and **motion** along with CSS for animations. While Cult Components seamlessly integrate with the shadcn ecosystem, shadcn is not mandatory for their use, though some examples may include shadcn components.
-
-### Prerequisites
-
-To get started, ensure you have the following dependencies installed:
+Cult UI needs what `shadcn init` creates: a `components.json`, the `cn` helper in `lib/utils.ts`, an `@/` import alias, and theme tokens in your global CSS.
 
 ```bash
-npm install -D tailwindcss@latest @tailwindcss/postcss clsx tailwind-merge
-npm install motion
+npx shadcn@latest init
 ```
 
-Next, integrate our utility function by adding the following code to your project:
+Starting from scratch? `init` can scaffold the project too. Pass `-t` with `next`, `vite`, `start`, `react-router`, or `astro`, or open a framework guide:
 
-```typescript
-// lib/utils.ts
-import clsx, { ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
+<div className="mt-6 grid gap-4 sm:grid-cols-3">
+  <LinkedCard href="/docs/installation/next">
+    <p className="font-medium">Next.js</p>
+  </LinkedCard>
+  <LinkedCard href="/docs/installation/vite">
+    <p className="font-medium">Vite</p>
+  </LinkedCard>
+  <LinkedCard href="/docs/installation/manual">
+    <p className="font-medium">Without the CLI</p>
+  </LinkedCard>
+</div>
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+### Add a component
+
+Use the `@cult-ui/` prefix with any component name from these docs:
+
+```bash
+npx shadcn@latest add @cult-ui/halo-button
+```
+
+The `@cult-ui` namespace is listed in the shadcn registry directory, so this works without editing `components.json`. The CLI writes the component to `components/ui/halo-button.tsx`, installs its npm dependencies, and adds any shadcn/ui components it builds on.
+
+Add several at once:
+
+```bash
+npx shadcn@latest add @cult-ui/halo-card @cult-ui/halo-input @cult-ui/halo-switch
+```
+
+### Use it
+
+Import from the path the CLI printed:
+
+```tsx title="app/page.tsx"
+import { HaloButton } from "@/components/ui/halo-button"
+
+export default function Page() {
+  return <HaloButton>Get started</HaloButton>
 }
 ```
 
-### CLI Installation (shadcn v3)
+Every component page shows its props, examples, and the source you now own.
 
-For projects using shadcn CLI v3, you can configure the Cult UI registry to install components directly via the command line.
+</Steps>
 
-#### Configure Registry
+## Find components from the terminal
 
-Add the Cult UI registry to your `components.json` file:
+Search the registry and preview a component before adding it:
 
-```json
+```bash
+npx shadcn@latest search @cult-ui --query card
+npx shadcn@latest view @cult-ui/prompt-composer
+```
+
+To let an AI agent do this for you, set up the [MCP Server](/docs/mcp-server).
+
+## Pin the registry in components.json
+
+You only need this if you use a shadcn CLI older than 3.0, run in an environment that cannot reach the shadcn registry directory, or want the registry URL to be explicit for your team:
+
+```json title="components.json"
 {
-  "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "new-york",
-  "rsc": true,
-  "tsx": true,
-  "tailwind": {
-    "config": "",
-    "css": "app/globals.css",
-    "baseColor": "neutral",
-    "cssVariables": true,
-    "prefix": ""
-  },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils",
-    "ui": "@/components/ui",
-    "lib": "@/lib",
-    "hooks": "@/hooks"
-  },
-  "iconLibrary": "lucide",
   "registries": {
-    "@cult-ui": "https://cult-ui.com/r/{name}.json"
+    "@cult-ui": "https://www.cult-ui.com/r/{name}.json"
   }
 }
 ```
 
-#### Install Components
-
-Once configured, you can install components using:
+You can also add a single component by URL with any CLI version:
 
 ```bash
-# Install a single component
-npx shadcn@beta add @cult-ui/text-gif
-
-# Install multiple components
-npx shadcn@beta add @cult-ui/texture-card @cult-ui/texture-button
-
-# Search for components
-npx shadcn@beta search @cult-ui --query "texture-button"
+npx shadcn@latest add https://www.cult-ui.com/r/halo-button.json
 ```
 
-### Manual Installation
+## Update a component
 
-You're ready to go! Visit any [component](/components) page and follow the provided instructions.
+Components are your code, so updates are opt-in. Re-add a component with `--overwrite` to replace it with the latest version, then review the diff for any local changes you want to keep:
 
-Just copy and paste the components you need—no unnecessary bloat or third-party dependencies.
+```bash
+npx shadcn@latest add @cult-ui/halo-button --overwrite
+```
 
-</Steps>
+## Troubleshooting
+
+<Accordion type="multiple">
+
+<AccordionItem value="unknown-registry">
+<AccordionTrigger>The CLI says the @cult-ui registry is unknown</AccordionTrigger>
+<AccordionContent>
+
+Run the latest CLI with `npx shadcn@latest`, not a globally installed or pinned older version. If it still fails, add the `registries` entry shown above to `components.json`.
+
+</AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="missing-utils">
+<AccordionTrigger>Cannot find module @/lib/utils</AccordionTrigger>
+<AccordionContent>
+
+The project has not been initialized with shadcn/ui. Run `npx shadcn@latest init`, or follow the [manual setup](/docs/installation/manual) to add the `cn` helper and `@/` alias yourself.
+
+</AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="unstyled">
+<AccordionTrigger>The component renders but looks unstyled or has the wrong colors</AccordionTrigger>
+<AccordionContent>
+
+Components read shadcn theme tokens such as `--card`, `--border`, and `--muted-foreground`. Check that your global CSS defines them for both `:root` and `.dark`, and that Tailwind scans the `components` folder. See [Theming](/docs/theming).
+
+</AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="next-image">
+<AccordionTrigger>Cannot resolve next/image or next/link outside Next.js</AccordionTrigger>
+<AccordionContent>
+
+A few components use Next.js image and link components. Replace them with `<img>` and `<a>` or your router's link component. The [Vite guide](/docs/installation/vite#nextjs-specific-components) lists which components are affected.
+
+</AccordionContent>
+</AccordionItem>
+
+</Accordion>

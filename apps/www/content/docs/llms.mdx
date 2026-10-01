@@ -9,26 +9,16 @@ Cult UI publishes its docs in formats that AI coding agents can read directly. P
 
 | Resource | URL | Use it for |
 | --- | --- | --- |
-| `llms.txt` | [`/llms.txt`](https://cult-ui.com/llms.txt) | Index of every docs page and component, with install instructions |
-| `llms-full.txt` | [`/llms-full.txt`](https://cult-ui.com/llms-full.txt) | Every docs page, including component source, in one file |
-| Markdown pages | Append `.md` to any docs URL, e.g. [`/docs/components/halo-button.md`](https://cult-ui.com/docs/components/halo-button.md) | One component's docs, demo, and source |
-| Registry | [`/r/registry.json`](https://cult-ui.com/r/registry.json) and `/r/{name}.json` | Installing components with the shadcn CLI |
+| `llms.txt` | [`/llms.txt`](https://www.cult-ui.com/llms.txt) | Index of every docs page and component, with install instructions |
+| `llms-full.txt` | [`/llms-full.txt`](https://www.cult-ui.com/llms-full.txt) | Every docs page, including component source, in one file |
+| Markdown pages | Append `.md` to any docs URL, e.g. [`/docs/components/halo-button.md`](https://www.cult-ui.com/docs/components/halo-button.md) | One component's docs, demo, and source |
+| Registry | [`/r/registry.json`](https://www.cult-ui.com/r/registry.json) and `/r/{name}.json` | Installing components with the shadcn CLI |
 
 Every docs page also has a **Copy page** button that copies its markdown, plus shortcuts to open the page in ChatGPT, Claude, or v0.
 
 ## Install components from an agent
 
-Register the namespace once in `components.json`:
-
-```json title="components.json"
-{
-  "registries": {
-    "@cult-ui": "https://cult-ui.com/r/{name}.json"
-  }
-}
-```
-
-Then any agent with terminal access can add components by name:
+Any agent with terminal access can add components by name. The `@cult-ui` namespace is built into the shadcn CLI, so no config is needed:
 
 ```bash
 npx shadcn@latest add @cult-ui/halo-button
@@ -45,8 +35,8 @@ Paste this into `AGENTS.md`, `CLAUDE.md`, or a `.cursor/rules` file so your agen
 
 - Cult UI components are shadcn/ui registry items. Install them with
   `npx shadcn@latest add @cult-ui/<name>`; never recreate them by hand.
-- Find component names and docs in https://cult-ui.com/llms.txt. Read a
-  component's docs at https://cult-ui.com/docs/components/<name>.md before using it.
+- Find component names and docs in https://www.cult-ui.com/llms.txt. Read a
+  component's docs at https://www.cult-ui.com/docs/components/<name>.md before using it.
 - Installed source lives in `components/ui/`. Edit it there; it is owned code,
   not a dependency.
 - Components use Tailwind CSS v4 and shadcn theme tokens (`bg-background`,

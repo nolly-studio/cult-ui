@@ -3,172 +3,75 @@ title: Manual Installation
 description: Set up Cult UI without the shadcn CLI by installing the dependencies, cn utility, and Tailwind CSS config yourself.
 ---
 
+Use this when you cannot run the shadcn CLI, or want to see exactly what a component adds before it lands in your project. Your project needs the same four things `shadcn init` would set up, and then each component is a file you copy.
+
+## One-time setup
+
 <Steps>
 
-### Add Tailwind CSS
+### Tailwind CSS v4
 
-Components are styled using Tailwind CSS. You need to install Tailwind CSS in your project.
-
-[Follow the Tailwind CSS installation instructions to get started.](https://tailwindcss.com/docs/installation)
-
-### Add dependencies
-
-Add the following dependencies to your project:
+Follow the [Tailwind CSS installation guide](https://tailwindcss.com/docs/installation) for your framework. Components use Tailwind v4 utilities and arbitrary values, and a few use enter and exit classes such as `animate-in` from `tw-animate-css`:
 
 ```bash
-npm install -D tailwindcss @tailwindcss/postcss tailwindcss-animate
-npm install class-variance-authority clsx tailwind-merge motion
+npm install tw-animate-css
 ```
 
-### Add icon library
+```css title="globals.css"
+@import "tailwindcss";
+@import "tw-animate-css";
 
-If you're using the `default` style, install `lucide-react`:
+@custom-variant dark (&:is(.dark *));
+```
+
+### Theme tokens
+
+Components read the standard shadcn tokens: `--background`, `--foreground`, `--card`, `--muted`, `--muted-foreground`, `--border`, `--input`, `--ring`, `--accent`, `--destructive`, `--chart-1` to `--chart-5`, and `--radius`. Copy a complete token set for `:root` and `.dark` from the [shadcn manual installation guide](https://ui.shadcn.com/docs/installation/manual) or the [Cult UI themes](/themes), and map them in `@theme inline`. [Theming](/docs/theming) explains what each token controls.
+
+### The cn helper
 
 ```bash
-npm install lucide-react
+npm install clsx tailwind-merge
 ```
 
-If you're using the `new-york` style, install `@radix-ui/react-icons`:
+```ts title="lib/utils.ts"
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
 
-```bash
-npm install @radix-ui/react-icons
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
 ```
 
-### Configure path aliases
+### The @/ import alias
 
-I use the `@` alias. This is how I configure it in tsconfig.json:
+Components import from `@/lib/utils` and `@/components/ui/*`. Point `@/*` at your source root in `tsconfig.json`, and in your bundler config if it does not read `tsconfig` paths:
 
-```json {3-6} title="tsconfig.json"
+```json title="tsconfig.json"
 {
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"]
     }
   }
 }
 ```
 
-The `@` alias is a preference. You can use other aliases if you want.
-
-**If you use a different alias such as ~, you'll need to update import statements when adding components.**
-
-### Configure Tailwind v4
-
-Create `postcss.config.mjs`:
-
-```js title="postcss.config.mjs"
-export default {
-  plugins: {
-    "@tailwindcss/postcss": {},
-  },
-};
-```
-
-### Configure styles
-
-Add the following to your styles/globals.css file. You can learn more about using CSS variables for theming in the [theming section](/docs/theming).
-
-```css title="globals.css"
-@import "tailwindcss";
-@plugin "tailwindcss-animate";
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 215 20.2% 65.1%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
-
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 56.9%;
-
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
-
-    --popover: 224 71% 4%;
-    --popover-foreground: 215 20.2% 65.1%;
-
-    --border: 216 34% 17%;
-    --input: 216 34% 17%;
-
-    --card: 224 71% 4%;
-    --card-foreground: 213 31% 91%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 1.2%;
-
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 40% 98%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 216 34% 17%;
-
-    --radius: 0.5rem;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings:
-      "rlig" 1,
-      "calt" 1;
-  }
-}
-```
-
-### Add a cn helper
-
-I use a `cn` helper to make it easier to conditionally add Tailwind CSS classes. Here's how I define it in `lib/utils.ts`:
-
-```ts title="lib/utils.ts"
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-```
-
-### That's it
-
-You can now start adding components to your project.
+Use `["./*"]` instead if you do not have a `src` folder.
 
 </Steps>
+
+## Add a component
+
+Every component page has a **Manual** tab under Installation with its source. Adding a component by hand takes three steps:
+
+1. **Install its npm dependencies.** Most animated components need `motion`. The Halo kit and newer form controls also use `@base-ui/react`.
+2. **Add any shadcn/ui or Cult UI components it builds on**, such as `button` or `badge`.
+3. **Copy the source** into `components/ui/<name>.tsx` and fix the import paths if your alias differs.
+
+The component's registry file is the complete list for steps 1 and 2. It shows `dependencies` (npm packages), `registryDependencies` (components it builds on), and the full source:
+
+```txt
+https://www.cult-ui.com/r/halo-select.json
+```

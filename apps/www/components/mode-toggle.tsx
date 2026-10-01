@@ -9,9 +9,8 @@ import { cn } from "@/lib/utils"
 const RAYS = [0, 45, 90, 135, 180, 225, 270, 315] as const
 
 /**
- * Soft header chip that toggles light ↔ dark. The glyph morphs in place
- * (sun disc + rays ↔ masked crescent) so the control stays one beat,
- * matching the ledger chrome: muted fill, shadow-soft-sm, active press.
+ * Flat header control that toggles light ↔ dark. The glyph morphs in place
+ * (sun disc + rays ↔ masked crescent) so the control stays one beat.
  * System preference remains available from the command menu.
  */
 export function ModeToggle({ className }: { className?: string }) {
@@ -32,9 +31,8 @@ export function ModeToggle({ className }: { className?: string }) {
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className={cn(
-        "text-muted-foreground hover:text-foreground focus-visible:ring-ring relative inline-flex size-9 shrink-0 items-center justify-center rounded-full outline-none",
-        "bg-muted/55 shadow-soft-sm hover:shadow-soft",
-        "transition-[color,box-shadow,background-color,transform] duration-150 ease-out",
+        "text-muted-foreground hover:text-foreground hover:bg-muted/60 focus-visible:ring-ring relative inline-flex size-9 shrink-0 items-center justify-center rounded-full outline-none",
+        "transition-[color,background-color,transform] duration-150 ease-out",
         "active:scale-[0.99] motion-reduce:active:scale-100",
         "focus-visible:ring-2",
         !mounted && "opacity-0",

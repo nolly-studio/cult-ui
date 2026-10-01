@@ -192,8 +192,10 @@ export function getLLMIndex() {
 
 ## Install
 
-- Add one component: \`npx shadcn@latest add ${siteConfig.url}/r/{name}.json\`
-- Or register the namespace in \`components.json\`: \`"registries": { "@cult-ui": "${siteConfig.url}/r/{name}.json" }\`, then run \`npx shadcn@latest add @cult-ui/{name}\`
+- Add a component: \`npx shadcn@latest add @cult-ui/{name}\`. The \`@cult-ui\` namespace is built into the shadcn CLI, so no config is needed.
+- Requires a project set up with \`npx shadcn@latest init\` (components.json, the \`cn\` helper, and theme tokens).
+- For the shadcn MCP server or older CLIs, list the registry in \`components.json\`: \`"registries": { "@cult-ui": "${siteConfig.url}/r/{name}.json" }\`
+- Without the namespace: \`npx shadcn@latest add ${siteConfig.url}/r/{name}.json\`
 - Registry index: ${siteConfig.url}/r/registry.json
 - Components use Tailwind CSS v4, shadcn theme tokens, and usually \`motion\` for animation. Peer dependencies are listed on each component page.
 

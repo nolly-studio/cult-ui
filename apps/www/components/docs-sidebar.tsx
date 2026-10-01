@@ -18,7 +18,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
-function getIsActive(pathname: string | null, href?: string) {
+export function getIsActive(pathname: string | null, href?: string) {
   if (!pathname || !href) {
     return false
   }
@@ -30,7 +30,7 @@ function getIsActive(pathname: string | null, href?: string) {
   return pathname === href || pathname.startsWith(`${href}/`)
 }
 
-function LabelBadge({ label }: { label?: string }) {
+export function LabelBadge({ label }: { label?: string }) {
   if (!label) {
     return null
   }

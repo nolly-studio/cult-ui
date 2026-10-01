@@ -23,7 +23,7 @@ export type InstallationCliProps = {
 
 export function InstallationCli({ value, className }: InstallationCliProps) {
   const [isCopied, setIsCopied] = useState(false);
-  const command = `npx shadcn@latest add "https://cult-ui.com/r/${value}.json"`;
+  const command = `npx shadcn@latest add "https://www.cult-ui.com/r/${value}.json"`;
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
   const isMediumScreen = useMediaQuery("(max-width: 768px)");
 

@@ -4,7 +4,9 @@ import { notFound } from "next/navigation"
 import { mdxComponents } from "@/mdx-components"
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react"
 import { findNeighbour } from "fumadocs-core/server"
+import type { SidebarNavItem } from "types/nav"
 
+import { docsConfig } from "@/config/docs"
 import { siteConfig } from "@/config/site"
 import { getDocsCategory, getOgImageUrl } from "@/lib/docs"
 import { getMarkdownUrl, getPageFaq, getPageLastModified } from "@/lib/llm"
@@ -88,7 +90,9 @@ export default async function Page(props: {
   const doc = page.data
   // @ts-expect-error - revisit fumadocs types.
   const MDX = doc.body
-  const neighbours = await findNeighbour(source.pageTree, page.url)
+  const neighbours =
+    getSidebarNeighbours(page.url) ??
+    (await findNeighbour(source.pageTree, page.url))
 
   const category = getDocsCategory(page.url)
   const jsonLd = await getDocJsonLd(page, category)
@@ -99,7 +103,7 @@ export default async function Page(props: {
       <JsonLd data={jsonLd} />
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="h-(--top-spacing) shrink-0" />
-        <article className="text-foreground/80 mx-auto flex w-full max-w-4xl min-w-0 flex-1 flex-col px-3 py-10 text-[0.9375rem] leading-relaxed md:px-0 lg:py-14 xl:max-w-5xl">
+        <article className="text-foreground/80 mx-auto flex w-full max-w-4xl min-w-0 flex-1 flex-col px-3 pt-6 pb-10 text-[0.9375rem] leading-relaxed md:px-0 lg:pb-14 xl:max-w-5xl">
           <header className="mb-10 flex flex-col gap-4">
             <div className="flex min-h-8 items-center justify-between gap-4">
               {category ? <PixelKicker>{category}</PixelKicker> : <span />}
@@ -152,7 +156,7 @@ export default async function Page(props: {
           <DocsPager previous={neighbours.previous} next={neighbours.next} />
         </article>
       </div>
-      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--header-height))] w-72 flex-col gap-8 overflow-hidden overscroll-none px-6 pt-14 pb-8 xl:flex">
+      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--header-height))] w-72 flex-col gap-8 overflow-hidden overscroll-none px-6 pt-[calc(var(--top-spacing)+1.5rem)] pb-8 xl:flex">
         {/* @ts-expect-error - revisit fumadocs types. */}
         {doc.toc?.length ? (
           <div className="no-scrollbar min-h-0 shrink overflow-y-auto">
@@ -177,6 +181,29 @@ const iconPillClass =
   "bg-background text-muted-foreground shadow-soft-sm hover:text-foreground hover:shadow-soft focus-visible:ring-ring inline-flex size-8 items-center justify-center rounded-full transition-[box-shadow,color] duration-150 outline-none focus-visible:ring-2"
 
 type Neighbour = { name: React.ReactNode; url: string } | undefined
+
+function flattenSidebarLinks(items: SidebarNavItem[]): SidebarNavItem[] {
+  return items.flatMap((item) => [
+    ...(item.href && !item.disabled && !item.external ? [item] : []),
+    ...flattenSidebarLinks(item.items),
+  ])
+}
+
+const sidebarLinks = flattenSidebarLinks(docsConfig.sidebarNav)
+
+/** Prev/next in the order readers see in the sidebar, not file-system order. */
+function getSidebarNeighbours(
+  url: string
+): { previous: Neighbour; next: Neighbour } | null {
+  const index = sidebarLinks.findIndex((link) => link.href === url)
+  if (index === -1) return null
+  const toNeighbour = (link?: SidebarNavItem): Neighbour =>
+    link?.href ? { name: link.title, url: link.href } : undefined
+  return {
+    previous: toNeighbour(sidebarLinks[index - 1]),
+    next: toNeighbour(sidebarLinks[index + 1]),
+  }
+}
 
 function DocsPager({
   previous,

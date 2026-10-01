@@ -2,7 +2,6 @@ import Link from "next/link";
 import * as React from "react";
 
 import { Icons } from "@/components/icons";
-import { buttonVariants } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -33,20 +32,23 @@ async function StarsCount() {
 
 export function GitHubLink({ className }: { className?: string }) {
   return (
-    <Link href={siteConfig.links.github} target="_blank" rel="noreferrer">
-      <div
-        className={cn(
-          buttonVariants({ variant: "ghost" }),
-          "flex w-9 items-center gap-1 px-0 md:w-auto md:px-2",
-          className
-        )}
-      >
-        <Icons.gitHub className="size-4" />
-        <React.Suspense fallback={<Skeleton className="h-4 w-[42px]" />}>
+    <Link
+      href={siteConfig.links.github}
+      target="_blank"
+      rel="noreferrer"
+      className={cn(
+        "text-muted-foreground hover:text-foreground hover:bg-muted/60 focus-visible:ring-ring inline-flex h-9 min-w-9 shrink-0 items-center justify-center gap-1.5 rounded-full outline-none md:px-3",
+        "transition-[color,background-color] duration-150 ease-out focus-visible:ring-2",
+        className
+      )}
+    >
+      <Icons.gitHub aria-hidden="true" className="size-4" />
+      <span className="hidden md:inline-flex">
+        <React.Suspense fallback={<Skeleton className="h-4 w-7" />}>
           <StarsCount />
         </React.Suspense>
-        <span className="sr-only">GitHub</span>
-      </div>
+      </span>
+      <span className="sr-only">GitHub (opens in a new tab)</span>
     </Link>
   );
 }

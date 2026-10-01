@@ -5,13 +5,13 @@ component: true
 links: {}
 ---
 
-Dither Image is a React image component for shadcn/ui that wraps next/image in a figure and applies a CSS-only Bayer dither through the dither-plugin Tailwind utility. Use it for editorial photos, portfolio grids, or landing page heroes, including partial reveals that dither only part of an image.
-
 <ComponentPreview
   name="dither-image-demo"
   className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
   description="Grids, tunable frame props, and partial reveal overlays"
 />
+
+Dither Image is a React image component for shadcn/ui built on next/image and the dither-plugin Tailwind utility. Use it for editorial photos, portfolio grids, or landing page heroes, including partial reveals that dither only part of an image.
 
 ## Installation
 
@@ -27,7 +27,7 @@ The UI layer is a thin React wrapper; the visual effect comes from [`dither-plug
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add https://cult-ui.com/r/dither-image.json
+npx shadcn@latest add @cult-ui/dither-image
 ```
 
 After the CLI finishes, ensure `dither-plugin` is installed and `@import "dither-plugin";` is present in your global CSS (see Manual).
