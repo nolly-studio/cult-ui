@@ -9,10 +9,12 @@ interface SiteHeaderProps {
   githubLink?: React.ReactNode
 }
 
-/** Docs header. The home page renders its own overlay `MarketingHeader`. */
+/**
+ * Docs header, rendered by the `(site)` layout. The home page sits outside that
+ * route group and renders its own overlay `MarketingHeader`.
+ */
 export function SiteHeader({ githubLink }: SiteHeaderProps) {
   const pathname = usePathname()
-  if (pathname === "/") return null
   return (
     <MarketingHeader
       variant="docs"

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function IndexPage() {
   return (
-    <div className="isolate min-h-screen overflow-x-clip">
+    <main className="isolate min-h-screen flex-1 overflow-x-clip">
       <MarketingHeader
         githubLink={<GitHubLink />}
         actions={<ModeToggle />}
@@ -36,6 +36,6 @@ export default function IndexPage() {
         <SupportSection />
         <Footer />
       </BackgroundImageTexture>
-    </div>
+    </main>
   )
 }

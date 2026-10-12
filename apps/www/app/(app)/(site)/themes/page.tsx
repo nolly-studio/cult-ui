@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 import "public/registry/themes.css";
 
-import { ThemesTabs } from "@/app/(app)/themes/tabs";
+import { ThemesTabs } from "@/app/(app)/(site)/themes/tabs";
 import { Announcement } from "@/components/announcement";
 import {
   PageActions,
