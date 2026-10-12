@@ -6,7 +6,11 @@ import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { pillCtaClass } from "@/components/pill-cta"
 
-const highlights = ["Agents & workflows", "Tools + artifacts", "Next.js apps"]
+const highlights = [
+  "150+ blocks",
+  "Install with shadcn CLI",
+  "One-time purchase",
+]
 
 /** Right-rail card for AI SDK Agents, the paid product that funds Cult UI. */
 export function DocsPromoCard({ className }: { className?: string }) {
@@ -28,16 +32,20 @@ export function DocsPromoCard({ className }: { className?: string }) {
         <span className="font-pixel-square text-muted-foreground text-[10px] tracking-wider uppercase">
           AI SDK Agents
         </span>
+        <span className="font-pixel-square border-border/80 text-muted-foreground ml-auto rounded-full border px-1.5 py-0.5 text-[10px] leading-none tracking-wider uppercase">
+          Paid
+        </span>
       </div>
       <div className="flex flex-col gap-1">
         <h2
           id="docs-promo-title"
-          className="text-sm leading-tight font-medium tracking-tight"
+          className="text-sm leading-tight font-medium tracking-tight text-balance"
         >
-          Full-stack AI blocks
+          Like shadcn, for AI agents.
         </h2>
         <p className="text-muted-foreground text-xs leading-relaxed">
-          100+ agent patterns built on the Vercel AI SDK and this library.
+          Full-stack blocks for the Vercel AI&nbsp;SDK. The UI, the API route
+          and the tools, as source you own.
         </p>
       </div>
       <ul className="border-border/80 flex flex-col gap-1.5 border-t pt-3">
@@ -63,7 +71,7 @@ export function DocsPromoCard({ className }: { className?: string }) {
           "group mt-1 w-full gap-1.5"
         )}
       >
-        Browse patterns
+        Browse the blocks
         <HugeiconsIcon
           aria-hidden="true"
           icon={ArrowRight02Icon}

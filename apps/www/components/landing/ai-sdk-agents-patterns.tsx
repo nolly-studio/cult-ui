@@ -303,7 +303,7 @@ function getBlockImageUrl(
 // Hardcoded featured block data
 // ---------------------------------------------------------------------------
 
-const TOTAL_PATTERN_COUNT = 100
+const TOTAL_PATTERN_COUNT = 150
 
 type FeaturedBlock = {
   name: string
@@ -783,8 +783,8 @@ export function AiSdkAgentsSection() {
         <SectionHeader
           id="aisdk-title"
           kicker="AI SDK Agents"
-          title="Built with Cult UI"
-          lead="The components are free. The full-stack AI apps built from them are AI SDK Agents."
+          title="Like shadcn, for AI agents"
+          lead={`${TOTAL_PATTERN_COUNT}+ full-stack blocks for the Vercel AI SDK.`}
           action={
             <a
               href={aisdkAgentsUrl("/directory", landing("section-cta"))}
@@ -792,7 +792,7 @@ export function AiSdkAgentsSection() {
               rel="noopener noreferrer"
               className={cn(pillCtaClass.ink, pillCtaClass.trailingIcon)}
             >
-              Browse {TOTAL_PATTERN_COUNT}+ patterns
+              Browse {TOTAL_PATTERN_COUNT}+ blocks
               <HugeiconsIcon
                 aria-hidden="true"
                 icon={ArrowRight02Icon}
@@ -802,8 +802,9 @@ export function AiSdkAgentsSection() {
             </a>
           }
         >
-          Agent patterns on the Vercel AI SDK with live previews. Install with
-          shadcn, download a Next.js app, or open in v0.
+          Each one ships the UI, the API route and the tools as source you own.
+          Install with shadcn, download a Next.js app, or open in v0. One-time
+          purchase.
         </SectionHeader>
 
         <CatalogTray>
