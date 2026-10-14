@@ -1,7 +1,6 @@
 import { ArrowRight02Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 
-import { aisdkAgentsUrl } from "@/lib/aisdkagents";
 import { Icons } from "@/components/icons";
 
 /**
@@ -12,10 +11,7 @@ import { Icons } from "@/components/icons";
 export function AnnouncementBar() {
   return (
     <a
-      href={aisdkAgentsUrl("/ai-components", {
-        medium: "header",
-        content: "announcement-bar",
-      })}
+      href="https://www.aisdkagents.com/ai-components"
       target="_blank"
       rel="noopener noreferrer"
       data-slot="announcement-bar"
