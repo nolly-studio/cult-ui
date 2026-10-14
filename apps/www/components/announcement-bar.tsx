@@ -12,7 +12,7 @@ import { Icons } from "@/components/icons";
 export function AnnouncementBar() {
   return (
     <a
-      href={aisdkAgentsUrl("/patterns?sort=newest", {
+      href={aisdkAgentsUrl("/ai-components", {
         medium: "header",
         content: "announcement-bar",
       })}
@@ -22,7 +22,7 @@ export function AnnouncementBar() {
       className="group bg-foreground text-background focus-visible:ring-ring relative z-50 flex h-9 items-center justify-center gap-2 px-4 text-sm outline-none focus-visible:ring-2 focus-visible:ring-inset"
     >
       <Icons.aisdkAgentsLogo aria-hidden="true" className="fill-background size-3.5 shrink-0" />
-      <span className="font-pixel-square truncate">New jev blocks just dropped</span>
+      <span className="font-pixel-square truncate">140 new AI components just dropped</span>
       <HugeiconsIcon
         aria-hidden="true"
         icon={ArrowRight02Icon}
