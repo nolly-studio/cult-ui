@@ -6,7 +6,7 @@ import { cva } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
-const buttonVariantsOuter = cva("", {
+const buttonVariantsOuter = cva("bg-origin-border", {
   variants: {
     variant: {
       primary:
